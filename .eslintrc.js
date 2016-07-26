@@ -46,7 +46,7 @@ module.exports = {
     "func-style": "off",
     "react/wrap-multilines": "error",
     "react/forbid-prop-types": ["error", { "forbid": ["any"] }],
-    "react/jsx-boolean-value": "warn",
+    "react/jsx-boolean-value": "off",
     "react/jsx-closing-bracket-location": "off",
     "react/jsx-curly-spacing": "warn",
     "react/jsx-indent-props": "off",

@@ -80,5 +80,5 @@ module.exports = {
         port: 8080,
         historyApiFallback: true
     },
-    devtool: 'eval'
+    devtool: 'cheap-module-eval-source-map'
 };

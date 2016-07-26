@@ -1,16 +1,16 @@
 import StarRating from '../base/StarRating';
 
 module.exports = class extends React.Component {
-    constructor(props, context) {
+    constructor (props, context) {
         super(props, context);
         this.state = {};
     }
 
     onValChange = (val) => {
-        this.setState({val});
+        this.setState({ val });
     }
 
-    render() {
+    render () {
         return (
             <div>
                 <h1>Components</h1>

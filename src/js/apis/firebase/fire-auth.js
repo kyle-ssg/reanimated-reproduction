@@ -89,6 +89,10 @@ const FireAuth = class {
         profileRef.update(data);
     }
 
+    resetPassword (email) {
+        return firebase.auth().sendPasswordResetEmail(email);
+    }
+
 };
 
 module.exports = new FireAuth();

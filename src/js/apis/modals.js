@@ -1,22 +1,25 @@
 const Provider = class extends React.Component {
 
-    componentDidMount() {
+    componentDidMount () {
+        window.closeModal = this.close;
         $(ReactDOM.findDOMNode(this)).on('hidden.bs.modal', this._closed);
         $(ReactDOM.findDOMNode(this)).on('shown.bs.modal', this._shown);
         $(ReactDOM.findDOMNode(this)).modal({ background: true, keyboard: true, show: true });
     }
 
-    show() {
+    show () {
         $(ReactDOM.findDOMNode(this)).on('hidden.bs.modal', this.unmount);
         $(ReactDOM.findDOMNode(this)).modal('show');
     }
 
-    close() { //use when you wish to trigger closing manually
+    close = () => { //use when you wish to trigger closing manually
         $(ReactDOM.findDOMNode(this)).off('hidden.bs.modal', this._closed);
         $(ReactDOM.findDOMNode(this)).off('shown.bs.modal', this._shown);
         $(ReactDOM.findDOMNode(this)).modal('hide');
-        ReactDOM.unmountComponentAtNode(document.getElementById('modal'));
-        document.body.classList.remove('modal-open');
+        setTimeout(() => {
+            ReactDOM.unmountComponentAtNode(document.getElementById('modal'));
+            document.body.classList.remove('modal-open');
+        }, 500);
     }
 
     _closed = ()=> {
@@ -25,11 +28,11 @@ const Provider = class extends React.Component {
         document.body.classList.remove('modal-open');
     }
 
-    _shown() {
+    _shown () {
         this.isVisible = true;
     }
 
-    render() {
+    render () {
         return this.props.children;
     }
 };
@@ -40,19 +43,19 @@ Provider.propTypes = {
 };
 
 const Modal = class extends React.Component {
-    header() {
+    header () {
         return this.props.header || '';
     }
 
-    body() {
+    body () {
         return this.props.body || '';
     }
 
-    footer() {
+    footer () {
         return this.props.footer || '';
     }
 
-    render() {
+    render () {
 
         return (
             <Provider ref="modal">
@@ -77,11 +80,11 @@ Modal.propTypes = {
 };
 
 const Confirm = class extends React.Component {
-    header() {
+    header () {
         return this.props.header || '';
     }
 
-    body() {
+    body () {
         return this.props.body || '';
     }
 
@@ -97,11 +100,11 @@ const Confirm = class extends React.Component {
         this.refs.modal.close();
     }
 
-    closed() {
+    closed () {
         this.onNo();
     }
 
-    footer() {
+    footer () {
         return (
             <div className="modal-button">
                 <button type="button" className="btn btn-red short"
@@ -112,7 +115,7 @@ const Confirm = class extends React.Component {
         );
     }
 
-    render() {
+    render () {
         return (
             <Provider onClose={this.props.onNo} ref="modal">
                 <div tabIndex="-1" className="modal alert fade" role="dialog" aria-hidden="true">

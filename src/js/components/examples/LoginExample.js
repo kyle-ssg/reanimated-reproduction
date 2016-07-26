@@ -3,6 +3,7 @@
  */
 
 import LoginForm from './LoginRegisterForm';
+import ForgotPassword from './ForgotPassword';
 const FireAuth = require('../../apis/firebase/fire-auth');
 
 module.exports = class extends React.Component {
@@ -43,6 +44,12 @@ module.exports = class extends React.Component {
         });
     }
 
+    showForgotPassword = () => {
+        openModal((
+            <ForgotPassword onSubmit={()=>closeModal()}/>
+        ),<h3>Enter an email</h3>);
+    }
+
     render () {
         return (
             <div>
@@ -60,6 +67,8 @@ module.exports = class extends React.Component {
                         <Divider/>
                         <LoginForm onRegister={(email, password)=> FireAuth.register(email, password)}
                                    onLogin={(email, password)=> FireAuth.login(email, password)}/>
+                        <Divider/>
+                        <a onClick={this.showForgotPassword} href="#">Forgot password ?</a>
                     </div>
                 ) : (
                     <div>
