@@ -44,10 +44,11 @@ Globally accessible by default
 
 * ``login(email, password)``
 * ``register(email, password)``
+* ``resendVerification()`` - if !(profile.emailVerified)
+* ``resetPassword(email)``
 * ``facebookLogin()`` - Uses Project.Google.APIKey, clientID
 * ``googleLogin()``
 * ``update(traits)``
-* ``resendVerification()`` - if !(profile.emailVerified)
 
 ## Vanilla auth (requires import Auth from 'apis/auth/auth')
 * ``Auth.Google.login().then((token)=>{})``
