@@ -16,7 +16,7 @@ $ npm start
 ```routes.js``` contain all page routes
 
 ## How it all works
-1. ```ExampleComponent``` emits an action defined in ```app-actions``` (e.g. ```AppActions.sendMeme(url);``` after clicking a button)
+1. ```MemeComponent``` emits an action defined in ```app-actions``` (e.g. ```AppActions.sendMeme(url);``` after clicking a button)
 2. ```app-actions.js``` takes the params along with an action type defined in action-constants (e.g. ```ActionConstants.SEND_MEME```)
 3. ```meme-store.js``` picks up the action and calls events such as
     - store.loading()
