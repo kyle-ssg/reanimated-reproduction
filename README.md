@@ -1,55 +1,75 @@
 # React + Redux w/ ES6 Starter Project
+A boilerplate using React, Flux, webpack + hot module reloading, and ES6 + JSX via Babel. Includes useful apis for getting started.
 
-A boilerplate using React, Flux, webpack + hot module reloading, and ES6 + JSX via Babel.
+## Getting Started
+
+### Installation
+```
+$ npm install
+```
+### Running with hot reloading / eslinting / tests
+```
+$ npm start
+```
+
+## Routing
+```routes.js``` contain all page routes
+
+## How it all works
+1. ```ExampleComponent``` emits an action defined in ```app-actions``` (e.g. ```AppActions.sendMeme(url);``` after clicking a button)
+2. ```app-actions.js``` takes the params along with an action type defined in action-constants (e.g. ```ActionConstants.SEND_MEME```)
+3. ```meme-store.js``` picks up the action and calls events such as
+    - store.loading()
+    - store.change()
+    - store.loaded()
+    - store.saving()
+    - store.saved()
+4. Components listen to events and update state : ```this.listenTo(MemeStore, 'change', ()=>{this.setState({meme: MemeStore.model}})```
+
+# APIS
+## Modals
+Globally accessible by default
+* ```openModal(body, header, footer)```
+* ```openConfirm(body, header, onYes, onNo)```
+
+## Share (requires)
+``import Share from 'apis/share/share'``
+* ``Share.facebook(url)``
+* ``Share.twitter(url)``
+
+## Firebase auth - handles user management, fb/google/email based auth and profile data.
+``FireAuth from 'apis/firebase/fire-auth';``
+
+``FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, this.onError);``
+
+* ``login(email, password)``
+* ``register(email, password)``
+* ``facebookLogin()`` - Uses Project.Google.APIKey, clientID
+* ``googleLogin()``
+* ``update(traits)``
+* ``resendVerification()`` - if !(profile.emailVerified)
+
+## Vanilla auth (requires import Auth from 'apis/auth/auth')
+* ``Auth.Google.login().then((token)=>{})``
+* ``Auth.Facebook.login().then((res)=>{})``
+
+### Prod build
+* Build once for (ready for ***Production***):
+  * `$ npm run build`
+  * Open `build/index.html` through the local webserver, the build folder can be deployed anywhere
+
+## Further Information
 
 The provided boilerplate enables client-side ES6 via the following technologies:
 
 - [webpack](http://webpack.github.io/) and [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) as a client-side module builder and module loader.
-- [npm](https://www.npmjs.com/) as a package manager and task runner (say [**NO**](http://blog.keithcirkel.co.uk/why-we-should-stop-using-grunt/) to gulp/grunt).
+- [npm](https://www.npmjs.com/) as a package manager and task runner.
 - [Babel](http://babeljs.io/) 6 as a transpiler from ES6 to ES5.
 - [React](https://facebook.github.io/react/) and [JSX](https://facebook.github.io/jsx/) as a virtual Dom JavaScript library for rendering user interfaces (views).
 - [ESLint](http://eslint.org/) as a reporter for syntax and style issues. [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for additional React specific linting rules.
 - [Sass](http://sass-lang.com/) as a compiler of CSS styles with variables, mixins, and more.
 - [Mocha](https://mochajs.org/) as a test framework.
 - [Chai](http://chaijs.com/) as a BDD assertion library that works along with `Mocha`.
-
-## Getting Started
-
-### Installation
-
-```
-$ npm install
-```
-
-## Development
-
-There are two ways in which you can build and run the web app:
-
-* Hot reloading via webpack dev server:
-  * `$ npm start`
-  * Point your browser to http://localhost:8080/, page hot reloads automatically when there are changes
-
-
-* Build once for (ready for ***Production***):
-  * `$ npm run build`
-  * Open `build/index.html` through the local webserver
-
-
-## Testing
-
-To execute all unit tests, use:
-
-```sh
-npm run test
-```
-
-To run unit tests continuously during development (watch tests), use:
-
-```sh
-npm run test:watch
-```
-
-## Further Information
 
 When you run `npm start`:
 
@@ -65,47 +85,7 @@ When you run `npm run build`:
  2. The [extract-text-webpack-plugin](https://github.com/webpack/extract-text-webpack-plugin) extracts the compiled Sass into app.css
  3. buildHtml.js adds a reference to the stylesheet to the head of index.html.
 
-### How do I deploy this?
-
-`npm run build`. This will prepare and build the project for production use. It does the following:
-
-- Minifies all JS and CSS
-- Inline base64 URLs for images and fonts if their size is less than specified limit
-- Sets NODE_ENV to `production` so that React is built in production mode
-- Places the resulting built project files into `/build` directory. (This is the folder you'll expose to the world).
-
 ## Updating npm packages
-- This is very useful to keep the boilerplate up to date, the following will update your package.json to use latest compatible packages
-npm install -g npm-check-updates
-ncu (ncu -u to perform the updates)
-
-# APIS
-##Modals
-openModal(body, header, footer)
-openConfirm(body, header, onYes, onNo)
-
-##Share (requires import Share from 'apis/share/share')
-Share.facebook(url)
-Share.twitter(url)
-
-##Firebase auth - handles user management, email based auth and profile data. Requires import FireAuth from 'apis/firebase/fire-auth'
-FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, this.onError);
-
-login(email, password)
-register(email, password)
-facebookLogin() - Uses Project.Google.APIKey, clientID
-googleLogin()
-update(traits)
-resendVerification() - if !(profile.emailVerified)
-
-##Vanilla auth (requires import Auth from 'apis/auth/auth')
-Auth.Google.login()
-    .then((res)=>{})
-
-Auth.Facebook.login()
-    .then((res)=>{})
-
-
-#Application Flow
-1. Component emits an action defined in
-2:
+This is very useful to keep the boilerplate up to date, the following will update your ```package.json``` to use latest compatible packages
+* ```npm install -g npm-check-updates```
+* ```ncu (ncu -u to perform the updates)```
