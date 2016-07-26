@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlexTable, AutoSizer, FlexColumn, SortDirection} from 'react-virtualized';
-const size = 100000;
+const size = 5000;
 var list = _.map(_.range(0, size), function (i) {
     return { id: i + 1, description: Utils.GUID() };
 }).reverse();

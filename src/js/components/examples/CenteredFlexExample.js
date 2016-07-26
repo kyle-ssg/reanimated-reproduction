@@ -25,6 +25,7 @@ module.exports = class extends React.Component {
     render() {
         return (
             <div>
+                <h1>Flexbox</h1>
                 <div className="btn-group">
                     <button onClick={this.more} className="btn">
                         +
