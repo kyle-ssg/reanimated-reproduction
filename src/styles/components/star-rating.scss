@@ -1,0 +1,23 @@
+.rating-component{
+  display:table;
+  width:auto;
+}
+
+.fa.star-rating {
+  display:table-cell;
+  position: relative;
+  font-size:24px;
+
+  &.full {
+    color: $brand-green;
+    &.editable:hover {
+      color: #999;
+    }
+  }
+  &.empty {
+    color: $brand-green;
+    &.editable:hover {
+      color: '';
+    }
+  }
+}
