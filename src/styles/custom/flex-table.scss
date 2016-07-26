@@ -1,0 +1,16 @@
+.FlexTable__row, .FlexTable__headerRow {
+  border-bottom: 1px solid #eaeaea;
+}
+
+.FlexTable__headerRow {
+  color: #666;
+  text-transform: none;
+}
+
+
+.FlexTable__headerRowContent {
+  font-weight: 200;
+  &.FlexTable__headerRowContent--sorting {
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,81 @@
+/**
+ * Created by kylejohnson on 24/07/2016.
+ */
+
+import LoginForm from './LoginRegisterForm';
+const FireAuth = require('../../apis/firebase/fire-auth');
+
+module.exports = class extends React.Component {
+
+    constructor (props, context) {
+        super(props, context);
+        this.state = { isLoading: true };
+    }
+
+    componentWillMount () {
+        FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, this.onError);
+    }
+
+    onError = (err) => {
+        alert("Error " + err);
+    }
+
+    onLogin = (user, profile) => {
+        this.setState({
+            isLoading: false,
+            user,
+            profile
+        });
+    }
+
+    onUserChange = (user, profile) => {
+        this.setState({
+            user,
+            profile
+        });
+    }
+
+    onLogout = () => {
+        this.setState({
+            isLoading: false,
+            user: null,
+            profile: null
+        });
+    }
+
+    render () {
+        return (
+            <div>
+                <h1>Simple Login Example</h1>
+                {!this.state.profile ? (
+                    <div>
+                        <div className="btn-group">
+                            <button disabled={this.state.isLoading} onClick={FireAuth.facebookLogin} className="btn">
+                                Facebook
+                            </button>
+                            <button disabled={this.state.isLoading} onClick={FireAuth.googleLogin} className="btn">
+                                Google
+                            </button>
+                        </div>
+                        <Divider/>
+                        <LoginForm onRegister={(email, password)=> FireAuth.register(email, password)}
+                                   onLogin={(email, password)=> FireAuth.login(email, password)}/>
+                    </div>
+                ) : (
+                    <div>
+                        {!this.state.profile.emailVerified && (
+                            <div>
+                                <button onClick={FireAuth.resendVerification} className="btn">
+                                    Resend Verification Email
+                                </button>
+                            </div>
+                        )}
+                        <button onClick={FireAuth.logout} className="btn">
+                            Logout
+                        </button>
+                    </div>
+                )}
+            </div>
+        );
+    }
+};

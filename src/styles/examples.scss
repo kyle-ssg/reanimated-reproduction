@@ -1,0 +1,8 @@
+.animated-size {
+  -webkit-transition: width 200ms, height 200ms;
+  transition: width 200ms, height 200ms;
+}
+.animated-font {
+  -webkit-transition: font-size 200ms;
+  transition: font-size 200ms;
+}
