@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, IndexRoute, Redirect } from 'react-router';
 
 import App from './components/App';
-import FriendListApp from './containers/FriendListApp/FriendListApp';
-import NotFoundView from './views/NotFoundView';
+import FriendListApp from './components/pages/HomePage';
+import NotFoundView from './components/pages/NotFoundPage';
 
 export default (
   <Route path="/" component={App}>

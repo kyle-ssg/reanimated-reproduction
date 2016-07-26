@@ -7,7 +7,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="page-container">
+      <div className="container">
         {this.props.children}
       </div>
     );
