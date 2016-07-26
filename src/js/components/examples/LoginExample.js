@@ -2,8 +2,10 @@
  * Created by kylejohnson on 24/07/2016.
  */
 
-import LoginForm from './LoginRegisterForm';
-import ForgotPassword from './ForgotPassword';
+import LoginForm from './auth/LoginRegisterForm';
+import ForgotPassword from './auth/ForgotPassword';
+import ChangePassword from './auth/ChangePassword';
+import UpdateProfile from './auth/UpdateProfile';
 const FireAuth = require('../../apis/firebase/fire-auth');
 
 module.exports = class extends React.Component {
@@ -14,11 +16,17 @@ module.exports = class extends React.Component {
     }
 
     componentWillMount () {
+        window.firebase = firebase;
+        firebase.initializeApp(Project.firebase);
         FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, this.onError);
     }
 
     onError = (err) => {
         alert("Error " + err);
+    }
+
+    onProfileUpdated () {
+        alert("Profile Updated!");
     }
 
     onLogin = (user, profile) => {
@@ -47,7 +55,13 @@ module.exports = class extends React.Component {
     showForgotPassword = () => {
         openModal((
             <ForgotPassword onSubmit={()=>closeModal()}/>
-        ),<h3>Enter an email</h3>);
+        ), <h3>Enter an email</h3>);
+    }
+
+    showChangePassword = () => {
+        openModal((
+            <ChangePassword onSubmit={()=>closeModal()}/>
+        ), <h3>Enter an email</h3>);
     }
 
     render () {
@@ -79,6 +93,14 @@ module.exports = class extends React.Component {
                                 </button>
                             </div>
                         )}
+                        { //todo: check if can set password
+                            <button onClick={this.showChangePassword} className="btn">
+                                Change Password
+                            </button>
+                        }
+
+                        <UpdateProfile onSubmit={this.onProfileUpdated} {... this.state.profile}/>
+
                         <button onClick={FireAuth.logout} className="btn">
                             Logout
                         </button>

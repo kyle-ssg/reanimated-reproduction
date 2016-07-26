@@ -23,10 +23,9 @@ const FireAuth = class {
                 var emailVerified = user.providerData[0].providerId != 'password' || user.emailVerified;
 
                 //upsert profile information
-                var profileRef = firebase.database().ref(`profiles/${user.uid}`);
-                profileRef.update({ emailVerified: emailVerified, email: user.email });
+                this.update({ emailVerified: emailVerified, email: user.email }, user);
 
-                //listen to profile changed
+                var profileRef = firebase.database().ref(`profiles/${(user || this.user).uid}`);
                 profileRef.on('value', (profile)=> {
                     const val = profile.val();
                     if (!this.user) {
@@ -50,49 +49,78 @@ const FireAuth = class {
             .catch(this.onError)
     )
 
-    facebookLogin = () => {
-        Auth.Facebook.login()
-            .then((token) => (
-                firebase.auth()
-                    .signInWithCredential(firebase.auth.FacebookAuthProvider.credential(token))
-            ))
-            .catch(this.onError);
-    }
-
-    googleLogin = () => {
-        Auth.Google.login()
-            .then((token) => (
-                firebase.auth()
-                    .signInWithCredential(firebase.auth.GoogleAuthProvider.credential(null, token))
-            ))
-            .catch(this.onError);
-    }
-
-    register = (username, password) => (
+    register = (username, password, data) => (
         firebase.auth().createUserWithEmailAndPassword(username, password)
             .then((user)=> {
                 user.sendEmailVerification();
+                if (data) {
+                    this.update(user, data);
+                }
             })
             .catch(this.onError)
     )
-
-    logout = () => {
-        firebase.auth().signOut();
-    }
 
     resendVerification = () => {
         this.user.sendEmailVerification();
     }
 
-    update (user, data) {
-        var profileRef = firebase.database().ref(`profiles/${user.uid}`);
-        profileRef.update(data);
+    facebookLogin = (data) => {
+        Auth.Facebook.login()
+            .then((token) => (
+                firebase.auth()
+                    .signInWithCredential(firebase.auth.FacebookAuthProvider.credential(token))
+                    .then((user)=> {
+                        if (data) {
+                            this.update(user, data);
+                        }
+                    })
+            ))
+
+            .catch(this.onError);
     }
 
-    resetPassword (email) {
+    googleLogin = (data) => {
+        Auth.Google.login()
+            .then((token) => (
+                firebase.auth()
+                    .signInWithCredential(firebase.auth.GoogleAuthProvider.credential(null, token))
+                    .then((user)=> {
+                        if (data) {
+                            this.update(user, data);
+                        }
+                    })
+            ))
+            .catch(this.onError);
+    }
+
+    logout = () => {
+        firebase.auth().signOut();
+    }
+
+    update = (data, user) => {
+        var profileRef = firebase.database().ref(`profiles/${(user || this.user).uid}`);
+        return profileRef.update(data);
+    }
+
+    resetPassword = (email) => {
         return firebase.auth().sendPasswordResetEmail(email);
     }
 
+    updatePassword = (password) => { //todo: change password
+        return firebase.auth().updatePassword(password);
+    }
+
+    linkWithGoogle = () => {
+
+    }
+
+    linkWithFacebook = () => {
+
+    }
+
+    linkWithEmail = () => {
+
+    }
 };
 
 module.exports = new FireAuth();

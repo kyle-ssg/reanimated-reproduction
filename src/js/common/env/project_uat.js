@@ -10,5 +10,11 @@ module.exports = {
     },
     facebook: {
         appId: '276944269330753'
+    },
+    firebase: {
+        apiKey: "AIzaSyDQxPURkT1MTYYbKHXUyhPnzTg6tJQJGzI",
+        authDomain: "my-great-project-6e6ea.firebaseapp.com",
+        databaseURL: "https://my-great-project-6e6ea.firebaseio.com",
+        storageBucket: "my-great-project-6e6ea.appspot.com",
     }
 };
