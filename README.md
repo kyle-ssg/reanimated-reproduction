@@ -16,7 +16,7 @@ $ npm start
 ```routes.js``` contain all page routes
 
 ## How it all works
-1. ```ExampleComponent``` emits an action defined in ```app-actions``` (e.g. ```AppActions.sendMeme(url);``` after clicking a button)
+1. ```MemeComponent``` emits an action defined in ```app-actions``` (e.g. ```AppActions.sendMeme(url);``` after clicking a button)
 2. ```app-actions.js``` takes the params along with an action type defined in action-constants (e.g. ```ActionConstants.SEND_MEME```)
 3. ```meme-store.js``` picks up the action and calls events such as
     - store.loading()
@@ -44,10 +44,11 @@ Globally accessible by default
 
 * ``login(email, password)``
 * ``register(email, password)``
+* ``resendVerification()`` - if !(profile.emailVerified)
+* ``resetPassword(email)``
 * ``facebookLogin()`` - Uses Project.Google.APIKey, clientID
 * ``googleLogin()``
 * ``update(traits)``
-* ``resendVerification()`` - if !(profile.emailVerified)
 
 ## Vanilla auth (requires import Auth from 'apis/auth/auth')
 * ``Auth.Google.login().then((token)=>{})``
