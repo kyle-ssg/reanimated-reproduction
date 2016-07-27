@@ -1,20 +1,21 @@
 /**
  * Created by kylejohnson on 25/07/2016.
  */
-import Auth from '../auth/auth';
+import Auth from '../apis/auth/auth';
 
 const FireAuth = class {
     user:null
+    profile:null
     onLogin:null
     onUserChange:null
     onLogout:null
     onError:null
 
-    init = (onLogin, onUserChange, onLogout, onError) => {
+    init = (onLogin, onUserChange, onLogout, onEmailVerified) => {
         this.onUserChange = onUserChange;
         this.onLogout = onLogout;
+        this.onEmailVerified = onEmailVerified;
         this.onLogin = onLogin;
-        this.onError = onError;
 
         firebase.auth().onAuthStateChanged((user)=> {
 
@@ -23,42 +24,57 @@ const FireAuth = class {
                 var emailVerified = user.providerData[0].providerId != 'password' || user.emailVerified;
 
                 //upsert profile information
-                this.update({ emailVerified: emailVerified, email: user.email }, user);
+                var profileRef = firebase.database().ref(`profiles/${user.uid}`);
+                profileRef.update({ emailVerified: emailVerified, email: user.email });
 
-                var profileRef = firebase.database().ref(`profiles/${(user || this.user).uid}`);
                 profileRef.on('value', (profile)=> {
                     const val = profile.val();
+
+                    //email become verified in session
+                    if (val.emailVerified && (this.profile && !this.profile.val().emailVerified)) {
+                        this.onEmailVerified && this.onEmailVerified();
+                    }
+
                     if (!this.user) {
                         this.onLogin(user, val); //on login
                     } else if (val) {
-                        this.onUserChange(user, val); //on updated
+                        this.onUserChange && this.onUserChange(user, val); //on updated
                     }
+
+                    this.profile = profile; //store profile
                     this.user = user; //store user
                 });
 
             } else {
+                this.profile = null;
                 this.user = null; //clear user and logout
-                onLogout();
+                this.onLogout && this.onLogout();
             }
 
         });
     }
 
     login = (email, password) => (
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .catch(this.onError)
+       firebase.auth().signInWithEmailAndPassword(email, password)
     )
 
-    register = (username, password, data) => (
-        firebase.auth().createUserWithEmailAndPassword(username, password)
-            .then((user)=> {
-                user.sendEmailVerification();
-                if (data) {
-                    this.update(user, data);
-                }
-            })
-            .catch(this.onError)
-    )
+    register = (username, password, data) => {
+        return new Promise((resolve, reject)=>{
+            try {
+                firebase.auth().createUserWithEmailAndPassword(username, password)
+                    .then((user)=> {
+                        user.sendEmailVerification();
+                        if (data) {
+                            this.update(user, data);
+                        }
+                    })
+            } catch (e) {
+                this.onError(e);
+            }
+
+        })
+
+    }
 
     resendVerification = () => {
         this.user.sendEmailVerification();
@@ -97,18 +113,18 @@ const FireAuth = class {
         firebase.auth().signOut();
     }
 
-    update = (data, user) => {
-        var profileRef = firebase.database().ref(`profiles/${(user || this.user).uid}`);
+    update = (data) => {
+        var profileRef = firebase.database().ref(`profiles/${this.user.uid}`);
         return profileRef.update(data);
     }
 
-    resetPassword = (email) => {
-        return firebase.auth().sendPasswordResetEmail(email);
-    }
+    resetPassword = (email) => (
+        firebase.auth().sendPasswordResetEmail(email)
+    )
 
-    updatePassword = (password) => { //todo: change password
-        return firebase.auth().updatePassword(password);
-    }
+    updatePassword = (password) => (
+        this.user.updatePassword(password)
+    )
 
     linkWithGoogle = () => {
 

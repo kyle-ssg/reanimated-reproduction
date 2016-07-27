@@ -6,7 +6,7 @@ import LoginForm from './auth/LoginRegisterForm';
 import ForgotPassword from './auth/ForgotPassword';
 import ChangePassword from './auth/ChangePassword';
 import UpdateProfile from './auth/UpdateProfile';
-const FireAuth = require('../../apis/firebase/fire-auth');
+const FireAuth = require('../../common/fire-auth');
 
 module.exports = class extends React.Component {
 
@@ -16,17 +16,10 @@ module.exports = class extends React.Component {
     }
 
     componentWillMount () {
-        window.firebase = firebase;
         firebase.initializeApp(Project.firebase);
-        FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, this.onError);
-    }
-
-    onError = (err) => {
-        alert("Error " + err);
-    }
-
-    onProfileUpdated () {
-        alert("Profile Updated!");
+        FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, ()=>{
+         alert("Email verified!");
+        }, this.onError);
     }
 
     onLogin = (user, profile) => {

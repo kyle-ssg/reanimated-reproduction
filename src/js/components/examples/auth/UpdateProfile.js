@@ -1,4 +1,4 @@
-import FireAuth from '../../../apis/firebase/fire-auth';
+import FireAuth from '../../../common/fire-auth';
 
 const TheComponent = class extends React.Component {
 
@@ -10,9 +10,19 @@ const TheComponent = class extends React.Component {
         };
     }
 
+    componentWillReceiveProps (newProps) {
+        var shouldUpdate = false,
+            toUpdate = {};
+
+        if (newProps.firstName !== this.props.firstName || newProps.lastName !== this.props.lastName) {
+            this.setState({
+                firstName: newProps.firstName,
+                lastName: newProps.lastName
+            });
+        }
+    }
+
     handleSubmit = () => {
-        console.log(this.state);
-        console.log(FireAuth);
         FireAuth.update({
             firstName: this.state.firstName,
             lastName: this.state.lastName

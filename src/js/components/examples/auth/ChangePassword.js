@@ -1,4 +1,4 @@
-import FireAuth from '../../../apis/firebase/fire-auth';
+import FireAuth from '../../../common/fire-auth';
 
 const TheComponent = class extends React.Component {
 
