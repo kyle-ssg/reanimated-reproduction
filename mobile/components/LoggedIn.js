@@ -19,7 +19,6 @@ module.exports = class extends React.Component {
         const { profile } = this.props;
         const logout = <Button onPress={FireAuth.logout}><Text>Logout</Text></Button>;
 
-
         if (!profile) {
             return <Loader/>
         }
