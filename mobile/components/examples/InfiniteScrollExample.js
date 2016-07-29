@@ -44,7 +44,7 @@ const TheComponent = class extends React.Component {
             <View style={[Styles.centeredContainer, {height:60}]}>
                 <Text>{'Loading'}</Text>
             </View>
-        )
+        );
     }
 
     render () {

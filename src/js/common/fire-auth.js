@@ -11,7 +11,7 @@ const FireAuth = class {
     onLogout:null
     onError:null
 
-    init = (onLogin, onUserChange, onLogout, onEmailVerified, onError) => {
+    init = (onLogin, onUserChange, onLogout, onEmailVerified, ) => {
         this.onUserChange = onUserChange;
         this.onLogout = onLogout;
         this.onEmailVerified = onEmailVerified;
@@ -56,10 +56,10 @@ const FireAuth = class {
     }
 
     login = (email, password) => (
-       firebase.auth().signInWithEmailAndPassword(email, password)
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(this.onError)
     )
 
-    register = (username, password, data) => {
+    register = (username, password) => {
         firebase.auth().createUserWithEmailAndPassword(username, password)
             .then((user)=> {
                 user.sendEmailVerification();
@@ -82,7 +82,8 @@ const FireAuth = class {
                     .signInWithCredential(firebase.auth.FacebookAuthProvider.credential(token))
                     .then((user)=> {
                         if (data) {
-                            this.update(user, data);
+                            var profileRef = firebase.database().ref(`profiles/${user.uid}`);
+                            return profileRef.update(data);
                         }
                     })
             ))

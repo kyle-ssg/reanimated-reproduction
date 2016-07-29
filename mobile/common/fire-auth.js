@@ -56,7 +56,7 @@ const FireAuth = class {
     }
 
     login = (email, password) => (
-        firebase.auth().signInWithEmailAndPassword(email, password)
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(this.onError)
     )
 
     register = (username, password) => {

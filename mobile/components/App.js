@@ -1,6 +1,6 @@
-// import Example from './examples/LoginExample';
+import Example from './examples/LoginExample/LoginExample';
 // import Example from './examples/PushExample';
-import Example from './examples/InfiniteScrollExample';
+// import Example from './examples/InfiniteScrollExample';
 
 const TheComponent = class extends React.Component {
     displayName:'TheComponent'
