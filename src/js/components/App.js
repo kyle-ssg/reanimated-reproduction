@@ -14,3 +14,6 @@ export default class App extends Component {
     );
   }
 }
+
+
+console.disableYellowbox = true;

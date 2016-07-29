@@ -28,6 +28,7 @@
     "react": "15.2.1",
     "react-addons-shallow-compare": "15.2.1",
     "react-dom": "15.2.1",
+    "react-native-invertible-scroll-view": "1.0.0",
     "react-router": "2.6.0",
     "react-select": "^1.0.0-beta14",
     "react-virtualized": "^7.0.0",

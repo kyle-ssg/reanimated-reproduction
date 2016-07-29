@@ -90,7 +90,7 @@
                 }
                 case 'verifyEmail': {
                     confirmEmail()
-                            .then((emailAddress)=> {
+                            .then(function(emailAddress) {
                                 $('#confirm-loading')
                                         .addClass('hidden');
                                 $('#confirm-loaded')

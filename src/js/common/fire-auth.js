@@ -11,11 +11,12 @@ const FireAuth = class {
     onLogout:null
     onError:null
 
-    init = (onLogin, onUserChange, onLogout, onEmailVerified) => {
+    init = (onLogin, onUserChange, onLogout, onEmailVerified, onError) => {
         this.onUserChange = onUserChange;
         this.onLogout = onLogout;
         this.onEmailVerified = onEmailVerified;
         this.onLogin = onLogin;
+        this.onError = onError;
 
         firebase.auth().onAuthStateChanged((user)=> {
 
@@ -59,20 +60,14 @@ const FireAuth = class {
     )
 
     register = (username, password, data) => {
-        return new Promise((resolve, reject)=>{
-            try {
-                firebase.auth().createUserWithEmailAndPassword(username, password)
-                    .then((user)=> {
-                        user.sendEmailVerification();
-                        if (data) {
-                            this.update(user, data);
-                        }
-                    })
-            } catch (e) {
-                this.onError(e);
-            }
-
-        })
+        firebase.auth().createUserWithEmailAndPassword(username, password)
+            .then((user)=> {
+                user.sendEmailVerification();
+                if (data) {
+                    this.update(user, data);
+                }
+            })
+            .catch(this.onError)
 
     }
 

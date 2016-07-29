@@ -72,12 +72,12 @@ window.StatusBarIOS = ReactNative.StatusBarIOS;
 window.WebView = ReactNative.WebView;
 
 require('../style/style_screen');
-
-
 require('./libs'); // optional libs
+
 window.Component = require('../common/Component');
 window.ES6Component = require('../common/ES6Component');
 window.TextRespondView = require('../components/base/TextRespondView');
+window.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
 
 //Animation
@@ -124,6 +124,7 @@ window.LinedTitle = require('../components/base/LinedTitle');
 window.TabBar = require('../components/base/navs/TabBar');
 window.FooterTabItem = require('../components/base/navs/FooterTabItem');
 window.ListItem = require('../components/base/ListItem');
+window.InfiniteScroll = require('../components/base/InfiniteScroll');
 
 //Flux Stuff
 window.Dispatcher = require('../common/dispatcher/dispatcher');

@@ -11,11 +11,12 @@ const FireAuth = class {
     onLogout:null
     onError:null
 
-    init = (onLogin, onUserChange, onLogout, onEmailVerified) => {
+    init = (onLogin, onUserChange, onLogout, onEmailVerified, onError) => {
         this.onUserChange = onUserChange;
         this.onLogout = onLogout;
         this.onEmailVerified = onEmailVerified;
         this.onLogin = onLogin;
+        this.onError = onError;
 
         firebase.auth().onAuthStateChanged((user)=> {
 
@@ -55,24 +56,18 @@ const FireAuth = class {
     }
 
     login = (email, password) => (
-       firebase.auth().signInWithEmailAndPassword(email, password)
+        firebase.auth().signInWithEmailAndPassword(email, password)
     )
 
-    register = (username, password, data) => {
-        return new Promise((resolve, reject)=>{
-            try {
-                firebase.auth().createUserWithEmailAndPassword(username, password)
-                    .then((user)=> {
-                        user.sendEmailVerification();
-                        if (data) {
-                            this.update(user, data);
-                        }
-                    })
-            } catch (e) {
-                this.onError(e);
-            }
-
-        })
+    register = (username, password) => {
+        firebase.auth().createUserWithEmailAndPassword(username, password)
+            .then((user)=> {
+                user.sendEmailVerification();
+                if (data) {
+                    this.update(user, data);
+                }
+            })
+            .catch(this.onError)
 
     }
 
@@ -87,7 +82,8 @@ const FireAuth = class {
                     .signInWithCredential(firebase.auth.FacebookAuthProvider.credential(token))
                     .then((user)=> {
                         if (data) {
-                            this.update(user, data);
+                            var profileRef = firebase.database().ref(`profiles/${user.uid}`);
+                            return profileRef.update(data);
                         }
                     })
             ))
