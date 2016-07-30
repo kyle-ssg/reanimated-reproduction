@@ -1,61 +1,62 @@
-Array.prototype.move = function (oldIndex, newIndex) {
-    if (newIndex >= this.length) {
-        var k = newIndex - this.length;
-        while ((k--) + 1) {
-            this.push(undefined);
-        }
-    }
-    this.splice(newIndex, 0, this.splice(oldIndex, 1)[0]);
-    return this; // for testing purposes
-};
-
 var Utils = {
     emailRegex: /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
 
-    backspacePressed: function (e) { //returns bool
-        var code = (e.keyCode ? e.keyCode : e.which);
-        return code == 8 && !e.shiftKey && !e.ctrlKey;
+    keys: {
+        backspacePressed: function (e) { //returns bool
+            var code = (e.keyCode ? e.keyCode : e.which);
+            return code == 8 && !e.shiftKey && !e.ctrlKey;
+        },
+
+        tabPressed: function (e) {  //returns bool
+            var code = (e.keyCode ? e.keyCode : e.which);
+            return code == 9 && !e.shiftKey && !e.ctrlKey;
+        },
+
+        enterPressed: function (e) {  //returns bool
+            var code = (e.keyCode ? e.keyCode : e.which);
+            return code == 13 && !e.shiftKey && !e.ctrlKey;
+        }
     },
 
-    tabPressed: function (e) {  //returns bool
-        var code = (e.keyCode ? e.keyCode : e.which);
-        return code == 9 && !e.shiftKey && !e.ctrlKey;
+    getPaging: function (currentPage, totalPages, rangeAround) { //provides paging information based on properties
+        totalPages = Math.max(totalPages, currentPage);
+        var around = (rangeAround - 1) / 2,
+            startPage = Math.min(totalPages - rangeAround + 1, Math.max(1, currentPage - around)),
+            endPage = Math.min(totalPages + 1, startPage + rangeAround);
+
+        if (startPage < 1) {
+            startPage = 1;
+        }
+
+        return {
+            currentPage,
+            totalPages,
+            showFirstPage: startPage > 1,
+            showLastPage: endPage <= totalPages,
+            prevTruncated: startPage > 2, /// i.e 1 ... 3,4,5
+            nextTruncated: totalPages > endPage, /// i.e 3,4,5 ... 10
+            canPrev: currentPage !== 1, // can go back a page
+            canNext: currentPage !== totalPages, // can go forward a page
+            range: _.range(startPage, endPage) // [1,2,3,4,5,6,7,8,9,10]
+        };
     },
 
-    enterPressed: function (e) {  //returns bool
-        var code = (e.keyCode ? e.keyCode : e.which);
-        return code == 13 && !e.shiftKey && !e.ctrlKey;
-    },
-
-    getLatLngDiff: function (lat1, lon1, lat2, lon2) { //Get distance between 2 locations
-
-        var R = 6371; // Radius of the earth in km
-        var dLat = (Math.PI / 180) * (lat2 - lat1);  // deg2rad below
-        var dLon = (Math.PI / 180) * (lon2 - lon1);
-        var a =
-                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos((Math.PI / 180) * (lat1)) * Math.cos((Math.PI / 180) * (lat2)) *
-                Math.sin(dLon / 2) * Math.sin(dLon / 2)
-            ;
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        var d = R * c; // Distance in km
-        return d;
-    },
-
-    param: function (obj) { //{min:100,max:200} -> ?min=100&max=200
+    toParam: function (obj) { //{min:100,max:200} -> ?min=100&max=200
         return Object.keys(obj).map(function (k) {
             return encodeURIComponent(k) + '=' + encodeURIComponent(obj[k]);
         }).join('&');
     },
 
-    parseParams: function (str) { //{min:100,max:200} <- ?min=100&max=200
+    fromParam: function (str) { //{min:100,max:200} <- ?min=100&max=200
         return (str || document.location.search).replace(/(^\?)/, '').split("&").map(function (n) {
             return n = n.split("="), this[n[0]] = n[1];
         }.bind({}))[0];
     },
 
-    isScrolledToBottom: function (elem) {
-        return (elem.scrollHeight - elem.scrollTop == elem.offsetHeight);
+    preventDefault: function (e) {
+        if (e && e.preventDefault) {
+            e.preventDefault();
+        }
     },
 
     safeParseEventValue: function (e) {  //safe attempt to parse form value
@@ -95,12 +96,6 @@ var Utils = {
         return moment(date).isValid();
     },
 
-    preventDefault: function (e) {
-        if (e && e.preventDefault) {
-            e.preventDefault();
-        }
-    },
-
     GUID: function (append) {
         var d = new Date().getTime();
         var uuid = 'xxxx-xxxx-xxxx'.replace(/[xy]/g, function (c) {
@@ -133,13 +128,6 @@ var Utils = {
             analytics.screen(page, properties);
     },
 
-    forceArray: function (val) {
-        if (typeof val == "string") {
-            return [val];
-        }
-        return val;
-    },
-
     htmlEscape: function (unsafe) {
         return unsafe
             .replace(/&/g, "&amp;")
@@ -150,7 +138,7 @@ var Utils = {
     },
 
     playAudio: function (file) {
-        if (Audio) {
+        if (Audio && file) {
             var audio = new Audio(file);
             audio.play();
         }

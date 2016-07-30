@@ -99,7 +99,7 @@ module.exports = {
         return fn ? Format.camelCase(fn) + ' ' + Format.camelCase(sn) : Format.camelCase(sn);
     },
 
-    getInit: function (person) { //{firstName:'Kyle', lastName:'Johnson'} > K. Johnson
+    initialAndLastName: function (person) { //{firstName:'Kyle', lastName:'Johnson'} > K. Johnson
         var value = Format.fullName(person),
             words;
 

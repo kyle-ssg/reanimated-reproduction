@@ -2,11 +2,11 @@
  * Created by kylejohnson on 24/07/2016.
  */
 
-import LoginForm from './auth/LoginRegisterForm';
-import ForgotPassword from './auth/ForgotPassword';
-import ChangePassword from './auth/ChangePassword';
-import UpdateProfile from './auth/UpdateProfile';
-const FireAuth = require('../../common/fire-auth');
+import LoginForm from './LoginRegisterForm';
+import ForgotPassword from './ForgotPassword';
+import ChangePassword from './ChangePassword';
+import UpdateProfile from './UpdateProfile';
+const FireAuth = require('../../../common/fire-auth');
 
 module.exports = class extends React.Component {
 

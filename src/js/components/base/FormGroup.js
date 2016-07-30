@@ -11,21 +11,12 @@ const FormGroup = (props)=> {
                     {props.icon && (
                         <span className="input-group-addon"><i className={props.icon} aria-hidden="true"></i></span>
                     )}
-                    <input {... props.inputProps} disabled={props.disabled} value={props.value} defaultValue={props.defaultValue} onChange={props.onChange} type={props.type || 'text'} className="form-control" name={id} id={id}  placeholder={props.placeholder}/>
+                    <input {... props.inputProps} disabled={props.disabled} value={props.value} onChange={props.onChange} type={props.type || 'text'} className="form-control" name={id} id={id}  placeholder={props.placeholder}/>
                 </div>
             </div>
         </div>
     );
 };
-
-//Example usage
-//todo: Add simple validation api
-// <FormGroup value={this.state.password}
-//  title="Password"
-// inputProps={{onBlur:this.handleBlur}}  <- Any additional input props you wish to add
-// onChange={this.handleChangePlease}
-// placeHolder="******"
-// icon="fa fa-lock"/>
 
 FormGroup.propTypes = {
     disabled: OptionalBool,

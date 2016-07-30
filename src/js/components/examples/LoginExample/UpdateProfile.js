@@ -11,9 +11,6 @@ const TheComponent = class extends React.Component {
     }
 
     componentWillReceiveProps (newProps) {
-        var shouldUpdate = false,
-            toUpdate = {};
-
         if (newProps.firstName !== this.props.firstName || newProps.lastName !== this.props.lastName) {
             this.setState({
                 firstName: newProps.firstName,

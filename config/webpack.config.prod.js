@@ -59,7 +59,7 @@ module.exports = {
   },
   resolve: {
     // We can now require('file') instead of require('file.jsx')
-    extensions: ['', '.js', '.jsx', '.scss']
+    extensions: ['', '.js', '.jsx', '.scss', '.css']
   },
   module: {
     noParse: /\.min\.js$/,
@@ -75,10 +75,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        include: PATHS.styles,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       },
-      // Inline base64 URLs for <=8k images, direct URLs for the rest
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
         loader: 'url-loader?limit=8192&name=images/[name].[ext]?[hash]'

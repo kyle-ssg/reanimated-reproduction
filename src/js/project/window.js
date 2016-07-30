@@ -41,6 +41,7 @@ window.Constants = require('./constants');
 window.Row = require('../components/base/grid/Row');
 window.Flex = require('../components/base/grid/Flex');
 window.FormGroup = require('../components/base/FormGroup');
+window.InfiniteScroll = require('../components/base/InfiniteScroll');
 
 //Modal
 window.openModal = require('../apis/modals').openModal;
