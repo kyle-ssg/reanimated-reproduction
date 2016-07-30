@@ -35,7 +35,7 @@ module.exports = class extends React.Component {
                     </button>
                 </div>
                 <Row>
-                    {_.map(_.range(0, 100), (i) => (
+                    {_.map(_.range(0, 4), (i) => (
                         <div
                             key={i}
                             className="animated-size centered-container"

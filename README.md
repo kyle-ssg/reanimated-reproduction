@@ -3,10 +3,24 @@ A boilerplate using React, Flux, webpack + hot module reloading, and ES6 + JSX v
 
 ## Getting Started
 
-### Installation
+### Installation Web
 ```
 $ npm install
 ```
+
+### Installation Mobile
+```
+$ cd ./mobile && npm install
+// Add me to the top of RCTWebExecutor.m
+#import "RCTBundleURLProvider.h"
+
+//search for if (!host) and replace the code with the following
+if (!host) {
+      host = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SERVER_IP"];
+}
+```
+
+
 ### Running with hot reloading / eslinting / tests
 ```
 $ npm start
