@@ -11,18 +11,25 @@ const Input = class extends React.Component {
         this.state = {};
     }
 
-    onFocus = () => {
+    onFocus = (e) => {
         this.setState({
             isFocused: true
         });
-        this.props.onFocus && this.props.onFocus();
+        this.props.onFocus && this.props.onFocus(e);
     }
 
-    onBlur = () => {
+    onKeyDown = (e) => {
+        if (Utils.keys.isEscape(e)) {
+            this.refs.input.blur();
+        }
+        this.props.onKeyDown && this.props.onKeyDown(e);
+    }
+
+    onBlur = (e) => {
         this.setState({
             isFocused: false
         });
-        this.props.onBlur && this.props.onBlur();
+        this.props.onBlur && this.props.onBlur(e);
     }
 
     render () {
@@ -31,6 +38,7 @@ const Input = class extends React.Component {
                 className={'input-container ' + this.props.className + (this.state.isFocused ? ' focused' : '')}>
                 {this.props.mask ? (
                     <MaskedInput
+                        ref="input"
                         {... this.props}
                         mask={this.props.mask}
                         formatCharacters={{
@@ -43,13 +51,22 @@ const Input = class extends React.Component {
                                 validate(char) {
                                     return /\w/.test(char);
                                 },
-                                transform() { return 'm'; }
+                                transform() {
+                                    return 'm';
+                                }
                             }
                         }}
-                        onFocus={this.onFocus} onBlur={this.onBlur} className={'input ' + this.props.inputClassName}/>
+                        onKeyDown={this.onKeyDown}
+                        onFocus={this.onFocus}
+                        onBlur={this.onBlur}
+                        className={'input ' + this.props.inputClassName}/>
                 ) : (
-                    <input {... this.props} onFocus={this.onFocus} onBlur={this.onBlur}
-                           className={'input ' + this.props.inputClassName}/>
+                    <input
+                        ref="input"
+                        {... this.props} onFocus={this.onFocus}
+                        onKeyDown={this.onKeyDown}
+                        onBlur={this.onBlur}
+                        className={'input ' + this.props.inputClassName}/>
                 )}
                 <hr/>
                 <hr className="highlight"/>
@@ -63,6 +80,7 @@ Input.defaultProps = {
 };
 
 Input.propTypes = {
+    onKeyDown: OptionalFunc,
     onFocus: OptionalFunc,
     onBlur: OptionalFunc,
     placeholderChar: OptionalString,

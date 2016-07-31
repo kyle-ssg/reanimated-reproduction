@@ -2,3 +2,4 @@
 
 window.Divider = require('../components/Divider');
 window.Tooltip = require('../components/Toolip');
+window.Expand = require('../components/Expand');

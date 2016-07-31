@@ -5,11 +5,11 @@
 module.exports = class extends React.Component {
 
     openModal = () => {
-        openModal(<div>Hey</div>, <h3>Title</h3>);
+        openModal(<h3>Title</h3>, <div>Hey</div>);
     }
 
     openConfirm = () => {
-        openConfirm(<div>Hey</div>, <h3>Title</h3>, () => alert("Yes"), () => alert("No"));
+        openConfirm(<h3>Title</h3>,<h3>Body</h3>, () => alert("Yes"), () => alert("No"));
     }
 
     render () {
@@ -17,8 +17,8 @@ module.exports = class extends React.Component {
             <div>
                 <h1>
                     Simple Modal Example
-                    <Tooltip>
-                        openModal(body, title)
+                    <Tooltip place="right">
+                        openModal(title, body)
                     </Tooltip>
                 </h1>
 

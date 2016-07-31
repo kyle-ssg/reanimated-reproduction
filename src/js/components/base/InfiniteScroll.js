@@ -24,7 +24,7 @@ const InfiniteScroll = class extends React.Component {
     }
 
     render () {
-        const { isLoading, data, containerHeight, rowHeight } = this.props;
+        const { isLoading, data, containerHeight, rowHeight, scrollToRow } = this.props;
         const rowCount = isLoading
             ? data.length + 1
             : data.length;
@@ -42,6 +42,7 @@ const InfiniteScroll = class extends React.Component {
                                 overscanRowCount={20}
                                 rowCount={rowCount}
                                 width={width}
+                                scrollToIndex={scrollToRow}
                                 height={containerHeight || height}
                                 rowHeight={rowHeight}
                                 ref={registerChild}
@@ -59,6 +60,7 @@ const InfiniteScroll = class extends React.Component {
 InfiniteScroll.propTypes = {
     isLoading: OptionalBool,
     loadMore: RequiredFunc,
+    scrollToRow: OptionalNumber,
     renderLoading: OptionalObject,
     renderRow: RequiredFunc,
     data: OptionalArray,

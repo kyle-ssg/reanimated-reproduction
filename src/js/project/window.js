@@ -47,6 +47,7 @@ window.Panel = require('../components/base/grid/Panel');
 window.FormGroup = require('../components/base/grid/FormGroup');
 window.InputGroup = require('../components/base/InputGroup');
 window.InfiniteScroll = require('../components/base/InfiniteScroll');
+window.ListView = require('../components/base/ListView');
 
 //Modal
 window.openModal = require('../apis/modals').openModal;

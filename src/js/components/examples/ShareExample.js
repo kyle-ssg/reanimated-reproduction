@@ -19,7 +19,7 @@ module.exports = class extends React.Component {
             <div>
                 <h1>
                     Simple Share Example
-                    <Tooltip>
+                    <Tooltip place="right">
                         Share.Twitter(url)
                     </Tooltip>
                 </h1>

@@ -5,20 +5,38 @@ var Utils = {
         isUndo: function (e) {
             return (e.ctrlKey || e.metaKey) && e.keyCode === (e.shiftKey ? KEYCODE_Y : KEYCODE_Z);
         },
+        isEscape: function (e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            return code == 27 && !e.shiftKey && !e.ctrlKey;
+        },
         isRedo: function (e) {
             return (e.ctrlKey || e.metaKey) && e.keyCode === (e.shiftKey ? KEYCODE_Z : KEYCODE_Y);
         },
-        backspacePressed: function (e) { //returns bool
+        isBackspace: function (e) { //returns bool
             var code = (e.keyCode ? e.keyCode : e.which);
             return code == 8 && !e.shiftKey && !e.ctrlKey;
         },
-
-        tabPressed: function (e) {  //returns bool
+        isUp: function (e) { //returns bool
+            var code = (e.keyCode ? e.keyCode : e.which);
+            return code == 38 && !e.shiftKey && !e.ctrlKey;
+        },
+        isDown: function (e) { //returns bool
+            var code = (e.keyCode ? e.keyCode : e.which);
+            return code == 40 && !e.shiftKey && !e.ctrlKey;
+        },
+        isLeft: function (e) { //returns bool
+            var code = (e.keyCode ? e.keyCode : e.which);
+            return code == 37 && !e.shiftKey && !e.ctrlKey;
+        },
+        isRight: function (e) { //returns bool
+            var code = (e.keyCode ? e.keyCode : e.which);
+            return code == 39 && !e.shiftKey && !e.ctrlKey;
+        },
+        isTab: function (e) {  //returns bool
             var code = (e.keyCode ? e.keyCode : e.which);
             return code == 9 && !e.shiftKey && !e.ctrlKey;
         },
-
-        enterPressed: function (e) {  //returns bool
+        isEnter: function (e) {  //returns bool
             var code = (e.keyCode ? e.keyCode : e.which);
             return code == 13 && !e.shiftKey && !e.ctrlKey;
         }

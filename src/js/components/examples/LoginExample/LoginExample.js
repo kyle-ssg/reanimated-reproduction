@@ -50,15 +50,15 @@ module.exports = class extends React.Component {
     }
 
     showForgotPassword = () => {
-        openModal((
+        openModal(<h3>Forgot Password</h3>,
             <ForgotPassword onSubmit={()=>closeModal()}/>
-        ), <h3>Enter an email</h3>);
+        );
     }
 
     showChangePassword = () => {
-        openModal((
+        openModal(<h3>Change Password</h3>,
             <ChangePassword onSubmit={()=>closeModal()}/>
-        ), <h3>Enter an email</h3>);
+        );
     }
 
     render () {
@@ -66,7 +66,7 @@ module.exports = class extends React.Component {
             <div>
                 <h1>
                     Simple Login Example
-                    <Tooltip>
+                    <Tooltip place="right">
                         fireAuth.init(onLogin, onUserChange, onLogout, onEmailVerified, onError)
                     </Tooltip>
                 </h1>

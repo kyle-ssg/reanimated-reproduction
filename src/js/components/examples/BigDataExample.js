@@ -62,7 +62,7 @@ module.exports = class extends React.Component {
                     <h1>{size} Rows</h1>
                     <h2>
                         Multiselect with Virtualization
-                        <Tooltip>
+                        <Tooltip place="right">
                             Performant multiselect with search highlighting
                         </Tooltip>
                     </h2>
@@ -83,7 +83,7 @@ module.exports = class extends React.Component {
 
                 <h2>
                     Sortable
-                    <Tooltip>
+                    <Tooltip place="right">
                         A performant table with sorting
                     </Tooltip>
                 </h2>

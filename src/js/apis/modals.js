@@ -89,14 +89,12 @@ const Confirm = class extends React.Component {
     }
 
     onNo = ()=> {
-        if (this.props.onNo) {
-            this.props.onNo();
-        }
+        this.props.onNo && this.props.onNo();
         this.refs.modal.close();
     }
 
     onYes = ()=> {
-        this.props.onYes();
+        this.props.onYes && this.props.onYes();
         this.refs.modal.close();
     }
 
@@ -141,10 +139,10 @@ Confirm.propTypes = {
     noText: OptionalString,
 };
 
-exports.openModal = (body, header, footer) => {
+exports.openModal = (header, body, footer) => {
     render(<Modal header={header} footer={footer} body={body}/>, document.getElementById('modal'));
 };
 
-exports.openConfirm = (body, header, onYes, onNo) => {
+exports.openConfirm = (header, body, onYes, onNo) => {
     render(<Confirm header={header} onYes={onYes} onNo={onNo} body={body}/>, document.getElementById('modal'));
 };
