@@ -6,6 +6,10 @@ import {AutoSizer, VirtualScroll} from 'react-virtualized';
 const InfiniteScroll = class extends React.Component {
     displayName:'ListView'
 
+    forceUpdateGrid = () => {
+        this.refs.resizer.refs.list.forceUpdateGrid();
+    }
+
     rowRenderer = ({ index }) => {
         if (index < this.props.data.length) {
             return this.props.renderRow(this.props.data[index], index);
@@ -18,9 +22,10 @@ const InfiniteScroll = class extends React.Component {
         const rowCount =  data.length;
 
         return (
-            <AutoSizer disableHeight={this.props.containerHeight ? true : false}>
+            <AutoSizer ref="resizer" disableHeight={this.props.containerHeight ? true : false}>
                 {({ height, width }) => (
                     <VirtualScroll
+                        ref="list"
                         overscanRowCount={20}
                         rowCount={rowCount}
                         width={width}

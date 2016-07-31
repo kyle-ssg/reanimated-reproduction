@@ -64,13 +64,20 @@ module.exports = class extends React.Component {
     constructor (props, context) {
         super(props, context);
         this.state = {
-            pages: _.map(_.range(0, 5), (page)=> _.range(page * 5, page * 5 + 5)),
+            pages: _.map(_.range(0, 100000), (page)=> _.range(page * 1000, page * 1000 + 1000)),
             currentPage: 1
         };
     }
 
     loadPage = (currentPage) => {
-        this.setState({ currentPage });
+        this.setState({ currentPage }, ()=>{this.refs.list.forceUpdateGrid()});
+    }
+
+    renderRow (val) {
+        console.log(arguments)
+        return (
+            <div key={val}>Row {val + 1} <Divider/></div>
+        )
     }
 
     render () {
@@ -79,7 +86,13 @@ module.exports = class extends React.Component {
         return (
             <div>
                 <Pager onChange={this.loadPage} {... paging}/>
-                {_.map(elements, (val)=><div key={val}>Row {val + 1} <Divider/></div>)}
+                <ListView
+                    ref="list"
+                    containerHeight={200}
+                    rowHeight={40}
+                    data={elements}
+                    renderRow={this.renderRow}
+                />
                 <Pager onChange={this.loadPage} {... paging}/>
             </div>
         );
