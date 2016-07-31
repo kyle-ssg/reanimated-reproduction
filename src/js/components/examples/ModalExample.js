@@ -15,7 +15,13 @@ module.exports = class extends React.Component {
     render () {
         return (
             <div>
-                <h1>Simple Modal Example</h1>
+                <h1>
+                    Simple Modal Example
+                    <Tooltip>
+                        openModal(body, title)
+                    </Tooltip>
+                </h1>
+
                 <FormInline>
                     <Button onClick={this.openModal}>
                         Modal

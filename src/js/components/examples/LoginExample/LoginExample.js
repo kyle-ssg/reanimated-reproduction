@@ -64,7 +64,12 @@ module.exports = class extends React.Component {
     render () {
         return (
             <div>
-                <h1>Simple Login Example</h1>
+                <h1>
+                    Simple Login Example
+                    <Tooltip>
+                        fireAuth.init(onLogin, onUserChange, onLogout, onEmailVerified, onError)
+                    </Tooltip>
+                </h1>
                 {!this.state.profile ? (
                     <div>
                         <FormInline>

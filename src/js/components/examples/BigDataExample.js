@@ -48,7 +48,7 @@ module.exports = class extends React.Component {
             <div className={classes.join(' ')}>
             <span>
                 {dataKey} {isSorting &&
-                    <span className={"fa " + (sortDirection == 'ASC' ? "fa-chevron-up" : 'fa-chevron-down')}/>}
+            <span className={"fa " + (sortDirection == 'ASC' ? "fa-chevron-up" : 'fa-chevron-down')}/>}
             </span>
             </div>
         );
@@ -58,8 +58,15 @@ module.exports = class extends React.Component {
         // Grid data as an array of arrays
         return (
             <div>
-                <h1>{size} Rows</h1>
-                <h2>Multiselect with Virtualization</h2>
+                <div>
+                    <h1>{size} Rows</h1>
+                    <h2>
+                        Multiselect with Virtualization
+                        <Tooltip>
+                            Performant multiselect with search highlighting
+                        </Tooltip>
+                    </h2>
+                </div>
                 <Select
                     placeholder="Select your stuff"
                     options={list}
@@ -74,7 +81,12 @@ module.exports = class extends React.Component {
                     value={this.state.value}
                 />
 
-                <h2>Sortable</h2>
+                <h2>
+                    Sortable
+                    <Tooltip>
+                        A performant table with sorting
+                    </Tooltip>
+                </h2>
                 <AutoSizer disableHeight>
                     {({ width }) => (
                         <FlexTable

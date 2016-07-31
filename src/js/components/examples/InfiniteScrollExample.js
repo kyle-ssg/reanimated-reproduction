@@ -30,7 +30,12 @@ const TheComponent = class extends React.Component {
     render () {
         return (
             <div>
-                <h2>Async Infinite scroll</h2>
+                <h2>
+                    Async Infinite scroll
+                    <Tooltip place="right">
+                        Performant infinite scroll
+                    </Tooltip>
+                </h2>
                 <InfiniteScroll
                     renderLoading={(
                         <div style={{ height: 40 }}>

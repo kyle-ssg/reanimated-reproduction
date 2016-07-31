@@ -17,7 +17,12 @@ module.exports = class extends React.Component {
     render () {
         return (
             <div>
-                <h1>Simple Share Example</h1>
+                <h1>
+                    Simple Share Example
+                    <Tooltip>
+                        Share.Twitter(url)
+                    </Tooltip>
+                </h1>
                 <FormInline>
                     <Button onClick={this.facebookShare}>
                         Facebook
