@@ -1,5 +1,5 @@
-const TheComponent = class extends React.Component {
-    displayName:'TheComponent'
+const InfiniteScrollExample = class extends React.Component {
+    displayName:'InfiniteScrollExample'
 
     constructor (props, context) {
         super(props, context);
@@ -55,6 +55,6 @@ const TheComponent = class extends React.Component {
     }
 };
 
-TheComponent.propTypes = {};
+InfiniteScrollExample.propTypes = {};
 
-module.exports = TheComponent;
+module.exports = InfiniteScrollExample;

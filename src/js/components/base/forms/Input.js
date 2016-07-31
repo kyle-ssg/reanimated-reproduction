@@ -3,8 +3,8 @@
  */
 import MaskedInput from 'react-maskedinput';
 
-const TheComponent = class extends React.Component {
-    displayName:'TheComponent'
+const Input = class extends React.Component {
+    displayName:'Input'
 
     constructor (props, context) {
         super(props, context);
@@ -28,7 +28,7 @@ const TheComponent = class extends React.Component {
     render () {
         return (
             <div
-                className={'input-container ' + (this.props.inline ? '' : 'full-width ') + this.props.className + (this.state.isFocused ? ' focused' : '')}>
+                className={'input-container ' + this.props.className + (this.state.isFocused ? ' focused' : '')}>
                 {this.props.mask ? (
                     <MaskedInput
                         {... this.props}
@@ -36,14 +36,14 @@ const TheComponent = class extends React.Component {
                         formatCharacters={{
                             'a': {
                                 validate(char) {
-                                    return /[ap]/.test(char)
+                                    return /[ap]/.test(char);
                                 },
                             },
                             'm': {
                                 validate(char) {
-                                    return /\w/.test(char)
+                                    return /\w/.test(char);
                                 },
-                                transform(char) { return 'm' }
+                                transform() { return 'm'; }
                             }
                         }}
                         onFocus={this.onFocus} onBlur={this.onBlur} className={'input ' + this.props.inputClassName}/>
@@ -58,16 +58,17 @@ const TheComponent = class extends React.Component {
     }
 };
 
-TheComponent.defaultProps = {
+Input.defaultProps = {
     className: '',
-    placeholderChar: ' '
 };
 
-TheComponent.propTypes = {
+Input.propTypes = {
     onFocus: OptionalFunc,
     onBlur: OptionalFunc,
+    placeholderChar: OptionalString,
+    mask: OptionalString,
     className: OptionalString,
     inputClassName: OptionalString
 };
 
-module.exports = TheComponent;
+module.exports = Input;

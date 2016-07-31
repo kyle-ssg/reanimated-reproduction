@@ -57,7 +57,7 @@ const FireAuth = class {
 
     login = (email, password) => {
         try {
-            firebase.auth().signInWithEmailAndPassword(email, password).catch(this.onError)
+            firebase.auth().signInWithEmailAndPassword(email, password).catch(this.onError);
         } catch(e) {
             this.onError(e);
         }
@@ -77,14 +77,13 @@ const FireAuth = class {
             this.onError(e);
         }
 
-
     }
 
     resendVerification = () => {
         this.user.sendEmailVerification();
     }
 
-    facebookLogin = (data) => {
+    facebookLogin = () => {
         Auth.Facebook.login()
             .then((token) => (
                 firebase.auth()
@@ -93,7 +92,7 @@ const FireAuth = class {
             .catch(this.onError);
     }
 
-    googleLogin = (data) => {
+    googleLogin = () => {
         Auth.Google.login()
             .then((token) => (
                 firebase.auth()

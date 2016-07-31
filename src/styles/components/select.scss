@@ -5,7 +5,8 @@ select, .Select .Select-control {
   border-bottom-width: 1px;
   border-style: none none solid;
   border-color: $input-border-color;
-  .Select-value {
+
+  .Select-multi-value-wrapper .Select-value {
     background: $btn-primary-bg;
     border-color: $btn-primary-bg;
     color: $btn-default-color;
@@ -21,6 +22,7 @@ select, .Select .Select-control {
       border: none;
     }
   }
+
 }
 
 .Select-menu-outer {

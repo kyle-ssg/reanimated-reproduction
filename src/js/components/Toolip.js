@@ -1,5 +1,5 @@
 const ReactTooltip = require('react-tooltip');
-const TheComponent = class extends React.Component {
+const Tooltip = class extends React.Component {
     displayName:'Tooltip'
 
     id = Utils.GUID()
@@ -14,13 +14,13 @@ const TheComponent = class extends React.Component {
                     {this.props.children}
                 </ReactTooltip>
             </span>
-        )
+        );
     }
 };
 
-TheComponent.propTypes = {
+Tooltip.propTypes = {
     children: RequiredElement,
     place: OptionalString
 };
 
-module.exports = TheComponent;
+module.exports = Tooltip;

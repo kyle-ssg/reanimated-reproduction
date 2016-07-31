@@ -1,6 +1,6 @@
 import FireAuth from '../../../common/fire-auth';
 
-const TheComponent = class extends React.Component {
+const ForgotPassword = class extends React.Component {
 
     constructor (props, context) {
         super(props, context);
@@ -34,8 +34,8 @@ const TheComponent = class extends React.Component {
     }
 };
 
-TheComponent.propTypes = {
+ForgotPassword.propTypes = {
     onSubmit: RequiredFunc
 };
 
-module.exports = TheComponent;
+module.exports = ForgotPassword;

@@ -1,7 +1,7 @@
 /**
  * Created by kylejohnson on 25/07/2016.
  */
-const TheComponent = class extends React.Component {
+const LoginForm = class extends React.Component {
 
     constructor (props, context) {
         super(props, context);
@@ -57,9 +57,11 @@ const TheComponent = class extends React.Component {
     }
 };
 
-TheComponent.propTypes = {
+LoginForm.propTypes = {
     onLogin: RequiredFunc,
     onRegister: RequiredFunc
 };
 
-module.exports = TheComponent;
+LoginForm.displayName = "LoginForm";
+
+module.exports = LoginForm;

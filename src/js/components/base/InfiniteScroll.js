@@ -3,25 +3,28 @@
  */
 import {AutoSizer, InfiniteLoader, VirtualScroll} from 'react-virtualized';
 
-
-const TheComponent = class extends React.Component {
-    displayName:'TheComponent'
+const InfiniteScroll = class extends React.Component {
+    displayName:'InfiniteScroll'
 
     loadMore = () => {
         if (!this.props.isLoading)
             this.props.loadMore();
     }
 
-    isRowLoaded = ({ index }) => {
-        return index < this.props.data.length - this.props.threshold;
-    }
+    isRowLoaded = ({ index }) => (
+        index < this.props.data.length - this.props.threshold
+    )
 
     rowRenderer = ({ index }) => {
-        return index < this.props.data.length ? this.props.renderRow(this.props.data[index]) : this.props.renderLoading
+        if (index < this.props.data.length) {
+            return this.props.renderRow(this.props.data[index]);
+        }
+
+        return this.props.renderLoading;
     }
 
     render () {
-        const { isLoading, renderLoading, data, renderRow, containerHeight, rowHeight, threshold } = this.props;
+        const { isLoading, data, containerHeight, rowHeight } = this.props;
         const rowCount = isLoading
             ? data.length + 1
             : data.length;
@@ -53,14 +56,15 @@ const TheComponent = class extends React.Component {
     }
 };
 
-TheComponent.propTypes = {
+InfiniteScroll.propTypes = {
     isLoading: OptionalBool,
+    loadMore: RequiredFunc,
     renderLoading: OptionalObject,
-    data: OptionalArray,
     renderRow: RequiredFunc,
+    data: OptionalArray,
     containerHeight: OptionalNumber,
     rowHeight: RequiredNumber,
     threshold: RequiredNumber,
 };
 
-module.exports = TheComponent;
+module.exports = InfiniteScroll;

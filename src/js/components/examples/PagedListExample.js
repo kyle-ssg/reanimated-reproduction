@@ -70,7 +70,7 @@ module.exports = class extends React.Component {
     }
 
     loadPage = (currentPage) => {
-        this.setState({ currentPage })
+        this.setState({ currentPage });
     }
 
     render () {
@@ -79,7 +79,7 @@ module.exports = class extends React.Component {
         return (
             <div>
                 <Pager onChange={this.loadPage} {... paging}/>
-                {_.map(elements, (val)=><div>Row {val + 1} <Divider/></div>)}
+                {_.map(elements, (val)=><div key={val}>Row {val + 1} <Divider/></div>)}
                 <Pager onChange={this.loadPage} {... paging}/>
             </div>
         );

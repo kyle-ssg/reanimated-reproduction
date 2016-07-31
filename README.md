@@ -103,4 +103,8 @@ When you run `npm run build`:
 ## Updating npm packages
 This is very useful to keep the boilerplate up to date, the following will update your ```package.json``` to use latest compatible packages
 * ```npm install -g npm-check-updates```
-* ```ncu (ncu -u to perform the updates)```
+* ```ncu (n
+
+## Fixing lint issues
+This is useful to fix simple js linting issues
+* ```npm run fix```

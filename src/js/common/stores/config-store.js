@@ -1,7 +1,6 @@
 var BaseStore = require('./base/_store'),
     api = require('../data/config');
 
-
 var controller = {
         get() {
             store.loading();

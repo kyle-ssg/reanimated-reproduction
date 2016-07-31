@@ -1,9 +1,10 @@
 import Tabs from '../base/forms/Tabs';
+import TabItem from '../base/forms/TabItem';
 import StarRating from '../base/StarRating';
 import Switch from 'rc-switch';
 
-const TheComponent = class extends React.Component {
-    displayName:'TheComponent'
+const Froms = class extends React.Component {
+    displayName:'Froms'
 
     constructor (props, context) {
         super(props, context);
@@ -11,7 +12,7 @@ const TheComponent = class extends React.Component {
     }
 
     selectTab = (tab) => {
-        this.setState({ tab })
+        this.setState({ tab });
     }
 
     toggleCheck = () => {
@@ -30,10 +31,11 @@ const TheComponent = class extends React.Component {
                     body
                 </Panel>
                 <h2>Inputs</h2>
-                <InputGroup title="Default" placeholder="Test"/>
-                <InputGroup title="Inline" inputProps={{ inline: "true" }} placeholder="Test"/>
-                <InputGroup inputProps={{inline:true, mask:"11/11"}} name="expiry" placeholder="dd/yy" title="Masked"/>
-                <InputGroup inputProps={{inline:true, mask:"11:11 am"}} name="expiry" placeholder="hh:mm am" title="Masked"/>
+                <InputGroup type="email" title="Default" placeholder="Test"/>
+                <InputGroup inputProps={{mask: "11/11" }} name="expiry" placeholder="dd/yy"
+                            title="Masked"/>
+                <InputGroup inputProps={{mask: "11:11 am" }} name="expiry" placeholder="hh:mm am"
+                            title="Masked"/>
                 <FormGroup title="Bla">
                     <label onClick={this.toggleCheck}>Click</label>
                     <div>
@@ -46,20 +48,12 @@ const TheComponent = class extends React.Component {
                 </FormGroup>
                 <Panel title={<h3>Tabs</h3>}>
                     <Tabs value={this.state.tab} onChange={this.selectTab}>
-                        <div tabLabel={(
-                            <div>
-                                <span className="fa fa-phone tab-icon"/>
-                            </div>
-                        )}>
+                        <TabItem tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
                             <h2>Tab 1 content</h2>
-                        </div>
-                        <div tabLabel={
-                            <div>
-                                <span className="fa fa-envelope-o tab-icon"/>
-                            </div>
-                        }>
+                        </TabItem>
+                        <TabItem tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
                             <h2>Tab 2 content</h2>
-                        </div>
+                        </TabItem>
                     </Tabs>
                 </Panel>
 
@@ -68,6 +62,6 @@ const TheComponent = class extends React.Component {
     }
 };
 
-TheComponent.propTypes = {};
+Froms.propTypes = {};
 
-module.exports = TheComponent;
+module.exports = Froms;

@@ -87,15 +87,15 @@ module.exports = _.extend(EventEmitter.prototype, {
         this.isLoading = false;
         this.isSaving = false;
         this.trigger(DEFAULT_CHANGE_EVENT);
-        this.trigger(DEFAULT_ERROR_EVENT)
+        this.trigger(DEFAULT_ERROR_EVENT);
     },
 
     on: function (eventName, callback) {
-        this.addListener(eventName || DEFAULT_CHANGE_EVENT, callback)
+        this.addListener(eventName || DEFAULT_CHANGE_EVENT, callback);
     },
 
     off: function (eventName, callback) {
-        this.removeListener(eventName || DEFAULT_CHANGE_EVENT, callback)
+        this.removeListener(eventName || DEFAULT_CHANGE_EVENT, callback);
     }
 
 });

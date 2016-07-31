@@ -1,5 +1,5 @@
-const TheComponent = class extends React.Component {
-    displayName:'TheComponent'
+const Button = class extends React.Component {
+    displayName:'Button'
 
     constructor (props, context) {
         super(props, context);
@@ -19,6 +19,9 @@ const TheComponent = class extends React.Component {
     }
 };
 
-TheComponent.propTypes = {};
+Button.propTypes = {
+    className: OptionalString,
+    children: OptionalElement
+};
 
-module.exports = TheComponent;
+module.exports = Button;

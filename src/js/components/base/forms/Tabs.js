@@ -1,8 +1,8 @@
 /**
  * Created by kylejohnson on 30/07/2016.
  */
-const TheComponent = class extends React.Component {
-    displayName:'TheComponent'
+const Tabs = class extends React.Component {
+    displayName:'Tabs'
 
     render () {
         return (
@@ -11,11 +11,13 @@ const TheComponent = class extends React.Component {
                     {_.map(this.props.children, (child, i)=> {
                         var isSelected = this.props.value == i;
                         return (
-                            <Button onClick={()=>this.props.onChange(i)}
+                            <Button
+                                key={'button'+i}
+                                onClick={()=>this.props.onChange(i)}
                                     className={"btn-tab btn-primary" + (isSelected ? ' tab-active' : '')}>
                                 {child.props.tabLabel}
                             </Button>
-                        )
+                        );
                     })}
                 </div>
                 <div className="tab-line" style={{
@@ -26,10 +28,10 @@ const TheComponent = class extends React.Component {
                     {_.map(this.props.children, (child, i)=> {
                         var isSelected = this.props.value == i;
                         return (
-                            <div className={'tab-item' + (isSelected ? ' tab-active' : '')}>
+                            <div key={'content'+i} className={'tab-item' + (isSelected ? ' tab-active' : '')}>
                                 {child}
                             </div>
-                        )
+                        );
                     })}
                 </div>
             </div>
@@ -37,13 +39,14 @@ const TheComponent = class extends React.Component {
     }
 };
 
-TheComponent.defaultProps = {
+Tabs.defaultProps = {
     className: ''
 };
 
-TheComponent.propTypes = {
+Tabs.propTypes = {
     onChange: OptionalFunc,
-    children: OptionalObject
+    children: RequiredElement,
+    value: OptionalNumber
 };
 
-module.exports = TheComponent;
+module.exports = Tabs;

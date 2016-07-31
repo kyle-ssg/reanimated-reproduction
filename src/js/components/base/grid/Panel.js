@@ -1,5 +1,5 @@
-const TheComponent = class extends React.Component {
-    displayName:'TheComponent'
+const Panel = class extends React.Component {
+    displayName:'Panel'
 
     constructor (props, context) {
         super(props, context);
@@ -21,10 +21,12 @@ const TheComponent = class extends React.Component {
     }
 };
 
-TheComponent.propTypes = {
+Panel.displayName = "Panel";
+
+Panel.propTypes = {
     title: OptionalObject,
     icon: OptionalObject,
     children: OptionalElement
 };
 
-module.exports = TheComponent;
+module.exports = Panel;

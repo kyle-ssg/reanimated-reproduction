@@ -14,7 +14,7 @@ window.OptionalNumber = React.PropTypes.number;
 window.OptionalObject = React.PropTypes.object;
 window.OptionalString = React.PropTypes.string;
 window.OptionalNode = React.PropTypes.node;
-window.OptionalElement = React.PropTypes.element;
+window.OptionalElement = React.PropTypes.node;
 window.oneOf = React.PropTypes.oneOf;
 window.RequiredArray = React.PropTypes.array.isRequired;
 window.RequiredBool = React.PropTypes.bool.isRequired;
@@ -23,7 +23,7 @@ window.RequiredNumber = React.PropTypes.number.isRequired;
 window.RequiredObject = React.PropTypes.object.isRequired;
 window.RequiredString = React.PropTypes.string.isRequired;
 window.RequiredNode = React.PropTypes.node.isRequired;
-window.RequiredElement = React.PropTypes.element.isRequired;
+window.RequiredElement = React.PropTypes.node.isRequired;
 
 window.Project = require('../common/project');
 window.Dispatcher = require('../common/dispatcher/dispatcher');

@@ -4,13 +4,13 @@ module.exports = {
 
     status: function (response) { //handle ajax requests
         if (response.status >= 200 && response.status < 300) {
-            return Promise.resolve(response)
+            return Promise.resolve(response);
         } else {
             response.text()
                 .then((err)=> {
                     log(response.url, response.status, err);
-                })
-            return Promise.reject(response)
+                });
+            return Promise.reject(response);
         }
     },
 
@@ -22,8 +22,8 @@ module.exports = {
         return function () {
             return new Promise(function (resolve) {
                 resolve(data);
-            })
-        }
+            });
+        };
     },
 
     put: function (url, data) {
@@ -73,7 +73,7 @@ module.exports = {
             .then(function (response) {
                 log(url, 200, response);
                 return response;
-            })
+            });
 
     },
 

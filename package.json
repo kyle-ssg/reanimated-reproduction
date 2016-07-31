@@ -14,6 +14,7 @@
     "clean:build": "node ./bin/clean.js createdir",
     "jscs": "jscs src/js/",
     "lint": "eslint config src/js/** --ext .js",
+    "fix": "eslint --fix config src/js/** --ext .js",
     "prestart": "node ./bin/clean.js",
     "start": "node ./bin/kill.js & webpack-dev-server --config ./config/webpack.config.dev.js --hot --inline --progress & node ./bin/ngrok.js",
     "test": "mocha --compilers js:babel-core/register,css:./test/unit/cssNullCompiler.js --require ./test/unit/testHelper.js --recursive ./test/unit",

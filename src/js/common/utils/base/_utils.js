@@ -3,10 +3,10 @@ var Utils = {
 
     keys: {
         isUndo: function (e) {
-            return (e.ctrlKey || e.metaKey) && e.keyCode === (e.shiftKey ? KEYCODE_Y : KEYCODE_Z)
+            return (e.ctrlKey || e.metaKey) && e.keyCode === (e.shiftKey ? KEYCODE_Y : KEYCODE_Z);
         },
         isRedo: function (e) {
-            return (e.ctrlKey || e.metaKey) && e.keyCode === (e.shiftKey ? KEYCODE_Z : KEYCODE_Y)
+            return (e.ctrlKey || e.metaKey) && e.keyCode === (e.shiftKey ? KEYCODE_Z : KEYCODE_Y);
         },
         backspacePressed: function (e) { //returns bool
             var code = (e.keyCode ? e.keyCode : e.which);
