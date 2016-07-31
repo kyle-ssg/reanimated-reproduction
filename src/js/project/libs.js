@@ -10,7 +10,7 @@ import 'react-virtualized-select/styles.css';
 window.Select = VirtualizedSelect;
 window.SelectOld = Select;
 
-import '../../styles/custom/rc-switch.scss';
+import '../../styles/3rdParty/rc-switch.scss';
 import Switch from 'rc-switch';
 window.Switch = Switch;
 

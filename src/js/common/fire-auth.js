@@ -55,19 +55,28 @@ const FireAuth = class {
         });
     }
 
-    login = (email, password) => (
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(this.onError)
-    )
+    login = (email, password) => {
+        try {
+            firebase.auth().signInWithEmailAndPassword(email, password).catch(this.onError)
+        } catch(e) {
+            this.onError(e);
+        }
+    }
 
     register = (username, password) => {
-        firebase.auth().createUserWithEmailAndPassword(username, password)
-            .then((user)=> {
-                user.sendEmailVerification();
-                if (data) {
-                    this.update(user, data);
-                }
-            })
-            .catch(this.onError);
+        try {
+            firebase.auth().createUserWithEmailAndPassword(username, password)
+                .then((user)=> {
+                    user.sendEmailVerification();
+                    if (data) {
+                        this.update(user, data);
+                    }
+                })
+                .catch(this.onError);
+        } catch(e) {
+            this.onError(e);
+        }
+
 
     }
 
@@ -80,12 +89,7 @@ const FireAuth = class {
             .then((token) => (
                 firebase.auth()
                     .signInWithCredential(firebase.auth.FacebookAuthProvider.credential(token))
-                    .then((user)=> {
-                        var profileRef = firebase.database().ref(`profiles/${user.uid}`);
-                        return profileRef.update(data);
-                    })
             ))
-
             .catch(this.onError);
     }
 
@@ -94,11 +98,6 @@ const FireAuth = class {
             .then((token) => (
                 firebase.auth()
                     .signInWithCredential(firebase.auth.GoogleAuthProvider.credential(null, token))
-                    .then((user)=> {
-                        if (data) {
-                            this.update(user, data);
-                        }
-                    })
             ))
             .catch(this.onError);
     }

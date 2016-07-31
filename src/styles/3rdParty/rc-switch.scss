@@ -1,10 +1,12 @@
+@import "../project/variables";
+$switch-height: 20px;
+
 .rc-switch {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  width: 60px;
-  height: 34px;
-  line-height: 30px;
+  width: $switch-height * 2;
+  height: $switch-height;
   vertical-align: middle;
   border-radius: 20px 20px;
   border: 1px solid #ccc;
@@ -21,10 +23,10 @@
 }
 .rc-switch:after {
   position: absolute;
-  width: 30px;
-  height: 30px;
-  left: 2px;
-  top: 1px;
+  width: $switch-height + 5;
+  height: $switch-height + 5;
+  left: -5px;
+  top: -4px;
   border-radius: 50% 50%;
   background-color: #ffffff;
   content: " ";
@@ -52,14 +54,14 @@
   outline: none;
 }
 .rc-switch-checked {
-  border: 1px solid #87d068;
-  background-color: #87d068;
+  border: 1px solid $btn-primary-light-bg;
+  background-color: $btn-primary-light-bg;
 }
 .rc-switch-checked .rc-switch-inner {
   left: 6px;
 }
 .rc-switch-checked:after {
-  left: 27px;
+  left: $switch-height - 5;
 }
 .rc-switch-disabled {
   cursor: no-drop;

@@ -1,46 +1,66 @@
 /**
  * Created by kylejohnson on 29/07/2016.
  */
-import Infinite from 'react-infinite';
+import {AutoSizer, InfiniteLoader, VirtualScroll} from 'react-virtualized';
 
-const InfiniteScroll = class extends React.Component {
-    displayName:'InfiniteScroll'
 
-    render () { //TODO: implement a reversed scroll view
+const TheComponent = class extends React.Component {
+    displayName:'TheComponent'
+
+    loadMore = () => {
+        if (!this.props.isLoading)
+            this.props.loadMore();
+    }
+
+    isRowLoaded = ({ index }) => {
+        return index < this.props.data.length - this.props.threshold;
+    }
+
+    rowRenderer = ({ index }) => {
+        return index < this.props.data.length ? this.props.renderRow(this.props.data[index]) : this.props.renderLoading
+    }
+
+    render () {
+        const { isLoading, renderLoading, data, renderRow, containerHeight, rowHeight, threshold } = this.props;
+        const rowCount = isLoading
+            ? data.length + 1
+            : data.length;
+
         return (
-            <Infinite
-                displayBottomUpwards={this.props.reverse}
-                containerHeight={this.props.containerHeight}
-                elementHeight={this.props.elementHeight}
-                useWindowAsScrollContainer={!this.props.containerHeight}
-                preloadAdditionalHeight={window.innerHeight * 2}
-                infiniteLoadBeginEdgeOffset={this.props.threshold}
-                onInfiniteLoad={this.props.loadMore}
-                loadingSpinnerDelegate={this.props.renderLoading}
-                isInfiniteLoading={this.props.isLoading}
-            >
-                {this.props.data.map(this.props.renderRow)}
-            </Infinite>
+            <AutoSizer disableHeight={this.props.containerHeight ? true : false}>
+                {({ height, width }) => (
+                    <InfiniteLoader
+                        rowCount={rowCount}
+                        isRowLoaded={this.isRowLoaded}
+                        loadMoreRows={this.loadMore}
+                    >
+                        {({ onRowsRendered, registerChild }) => (
+                            <VirtualScroll
+                                overscanRowCount={20}
+                                rowCount={rowCount}
+                                width={width}
+                                height={containerHeight || height}
+                                rowHeight={rowHeight}
+                                ref={registerChild}
+                                onRowsRendered={onRowsRendered}
+                                rowRenderer={this.rowRenderer}
+                            />
+                        )}
+                    </InfiniteLoader>
+                )}
+            </AutoSizer>
         );
     }
 };
 
-InfiniteScroll.defaultProps = {
-    useWindowAsScrollContainer: true,
-    className: 'infinite-scroll',
-    threshold: 1000
-};
-
-InfiniteScroll.propTypes = {
-    data: RequiredArray,
-    containerHeight: OptionalNumber,
-    elementHeight: OptionalNumber,
-    threshold: OptionalNumber,
-    reverse: OptionalBool,
+TheComponent.propTypes = {
     isLoading: OptionalBool,
-    loadMore: RequiredFunc,
-    renderRow: RequiredFunc,
     renderLoading: OptionalObject,
+    data: OptionalArray,
+    renderRow: RequiredFunc,
+    containerHeight: OptionalNumber,
+    rowHeight: RequiredNumber,
+    threshold: RequiredNumber,
 };
 
-module.exports = InfiniteScroll;
+module.exports = TheComponent;

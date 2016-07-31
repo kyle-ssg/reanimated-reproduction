@@ -7,25 +7,25 @@ import Share from '../../apis/share/share';
 module.exports = class extends React.Component {
 
     facebookShare = () => {
-      Share.Facebook('https://solidstategroup.com');
+        Share.Facebook('https://solidstategroup.com');
     }
 
     twitterShare = () => {
         Share.Twitter('https://solidstategroup.com');
     }
 
-    render() {
+    render () {
         return (
             <div>
                 <h1>Simple Share Example</h1>
-                <div className="btn-group">
-                    <button onClick={this.facebookShare} className="btn">
+                <FormInline>
+                    <Button onClick={this.facebookShare}>
                         Facebook
-                    </button>
-                    <button onClick={this.twitterShare} className="btn">
+                    </Button>
+                    <Button onClick={this.twitterShare}>
                         Twitter
-                    </button>
-                </div>
+                    </Button>
+                </FormInline>
             </div>
         );
     }

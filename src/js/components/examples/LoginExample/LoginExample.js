@@ -17,9 +17,13 @@ module.exports = class extends React.Component {
 
     componentWillMount () {
         firebase.initializeApp(Project.firebase);
-        FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, ()=>{
-         alert("Email verified!");
+        FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, ()=> {
+            alert("Email verified!");
         }, this.onError);
+    }
+
+    onError = (err) => {
+        alert(err);
     }
 
     onLogin = (user, profile) => {
@@ -63,40 +67,40 @@ module.exports = class extends React.Component {
                 <h1>Simple Login Example</h1>
                 {!this.state.profile ? (
                     <div>
-                        <div className="btn-group">
-                            <button disabled={this.state.isLoading} onClick={FireAuth.facebookLogin} className="btn">
+                        <FormInline>
+                            <Button disabled={this.state.isLoading} onClick={FireAuth.facebookLogin}>
                                 Facebook
-                            </button>
-                            <button disabled={this.state.isLoading} onClick={FireAuth.googleLogin} className="btn">
+                            </Button>
+                            <Button disabled={this.state.isLoading} onClick={FireAuth.googleLogin}>
                                 Google
-                            </button>
-                        </div>
+                            </Button>
+                        </FormInline>
                         <Divider/>
                         <LoginForm onRegister={(email, password)=> FireAuth.register(email, password)}
                                    onLogin={(email, password)=> FireAuth.login(email, password)}/>
                         <Divider/>
-                        <a onClick={this.showForgotPassword} href="#">Forgot password ?</a>
+                        <Button onClick={this.showForgotPassword} className="btn-link">Forgot password ?</Button>
                     </div>
                 ) : (
                     <div>
                         {!this.state.profile.emailVerified && (
                             <div>
-                                <button onClick={FireAuth.resendVerification} className="btn">
+                                <Button onClick={FireAuth.resendVerification}>
                                     Resend Verification Email
-                                </button>
+                                </Button>
                             </div>
                         )}
                         { //todo: check if can set password
-                            <button onClick={this.showChangePassword} className="btn">
+                            <Button onClick={this.showChangePassword}>
                                 Change Password
-                            </button>
+                            </Button>
                         }
 
                         <UpdateProfile onSubmit={this.onProfileUpdated} {... this.state.profile}/>
 
-                        <button onClick={FireAuth.logout} className="btn">
+                        <Button onClick={FireAuth.logout}>
                             Logout
-                        </button>
+                        </Button>
                     </div>
                 )}
             </div>

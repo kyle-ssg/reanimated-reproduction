@@ -16,14 +16,14 @@ module.exports = class extends React.Component {
         return (
             <div>
                 <h1>Simple Modal Example</h1>
-                <div className="btn-group">
-                    <button onClick={this.openModal} className="btn">
+                <FormInline>
+                    <Button onClick={this.openModal}>
                         Modal
-                    </button>
-                    <button onClick={this.openConfirm} className="btn">
+                    </Button>
+                    <Button onClick={this.openConfirm}>
                         Confirm
-                    </button>
-                </div>
+                    </Button>
+                </FormInline>
             </div>
         );
     }

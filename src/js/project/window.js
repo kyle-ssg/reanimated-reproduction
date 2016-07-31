@@ -38,9 +38,14 @@ window.Format = require('../common/utils/format');
 window.Constants = require('./constants');
 
 //Useful components
+window.FormInline = require('../components/base/grid/FormInline');
 window.Row = require('../components/base/grid/Row');
 window.Flex = require('../components/base/grid/Flex');
-window.FormGroup = require('../components/base/FormGroup');
+window.Input = require('../components/base/forms/Input');
+window.Button = require('../components/base/forms/Button');
+window.Panel = require('../components/base/grid/Panel');
+window.FormGroup = require('../components/base/grid/FormGroup');
+window.InputGroup = require('../components/base/InputGroup');
 window.InfiniteScroll = require('../components/base/InfiniteScroll');
 
 //Modal

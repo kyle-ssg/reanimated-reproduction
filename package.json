@@ -2,6 +2,9 @@
   "name": "ssg-webpack-es6-boilerplate",
   "version": "0.7.1",
   "description": "SSG React Boilerplate with Flux",
+  "repository": {
+    "git": "https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate"
+  },
   "license": "MIT",
   "author": "SSG",
   "scripts": {
@@ -25,12 +28,13 @@
     "lodash": "4.13.1",
     "moment": "2.14.1",
     "rc-switch": "1.4.2",
-    "react": "15.2.1",
-    "react-addons-shallow-compare": "15.2.1",
-    "react-dom": "15.2.1",
-    "react-infinite": "0.9.2",
+    "react": "^15.3.0",
+    "react-addons-shallow-compare": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "react-maskedinput": "3.2.3",
     "react-router": "2.6.0",
     "react-select": "^1.0.0-beta14",
+    "react-slider": "0.6.1",
     "react-virtualized": "^7.0.0",
     "react-virtualized-select": "1.2.0"
   },

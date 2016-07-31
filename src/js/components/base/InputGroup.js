@@ -4,14 +4,14 @@
 const FormGroup = (props)=> {
     const id = Utils.GUID();
     return (
-        <div className="form-group">
+        <div className={"form-group"}>
             <label htmlFor={id} className="cols-sm-2 control-label">{props.title}</label>
-            <div className="cols-sm-10">
-                <div className="input-group">
+            <div>
+                <div>
                     {props.icon && (
                         <span className="input-group-addon"><i className={props.icon} aria-hidden="true"></i></span>
                     )}
-                    <input {... props.inputProps} disabled={props.disabled} value={props.value} onChange={props.onChange} type={props.type || 'text'} className="form-control" name={id} id={id}  placeholder={props.placeholder}/>
+                    <Input {... props.inputProps} disabled={props.disabled} value={props.value} onChange={props.onChange} type={props.type || 'text'} name={id} id={id}  placeholder={props.placeholder}/>
                 </div>
             </div>
         </div>

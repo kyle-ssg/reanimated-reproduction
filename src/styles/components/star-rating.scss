@@ -9,15 +9,15 @@
   font-size:24px;
 
   &.full {
-    color: $brand-green;
+    color: $btn-primary-bg;
     &.editable:hover {
       color: #999;
     }
   }
   &.empty {
-    color: $brand-green;
+    color: $btn-primary-bg;
     &.editable:hover {
-      color: '';
+      color: #999;
     }
   }
 }

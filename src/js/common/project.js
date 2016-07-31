@@ -12,9 +12,9 @@ module.exports = {
         appId: '276944269330753'
     },
     firebase: {
-        apiKey: "AIzaSyDQxPURkT1MTYYbKHXUyhPnzTg6tJQJGzI",
-        authDomain: "my-great-project-6e6ea.firebaseapp.com",
-        databaseURL: "https://my-great-project-6e6ea.firebaseio.com",
-        storageBucket: "my-great-project-6e6ea.appspot.com",
+        apiKey: "AIzaSyCC-BTYL-DuOMt7hrK18Q-PhOM0FVpgpd8",
+        authDomain: "project-4251246165915577329.firebaseapp.com",
+        databaseURL: "https://project-4251246165915577329.firebaseio.com",
+        storageBucket: "project-4251246165915577329.appspot.com",
     }
 };

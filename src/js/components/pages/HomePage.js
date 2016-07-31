@@ -2,11 +2,9 @@ import BigDataExample from '../examples/BigDataExample';
 import LoginExample from '../examples/LoginExample/LoginExample';
 import ShareExample from '../examples/ShareExample';
 import ModalExample from '../examples/ModalExample';
-import CenteredFlexExample from '../examples/CenteredFlexExample';
-import ComponentsExample from '../examples/ComponentsExample';
-import ReverseInfiniteScrollExample from '../examples/ReverseInfiniteScrollExample';
 import InfiniteScrollExample from '../examples/InfiniteScrollExample';
 import PagedListExample from '../examples/PagedListExample';
+import MaterialExample from '../examples/MaterialExample';
 
 module.exports = class extends React.Component {
     constructor (props, context) {
@@ -16,14 +14,8 @@ module.exports = class extends React.Component {
 
     render = () => (
         <div>
-            <div className="row">
-                <div className="col-md-6">
-                    <InfiniteScrollExample/>
-                </div>
-                <div className="col-md-6">
-                    <ReverseInfiniteScrollExample/>
-                </div>
-            </div>
+            <Divider/>
+            <InfiniteScrollExample/>
             <Divider/>
             <PagedListExample/>
             <Divider/>
@@ -35,9 +27,7 @@ module.exports = class extends React.Component {
             <Divider/>
             <ModalExample/>
             <Divider/>
-            <ComponentsExample/>
-            <Divider/>
-            <CenteredFlexExample/>
+            <MaterialExample/>
         </div>
     )
 };

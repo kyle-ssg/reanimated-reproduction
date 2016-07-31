@@ -24,7 +24,7 @@ const highlighter = new Highlighter({
 module.exports = class extends React.Component {
     displayName = 'HomePage';
 
-    constructor(props, context) {
+    constructor (props, context) {
         super(props, context);
         this.state = {
             sort: {
@@ -39,7 +39,7 @@ module.exports = class extends React.Component {
         this.setState({ value });
     };
 
-    renderHeader({ dataKey, sortBy, sortDirection }) {
+    renderHeader ({ dataKey, sortBy, sortDirection }) {
         var classes = ['FlexTable__headerRowContent'],
             isSorting = dataKey == sortBy;
         isSorting && classes.push('FlexTable__headerRowContent--sorting');
@@ -47,13 +47,14 @@ module.exports = class extends React.Component {
         return (
             <div className={classes.join(' ')}>
             <span>
-                {dataKey} {isSorting && (sortDirection == 'ASC' ? "↑" : '↓')}
+                {dataKey} {isSorting &&
+                    <span className={"fa " + (sortDirection == 'ASC' ? "fa-chevron-up" : 'fa-chevron-down')}/>}
             </span>
             </div>
         );
     }
 
-    render() {
+    render () {
         // Grid data as an array of arrays
         return (
             <div>
@@ -88,6 +89,7 @@ module.exports = class extends React.Component {
                             sortDirection={this.state.sort.sortDirection}
                             headerHeight={44}
                             rowHeight={44}
+                            overscanRowCount={20}
                             rowCount={list.length}
                             rowGetter={
                                 ({ index }) => list[index]

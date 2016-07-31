@@ -3,7 +3,6 @@ import './project/window';
 import 'react-select/dist/react-select.css';
 import 'react-virtualized/styles.css';
 import 'react-virtualized/styles.css';
-import '../styles/bootstrap.min.css';
 import '../styles/styles.scss';
 
 import '../fonts/fontawesome-webfont.woff';

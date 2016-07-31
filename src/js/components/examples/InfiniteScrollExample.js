@@ -16,13 +16,13 @@ const TheComponent = class extends React.Component {
                 isLoading: false,
                 data: this.state.data.concat(_.range(length, length + 100))
             });
-        }, 500);
+        }, 2000);
     }
 
     renderRow (data) {
         return (
-            <div key={data} style={{ height: 40 }}>
-                hey {data}
+            <div className=".FlexTable__row" key={data}>
+                Row {data + 1}
             </div>
         );
     }
@@ -30,15 +30,16 @@ const TheComponent = class extends React.Component {
     render () {
         return (
             <div>
-                <h2>Infinite scroll</h2>
+                <h2>Async Infinite scroll</h2>
                 <InfiniteScroll
                     renderLoading={(
-                        <div className="infinite-list-item">
+                        <div style={{ height: 40 }}>
                             Loading...
                         </div>
                     )}
-                    elementHeight={40}
+                    rowHeight={40}
                     containerHeight={200}
+                    threshold={50}
                     data={this.state.data}
                     isLoading={this.state.isLoading}
                     loadMore={this.loadMore}

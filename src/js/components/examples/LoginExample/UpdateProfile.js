@@ -33,13 +33,13 @@ const TheComponent = class extends React.Component {
     render () {
         return (
             <div>
-                <FormGroup
+                <InputGroup
                     value={this.state.firstName}
                     title="First Name"
                     placeholder="Joe" type="text"
                     onChange={(e)=>this.setState({ firstName: Utils.safeParseEventValue(e) })}/>
 
-                <FormGroup
+                <InputGroup
                     value={this.state.lastName}
                     title="Last Name"
                     placeholder="Blogs" type="text"
@@ -48,9 +48,9 @@ const TheComponent = class extends React.Component {
                 {this.state.error && (
                     <div className="alert alert-danger">{this.state.error}</div>
                 )}
-                <button onClick={this.handleSubmit}>
+                <Button onClick={this.handleSubmit}>
                     Send
-                </button>
+                </Button>
             </div>
         );
     }

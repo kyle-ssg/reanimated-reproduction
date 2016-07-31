@@ -1,32 +1,55 @@
 //MARGIN AND PADDING
-$base-gutter:      20px;
+$base-gutter: 20px;
 
-//COLOURS
+$font-family: Roboto, sans-serif;
 
-$brand-green:       #43d4ad !default;
-$action-yellow:     #ffc425 !default;
+$brand-primary: rgb(0, 188, 212);
+$brand-secondary: #eaa53d;
+$alert-danger-bg: rgb(178, 18, 18);
+$alert-danger-border: rgb(203, 25, 48);
+$alert-danger-text: rgb(255, 255, 255);
 
-$white:             #ffffff !default;
-$base-grey:         #eeeeee !default;
-$panel-grey:        #e1e1e1 !default;
-$component-grey:    #b7b7b7 !default;
-$dark-grey:         #4d4d4d !default;
-
-$input-inner-shadow: #b7b7b7;
-
-//PANELS
-
-$panel-border-radius:   10px;
-$mobile-carousel: 200px;
-$standard-carousel: 400px;
+$border-radius-base: 0;
 
 //FORMS
-$input-border-radius:   10px;
+$input-border-radius: 0px;
 $input-height: 50px;
 
+$input-line-height: 25px;
+$input-font-size: inherit;
+$input-font-weight: 200;
+$input-border-color: rgb(224, 224, 224);
+$input-placeholder-color: rgb(224, 224, 224);
+$input-border-highlight-color: rgb(0, 188, 212);
+
+$pagination-color: #333;
+
+$btn-border-radius: 0;
+$btn-height: 44px;
+
+$btn-primary-bg: rgb(0, 188, 212);
+$btn-primary-light-bg: #61d0de;
+$link-color: rgb(0, 188, 212);
+$link-color-secondary: rgb(90,90,90);
+$btn-default-color: rgb(255, 255, 255);
+
+$hover-bg: rgb(240, 240, 240);
+$hover-color: inherits;
+
+//Panel
+$panel-heading-height: 50px;
+$panel-heading-bg: rgb(224, 224, 224);
+$panel-heading-color: rgba(0, 0, 0, 0.4);
+
+$tab-inactive-color: rgba(255,255,255,.75);
+$tab-active-color: rgba(255,255,255,1);
 //SCAFFOLDING
 
-$mobile-portrait:   320px;
-$mobile-landscape:  480px;
-$tablet-portrait:   768px;
-$tablet-landscape:  1024px;
+$mobile-portrait: 320px;
+$mobile-landscape: 480px;
+$tablet-portrait: 768px;
+$tablet-landscape: 1024px;
+
+
+$modal-backdrop-bg: rgba(0, 0, 0, 0.870588);
+$modal-header-border-width: 0;

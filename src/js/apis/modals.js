@@ -59,7 +59,7 @@ const Modal = class extends React.Component {
 
         return (
             <Provider ref="modal">
-                <div tabIndex="-1" className="modal alert fade" role="dialog" aria-hidden="true">
+                <div tabIndex="-1" className="modal alert fade expand" role="dialog" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">{this.header()}</div>
@@ -107,9 +107,9 @@ const Confirm = class extends React.Component {
     footer () {
         return (
             <div className="modal-button">
-                <button type="button" className="btn btn-red short"
+                <button type="button" className="btn-link btn-link-secondary"
                         onClick={this.onNo}>{this.props.noText || 'No'}</button>
-                <button type="button" className="btn btn-green short"
+                <button type="button" className="btn-link"
                         onClick={this.onYes}>{this.props.yesText || 'Yes'}</button>
             </div>
         );
@@ -118,7 +118,7 @@ const Confirm = class extends React.Component {
     render () {
         return (
             <Provider onClose={this.props.onNo} ref="modal">
-                <div tabIndex="-1" className="modal alert fade" role="dialog" aria-hidden="true">
+                <div tabIndex="-1" className="modal alert fade expand" role="dialog" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">{this.header()}</div>

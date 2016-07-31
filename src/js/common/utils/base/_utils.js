@@ -2,6 +2,12 @@ var Utils = {
     emailRegex: /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
 
     keys: {
+        isUndo: function (e) {
+            return (e.ctrlKey || e.metaKey) && e.keyCode === (e.shiftKey ? KEYCODE_Y : KEYCODE_Z)
+        },
+        isRedo: function (e) {
+            return (e.ctrlKey || e.metaKey) && e.keyCode === (e.shiftKey ? KEYCODE_Z : KEYCODE_Y)
+        },
         backspacePressed: function (e) { //returns bool
             var code = (e.keyCode ? e.keyCode : e.which);
             return code == 8 && !e.shiftKey && !e.ctrlKey;

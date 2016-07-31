@@ -17,38 +17,41 @@ const TheComponent = class extends React.Component {
     }
 
     toggleLogin = () => {
-        this.setState({showLogin: !this.state.showLogin});
+        this.setState({ showLogin: !this.state.showLogin });
     }
 
     render () {
         return this.state.showLogin ? (
             <div>
-                <FormGroup
+                <InputGroup
                     title="Email"
                     placeholder="email" type="email"
                     onChange={(e)=>this.setState({ email: Utils.safeParseEventValue(e) })}/>
 
-                <FormGroup title="Password"
-                           placeholder="password" type="password"
-                           onChange={(e)=>this.setState({ password: Utils.safeParseEventValue(e) })}/>
+                <InputGroup title="Password"
+                            placeholder="password" type="password"
+                            onChange={(e)=>this.setState({ password: Utils.safeParseEventValue(e) })}/>
 
-                <button onClick={this.login}>Login</button>
-                <a href="#" onClick={this.toggleLogin}>Already a member ? </a>
+                <FormInline>
+                    <Button onClick={this.login}>Login</Button>
+                    <Button className="btn-link" onClick={this.toggleLogin}>Already a member ? </Button>
+                </FormInline>
             </div>
         ) : (
             <div>
-                <FormGroup
+                <InputGroup
                     title="Email"
                     placeholder="email" type="email"
                     onChange={(e)=>this.setState({ email: Utils.safeParseEventValue(e) })}/>
 
-                <FormGroup title="Password"
-                           placeholder="password" type="password"
-                           onChange={(e)=>this.setState({ password: Utils.safeParseEventValue(e) })}/>
+                <InputGroup title="Password"
+                            placeholder="password" type="password"
+                            onChange={(e)=>this.setState({ password: Utils.safeParseEventValue(e) })}/>
 
-                <button onClick={this.register}>Register</button>
-
-                <a href="#" onClick={this.toggleLogin}>New user ? </a>
+                <FormInline>
+                    <Button onClick={this.register}>Register</Button>
+                    <Button className="btn-link" onClick={this.toggleLogin}>New user ? </Button>
+                </FormInline>
             </div>
         );
     }

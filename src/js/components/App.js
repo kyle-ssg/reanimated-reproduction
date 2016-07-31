@@ -1,16 +1,22 @@
-import React, { Component, PropTypes } from 'react';
+import React, {Component, PropTypes} from 'react';
 
 export default class App extends Component {
 
-  static propTypes = {
-    children: PropTypes.element.isRequired
-  };
+    static propTypes = {
+        children: PropTypes.element.isRequired
+    };
 
-  render() {
-    return (
-      <div className="container">
-        {this.props.children}
-      </div>
-    );
-  }
+    render () {
+        return (
+            <div>
+                <nav className="navbar navbar-fixed-top navbar-light bg-faded">
+                    <a className="navbar-brand" href="#">SSG Boilerplate</a>
+                </nav>
+
+                <div className="container">
+                    {this.props.children}
+                </div>
+            </div>
+        );
+    }
 }

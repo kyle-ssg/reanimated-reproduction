@@ -2,39 +2,44 @@ const Pager = (props) => (
     <nav className="text-center page-controls">
         <ul className="pagination">
 
-            <li className={!props.canPrev && "disabled"}>
-                <a onClick={props.canPrev && _.partial(props.onChange, props.currentPage - 1)}>
+            <li className={"page-item" + (!props.canPrev && " disabled" || "")}>
+                <a className="page-link" onClick={props.canPrev && _.partial(props.onChange, props.currentPage - 1)}>
                     Prev
                 </a>
             </li>
 
             {props.showFirstPage && (
-                <li className={props.currentPage == 1 && "active"}>
-                    <a onClick={()=>props.onChange(1)}>
+                <li className={"page-item" + (props.currentPage == 1 && " active" || "")}>
+                    <a className="page-link" onClick={()=>props.onChange(1)}>
                         1
                     </a>
                 </li>
             )}
 
-            {props.prevTruncated && <li className="disabled"><a>&hellip;</a></li>}
-            {props.startPage > 2 && <li className="disabled"><a>&hellip;</a></li>}
+            {props.prevTruncated && <li className="page-item disabled"><a className="page-link">&hellip;</a></li>}
+            {props.startPage > 2 && <li className="page-item disabled"><a className="page-link">&hellip;</a></li>}
 
             {_.map(props.range, (val)=>(
-                <li key={val} className={props.currentPage == val && "active"}>
-                    <a onClick={_.partial(props.onChange, val)}>{val}</a>
+                <li key={val} className={"page-item " + (props.currentPage == val && " active" || "")}>
+                    <a className="page-link" onClick={_.partial(props.onChange, val)}>{val}</a>
                 </li>
             ))}
 
-            {props.nextTruncated && <li className="disabled"><a>&hellip;</a></li>}
-
-            {props.showLastPage && (
-                <li className={props.currentPage == props.totalPages && "active"}>
-                    <a onClick={_.partial(props.onChange, props.totalPages)}>{props.totalPages}</a>
+            {props.nextTruncated && (
+                <li className="page-item disabled">
+                    <a className="page-link">&hellip;</a>
                 </li>
             )}
 
-            <li className={!props.canNext && "disabled"}>
-                <a onClick={props.canNext && _.partial(props.onChange, props.currentPage + 1)}>Next</a>
+            {props.showLastPage && (
+                <li className={"page-item" + (props.currentPage == props.totalPages && " active" || "")}>
+                    <a className="page-link"
+                       onClick={_.partial(props.onChange, props.totalPages)}>{props.totalPages}</a>
+                </li>
+            )}
+
+            <li className={"page-item" + (!props.canNext && " disabled" || "")}>
+                <a className="page-link" onClick={props.canNext && _.partial(props.onChange, props.currentPage + 1)}>Next</a>
             </li>
 
         </ul>
@@ -59,7 +64,7 @@ module.exports = class extends React.Component {
     constructor (props, context) {
         super(props, context);
         this.state = {
-            pages: _.map(_.range(0, 10), (page)=> _.range(page * 10, page*10 + 10)),
+            pages: _.map(_.range(0, 5), (page)=> _.range(page * 5, page * 5 + 5)),
             currentPage: 1
         };
     }
@@ -74,7 +79,7 @@ module.exports = class extends React.Component {
         return (
             <div>
                 <Pager onChange={this.loadPage} {... paging}/>
-                {_.map(elements, (val)=><div>Row {val} <Divider/></div>)}
+                {_.map(elements, (val)=><div>Row {val + 1} <Divider/></div>)}
                 <Pager onChange={this.loadPage} {... paging}/>
             </div>
         );

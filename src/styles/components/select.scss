@@ -1,0 +1,34 @@
+@import "../project/variables";
+select, .Select .Select-control {
+  border-radius: 0;
+  border: 0;
+  border-bottom-width: 1px;
+  border-style: none none solid;
+  border-color: $input-border-color;
+  .Select-value {
+    background: $btn-primary-bg;
+    border-color: $btn-primary-bg;
+    color: $btn-default-color;
+    display: inline-block;
+    font-size: .9em;
+    line-height: 1.4;
+    margin: 0;
+    border-radius: 5px;
+    padding: 2px;
+    margin-right: $input-padding-x;
+    vertical-align: top;
+    .Select-value-icon {
+      border: none;
+    }
+  }
+}
+
+.Select-menu-outer {
+  box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+  border:none;
+}
+
+.Select-option.is-focused {
+  background-color: $hover-bg;
+  color: $hover-color;
+}

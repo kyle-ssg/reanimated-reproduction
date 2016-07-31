@@ -1,0 +1,17 @@
+button {
+
+  cursor: pointer;
+  text-decoration: none;
+  outline: none !important;
+  transform: translate3d(0px, 0px, 0px);
+  border: 10px;
+  box-sizing: border-box;
+  display: inline-block;
+
+  transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+
+}
+
+.btn-link-secondary {
+  color: $link-color-secondary;
+}
