@@ -16,10 +16,13 @@ const InputStepper = class extends React.Component {
         }
 
         if (Utils.keys.isDown(e)) {
+            Utils.preventDefault(e);
             this.highlightRow(Math.min(this.state.selectedRow + 1, this.props.data.length -1));
         } else if (Utils.keys.isUp(e)) {
+            Utils.preventDefault(e);
             this.highlightRow(Math.max(this.state.selectedRow - 1, 0));
         }  else if (Utils.keys.isEnter(e)) {
+            Utils.preventDefault(e);
             this.props.onChange(this.props.data[this.state.selectedRow], e);
         }
     }

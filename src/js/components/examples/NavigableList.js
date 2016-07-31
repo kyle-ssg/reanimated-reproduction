@@ -1,9 +1,9 @@
 /**
  * Created by kylejohnson on 31/07/2016.
  */
-import InputStepper from '../base/InputStepper';
-
-const data = ['Blade', 'Laser', 'Blazer', 'Meshell'];
+import InputStepper from '../base/higher-order/InputStepper';
+import Highlighter from '../../components/base/Highlighter';
+import data from './country-data';
 
 const NavigableList = class extends React.Component {
     displayName:'NavigableList'
@@ -15,25 +15,30 @@ const NavigableList = class extends React.Component {
 
     selectRow = (data) => {
         openConfirm(<h3>Your Selection</h3>,
-            <div>Are you sure you want to select {data}?</div>)
+            <div>Are you sure you want to select {data.name}?</div>)
     }
 
     search = (e) => { //simple search
         const search = Utils.safeParseEventValue(e).toLowerCase();
         this.setState({
+            search,
             data: data.filter((item)=> {
-                return item.toLowerCase().indexOf(search) > -1
+                return item.name.toLowerCase().indexOf(search) > -1
             })
-        });
+        }, this.refs.input.refs.list.forceUpdateGrid);
     }
 
     renderRow = (row, index, selectedRow, highlightRow) => {
         const isSelected = selectedRow === index;
         return (
             <div onMouseOver={()=>highlightRow(index)}>
-                <Button onClick={()=>this.selectRow(row)} className={"btn-link " + (!isSelected ? "btn-link-secondary" : "")}>
-                    {row}
-                </Button>
+                <Row space>
+                    <Button onClick={()=>this.selectRow(row)}
+                            className={"btn-link " + (!isSelected ? "btn-link-secondary" : "")}>
+                        {isSelected ? row.name : <Highlighter search={this.state.search} value={row.name}/>}
+                    </Button>
+                    {row.code}
+                </Row>
             </div>
         );
     }
@@ -49,19 +54,21 @@ const NavigableList = class extends React.Component {
                 </h2>
                 <InputStepper
                     ref="input"
+
                     data={this.state.data}
                     onChange={this.selectRow}
-                    inputProps={{ onChange: this.search, placeholder: 'Search' }}>
+                    inputProps={{ className: "full-width", onChange: this.search, placeholder: 'Search' }}>
                     {
                         (highlightedRow, highlightRow) => (
                             <div>
                                 <ListView
+                                    ref="list"
                                     scrollToRow={highlightedRow}
                                     renderRow={(row, index)=>
                                         this.renderRow(row, index, highlightedRow, highlightRow)
                                     }
                                     data={this.state.data}
-                                    containerHeight={120}
+                                    containerHeight={200}
                                     rowHeight={40}
                                 />
                             </div>

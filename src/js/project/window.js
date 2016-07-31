@@ -45,7 +45,7 @@ window.Input = require('../components/base/forms/Input');
 window.Button = require('../components/base/forms/Button');
 window.Panel = require('../components/base/grid/Panel');
 window.FormGroup = require('../components/base/grid/FormGroup');
-window.InputGroup = require('../components/base/InputGroup');
+window.InputGroup = require('../components/base/forms/InputGroup');
 window.InfiniteScroll = require('../components/base/InfiniteScroll');
 window.ListView = require('../components/base/ListView');
 
