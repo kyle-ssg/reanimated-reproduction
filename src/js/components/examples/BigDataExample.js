@@ -5,21 +5,6 @@ var list = _.map(_.range(0, size), function (i) {
     return { id: i + 1, description: Utils.GUID() };
 }).reverse();
 
-import Highlighter from '../base/addons/react-select-highlighter';
-const highlighter = new Highlighter({
-    valueLabel: 'description',
-    renderOption: (item, text) => (
-        <div key={item.id}>
-            {text} : {item.id}
-        </div>
-    ),
-    renderText: (text) => (
-        <span>{text}</span>
-    ),
-    renderHighlight: (text) => (
-        <strong>{text}</strong>
-    )
-});
 
 module.exports = class extends React.Component {
     displayName = 'HomePage';
@@ -75,9 +60,6 @@ module.exports = class extends React.Component {
                     labelKey='description'
                     valueKey='description'
                     onChange={this.handleSelectChange}
-                    onBlur={highlighter.onBlur.bind(highlighter)}
-                    onInputChange={highlighter.onInputChange.bind(highlighter)}
-                    optionRenderer={highlighter.optionRenderer.bind(highlighter)}
                     value={this.state.value}
                 />
 
