@@ -43,7 +43,7 @@ module.exports = function (options) {
 
         componentWillUnmount: function () {
             _.each(this._listeners, function (listener, index) {
-                this.stopListening(index);
+                listener && this.stopListening(index);
             }.bind(this));
             return options.componentWillUnmount ? options.componentWillUnmount() : true;
         }

@@ -12,6 +12,10 @@ button {
 
 }
 
+.btn-link:hover {
+  text-decoration: none;
+}
+
 .btn-link-secondary {
   color: $link-color-secondary;
 }

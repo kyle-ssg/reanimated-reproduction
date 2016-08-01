@@ -4,17 +4,21 @@
 const Highlighter = class extends React.Component {
     displayName:'Highlighter'
 
+    shouldComponentUpdate (newProps) {
+        return newProps.search !== this.props.search || newProps.value !== this.props.value;
+    }
+
     constructor (props, context) {
         super(props, context);
         this.state = {};
     }
 
-    chop (text, search) {
+    chop (text, search) { //recursively render bits of text into renderText and renderHighlight sections
         var regexp = new RegExp(search, 'i'),
             mark = text.search(regexp),
             len = search.length;
 
-        if (!search  || !text || mark === -1) {
+        if (!search || !text || mark === -1) {
             return this.props.renderText(text);
         } else {
             return [].concat(
@@ -45,9 +49,10 @@ Highlighter.defaultProps = {
             <mark>{text}</mark>
         );
     }
-}
+};
 
 Highlighter.propTypes = {
+    className: OptionalString,
     search: OptionalString,
     value: OptionalString,
     renderHighlight: OptionalFunc,

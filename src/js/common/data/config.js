@@ -1,6 +1,6 @@
 import data from './base/_data';
 module.exports = {
-    get(params) {
+    get() {
         return data.dummy({data:{}});
     },
     getOtherStuff(params) {

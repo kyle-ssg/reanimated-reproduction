@@ -15,16 +15,16 @@ const NavigableList = class extends React.Component {
 
     selectRow = (data) => {
         openConfirm(<h3>Your Selection</h3>,
-            <div>Are you sure you want to select {data.name}?</div>)
+            <div>Are you sure you want to select {data.name}?</div>);
     }
 
     search = (e) => { //simple search
         const search = Utils.safeParseEventValue(e).toLowerCase();
         this.setState({
             search,
-            data: data.filter((item)=> {
-                return item.name.toLowerCase().indexOf(search) > -1
-            })
+            data: data.filter((item)=> (
+                item.name.toLowerCase().indexOf(search) > -1
+            ))
         }, this.refs.input.refs.list.forceUpdateGrid);
     }
 
@@ -54,7 +54,6 @@ const NavigableList = class extends React.Component {
                 </h2>
                 <InputStepper
                     ref="input"
-
                     data={this.state.data}
                     onChange={this.selectRow}
                     inputProps={{ className: "full-width", onChange: this.search, placeholder: 'Search' }}>
@@ -64,6 +63,7 @@ const NavigableList = class extends React.Component {
                                 <ListView
                                     ref="list"
                                     scrollToRow={highlightedRow}
+                                    renderNoResults={<div>No results</div>}
                                     renderRow={(row, index)=>
                                         this.renderRow(row, index, highlightedRow, highlightRow)
                                     }

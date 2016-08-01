@@ -46,6 +46,8 @@ const Pager = (props) => (
     </nav>
 );
 
+const pageSize = 10;
+
 Pager.propTypes = {
     onChange: OptionalFunc,
     nextTruncated: OptionalBool,
@@ -64,21 +66,20 @@ module.exports = class extends React.Component {
     constructor (props, context) {
         super(props, context);
         this.state = {
-            pages: _.map(_.range(0, 100000), (page)=> _.range(page * 1000, page * 1000 + 1000)),
+            pages: _.map(_.range(0, 100000), (page)=> _.range(page * pageSize, page * pageSize + pageSize)),
             currentPage: 1
         };
     }
 
     loadPage = (currentPage) => {
-        this.setState({ currentPage }, ()=>{this.refs.list.forceUpdateGrid()});
+        this.setState({ currentPage }, ()=> {
+            this.refs.list.forceUpdateGrid();
+        });
     }
 
-    renderRow (val) {
-        console.log(arguments)
-        return (
-            <div key={val}>Row {val + 1} <Divider/></div>
-        )
-    }
+    renderRow = (val) => (
+        <div key={val}>Row {val + 1}</div>
+    )
 
     render () {
         const paging = Utils.getPaging(this.state.currentPage, this.state.pages.length, 3);
@@ -88,7 +89,7 @@ module.exports = class extends React.Component {
                 <Pager onChange={this.loadPage} {... paging}/>
                 <ListView
                     ref="list"
-                    containerHeight={200}
+                    containerHeight={40 * pageSize}
                     rowHeight={40}
                     data={elements}
                     renderRow={this.renderRow}

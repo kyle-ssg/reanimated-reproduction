@@ -77,7 +77,7 @@ module.exports = {
 
     },
 
-    setToken: function (_token, type) {//set the token for future requests
+    setToken: function (_token) {//set the token for future requests
         this.token = _token;
     }
 };

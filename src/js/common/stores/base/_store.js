@@ -52,14 +52,14 @@ module.exports = _.extend(EventEmitter.prototype, {
         this.emit(eventName || DEFAULT_CHANGE_EVENT, data);
     },
 
-    loading: function (callback) {
+    loading: function () {
         this.hasLoaded = false;
         this.isLoading = true;
         this.trigger(DEFAULT_CHANGE_EVENT);
         this.trigger(DEFAULT_LOADING_EVENT);
     },
 
-    saving: function (callback) {
+    saving: function () {
         this.isSaving = true;
         this.trigger(DEFAULT_CHANGE_EVENT);
         this.trigger(DEFAULT_SAVING_EVENT);
@@ -72,17 +72,17 @@ module.exports = _.extend(EventEmitter.prototype, {
         this.trigger(DEFAULT_CHANGE_EVENT);
     },
 
-    changed: function (data) {
+    changed: function () {
         this.trigger(DEFAULT_CHANGE_EVENT);
     },
 
-    saved: function (data) {
+    saved: function () {
         this.isSaving = false;
         this.trigger(DEFAULT_SAVED_EVENT);
         this.trigger(DEFAULT_CHANGE_EVENT);
     },
 
-    goneABitWest: function (data) {
+    goneABitWest: function () {
         this.hasLoaded = true;
         this.isLoading = false;
         this.isSaving = false;

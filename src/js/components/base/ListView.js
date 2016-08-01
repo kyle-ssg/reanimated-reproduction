@@ -13,6 +13,8 @@ const InfiniteScroll = class extends React.Component {
     rowRenderer = ({ index }) => {
         if (index < this.props.data.length) {
             return this.props.renderRow(this.props.data[index], index);
+        } else if (!this.props.data.lenght) {
+            return this.props.renderNoResults;
         }
         return null;
     }
@@ -27,7 +29,7 @@ const InfiniteScroll = class extends React.Component {
                     <VirtualScroll
                         ref="list"
                         overscanRowCount={20}
-                        rowCount={rowCount}
+                        rowCount={rowCount + 1}
                         width={width}
                         scrollToIndex={this.props.scrollToRow}
                         height={containerHeight || height}
@@ -41,6 +43,7 @@ const InfiniteScroll = class extends React.Component {
 };
 
 InfiniteScroll.propTypes = {
+    renderNoResults: RequiredElement,
     scrollToRow: OptionalNumber,
     renderRow: RequiredFunc,
     data: OptionalArray,

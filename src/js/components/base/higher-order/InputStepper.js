@@ -47,6 +47,7 @@ const InputStepper = class extends React.Component {
 InputStepper.propTypes = {
     children: RequiredFunc,
     data: OptionalArray,
+    onChange: OptionalFunc,
     inputProps: OptionalObject
 };
 
