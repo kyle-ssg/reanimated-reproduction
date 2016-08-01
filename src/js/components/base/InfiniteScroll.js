@@ -29,6 +29,7 @@ const InfiniteScroll = class extends React.Component {
             ? data.length + 1
             : data.length;
 
+        return null;
         return (
             <AutoSizer disableHeight={this.props.containerHeight ? true : false}>
                 {({ height, width }) => (
@@ -68,5 +69,6 @@ InfiniteScroll.propTypes = {
     rowHeight: RequiredNumber,
     threshold: RequiredNumber,
 };
+
 
 module.exports = InfiniteScroll;

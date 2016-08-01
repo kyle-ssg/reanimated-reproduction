@@ -14,3 +14,25 @@
     font-weight: bold;
   }
 }
+
+
+.VirtualScroll {
+  background-color: $body-bg;
+  z-index: $zindex-dropdown;
+  &.absolute {
+    position: absolute;
+  }
+}
+
+
+
+.autocomplete {
+  &.in {
+    .absolute {
+      display: block;
+    }
+  }
+  .absolute {
+    display: none;
+  }
+}

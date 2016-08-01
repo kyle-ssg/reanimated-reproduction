@@ -1,5 +1,10 @@
+//Attaches an input to a component and exposes current select position with keyboard support
 const InputStepper = class extends React.Component {
     displayName:'InputStepper'
+
+    blur = () => {
+        this.refs.input.blur();
+    }
 
     constructor (props, context) {
         super(props, context);
@@ -8,6 +13,7 @@ const InputStepper = class extends React.Component {
 
     onFocusChanged = (isFocused) => {
         this.setState({ isFocused, selectedRow: isFocused ? 0 : -1 });
+        this.props.onFocusChanged && this.props.onFocusChanged(isFocused);
     }
 
     onKeyDown = (e) => {
@@ -17,11 +23,11 @@ const InputStepper = class extends React.Component {
 
         if (Utils.keys.isDown(e)) {
             Utils.preventDefault(e);
-            this.highlightRow(Math.min(this.state.selectedRow + 1, this.props.data.length -1));
+            this.highlightRow(Math.min(this.state.selectedRow + 1, this.props.data.length - 1));
         } else if (Utils.keys.isUp(e)) {
             Utils.preventDefault(e);
             this.highlightRow(Math.max(this.state.selectedRow - 1, 0));
-        }  else if (Utils.keys.isEnter(e)) {
+        } else if (Utils.keys.isEnter(e)) {
             Utils.preventDefault(e);
             this.props.onChange(this.props.data[this.state.selectedRow], e);
         }
@@ -34,10 +40,12 @@ const InputStepper = class extends React.Component {
     render () {
         return (
             <div className={'list-container'}>
-                <Input {... this.props.inputProps}
-                       onBlur={()=>this.onFocusChanged(false)}
-                       onFocus={()=>this.onFocusChanged(false)}
-                       onKeyDown={this.onKeyDown}/>
+                <Input
+                    ref="input"
+                    {... this.props.inputProps}
+                    onBlur={()=>this.onFocusChanged(false)}
+                    onFocus={()=>this.onFocusChanged(true)}
+                    onKeyDown={this.onKeyDown}/>
                 {this.props.children(this.state.selectedRow, this.highlightRow)}
             </div>
         );
@@ -45,6 +53,7 @@ const InputStepper = class extends React.Component {
 };
 
 InputStepper.propTypes = {
+    onFocusChanged: OptionalFunc,
     children: RequiredFunc,
     data: OptionalArray,
     onChange: OptionalFunc,

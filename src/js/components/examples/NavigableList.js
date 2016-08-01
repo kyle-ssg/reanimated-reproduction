@@ -1,6 +1,7 @@
 /**
  * Created by kylejohnson on 31/07/2016.
  */
+import FocusMonitor from '../base/higher-order/FocusMonitor';
 import InputStepper from '../base/higher-order/InputStepper';
 import Highlighter from '../../components/base/Highlighter';
 import data from './country-data';
@@ -11,6 +12,10 @@ const NavigableList = class extends React.Component {
     constructor (props, context) {
         super(props, context);
         this.state = { data: data };
+    }
+
+    onFocusChanged = (isFocused) => {
+        this.setState({ isFocused });
     }
 
     selectRow = (data) => {
@@ -33,7 +38,7 @@ const NavigableList = class extends React.Component {
         return (
             <div onMouseOver={()=>highlightRow(index)}>
                 <Row space>
-                    <Button onClick={()=>this.selectRow(row)}
+                    <Button onMouseDown={()=>this.selectRow(row)}
                             className={"btn-link " + (!isSelected ? "btn-link-secondary" : "")}>
                         {isSelected ? row.name : <Highlighter search={this.state.search} value={row.name}/>}
                     </Button>
@@ -43,38 +48,50 @@ const NavigableList = class extends React.Component {
         );
     }
 
+    onAbsoluteChanged = (isAbsolute) => this.setState({isAbsolute})
+
     render () {
+        const inputProps = {
+            className: "full-width",
+            onChange: this.search,
+            placeholder: 'Search'
+        };
         return (
-            <div>
+            <div className={"autocomplete " + (this.state.isFocused ? "in" : "")}>
                 <h2>
                     Navigable List
                     <Tooltip place="right">
                         Uses the input tep through infinite scroll with keyboard from input
                     </Tooltip>
                 </h2>
-                <InputStepper
-                    ref="input"
-                    data={this.state.data}
-                    onChange={this.selectRow}
-                    inputProps={{ className: "full-width", onChange: this.search, placeholder: 'Search' }}>
-                    {
-                        (highlightedRow, highlightRow) => (
-                            <div>
-                                <ListView
-                                    ref="list"
-                                    scrollToRow={highlightedRow}
-                                    renderNoResults={<div>No results</div>}
-                                    renderRow={(row, index)=>
-                                        this.renderRow(row, index, highlightedRow, highlightRow)
-                                    }
-                                    data={this.state.data}
-                                    containerHeight={200}
-                                    rowHeight={40}
-                                />
-                            </div>
-                        )
-                    }
-                </InputStepper>
+                Show as popover ?
+                <Switch value={this.state.absolute} onChange={this.onAbsoluteChanged}/>
+                <FocusMonitor onFocusChanged={this.onFocusChanged}>
+                    <InputStepper
+                        ref="input"
+                        data={this.state.data}
+                        onChange={this.selectRow}
+                        inputProps={inputProps}>
+                        {
+                            (highlightedRow, highlightRow) => (
+                                <div>
+                                    <ListView
+                                        className={this.state.isAbsolute && 'absolute'}
+                                        ref="list"
+                                        scrollToRow={highlightedRow}
+                                        renderNoResults={<div>No results</div>}
+                                        renderRow={(row, index)=>
+                                            this.renderRow(row, index, highlightedRow, highlightRow)
+                                        }
+                                        data={this.state.data}
+                                        containerHeight={200}
+                                        rowHeight={40}
+                                    />
+                                </div>
+                            )
+                        }
+                    </InputStepper>
+                </FocusMonitor>
             </div>
         );
     }

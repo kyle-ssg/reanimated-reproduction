@@ -3,7 +3,7 @@
  */
 import {AutoSizer, VirtualScroll} from 'react-virtualized';
 
-const InfiniteScroll = class extends React.Component {
+const ListView = class extends React.Component {
     displayName:'ListView'
 
     forceUpdateGrid = () => {
@@ -13,7 +13,7 @@ const InfiniteScroll = class extends React.Component {
     rowRenderer = ({ index }) => {
         if (index < this.props.data.length) {
             return this.props.renderRow(this.props.data[index], index);
-        } else if (!this.props.data.lenght) {
+        } else if (!this.props.data.length) {
             return this.props.renderNoResults;
         }
         return null;
@@ -28,6 +28,7 @@ const InfiniteScroll = class extends React.Component {
                 {({ height, width }) => (
                     <VirtualScroll
                         ref="list"
+                        className={this.props.className}
                         overscanRowCount={20}
                         rowCount={rowCount + 1}
                         width={width}
@@ -42,8 +43,13 @@ const InfiniteScroll = class extends React.Component {
     }
 };
 
-InfiniteScroll.propTypes = {
-    renderNoResults: RequiredElement,
+ListView.defaultProps = {
+    renderNoResults: <div>No Results</div>
+};
+
+ListView.propTypes = {
+    className: OptionalString,
+    renderNoResults: OptionalElement,
     scrollToRow: OptionalNumber,
     renderRow: RequiredFunc,
     data: OptionalArray,
@@ -51,4 +57,4 @@ InfiniteScroll.propTypes = {
     rowHeight: RequiredNumber,
 };
 
-module.exports = InfiniteScroll;
+module.exports = ListView;

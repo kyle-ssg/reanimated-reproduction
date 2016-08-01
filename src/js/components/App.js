@@ -10,7 +10,7 @@ export default class App extends Component {
         return (
             <div>
                 <nav className="navbar navbar-fixed-top navbar-light bg-faded">
-                    <a className="navbar-brand" href="#">SSG Boilerplate</a>
+                    <a className="navbar-brand" href="#">SSG ds</a>
                 </nav>
 
                 <div className="container">
