@@ -61,7 +61,7 @@ const NavigableList = class extends React.Component {
                 <h2>
                     Navigable List
                     <Tooltip place="right">
-                        Uses the input tep through infinite scroll with keyboard from input
+                        Uses the input step through + ListView + FocusMonitor
                     </Tooltip>
                 </h2>
                 Show as popover ?
