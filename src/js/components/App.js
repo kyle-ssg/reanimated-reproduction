@@ -13,7 +13,7 @@ export default class App extends Component {
                 <a className="navbar-brand" href="#">SSG ds</a>
             </nav>
 
-                <div className="container">
+                <div className="app-container container">
                     {this.props.children}
                 </div>
             </div>

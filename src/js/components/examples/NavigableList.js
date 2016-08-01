@@ -1,9 +1,9 @@
 /**
  * Created by kylejohnson on 31/07/2016.
  */
-import FocusMonitor from '../base/higher-order/FocusMonitor';
-import InputStepper from '../base/higher-order/InputStepper';
-import Highlighter from '../../components/base/Highlighter';
+import Highlighter from '../base/Highlighter';
+import AutoComplete from '../base/Autocomplete'
+
 import data from './country-data';
 
 const NavigableList = class extends React.Component {
@@ -12,10 +12,6 @@ const NavigableList = class extends React.Component {
     constructor (props, context) {
         super(props, context);
         this.state = { data: data };
-    }
-
-    onFocusChanged = (isFocused) => {
-        this.setState({ isFocused });
     }
 
     selectRow = (data) => {
@@ -30,7 +26,7 @@ const NavigableList = class extends React.Component {
             data: data.filter((item)=> (
                 item.name.toLowerCase().indexOf(search) > -1
             ))
-        }, this.refs.input.refs.list.forceUpdateGrid);
+        }, this.refs.autocomplete.forceUpdateGrid);
     }
 
     renderRow = (row, index, selectedRow, highlightRow) => {
@@ -44,11 +40,11 @@ const NavigableList = class extends React.Component {
                     </Button>
                     {row.code}
                 </Row>
-            </div>
+             </div>
         );
     }
 
-    onAbsoluteChanged = (isAbsolute) => this.setState({isAbsolute})
+    onAbsoluteChanged = (isAbsolute) => this.setState({ isAbsolute })
 
     render () {
         const inputProps = {
@@ -57,7 +53,7 @@ const NavigableList = class extends React.Component {
             placeholder: 'Search'
         };
         return (
-            <div className={"popover " + (this.state.isFocused ? "in" : "")}>
+            <div>
                 <h2>
                     Navigable List
                     <Tooltip place="right">
@@ -66,32 +62,15 @@ const NavigableList = class extends React.Component {
                 </h2>
                 Show as popover ?
                 <Switch value={this.state.absolute} onChange={this.onAbsoluteChanged}/>
-                <FocusMonitor onFocusChanged={this.onFocusChanged}>
-                    <InputStepper
-                        ref="input"
-                        data={this.state.data}
-                        onChange={this.selectRow}
-                        inputProps={inputProps}>
-                        {
-                            (highlightedRow, highlightRow) => (
-                                <div>
-                                    <ListView
-                                        className={this.state.isAbsolute && 'absolute'}
-                                        ref="list"
-                                        scrollToRow={highlightedRow}
-                                        renderNoResults={<div>No results</div>}
-                                        renderRow={(row, index)=>
-                                            this.renderRow(row, index, highlightedRow, highlightRow)
-                                        }
-                                        data={this.state.data}
-                                        containerHeight={200}
-                                        rowHeight={40}
-                                    />
-                                </div>
-                            )
-                        }
-                    </InputStepper>
-                </FocusMonitor>
+                <AutoComplete
+                    ref="autocomplete"
+                    inputProps={inputProps}
+                    onChange={this.search}
+                    onSelect={this.selectRow}
+                    renderRow={this.renderRow}
+                    isAbsolute={this.state.isAbsolute}
+                    data={this.state.data}>
+                </AutoComplete>
             </div>
         );
     }
