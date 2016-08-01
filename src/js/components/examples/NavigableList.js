@@ -57,7 +57,7 @@ const NavigableList = class extends React.Component {
             placeholder: 'Search'
         };
         return (
-            <div className={"autocomplete " + (this.state.isFocused ? "in" : "")}>
+            <div className={"popover " + (this.state.isFocused ? "in" : "")}>
                 <h2>
                     Navigable List
                     <Tooltip place="right">
