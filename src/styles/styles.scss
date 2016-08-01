@@ -27,3 +27,9 @@ input:disabled {
 .full-width {
   width: 100%;
 }
+
+.centeredContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

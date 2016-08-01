@@ -45,7 +45,8 @@ const FocusMonitor = class extends React.Component {
 };
 
 FocusMonitor.propTypes = {
-    onFocusChanged: RequiredFunc
+    onFocusChanged: RequiredFunc,
+    children: RequiredElement
 };
 
 module.exports = FocusMonitor;

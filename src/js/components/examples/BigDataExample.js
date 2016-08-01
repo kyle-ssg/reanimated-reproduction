@@ -5,7 +5,6 @@ var list = _.map(_.range(0, size), function (i) {
     return { id: i + 1, description: Utils.GUID() };
 }).reverse();
 
-
 module.exports = class extends React.Component {
     displayName = 'HomePage';
 

@@ -15,8 +15,16 @@ module.exports = class extends React.Component {
 
     render = () => (
         <div>
-            <Divider/>
             <NavigableList/>
+            <h2>
+                Flex centered container
+                <Tooltip>
+                    The centeredContainer class uses justify-content and align-items
+                </Tooltip>
+            </h2>
+            <div className="centeredContainer" style={{ width: 100, height: 100, border: '1px solid' }}>
+                I'm always centered
+            </div>
             <Divider/>
             <InfiniteScrollExample/>
             <Divider/>

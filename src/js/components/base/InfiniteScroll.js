@@ -69,5 +69,4 @@ InfiniteScroll.propTypes = {
     threshold: RequiredNumber,
 };
 
-
 module.exports = InfiniteScroll;
