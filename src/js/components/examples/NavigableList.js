@@ -2,7 +2,7 @@
  * Created by kylejohnson on 31/07/2016.
  */
 import Highlighter from '../base/Highlighter';
-import AutoComplete from '../base/Autocomplete'
+import AutoComplete from '../base/Autocomplete';
 
 import data from './country-data';
 

@@ -32,9 +32,19 @@ const Froms = class extends React.Component {
                 </Panel>
                 <h2>Inputs</h2>
                 <InputGroup type="email" title="Default" placeholder="Test"/>
-                <InputGroup inputProps={{mask: "11/11" }} name="expiry" placeholder="dd/yy"
+                <InputGroup
+                    onChange={(e)=> {this.setState({ val:Utils.safeParseEventValue(e) })}}
+                    isValid={this.state.val}
+                    type="text" title="Required"
+                    placeholder="Required Input"/>
+                <InputGroup
+                    onChange={(e)=> {this.setState({ email:Utils.safeParseEventValue(e) })}}
+                    isValid={Utils.isValidEmail(this.state.email)}
+                    type="text" title="Valid Email"
+                    placeholder="Enter an Email"/>
+                <InputGroup inputProps={{ mask: "11/11" }} name="expiry" placeholder="dd/yy"
                             title="Masked"/>
-                <InputGroup inputProps={{mask: "11:11 am" }} name="expiry" placeholder="hh:mm am"
+                <InputGroup inputProps={{ mask: "11:11 am" }} name="expiry" placeholder="hh:mm am"
                             title="Masked"/>
                 <FormGroup title="Bla">
                     <label onClick={this.toggleCheck}>Click</label>

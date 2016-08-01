@@ -8,7 +8,7 @@ const Input = class extends React.Component {
 
     constructor (props, context) {
         super(props, context);
-        this.state = {};
+        this.state = { shouldValidate: false };
     }
 
     onFocus = (e) => {
@@ -25,17 +25,34 @@ const Input = class extends React.Component {
         this.props.onKeyDown && this.props.onKeyDown(e);
     }
 
+    validate = () => {
+        this.setState({
+            shouldValidate: true
+        });
+    }
+
     onBlur = (e) => {
         this.setState({
+            shouldValidate: true,
             isFocused: false
         });
         this.props.onBlur && this.props.onBlur(e);
     }
 
     render () {
+        const className = cn({
+            'input-container': true,
+            'focused': this.state.isFocused,
+            'invalid': this.state.shouldValidate && (typeof this.props.isValid !== undefined) && !this.props.isValid
+        }, this.props.className);
+
+        const inputClassName = cn({
+            input: true
+        }, this.props.inputClassName);
+
         return (
             <div
-                className={'input-container ' + this.props.className + (this.state.isFocused ? ' focused' : '')}>
+                className={className}>
                 {this.props.mask ? (
                     <MaskedInput
                         ref="input"
@@ -59,14 +76,14 @@ const Input = class extends React.Component {
                         onKeyDown={this.onKeyDown}
                         onFocus={this.onFocus}
                         onBlur={this.onBlur}
-                        className={'input ' + this.props.inputClassName}/>
+                        className={inputClassName}/>
                 ) : (
                     <input
                         ref="input"
                         {... this.props} onFocus={this.onFocus}
                         onKeyDown={this.onKeyDown}
                         onBlur={this.onBlur}
-                        className={'input ' + this.props.inputClassName}/>
+                        className={inputClassName}/>
                 )}
                 <hr/>
                 <hr className="highlight"/>
@@ -80,6 +97,7 @@ Input.defaultProps = {
 };
 
 Input.propTypes = {
+    isValid: oneOf([OptionalBool,OptionalString]),
     onKeyDown: OptionalFunc,
     onFocus: OptionalFunc,
     onBlur: OptionalFunc,

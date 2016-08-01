@@ -11,7 +11,7 @@ const FormGroup = (props)=> {
                     {props.icon && (
                         <span className="input-group-addon"><i className={props.icon} aria-hidden="true"></i></span>
                     )}
-                    <Input {... props.inputProps} disabled={props.disabled} value={props.value} onChange={props.onChange} type={props.type || 'text'} name={id} id={id}  placeholder={props.placeholder}/>
+                    <Input {... props.inputProps} isValid={props.isValid} disabled={props.disabled} value={props.value} onChange={props.onChange} type={props.type || 'text'} name={id} id={id}  placeholder={props.placeholder}/>
                 </div>
             </div>
         </div>
