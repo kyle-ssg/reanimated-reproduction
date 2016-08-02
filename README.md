@@ -70,7 +70,7 @@ Globally accessible by default
 
 ### Prod build
 * Build once for (ready for ***Production***):
-  * `$ npm run build`
+  * `$ npm run build:dev` or `$ npm run build:prod`, doing this will use project_dev | project_prod in place of your project.js file
   * Open `build/index.html` through the local webserver, the build folder can be deployed anywhere
 
 ## Further Information
@@ -103,8 +103,116 @@ When you run `npm run build`:
 ## Updating npm packages
 This is very useful to keep the boilerplate up to date, the following will update your ```package.json``` to use latest compatible packages
 * ```npm install -g npm-check-updates```
-* ```ncu (n
+* ```ncu -u```
 
 ## Fixing lint issues
 This is useful to fix simple js linting issues
 * ```npm run fix```
+
+
+# Component Library - WEB
+ **All components have prop types documented however for reference here they are**
+## Forms
+
+```<Button {... html button props}>``` 
+- Standard button with btn className and blurs on mouseup
+
+```<Input {... html input props} isValid={true|false} placeholderChar="-" mask="dd/mm/yy|"/>```  
+-  Standard input with expanding hr on hover, allows input masks, validation and blurs on escape keypress
+
+```<InputGroup inputProps{... Input props} onChange={func} title="" type="" placeholderChar="-" mask="dd/mm/yy|"/>```  
+- Input wrapped in a form-group and label
+
+**Tab component**
+```
+<Tabs value={this.state.tab} onChange={this.selectTab}>
+        <TabItem tabLabel={(<div>Tab 1<span className="fa fa-phone tab-icon"/></div>)}>
+            <h2>Tab 1 content</h2>
+        </TabItem>
+</Tabs>
+``` 
+
+## Grid
+```<Flex>{content}</Flex>``` -- creates a div with flex:1
+
+```<FormGroup>{content}</FormGroup>``` -- wraps content with margin bottom of ```$form-group-margin-bottom```
+
+```<FormInline>{content}</FormInline>``` -- wraps content with form-inline class ```$form-group-margin-bottom```
+
+```<Panel title="bla" icon="bla"> <div/></Panel>``` - creates a panel with a heading and content 
+
+```<Row space={true}><div>item1</div><div>item2</div></Row>``` - creates flex row with the option to space items to extreme ends of the row 
+
+## Addons - these require you to import the files explicitely
+
+### autocomplete that can either be inline or displayed as a popover with the absolute property
+
+```
+ <AutoComplete ref="autocomplete"
+        inputProps={inputProps}
+        onChange={this.search}
+        onSelect={this.selectRow}
+        renderRow={this.renderRow}
+        isAbsolute={this.state.isAbsolute}
+        data={this.state.data}
+        //optional
+        inputProps{... Input Props}
+        renderNoResults={'No results sorry'}
+        rowHeight={40}
+        containerHeight={200}
+        />
+```  
+
+
+``` 
+-- render a big list of data, calls loadMore when you scroll to the threshold
+<InfiniteScroll
+    isLoading={true}
+    loadMore={this.loadPage}
+    scrollToRow={50}
+    renderLoading={<span>Loading</span>}
+    renderRow={this.renderRow}
+    data{[]}
+    containerHeight={200}
+    rowHeight={40}
+    threshold{50}
+    />
+```
+
+**Highlighter- splits text into renderText and render highlight e.g *test***icle
+``` 
+<Highlighter search="test" value="testicle"  
+    //optional
+    renderText={(nonMatchingText))=>(<span>{nonMatchingText}</span>)}
+    renderHighlight={(matchingText))=>(<bold>{matchingText}</bold>)}
+    />
+``` 
+
+**ListView- Renders a performant list view, only rendering items that it needs to**
+``` 
+<ListView 
+        data={[]}
+        rowHeight={40}
+        containerHeight={200}
+        renderRow={this.renderRow}    
+        renderNoResults={<span>NoResults</span>}    
+    />
+```
+
+**StarRating- Simple star rating component**
+```
+<StarRating value={2} icon="star" max={10} editable="true" onChange={this.onChange}/>
+```
+
+
+#Advanced - Higher order components
+**These are less about markup, they provide functionality to child components**
+
+**FocusMonitor - Calls back when the whole element and its children's focus has changed**
+
+```<FocusMonitor onFocusChanged={this.focusChanged}>{stuff}</FocusMonitor>``` 
+
+**InputStepper - Calls back when the whole element and its children's focus has changed**
+```<InputStepper data={[]} onChange={this.selectedItemChanged} 
+        inputProps={... inputProps}>{(selectedRow, highlightRow)=>(<div>The selected element is {selectedRow}</div>)}</InputStepper>``` - creates an input that tracks up and down keystrokes against a collection of elements
+
