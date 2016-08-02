@@ -2,7 +2,21 @@
  * Created by kylejohnson on 30/07/2016.
  */
 import MaskedInput from 'react-maskedinput';
-
+const maskedCharacters = {
+    'a': {
+        validate(char) {
+            return /[ap]/.test(char);
+        },
+    },
+    'm': {
+        validate(char) {
+            return /\w/.test(char);
+        },
+        transform() {
+            return 'm';
+        }
+    }
+};
 const Input = class extends React.Component {
     displayName:'Input'
 
@@ -58,21 +72,7 @@ const Input = class extends React.Component {
                         ref="input"
                         {... this.props}
                         mask={this.props.mask}
-                        formatCharacters={{
-                            'a': {
-                                validate(char) {
-                                    return /[ap]/.test(char);
-                                },
-                            },
-                            'm': {
-                                validate(char) {
-                                    return /\w/.test(char);
-                                },
-                                transform() {
-                                    return 'm';
-                                }
-                            }
-                        }}
+                        formatCharacters={maskedCharacters}
                         onKeyDown={this.onKeyDown}
                         onFocus={this.onFocus}
                         onBlur={this.onBlur}

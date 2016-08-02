@@ -8,6 +8,9 @@
   "license": "MIT",
   "author": "SSG",
   "scripts": {
+    "start": "node & webpack-dev-server --config ./config/webpack.config.dev.js --hot --inline --progress & node ./bin/ngrok.js",
+    "build:dev": "env:dev && build",
+    "build:prod": "env:dev && build",
     "prebuild": "npm run clean:build && npm run build:html",
     "build": "export NODE_ENV=production & NODE_ENV=production & webpack -p --config ./config/webpack.config.prod.js --progress",
     "build:html": "node ./bin/buildHtml.js",
@@ -16,9 +19,10 @@
     "lint": "eslint config src/js/** --ext .js",
     "fix": "eslint --fix config src/js/** --ext .js",
     "prestart": "node ./bin/clean.js",
-    "start": "node ./bin/kill.js & webpack-dev-server --config ./config/webpack.config.dev.js --hot --inline --progress & node ./bin/ngrok.js",
     "test": "mocha --compilers js:babel-core/register,css:./test/unit/cssNullCompiler.js --require ./test/unit/testHelper.js --recursive ./test/unit",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "env:prod": "node ./bin/env.js prod",
+    "env:dev": "node ./bin/env.js dev"
   },
   "dependencies": {
     "classnames": "2.2.5",
