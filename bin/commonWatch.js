@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var watch = require('gulp-watch');
 var clean = require('gulp-clean');
-var fs = require('fs');
 
 var commonPath = 'src/js/common';
 
