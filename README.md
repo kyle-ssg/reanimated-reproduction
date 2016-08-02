@@ -70,7 +70,7 @@ Globally accessible by default
 
 ### Prod build
 * Build once for (ready for ***Production***):
-  * `$ npm run build:dev` or `$ npm run build:prod`
+  * `$ npm run build:dev` or `$ npm run build:prod`, doing this will use project_dev | project_prod in place of your project.js file
   * Open `build/index.html` through the local webserver, the build folder can be deployed anywhere
 
 ## Further Information
