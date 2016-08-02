@@ -108,3 +108,93 @@ This is very useful to keep the boilerplate up to date, the following will updat
 ## Fixing lint issues
 This is useful to fix simple js linting issues
 * ```npm run fix```
+
+
+# Component Library - Web, all components have prop types documented however for reference here they are 
+## Forms
+
+```<Button {... html button props}>```  -- Standard button with btn className and blurs on mouseup
+```<Input {... html input props} isValid={true|false} placeholderChar="-" mask="dd/mm/yy|"/>```  -- Standard input with expanding hr on hover, allows input masks, validation and blurs on escape keypress
+```<InputGroup inputProps{... Input props} onChange={func} title="" type="" placeholderChar="-" mask="dd/mm/yy|"/>```  -- Input wrapped in a form-group and label
+
+
+```
+<Tabs value={this.state.tab} onChange={this.selectTab}>
+        <TabItem tabLabel={(<div>Tab 1<span className="fa fa-phone tab-icon"/></div>)}>
+            <h2>Tab 1 content</h2>
+        </TabItem>
+</Tabs>
+```  -- Tab component
+
+## Grid
+```<Flex>{content}</Flex>``` -- creates a div with flex:1
+```<FormGroup>{content}</FormGroup>``` -- wraps content with margin bottom of ```$form-group-margin-bottom```
+```<FormInline>{content}</FormInline>``` -- wraps content with form-inline class ```$form-group-margin-bottom```
+```<Panel title="bla" icon="bla"> <div/></Panel>``` - creates a panel with a heading and content 
+```<Row space={true}><div>item1</div><div>item2</div></Row>``` - creates flex row with the option to space items to extreme ends of the row 
+
+## Addons - these require you to import the files explicitely
+```
+ <AutoComplete ref="autocomplete"
+        inputProps={inputProps}
+        onChange={this.search}
+        onSelect={this.selectRow}
+        renderRow={this.renderRow}
+        isAbsolute={this.state.isAbsolute}
+        data={this.state.data}
+        //optional
+        inputProps{... Input Props}
+        renderNoResults={'No results sorry'}
+        rowHeight={40}
+        containerHeight={200}
+        />
+```  -- autocomplete that can either be inline or displayed as a popover with the absolute property
+
+
+``` 
+<InfiniteScroll
+    isLoading={true}
+    loadMore={this.loadPage}
+    scrollToRow={50}
+    renderLoading={<span>Loading</span>}
+    renderRow={this.renderRow}
+    data{[]}
+    containerHeight={200}
+    rowHeight={40}
+    threshold{50}
+    />
+``` -- render a big list of data, calls loadMore when you scroll to the threshold
+
+``` 
+<Highlighter search="test" value="testicle"  
+    //optional
+    renderText={(nonMatchingText))=>(<span>{nonMatchingText}</span>)}
+    renderHighlight={(matchingText))=>(<bold>{matchingText}</bold>)}
+    />
+``` -- splits text into renderText and render highlight e.g **test**icle
+
+
+``` 
+<ListView 
+        data={[]}
+        rowHeight={40}
+        containerHeight={200}
+        renderRow={this.renderRow}    
+        renderNoResults={<span>NoResults</span>}    
+    />
+``` -- Renders a performant list view, only rendering items that it needs to
+
+
+```
+<StarRating value={2} icon="star" max={10} editable="true" onChange={this.onChange}/>
+```
+
+
+#Advanced - Higher order components
+**These are less about markup, they provide functionality to child components**
+
+
+```<FocusMonitor onFocusChanged={this.focusChanged}>{stuff}</FocusMonitor>``` - Calls back when the whole element and its children's focus has changed
+```<InputStepper data={[]} onChange={this.selectedItemChanged} 
+        inputProps={... inputProps}>{(selectedRow, highlightRow)=>(<div>The selected element is {selectedRow}</div>)}</InputStepper>``` - creates an input that tracks up and down keystrokes against a collection of elements
+
