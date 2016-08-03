@@ -3,11 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "common:watch": "node ../bin/commonWatch.js",
+    "mobile:watch": "node ../bin/commonWatch.js & node node_modules/eslint-watch/bin/esw -w --color",
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
     "babel-preset-react-native-stage-0": "^1.0.1",
+    "eslint": "^3.2.2",
+    "eslint-watch": "^2.1.14",
     "firebase": "^3.2.1",
     "flux-react-dispatcher": "1.2.5",
     "inputmask-core": "^2.1.1",

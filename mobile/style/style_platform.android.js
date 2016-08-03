@@ -24,4 +24,4 @@ module.exports = {
 
 window.platformVariables = {
   inputHeight: 54,
-}
+};

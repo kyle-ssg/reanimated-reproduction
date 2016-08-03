@@ -15,4 +15,4 @@ module.exports = {
     color: colour.panelText,
     opacity: 0.8
   }
-}
+};

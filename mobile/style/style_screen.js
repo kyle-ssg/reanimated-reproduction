@@ -2,12 +2,9 @@
  * Created by kylejohnson on 07/09/15.
  */
 
-
 require('./style_variables');
 
-
 window.Styles = StyleSheet.create(Object.assign({},
-
   require('./style_alert'),
   require('./style_message'),
   require('./style_base'),
@@ -22,8 +19,6 @@ window.Styles = StyleSheet.create(Object.assign({},
   require('./style_type'),
   require('./style_utilities'),
   require('./project/style_variables'),
-
-
   require('./project/style_base'),
   require('./project/style_type'),
   require('./project/style_buttons'),

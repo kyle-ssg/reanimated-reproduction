@@ -37,7 +37,6 @@ module.exports = {
   },
   avatar: {
     width: 32,
-    width: 32,
     height: 32,
     borderRadius: 56,
     marginRight: styleVariables.marginBaseHorizontal
@@ -63,4 +62,4 @@ module.exports = {
     fontSize: 25,
   }
 
-}
+};

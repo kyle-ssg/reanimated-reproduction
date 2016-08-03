@@ -12,7 +12,6 @@
 //
 //## Gray and brand colors for use across app.
 
-
 window.pallette = {
 
   //primary
@@ -23,7 +22,6 @@ window.pallette = {
   //secondary
 
   secondary: '#0a3a81',
-
 
   cancel: '#acafb7',
   cancelDark: '#7c828f',
