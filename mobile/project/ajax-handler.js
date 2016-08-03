@@ -16,11 +16,11 @@ module.exports = {
                     //AlertIOS.alert('Error', error);
                     break;
                 default:
-                    //AlertIOS.alert('Error', error);
+                //AlertIOS.alert('Error', error);
 
             }
         }
-        
+
         if (store) {
             store.error = res;
             store.goneABitWest();

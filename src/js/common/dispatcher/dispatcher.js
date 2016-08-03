@@ -2,7 +2,7 @@ var ReactDispatcher = require('flux-react-dispatcher');
 var Dispatcher = new ReactDispatcher();
 
 module.exports = Object.assign(Dispatcher, {
-    handleViewAction: function(action) {
+    handleViewAction: function (action) {
         var that = this;
 
         var payload = {
@@ -12,7 +12,7 @@ module.exports = Object.assign(Dispatcher, {
 
         log(payload.action.actionType, payload.action);
 
-        _.defer(function(){
+        _.defer(function () {
             that.dispatch(payload);
         });
 

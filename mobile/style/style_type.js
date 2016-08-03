@@ -3,8 +3,8 @@ const x = Dimensions.get('window').width;
 const y = Dimensions.get('window').height;
 
 // Calculating ratio from iPhone breakpoints
-const ratioX = x < 375 ? (x < 320 ? 0.75 : 0.875) : 1 ;
-const ratioY = y < 568 ? (y < 480 ? 0.75 : 0.875) : 1 ;
+const ratioX = x < 375 ? (x < 320 ? 0.75 : 0.875) : 1;
+const ratioY = y < 568 ? (y < 480 ? 0.75 : 0.875) : 1;
 
 // We set our base font size value
 const base_unit = 14
@@ -12,7 +12,7 @@ const base_unit = 14
 const unit = base_unit * ratioX;
 
 // We add an em() shortcut function
-window.em = function(value){
+window.em = function (value) {
     return unit * value;
 };
 
@@ -57,7 +57,7 @@ module.exports = {
     },
 
     bold: {
-        fontWeight:'bold'
+        fontWeight: 'bold'
     },
 
 
@@ -71,7 +71,7 @@ module.exports = {
     },
 
     subheading: {
-        fontSize:  em(styleVariables.fontSizesubheading),
+        fontSize: em(styleVariables.fontSizesubheading),
         color: colour.subheading,
         fontFamily: 'SFUIDisplay-Bold',
         alignSelf: 'center'
@@ -129,7 +129,7 @@ module.exports = {
     },
 
     listItemTitle: {
-        fontWeight:'bold'
+        fontWeight: 'bold'
     },
 
     listItemText: {

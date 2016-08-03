@@ -1,34 +1,34 @@
 module.exports = {
-    baseWhite:{
-        backgroundColor:'white'
+    baseWhite: {
+        backgroundColor: 'white'
     },
-    baseBlue:{
-        backgroundColor:base.primaryBlue
+    baseBlue: {
+        backgroundColor: base.primaryBlue
     },
-    baseBlueLight:{
-        backgroundColor:base.primaryLight
+    baseBlueLight: {
+        backgroundColor: base.primaryLight
     },
 
-    padded:{
-        padding:base.paddingBase
+    padded: {
+        padding: base.paddingBase
     },
-    noPadding:{
-        paddingBottom:0,
-        paddingTop:0,
-        paddingLeft:0,
-        paddingRight:0
+    noPadding: {
+        paddingBottom: 0,
+        paddingTop: 0,
+        paddingLeft: 0,
+        paddingRight: 0
     },
     anchor: {
         color: base.textLight,
-        fontSize:base.fontSizeSmaller
+        fontSize: base.fontSizeSmaller
     },
 
-    ctaRow:{
-        marginTop:base.paddingBaseSmaller,
+    ctaRow: {
+        marginTop: base.paddingBaseSmaller,
         marginBottom: base.paddingBaseSmaller
     },
 
-    textRow:{
+    textRow: {
         paddingBottom: base.paddingBase
     },
 
@@ -44,85 +44,85 @@ module.exports = {
         fontSize: em(0.55)
     },
 
-    heroPanel:{
-        paddingTop:base.paddingBaseLarge,
-        paddingBottom:base.paddingBaseLarge
+    heroPanel: {
+        paddingTop: base.paddingBaseLarge,
+        paddingBottom: base.paddingBaseLarge
     },
 
     //LANDINGPAGE
-    greeting:{
-        backgroundColor:'transparent',
-        textAlign:'left',
-        paddingBottom:30,
-        paddingLeft:20
+    greeting: {
+        backgroundColor: 'transparent',
+        textAlign: 'left',
+        paddingBottom: 30,
+        paddingLeft: 20
     },
 
-    whiteBar:{
-        backgroundColor:'white',
-        height:35
+    whiteBar: {
+        backgroundColor: 'white',
+        height: 35
     },
-    blueBar:{
-        backgroundColor:base.baseBlueLight,
-        height:60
-    },
-
-    logoPanel:{
-        width:DeviceWidth / 2,
-        justifyContent:'center',
-        alignItems:'center',
-        position:'absolute',
-        top:20,
-        left:(DeviceWidth / 2) - (DeviceWidth / 4),
-        paddingHorizontal:15,
-        paddingTop:15,
-        paddingBottom:10
+    blueBar: {
+        backgroundColor: base.baseBlueLight,
+        height: 60
     },
 
-    logo:{
-        width:(DeviceWidth / 2) - 30,
-        resizeMode:'contain'
+    logoPanel: {
+        width: DeviceWidth / 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        top: 20,
+        left: (DeviceWidth / 2) - (DeviceWidth / 4),
+        paddingHorizontal: 15,
+        paddingTop: 15,
+        paddingBottom: 10
     },
-    logoTagline:{
-        color:'white',
-        fontSize:8
+
+    logo: {
+        width: (DeviceWidth / 2) - 30,
+        resizeMode: 'contain'
+    },
+    logoTagline: {
+        color: 'white',
+        fontSize: 8
     },
 
     //ICONS
 
     iconDefault: {
-        height:30,
-        resizeMode:'contain'
+        height: 30,
+        resizeMode: 'contain'
     },
 
     iconButton: {
-        height:25,
-        resizeMode:'contain'
+        height: 25,
+        resizeMode: 'contain'
     },
 
     dropListIcon: {
-        fontSize:em(1.2),
-        color:base.white
+        fontSize: em(1.2),
+        color: base.white
     },
 
     //ERRORS
 
     errorContainer: {
-        backgroundColor:'white',
-        borderRadius:8,
-        height:90,
-        marginBottom:20
+        backgroundColor: 'white',
+        borderRadius: 8,
+        height: 90,
+        marginBottom: 20
     },
 
     prependError: {
-        backgroundColor:'#E2747D',
-        width:50,
-        height:90,
-        borderTopLeftRadius:8,
-        borderBottomLeftRadius:8
+        backgroundColor: '#E2747D',
+        width: 50,
+        height: 90,
+        borderTopLeftRadius: 8,
+        borderBottomLeftRadius: 8
     },
     prependText: {
-        fontSize:em(2),
-        fontWeight:'bold',
-        color:'white'
+        fontSize: em(2),
+        fontWeight: 'bold',
+        color: 'white'
     }
 }

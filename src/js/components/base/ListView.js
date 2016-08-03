@@ -21,7 +21,7 @@ const ListView = class extends React.Component {
 
     render () {
         const { data, containerHeight, rowHeight } = this.props;
-        const rowCount =  data.length;
+        const rowCount = data.length;
 
         return (
             <AutoSizer ref="resizer" disableHeight={this.props.containerHeight ? true : false}>

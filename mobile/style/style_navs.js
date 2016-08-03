@@ -12,7 +12,7 @@ const base_unit = 14
 const unit = base_unit * ratioX;
 
 // We add an em() shortcut function
-function em(value) {
+function em (value) {
     return unit * value;
 }
 

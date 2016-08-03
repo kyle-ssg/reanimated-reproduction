@@ -1,7 +1,7 @@
 module.exports = {
 
-    navBar:{
-      backgroundColor:base.primaryBlue
+    navBar: {
+        backgroundColor: base.primaryBlue
     },
 
     bar: {
@@ -15,22 +15,20 @@ module.exports = {
     },
 
     //TILED NAV
-    tileContainer:{
+    tileContainer: {},
 
+    navTile: {
+        width: DeviceWidth / 2,
+        height: DeviceWidth / 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRightWidth: 1 / PixelRatio.get() * 2,
+        borderBottomWidth: 1 / PixelRatio.get() * 2,
+        borderColor: base.borderDefault
     },
 
-    navTile:{
-        width:DeviceWidth / 2,
-        height:DeviceWidth / 2,
-        justifyContent:'center',
-        alignItems:'center',
-        borderRightWidth:1 / PixelRatio.get() * 2,
-        borderBottomWidth:1 / PixelRatio.get() * 2,
-        borderColor:base.borderDefault
-    },
-
-    navTileActive:{
-      backgroundColor:base.primaryBlue
+    navTileActive: {
+        backgroundColor: base.primaryBlue
     },
 
     navTile0: {
@@ -40,29 +38,29 @@ module.exports = {
         borderLeftWidth: 1 / PixelRatio.get() * 2
     },
 
-    tileTitle:{
-        fontSize:em(1.25),
-        color:base.primaryBlue,
-        letterSpacing:1
+    tileTitle: {
+        fontSize: em(1.25),
+        color: base.primaryBlue,
+        letterSpacing: 1
     },
 
-    tileTitleActive:{
-        color:base.white
+    tileTitleActive: {
+        color: base.white
     },
 
-    tileSub:{
-        fontSize:em(0.6),
-        color:base.actionOrangeDark
+    tileSub: {
+        fontSize: em(0.6),
+        color: base.actionOrangeDark
     },
 
-    tileDash:{
-        backgroundColor:base.primaryBlue,
-        height:5,
-        width:25,
-        marginTop:15
+    tileDash: {
+        backgroundColor: base.primaryBlue,
+        height: 5,
+        width: 25,
+        marginTop: 15
     },
 
-    tileDashActive:{
-        backgroundColor:base.actionOrangeDark
+    tileDashActive: {
+        backgroundColor: base.actionOrangeDark
     }
 }

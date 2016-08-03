@@ -9,7 +9,7 @@ module.exports = class extends React.Component {
     }
 
     openConfirm = () => {
-        openConfirm(<h3>Title</h3>,<h3>Body</h3>, () => alert("Yes"), () => alert("No"));
+        openConfirm(<h3>Title</h3>, <h3>Body</h3>, () => alert("Yes"), () => alert("No"));
     }
 
     render () {

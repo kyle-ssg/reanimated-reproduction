@@ -98,7 +98,7 @@ Input.defaultProps = {
 };
 
 Input.propTypes = {
-    isValid: oneOf([OptionalBool,OptionalString]),
+    isValid: oneOf([OptionalBool, OptionalString]),
     onKeyDown: OptionalFunc,
     onFocus: OptionalFunc,
     onBlur: OptionalFunc,

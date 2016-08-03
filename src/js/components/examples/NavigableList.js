@@ -11,7 +11,7 @@ const NavigableList = class extends React.Component {
 
     constructor (props, context) {
         super(props, context);
-        this.state = { data: data, isAbsolute:false };
+        this.state = { data: data, isAbsolute: false };
     }
 
     selectRow = (data) => {
@@ -40,7 +40,7 @@ const NavigableList = class extends React.Component {
                     </Button>
                     {row.code}
                 </Row>
-             </div>
+            </div>
         );
     }
 

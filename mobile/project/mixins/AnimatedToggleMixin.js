@@ -2,7 +2,7 @@
  * Created by kylejohnson on 09/01/2016.
  */
 module.exports = {
-    getDefaultProps: function() {
+    getDefaultProps: function () {
         return {
             animation: Animated.timing,
             duration: 300,
@@ -13,16 +13,16 @@ module.exports = {
             animatedProps: ['value']
         }
     },
-    getInitialState: function() {
+    getInitialState: function () {
         var props = {};
-        _.each(this.props.animatedProps, function(prop) {
+        _.each(this.props.animatedProps, function (prop) {
             props['animated_' + prop] = new Animated.Value(this.props[prop] && !this.props.autostart ? 1 : 0)
         }.bind(this));
         return props;
     },
-    componentDidMount: function() {
+    componentDidMount: function () {
         if (this.props.autostart) {
-            _.each(this.props.animatedProps, function(key) {
+            _.each(this.props.animatedProps, function (key) {
                 this.props.animation(                          // Base: spring, decay, timing
                     this.state['animated_' + key],                 // Animate `bounceValue`
                     {
@@ -35,14 +35,14 @@ module.exports = {
             }.bind(this));
         }
     },
-    componentWillReceiveProps: function(newProps) {
-        _.each(newProps.animatedProps, function(key) {
+    componentWillReceiveProps: function (newProps) {
+        _.each(newProps.animatedProps, function (key) {
             var easing = newProps.value ? newProps.easing : newProps.easingOut;
             if (newProps[key] != this.props[key]) {
                 newProps.animation(                          // Base: spring, decay, timing
                     this.state['animated_' + key],                 // Animate `bounceValue`
                     {
-                        easing:easing,
+                        easing: easing,
                         toValue: isNaN(newProps[key]) ? newProps[key] ? 1 : 0 : newProps[key],                         // Animate to smaller size
                         duration: newProps.duration,
                         friction: newProps.friction,

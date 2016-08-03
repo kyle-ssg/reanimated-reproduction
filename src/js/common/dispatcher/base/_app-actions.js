@@ -22,7 +22,7 @@ module.exports = {
             token
         });
     },
-    setUser: function(user) {
+    setUser: function (user) {
         Dispatcher.handleViewAction({
             actionType: Actions.SET_USER,
             user

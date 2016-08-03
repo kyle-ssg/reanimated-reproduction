@@ -12,9 +12,9 @@ const Tabs = class extends React.Component {
                         var isSelected = this.props.value == i;
                         return (
                             <Button
-                                key={'button'+i}
+                                key={'button' + i}
                                 onClick={()=>this.props.onChange(i)}
-                                    className={"btn-tab btn-primary" + (isSelected ? ' tab-active' : '')}>
+                                className={"btn-tab btn-primary" + (isSelected ? ' tab-active' : '')}>
                                 {child.props.tabLabel}
                             </Button>
                         );
@@ -28,7 +28,7 @@ const Tabs = class extends React.Component {
                     {this.props.children.map((child, i)=> {
                         var isSelected = this.props.value == i;
                         return (
-                            <div key={'content'+i} className={'tab-item' + (isSelected ? ' tab-active' : '')}>
+                            <div key={'content' + i} className={'tab-item' + (isSelected ? ' tab-active' : '')}>
                                 {child}
                             </div>
                         );

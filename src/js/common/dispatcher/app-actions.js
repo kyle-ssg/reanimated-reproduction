@@ -1,3 +1,1 @@
-module.exports = Object.assign({}, require('./base/_app-actions'), {
-    
-});
+module.exports = Object.assign({}, require('./base/_app-actions'), {});

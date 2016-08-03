@@ -2,7 +2,8 @@ var RCTDeviceEventEmitter = require('RCTDeviceEventEmitter');
 var FBLoginManager = require('NativeModules').FBLoginManager;
 
 exports.signOut = function () {
-    FBLoginManager.logout(function () {});
+    FBLoginManager.logout(function () {
+    });
 };
 
 exports.login = function () {

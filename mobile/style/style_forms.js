@@ -40,7 +40,7 @@ module.exports = {
     },
 
     inputLargeContainer: {
-        padding:10,
+        padding: 10,
     },
 
     inputLarge: {

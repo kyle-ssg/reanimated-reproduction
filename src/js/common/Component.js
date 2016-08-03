@@ -26,7 +26,7 @@ module.exports = function (options) {
         },
 
         setPathState: function (path, e) {
-            return _.partial(function(){
+            return _.partial(function () {
                 var newState = {};
                 newState[path] = Utils.safeParseEventValue(e);
                 this.setState(newState);
@@ -34,7 +34,7 @@ module.exports = function (options) {
         },
 
         toggleState: function (path) {
-            return _.partial(function(){
+            return _.partial(function () {
                 var newState = {};
                 newState[path] = !this.state[path];
                 this.setState(newState);

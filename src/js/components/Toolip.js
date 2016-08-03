@@ -10,7 +10,7 @@ const Tooltip = class extends React.Component {
                 <Button className="btn-link">
                     <span className="fa fa-question-circle" data-for={this.id} data-tip/>
                 </Button>
-                <ReactTooltip  id={this.id} place={this.props.place || "top"} type="dark" effect="solid">
+                <ReactTooltip id={this.id} place={this.props.place || "top"} type="dark" effect="solid">
                     {this.props.children}
                 </ReactTooltip>
             </span>

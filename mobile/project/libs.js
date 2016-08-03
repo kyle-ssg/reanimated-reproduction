@@ -1,5 +1,3 @@
-
-
 // requires libs, this is separate to window.js as they vary a lot more between projects
 
 //Included in 99% of projects

@@ -8,7 +8,9 @@ const FormGroup = (props)=> {
             <label htmlFor={id} className="cols-sm-2 control-label">{props.title}</label>
             <div>
                 <div>
-                    <Input {... props.inputProps} isValid={props.isValid} disabled={props.disabled} value={props.value} onChange={props.onChange} type={props.type || 'text'} name={id} id={id}  placeholder={props.placeholder}/>
+                    <Input {... props.inputProps} isValid={props.isValid} disabled={props.disabled} value={props.value}
+                           onChange={props.onChange} type={props.type || 'text'} name={id} id={id}
+                           placeholder={props.placeholder}/>
                 </div>
             </div>
         </div>

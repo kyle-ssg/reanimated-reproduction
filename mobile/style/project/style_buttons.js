@@ -1,6 +1,6 @@
 module.exports = {
-    loginButtonContainer:{
-        padding:base.paddingBaseSmall
+    loginButtonContainer: {
+        padding: base.paddingBaseSmall
     },
     loginButton: {
         borderRadius: 20,
@@ -11,7 +11,7 @@ module.exports = {
     },
     loginButtonText: {
         color: 'white',
-        fontWeight:'500',
+        fontWeight: '500',
         fontSize: em(0.7)
     }
 }

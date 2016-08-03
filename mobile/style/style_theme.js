@@ -60,7 +60,7 @@ module.exports = {
         height: 25,
     },
     imageIconLargeComment: {
-      fontSize: 25,
+        fontSize: 25,
     }
 
 }

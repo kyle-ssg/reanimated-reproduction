@@ -6,7 +6,7 @@ module.exports = {
         letterSpacing: 1
     },
 
-    sup:{
-        fontSize:em(0.65)
+    sup: {
+        fontSize: em(0.65)
     }
 }

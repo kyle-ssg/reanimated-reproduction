@@ -1,11 +1,11 @@
 module.exports = {
-  
+
     actionButton: {
         borderRadius: 0,
         backgroundColor: '#4A4A4A'
     },
 
-    imageBackdrop: {flex: 1, backgroundColor: 'rgba(0,0,0,0.4)'},
+    imageBackdrop: { flex: 1, backgroundColor: 'rgba(0,0,0,0.4)' },
 
     //Button
 
@@ -20,7 +20,7 @@ module.exports = {
     },
 
     buttonTextWarning: {
-        color:colour.warningText
+        color: colour.warningText
     },
 
 

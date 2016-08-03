@@ -46,7 +46,7 @@ window.pallette = {
     grayLighter: '#eaeaea',
     warning: '#DE000B',
     warningText: '#fff',
-    dark:'#333',
+    dark: '#333',
     white: '#fff',
     brandDanger: '#d9534f',
     success: '#3CBF88',

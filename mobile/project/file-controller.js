@@ -37,7 +37,7 @@ var configs = {
 };
 
 module.exports = {
-    uploadAvatar: function(cb) {
+    uploadAvatar: function (cb) {
         ImagePickerManager.showImagePicker(configs.avatar, (response) => {
             console.log('Response = ', response);
 
@@ -52,7 +52,7 @@ module.exports = {
             }
         });
     },
-    uploadPost: function(cb) {
+    uploadPost: function (cb) {
         ImagePickerManager.showImagePicker(configs.post, (response) => {
             console.log('Response = ', response);
 

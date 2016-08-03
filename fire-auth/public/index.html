@@ -12,9 +12,9 @@
 
         var config = {
             apiKey: "AIzaSyCC-BTYL-DuOMt7hrK18Q-PhOM0FVpgpd8",
-                    authDomain: "project-4251246165915577329.firebaseapp.com",
-                    databaseURL: "https://project-4251246165915577329.firebaseio.com",
-                    storageBucket: "project-4251246165915577329.appspot.com",
+            authDomain: "project-4251246165915577329.firebaseapp.com",
+            databaseURL: "https://project-4251246165915577329.firebaseio.com",
+            storageBucket: "project-4251246165915577329.appspot.com",
         };
 
         firebase.initializeApp(config);
@@ -75,7 +75,7 @@
                     $('#resetPassword form').on('submit', function (e) {
                         e.preventDefault();
                         resetPassword($('#password').val())
-                                .then(function() {
+                                .then(function () {
                                     $('#reset-password-loaded')
                                             .removeClass('hidden');
                                     $('#reset-password-loading')
@@ -90,7 +90,7 @@
                 }
                 case 'verifyEmail': {
                     confirmEmail()
-                            .then(function(emailAddress) {
+                            .then(function (emailAddress) {
                                 $('#confirm-loading')
                                         .addClass('hidden');
                                 $('#confirm-loaded')
@@ -116,7 +116,8 @@
                     <label for="password" class="cols-sm-2 control-label">New Password</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
-                            <input type="password" claass="form-control input" name="password" id="password"  placeholder="Enter your new password"/>
+                            <input type="password" claass="form-control input" name="password" id="password"
+                                   placeholder="Enter your new password"/>
                         </div>
                     </div>
                 </div>

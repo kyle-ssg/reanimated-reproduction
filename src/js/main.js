@@ -1,4 +1,3 @@
-
 import './project/window';
 import 'react-select/dist/react-select.css';
 import 'react-virtualized/styles.css';

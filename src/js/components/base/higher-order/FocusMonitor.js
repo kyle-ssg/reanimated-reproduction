@@ -9,7 +9,7 @@ const FocusMonitor = class extends React.Component {
         this.state = {};
     }
 
-    focusChanged  = (hasFocus) => {
+    focusChanged = (hasFocus) => {
         if (hasFocus !== this.state.hasFocus) {
             this.setState({
                 hasFocus
@@ -18,7 +18,7 @@ const FocusMonitor = class extends React.Component {
         }
     }
 
-    _clickDocument = (e)  => {
+    _clickDocument = (e) => {
         var component = ReactDOM.findDOMNode(this.refs.component);
         if (e.target == component || $(component).has(e.target).length) {
             this.focusChanged(true);

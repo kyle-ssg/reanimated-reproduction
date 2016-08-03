@@ -1,5 +1,3 @@
-var Constants = {
-    
-};
+var Constants = {};
 
 module.exports = Constants;

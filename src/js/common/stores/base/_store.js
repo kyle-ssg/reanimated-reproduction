@@ -40,7 +40,7 @@ module.exports = Object.assign({}, EventEmitter.prototype, {
             return;
         }
         subscription = sockets.subscription(subscriptionId, subscriptionType);
-        this.subscriptions[key] = {cb: callback, subscription: subscription};
+        this.subscriptions[key] = { cb: callback, subscription: subscription };
 
         sockets.subscribe([this.subscriptions[key].subscription], this.id);
         sockets.on(subscriptionId, callback);

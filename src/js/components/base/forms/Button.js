@@ -6,13 +6,14 @@ const Button = class extends React.Component {
         this.state = {};
     }
 
-    onMouseUp =() => {
+    onMouseUp = () => {
         this.refs.button.blur();
     }
 
     render () {
         return (
-            <button ref="button" {... this.props} onMouseUp={this.onMouseUp} className={"btn  " + (this.props.className || "btn-primary")}>
+            <button ref="button" {... this.props} onMouseUp={this.onMouseUp}
+                    className={"btn  " + (this.props.className || "btn-primary")}>
                 {this.props.children}
             </button>
         );

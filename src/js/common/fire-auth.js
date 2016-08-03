@@ -58,7 +58,7 @@ const FireAuth = class {
     login = (email, password) => {
         try {
             firebase.auth().signInWithEmailAndPassword(email, password).catch(this.onError);
-        } catch(e) {
+        } catch (e) {
             this.onError(e);
         }
     }
@@ -73,7 +73,7 @@ const FireAuth = class {
                     }
                 })
                 .catch(this.onError);
-        } catch(e) {
+        } catch (e) {
             this.onError(e);
         }
 

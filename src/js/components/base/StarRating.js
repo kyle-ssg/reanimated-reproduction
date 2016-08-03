@@ -4,14 +4,14 @@
 
 const StarRating = class extends React.Component {
 
-    static defaultProps =  {
-            max: 5,
-            value: 0,
-            icon: "circle",
-            editable: false,
-            onChange: null
+    static defaultProps = {
+        max: 5,
+        value: 0,
+        icon: "circle",
+        editable: false,
+        onChange: null
     }
-    
+
     constructor (props, context) {
         super(props, context);
         this.state = {
@@ -19,7 +19,7 @@ const StarRating = class extends React.Component {
         };
     }
 
-    componentWillReceiveProps(newProps) {
+    componentWillReceiveProps (newProps) {
         if (newProps.value != this.props.value) {
             this.setState({
                 value: newProps.value
@@ -27,7 +27,7 @@ const StarRating = class extends React.Component {
         }
     }
 
-    getStar(val) {
+    getStar (val) {
         var className = this.props.value < val ? "star-rating empty fa fa-" + this.props.icon + "-o" : "star-rating full fa fa-" + this.props.icon;
         if (this.props.editable) {
             className += " editable";

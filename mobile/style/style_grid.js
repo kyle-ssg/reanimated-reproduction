@@ -31,11 +31,11 @@ module.exports = {
     },
 
     alignCenter: {
-        alignSelf:'center'
+        alignSelf: 'center'
     },
 
     alignRight: {
-        alignSelf:'flex-end'
+        alignSelf: 'flex-end'
     },
 
     centeredRow: {
@@ -43,7 +43,7 @@ module.exports = {
         justifyContent: 'center'
     },
     row: {
-        alignSelf:'stretch',
+        alignSelf: 'stretch',
         flexWrap: 'wrap',
         flexDirection: 'row',
         alignItems: 'center',

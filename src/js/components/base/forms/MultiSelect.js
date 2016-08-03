@@ -105,7 +105,7 @@ AutoComplete.propTypes = {
     onSelectChange: RequiredFunc,
     renderSelectedItem: RequiredFunc,
     renderRow: RequiredFunc,
-    placeholder:OptionalString,
+    placeholder: OptionalString,
     data: RequiredArray,
     isAbsolute: OptionalBool,
     inputProps: OptionalObject,
