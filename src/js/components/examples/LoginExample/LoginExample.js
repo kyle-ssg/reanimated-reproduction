@@ -10,105 +10,105 @@ const FireAuth = require('../../../common/fire-auth');
 
 module.exports = class extends React.Component {
 
-    constructor (props, context) {
-        super(props, context);
-        this.state = { isLoading: true };
-    }
+  constructor (props, context) {
+    super(props, context);
+    this.state = { isLoading: true };
+  }
 
-    componentWillMount () {
-        firebase.initializeApp(Project.firebase);
-        FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, ()=> {
-            alert("Email verified!");
-        }, this.onError);
-    }
+  componentWillMount () {
+    firebase.initializeApp(Project.firebase);
+    FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, ()=> {
+      alert("Email verified!");
+    }, this.onError);
+  }
 
-    onError = (err) => {
-        alert(err);
-    }
+  onError = (err) => {
+    alert(err);
+  }
 
-    onLogin = (user, profile) => {
-        this.setState({
-            isLoading: false,
-            user,
-            profile
-        });
-    }
+  onLogin = (user, profile) => {
+    this.setState({
+      isLoading: false,
+      user,
+      profile
+    });
+  }
 
-    onUserChange = (user, profile) => {
-        this.setState({
-            user,
-            profile
-        });
-    }
+  onUserChange = (user, profile) => {
+    this.setState({
+      user,
+      profile
+    });
+  }
 
-    onLogout = () => {
-        this.setState({
-            isLoading: false,
-            user: null,
-            profile: null
-        });
-    }
+  onLogout = () => {
+    this.setState({
+      isLoading: false,
+      user: null,
+      profile: null
+    });
+  }
 
-    showForgotPassword = () => {
-        openModal(<h3>Forgot Password</h3>,
-            <ForgotPassword onSubmit={()=>closeModal()}/>
-        );
-    }
+  showForgotPassword = () => {
+    openModal(<h3>Forgot Password</h3>,
+      <ForgotPassword onSubmit={()=>closeModal()}/>
+    );
+  }
 
-    showChangePassword = () => {
-        openModal(<h3>Change Password</h3>,
-            <ChangePassword onSubmit={()=>closeModal()}/>
-        );
-    }
+  showChangePassword = () => {
+    openModal(<h3>Change Password</h3>,
+      <ChangePassword onSubmit={()=>closeModal()}/>
+    );
+  }
 
-    render () {
-        return (
-            <div>
-                <h1>
-                    Simple Login Example
-                    <Tooltip place="right">
-                        fireAuth.init(onLogin, onUserChange, onLogout, onEmailVerified, onError)
-                    </Tooltip>
-                </h1>
-                {!this.state.profile ? (
-                    <div>
-                        <FormInline>
-                            <Button disabled={this.state.isLoading} onClick={FireAuth.facebookLogin}>
-                                Facebook
-                            </Button>
-                            <Button disabled={this.state.isLoading} onClick={FireAuth.googleLogin}>
-                                Google
-                            </Button>
-                        </FormInline>
-                        <Divider/>
-                        <LoginForm onRegister={(email, password)=> FireAuth.register(email, password)}
-                                   onLogin={(email, password)=> FireAuth.login(email, password)}/>
-                        <Divider/>
-                        <Button onClick={this.showForgotPassword} className="btn-link">Forgot password ?</Button>
-                    </div>
-                ) : (
-                    <div>
-                        {!this.state.profile.emailVerified && (
-                            <div>
-                                <Button onClick={FireAuth.resendVerification}>
-                                    Resend Verification Email
-                                </Button>
-                            </div>
-                        )}
-                        { //todo: check if can set password
-                            <Button onClick={this.showChangePassword}>
-                                Change Password
-                            </Button>
-                        }
+  render () {
+    return (
+      <div>
+        <h1>
+          Simple Login Example
+          <Tooltip place="right">
+            fireAuth.init(onLogin, onUserChange, onLogout, onEmailVerified, onError)
+          </Tooltip>
+        </h1>
+        {!this.state.profile ? (
+          <div>
+            <FormInline>
+              <Button disabled={this.state.isLoading} onClick={FireAuth.facebookLogin}>
+                Facebook
+              </Button>
+              <Button disabled={this.state.isLoading} onClick={FireAuth.googleLogin}>
+                Google
+              </Button>
+            </FormInline>
+            <Divider/>
+            <LoginForm onRegister={(email, password)=> FireAuth.register(email, password)}
+                       onLogin={(email, password)=> FireAuth.login(email, password)}/>
+            <Divider/>
+            <Button onClick={this.showForgotPassword} className="btn-link">Forgot password ?</Button>
+          </div>
+        ) : (
+          <div>
+            {!this.state.profile.emailVerified && (
+              <div>
+                <Button onClick={FireAuth.resendVerification}>
+                  Resend Verification Email
+                </Button>
+              </div>
+            )}
+            { //todo: check if can set password
+              <Button onClick={this.showChangePassword}>
+                Change Password
+              </Button>
+            }
 
-                        <UpdateProfile onSubmit={this.onProfileUpdated} {... this.state.profile}/>
+            <UpdateProfile onSubmit={this.onProfileUpdated} {... this.state.profile}/>
 
-                        <Button onClick={FireAuth.logout}>
-                            Logout
-                        </Button>
-                    </div>
-                )}
-            </div>
-        );
-    }
+            <Button onClick={FireAuth.logout}>
+              Logout
+            </Button>
+          </div>
+        )}
+      </div>
+    );
+  }
 };

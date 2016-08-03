@@ -13,19 +13,19 @@ const unit = base_unit * ratioX;
 
 // We add an em() shortcut function
 function em (value) {
-    return unit * value;
+  return unit * value;
 }
 
 
 module.exports = {
-    //
-    // Labels
-    // --------------------------------------------------
+  //
+  // Labels
+  // --------------------------------------------------
 
-    label: {
-        fontSize: em(styleVariables.fontSizelistTitle),
-        fontWeight: styleVariables.mediumFontWeight,
-        color: pallette.textLight
-    }
+  label: {
+    fontSize: em(styleVariables.fontSizelistTitle),
+    fontWeight: styleVariables.mediumFontWeight,
+    color: pallette.textLight
+  }
 
 }

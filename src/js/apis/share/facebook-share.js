@@ -4,8 +4,8 @@
 import '../libs/fb';
 
 module.exports = (url) => { // share to twitter
-    FB.ui({
-        method: 'share',
-        href: url
-    });
+  FB.ui({
+    method: 'share',
+    href: url
+  });
 };

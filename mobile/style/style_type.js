@@ -13,147 +13,147 @@ const unit = base_unit * ratioX;
 
 // We add an em() shortcut function
 window.em = function (value) {
-    return unit * value;
+  return unit * value;
 };
 
 module.exports = {
 
-    //so 14 is em(1), 28 is em(2)
+  //so 14 is em(1), 28 is em(2)
 
-    //
-    // Typography
-    // --------------------------------------------------
+  //
+  // Typography
+  // --------------------------------------------------
 
-    // Body text
-    // -------------------------
+  // Body text
+  // -------------------------
 
-    text: {
-        color: colour.text,
-        fontSize: 12
-    },
+  text: {
+    color: colour.text,
+    fontSize: 12
+  },
 
-    footerIcon: {
-        fontSize: em(2),
-        color: colour.tabIcon,
-    },
+  footerIcon: {
+    fontSize: em(2),
+    color: colour.tabIcon,
+  },
 
-    icon: {
-        fontSize: em(2)
-    },
+  icon: {
+    fontSize: em(2)
+  },
 
-    anchor: {
-        color: pallette.anchor,
-        fontWeight: '500',
-        fontSize: em(styleVariables.fontSizeAnchor)
-    },
+  anchor: {
+    color: pallette.anchor,
+    fontWeight: '500',
+    fontSize: em(styleVariables.fontSizeAnchor)
+  },
 
-    debug: {
-        borderWidth: styleVariables.borderWidth,
-        borderColor: pallette.brandDanger
-    },
+  debug: {
+    borderWidth: styleVariables.borderWidth,
+    borderColor: pallette.brandDanger
+  },
 
-    p: {
-        marginBottom: styleVariables.marginBaseVertical,
-    },
+  p: {
+    marginBottom: styleVariables.marginBaseVertical,
+  },
 
-    bold: {
-        fontWeight: 'bold'
-    },
+  bold: {
+    fontWeight: 'bold'
+  },
 
 
-    // Headings
-    // -------------------------
+  // Headings
+  // -------------------------
 
-    heading: {
-        fontSize: em(styleVariables.fontSizeHeading),
-        color: colour.heading,
-        alignSelf: 'center'
-    },
+  heading: {
+    fontSize: em(styleVariables.fontSizeHeading),
+    color: colour.heading,
+    alignSelf: 'center'
+  },
 
-    subheading: {
-        fontSize: em(styleVariables.fontSizesubheading),
-        color: colour.subheading,
-        fontFamily: 'SFUIDisplay-Bold',
-        alignSelf: 'center'
-    },
+  subheading: {
+    fontSize: em(styleVariables.fontSizesubheading),
+    color: colour.subheading,
+    fontFamily: 'SFUIDisplay-Bold',
+    alignSelf: 'center'
+  },
 
-    h1: {
-        paddingTop: 0,
-        fontWeight: styleVariables.headingsFontWeight,
-        fontSize: em(styleVariables.fontSizeH1),
-        fontWeight: "300"
-    },
+  h1: {
+    paddingTop: 0,
+    fontWeight: styleVariables.headingsFontWeight,
+    fontSize: em(styleVariables.fontSizeH1),
+    fontWeight: "300"
+  },
 
-    h2: {
-        paddingTop: 0,
-        fontSize: em(styleVariables.fontSizeH2),
-        fontWeight: styleVariables.headingsFontWeight,
-    },
+  h2: {
+    paddingTop: 0,
+    fontSize: em(styleVariables.fontSizeH2),
+    fontWeight: styleVariables.headingsFontWeight,
+  },
 
-    h3: {
-        paddingTop: 0,
-        fontSize: em(styleVariables.fontSizeH3),
-        fontWeight: styleVariables.headingsFontWeight,
-        color: pallette.textLight
-    },
+  h3: {
+    paddingTop: 0,
+    fontSize: em(styleVariables.fontSizeH3),
+    fontWeight: styleVariables.headingsFontWeight,
+    color: pallette.textLight
+  },
 
-    // Emphasis & misc
-    // -------------------------
+  // Emphasis & misc
+  // -------------------------
 
-    note: {
-        paddingTop: 0,
-        fontSize: em(styleVariables.fontSizeNote),
-        fontWeight: styleVariables.mediumFontWeight,
-        color: pallette.textLight,
-    },
+  note: {
+    paddingTop: 0,
+    fontSize: em(styleVariables.fontSizeNote),
+    fontWeight: styleVariables.mediumFontWeight,
+    color: pallette.textLight,
+  },
 
-    productName: {
-        color: colour.primaryDark,
-        fontWeight: styleVariables.headingsFontWeight
-    },
+  productName: {
+    color: colour.primaryDark,
+    fontWeight: styleVariables.headingsFontWeight
+  },
 
-    // Lists
-    // -------------------------
+  // Lists
+  // -------------------------
 
-    listContainer: {
-        flex: 1,
-        paddingTop: styleVariables.paddingBase,
-        backgroundColor: colour.listBackground
-    },
+  listContainer: {
+    flex: 1,
+    paddingTop: styleVariables.paddingBase,
+    backgroundColor: colour.listBackground
+  },
 
-    li: {
-        backgroundColor: colour.listItem,
-        borderColor: colour.listItemDivider,
-        borderBottomWidth: styleVariables.borderBottomWidth,
-        justifyContent: 'center'
-    },
+  li: {
+    backgroundColor: colour.listItem,
+    borderColor: colour.listItemDivider,
+    borderBottomWidth: styleVariables.borderBottomWidth,
+    justifyContent: 'center'
+  },
 
-    listItemTitle: {
-        fontWeight: 'bold'
-    },
+  listItemTitle: {
+    fontWeight: 'bold'
+  },
 
-    listItemText: {
-        color: pallette.textLight,
-        fontSize: em(styleVariables.fontSizelistitem)
-    },
+  listItemText: {
+    color: pallette.textLight,
+    fontSize: em(styleVariables.fontSizelistitem)
+  },
 
-    liContent: {
-        paddingTop: 12,
-        paddingLeft: styleVariables.paddingBase,
-        paddingRight: styleVariables.paddingBase,
-        paddingBottom: 12,
-    },
+  liContent: {
+    paddingTop: 12,
+    paddingLeft: styleVariables.paddingBase,
+    paddingRight: styleVariables.paddingBase,
+    paddingBottom: 12,
+  },
 
-    listTitle: {
-        color: pallette.text,
-        fontSize: em(styleVariables.fontSizelistTitle),
-        fontWeight: styleVariables.mediumFontWeight
-    },
+  listTitle: {
+    color: pallette.text,
+    fontSize: em(styleVariables.fontSizelistTitle),
+    fontWeight: styleVariables.mediumFontWeight
+  },
 
-    listText: {
-        color: pallette.textLight,
-        fontSize: styleVariables.fontSizelistitem,
-        fontWeight: styleVariables.mediumFontWeight
-    }
+  listText: {
+    color: pallette.textLight,
+    fontSize: styleVariables.fontSizelistitem,
+    fontWeight: styleVariables.mediumFontWeight
+  }
 
 }

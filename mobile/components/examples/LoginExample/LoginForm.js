@@ -1,7 +1,7 @@
 import FireAuth from '../../../common/fire-auth';
 
 module.exports = class extends React.Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context);
     this.state = {
       firstName: 'kyle',
@@ -11,24 +11,24 @@ module.exports = class extends React.Component {
     };
   }
 
-  register() {
-    const {email, password, firstName, lastName} = this.state;
-    FireAuth.register(email, password, {firstName, lastName});
+  register () {
+    const { email, password, firstName, lastName } = this.state;
+    FireAuth.register(email, password, { firstName, lastName });
   }
 
-  login() {
-    const {email, password} = this.state;
+  login () {
+    const { email, password } = this.state;
     FireAuth.login(email, password)
       .catch((res)=> {
         alert(res.message)
       });
   }
 
-  facebook() {
+  facebook () {
     FireAuth.facebookLogin();
   }
 
-  render() {
+  render () {
     return (
       <ScrollableTabView {... Constants.defaultTabStyles}>
         <Flex style={Styles.centeredContainer} tabLabel={"Login"}>

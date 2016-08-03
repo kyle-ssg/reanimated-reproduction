@@ -3,24 +3,24 @@
  */
 var ProgressViewExample = Component({
 
-    getInitialState() {
-        return {
-            progress: 0,
-        };
-    },
+  getInitialState() {
+    return {
+      progress: 0,
+    };
+  },
 
-    render() {
-        return (
-            <ActivityIndicatorIOS color={colour.loader}/>
-        );
-    }
+  render() {
+    return (
+      <ActivityIndicatorIOS color={colour.loader}/>
+    );
+  }
 });
 
 var styles = StyleSheet.create({
-    container: {
-        alignItems: 'center',
-        padding: 20
-    }
+  container: {
+    alignItems: 'center',
+    padding: 20
+  }
 });
 
 module.exports = ProgressViewExample;

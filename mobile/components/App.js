@@ -3,20 +3,20 @@ import Example from './examples/LoginExample/LoginExample';
 // import Example from './examples/InfiniteScrollExample';
 
 const TheComponent = class extends React.Component {
-    displayName:'TheComponent'
+  displayName:'TheComponent'
 
-    constructor (props, context) {
-        super(props, context);
-        this.state = {};
-    }
+  constructor (props, context) {
+    super(props, context);
+    this.state = {};
+  }
 
-    render () {
-        return (
-            <Flex>
-                <Example/>
-            </Flex>
-        );
-    }
+  render () {
+    return (
+      <Flex>
+        <Example/>
+      </Flex>
+    );
+  }
 };
 
 TheComponent.propTypes = {};

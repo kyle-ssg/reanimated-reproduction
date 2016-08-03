@@ -1,75 +1,75 @@
 module.exports = {
-    //
-    // Forms
-    // --------------------------------------------------
+  //
+  // Forms
+  // --------------------------------------------------
 
-    userNameForm: {
-        marginTop: 40,
-        marginBottom: styleVariables.marginBaseVertical
-    },
+  userNameForm: {
+    marginTop: 40,
+    marginBottom: styleVariables.marginBaseVertical
+  },
 
-    borderMessageTop: {
-        borderTopColor: 'lightgray',
-        borderTopWidth: 1
-    },
+  borderMessageTop: {
+    borderTopColor: 'lightgray',
+    borderTopWidth: 1
+  },
 
-    //Input
+  //Input
 
-    formGroup: {
-        paddingTop: styleVariables.paddingBase,
-        paddingBottom: styleVariables.paddingBase
-    },
+  formGroup: {
+    paddingTop: styleVariables.paddingBase,
+    paddingBottom: styleVariables.paddingBase
+  },
 
-    input: {
-        fontFamily: styleVariables.fontSansSerif,
-        fontSize: styleVariables.fontSizeAlert,
-        flex: 1,
-        fontWeight: styleVariables.mediumFontWeight,
-        color: colour.input,
-    },
+  input: {
+    fontFamily: styleVariables.fontSansSerif,
+    fontSize: styleVariables.fontSizeAlert,
+    flex: 1,
+    fontWeight: styleVariables.mediumFontWeight,
+    color: colour.input,
+  },
 
-    textCenter: {
-        textAlign: 'center'
-    },
+  textCenter: {
+    textAlign: 'center'
+  },
 
-    inputContainer: {
-        padding: 5,
-        justifyContent: 'center',
-        backgroundColor: colour.inputBackground,
-        borderColor: 'gray'
-    },
+  inputContainer: {
+    padding: 5,
+    justifyContent: 'center',
+    backgroundColor: colour.inputBackground,
+    borderColor: 'gray'
+  },
 
-    inputLargeContainer: {
-        padding: 10,
-    },
+  inputLargeContainer: {
+    padding: 10,
+  },
 
-    inputLarge: {
-        fontSize: styleVariables.fontSizeInputLarge,
-    },
+  inputLarge: {
+    fontSize: styleVariables.fontSizeInputLarge,
+  },
 
-    disabled: {
-        opacity: styleVariables.disabledOpacity
-    },
+  disabled: {
+    opacity: styleVariables.disabledOpacity
+  },
 
-    disabledText: {
-        color: colour.disabledText,
-    },
+  disabledText: {
+    color: colour.disabledText,
+  },
 
-    // Checkboxes and radios
+  // Checkboxes and radios
 
-    radioText: {
-        color: colour.radioText
-    },
+  radioText: {
+    color: colour.radioText
+  },
 
-    radioTextActive: {
-        color: colour.radioTextActive
-    },
+  radioTextActive: {
+    color: colour.radioTextActive
+  },
 
-    radio: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginRight: 5,
-        borderWidth: 1 / PixelRatio.get()
-    }
+  radio: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 5,
+    borderWidth: 1 / PixelRatio.get()
+  }
 
 }

@@ -13,6 +13,6 @@ const rootElement = document.getElementById('app');
 
 // Render the React application to the DOM
 ReactDOM.render(
-    <Router history={browserHistory} routes={routes}/>,
-    rootElement
+  <Router history={browserHistory} routes={routes}/>,
+  rootElement
 );

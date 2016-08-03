@@ -4,30 +4,30 @@
 import Push from '../../apis/push';
 
 const TheComponent = class extends React.Component {
-    displayName:'TheComponent'
+  displayName:'TheComponent'
 
-    constructor (props, context) {
-        super(props, context);
-        this.state = { push: new Push(this.onNotification), registered: false };
-    }
+  constructor (props, context) {
+    super(props, context);
+    this.state = { push: new Push(this.onNotification), registered: false };
+  }
 
-    onNotification () {
-        alert("Notified");
-    }
+  onNotification () {
+    alert("Notified");
+  }
 
-    sendLocalPushNotification = () => {
-        this.state.push.sendLocal("Title", "Text");
-    }
+  sendLocalPushNotification = () => {
+    this.state.push.sendLocal("Title", "Text");
+  }
 
-    render () {
-        return (
-            <Flex style={Styles.centeredContainer}>
-                <Button style={{ width: DeviceWidth / 2 }} onPress={this.sendLocalPushNotification}>
-                    <Text style={Styles.buttonText}>Send Local</Text>
-                </Button>
-            </Flex>
-        );
-    }
+  render () {
+    return (
+      <Flex style={Styles.centeredContainer}>
+        <Button style={{ width: DeviceWidth / 2 }} onPress={this.sendLocalPushNotification}>
+          <Text style={Styles.buttonText}>Send Local</Text>
+        </Button>
+      </Flex>
+    );
+  }
 };
 
 TheComponent.propTypes = {};

@@ -138,13 +138,13 @@ window.Constants = require('./constants');
 require('./project-components'); // project specific components that are reused everyhwere
 
 window.log = function () {
-    if (Project.debug) {
-        console.log(arguments);
-    }
+  if (Project.debug) {
+    console.log(arguments);
+  }
 };
 
 window.info = function () {
-    if (Project.debug) {
-        console.info(arguments);
-    }
+  if (Project.debug) {
+    console.info(arguments);
+  }
 };

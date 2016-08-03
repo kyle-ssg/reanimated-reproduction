@@ -1,8 +1,8 @@
 const TabItem = (props)=>(
-    props.children
+  props.children
 );
 TabItem.displayName = "TabItem";
 TabItem.propTypes = {
-    children: RequiredElement
+  children: RequiredElement
 };
 module.exports = TabItem;

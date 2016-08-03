@@ -6,11 +6,11 @@ window.render = require('react-dom').render;
 window.moment = require('moment/min/moment.min');
 window.fetch = require('fetchify')(Promise).fetch;
 window._ = {
-    indexOf: require('lodash.indexof'),
-    merge: require('lodash.merge'),
-    orderBy: require('lodash.orderby'),
-    range: require('lodash.range'),
-    each: require('lodash.foreach')
+  indexOf: require('lodash.indexof'),
+  merge: require('lodash.merge'),
+  orderBy: require('lodash.orderby'),
+  range: require('lodash.range'),
+  each: require('lodash.foreach')
 };
 
 window.OptionalArray = React.PropTypes.array;
@@ -64,19 +64,19 @@ require('./project-components');
 
 /*eslint no-console:0*/
 window.log = function () {
-    if (Project.debug) {
-        console.log(arguments);
-    }
+  if (Project.debug) {
+    console.log(arguments);
+  }
 };
 
 window.info = function () {
-    if (Project.debug) {
-        console.info(arguments);
-    }
+  if (Project.debug) {
+    console.info(arguments);
+  }
 };
 
 window.warn = function () {
-    if (Project.debug) {
-        console.warn(arguments);
-    }
+  if (Project.debug) {
+    console.warn(arguments);
+  }
 };

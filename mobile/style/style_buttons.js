@@ -1,63 +1,63 @@
 module.exports = {
 
-    actionButton: {
-        borderRadius: 0,
-        backgroundColor: '#4A4A4A'
-    },
+  actionButton: {
+    borderRadius: 0,
+    backgroundColor: '#4A4A4A'
+  },
 
-    imageBackdrop: { flex: 1, backgroundColor: 'rgba(0,0,0,0.4)' },
+  imageBackdrop: { flex: 1, backgroundColor: 'rgba(0,0,0,0.4)' },
 
-    //Button
+  //Button
 
-    buttonText: {
-        color: colour.btnText,
-        fontWeight: styleVariables.mediumFontWeight
-    },
+  buttonText: {
+    color: colour.btnText,
+    fontWeight: styleVariables.mediumFontWeight
+  },
 
-    //example variation
-    buttonGroupWarning: {
-        backgroundColor: colour.warning
-    },
+  //example variation
+  buttonGroupWarning: {
+    backgroundColor: colour.warning
+  },
 
-    buttonTextWarning: {
-        color: colour.warningText
-    },
-
-
-    //Other variation
-    buttonGroupLarge: {
-        height: styleVariables.buttonLarge
-    },
-
-    buttonTextLarge: {
-        fontSize: styleVariables.fontSizeIcon
-    },
-
-    buttonGroup: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: colour.btnDefault,
-        borderRadius: styleVariables.paddingBase,
-        paddingLeft: styleVariables.paddingBase,
-        paddingRight: styleVariables.paddingBase,
-        height: styleVariables.button
-    },
+  buttonTextWarning: {
+    color: colour.warningText
+  },
 
 
-    buttonGroupCenter: {
-        borderRadius: 0
-    },
+  //Other variation
+  buttonGroupLarge: {
+    height: styleVariables.buttonLarge
+  },
 
-    buttonGroupFooter: {
-        borderRadius: 40
-    },
-    buttonGroupLeft: {
-        borderTopRightRadius: 0,
-        borderBottomRightRadius: 0,
-    },
-    buttonGroupRight: {
-        borderTopLeftRadius: 0,
-        borderBottomLeftRadius: 0,
-    },
+  buttonTextLarge: {
+    fontSize: styleVariables.fontSizeIcon
+  },
+
+  buttonGroup: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colour.btnDefault,
+    borderRadius: styleVariables.paddingBase,
+    paddingLeft: styleVariables.paddingBase,
+    paddingRight: styleVariables.paddingBase,
+    height: styleVariables.button
+  },
+
+
+  buttonGroupCenter: {
+    borderRadius: 0
+  },
+
+  buttonGroupFooter: {
+    borderRadius: 40
+  },
+  buttonGroupLeft: {
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+  },
+  buttonGroupRight: {
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+  },
 
 }

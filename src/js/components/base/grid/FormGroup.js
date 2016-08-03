@@ -1,11 +1,11 @@
 const FormGroup = (props)=>(
-    <div className="form-group">
-        {props.children}
-    </div>
+  <div className="form-group">
+    {props.children}
+  </div>
 );
 
 FormGroup.displayName = "FormGroup";
 FormGroup.propTypes = {
-    children: OptionalElement
+  children: OptionalElement
 };
 module.exports = FormGroup;

@@ -13,50 +13,50 @@ const unit = base_unit * ratioX;
 
 // We add an em() shortcut function
 window.em = function (value) {
-    return unit * value;
+  return unit * value;
 };
 
 
 module.exports = {
-    // Utility classes
-    // -------------------------
+  // Utility classes
+  // -------------------------
 
-    right: {
-        alignSelf: 'flex-end',
-        margin: 5,
-    },
+  right: {
+    alignSelf: 'flex-end',
+    margin: 5,
+  },
 
-    center: {
-        textAlign: 'center'
-    },
+  center: {
+    textAlign: 'center'
+  },
 
-    centerChildren: {
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
+  centerChildren: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
 
-    opaque: {
-        backgroundColor: pallette.white
-    },
+  opaque: {
+    backgroundColor: pallette.white
+  },
 
-    price: {
-        borderRadius: 5,
-        padding: 5,
-        backgroundColor: colour.btnDefault,
-    },
+  price: {
+    borderRadius: 5,
+    padding: 5,
+    backgroundColor: colour.btnDefault,
+  },
 
-    fullScreen: {
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
-        height: Dimensions.get("window").height,
-    },
+  fullScreen: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: Dimensions.get("window").height,
+  },
 
-    backdrop: {
-        flex: 1,
-        backgroundColor: styleVariables.backdropBackground
-    }
+  backdrop: {
+    flex: 1,
+    backgroundColor: styleVariables.backdropBackground
+  }
 
 }
