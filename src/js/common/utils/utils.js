@@ -1,4 +1,4 @@
-module.exports = _.assign({}, require('./base/_utils'), {
+module.exports = Object.assign({}, require('./base/_utils'), {
 
     pages: { //parts of the site we wish to track as a page
         "HOME": {

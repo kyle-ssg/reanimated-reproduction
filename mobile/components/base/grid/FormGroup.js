@@ -1,5 +1,5 @@
 module.exports = Component({
-    render: function() {
+    render: function () {
         return (
             <View style={[Styles.formGroup, this.props.style]}>
                 {this.props.children}

@@ -11,7 +11,7 @@ const NavigableList = class extends React.Component {
 
     constructor (props, context) {
         super(props, context);
-        this.state = { data: data };
+        this.state = { data: data, isAbsolute:false };
     }
 
     selectRow = (data) => {
@@ -61,7 +61,7 @@ const NavigableList = class extends React.Component {
                     </Tooltip>
                 </h2>
                 Show as popover ?
-                <Switch value={this.state.absolute} onChange={this.onAbsoluteChanged}/>
+                <Switch value={this.state.isAbsolute} onChange={this.onAbsoluteChanged}/>
                 <AutoComplete
                     ref="autocomplete"
                     inputProps={inputProps}

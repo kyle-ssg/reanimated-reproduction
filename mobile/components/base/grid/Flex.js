@@ -2,9 +2,9 @@
 
 module.exports =
     class extends React.Component {
-        render() {
+        render () {
             return (
-                <View style={[this.props.style, {flex:this.props.value || 1}]}>
+                <View style={[this.props.style, { flex: this.props.value || 1 }]}>
                     {this.props.children}
                 </View>
             )

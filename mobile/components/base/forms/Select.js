@@ -2,7 +2,7 @@
  * Created by kylejohnson on 22/09/15.
  */
 var NavigationBarRouteMapper = require('../../navbars/NavbarSelect');
-module.exports = Component(_.assign({}, {
+module.exports = Component(Object.assign({}, {
 
     propTypes: {
         onChange: OptionalFunc,
@@ -37,7 +37,7 @@ module.exports = Component(_.assign({}, {
     renderScene: function () {
         return (
             <View style={Styles.navContent}>
-                <ScrollView style={[{flex:1}]}>
+                <ScrollView style={[{ flex: 1 }]}>
                     {_.map(this.props.children, function (child, i) {
                         if (!child) {
                             return;
@@ -81,18 +81,18 @@ module.exports = Component(_.assign({}, {
             <Navigator
                 configureScene={this.configureScene}
                 sceneStyle={Styles.navContent}
-                style={{flex:1}}
+                style={{ flex: 1 }}
                 onWillFocus={this.routeChanged}
                 navigationBar={
-                      <Navigator.NavigationBar
-                        style={[Styles.navBar,Styles.selectNavBar]}
-                        routeMapper={NavigationBarRouteMapper({onMenuPress:this.onMenuPress})}
+                    <Navigator.NavigationBar
+                        style={[Styles.navBar, Styles.selectNavBar]}
+                        routeMapper={NavigationBarRouteMapper({ onMenuPress: this.onMenuPress })}
                         key="account-nav-bar"
-                      />
-                    }
-                initialRoute={{title: this.props.title || "Select an option"}}
+                    />
+                }
+                initialRoute={{ title: this.props.title || "Select an option" }}
                 renderScene={this.renderScene}
-                />
+            />
         );
     },
 
@@ -110,8 +110,8 @@ module.exports = Component(_.assign({}, {
                     ref={"input"}
                     onFocus={this.show}
                     value={this.props.truncate ?
-                            Format.truncateText(this.state.value, this.props.truncate)
-                            : this.state.value }
+                        Format.truncateText(this.state.value, this.props.truncate)
+                        : this.state.value }
                     placeholder={this.state.value || this.props.placeholder}
                     onChangeText={this.props.onChangeText}
                     style={[Styles.input, this.props.style]}

@@ -57,7 +57,7 @@ window.pallette = {
 
 //== Other Variables
 
-window.styleVariables = _.assign({
+window.styleVariables = Object.assign({
 
     //== Typography
     //
@@ -129,7 +129,7 @@ window.styleVariables = _.assign({
     postHeight: 500,
 }, require('./style_platform_variables'));
 
-window.colour = _.assign({}, pallette, {
+window.colour = Object.assign({}, pallette, {
     iosStyle: 0,
     buttonActiveOpacity: 0.8,
     disabledOpacity: 0.8,

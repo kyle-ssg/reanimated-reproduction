@@ -1,7 +1,7 @@
 var ReactDispatcher = require('flux-react-dispatcher');
 var Dispatcher = new ReactDispatcher();
 
-module.exports = _.assign(Dispatcher, {
+module.exports = Object.assign(Dispatcher, {
     handleViewAction: function(action) {
         var that = this;
 

@@ -1,5 +1,5 @@
 var IValueTracker = require('../../common/interfaces/widget/IValueTracker');
-module.exports = Component(_.assign({}, IValueTracker, {
+module.exports = Component(Object.assign({}, IValueTracker, {
     displayName: 'ValueTracker',
 
     getStyle: function () {

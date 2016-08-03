@@ -1,12 +1,12 @@
 import FireAuth from '../../../common/fire-auth';
 
 module.exports = class extends React.Component {
-    constructor(props, context) {
+    constructor (props, context) {
         super(props, context);
         this.props.user.getToken()
-            .then((token)=>{
+            .then((token)=> {
                 fetch('https://f5269c1e.ngrok.io/fb/test', {
-                    method:'GET',
+                    method: 'GET',
                     body: null,
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -15,7 +15,7 @@ module.exports = class extends React.Component {
             });
     }
 
-    render() {
+    render () {
         const { profile } = this.props;
         const logout = <Button onPress={FireAuth.logout}><Text>Logout</Text></Button>;
 
@@ -24,12 +24,12 @@ module.exports = class extends React.Component {
         }
 
         return profile.emailVerified ? (
-           <Flex>
+            <Flex>
                 <Text>
                     Hi {profile.email}
                 </Text>
-               {logout}
-           </Flex>
+                {logout}
+            </Flex>
         ) : <Flex>
             <Text>
                 Your email address is not verified!

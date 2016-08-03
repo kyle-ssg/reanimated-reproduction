@@ -1,7 +1,7 @@
 import React from 'react';
 import {FlexTable, AutoSizer, FlexColumn, SortDirection} from 'react-virtualized';
 const size = 1000;
-var list = _.map(_.range(0, size), function (i) {
+var list = _.range(0, size).map(function (i) {
     return { id: i + 1, description: Utils.GUID() };
 }).reverse();
 
@@ -51,16 +51,6 @@ module.exports = class extends React.Component {
                         </Tooltip>
                     </h2>
                 </div>
-                <Select
-                    placeholder="Select your stuff"
-                    options={list}
-                    simpleValue
-                    multi
-                    labelKey='description'
-                    valueKey='description'
-                    onChange={this.handleSelectChange}
-                    value={this.state.value}
-                />
 
                 <h2>
                     Sortable
@@ -68,6 +58,7 @@ module.exports = class extends React.Component {
                         A performant table with sorting
                     </Tooltip>
                 </h2>
+                np
                 <AutoSizer disableHeight>
                     {({ width }) => (
                         <FlexTable

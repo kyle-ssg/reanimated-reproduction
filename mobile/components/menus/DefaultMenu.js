@@ -24,7 +24,7 @@ module.exports = Component({
                     </View>
                 </View>
                 <ScrollView style={{ flex: 1 }}>
-                    {_.map(navItems, function (item, i) {
+                    {navItems.map(function (item, i) {
                         return (
                             <ListItem key={i} onPress={_.partial(this.route, item.route)}
                                       style={{ backgroundColor: 'transparent', flex: 1 }}>

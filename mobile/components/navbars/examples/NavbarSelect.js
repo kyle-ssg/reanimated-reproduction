@@ -18,8 +18,8 @@ module.exports = function (props) {
                             name='ios-close'
                             size={32}
                             color={colour.navBarIcon}
-                            style={[{marginLeft: 10, marginRight: 10}]}
-                            />
+                            style={[{ marginLeft: 10, marginRight: 10 }]}
+                        />
                     </View>
                 </TouchableOpacity>
             );

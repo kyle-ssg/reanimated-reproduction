@@ -7,7 +7,7 @@ var DEFAULT_CHANGE_EVENT = "change",
     DEFAULT_SAVING_EVENT = "saving",
     DEFAULT_ERROR_EVENT = "problem";
 
-module.exports = _.extend(EventEmitter.prototype, {
+module.exports = Object.assign({}, EventEmitter.prototype, {
     _maxListeners: Number.MAX_VALUE,
     id: "",
     isLoading: false,

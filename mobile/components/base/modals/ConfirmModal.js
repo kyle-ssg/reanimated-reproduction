@@ -21,18 +21,26 @@ module.exports = Component({
         return (
             <View style={[styles.modal]}>
                 <View
-                    style={{alignItems:'center', flex:1, padding: 10}}>
+                    style={{ alignItems: 'center', flex: 1, padding: 10 }}>
                     <View style={styles.titleContainer}>
                         <Text style={styles.title}>{this.props.title}</Text>
                         <Text style={styles.description}>{this.props.description}</Text>
                     </View>
                     <View
-                        style={[Styles.row, {flex:1, paddingBottom:10, marginRight:5, justifyContent:'space-between'}]}>
+                        style={[Styles.row, {
+                            flex: 1,
+                            paddingBottom: 10,
+                            marginRight: 5,
+                            justifyContent: 'space-between'
+                        }]}>
                         <Button
-                            style={{width:Dimensions.get("window").width/2 - 20, backgroundColor:colour.selectButtonCancel}}
+                            style={{
+                                width: Dimensions.get("window").width / 2 - 20,
+                                backgroundColor: colour.selectButtonCancel
+                            }}
                             onPress={this.onNo}>{this.props.noText || 'No'}</Button>
 
-                        <Button style={{marginLeft:5, width:Dimensions.get("window").width/2 - 20}}
+                        <Button style={{ marginLeft: 5, width: Dimensions.get("window").width / 2 - 20 }}
                                 onPress={this.onYes}>{this.props.yesText || 'Yes'}</Button>
                     </View>
                 </View>

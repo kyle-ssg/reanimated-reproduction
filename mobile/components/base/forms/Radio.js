@@ -15,7 +15,7 @@ module.exports = Component({
         activeBorderColor: OptionalString,
     },
 
-    getDefaultProps: function() {
+    getDefaultProps: function () {
         return {
             size: 14,
             backgroundColor: pallette.toggle,
@@ -25,28 +25,34 @@ module.exports = Component({
         }
     },
 
-    shouldComponentUpdate: function(newProps) {
+    shouldComponentUpdate: function (newProps) {
         return this.props.value !== newProps.value;
     },
 
-    onPress: function() {
+    onPress: function () {
         this.props.onChange(!this.props.value);
     },
 
-    render: function() {
+    render: function () {
         var radioColor = this.state.animated_value.interpolate({ //transition between active and inactive color
                 inputRange: [0, 1],
                 outputRange: [this.props.backgroundColor, this.props.activeBackgroundColor] //active
             }),
             borderColour = this.state.animated_value.interpolate({ //transition between active and inactive border
                 inputRange: [0, 1],
-                outputRange: [this.props.borderColor,this.props.activeBorderColor ]
+                outputRange: [this.props.borderColor, this.props.activeBorderColor]
             }),
             size = this.props.size;
 
         return <TouchableOpacity activeOpacity={0.8} onPress={this.onPress}>
             <Animated.View
-                style={[styles.radio, {backgroundColor:radioColor, borderRadius:this.props.size/2, borderColor:borderColour, width:size,height:size}]}>
+                style={[styles.radio, {
+                    backgroundColor: radioColor,
+                    borderRadius: this.props.size / 2,
+                    borderColor: borderColour,
+                    width: size,
+                    height: size
+                }]}>
             </Animated.View>
         </TouchableOpacity>
     }

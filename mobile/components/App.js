@@ -13,7 +13,7 @@ const TheComponent = class extends React.Component {
     render () {
         return (
             <Flex>
-               <Example/>
+                <Example/>
             </Flex>
         );
     }

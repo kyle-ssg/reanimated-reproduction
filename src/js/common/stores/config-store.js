@@ -12,7 +12,7 @@ var controller = {
             store.loaded();
         }
     },
-    store = _.assign({}, BaseStore, {
+    store = Object.assign({}, BaseStore, {
         id: 'config',
         dispatcherIndex: Dispatcher.register(this, function (payload) {
             var action = payload.action; // this is our action from handleViewAction

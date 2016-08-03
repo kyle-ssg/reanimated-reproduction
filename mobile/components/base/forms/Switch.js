@@ -1,4 +1,3 @@
-
 var MaterialSwitch = Component({
     padding: 4,
 
@@ -14,7 +13,7 @@ var MaterialSwitch = Component({
                 shadowColor: '#000',
                 shadowOpacity: 0.5,
                 shadowRadius: 1,
-                shadowOffset: {height: 1, width: 0},
+                shadowOffset: { height: 1, width: 0 },
             },
             activeBackgroundColor: colour.switchActiveBackground,
             inactiveBackgroundColor: colour.switchBackground,
@@ -60,7 +59,7 @@ var MaterialSwitch = Component({
             onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
 
             onPanResponderGrant: (evt, gestureState) => {
-                this.setState({pressed: true});
+                this.setState({ pressed: true });
                 this.start.x0 = gestureState.x0;
                 this.start.pos = this.state.position._value;
                 this.start.moved = false;
@@ -103,16 +102,16 @@ var MaterialSwitch = Component({
                 this.onSwipe(currentPos, this.start.pos,
                     () => {
                         if (!this.start.state) this.start.stateChanged = true;
-                        this.setState({state: true})
+                        this.setState({ state: true })
                     },
                     ()=> {
                         if (this.start.state) this.start.stateChanged = true;
-                        this.setState({state: false})
+                        this.setState({ state: false })
                     });
             },
             onPanResponderTerminationRequest: (evt, gestureState) => true,
             onPanResponderRelease: (evt, gestureState) => {
-                this.setState({pressed: false});
+                this.setState({ pressed: false });
                 var currentPos = this.state.position._value;
                 if (!this.start.moved || (Math.abs(currentPos - this.start.pos) < 5 && !this.start.stateChanged)) {
                     this.toggle();
@@ -122,7 +121,7 @@ var MaterialSwitch = Component({
             },
             onPanResponderTerminate: (evt, gestureState) => {
                 var currentPos = this.state.position._value;
-                this.setState({pressed: false});
+                this.setState({ pressed: false });
                 this.onSwipe(currentPos, this.start.pos, this.activate, this.deactivate);
             },
             onShouldBlockNativeResponder: (evt, gestureState) => true,
@@ -188,7 +187,7 @@ var MaterialSwitch = Component({
             this.props.onChange(state);
         }
 
-        this.setState({state: state});
+        this.setState({ state: state });
     },
 
     toggle() {
@@ -203,45 +202,47 @@ var MaterialSwitch = Component({
         var doublePadding = this.padding * 2 - 2;
         var halfPadding = doublePadding / 2;
         return (
-            <View style={[{padding: this.padding, position: 'relative'}, this.props.style]}>
+            <View style={[{ padding: this.padding, position: 'relative' }, this.props.style]}>
                 <Animated.View style={{
-                marginRight:5,
+                    marginRight: 5,
                     backgroundColor: this.state.active.interpolate({
-                       inputRange: [0, 1],
-                       outputRange: [colour.switchBackground, colour.switchActiveBackground]  // 0 : 150, 0.5 : 75, 1 : 0
+                        inputRange: [0, 1],
+                        outputRange: [colour.switchBackground, colour.switchActiveBackground]  // 0 : 150, 0.5 : 75, 1 : 0
                     }),
                     height: this.props.switchHeight,
                     width: this.props.switchWidth,
-                    borderRadius: this.props.switchHeight/2,
+                    borderRadius: this.props.switchHeight / 2,
                 }}/>
-                <TouchableHighlight underlayColor='transparent' activeOpacity={1} onPress={() => { this.toggle(); }}
+                <TouchableHighlight underlayColor='transparent' activeOpacity={1} onPress={() => {
+                    this.toggle();
+                }}
                                     style={{
-            height: Math.max(this.props.buttonRadius*2+doublePadding, this.props.switchHeight+doublePadding),
-            width: this.props.switchWidth+doublePadding,
-            position: 'absolute',
-            top: 1,
-            left: 1
-          }}>
-                    <View style={[Styles.row, {height:34, marginRight:20}, this.props.style]}>
+                                        height: Math.max(this.props.buttonRadius * 2 + doublePadding, this.props.switchHeight + doublePadding),
+                                        width: this.props.switchWidth + doublePadding,
+                                        position: 'absolute',
+                                        top: 1,
+                                        left: 1
+                                    }}>
+                    <View style={[Styles.row, { height: 34, marginRight: 20 }, this.props.style]}>
 
                         <Animated.View style={[{
-                       backgroundColor: this.state.active.interpolate({
-                       inputRange: [0, 1],
-                       outputRange: [colour.switch, colour.switchActive]
-                      }),
-                      height: this.props.buttonRadius*2,
-                      width: this.props.buttonRadius*2,
-                      borderRadius: this.props.buttonRadius,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexDirection: 'row',
-                      position: 'absolute',
-                      top: halfPadding + this.props.switchHeight/2 - this.props.buttonRadius,
-                      left: this.props.switchHeight/2 > this.props.buttonRadius ? halfPadding : halfPadding + this.props.switchHeight/2 - this.props.buttonRadius,
-                      transform: [{ translateX: this.state.position }]
-            },
-            this.props.buttonShadow]}
-                            {...this._panResponder.panHandlers}
+                            backgroundColor: this.state.active.interpolate({
+                                inputRange: [0, 1],
+                                outputRange: [colour.switch, colour.switchActive]
+                            }),
+                            height: this.props.buttonRadius * 2,
+                            width: this.props.buttonRadius * 2,
+                            borderRadius: this.props.buttonRadius,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexDirection: 'row',
+                            position: 'absolute',
+                            top: halfPadding + this.props.switchHeight / 2 - this.props.buttonRadius,
+                            left: this.props.switchHeight / 2 > this.props.buttonRadius ? halfPadding : halfPadding + this.props.switchHeight / 2 - this.props.buttonRadius,
+                            transform: [{ translateX: this.state.position }]
+                        },
+                            this.props.buttonShadow]}
+                                       {...this._panResponder.panHandlers}
                         >
                         </Animated.View>
                     </View>

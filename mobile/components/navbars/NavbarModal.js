@@ -18,14 +18,14 @@ module.exports = function (props) {
                             name='ios-close'
                             size={32}
                             color={colour.navBarIcon}
-                            style={[{marginLeft: 10, marginRight: 10}]}
-                            />
+                            style={[{ marginLeft: 10, marginRight: 10 }]}
+                        />
                     </View>
                 </TouchableOpacity>
             );
         },
 
-        Title: function(route, navigator, index, navState) {
+        Title: function (route, navigator, index, navState) {
 
             if (!route.title) {
                 return null;
@@ -33,7 +33,7 @@ module.exports = function (props) {
 
             return <TouchableOpacity>
                 <Row>
-                    <Text style={[Styles.navBarTitle, Styles.container,{letterSpacing:2}]}>
+                    <Text style={[Styles.navBarTitle, Styles.container, { letterSpacing: 2 }]}>
                         {route.title.toUpperCase()}
                     </Text>
                 </Row>

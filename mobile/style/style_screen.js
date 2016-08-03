@@ -6,7 +6,7 @@
 require('./style_variables');
 
 
-window.Styles = StyleSheet.create(_.assign({},
+window.Styles = StyleSheet.create(Object.assign({},
 
     require('./style_alert'),
     require('./style_message'),
