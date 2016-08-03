@@ -11,7 +11,7 @@ module.exports = function (props) {
                                 name='ios-arrow-back'
                                 size={22}
                                 color={colour.navBarIcon}
-                                style={[{marginLeft: 10, marginBottom:-5, marginRight: 10}]}
+                                style={[{ marginLeft: 10, marginBottom: -5, marginRight: 10 }]}
                             />
                         </View>
                     </TouchableOpacity>
@@ -31,7 +31,7 @@ module.exports = function (props) {
             if (!props || !props.onMenuPress) {
                 return null;
             }
-            return(<TouchableOpacity
+            return (<TouchableOpacity
                 style={Styles.navItemContainer}
                 onPress={() => props.onMenuPress()}>
                 <View style={[Styles.row]}>
@@ -39,7 +39,7 @@ module.exports = function (props) {
                         name='md-menu'
                         size={22}
                         color={colour.navBarIcon}
-                        style={[{marginLeft: 10, marginBottom:-5, marginRight: 10}]}
+                        style={[{ marginLeft: 10, marginBottom: -5, marginRight: 10 }]}
                     />
                 </View>
             </TouchableOpacity>)
@@ -53,7 +53,7 @@ module.exports = function (props) {
 
             return <View style={[Styles.navItemContainer, Styles.navItemTitleContainer]}>
                 <Row>
-                    <Text style={[Styles.navBarTitle, Styles.sukFont, Styles.container, {letterSpacing:2}]}>
+                    <Text style={[Styles.navBarTitle, Styles.sukFont, Styles.container, { letterSpacing: 2 }]}>
                         {route.title}
                     </Text>
                 </Row>

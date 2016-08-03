@@ -18,6 +18,7 @@ const FormGroup = (props)=> {
 FormGroup.propTypes = {
     disabled: OptionalBool,
     title: RequiredString,
+    isValid: OptionalBool,
     inputProps: OptionalObject,
     value: OptionalString,
     onChange: OptionalFunc,

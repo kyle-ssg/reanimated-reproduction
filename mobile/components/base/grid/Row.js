@@ -1,7 +1,7 @@
 module.exports = Component({
-    render: function() {
+    render: function () {
         return (
-            <View style={[Styles.row, this.props.space && {justifyContent:'space-between'}, this.props.style]}>
+            <View style={[Styles.row, this.props.space && { justifyContent: 'space-between' }, this.props.style]}>
                 {this.props.children}
             </View>
         )

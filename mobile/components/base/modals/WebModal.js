@@ -1,37 +1,37 @@
-var NavBar = function(title, goBack) {
+var NavBar = function (title, goBack) {
     return {
-        LeftButton: function() {
+        LeftButton: function () {
             return goBack && (
                     <TouchableOpacity
-                        style={[styles.navItemContainer, {marginRight:10}]}
+                        style={[styles.navItemContainer, { marginRight: 10 }]}
                         onPress={goBack}>
                         <ION
                             name='chevron-left'
                             size={28}
                             color={colour.white}
-                            style={[Styles.navBarIcon, {marginLeft: 10}]}
+                            style={[Styles.navBarIcon, { marginLeft: 10 }]}
                         />
                     </TouchableOpacity>
                 )
         },
 
-        RightButton: function() {
+        RightButton: function () {
             return <TouchableOpacity
-                style={[styles.navItemContainer, {marginRight:10}]}
+                style={[styles.navItemContainer, { marginRight: 10 }]}
                 onPress={closeModal}>
                 <ION
                     name='ios-close-outline'
                     size={28}
                     color={colour.text}
-                    style={[Styles.navBarIcon, {marginLeft: 10}]}
+                    style={[Styles.navBarIcon, { marginLeft: 10 }]}
                 />
             </TouchableOpacity>
         },
 
-        onMenuPress: function() {
+        onMenuPress: function () {
         },
 
-        Title: function() {
+        Title: function () {
 
             return title && (
                     <View style={[styles.navItemContainer, Styles.navItemTitleContainer]}>
@@ -46,13 +46,13 @@ var NavBar = function(title, goBack) {
 
 
 module.exports = Component({
-    getInitialState: function() {
+    getInitialState: function () {
         return {
             name: this.props.name
         }
     },
 
-    onNavigationStateChange: function(navState) {
+    onNavigationStateChange: function (navState) {
         this.setState({
             backButtonEnabled: navState.canGoBack,
             forwardButtonEnabled: navState.canGoForward,
@@ -63,19 +63,19 @@ module.exports = Component({
         });
     },
 
-    goBack: function() {
+    goBack: function () {
         this.refs.navigator.refs.webview.goBack();
     },
 
 
-    renderScene: function() {
+    renderScene: function () {
         return (
-            <View style={{flex:1, backgroundColor: colour.rowLighter, justifyContent:'center', padding:10}}>
+            <View style={{ flex: 1, backgroundColor: colour.rowLighter, justifyContent: 'center', padding: 10 }}>
                 <WebView
                     onNavigationStateChange={this.onNavigationStateChange}
                     ref="webview"
                     style={styles.webView}
-                    source={{uri: this.props.uri}}
+                    source={{ uri: this.props.uri }}
                     scalesPageToFit={true}
                 />
                 <View style={styles.buttons}>
@@ -83,27 +83,26 @@ module.exports = Component({
             </View>
         )
     },
-    render: function() {
+    render: function () {
         return (
 
             <Navigator
-                style={{flex:1}}
+                style={{ flex: 1 }}
                 navigationBar={
-                      <Navigator.NavigationBar
-                        style = {[Styles.navBar, Styles.navBarNoSlide]}
+                    <Navigator.NavigationBar
+                        style={[Styles.navBar, Styles.navBarNoSlide]}
                         routeMapper={NavBar(this.state.title || this.props.title, this.state.backButtonEnabled && this.goBack)}
                         key="account-nav-bar"
-                      />
-                    }
+                    />
+                }
                 sceneStyle={Styles.navContent}
                 ref="navigator"
                 renderScene={this.renderScene}
-                initialRoute={{id:"home"}}
+                initialRoute={{ id: "home" }}
             />
         )
     }
 });
-
 
 
 var styles = StyleSheet.create({

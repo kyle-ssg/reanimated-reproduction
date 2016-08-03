@@ -57,7 +57,7 @@ const Input = class extends React.Component {
         const className = cn({
             'input-container': true,
             'focused': this.state.isFocused,
-            'invalid': this.state.shouldValidate && (typeof this.props.isValid !== undefined) && !this.props.isValid
+            'invalid': this.state.shouldValidate && (typeof this.props.isValid !== 'undefined') && !this.props.isValid
         }, this.props.className);
 
         const inputClassName = cn({
@@ -94,6 +94,7 @@ const Input = class extends React.Component {
 
 Input.defaultProps = {
     className: '',
+    placeholderChar: ' '
 };
 
 Input.propTypes = {

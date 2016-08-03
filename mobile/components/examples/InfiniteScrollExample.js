@@ -10,7 +10,7 @@ const TheComponent = class extends React.Component {
         this.setState({
             isLoading: true
         });
-        setTimeout(()=>{
+        setTimeout(()=> {
             this.setState({
                 isLoading: false,
                 data: _.range(0, 100)
@@ -19,21 +19,21 @@ const TheComponent = class extends React.Component {
     }
 
     loadMore = () => {
+        this.setState({
+            isLoading: true
+        });
+        setTimeout(()=> {
+            const length = this.state.data.length;
             this.setState({
-                isLoading: true
+                isLoading: false,
+                data: this.state.data.concat(_.range(length, length + 100))
             });
-            setTimeout(()=>{
-                const length = this.state.data.length;
-                this.setState({
-                    isLoading: false,
-                    data: this.state.data.concat(_.range(length, length + 100))
-                });
-            }, 2000);
+        }, 2000);
     }
 
     renderRow (data) {
         return (
-            <ListItem style={{height:100}}>
+            <ListItem style={{ height: 100 }}>
                 <Text style={Styles.listItemText}>Hi, I am row {data}</Text>
             </ListItem>
         )
@@ -41,7 +41,7 @@ const TheComponent = class extends React.Component {
 
     renderLoading = () => {
         return (
-            <View style={[Styles.centeredContainer, {height:60}]}>
+            <View style={[Styles.centeredContainer, { height: 60 }]}>
                 <Text>{'Loading'}</Text>
             </View>
         );
@@ -53,11 +53,11 @@ const TheComponent = class extends React.Component {
                 <InfiniteScroll
                     initialListSize={10}
                     data={this.state.data}
-                                isLoading={this.state.isLoading}
-                                loadMore={this.loadMore}
-                                onRefresh={this.refresh}
-                                renderRow={this.renderRow}
-                                renderLoading={this.renderLoading}
+                    isLoading={this.state.isLoading}
+                    loadMore={this.loadMore}
+                    onRefresh={this.refresh}
+                    renderRow={this.renderRow}
+                    renderLoading={this.renderLoading}
                 />
             </Flex>
         );

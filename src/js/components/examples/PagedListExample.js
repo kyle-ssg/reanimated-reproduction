@@ -3,7 +3,7 @@ const Pager = (props) => (
         <ul className="pagination">
 
             <li className={"page-item" + (!props.canPrev && " disabled" || "")}>
-                <a className="page-link" onClick={props.canPrev && _.partial(props.onChange, props.currentPage - 1)}>
+                <a className="page-link" onClick={()=>props.canPrev && props.onChange(props.currentPage - 1)}>
                     Prev
                 </a>
             </li>
@@ -19,9 +19,9 @@ const Pager = (props) => (
             {props.prevTruncated && <li className="page-item disabled"><a className="page-link">&hellip;</a></li>}
             {props.startPage > 2 && <li className="page-item disabled"><a className="page-link">&hellip;</a></li>}
 
-            {_.map(props.range, (val)=>(
+            {props.range.map((val)=>(
                 <li key={val} className={"page-item " + (props.currentPage == val && " active" || "")}>
-                    <a className="page-link" onClick={_.partial(props.onChange, val)}>{val}</a>
+                    <a className="page-link" onClick={()=>props.onChange(val)}>{val}</a>
                 </li>
             ))}
 
@@ -34,12 +34,12 @@ const Pager = (props) => (
             {props.showLastPage && (
                 <li className={"page-item" + (props.currentPage == props.totalPages && " active" || "")}>
                     <a className="page-link"
-                       onClick={_.partial(props.onChange, props.totalPages)}>{props.totalPages}</a>
+                       onClick={()=>props.onChange(props.totalPages)}>{props.totalPages}</a>
                 </li>
             )}
 
             <li className={"page-item" + (!props.canNext && " disabled" || "")}>
-                <a className="page-link" onClick={props.canNext && _.partial(props.onChange, props.currentPage + 1)}>Next</a>
+                <a className="page-link" onClick={()=>props.canNext && props.onChange(props.currentPage + 1)}>Next</a>
             </li>
 
         </ul>
@@ -66,7 +66,7 @@ module.exports = class extends React.Component {
     constructor (props, context) {
         super(props, context);
         this.state = {
-            pages: _.map(_.range(0, 100000), (page)=> _.range(page * pageSize, page * pageSize + pageSize)),
+            pages: _.range(0, 100000).map((page)=> _.range(page * pageSize, page * pageSize + pageSize)),
             currentPage: 1
         };
     }

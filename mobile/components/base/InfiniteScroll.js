@@ -42,7 +42,7 @@ const InfiniteScroll = class extends React.Component {
                             /> : undefined
                     }
                     renderRow={this.props.renderRow}
-                    onEndReachedThreshold={DeviceHeight*2}
+                    onEndReachedThreshold={DeviceHeight * 2}
                     onEndReached={!this.props.isLoading && this.props.loadMore || undefined}
                     dataSource={ds.cloneWithRows(this.props.data || [])}
                     renderFooter={this.renderFooter}

@@ -2,7 +2,7 @@
 
 var Button = Component({
     displayName: 'NetworkIndicator',
-    componentDidMount: function() {
+    componentDidMount: function () {
         NetInfo.addEventListener(
             'change',
             this._handleReachabilityChange
@@ -11,23 +11,23 @@ var Button = Component({
             this._handleReachabilityChange
         );
     },
-    getInitialState: function() {
-        return {isConnected: true}
+    getInitialState: function () {
+        return { isConnected: true }
     },
-    componentWillUnmount: function() {
+    componentWillUnmount: function () {
         NetInfo.removeEventListener(
             'change',
             this._handleReachabilityChange
         );
     },
-    _handleReachabilityChange: function(isConnected) {
+    _handleReachabilityChange: function (isConnected) {
         console.log(isConnected);
         this.setState({
             isConnected: isConnected != "none"
         });
         this.props.onChange && this.props.onChange(isConnected != "none");
     },
-    render: function() {
+    render: function () {
         return (
             <Scale style={styles.bar} duration={200} value={!this.state.isConnected}>
                 <Text style={styles.barText}>No internet connection.</Text>

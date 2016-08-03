@@ -1,17 +1,17 @@
 var Listitem = Component({
     displayName: 'ListItem',
-    getDefaultProps: function() {
+    getDefaultProps: function () {
         return {
             onPress: null,
             text: null,
             underlayColor: colour.inputBackground,
         }
-    }, render: function() {
-            content = (
-                <View style={[Styles.liContent, {backgroundColor:'transparent'}]}>
-                    {this.props.children}
-                </View>
-            );
+    }, render: function () {
+        content = (
+            <View style={[Styles.liContent, { backgroundColor: 'transparent' }]}>
+                {this.props.children}
+            </View>
+        );
         return (
             this.props.onPress ?
                 <TouchableOpacity

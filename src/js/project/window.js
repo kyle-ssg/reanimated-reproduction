@@ -3,9 +3,15 @@ import './libs';
 window.React = require('react');
 window.ReactDOM = require('react-dom');
 window.render = require('react-dom').render;
-window.moment = require('moment');
+window.moment = require('moment/min/moment.min');
 window.fetch = require('fetchify')(Promise).fetch;
-window._ = require('lodash');
+window._ = {
+    indexOf: require('lodash.indexof'),
+    merge: require('lodash.merge'),
+    orderBy: require('lodash.orderby'),
+    range: require('lodash.range'),
+    each: require('lodash.foreach')
+};
 
 window.OptionalArray = React.PropTypes.array;
 window.OptionalBool = React.PropTypes.bool;
@@ -48,6 +54,7 @@ window.FormGroup = require('../components/base/grid/FormGroup');
 window.InputGroup = require('../components/base/forms/InputGroup');
 window.InfiniteScroll = require('../components/base/InfiniteScroll');
 window.ListView = require('../components/base/ListView');
+window.Highlighter = require('../components/base/Highlighter');
 
 //Modal
 window.openModal = require('../apis/modals').openModal;

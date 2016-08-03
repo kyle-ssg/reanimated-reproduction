@@ -2,13 +2,13 @@
  * Created by kylejohnson on 06/10/15.
  */
 module.exports = Component({
-    getInitialState: function() {
+    getInitialState: function () {
         return {
             keyboardOffset: new Animated.Value(0)
         }
     },
 
-    componentDidMount: function() {
+    componentDidMount: function () {
         this._keyboardWillShowSubscription = DeviceEventEmitter.addListener('keyboardWillShow', (e) => this._keyboardWillShow(e));
         this._keyboardWillHideSubscription = DeviceEventEmitter.addListener('keyboardWillHide', (e) => this._keyboardWillHide(e));
     },
@@ -22,7 +22,7 @@ module.exports = Component({
 
     _keyboardWillShow(e) {
         Animated.timing(this.state.keyboardOffset, {
-            toValue: e.endCoordinates.height - (this.props.offset  || 0),
+            toValue: e.endCoordinates.height - (this.props.offset || 0),
             duration: 250
         }).start();
     },
@@ -33,11 +33,11 @@ module.exports = Component({
             duration: 250
         }).start();
     },
-    render: function() {
+    render: function () {
         return <Flex>
             <Flex style={this.props.style}>{this.props.children}</Flex>
 
-            <Animated.View style={[{height: this.state.keyboardOffset}]}>
+            <Animated.View style={[{ height: this.state.keyboardOffset }]}>
 
             </Animated.View>
         </Flex>

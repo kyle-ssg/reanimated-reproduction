@@ -25,7 +25,7 @@ module.exports = class extends React.Component {
     }
 
     facebook () {
-       FireAuth.facebookLogin();
+        FireAuth.facebookLogin();
     }
 
     render () {

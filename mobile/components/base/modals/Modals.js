@@ -1,5 +1,5 @@
-module.exports = function(context) {
-    window.openModal = function(Component, size, direction, animation, duration) {
+module.exports = function (context) {
+    window.openModal = function (Component, size, direction, animation, duration) {
         context.setState({
             showModal: 1,
             modalComponent: Component,
@@ -11,12 +11,12 @@ module.exports = function(context) {
         });
     }.bind(context);
 
-    window.closeModal = function() {
+    window.closeModal = function () {
         context.setState({
             showModal: 0,
             modalAnimation: Animated.timing,
         });
-        setTimeout(function() {
+        setTimeout(function () {
             context.setState({
                 modalComponent: null
             });
@@ -24,7 +24,7 @@ module.exports = function(context) {
     }.bind(context);
 
 
-    window.openSelect = function(Component, size, direction, animation, duration) {
+    window.openSelect = function (Component, size, direction, animation, duration) {
         context.setState({
             showSelect: 1,
             selectComponent: Component,
@@ -36,13 +36,13 @@ module.exports = function(context) {
         });
     }.bind(context);
 
-    window.closeSelect = function() {
-        
+    window.closeSelect = function () {
+
         context.setState({
             showSelect: 0,
             selectAnimation: Animated.timing,
         });
-        setTimeout(function() {
+        setTimeout(function () {
             context.setState({
                 selectComponent: null
             });

@@ -22,24 +22,27 @@ const AutoComplete = class extends React.Component {
             <FocusMonitor onFocusChanged={this.onFocusChanged}>
                 <InputStepper
                     ref="input"
-                    data={this.state.data}
-                    onChange={this.selectRow}
-                    inputProps={this.props.inputProps}>
+                    data={this.props.data}
+                    onChange={this.props.onSelect}
+                    inputProps={{ ... this.props.inputProps, onChange: this.props.onChange }}>
                     {
-                        (highlightedRow, highlightRow) => (
-                            <div className={"popover " + (this.state.isFocused ? "in" : "")}>
-                                <ListView
-                                    className={this.props.isAbsolute && 'absolute'}
-                                    ref="list"
-                                    scrollToRow={highlightedRow}
-                                    renderNoResults={this.props.renderNoResults}
-                                    renderRow={(row, index)=>
-                                        this.props.renderRow(row, index, highlightedRow, highlightRow)
-                                    }
-                                    data={this.props.data}
-                                    containerHeight={this.props.containerHeight}
-                                    rowHeight={this.props.rowHeight}
-                                />
+                        (theInput, highlightedRow, highlightRow) => (
+                            <div>
+                                {theInput}
+                                <div className={"popover " + (this.state.isFocused ? "in" : "")}>
+                                    <ListView
+                                        className={this.props.isAbsolute && 'absolute'}
+                                        ref="list"
+                                        scrollToRow={highlightedRow}
+                                        renderNoResults={this.props.renderNoResults}
+                                        renderRow={(row, index)=>
+                                            this.props.renderRow(row, index, highlightedRow, highlightRow)
+                                        }
+                                        data={this.props.data}
+                                        containerHeight={this.props.containerHeight}
+                                        rowHeight={this.props.rowHeight}
+                                    />
+                                </div>
                             </div>
                         )
                     }

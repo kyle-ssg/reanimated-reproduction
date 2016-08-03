@@ -10,7 +10,7 @@ module.exports = Component({
     render: function () {
         return (
             <Animated.View
-                style={[{overflow:'hidden', opacity: this.state.animated_value}, this.props.style]}>
+                style={[{ overflow: 'hidden', opacity: this.state.animated_value }, this.props.style]}>
                 {this.props.children}
             </Animated.View>
         )

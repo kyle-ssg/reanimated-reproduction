@@ -1,5 +1,5 @@
 module.exports = function (options) {
-    return React.createClass(_.assign({}, options, {
+    return React.createClass(Object.assign({}, options, {
         _listeners: [],
         setTheme: function (theme) {
             window.theme = theme;

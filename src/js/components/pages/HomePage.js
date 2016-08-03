@@ -5,7 +5,7 @@ import ModalExample from '../examples/ModalExample';
 import NavigableList from '../examples/NavigableList';
 import InfiniteScrollExample from '../examples/InfiniteScrollExample';
 import PagedListExample from '../examples/PagedListExample';
-import MaterialExample from '../examples/MaterialExample';
+import MaterialExample from '../examples/FormExamples';
 
 module.exports = class extends React.Component {
     constructor (props, context) {

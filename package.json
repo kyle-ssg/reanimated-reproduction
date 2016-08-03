@@ -30,7 +30,11 @@
     "firebase": "3.2.0",
     "flux-react-dispatcher": "1.2.5",
     "history": "3.0.0",
-    "lodash": "4.13.1",
+    "lodash.foreach": "4.4.1",
+    "lodash.indexof": "4.0.4",
+    "lodash.merge": "4.5.1",
+    "lodash.orderby": "4.5.1",
+    "lodash.range": "3.1.7",
     "moment": "2.14.1",
     "rc-switch": "1.4.2",
     "react": "^15.3.0",
@@ -38,10 +42,8 @@
     "react-dom": "^15.3.0",
     "react-maskedinput": "3.2.3",
     "react-router": "2.6.0",
-    "react-select": "^1.0.0-beta14",
     "react-tooltip": "3.1.2",
-    "react-virtualized": "^7.0.0",
-    "react-virtualized-select": "1.2.0"
+    "react-virtualized": "^7.0.0"
   },
   "devDependencies": {
     "autoprefixer": "6.3.7",

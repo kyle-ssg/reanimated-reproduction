@@ -38,15 +38,18 @@ const InputStepper = class extends React.Component {
     }
 
     render () {
+        const theInput = (
+            <Input
+                ref="input"
+                {... this.props.inputProps}
+                onBlur={()=>this.onFocusChanged(false)}
+                onFocus={()=>this.onFocusChanged(true)}
+                onKeyDown={this.onKeyDown}/>
+        );
+
         return (
             <div className={'list-container'}>
-                <Input
-                    ref="input"
-                    {... this.props.inputProps}
-                    onBlur={()=>this.onFocusChanged(false)}
-                    onFocus={()=>this.onFocusChanged(true)}
-                    onKeyDown={this.onKeyDown}/>
-                {this.props.children(this.state.selectedRow, this.highlightRow)}
+                {this.props.children(theInput, this.state.selectedRow, this.highlightRow)}
             </div>
         );
     }

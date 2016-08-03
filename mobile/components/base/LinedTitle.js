@@ -2,7 +2,7 @@
  * Created by kylejohnson on 06/06/2016.
  */
 module.exports = class extends React.Component {
-    render() {
+    render () {
         return (
             <Row style={Styles.formGroup} space>
                 <Flex style={Styles.column}>

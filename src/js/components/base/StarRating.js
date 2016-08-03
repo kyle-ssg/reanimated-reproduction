@@ -42,9 +42,9 @@ const StarRating = class extends React.Component {
     render () {
         return (
             <ul className="rating-component list-unstyled">
-                {_.map(_.range(1, this.props.max + 1), function (star) {
+                {_.range(1, this.props.max + 1).map(function (star) {
                     return (
-                        <li key={this.state.id + star} onClick={this.props.editable && _.partial(this.setRating, star)}
+                        <li key={this.state.id + star} onClick={()=>this.props.editable && this.setRating(star)}
                             className={this.getStar(star)}/>
                     );
                 }.bind(this))}

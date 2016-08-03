@@ -8,7 +8,7 @@ const Tabs = class extends React.Component {
         return (
             <div className="tabs">
                 <div className="tabs-nav">
-                    {_.map(this.props.children, (child, i)=> {
+                    {this.props.children.map((child, i)=> {
                         var isSelected = this.props.value == i;
                         return (
                             <Button
@@ -25,7 +25,7 @@ const Tabs = class extends React.Component {
                     left: 100 / this.props.children.length * this.props.value + "%"
                 }}/>
                 <div className="tabs-content">
-                    {_.map(this.props.children, (child, i)=> {
+                    {this.props.children.map((child, i)=> {
                         var isSelected = this.props.value == i;
                         return (
                             <div key={'content'+i} className={'tab-item' + (isSelected ? ' tab-active' : '')}>

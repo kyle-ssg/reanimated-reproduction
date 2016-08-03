@@ -12,7 +12,7 @@ var Button = Component({
         disabled: OptionalBool, // whether the button is disabled
         variation: OptionalString // a way to use predefined style variations (e.g. large, warning)
     },
-    render: function() {
+    render: function () {
         var touchableProps = {
             activeOpacity: this._computeActiveOpacity(),
         };
@@ -42,9 +42,9 @@ var Button = Component({
 
 
         return (
-            <View style={{opacity: this.props.disabled? 0.5: 1}}>
+            <View style={{ opacity: this.props.disabled ? 0.5 : 1 }}>
                 <TouchableOpacity {...touchableProps}
-                    style={groupStyle}>
+                                  style={groupStyle}>
                     { typeof this.props.children == "string" ? (
                         <Text style={textStyle}>{this.props.children}</Text>
                     ) : this.props.children}
