@@ -30,7 +30,7 @@ module.exports = {
 
   "rules": {
     "strict": ["error", "global"],
-    "no-unused-vars": ["error", { "vars": "all", "args": "all", "caughtErrors": "none" }],
+    "no-unused-vars": 0,
     "no-console": ["error", { allow: ["warn", "error"] }],
     "camelcase": ["error", { "properties": "always" }],
     "consistent-return": "error",
@@ -57,7 +57,7 @@ module.exports = {
     "react/jsx-no-bind": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-no-literals": "off",
-    "react/jsx-pascal-case": "warn",
+    "react/jsx-pascal-case": "off",
     "react/jsx-sort-prop-types": "off",
     "react/jsx-sort-props": "off",
     "react/no-multi-comp": "off",

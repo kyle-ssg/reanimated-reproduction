@@ -4,13 +4,18 @@ import TabItem from '../base/forms/TabItem';
 import MultiSelect from '../base/forms/MultiSelect';
 import StarRating from '../base/StarRating';
 import Switch from 'rc-switch';
+import Slider from 'react-slider';
 
 const Froms = class extends React.Component {
   displayName:'Froms'
 
   constructor (props, context) {
     super(props, context);
-    this.state = { tab: 0, isAbsolute: true};
+    this.state = { tab: 0, slider: 0, isAbsolute: true };
+  }
+
+  onSliderChange = (slider) => {
+    this.setState({slider});
   }
 
   selectTab = (tab) => {
@@ -22,7 +27,7 @@ const Froms = class extends React.Component {
   }
 
   onAbsoluteChanged = () => {
-    this.setState({isAbsolute: !this.state.isAbsolute});
+    this.setState({ isAbsolute: !this.state.isAbsolute });
   }
 
   onStarChange = (val) => {
@@ -100,6 +105,13 @@ const Froms = class extends React.Component {
             </TabItem>
           </Tabs>
         </Panel>
+
+        <FormGroup>
+          <FormInline>
+            <Slider onChange={this.onSliderChange} defaultValue={this.state.slider} withBars></Slider>
+            <span>{this.state.slider + ""}</span>
+          </FormInline>
+        </FormGroup>
 
         <Panel title={<h3>MultiSelect</h3>}>
           Show as popover ?

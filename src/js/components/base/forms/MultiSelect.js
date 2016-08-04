@@ -64,7 +64,7 @@ const AutoComplete = class extends React.Component {
               <div>
                 <Row className="multiselect-container">
                   {this.props.value && this.props.value.map((value, i)=>(
-                    <div className="multi-select-item">
+                    <div key={row.id || row} className="multi-select-item">
                       {this.props.renderSelectedItem(value, ()=>this.removeItem(i))}
                     </div>
                   ))}
@@ -79,7 +79,7 @@ const AutoComplete = class extends React.Component {
                     scrollToRow={highlightedRow}
                     renderNoResults={this.props.renderNoResults}
                     renderRow={(row, index)=>
-                      <div onMouseDown={()=>this.addItem(row)}>
+                      <div key={row.id || row} onMouseDown={()=>this.addItem(row)}>
                         {this.props.renderRow(row, index, highlightedRow, highlightRow, )}
                       </div>
                     }
