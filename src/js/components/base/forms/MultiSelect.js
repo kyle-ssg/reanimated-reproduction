@@ -32,12 +32,17 @@ const AutoComplete = class extends React.Component {
 
   addItem = (item) => {
     const newValue = this.props.value.slice(0);
-    newValue.push(item);
-    this.props.onSelectChange(newValue);
-    setTimeout(()=> {
-      this.refs.input.refs.input.refs.input.value = "";
-      this.refs.input.refs.input.refs.input.focus(); //this isn't ideal
-    }, 10);
+    const indexOf = this.props.value.indexOf(item);
+    if (indexOf == -1) {
+      newValue.push(item);
+      this.props.onSelectChange(newValue);
+      setTimeout(()=> {
+        this.refs.input.refs.input.refs.input.value = "";
+        this.refs.input.refs.input.refs.input.focus(); //this isn't ideal
+      }, 10);
+    } else {
+      this.removeItem(indexOf);
+    }
   }
 
   render () {
@@ -75,7 +80,7 @@ const AutoComplete = class extends React.Component {
                     renderNoResults={this.props.renderNoResults}
                     renderRow={(row, index)=>
                       <div onMouseDown={()=>this.addItem(row)}>
-                        {this.props.renderRow(row, index, highlightedRow, highlightRow)}
+                        {this.props.renderRow(row, index, highlightedRow, highlightRow, )}
                       </div>
                     }
                     data={this.props.data}

@@ -1,5 +1,6 @@
 import './project/window';
 import '../styles/styles.scss';
+import 'react-virtualized/styles.css';
 
 import '../fonts/fontawesome-webfont.woff';
 import '../fonts/fontawesome-webfont.woff2';

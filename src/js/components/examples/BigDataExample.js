@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlexTable, AutoSizer, FlexColumn, SortDirection} from 'react-virtualized';
-const size = 1000;
+const size = 100000;
 var list = _.range(0, size).map(function (i) {
   return { id: i + 1, description: Utils.GUID() };
 }).reverse();
@@ -44,12 +44,6 @@ module.exports = class extends React.Component {
       <div>
         <div>
           <h1>{size} Rows</h1>
-          <h2>
-            Multiselect with Virtualization
-            <Tooltip place="right">
-              Performant multiselect with search highlighting
-            </Tooltip>
-          </h2>
         </div>
 
         <h2>
@@ -58,7 +52,6 @@ module.exports = class extends React.Component {
             A performant table with sorting
           </Tooltip>
         </h2>
-        np
         <AutoSizer disableHeight>
           {({ width }) => (
             <FlexTable
