@@ -8,16 +8,17 @@ const Message = class extends React.Component {
   render () {
     const className = cn({
       'toast-message': true,
-      'alert alert-warning alert-dismissible fade in': true,
+      'alert alert-warning alert-dismissible fade': true,
+      'in' : !this.props.isRemoving,
       'removing out' : this.props.isRemoving
     });
 
     return (
       <div className={className}>
-        {this.props.children}
         <button onClick={this.props.remove} type="button" className="close">
           <span aria-hidden="true">&times;</span>
         </button>
+        {this.props.children}
       </div>
     );
   }

@@ -7,7 +7,7 @@ module.exports = class extends React.Component {
   triggerToast() {
     toast(
       <div>
-        Example message
+        Piece of trash
       </div>
     );
   }
@@ -15,9 +15,9 @@ module.exports = class extends React.Component {
   render() {
     return (
 
-      <div onClick={this.triggerToast} role="alert">
+      <button className="btn-danger btn-outline-success" onClick={this.triggerToast} role="alert">
         <strong>Click to trigger toast</strong>
-      </div>
+      </button>
 
     );
   }
