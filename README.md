@@ -3,11 +3,6 @@ A boilerplate using React, Flux, webpack + hot module reloading, and ES6 + JSX v
 
 ## Getting Started
 
-### Setup your IDE to use Editor Config by default
-This standardises code styles and prevents any nasty merge issues caused by differing editor configs
-
-<img src='readme.png'/>
-
 ### Installation Web
 ```
 $ npm install
@@ -82,43 +77,6 @@ Globally accessible by default
 * Build once for (ready for ***Production***):
   * `$ npm run build:dev` or `$ npm run build:prod`, doing this will use project_dev | project_prod in place of your project.js file
   * Open `build/index.html` through the local webserver, the build folder can be deployed anywhere
-
-## Further Information
-
-The provided boilerplate enables client-side ES6 via the following technologies:
-
-- [webpack](http://webpack.github.io/) and [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) as a client-side module builder and module loader.
-- [npm](https://www.npmjs.com/) as a package manager and task runner.
-- [Babel](http://babeljs.io/) 6 as a transpiler from ES6 to ES5.
-- [React](https://facebook.github.io/react/) and [JSX](https://facebook.github.io/jsx/) as a virtual Dom JavaScript library for rendering user interfaces (views).
-- [ESLint](http://eslint.org/) as a reporter for syntax and style issues. [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for additional React specific linting rules.
-- [Sass](http://sass-lang.com/) as a compiler of CSS styles with variables, mixins, and more.
-- [Mocha](https://mochajs.org/) as a test framework.
-- [Chai](http://chaijs.com/) as a BDD assertion library that works along with `Mocha`.
-
-When you run `npm start`:
-
- 1. The sass-loader compiles Sass into CSS
- 2. Webpack bundles the compiled CSS into app.js. Sounds weird, but it works!
- 3. app.js contains code that loads styles into the &lt;head&gt; section of index.html via JavaScript. This is why there is no stylesheet reference in index.html. In fact, if you disable JavaScript in your browser, you'll see the styles don't load either.
-
-The approach above supports hot reloading, which is great for development. However, it also create a flash of unstyled content on load because you have to wait for the JavaScript to parse and load styles before they're applied. So for the production build, we use a different approach:
-
-When you run `npm run build`:
-
- 1. The sass-loader compiles Sass into CSS
- 2. The [extract-text-webpack-plugin](https://github.com/webpack/extract-text-webpack-plugin) extracts the compiled Sass into app.css
- 3. buildHtml.js adds a reference to the stylesheet to the head of index.html.
-
-## Updating npm packages
-This is very useful to keep the boilerplate up to date, the following will update your ```package.json``` to use latest compatible packages
-* ```npm install -g npm-check-updates```
-* ```ncu -u```
-
-## Fixing lint issues
-This is useful to fix simple js linting issues
-* ```npm run fix```
-
 
 # Component Library - WEB
  **All components have prop types documented however for reference here they are**
@@ -225,4 +183,48 @@ This is useful to fix simple js linting issues
 **InputStepper - Calls back when the whole element and its children's focus has changed**
 ```<InputStepper data={[]} onChange={this.selectedItemChanged} 
         inputProps={... inputProps}>{(selectedRow, highlightRow)=>(<div>The selected element is {selectedRow}</div>)}</InputStepper>``` - creates an input that tracks up and down keystrokes against a collection of elements
+        
+        
+        
+## Further Information
+
+The provided boilerplate enables client-side ES6 via the following technologies:
+
+- [webpack](http://webpack.github.io/) and [webpack-dev-server](https://webpack.github.io/docs/webpack-dev-server.html) as a client-side module builder and module loader.
+- [npm](https://www.npmjs.com/) as a package manager and task runner.
+- [Babel](http://babeljs.io/) 6 as a transpiler from ES6 to ES5.
+- [React](https://facebook.github.io/react/) and [JSX](https://facebook.github.io/jsx/) as a virtual Dom JavaScript library for rendering user interfaces (views).
+- [ESLint](http://eslint.org/) as a reporter for syntax and style issues. [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for additional React specific linting rules.
+- [Sass](http://sass-lang.com/) as a compiler of CSS styles with variables, mixins, and more.
+- [Mocha](https://mochajs.org/) as a test framework.
+- [Chai](http://chaijs.com/) as a BDD assertion library that works along with `Mocha`.
+
+When you run `npm start`:
+
+ 1. The sass-loader compiles Sass into CSS
+ 2. Webpack bundles the compiled CSS into app.js. Sounds weird, but it works!
+ 3. app.js contains code that loads styles into the &lt;head&gt; section of index.html via JavaScript. This is why there is no stylesheet reference in index.html. In fact, if you disable JavaScript in your browser, you'll see the styles don't load either.
+
+The approach above supports hot reloading, which is great for development. However, it also create a flash of unstyled content on load because you have to wait for the JavaScript to parse and load styles before they're applied. So for the production build, we use a different approach:
+
+When you run `npm run build`:
+
+ 1. The sass-loader compiles Sass into CSS
+ 2. The [extract-text-webpack-plugin](https://github.com/webpack/extract-text-webpack-plugin) extracts the compiled Sass into app.css
+ 3. buildHtml.js adds a reference to the stylesheet to the head of index.html.
+
+## Updating npm packages
+This is very useful to keep the boilerplate up to date, the following will update your ```package.json``` to use latest compatible packages
+* ```npm install -g npm-check-updates```
+* ```ncu -u```
+
+### If you're getting issues with conflicting code styles (e.g. tab indentation)
+This standardises code styles and prevents any nasty merge issues caused by differing editor configs
+
+<img src='readme.png'/>
+
+## Fixing lint issues
+This is useful to fix simple js linting issues
+* ```npm run fix```
+
 
