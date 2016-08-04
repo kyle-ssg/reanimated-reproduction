@@ -4,7 +4,7 @@
 
 module.exports = class extends React.Component {
 
-  triggerToast () {
+  triggerToast() {
     toast(
       <div>
         Piece of trash
@@ -12,16 +12,15 @@ module.exports = class extends React.Component {
     );
   }
 
-  render () {
+  render() {
     return (
       <div>
-        <h2>
-          Toast Messages <Tooltip>toast(html, seconds)</Tooltip>
-        </h2>
-        <button className="btn-danger btn-outline-success" onClick={this.triggerToast} role="alert">
+        <h1>Toast example</h1>
+        <button className="btn btn-primary" onClick={this.triggerToast} role="alert">
           <strong>Click to trigger toast</strong>
         </button>
       </div>
+
     );
   }
 
