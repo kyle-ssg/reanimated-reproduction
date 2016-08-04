@@ -24,6 +24,11 @@ const InfiniteScroll = class extends React.Component {
   )
 
   onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
+    // Only relevant in reverse mode
+    if (!this.props.reverse) {
+      return;
+    }
+
     // Track scroll height
     this.scrollHeight = scrollHeight;
 
@@ -43,6 +48,11 @@ const InfiniteScroll = class extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    // Only relevant in reverse mode
+    if (!this.props.reverse) {
+      return;
+    }
+
     // Get the DOM node for the virtual scroll
     const virtualScroll = ReactDOM.findDOMNode(this).firstChild;
 
