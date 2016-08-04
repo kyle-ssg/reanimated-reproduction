@@ -1,5 +1,10 @@
+#toast {
+    display: inline-block;
+    position: fixed;
+}
+
 .toast-message {
-    width: 200px;
     top: -100px;
     right: 15px;
+    width: 200px;
 }

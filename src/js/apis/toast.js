@@ -14,7 +14,7 @@ const Message = class extends React.Component {
     });
 
     return (
-      <div className={className}>
+      <div className={className + ' toast-bitch'}>
         <button onClick={this.props.remove} type="button" className="close">
           <span aria-hidden="true">&times;</span>
         </button>
