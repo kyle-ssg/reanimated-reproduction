@@ -7,6 +7,7 @@ window.moment = require('moment/min/moment.min');
 window.fetch = require('fetchify')(Promise).fetch;
 window._ = {
   indexOf: require('lodash.indexof'),
+  findIndex: require('lodash.findindex'),
   merge: require('lodash.merge'),
   orderBy: require('lodash.orderby'),
   range: require('lodash.range'),
