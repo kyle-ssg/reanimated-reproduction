@@ -68,9 +68,6 @@ const FireAuth = class {
       firebase.auth().createUserWithEmailAndPassword(username, password)
         .then((user)=> {
           user.sendEmailVerification();
-          if (data) {
-            this.update(user, data);
-          }
         })
         .catch(this.onError);
     } catch (e) {

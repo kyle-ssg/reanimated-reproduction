@@ -60,7 +60,12 @@ const Froms = class extends React.Component {
   render () {
     return (
       <div>
-        <h2>Panel</h2>
+        <h2>
+          Panel
+          <Tooltip>
+            {'<Panel title="<h3>test</h3>">content</Panel>'}
+          </Tooltip>
+        </h2>
         <Panel title={<h3>Test</h3>}>
           body
         </Panel>

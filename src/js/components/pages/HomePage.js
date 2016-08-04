@@ -7,6 +7,7 @@ import InfiniteScrollExample from '../examples/InfiniteScrollExample';
 import PagedListExample from '../examples/PagedListExample';
 import MaterialExample from '../examples/FormExamples';
 import ReverseInfiniteScrollExample from '../examples/ReverseInfiniteScrollExample';
+import Sortable from '../examples/Sortable';
 import ToastExample from '../examples/ToastExample';
 
 module.exports = class extends React.Component {
@@ -44,6 +45,8 @@ module.exports = class extends React.Component {
       <Divider/>
       <MaterialExample/>
       <ToastExample/>
+      <Divider/>
+      <Sortable/>
     </div>
   )
 };
