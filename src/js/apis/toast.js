@@ -14,6 +14,9 @@ const Message = class extends React.Component {
     return (
       <div className={className}>
         {this.props.children}
+        <button onClick={this.props.remove} type="button" className="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
     );
   }
