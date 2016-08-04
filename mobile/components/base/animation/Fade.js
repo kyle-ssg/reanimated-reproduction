@@ -13,6 +13,6 @@ module.exports = Component({
         style={[{ overflow: 'hidden', opacity: this.state.animated_value }, this.props.style]}>
         {this.props.children}
       </Animated.View>
-    )
+    );
   }
 });

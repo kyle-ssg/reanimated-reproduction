@@ -23,7 +23,6 @@ module.exports = {
     color: colour.warningText
   },
 
-
   //Other variation
   buttonGroupLarge: {
     height: styleVariables.buttonLarge
@@ -43,7 +42,6 @@ module.exports = {
     height: styleVariables.button
   },
 
-
   buttonGroupCenter: {
     borderRadius: 0
   },
@@ -60,4 +58,4 @@ module.exports = {
     borderBottomLeftRadius: 0,
   },
 
-}
+};

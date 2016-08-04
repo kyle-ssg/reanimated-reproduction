@@ -4,7 +4,7 @@ import NavBar from '../../navbars/NavbarDefault';
 import FireAuth from '../../../common/fire-auth';
 import Push from '../../../apis/push';
 
-module.exports = class extends React.Component {
+const LoginExample = class extends React.Component {
   constructor (props, context) {
     super(props, context);
     this.state = { push: new Push(this.onNotification) };
@@ -12,7 +12,6 @@ module.exports = class extends React.Component {
   }
 
   onNotification = () => {
-    console.log('notification')
   }
 
   onLogin = (user, profile) => {
@@ -21,7 +20,7 @@ module.exports = class extends React.Component {
         id: 'loggedIn',
         title: 'Welcome'
       });
-    })
+    });
   }
 
   onUserChange = (user, profile) => {
@@ -51,28 +50,29 @@ module.exports = class extends React.Component {
 
   _handleAppStateChange (currentAppState) {
     if (currentAppState == 'active') {
-
+      log('active');
     }
   }
 
   renderScene (route) {
     switch (route.id) {
       case 'loading': {
-        return <Flex><Loader/></Flex>
+        return <Flex><Loader/></Flex>;
       }
       case 'loggedIn': {
-        return <Flex>
+        return (<Flex>
           <LoggedIn profile={this.state.profile} user={this.state.user}/>
-        </Flex>
+        </Flex>);
       }
       case 'login': {
-        return <LoginForm/>
+        return <LoginForm/>;
       }
+      default: return null;
     }
   }
 
   render () {
-    return <Navigator
+    return (<Navigator
       navigationBar={<Navigator.NavigationBar
         style={Styles.navBar}
         routeMapper={NavBar()}
@@ -81,6 +81,13 @@ module.exports = class extends React.Component {
       ref="navigator"
       initialRoute={{ id: 'loading', title: 'Loading' }}
       renderScene={this.renderScene.bind(this)}
-    />
+    />);
   }
 };
+
+LoginExample.propTypes = {
+  user: OptionalObject,
+  profule:OptionalObject
+};
+
+module.exports = LoginExample;

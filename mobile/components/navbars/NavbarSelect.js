@@ -1,6 +1,6 @@
 module.exports = function (props) {
   return {
-    LeftButton: function (route, navigator, index, navState) {
+    LeftButton: function () {
       return null;
     },
 
@@ -8,7 +8,7 @@ module.exports = function (props) {
 
     },
 
-    RightButton: function (route, navigator, index, navState) {
+    RightButton: function () {
       return (
         <TouchableOpacity
           style={Styles.navItemContainer}
@@ -25,7 +25,7 @@ module.exports = function (props) {
       );
     },
 
-    Title: function (route, navigator, index, navState) {
+    Title: function (route) {
       return (
         <View style={Styles.navItemContainer}>
           <Text style={[Styles.navBarText]}>
@@ -34,5 +34,5 @@ module.exports = function (props) {
         </View>
       );
     },
-  }
+  };
 };

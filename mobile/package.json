@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "mobile:watch": "node ../bin/commonWatch.js & node node_modules/eslint-watch/bin/esw -w --color",
+    "fix": "node node_modules/eslint-watch/bin/esw -w --color --fix",
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {

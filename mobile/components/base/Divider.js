@@ -6,7 +6,7 @@ module.exports = Component({
     return false;
   },
   render: function () {
-    return <View style={[Styles.divider, this.props.style]}/>
+    return <View style={[Styles.divider, this.props.style]}/>;
   }
 
 });

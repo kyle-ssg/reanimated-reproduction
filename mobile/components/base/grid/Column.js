@@ -1,4 +1,13 @@
 /**
  * Created by Kyle on 17/06/2016.
  */
-module.exports = (props) => <View style={[Styles.column, props.style]}>{props.children}</View>
+const Column = (props) => (
+  <View style={[Styles.column, props.style]}>{props.children}</View>
+);
+
+Column.propTypes = {
+  style: React.PropTypes.any,
+  children: OptionalObject
+};
+
+module.exports = Column;

@@ -36,16 +36,14 @@ const TheComponent = class extends React.Component {
       <ListItem style={{ height: 100 }}>
         <Text style={Styles.listItemText}>Hi, I am row {data}</Text>
       </ListItem>
-    )
-  }
-
-  renderLoading = () => {
-    return (
-      <View style={[Styles.centeredContainer, { height: 60 }]}>
-        <Text>{'Loading'}</Text>
-      </View>
     );
   }
+
+  renderLoading = () => (
+    <View style={[Styles.centeredContainer, { height: 60 }]}>
+      <Text>{'Loading'}</Text>
+    </View>
+  )
 
   render () {
     return (

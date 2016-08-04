@@ -7,7 +7,7 @@ module.exports = {
     if (res.status) {
       switch (res.status) {
         case 401:
-          console.log('Unauthorized')
+          log('Unauthorized');
           break;
         case 404:
           //AlertIOS.alert('Error', 'URL Not found: ' + url);

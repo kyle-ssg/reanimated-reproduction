@@ -1,6 +1,6 @@
 import FireAuth from '../../../common/fire-auth';
 
-module.exports = class extends React.Component {
+const LoggedIn = class extends React.Component {
   constructor (props, context) {
     super(props, context);
     this.props.user.getToken()
@@ -20,7 +20,7 @@ module.exports = class extends React.Component {
     const logout = <Button onPress={FireAuth.logout}><Text>Logout</Text></Button>;
 
     if (!profile) {
-      return <Loader/>
+      return <Loader/>;
     }
 
     return profile.emailVerified ? (
@@ -38,6 +38,12 @@ module.exports = class extends React.Component {
         <Text>Resend Verification Email</Text>
       </Button>
       {logout}
-    </Flex>
+    </Flex>;
   }
 };
+
+LoggedIn.propTypes = {
+  user: OptionalObject,
+  profile: OptionalObject,
+};
+

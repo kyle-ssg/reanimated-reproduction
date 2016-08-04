@@ -1,6 +1,4 @@
-'use strict';
-
-var Button = Component({
+var NetworkIndicator = Component({
   displayName: 'NetworkIndicator',
   componentDidMount: function () {
     NetInfo.addEventListener(
@@ -12,7 +10,7 @@ var Button = Component({
     );
   },
   getInitialState: function () {
-    return { isConnected: true }
+    return { isConnected: true };
   },
   componentWillUnmount: function () {
     NetInfo.removeEventListener(
@@ -21,7 +19,6 @@ var Button = Component({
     );
   },
   _handleReachabilityChange: function (isConnected) {
-    console.log(isConnected);
     this.setState({
       isConnected: isConnected != "none"
     });
@@ -32,7 +29,7 @@ var Button = Component({
       <Scale style={styles.bar} duration={200} value={!this.state.isConnected}>
         <Text style={styles.barText}>No internet connection.</Text>
       </Scale>
-    )
+    );
   },
 });
 
@@ -51,4 +48,4 @@ var styles = StyleSheet.create({
 
 });
 
-module.exports = Button;
+module.exports = NetworkIndicator;

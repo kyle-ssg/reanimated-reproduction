@@ -72,4 +72,4 @@ module.exports = {
     borderWidth: 1 / PixelRatio.get()
   }
 
-}
+};

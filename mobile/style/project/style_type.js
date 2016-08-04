@@ -9,4 +9,4 @@ module.exports = {
   sup: {
     fontSize: em(0.65)
   }
-}
+};

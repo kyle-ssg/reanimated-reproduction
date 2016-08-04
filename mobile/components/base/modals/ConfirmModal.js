@@ -45,7 +45,7 @@ module.exports = Component({
           </View>
         </View>
       </View>
-    )
+    );
   }
 });
 

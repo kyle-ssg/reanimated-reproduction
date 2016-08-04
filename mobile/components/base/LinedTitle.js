@@ -1,7 +1,7 @@
 /**
  * Created by kylejohnson on 06/06/2016.
  */
-module.exports = class extends React.Component {
+const LinedTitle = class extends React.Component {
   render () {
     return (
       <Row style={Styles.formGroup} space>
@@ -15,6 +15,12 @@ module.exports = class extends React.Component {
           <Divider/>
         </Flex>
       </Row>
-    )
+    );
   }
-}
+};
+
+LinedTitle.propTypes = {
+  children: OptionalElement
+};
+
+module.exports = LinedTitle;

@@ -17,7 +17,7 @@ window.OptionalNumber = React.PropTypes.number;
 window.OptionalObject = React.PropTypes.object;
 window.OptionalString = React.PropTypes.string;
 window.OptionalNode = React.PropTypes.node;
-window.OptionalElement = React.PropTypes.element;
+window.OptionalElement = React.PropTypes.node;
 window.oneOf = React.PropTypes.oneOf;
 window.RequiredArray = React.PropTypes.array.isRequired;
 window.RequiredBool = React.PropTypes.bool.isRequired;
@@ -25,8 +25,7 @@ window.RequiredFunc = React.PropTypes.func.isRequired;
 window.RequiredNumber = React.PropTypes.number.isRequired;
 window.RequiredObject = React.PropTypes.object.isRequired;
 window.RequiredString = React.PropTypes.string.isRequired;
-window.RequiredNode = React.PropTypes.node.isRequired;
-window.RequiredElement = React.PropTypes.element.isRequired;
+window.RequiredElement = React.PropTypes.node.isRequired;
 
 //Access React Stuff
 window.NativeModules = ReactNative.NativeModules;
@@ -78,7 +77,6 @@ window.Component = require('../common/Component');
 window.ES6Component = require('../common/ES6Component');
 window.TextRespondView = require('../components/base/TextRespondView');
 window.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-
 
 //Animation
 window.AnimatedToggleMixin = require('./mixins/AnimatedToggleMixin');
@@ -137,6 +135,7 @@ window.Constants = require('./constants');
 
 require('./project-components'); // project specific components that are reused everyhwere
 
+/*eslint no-console:0*/
 window.log = function () {
   if (Project.debug) {
     console.log(arguments);

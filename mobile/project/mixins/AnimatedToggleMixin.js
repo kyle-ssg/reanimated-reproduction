@@ -11,12 +11,12 @@ module.exports = {
       easing: Easing.inOut(Easing.ease),
       easingOut: Easing.linear(Easing.ease),
       animatedProps: ['value']
-    }
+    };
   },
   getInitialState: function () {
     var props = {};
     _.each(this.props.animatedProps, function (prop) {
-      props['animated_' + prop] = new Animated.Value(this.props[prop] && !this.props.autostart ? 1 : 0)
+      props['animated_' + prop] = new Animated.Value(this.props[prop] && !this.props.autostart ? 1 : 0);
     }.bind(this));
     return props;
   },
@@ -31,7 +31,7 @@ module.exports = {
             friction: this.props.friction,
             tension: this.props.tension
           }
-        ).start()
+        ).start();
       }.bind(this));
     }
   },
@@ -48,7 +48,7 @@ module.exports = {
             friction: newProps.friction,
             tension: newProps.tension
           }
-        ).start()
+        ).start();
       }
     }.bind(this));
 

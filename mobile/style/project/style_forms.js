@@ -20,4 +20,4 @@ module.exports = {
     borderBottomWidth: 1 / PixelRatio.get() * 2,
     borderBottomColor: base.borderDefault
   }
-}
+};

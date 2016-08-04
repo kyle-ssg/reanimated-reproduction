@@ -37,10 +37,10 @@ module.exports = Component({
                   </Text>
                 </Row>
               </ListItem>
-            )
+            );
           }.bind(this))}
         </ScrollView>
       </View>
-    )
+    );
   }
-})
+});

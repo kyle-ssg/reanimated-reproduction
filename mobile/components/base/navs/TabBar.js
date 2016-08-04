@@ -7,10 +7,13 @@ module.exports = class extends React.Component {
     this.state = {
       value: props.value,
       animatedTabPosition: new Animated.Value(this.calculateTabPosition({ value: props.value }, props))
-    }
+    };
   }
 
   static propTypes = {
+    children: RequiredElement,
+    style: React.PropTypes.any,
+    withoutLine: OptionalBool,
     value: RequiredString,
     itemWidth: OptionalNumber, // defaults to equal per child
     onChange: RequiredFunc,
@@ -23,7 +26,7 @@ module.exports = class extends React.Component {
 
   calculateTabPosition (state, props) {
     var position = _.indexOf(props.children.map(function (child) {
-        return child.props.value
+        return child.props.value;
       }), state.value),
       itemWidth = props.itemWidth || props.width / props.children.length;
     return (position) * itemWidth;
@@ -52,7 +55,7 @@ module.exports = class extends React.Component {
     if (this.state.value !== val) {
       this.setState({ value: val }, ()=>
         this.props.onChange(val, data)
-      )
+      );
     }
   }
 
@@ -71,7 +74,7 @@ module.exports = class extends React.Component {
                 }]}/>
             )}
             <View style={{ flexDirection: 'row' }}>
-              { this.props.children.map(function (tabItem) {
+              {this.props.children.map(function (tabItem) {
                 tabItem.props.isActive = this.state.value == tabItem.props.value;
 
                 return (
@@ -82,12 +85,12 @@ module.exports = class extends React.Component {
                     style={[Styles.tabItem, { width: itemWidth }]}>
                     {tabItem}
                   </TouchableOpacity>
-                )
+                );
               }.bind(this))}
             </View>
           </View>
         </ScrollView>
       </View>
-    )
+    );
   }
 };

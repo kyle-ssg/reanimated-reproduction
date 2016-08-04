@@ -9,7 +9,7 @@ var Flex = (props) => (
 
 Flex.propTypes = {
   children: OptionalElement,
-  style: OptionalObject
+  style: React.PropTypes.any
 };
 
 module.exports = Flex;

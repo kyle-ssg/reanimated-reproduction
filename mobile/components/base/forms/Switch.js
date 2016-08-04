@@ -31,7 +31,7 @@ var MaterialSwitch = Component({
       if (newProps.value) {
         this.activate(true);
       } else {
-        this.deactivate(true)
+        this.deactivate(true);
       }
     }
   },
@@ -102,11 +102,11 @@ var MaterialSwitch = Component({
         this.onSwipe(currentPos, this.start.pos,
           () => {
             if (!this.start.state) this.start.stateChanged = true;
-            this.setState({ state: true })
+            this.setState({ state: true });
           },
           ()=> {
             if (this.start.state) this.start.stateChanged = true;
-            this.setState({ state: false })
+            this.setState({ state: false });
           });
       },
       onPanResponderTerminationRequest: (evt, gestureState) => true,
@@ -249,7 +249,7 @@ var MaterialSwitch = Component({
 
         </TouchableHighlight>
       </View>
-    )
+    );
   }
 });
 

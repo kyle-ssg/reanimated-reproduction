@@ -20,7 +20,7 @@ module.exports = class extends React.Component {
     const { email, password } = this.state;
     FireAuth.login(email, password)
       .catch((res)=> {
-        alert(res.message)
+        alert(res.message);
       });
   }
 
@@ -95,6 +95,6 @@ module.exports = class extends React.Component {
           </View>
         </Flex>
       </ScrollableTabView>
-    )
+    );
   }
 };

@@ -8,6 +8,6 @@ module.exports = Component({
         <Animated.View style={[Styles.backdrop, { opacity: this.state.animated_value }]}>
 
         </Animated.View>
-      )
+      );
   }
 });

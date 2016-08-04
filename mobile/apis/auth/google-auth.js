@@ -8,17 +8,19 @@ GoogleSignin.configure({
 });
 
 exports.signOut = function () {
-  GoogleSignin.signOut()
+  GoogleSignin.signOut();
 };
 
 exports.login = function (cb) {
-  GoogleSignin.signIn()
-    .then((user) => {
-      cb(user.accessToken);
-    })
-    .catch((err) => {
-      console.log('WRONG SIGNIN', err);
-    })
-    .done();
+  return new Promise((resolve, reject)=> {
+    GoogleSignin.signIn()
+      .then((user) => {
+        resolve(user.accessToken);
+      })
+      .catch((err) => {
+        reject(err);
+      })
+      .done();
+  });
 };
 

@@ -14,4 +14,4 @@ module.exports = {
     fontWeight: '500',
     fontSize: em(0.7)
   }
-}
+};

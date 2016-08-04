@@ -13,7 +13,6 @@ module.exports = Component({
     var backdropSize,
       contentSize;
 
-
     switch (this.props.size) {
       case 1: {
         backdropSize = 2;
@@ -39,7 +38,6 @@ module.exports = Component({
           1]
       });
 
-
     return (
       <Animated.View
         style={[Styles.modal, {
@@ -62,6 +60,6 @@ module.exports = Component({
           ) : null}
         </View>
       </Animated.View>
-    )
+    );
   }
 });

@@ -11,8 +11,8 @@ const PushManager = class {
     });
   }
 
-  sendLocal = (title = '', message = '', params = {}) => { // see react-native-push-notification for extra params
-    return new Promise((resolve, reject) => {
+  sendLocal = (title = '', message = '', params = {}) => ( // see react-native-push-notification for extra params
+    new Promise((resolve, reject) => {
       this.configure()
         .then((token)=> {
           PushNotification.localNotification(Object.assign({}, params, {
@@ -20,11 +20,11 @@ const PushManager = class {
             message
           }));
         });
-    });
-  }
+    })
+  );
 
-  configure = () => {
-    return new Promise((resolve, reject) => {
+  configure = () => (
+    new Promise((resolve, reject) => {
       if (!this.token) {
         PushNotification.configure({
           onRegister: (res) => {
@@ -44,9 +44,8 @@ const PushManager = class {
       } else {
         resolve(this.token);
       }
-    });
-
-  }
+    })
+  )
 };
 
 module.exports = PushManager;

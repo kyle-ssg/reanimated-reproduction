@@ -36,4 +36,4 @@ module.exports = {
     left: (DeviceWidth / 2 ) - 125,
     backgroundColor: 'transparent'
   }
-}
+};

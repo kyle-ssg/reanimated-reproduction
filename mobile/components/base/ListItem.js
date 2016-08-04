@@ -5,7 +5,7 @@ var Listitem = Component({
       onPress: null,
       text: null,
       underlayColor: colour.inputBackground,
-    }
+    };
   }, render: function () {
     content = (
       <View style={[Styles.liContent, { backgroundColor: 'transparent' }]}>
@@ -21,7 +21,7 @@ var Listitem = Component({
           {content}
         </TouchableOpacity>
         : <View style={[Styles.li, this.props.style]}>{content}</View>
-    )
+    );
   }
 });
 module.exports = Listitem;

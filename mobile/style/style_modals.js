@@ -12,4 +12,4 @@ module.exports = {
     bottom: 0,
     top: 0,
   }
-}
+};

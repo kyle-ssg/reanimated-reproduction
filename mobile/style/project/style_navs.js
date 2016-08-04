@@ -63,4 +63,4 @@ module.exports = {
   tileDashActive: {
     backgroundColor: base.actionOrangeDark
   }
-}
+};

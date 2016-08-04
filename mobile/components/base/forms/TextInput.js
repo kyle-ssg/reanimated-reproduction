@@ -4,11 +4,11 @@
 
 import InputMask from 'inputmask-core';
 
-module.exports = class TextInput extends React.Component {
+const Input = class TextInput extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      height: new Animated.Value(this.getHeight(this.props.text || ""))
+      height: new Animated.Value(this.getHeight(this.props.value || ""))
     };
   }
 
@@ -131,9 +131,30 @@ module.exports = class TextInput extends React.Component {
           placeholder={this.props.placeholder}
           editable={this.props.editable || !this.props.disabled}
           style={[Styles.input, this.props.textStyle]}
-          onSubmitEditing={this.props.onSubmitEditing}
+          onSubmitEditing={this.props.onSubmit}
           keyboardType={this.props.keyboardType}/>
       </Animated.View>
     );
   }
 };
+
+Input.propTypes = {
+  value: OptionalString,
+  placeholder: OptionalString,
+  editable: OptionalBool,
+  multiline: OptionalBool,
+  maxLines: OptionalNumber,
+  minLines: OptionalNumber,
+  mask: OptionalString,
+  onChangeText: OptionalFunc,
+  height: OptionalNumber,
+  style: React.PropTypes.any,
+  secureTextInput: OptionalBool,
+  disabled: OptionalBool,
+  keyboardType: OptionalBool,
+  onSubmit: OptionalFunc,
+  onFocus: OptionalFunc,
+  textStyle: oneOf(OptionalObject, OptionalNumber),
+};
+
+module.exports = Input;

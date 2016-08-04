@@ -125,4 +125,4 @@ module.exports = {
     fontWeight: 'bold',
     color: 'white'
   }
-}
+};

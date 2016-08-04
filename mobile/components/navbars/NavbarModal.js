@@ -1,6 +1,6 @@
-module.exports = function (props) {
+module.exports = function () {
   return {
-    LeftButton: function (route, navigator, index, navState) {
+    LeftButton: function () {
       return null;
     },
 
@@ -8,7 +8,7 @@ module.exports = function (props) {
 
     },
 
-    RightButton: function (route, navigator, index, navState) {
+    RightButton: function () {
       return (
         <TouchableOpacity
           style={Styles.navItemContainer}
@@ -25,19 +25,20 @@ module.exports = function (props) {
       );
     },
 
-    Title: function (route, navigator, index, navState) {
+    Title: function (route) {
 
       if (!route.title) {
         return null;
       }
 
-      return <TouchableOpacity>
+      return (<TouchableOpacity>
         <Row>
           <Text style={[Styles.navBarTitle, Styles.container, { letterSpacing: 2 }]}>
             {route.title.toUpperCase()}
           </Text>
         </Row>
-      </TouchableOpacity>
+      </TouchableOpacity>);
     },
-  }
+  };
 };
+// route, navigator, index, navState

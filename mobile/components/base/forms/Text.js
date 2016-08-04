@@ -1,12 +1,13 @@
-'use strict';
-
-var Button = Component({
+var Text = Component({
   displayName: 'Text',
   render: function () {
-    return <ReactNative.Text style={[Styles.text, this.props.style]}>{this.props.children}</ReactNative.Text>
-  },
-
+    return <ReactNative.Text style={[Styles.text, this.props.style]}>{this.props.children}</ReactNative.Text>;
+  }
 });
 
+Text.propTypes = {
+  style: React.PropTypes.any,
+  children: OptionalElement,
+};
 
-module.exports = Button;
+module.exports = Text;

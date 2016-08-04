@@ -9,38 +9,39 @@ module.exports = Component(Object.assign({}, {
     value: OptionalString
   },
 
-
-  componentDidUpdate: function (oldProps) {
+  componentWillReceiveProps: function (oldProps) {
     if (this.props.value != oldProps.value || this.props.placeholder != oldProps.placeholder) {
-      this.setState(this.getInitialState());
+      this.setState(this.getState(newProps));
     }
   },
 
-
   getInitialState: function () {
-
-    var index = 0,
-      selectedElm = _.find(this.props.children, function (child, i) {
-        if (child && child.props && child.props.value == this.props.value) {
-          index = i;
-          return true
-        }
-      }.bind(this)),
-      state = {
-        selectedIndex: index,
-        value: selectedElm && selectedElm.props.text
-      };
-
-    return state;
-
+    return this.getState(this.props);
   },
+
+  getState(props) {
+    var index = 0;
+    var selectedElm = _.find(props.children, function (child, i) {
+      if (child && child.props && child.props.value == props.value) {
+        index = i;
+        return true;
+      }
+      return false;
+    }.bind(this));
+
+    return  {
+      selectedIndex: index,
+      value: selectedElm && selectedElm.props.text
+    };
+  },
+
   renderScene: function () {
     return (
       <View style={Styles.navContent}>
         <ScrollView style={[{ flex: 1 }]}>
           {_.map(this.props.children, function (child, i) {
             if (!child) {
-              return;
+              return null;
             }
             return child.props.value ? (
               <ListItem key={child.props.key || child.props.value}
@@ -49,21 +50,20 @@ module.exports = Component(Object.assign({}, {
                         value={this.state.selectedIndex == i}
                         onPress={_.partial(this.onChange, i)}
                         style={[child.props.style, child.props.key]}>
-                { child.props.children }
+                {child.props.children}
               </ListItem>
             ) : (
               child
-            )
+            );
           }.bind(this))}
         </ScrollView>
       </View>
-    )
+    );
   },
   onChange: function (data, elem) {
     var selectedElem = this.props.children[data];
     if (selectedElem) {
       if (this.props.onChange) {
-
         this.props.onChange(selectedElem.props.value == null ? selectedElem.props.children :
           selectedElem.props.value, selectedElem.props.data);
       }
@@ -76,7 +76,7 @@ module.exports = Component(Object.assign({}, {
   },
 
   show: function () {
-    this.refs.input.blur()
+    this.refs.input.blur();
     openSelect(
       <Navigator
         configureScene={this.configureScene}
@@ -97,7 +97,7 @@ module.exports = Component(Object.assign({}, {
   },
 
   focus: function () {
-    this.refs.input.focus()
+    this.refs.input.focus();
   },
 
   render: function () {
@@ -111,13 +111,13 @@ module.exports = Component(Object.assign({}, {
           onFocus={this.show}
           value={this.props.truncate ?
             Format.truncateText(this.state.value, this.props.truncate)
-            : this.state.value }
+            : this.state.value}
           placeholder={this.state.value || this.props.placeholder}
           onChangeText={this.props.onChangeText}
           style={[Styles.input, this.props.style]}
           onSubmitEditing={this.props.onSubmitEditing}
           keyboardType={this.props.keyboardType}/>
       </TouchableOpacity>
-    )
+    );
   }
 }));

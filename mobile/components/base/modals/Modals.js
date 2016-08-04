@@ -20,9 +20,8 @@ module.exports = function (context) {
       context.setState({
         modalComponent: null
       });
-    }.bind(this), 500)
+    }.bind(this), 500);
   }.bind(context);
-
 
   window.openSelect = function (Component, size, direction, animation, duration) {
     context.setState({
@@ -46,8 +45,7 @@ module.exports = function (context) {
       context.setState({
         selectComponent: null
       });
-    }.bind(this), 500)
+    }.bind(this), 500);
   }.bind(context);
-
 
 };

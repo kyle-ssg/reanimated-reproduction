@@ -37,4 +37,4 @@ window.base = {
   //FORMS
   placeholderTextColor: '#ccc',
   textLight: '#A2ADC6'
-}
+};

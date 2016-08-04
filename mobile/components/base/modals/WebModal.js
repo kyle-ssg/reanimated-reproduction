@@ -12,11 +12,11 @@ var NavBar = function (title, goBack) {
               style={[Styles.navBarIcon, { marginLeft: 10 }]}
             />
           </TouchableOpacity>
-        )
+        );
     },
 
     RightButton: function () {
-      return <TouchableOpacity
+      return (<TouchableOpacity
         style={[styles.navItemContainer, { marginRight: 10 }]}
         onPress={closeModal}>
         <ION
@@ -25,7 +25,7 @@ var NavBar = function (title, goBack) {
           color={colour.text}
           style={[Styles.navBarIcon, { marginLeft: 10 }]}
         />
-      </TouchableOpacity>
+      </TouchableOpacity>);
     },
 
     onMenuPress: function () {
@@ -41,15 +41,14 @@ var NavBar = function (title, goBack) {
           </View>
         );
     }
-  }
+  };
 };
-
 
 module.exports = Component({
   getInitialState: function () {
     return {
       name: this.props.name
-    }
+    };
   },
 
   onNavigationStateChange: function (navState) {
@@ -67,7 +66,6 @@ module.exports = Component({
     this.refs.navigator.refs.webview.goBack();
   },
 
-
   renderScene: function () {
     return (
       <View style={{ flex: 1, backgroundColor: colour.rowLighter, justifyContent: 'center', padding: 10 }}>
@@ -78,10 +76,8 @@ module.exports = Component({
           source={{ uri: this.props.uri }}
           scalesPageToFit={true}
         />
-        <View style={styles.buttons}>
-        </View>
       </View>
-    )
+    );
   },
   render: function () {
     return (
@@ -100,10 +96,9 @@ module.exports = Component({
         renderScene={this.renderScene}
         initialRoute={{ id: "home" }}
       />
-    )
+    );
   }
 });
-
 
 var styles = StyleSheet.create({
   webView: {

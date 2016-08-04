@@ -48,4 +48,4 @@ module.exports = {
   listBaseText: {
     fontSize: base.fontSizeSmaller
   }
-}
+};

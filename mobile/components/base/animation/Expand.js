@@ -9,7 +9,7 @@ module.exports = Component({
   getDefaultProps: function () {
     return {
       height: Dimensions.get("window").height
-    }
+    };
   },
   mixins: [AnimatedToggleMixin],
   render: function () {
@@ -31,6 +31,6 @@ module.exports = Component({
         }, this.props.style]}>
         {this.props.children}
       </Animated.View>
-    )
+    );
   }
 });

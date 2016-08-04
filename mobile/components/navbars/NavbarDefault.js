@@ -1,8 +1,7 @@
-module.exports = function (props) {
+const Navbar = function (params) {
   return {
     LeftButton: function (route, navigator, index, navState) {
-      if (index > 0) {
-        return (
+      return index > 0 && (
           <TouchableOpacity
             style={Styles.navItemContainer}
             onPress={() => navigator.pop()}>
@@ -15,8 +14,7 @@ module.exports = function (props) {
               />
             </View>
           </TouchableOpacity>
-        )
-      }
+        );
     },
 
     onMenuPress: function () {
@@ -28,13 +26,9 @@ module.exports = function (props) {
     },
 
     RightButton: function (route, navigator, index, navState) {
-      if (!props || !props.onMenuPress) {
-        return null;
-      }
+
       return (
-        <TouchableOpacity
-          style={Styles.navItemContainer}
-          onPress={() => props.onMenuPress()}>
+        <TouchableOpacity style={Styles.navItemContainer}>
           <View style={[Styles.row]}>
             <ION
               name='md-menu'
@@ -43,7 +37,7 @@ module.exports = function (props) {
               style={[{ marginLeft: 10, marginBottom: -5, marginRight: 10 }]}
             />
           </View>
-        </TouchableOpacity>)
+        </TouchableOpacity>);
     },
 
     Title: function (route, navigator, index, navState) {
@@ -52,13 +46,15 @@ module.exports = function (props) {
         return null;
       }
 
-      return <View style={[Styles.navItemContainer, Styles.navItemTitleContainer]}>
+      return (<View style={[Styles.navItemContainer, Styles.navItemTitleContainer]}>
         <Row>
           <Text style={[Styles.navBarTitle, Styles.sukFont, Styles.container, { letterSpacing: 2 }]}>
             {route.title}
           </Text>
         </Row>
-      </View>
+      </View>);
     },
-  }
+  };
 };
+
+module.exports = Navbar;

@@ -19,6 +19,7 @@ const InfiniteScroll = class extends React.Component {
     if (this.props.isLoading && !this.state.isRefreshing) {
       return this.props.renderLoading();
     }
+    return null;
   }
 
   componentWillReceiveProps (newProps) {
@@ -57,6 +58,7 @@ InfiniteScroll.defaultProps = {
 };
 
 InfiniteScroll.propTypes = {
+  data: RequiredArray,
   canRefresh: OptionalBool,
   onRefresh: OptionalFunc,
   isLoading: OptionalBool,

@@ -9,5 +9,4 @@ class mobile extends React.Component {
   }
 }
 
-
 AppRegistry.registerComponent('mobile', () => mobile);

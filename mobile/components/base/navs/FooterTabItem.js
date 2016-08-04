@@ -9,7 +9,7 @@ module.exports = Component({
   getDefaultProps: function () {
     return {
       IconType: ION
-    }
+    };
   },
   render: function () {
     return (
@@ -30,6 +30,6 @@ module.exports = Component({
           </Text>
         </Fade>
       </View>
-    )
+    );
   }
-})
+});

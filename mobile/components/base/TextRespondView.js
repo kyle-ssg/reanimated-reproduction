@@ -5,7 +5,7 @@ module.exports = Component({
   getInitialState: function () {
     return {
       keyboardOffset: new Animated.Value(0)
-    }
+    };
   },
 
   componentDidMount: function () {
@@ -34,12 +34,12 @@ module.exports = Component({
     }).start();
   },
   render: function () {
-    return <Flex>
+    return (<Flex>
       <Flex style={this.props.style}>{this.props.children}</Flex>
 
       <Animated.View style={[{ height: this.state.keyboardOffset }]}>
 
       </Animated.View>
-    </Flex>
+    </Flex>);
   }
-})
+});

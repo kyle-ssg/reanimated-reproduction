@@ -27,7 +27,7 @@ module.exports = Component(Object.assign({}, IValueTracker, {
     var style = this.getStyle();
     return (
       <Text style={style}>
-        { this.props.children || this.props.value }
+        {this.props.children || this.props.value}
       </Text>
     );
   }
@@ -40,4 +40,4 @@ var styles = StyleSheet.create({
   down: {
     color: '#b71541'
   }
-})
+});

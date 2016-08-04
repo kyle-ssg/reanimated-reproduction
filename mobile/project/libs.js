@@ -8,6 +8,5 @@ window.ION = Animated.createAnimatedComponent(require("react-native-vector-icons
 window.DeviceInfo = require('react-native-device-info');
 window.SideMenu = require('react-native-side-menu');
 
-
 import * as firebase from 'firebase';
 window.firebase = firebase;

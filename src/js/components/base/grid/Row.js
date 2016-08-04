@@ -16,7 +16,7 @@ var Row = (props) => (
 Row.propTypes = {
   space: OptionalBool,
   children: OptionalArray,
-  style: OptionalObject
+  style: React.PropTypes.any
 };
 
 module.exports = Row;

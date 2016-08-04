@@ -2,7 +2,7 @@
  * Created by kylejohnson on 14/11/2015.
  */
 
-var styles = require('../../../style/style_forms')
+var styles = require('../../../style/style_forms');
 
 module.exports = Component({
   mixins: [AnimatedToggleMixin],
@@ -22,7 +22,7 @@ module.exports = Component({
       borderColor: pallette.toggle,
       activeBackgroundColor: pallette.toggleActive,
       activeBorderColor: pallette.toggleActive,
-    }
+    };
   },
 
   shouldComponentUpdate: function (newProps) {
@@ -44,7 +44,7 @@ module.exports = Component({
       }),
       size = this.props.size;
 
-    return <TouchableOpacity activeOpacity={0.8} onPress={this.onPress}>
+    return (<TouchableOpacity activeOpacity={0.8} onPress={this.onPress}>
       <Animated.View
         style={[styles.radio, {
           backgroundColor: radioColor,
@@ -54,6 +54,6 @@ module.exports = Component({
           height: size
         }]}>
       </Animated.View>
-    </TouchableOpacity>
+    </TouchableOpacity>);
   }
 });
