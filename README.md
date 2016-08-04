@@ -21,15 +21,13 @@ if (!host) {
 ```
 
 ### iOS start
-```$ npm run ios```
+```npm run ios```
 
 ### Android start
-```$ npm run android```
+```npm run android```
 
 ### Web start
-```
-$ npm start
-```
+```npm start```
 
 ## Routing
 ```routes.js``` contain all page routes
