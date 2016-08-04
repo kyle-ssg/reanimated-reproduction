@@ -1,10 +1,18 @@
 /**
  * Created by kylejohnson on 29/07/2016.
  */
-import {AutoSizer, InfiniteLoader, VirtualScroll} from 'react-virtualized';
+import { AutoSizer, InfiniteLoader, VirtualScroll } from 'react-virtualized';
 
 const InfiniteScroll = class extends React.Component {
   displayName:'InfiniteScroll'
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      scrollToBottom: true
+    };
+    this.scrollHeight = 0;
+  }
 
   loadMore = () => {
     if (!this.props.isLoading)
@@ -12,10 +20,68 @@ const InfiniteScroll = class extends React.Component {
   }
 
   isRowLoaded = ({ index }) => (
-    index < this.props.data.length - this.props.threshold
+    (this.props.reverse ? this.props.data.length - 1 - index : index) < this.props.data.length - this.props.threshold
   )
 
+  onScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
+    // Only relevant in reverse mode
+    if (!this.props.reverse) {
+      return;
+    }
+
+    // Track scroll height
+    this.scrollHeight = scrollHeight;
+
+    // Check whether scroll to bottom is done
+    if (this.state.scrollToBottom && scrollTop === scrollHeight - clientHeight) {
+      this.setState({ scrollToBottom: false });
+    }
+  }
+
+  componentWillReceiveProps(newProps) {
+    // Scroll to bottom on initial data
+    if (this.props.reverse &&
+        (!this.props.data || this.props.data.length === 0) &&
+        newProps.data && newProps.data.length) {
+      this.setState({ scrollToBottom: true });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // Only relevant in reverse mode
+    if (!this.props.reverse) {
+      return;
+    }
+
+    // Get the DOM node for the virtual scroll
+    const virtualScroll = ReactDOM.findDOMNode(this).firstChild;
+
+    // With a valid scroll height and as long as we do not need to scroll to bottom
+    if (virtualScroll && virtualScroll.scrollHeight && !prevState.scrollToBottom) {
+      // If the scroll height has changed, adjust the scroll position accordingly
+      if (this.scrollHeight !== virtualScroll.scrollHeight) {
+        virtualScroll.scrollTop += virtualScroll.scrollHeight - this.scrollHeight;
+        this.scrollHeight = virtualScroll.scrollHeight;
+        this.forceUpdate();
+      }
+    }
+  }
+
   rowRenderer = ({ index }) => {
+    if (this.props.reverse) {
+      // Data needs to be rendered in reverse, check for loading
+      if (this.props.isLoading) {
+        // Data is shifted down by 1 while loading
+        if (index >= 1 && index < this.props.data.length + 1) {
+          return this.props.renderRow(this.props.data[this.props.data.length - index]);
+        }
+
+        return this.props.renderLoading;
+      }
+
+      return this.props.renderRow(this.props.data[this.props.data.length - 1 - index]);
+    }
+
     if (index < this.props.data.length) {
       return this.props.renderRow(this.props.data[index]);
     }
@@ -24,7 +90,7 @@ const InfiniteScroll = class extends React.Component {
   }
 
   render () {
-    const { isLoading, data, containerHeight, rowHeight, scrollToRow } = this.props;
+    const { isLoading, data, containerHeight, rowHeight, scrollToRow, reverse } = this.props;
     const rowCount = isLoading
       ? data.length + 1
       : data.length;
@@ -42,12 +108,13 @@ const InfiniteScroll = class extends React.Component {
                 overscanRowCount={20}
                 rowCount={rowCount}
                 width={width}
-                scrollToIndex={scrollToRow}
+                scrollToIndex={reverse ? rowCount - 1 - (this.state.scrollToBottom ? 0 : scrollToRow) : scrollToRow}
                 height={containerHeight || height}
                 rowHeight={rowHeight}
                 ref={registerChild}
                 onRowsRendered={onRowsRendered}
                 rowRenderer={this.rowRenderer}
+                onScroll={this.onScroll}
               />
             )}
           </InfiniteLoader>
@@ -67,6 +134,7 @@ InfiniteScroll.propTypes = {
   containerHeight: OptionalNumber,
   rowHeight: RequiredNumber,
   threshold: RequiredNumber,
+  reverse: OptionalBool,
 };
 
 module.exports = InfiniteScroll;
