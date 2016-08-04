@@ -8,13 +8,14 @@ const Message = class extends React.Component {
   render () {
     const className = cn({
       'toast-message': true,
-      'removing' : this.props.isRemoving
+      'alert alert-warning alert-dismissible fade in': true,
+      'removing out' : this.props.isRemoving
     });
 
     return (
       <div className={className}>
         {this.props.children}
-        <button onClick={this.props.remove} type="button" className="close" data-dismiss="alert" aria-label="Close">
+        <button onClick={this.props.remove} type="button" className="close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>

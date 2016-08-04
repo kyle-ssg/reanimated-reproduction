@@ -15,7 +15,7 @@ module.exports = class extends React.Component {
   render() {
     return (
 
-      <div onClick={this.triggerToast} className="alert alert-warning alert-dismissible fade in" role="alert">
+      <div onClick={this.triggerToast} role="alert">
         <strong>Click to trigger toast</strong>
       </div>
 
