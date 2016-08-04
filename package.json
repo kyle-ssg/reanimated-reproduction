@@ -9,6 +9,8 @@
   "author": "SSG",
   "scripts": {
     "start": "node & webpack-dev-server --config ./config/webpack.config.dev.js --hot --inline --progress & node ./bin/ngrok.js",
+    "android": "cd ./mobile && npm run android",
+    "ios": "cd ./mobile && npm run ios",
     "build:dev": "npm run env:dev && npm run build",
     "build:prod": "npm run env:dev && npm run build",
     "prebuild": "npm run clean:build && npm run build:html",

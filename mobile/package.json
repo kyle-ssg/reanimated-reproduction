@@ -5,7 +5,9 @@
   "scripts": {
     "mobile:watch": "node ../bin/commonWatch.js & node node_modules/eslint-watch/bin/esw -w --color",
     "fix": "node node_modules/eslint-watch/bin/esw -w --color --fix",
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "ios": "react-native run-ios & npm run mobile:watch",
+    "android": "react-native run-android & npm run mobile:watch"
   },
   "dependencies": {
     "babel-preset-react-native-stage-0": "^1.0.1",
