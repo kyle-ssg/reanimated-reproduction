@@ -27,6 +27,7 @@
     "env:dev": "node ./bin/env.js dev"
   },
   "dependencies": {
+    "bootstrap": "4.0.0-alpha.3",
     "classnames": "2.2.5",
     "fetchify": "0.0.2",
     "firebase": "3.2.0",
