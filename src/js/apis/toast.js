@@ -69,7 +69,7 @@ const Toast = class extends React.Component {
   render () {
     return (
       <div className="toast-messages">
-        {this.state.messages.map((message)=><Message remove={()=>this.remove(message.id)}
+        {this.state.messages.map((message)=><Message key={message.id} isRemoving={message.isRemoving} remove={()=>this.remove(message.id)}
                                                         expiry={message.expiry}>{message.content}</Message>)}
       </div>
     );
