@@ -6,6 +6,7 @@ import NavigableList from '../examples/NavigableList';
 import InfiniteScrollExample from '../examples/InfiniteScrollExample';
 import PagedListExample from '../examples/PagedListExample';
 import MaterialExample from '../examples/FormExamples';
+import ReverseInfiniteScrollExample from '../examples/ReverseInfiniteScrollExample';
 
 module.exports = class extends React.Component {
   constructor (props, context) {
@@ -27,6 +28,8 @@ module.exports = class extends React.Component {
       </div>
       <Divider/>
       <InfiniteScrollExample/>
+      <Divider/>
+      <ReverseInfiniteScrollExample/>
       <Divider/>
       <PagedListExample/>
       <Divider/>
