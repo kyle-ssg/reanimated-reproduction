@@ -25,8 +25,13 @@ if (!host) {
 }
 ```
 
+### iOS start
+* npm run ios
 
-### Running with hot reloading / eslinting / tests
+### Android start
+* npm run android
+
+### Web start
 ```
 $ npm start
 ```
