@@ -49,7 +49,7 @@ const Toast = class extends React.Component {
   toast = (content, expiry) => {
     var { messages } = this.state,
       id = Utils.GUID();
-    messages.push({ content, expiry, id: id });
+    messages.unshift({ content, expiry, id: id });
     this.setState({messages});
   }
 
