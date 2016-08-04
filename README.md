@@ -26,10 +26,10 @@ if (!host) {
 ```
 
 ### iOS start
-```npm run ios```
+```$ npm run ios```
 
 ### Android start
-```npm run android```
+```$ npm run android```
 
 ### Web start
 ```
