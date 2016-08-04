@@ -3,6 +3,11 @@ A boilerplate using React, Flux, webpack + hot module reloading, and ES6 + JSX v
 
 ## Getting Started
 
+### Setup your IDE to use Editor Config by default
+This standardises code styles and prevents any nasty merge issues caused by differing editor configs
+
+<img src='readme.png'/>
+
 ### Installation Web
 ```
 $ npm install
