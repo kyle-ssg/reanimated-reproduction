@@ -53,7 +53,7 @@ const Froms = class extends React.Component {
   renderSelectedItem = (value, remove) => (
     <span>
             {value.name}
-      <Button onClick={remove}>remove</Button>
+      <Button onClick={remove}><i className="fa fa-times" aria-hidden="true"></i></Button>
         </span>
   )
 
