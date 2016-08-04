@@ -10,7 +10,7 @@ const Froms = class extends React.Component {
 
   constructor (props, context) {
     super(props, context);
-    this.state = { tab: 0 };
+    this.state = { tab: 0, isAbsolute: true};
   }
 
   selectTab = (tab) => {
@@ -19,6 +19,10 @@ const Froms = class extends React.Component {
 
   toggleCheck = () => {
     this.setState({ checked: !this.state.checked });
+  }
+
+  onAbsoluteChanged = () => {
+    this.setState({isAbsolute: !this.state.isAbsolute});
   }
 
   onStarChange = (val) => {
@@ -98,9 +102,11 @@ const Froms = class extends React.Component {
         </Panel>
 
         <Panel title={<h3>MultiSelect</h3>}>
+          Show as popover ?
+          <Switch value={this.state.isAbsolute} onChange={this.onAbsoluteChanged}/>
           <MultiSelect
             placeholder="Select some items"
-            isAbsolute={false}
+            isAbsolute={this.state.isAbsolute}
             value={this.state.value}
             onSelectChange={this.onSelectChange}
             onSearchChange={this.onSearchChange}
