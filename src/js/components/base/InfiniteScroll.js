@@ -62,7 +62,6 @@ const InfiniteScroll = class extends React.Component {
       if (this.scrollHeight !== virtualScroll.scrollHeight) {
         virtualScroll.scrollTop += virtualScroll.scrollHeight - this.scrollHeight;
         this.scrollHeight = virtualScroll.scrollHeight;
-        this.forceUpdate();
       }
     }
   }
