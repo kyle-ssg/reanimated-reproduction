@@ -14,10 +14,12 @@ module.exports = class extends React.Component {
 
   render() {
     return (
-
-      <button className="btn-danger btn-outline-success" onClick={this.triggerToast} role="alert">
-        <strong>Click to trigger toast</strong>
-      </button>
+      <div>
+        <h1>Toast example</h1>
+        <button className="btn btn-primary" onClick={this.triggerToast} role="alert">
+          <strong>Click to trigger toast</strong>
+        </button>
+      </div>
 
     );
   }
