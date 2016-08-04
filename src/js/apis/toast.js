@@ -60,6 +60,7 @@ const Toast = class extends React.Component {
     if (index > -1) {
       messages[index].isRemoving = true;
       setTimeout(()=> {
+        var index = _.findIndex(this.state.messages, { id });
         var messages = this.state.messages;
         messages.splice(index, 1);
         this.setState({messages});
