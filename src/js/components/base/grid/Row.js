@@ -3,10 +3,12 @@
  */
 var Row = (props) => (
   <div
+    {... props}
     style={_.merge({
       display: 'flex',
       flexWrap: 'wrap',
       flexDirection: 'row',
+      alignItems: 'center',
       justifyContent: props.space ? 'space-between' : 'flex-start'
     }, props.style)}>
     {props.children}

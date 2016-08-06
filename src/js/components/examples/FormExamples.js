@@ -15,7 +15,7 @@ const Froms = class extends React.Component {
   }
 
   onSliderChange = (slider) => {
-    this.setState({slider});
+    this.setState({ slider });
   }
 
   selectTab = (tab) => {
@@ -51,10 +51,12 @@ const Froms = class extends React.Component {
   }
 
   renderSelectedItem = (value, remove) => (
-    <span>
-            {value.name}
-      <Button onClick={remove}>remove</Button>
-        </span>
+    <Row space className="chip">
+      <span>{value.name}</span>
+      <span onClick={remove} className="chip-icon">
+        <span className="fa fa-close"/>
+      </span>
+    </Row>
   )
 
   render () {

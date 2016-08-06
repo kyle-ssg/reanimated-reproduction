@@ -1,31 +1,55 @@
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
+import data from './country-data';
 
-const SortableItem = SortableElement(({ value }) => <div style={{backgroundColor:'white', cursor:'pointer'}}><Button className="btn-link">{value}</Button><Divider/></div>);
+const SortableItem = SortableElement(({ value }) => <div style={{ backgroundColor: 'white', cursor: 'pointer' }}><Button
+  className="btn-link">{value}</Button><Divider/></div>);
 
-const SortableList = SortableContainer(({ items }) => {
-  return (
-    <ul>
-      {items.map((value, index) =>
-        <SortableItem key={`item-${index}`} index={index} value={value}/>
-      )}
-    </ul>
-  );
-});
+const SortableList = class extends React.Component {
+  displayName:'SortableList'
+
+  forceUpdateGrid () {
+    this.refs.list.forceUpdateGrid();
+  }
+
+  render () {
+    const { data, renderRow } = this.props;
+    var element = null;
+    SortableContainer(({ data, renderRow, ref }) => {
+      element = (
+        <ListView ref={ref} renderRow={renderRow} containerHeight={200} rowHeight={40} data={data}/>
+      );
+    });
+    return element;
+  }
+
+
+};
+
+SortableList.propTypes = {};
+
+module.exports = SortableList;
 
 class SortableComponent extends React.Component {
-  state = {
-    items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6']
+
+  constructor (props) {
+    super(props);
+    this.state = { data: data.concat([]) };
   }
+
   onSortEnd = ({ oldIndex, newIndex }) => {
     this.setState({
-      items: arrayMove(this.state.items, oldIndex, newIndex)
-    });
+      data: arrayMove(this.state.data, oldIndex, newIndex)
+    }, this.refs.list.forceUpdateGrid);
   };
+
+  renderRow = (data, index) => (
+    <SortableItem onSortEnd={this.onSortEnd} key={data.name} index={index} value={data.name}/>
+  )
 
   render () {
     return (
-      <SortableList items={this.state.items} onSortEnd={this.onSortEnd}/>
-    )
+      <SortableList ref="list" data={this.state.data} renderRow={this.renderRow} onSortEnd={this.onSortEnd}/>
+    );
   }
 }
 
