@@ -1,5 +1,4 @@
 //MARGIN AND PADDING
-$base-gutter: 20px;
 
 $font-family: Roboto, sans-serif;
 
@@ -55,3 +54,6 @@ $tablet-landscape: 1024px;
 
 $modal-backdrop-bg: rgba(0, 0, 0, 0.870588);
 $modal-header-border-width: 0;
+
+
+$button-transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
