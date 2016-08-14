@@ -1,17 +1,7 @@
-@import './project/variables';
-@import '3rdParty/bootstrap';
-@import '3rdParty/react-slider';
-@import './components/star-rating';
-@import './components/input';
-@import './components/tabs';
-@import './components/modal';
-@import './components/panel';
-@import './components/toast';
-@import './components/chip';
-@import './grid';
-@import './components/button';
-@import './components/select';
-@import 'project/custom/flex-table';
+@import "variables";
+@import "3rdParty/index";
+@import "components/index";
+@import "flexbox/index";
 
 body {
   background: #fff;
@@ -19,6 +9,7 @@ body {
   font-family: $font-family;
   font-weight: 200;
 }
+
 h1, h2, h3 {
   font-weight: 300;
 }
@@ -31,12 +22,18 @@ input:disabled {
   width: 100%;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .app-container {
   margin-top: 50px;
 }
 
-.centeredContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+hr {
+  color: #f1f1f1;
+}
+
+.form-group {
+  margin-bottom: $input-padding-y *2;
 }

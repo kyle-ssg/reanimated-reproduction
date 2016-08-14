@@ -1,5 +1,5 @@
 const Message = class extends React.Component {
-  displayName:'Message'
+  displayName: 'Message'
 
   componentDidMount () {
     setTimeout(this.props.remove, this.props.expiry);
@@ -9,8 +9,8 @@ const Message = class extends React.Component {
     const className = cn({
       'toast-message': true,
       'alert alert-warning alert-dismissible fade': true,
-      'in' : !this.props.isRemoving,
-      'removing out' : this.props.isRemoving
+      'in': !this.props.isRemoving,
+      'removing out': this.props.isRemoving
     });
 
     return (
@@ -38,7 +38,7 @@ Message.propTypes = {
 module.exports = Message;
 
 const Toast = class extends React.Component {
-  displayName:'ToastMessages'
+  displayName: 'ToastMessages'
 
   constructor (props, context) {
     super(props, context);
@@ -50,7 +50,7 @@ const Toast = class extends React.Component {
     var { messages } = this.state,
       id = Utils.GUID();
     messages.unshift({ content, expiry, id: id });
-    this.setState({messages});
+    this.setState({ messages });
   }
 
   remove = (id) => {
@@ -63,17 +63,18 @@ const Toast = class extends React.Component {
         var index = _.findIndex(this.state.messages, { id });
         var messages = this.state.messages;
         messages.splice(index, 1);
-        this.setState({messages});
+        this.setState({ messages });
       }, 10000);
-      this.setState({messages});
+      this.setState({ messages });
     }
   }
 
   render () {
     return (
       <div className="toast-messages">
-        {this.state.messages.map((message)=><Message key={message.id} isRemoving={message.isRemoving} remove={()=>this.remove(message.id)}
-                                                        expiry={message.expiry}>{message.content}</Message>)}
+        {this.state.messages.map((message)=><Message key={message.id} isRemoving={message.isRemoving}
+                                                     remove={()=>this.remove(message.id)}
+                                                     expiry={message.expiry}>{message.content}</Message>)}
       </div>
     );
   }

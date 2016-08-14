@@ -1,6 +1,7 @@
-@import "../../variables";
+@import "../variables";
 
 .panel {
+  width: 100%;
   .panel-heading {
     h1,h2,h3 {
       color : $panel-heading-color;
@@ -23,6 +24,5 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
   border-radius: 2px;
-  margin-bottom: 32px;
 
 }

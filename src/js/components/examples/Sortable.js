@@ -21,11 +21,12 @@ const SortableList = class extends React.Component {
     });
     return element;
   }
-
-
+  
 };
 
-SortableList.propTypes = {};
+SortableList.propTypes = {
+  data: OptionalArray
+};
 
 module.exports = SortableList;
 

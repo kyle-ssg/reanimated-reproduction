@@ -9,6 +9,7 @@ import MaterialExample from '../examples/FormExamples';
 import ReverseInfiniteScrollExample from '../examples/ReverseInfiniteScrollExample';
 import Sortable from '../examples/Sortable';
 import ToastExample from '../examples/ToastExample';
+import GridExample from '../examples/GridExample';
 
 module.exports = class extends React.Component {
   constructor (props, context) {
@@ -19,15 +20,6 @@ module.exports = class extends React.Component {
   render = () => (
     <div>
       <NavigableList/>
-      <h2>
-        Flex centered container
-        <Tooltip>
-          The centeredContainer class uses justify-content and align-items
-        </Tooltip>
-      </h2>
-      <div className="centeredContainer" style={{ width: 100, height: 100, border: '1px solid' }}>
-        I'm always centered
-      </div>
       <Divider/>
       <InfiniteScrollExample/>
       <Divider/>
@@ -46,7 +38,7 @@ module.exports = class extends React.Component {
       <MaterialExample/>
       <ToastExample/>
       <Divider/>
-      <Sortable/>
+      <GridExample/>
     </div>
   )
 };
