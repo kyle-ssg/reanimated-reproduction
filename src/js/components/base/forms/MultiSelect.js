@@ -2,7 +2,7 @@ import FocusMonitor from '../higher-order/FocusMonitor';
 import InputStepper from '../higher-order/InputStepper';
 
 const AutoComplete = class extends React.Component {
-  displayName:'AutoComplete'
+  displayName: 'AutoComplete'
 
   constructor (props, context) {
     super(props, context);
@@ -49,6 +49,7 @@ const AutoComplete = class extends React.Component {
     var classNames = cn({
       popover: this.props.isAbsolute,
       in: this.props.isAbsolute && this.state.isFocused,
+      'autocomplete-container': true
     });
 
     return (
@@ -67,7 +68,7 @@ const AutoComplete = class extends React.Component {
           {
             (theInput, highlightedRow, highlightRow) => (
               <div>
-                <Row className="multiselect-container">
+                <Row>
                   {this.props.value && this.props.value.map((value, i)=>(
                     <div className="multi-select-item">
                       {this.props.renderSelectedItem(value, ()=>this.removeItem(i))}
@@ -77,21 +78,24 @@ const AutoComplete = class extends React.Component {
                     {theInput}
                   </div>
                 </Row>
-                <div className={classNames}>
-                  <ListView
-                    className={this.props.isAbsolute && 'absolute'}
-                    ref="list"
-                    scrollToRow={highlightedRow}
-                    renderNoResults={this.props.renderNoResults}
-                    renderRow={(row, index)=>
-                      <div key={row.id || row} onMouseDown={()=>this.addItem(row)}>
-                        {this.props.renderRow(row, index, highlightedRow, highlightRow, )}
-                      </div>
-                    }
-                    data={this.props.data}
-                    containerHeight={this.props.containerHeight}
-                    rowHeight={this.props.rowHeight}
-                  />
+                <div style={{ position: 'relative' }}>
+                  <div className={classNames}>
+                    <div>
+                      <ListView
+                        ref="list"
+                        scrollToRow={highlightedRow}
+                        renderNoResults={this.props.renderNoResults}
+                        renderRow={(row, index)=>
+                          <div key={row.id || row} onMouseDown={()=>this.addItem(row)}>
+                            {this.props.renderRow(row, index, highlightedRow, highlightRow,)}
+                          </div>
+                        }
+                        data={this.props.data}
+                        containerHeight={this.props.containerHeight}
+                        rowHeight={this.props.rowHeight}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             )

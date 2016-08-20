@@ -10,6 +10,7 @@ const Provider = class extends React.Component {
   show () {
     $(ReactDOM.findDOMNode(this)).on('hidden.bs.modal', this.unmount);
     $(ReactDOM.findDOMNode(this)).modal('show');
+    $(ReactDOM.findDOMNode(this)).style = "";
   }
 
   close = () => { //use when you wish to trigger closing manually

@@ -1,0 +1,26 @@
+@import "../mixins/box-shadow-mixin";
+@import "../mixins/transition-mixin";
+.popover {
+  @include transition(all 300ms ease);
+  background-color: white;
+  z-index: 2000;
+  width: 100%;
+  transform-origin: top;
+  position: absolute;
+  overflow: hidden;
+  transform: scaleY(0);
+  opacity: 0;
+  &.in {
+    @include box-shadow();
+    transform: scaleY(1);
+    height: auto;
+    opacity: 1;
+  }
+}
+.absolute {
+  position: absolute !important;
+}
+.relative {
+  position: relative !important;
+}
+
