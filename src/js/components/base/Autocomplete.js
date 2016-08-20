@@ -18,6 +18,12 @@ const AutoComplete = class extends React.Component {
   }
 
   render () {
+    var classNames = cn({
+      popover: this.props.isAbsolute,
+      in: this.props.isAbsolute && this.state.isFocused,
+      'autocomplete-container' : true
+    });
+
     return (
       <FocusMonitor onFocusChanged={this.onFocusChanged}>
         <InputStepper
@@ -29,9 +35,8 @@ const AutoComplete = class extends React.Component {
             (theInput, highlightedRow, highlightRow) => (
               <div>
                 {theInput}
-                <div className={"popover " + (this.state.isFocused ? "in" : "")}>
+                <div className={classNames}>
                   <ListView
-                    className={this.props.isAbsolute && 'absolute'}
                     ref="list"
                     scrollToRow={highlightedRow}
                     renderNoResults={this.props.renderNoResults}

@@ -122,7 +122,7 @@ const Froms = class extends React.Component {
 
         <Panel title={<h3>MultiSelect</h3>}>
           Show as popover ?
-          <Switch value={this.state.isAbsolute} onChange={this.onAbsoluteChanged}/>
+          <Switch checked={this.state.isAbsolute} onChange={this.onAbsoluteChanged}/>
           <MultiSelect
             placeholder="Select some items"
             isAbsolute={this.state.isAbsolute}
