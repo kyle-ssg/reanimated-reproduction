@@ -115,7 +115,7 @@ const Froms = class extends React.Component {
 
         <FormGroup>
           <FormInline>
-            <Slider onChange={this.onSliderChange} defaultValue={this.state.slider} withBars></Slider>
+            <Slider onChange={this.onSliderChange} defaultValue={this.state.slider} withBars/>
             <span>{this.state.slider + ""}</span>
           </FormInline>
         </FormGroup>

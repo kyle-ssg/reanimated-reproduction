@@ -35,6 +35,7 @@ const Popover = class extends React.Component {
 
 Popover.propTypes = {
   isHover: OptionalBool,
+  className: OptionalString,
   renderTitle: RequiredFunc,
   children: OptionalElement
 };

@@ -8,7 +8,7 @@
   "license": "MIT",
   "author": "SSG",
   "scripts": {
-    "start": "node & webpack-dev-server --config ./config/webpack.config.dev.js --hot --inline --progress & node ./bin/ngrok.js",
+    "start": "node & webpack-dashboard -m -- webpack-dev-server --config ./config/webpack.config.dev.js --hot --inline --progress & node ./bin/ngrok.js",
     "android": "cd ./mobile && npm run android",
     "ios": "cd ./mobile && npm run ios",
     "build:dev": "npm run env:dev && npm run build",
@@ -87,6 +87,7 @@
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "1.13.1",
+    "webpack-dashboard": "0.1.6",
     "webpack-dev-server": "1.14.1"
   }
 }

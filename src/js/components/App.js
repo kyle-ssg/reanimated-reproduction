@@ -12,6 +12,7 @@ const NavTabItem = (props)=>(
 
 NavTabItem.displayName = "NavTabItem";
 NavTabItem.propTypes = {
+  value: RequiredString,
   title: RequiredString,
   icon: RequiredString
 };
@@ -36,7 +37,7 @@ export default class App extends Component {
         history.push('/');
         break;
       case 1:
-        history.push('layout')
+        history.push('layout');
         break;
       case 2:
         history.push('unknownPage');
@@ -45,16 +46,15 @@ export default class App extends Component {
   }
 
   getSelectedTab = () => {
-    const paths = this.props.location.pathname.split('/')
+    const paths = this.props.location.pathname.split('/');
     switch (paths[paths.length == 1 ? 0 : 1]) {
       case '':
-        return 0
+        return 0;
       case 'layout':
         return 1;
       default:
-        return 2
+        return 2;
     }
-    debugger
   }
 
   render () {
@@ -84,3 +84,8 @@ export default class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  location: RequiredObject,
+  history: RequiredObject,
+};

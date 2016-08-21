@@ -15,11 +15,12 @@ module.exports = class extends React.Component {
   constructor (props, context) {
     super(props, context);
     this.state = { route: 'login', loading: true };
-    setTimeout(()=> this.setState({loading: false}), 500);
+    setTimeout(()=> this.setState({ loading: false }), 500);
   }
 
   render = () => {
-    return this.state.loading ? <div className="centered-container"> <Loader/> </div>: (
+    const loading = this.state.loading;
+    return loading ? <div className="centered-container"><Loader/></div> : (
       <div>
         <Link to="layout">Example Link</Link>
         <NavigableList/>

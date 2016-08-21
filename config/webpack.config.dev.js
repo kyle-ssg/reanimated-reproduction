@@ -2,6 +2,9 @@ const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 
+// Import the plugin:
+var DashboardPlugin = require('webpack-dashboard/plugin');
+
 // App files location
 const PATHS = {
   app: path.resolve(__dirname, '../src/js'),
@@ -13,6 +16,7 @@ const plugins = [
   // Shared code
   new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.bundle.js'),
   // Avoid publishing files when compilation fails
+  new DashboardPlugin(),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('development'),
     __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))

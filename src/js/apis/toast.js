@@ -29,6 +29,7 @@ Message.defaultProps = {
 };
 
 Message.propTypes = {
+  children: OptionalElement,
   expiry: OptionalNumber,
   content: OptionalNode,
   remove: RequiredFunc,

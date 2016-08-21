@@ -7,7 +7,7 @@ import AutoComplete from '../base/Autocomplete';
 import data from './country-data';
 
 const NavigableList = class extends React.Component {
-  displayName:'NavigableList'
+  displayName: 'NavigableList'
 
   constructor (props, context) {
     super(props, context);
@@ -69,8 +69,7 @@ const NavigableList = class extends React.Component {
           onSelect={this.selectRow}
           renderRow={this.renderRow}
           isAbsolute={this.state.isAbsolute}
-          data={this.state.data}>
-        </AutoComplete>
+          data={this.state.data}/>
       </div>
     );
   }

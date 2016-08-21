@@ -38,7 +38,7 @@ module.exports = {
     "no-undef": 0,
     "arrow-parens": ["error", "always"],
     "arrow-body-style": ["error", "as-needed"],
-    "semi": ["error", "always"],
+    "semi": 0,
     "no-confusing-arrow": ["error", { "allowParens": false }],
     "no-constant-condition": "error",
     "no-labels": "error",

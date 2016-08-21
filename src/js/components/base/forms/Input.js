@@ -64,13 +64,15 @@ const Input = class extends React.Component {
       input: true
     }, this.props.inputClassName);
 
+    const props = {isValid, onSearchChange, ... rest}
+
     return (
       <div
         className={className}>
         {this.props.mask ? (
           <MaskedInput
             ref="input"
-            {... this.props}
+            {... rest}
             mask={this.props.mask}
             formatCharacters={maskedCharacters}
             onKeyDown={this.onKeyDown}
@@ -80,7 +82,7 @@ const Input = class extends React.Component {
         ) : (
           <input
             ref="input"
-            {... this.props} onFocus={this.onFocus}
+            {... rest} onFocus={this.onFocus}
             onKeyDown={this.onKeyDown}
             onBlur={this.onBlur}
             className={inputClassName}/>
