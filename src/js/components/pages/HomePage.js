@@ -14,32 +14,35 @@ import GridExample from '../examples/GridExample';
 module.exports = class extends React.Component {
   constructor (props, context) {
     super(props, context);
-    this.state = { route: 'login' };
+    this.state = { route: 'login', loading: true };
+    setTimeout(()=> this.setState({loading: false}), 500);
   }
 
-  render = () => (
-    <div>
-      <Link to="layout">Example Link</Link>
-      <NavigableList/>
-      <Divider/>
-      <InfiniteScrollExample/>
-      <Divider/>
-      <ReverseInfiniteScrollExample/>
-      <Divider/>
-      <PagedListExample/>
-      <Divider/>
-      <BigDataExample/>
-      <Divider/>
-      <LoginExample/>
-      <Divider/>
-      <ShareExample/>
-      <Divider/>
-      <ModalExample/>
-      <Divider/>
-      <MaterialExample/>
-      <ToastExample/>
-      <Divider/>
-      <GridExample/>
-    </div>
-  )
+  render = () => {
+    return this.state.loading ? <div className="centered-container"> <Loader/> </div>: (
+      <div>
+        <Link to="layout">Example Link</Link>
+        <NavigableList/>
+        <Divider/>
+        <InfiniteScrollExample/>
+        <Divider/>
+        <ReverseInfiniteScrollExample/>
+        <Divider/>
+        <PagedListExample/>
+        <Divider/>
+        <BigDataExample/>
+        <Divider/>
+        <LoginExample/>
+        <Divider/>
+        <ShareExample/>
+        <Divider/>
+        <ModalExample/>
+        <Divider/>
+        <MaterialExample/>
+        <ToastExample/>
+        <Divider/>
+        <GridExample/>
+      </div>
+    )
+  }
 };

@@ -30,15 +30,15 @@ export default class App extends Component {
   selectTab = (tab) => {
     const { history } = this.props;
 
-    switch (tab) { //delay pushing route until tab transition completes
+    switch (tab) {
       case 0:
-        setTimeout(()=>history.push('/'), 500);
+        history.push('/');
         break;
       case 1:
-        setTimeout(()=>history.push('layout'), 500);
+        history.push('layout')
         break;
       case 2:
-        setTimeout(()=>history.push('unknownPage'), 500);
+        history.push('unknownPage');
         break;
     }
     this.setState({ tab });
