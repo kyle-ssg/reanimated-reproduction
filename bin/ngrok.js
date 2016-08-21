@@ -26,13 +26,20 @@ ngrok.connect(port, (innerErr, url) => {
   if (innerErr) {
     return console.log(innerErr);
   }
+  console.log(`\n\n`);
+  console.log(`\n\n`);
 
-  console.log(`\n\n${url}`.bold.grey);
-  console.log(`http://localhost:${port}`.bold.green);
   getIP
     .then((res)=> {
+      console.log(`\n\n${url}`.bold.grey);
+      console.log(`http://localhost:${port}`.bold.green);
       console.log(`${res}:${port}`.bold.blue);
     })
+
+  console.log(`\n\n`);
+  console.log(`\n\n`);
+  console.log(`\n\n`);
+
 });
 
 
