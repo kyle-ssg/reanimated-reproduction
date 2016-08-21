@@ -10,6 +10,7 @@
   overflow: hidden;
   transform: scaleY(0);
   opacity: 0;
+  min-width: 200px;
   &.in {
     @include box-shadow();
     transform: scaleY(1);
@@ -23,4 +24,3 @@
 .relative {
   position: relative !important;
 }
-

@@ -18,4 +18,17 @@ nav.navbar {
       padding: 0;
     }
   }
+  .navbar-right {
+    float: right;
+    height: 44px;
+    > * {
+      display: inline-block;
+      height: 44px;
+      line-height: 44px;
+      display: inline-block;
+    }
+  }
+  .popover-right {
+    left: -175px;
+  }
 }

@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import Tabs from '../components/base/forms/Tabs';
 import TabItem from '../components/base/forms/TabItem';
+import Popover from '../components/base/Popover';
 
 const NavTabItem = (props)=>(
   <span value={props.value} className="flex-row row centered-container">
@@ -53,6 +54,15 @@ export default class App extends Component {
             <TabItem tabLabel={<NavTabItem value="layout" title="Layout" icon="th"/>}/>
             <TabItem tabLabel={<NavTabItem value="uh" title="404" icon="meh-o"/>}/>
           </Tabs>
+          <div className="navbar-right">
+            <div className="flex-column">
+              <Popover className="popover-right" renderTitle={()=><div className="flex-column fa fa-chevron-down"/>}>
+                <a href="test">
+                  Render some cool stuff here
+                </a>
+              </Popover>
+            </div>
+          </div>
         </nav>
 
         <div className="app-container container">
