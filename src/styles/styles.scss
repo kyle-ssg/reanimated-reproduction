@@ -1,6 +1,7 @@
 @import "variables";
 @import "3rdParty/index";
 @import "components/index";
+@import "project/index";
 @import "flexbox/index";
 
 body {
@@ -24,6 +25,10 @@ input:disabled {
 
 .text-center {
   text-align: center;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 .app-container {

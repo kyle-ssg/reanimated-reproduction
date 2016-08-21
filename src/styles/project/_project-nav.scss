@@ -1,0 +1,21 @@
+nav.navbar {
+  padding: 0;
+  margin-bottom: 0;
+  .tabs {
+    display: inline-block;
+    .tabs-nav {
+      width: 380px;
+    }
+    .btn {
+      background-color: transparent;
+      color: $navbar-color;
+      &.tab-active {
+        color: $brand-secondary;
+      }
+      border-color: transparent;
+    }
+    .tab-item {
+      padding: 0;
+    }
+  }
+}

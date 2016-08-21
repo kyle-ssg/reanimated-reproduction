@@ -16,7 +16,6 @@ module.exports = class extends React.Component {
   }
 
   componentWillMount () {
-    firebase.initializeApp(Project.firebase);
     FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, ()=> {
       alert("Email verified!");
     }, this.onError);

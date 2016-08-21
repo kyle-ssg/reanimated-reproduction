@@ -40,7 +40,8 @@ const Tabs = class extends React.Component {
 };
 
 Tabs.defaultProps = {
-  className: ''
+  className: '',
+  value: 0
 };
 
 Tabs.propTypes = {
@@ -50,3 +51,13 @@ Tabs.propTypes = {
 };
 
 module.exports = Tabs;
+
+//Example Usage
+//   <Tabs value={this.state.tab} onChange={this.selectTab}>
+//     <TabItem tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
+//       <h2>Tab 1 content</h2>
+//     </TabItem>
+//     <TabItem tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
+//       <h2>Tab 2 content</h2>
+//     </TabItem>
+//   </Tabs>

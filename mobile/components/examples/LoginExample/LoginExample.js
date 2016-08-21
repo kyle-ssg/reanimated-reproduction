@@ -43,7 +43,6 @@ const LoginExample = class extends React.Component {
   }
 
   componentDidMount () {
-    firebase.initializeApp(Project.firebase);
     FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, this.onEmailVerified.bind(this), this.onError);
     AppState.addEventListener('change', this._handleAppStateChange.bind(this));
   }

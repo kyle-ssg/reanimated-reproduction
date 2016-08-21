@@ -19,6 +19,7 @@ module.exports = class extends React.Component {
 
   render = () => (
     <div>
+      <Link to="layout">Example Link</Link>
       <NavigableList/>
       <Divider/>
       <InfiniteScrollExample/>

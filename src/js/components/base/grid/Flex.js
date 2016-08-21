@@ -3,7 +3,7 @@
 const Flex = class extends React.Component {
   render () {
     return (
-      <div className={this.props.className} style={{ display: 'flex', flex: this.props.value }}>
+      <div {... this.props} className={(this.props.className||'') + ' flex flex-1'}>
         {this.props.children}
       </div>
     );

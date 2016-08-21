@@ -63,6 +63,11 @@ window.openConfirm = require('../apis/modals').openConfirm;
 
 require('./project-components');
 
+//react-router stuff
+import {Link} from 'react-router';
+window.Link = Link;
+
+
 /*eslint no-console:0*/
 window.log = function () {
   if (Project.debug) {
