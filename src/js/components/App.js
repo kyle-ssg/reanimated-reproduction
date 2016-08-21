@@ -5,7 +5,7 @@ import TabItem from '../components/base/forms/TabItem';
 const NavTabItem = (props)=>(
   <span value={props.value} className="flex-row row centered-container">
     <span className={`flex-column fa fa-${props.icon} tab-icon`}/>
-    <span className="flex-column">{props.title}</span>
+    <span className="flex-column hidden-xs-down">{props.title}</span>
   </span>
 );
 
