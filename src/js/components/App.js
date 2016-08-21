@@ -42,24 +42,36 @@ export default class App extends Component {
         history.push('unknownPage');
         break;
     }
-    this.setState({ tab });
+  }
+
+  getSelectedTab = () => {
+    const paths = this.props.location.pathname.split('/')
+    switch (paths[paths.length == 1 ? 0 : 1]) {
+      case '':
+        return 0
+      case 'layout':
+        return 1;
+      default:
+        return 2
+    }
+    debugger
   }
 
   render () {
     return (
       <div>
         <nav className="navbar navbar-fixed-top navbar-light bg-faded">
-          <Tabs value={this.state.tab} onChange={this.selectTab}>
+          <Tabs value={this.getSelectedTab()} onChange={this.selectTab}>
             <TabItem tabLabel={<NavTabItem value="home" title="Home" icon="home"/>}/>
             <TabItem tabLabel={<NavTabItem value="layout" title="Layout" icon="th"/>}/>
             <TabItem tabLabel={<NavTabItem value="uh" title="404" icon="meh-o"/>}/>
           </Tabs>
           <div className="navbar-right">
             <div className="flex-column">
-              <Popover className="popover-right" renderTitle={()=><div className="flex-column fa fa-chevron-down"/>}>
-                <a href="test">
-                  Render some cool stuff here
-                </a>
+              <Popover isHover={true} className="popover-right" renderTitle={()=><div className="flex-column fa fa-chevron-down"/>}>
+                <span href="test">
+                  Trash
+                </span>
               </Popover>
             </div>
           </div>

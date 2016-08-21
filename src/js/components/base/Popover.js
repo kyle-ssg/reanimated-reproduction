@@ -19,7 +19,7 @@ const Popover = class extends React.Component {
     return (
       <FocusMonitor
         onFocusChanged={this._focusChanged}
-        isHover={true}>
+        isHover={this.props.isHover}>
         <div className={this.props.className}>
           {this.props.renderTitle(this.state.isActive)}
           <div className="relative">
@@ -34,6 +34,7 @@ const Popover = class extends React.Component {
 };
 
 Popover.propTypes = {
+  isHover: OptionalBool,
   renderTitle: RequiredFunc,
   children: OptionalElement
 };
