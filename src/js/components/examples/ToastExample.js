@@ -5,6 +5,7 @@
 module.exports = class extends React.Component {
 
   triggerToast() {
+    analytics.track(Utils.events.TOAST_TRIGGERED());
     toast(
       <div>
         Piece of trash

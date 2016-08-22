@@ -54,35 +54,36 @@ const Input = class extends React.Component {
   }
 
   render () {
+    const {isValid, onSearchChange, mask, placeholderChar, ...rest} = this.props;
+
     const className = cn({
       'input-container': true,
       'focused': this.state.isFocused,
-      'invalid': this.state.shouldValidate && (typeof this.props.isValid !== 'undefined') && !this.props.isValid
+      'invalid': this.state.shouldValidate && !isValid
     }, this.props.className);
 
     const inputClassName = cn({
       input: true
     }, this.props.inputClassName);
 
-    const props = {isValid, onSearchChange, ... rest}
-
     return (
       <div
         className={className}>
-        {this.props.mask ? (
+        {mask ? (
           <MaskedInput
             ref="input"
-            {... rest}
+            {...rest}
             mask={this.props.mask}
             formatCharacters={maskedCharacters}
             onKeyDown={this.onKeyDown}
             onFocus={this.onFocus}
             onBlur={this.onBlur}
-            className={inputClassName}/>
+            className={inputClassName}
+            placeholderChar={placeholderChar}/>
         ) : (
           <input
             ref="input"
-            {... rest} onFocus={this.onFocus}
+            {...rest} onFocus={this.onFocus}
             onKeyDown={this.onKeyDown}
             onBlur={this.onBlur}
             className={inputClassName}/>
@@ -96,7 +97,8 @@ const Input = class extends React.Component {
 
 Input.defaultProps = {
   className: '',
-  placeholderChar: ' '
+  placeholderChar: ' ',
+  isValid: true
 };
 
 Input.propTypes = {
@@ -107,7 +109,8 @@ Input.propTypes = {
   placeholderChar: OptionalString,
   mask: OptionalString,
   className: React.PropTypes.any,
-  inputClassName: OptionalString
+  inputClassName: OptionalString,
+  onSearchChange: OptionalFunc
 };
 
 module.exports = Input;

@@ -47,3 +47,4 @@ LoggedIn.propTypes = {
   profile: OptionalObject,
 };
 
+export default LoggedIn;
