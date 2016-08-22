@@ -13,13 +13,13 @@
   &.full {
     color: $btn-primary-bg;
     &.editable:hover {
-      color: #999;
+      color: orange;
     }
   }
   &.empty {
     color: $btn-primary-bg;
     &.editable:hover {
-      color: #999;
+      color: orange;
     }
   }
 }

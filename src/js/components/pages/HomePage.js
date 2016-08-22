@@ -22,7 +22,6 @@ module.exports = class extends React.Component {
     const loading = this.state.loading;
     return loading ? <div className="centered-container"><Loader/></div> : (
       <div>
-        <Link to="layout">Example Link</Link>
         <NavigableList/>
         <Divider/>
         <InfiniteScrollExample/>

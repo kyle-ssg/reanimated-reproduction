@@ -10,14 +10,14 @@ const GridExample = class extends React.Component {
     return (
       <div>
         <h1>Row</h1>
-        <Row>
-          <Flex className="centered-container">
+        <Row className="list-group">
+          <Flex className="list-item centered-container">
             <h2>Flex 1</h2>
           </Flex>
-          <Flex value={2} className="centered-container">
+          <Flex value={2} className="list-item centered-container">
             <h2>Flex 2</h2>
           </Flex>
-          <Flex value={3} className="centered-container">
+          <Flex value={3} className="list-item centered-container">
             <h2>Flex 3</h2>
           </Flex>
         </Row>

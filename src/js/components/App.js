@@ -65,12 +65,13 @@ export default class App extends Component {
             <TabItem tabLabel={<NavTabItem value="home" title="Home" icon="home"/>}/>
             <TabItem tabLabel={<NavTabItem value="layout" title="Layout" icon="th"/>}/>
             <TabItem tabLabel={<NavTabItem value="uh" title="404" icon="meh-o"/>}/>
+            <TabItem tabLabel={<NavTabItem value="sassinfo" title="BS info" icon="css3"/>}/>
           </Tabs>
           <div className="navbar-right">
             <div className="flex-column">
               <Popover isHover={true} className="popover-right" renderTitle={()=><div className="flex-column fa fa-chevron-down"/>}>
                 <span href="test">
-                  Trash
+                     <Link to="sassinfo">Bootstrap info</Link>
                 </span>
               </Popover>
             </div>

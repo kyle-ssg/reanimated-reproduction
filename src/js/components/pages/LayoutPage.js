@@ -1,6 +1,8 @@
 /**
  * Created by kylejohnson on 21/08/2016.
  */
+
+
 const TheComponent = class extends React.Component {
   displayName: 'TheComponent'
 
@@ -12,6 +14,15 @@ const TheComponent = class extends React.Component {
   render () {
     return (
       <div>
+        <h1>How it works</h1>
+        
+        <p>If you’re familiar with modifying variables in Sass—or any other CSS preprocessor—you’ll be right at home to move into flexbox mode.</p>
+
+        <ol>
+          <li>Open the <code className="highlighter-rouge">_variables.scss</code> file and find the <code className="highlighter-rouge">$enable-flex</code> variable.</li>
+          <li>Change it from <code className="highlighter-rouge">false</code> to <code className="highlighter-rouge">true</code>.</li>
+          <li>Recompile, and done!</li>
+        </ol>
 
         <h1>
           Row
@@ -50,13 +61,64 @@ const TheComponent = class extends React.Component {
           </div>
         </div>
 
+    <h1>Responsive flexbox</h1>
+
+          <div className="row list-group">
+            <div className="col-xs-12 col-sm-6 list-group-item">
+              1 of 2 (stacked on mobile)
+            </div>
+            <div className="col-xs-12 col-sm-6 list-group-item">
+              1 of 2 (stacked on mobile)
+            </div>
+          </div>
+
+        <h1>Equal Height columns</h1>
+
+        <p>When we activate Flexbox it will automatically convert each of the columns into flex items matching the heights of columns. The entire grid system (mixins and predefined classes), switch from floats to display: flex;.</p>
+
+          <div className="row list-group">
+
+            <div className="col-lg-3 list-group-item">
+              <h3>Item 1</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+
+            <div className="col-lg-3 list-group-item">
+              <h3>Item 2</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+
+            <div className="col-lg-3 list-group-item">
+              <h3>Item 3</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            </div>
+
+            <div className="col-lg-3 list-group-item">
+              <h3>Item 4</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+
+            <div className="col-lg-3 list-group-item">
+              <h3>Item 5</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            </div>
+
+            <div className="col-lg-3 list-group-item">
+              <h3>Item 6</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+
+            <div className="col-lg-3 list-group-item">
+              <h3>Item 7</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            </div>
+
+            <div className="col-lg-3 list-group-item">
+              <h3>Item 8</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+          </div>
       </div>
-
-
-
-
-
-
     );
   }
 };
