@@ -8,3 +8,5 @@ import * as firebase from 'firebase';
 window.firebase = firebase;
 
 window.cn = require('classnames');
+
+import Bootstrap from '../../../node_modules/bootstrap/dist/js/bootstrap';
