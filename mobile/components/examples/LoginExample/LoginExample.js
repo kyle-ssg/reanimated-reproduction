@@ -16,8 +16,7 @@ const LoginExample = class extends React.Component {
   }
 
   onLogin = (user, profile) => {
-    const event = Utils.events.LOGGED_IN(profile.email);
-    RNSegmentIO.track(event.event, event.properties);
+    Utils.record(Utils.events.LOGGED_IN(profile.email));
     this.setState({ user, profile }, ()=> {
       this.refs.navigator.replace({
         id: 'loggedIn',

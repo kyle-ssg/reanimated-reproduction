@@ -147,24 +147,3 @@ window.info = function () {
     console.info(arguments);
   }
 };
-
-// Segment analytics
-import RNSegmentIO from 'react-native-segment-analytics';
-window.RNSegmentIO = RNSegmentIO;
-RNSegmentIO.setup('eJ4jplD0TFwOmZAyV801eB1quoAKSUBn');
-
-// Segment analytics testing - identify - normally only called once on sign up and then whenever traits change
-/*analytics.identify('luke@solidstategroup.com',
- {
-   name: 'Luke Fanning',
-   developer: true,
-   createdAt: new Date()
- }
-);*/
-// Can also use an anonymous id
-window.anonId = DeviceInfo.getUniqueID();
-RNSegmentIO.identify(anonId,
-  {
-    name: 'Anonymous Mobile Bro'
-  }
-);
