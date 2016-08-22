@@ -64,7 +64,7 @@ const Input = class extends React.Component {
       input: true
     }, this.props.inputClassName);
 
-    const props = {isValid, onSearchChange, ... rest}
+    const {isValid, onSearchChange, ... rest} = this.props;
 
     return (
       <div
