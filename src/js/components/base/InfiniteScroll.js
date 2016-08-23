@@ -53,15 +53,25 @@ const InfiniteScroll = class extends React.Component {
       return;
     }
 
+    // Re-measure all estimated rows if data has changed or loading is displayed
+    if (prevProps.data && this.props.data &&
+        (prevProps.data.length !== this.props.data.length ||
+        prevProps.isLoading !== this.props.isLoading)) {
+      this.virtualScroll.measureAllRows();
+    }
+
+    // Get total size directly from the grid (which is updated by measureAllRows())
+    const totalSize = this.virtualScroll.Grid._rowSizeAndPositionManager.getTotalSize();
+
     // Get the DOM node for the virtual scroll
-    const virtualScroll = ReactDOM.findDOMNode(this).firstChild;
+    const virtualScroll = ReactDOM.findDOMNode(this.virtualScroll);
 
     // With a valid scroll height and as long as we do not need to scroll to bottom
-    if (virtualScroll && virtualScroll.scrollHeight && !prevState.scrollToBottom) {
+    if (virtualScroll && totalSize && !prevState.scrollToBottom) {
       // If the scroll height has changed, adjust the scroll position accordingly
-      if (this.scrollHeight !== virtualScroll.scrollHeight) {
-        virtualScroll.scrollTop += virtualScroll.scrollHeight - this.scrollHeight;
-        this.scrollHeight = virtualScroll.scrollHeight;
+      if (this.scrollHeight !== totalSize) {
+        virtualScroll.scrollTop += totalSize - this.scrollHeight;
+        this.scrollHeight = totalSize;
       }
     }
   }
@@ -89,7 +99,7 @@ const InfiniteScroll = class extends React.Component {
   }
 
   render () {
-    const { isLoading, data, containerHeight, rowHeight, scrollToRow, reverse } = this.props;
+    const { isLoading, data, containerHeight, rowHeight, scrollToRow, reverse, virtualScrollRef } = this.props;
     const rowCount = isLoading
       ? data.length + 1
       : data.length;
@@ -110,7 +120,11 @@ const InfiniteScroll = class extends React.Component {
                 scrollToIndex={reverse ? rowCount - 1 - (this.state.scrollToBottom ? 0 : scrollToRow) : scrollToRow}
                 height={containerHeight || height}
                 rowHeight={rowHeight}
-                ref={registerChild}
+                ref={(virtualScroll) => {
+                  this.virtualScroll = virtualScroll;
+                  virtualScrollRef && virtualScrollRef(virtualScroll);
+                  registerChild(virtualScroll);
+                }}
                 onRowsRendered={onRowsRendered}
                 rowRenderer={this.rowRenderer}
                 onScroll={this.onScroll}
@@ -134,6 +148,7 @@ InfiniteScroll.propTypes = {
   rowHeight: RequiredNumber,
   threshold: RequiredNumber,
   reverse: OptionalBool,
+  virtualScrollRef: OptionalFunc,
 };
 
 module.exports = InfiniteScroll;
