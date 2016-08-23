@@ -23,17 +23,6 @@ const TheComponent = class extends React.Component {
         <p>Create your own project specific styles and put them in the relevant directory ie. <code>project</code> folder</p>
 
         <p>We overwrite Bootstraps variables in the <code>_variables.sccs</code> file located in our styles directory.</p>
-
-        <h1>Bootstrap JS files</h1>
-
-        <blockquote>
-          <p>Tried importing individual Bootstrap JS components via <code>libs.js</code> to allow for Plugins to be included individually but not currently working.</p>
-          <footer>Niall <cite title="Source Title"></cite></footer>
-        </blockquote>
-
-
-
-
       </div>
 
     );

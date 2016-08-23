@@ -15,7 +15,7 @@ const TheComponent = class extends React.Component {
     return (
       <div>
         <h1>How it works</h1>
-        
+
         <p>If you’re familiar with modifying variables in Sass—or any other CSS preprocessor—you’ll be right at home to move into flexbox mode.</p>
 
         <ol>
@@ -118,6 +118,35 @@ const TheComponent = class extends React.Component {
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             </div>
           </div>
+
+        <h1>Auto-layout columns</h1>
+
+            <div className="row list-group">
+              <div className="col-md col-xs-12 list-group-item">
+                1 of 2
+              </div>
+              <div className="col-md col-xs-12 list-group-item">
+                1 of 2
+              </div>
+            </div>
+            <div className="row list-group">
+              <div className="col-xs list-group-item">
+                1 of 3
+              </div>
+              <div className="col-xs list-group-item">
+                1 of 3
+              </div>
+              <div className="col-xs list-group-item">
+                1 of 3
+              </div>
+            </div>
+
+
+
+
+
+
+
       </div>
     );
   }

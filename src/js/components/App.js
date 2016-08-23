@@ -42,6 +42,9 @@ export default class App extends Component {
       case 2:
         history.push('unknownPage');
         break;
+      case 3:
+        history.push('sassinfo');
+        break;
     }
   }
 
@@ -54,6 +57,8 @@ export default class App extends Component {
         return 1;
       default:
         return 2;
+      case 'sassinfo':
+        return 3;
     }
   }
 
@@ -65,7 +70,7 @@ export default class App extends Component {
             <TabItem tabLabel={<NavTabItem value="home" title="Home" icon="home"/>}/>
             <TabItem tabLabel={<NavTabItem value="layout" title="Layout" icon="th"/>}/>
             <TabItem tabLabel={<NavTabItem value="uh" title="404" icon="meh-o"/>}/>
-            <TabItem tabLabel={<NavTabItem value="sassinfo" title="BS info" icon="css3"/>}/>
+            <TabItem tabLabel={<NavTabItem value="sassinfo" title="Bootstrap" icon="css3"/>}/>
           </Tabs>
           <div className="navbar-right">
             <div className="flex-column">
