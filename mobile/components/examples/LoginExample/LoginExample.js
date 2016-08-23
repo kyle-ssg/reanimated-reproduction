@@ -7,6 +7,7 @@ import Push from '../../../apis/push';
 const LoginExample = class extends React.Component {
   constructor (props, context) {
     super(props, context);
+    firebase.initializeApp(Project.firebase);
     this.state = { push: new Push(this.onNotification) };
     this.state.push.configure();
   }
@@ -15,6 +16,7 @@ const LoginExample = class extends React.Component {
   }
 
   onLogin = (user, profile) => {
+    Utils.record(Utils.events.LOGGED_IN(profile.email));
     this.setState({ user, profile }, ()=> {
       this.refs.navigator.replace({
         id: 'loggedIn',

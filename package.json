@@ -27,6 +27,7 @@
     "env:dev": "node ./bin/env.js dev"
   },
   "dependencies": {
+    "analytics-node": "2.1.0",
     "bootstrap": "4.0.0-alpha.3",
     "classnames": "2.2.5",
     "fetchify": "0.0.2",
@@ -75,6 +76,7 @@
     "gulp-watch": "4.3.9",
     "jscs": "3.0.7",
     "jsdom": "9.4.1",
+    "json-loader": "0.5.4",
     "mocha": "2.5.3",
     "ngrok": "2.2.2",
     "node-sass": "3.8.0",

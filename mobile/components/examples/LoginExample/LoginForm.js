@@ -18,10 +18,7 @@ module.exports = class extends React.Component {
 
   login () {
     const { email, password } = this.state;
-    FireAuth.login(email, password)
-      .catch((res)=> {
-        alert(res.message);
-      });
+    FireAuth.login(email, password);
   }
 
   facebook () {
