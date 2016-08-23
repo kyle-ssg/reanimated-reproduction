@@ -80,7 +80,7 @@ module.exports = class extends React.Component {
         <Flex style={Styles.centeredContainer} tabLabel={"Examples"}>
           <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
             <View style={Styles.formGroup}>
-              <Text>Masked Date</Text>
+              <Text style={Styles.h2}>Masked Date</Text>
               <TextInput value={this.state.maskedDate} onChangeText={(text)=>this.setState({ maskedDate: text })}
                          placeholder="dd/yy" mask="11/11"/>
             </View>

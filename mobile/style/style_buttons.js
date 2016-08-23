@@ -11,7 +11,8 @@ module.exports = {
 
   buttonText: {
     color: colour.btnText,
-    fontWeight: styleVariables.mediumFontWeight
+    fontWeight: styleVariables.mediumFontWeight,
+    fontSize: 20
   },
 
   //example variation

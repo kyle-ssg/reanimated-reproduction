@@ -85,6 +85,7 @@ window.SlideDown = require('../components/base/animation/SlideDown');
 window.SlideUp = require('../components/base/animation/SlideUp');
 window.Expand = require('../components/base/animation/Expand');
 window.Scale = require('../components/base/animation/Scale');
+window.Expand = require('../components/base/animation/Expand');
 
 //Typography
 window.Text = require('../components/base/forms/Text');
