@@ -93,7 +93,7 @@ window.styleVariables = Object.assign({
   //## Define common padding and border radius sizes and more.
 
   baseNavHeight: 44,
-  marginBaseVertical: 20,
+  marginBaseVertical: 10,
   marginBaseHorizontal: 10,
   paddingBase: 10,
   gutterBase: 5,
