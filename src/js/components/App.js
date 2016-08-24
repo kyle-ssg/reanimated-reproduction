@@ -76,14 +76,14 @@ export default class App extends Component {
             <div className="flex-column">
               <Popover isHover={true} className="popover-right" renderTitle={()=><div className="flex-column fa fa-chevron-down"/>}>
                 <span href="test">
-                     <Link to="sassinfo">Bootstrap info</Link>
+                     <Link to="exampleone">Example 1</Link>
                 </span>
               </Popover>
             </div>
           </div>
         </nav>
 
-        <div className="app-container container">
+        <div>
           {this.props.children}
         </div>
       </div>

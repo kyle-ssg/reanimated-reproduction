@@ -13,7 +13,7 @@ const TheComponent = class extends React.Component {
   render () {
     return (
 
-      <div>
+      <div className="app-container container">
         <h1>Source files</h1>
         <p>The bootstrap source files are currently located in the <code>node_modules</code> folder, which allows for easy updating via npm.</p>
 

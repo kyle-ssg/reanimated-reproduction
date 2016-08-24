@@ -2,7 +2,6 @@
  * Created by kylejohnson on 21/08/2016.
  */
 
-
 const TheComponent = class extends React.Component {
   displayName: 'TheComponent'
 
@@ -13,7 +12,7 @@ const TheComponent = class extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="app-container container">
         <h1>How it works</h1>
 
         <p>If you’re familiar with modifying variables in Sass—or any other CSS preprocessor—you’ll be right at home to move into flexbox mode.</p>
@@ -140,13 +139,6 @@ const TheComponent = class extends React.Component {
                 1 of 3
               </div>
             </div>
-
-
-
-
-
-
-
       </div>
     );
   }

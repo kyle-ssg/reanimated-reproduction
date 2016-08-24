@@ -21,7 +21,7 @@ module.exports = class extends React.Component {
   render = () => {
     const loading = this.state.loading;
     return loading ? <div className="centered-container"><Loader/></div> : (
-      <div>
+      <div className="app-container container">
         <NavigableList/>
         <Divider/>
         <InfiniteScrollExample/>
