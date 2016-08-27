@@ -45,16 +45,9 @@ module.exports = {
     justifyContent: 'center'
   },
 
-  navBarButton: {
-    padding: 10,
-    width: 44,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-
   navBarButtonText: {
     fontSize: styleVariables.fontSizeH2,
-    color: 'white',
+    color: 'white'
   },
   navBarTitle: {
     fontSize: em(styleVariables.fontSizeH2),
@@ -68,6 +61,12 @@ module.exports = {
   },
   selectNavBar: {
     backgroundColor: colour.selectNavBar,
+  },
+
+  navButton:{
+    marginLeft: 10,
+    marginBottom: -5,
+    marginRight: 10
   },
 
   // Tabs

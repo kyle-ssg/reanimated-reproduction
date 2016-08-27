@@ -10,7 +10,7 @@ const Navbar = function (params) {
                 name='ios-arrow-back'
                 size={22}
                 color={colour.navBarIcon}
-                style={[{ marginLeft: 10, marginBottom: -5, marginRight: 10 }]}
+                style={Styles.navButton}
               />
             </View>
           </TouchableOpacity>
@@ -34,7 +34,7 @@ const Navbar = function (params) {
               name='md-menu'
               size={22}
               color={colour.navBarIcon}
-              style={[{ marginLeft: 10, marginBottom: -5, marginRight: 10 }]}
+              style={Styles.navButton}
             />
           </View>
         </TouchableOpacity>);

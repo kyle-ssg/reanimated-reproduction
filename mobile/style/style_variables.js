@@ -41,6 +41,8 @@ window.pallette = {
   toggleAlt: '#CDCDCD',
   toggleActive: '#3CBF88',
   toggleActiveAlt: '#46D899',
+
+
   grayLighter: '#eaeaea',
   warning: '#DE000B',
   warningText: '#fff',
@@ -49,7 +51,7 @@ window.pallette = {
   brandDanger: '#d9534f',
   success: '#3CBF88',
 
-  anchor: '#0066ff',
+  anchor: '#0066ff'
 
 };
 
