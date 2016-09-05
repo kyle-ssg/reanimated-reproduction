@@ -52,13 +52,12 @@ window.base = {
   inputBorder: pallette.textLightest,
 
   //NAV
-  navBar: 'red',
+  navBar: pallette.primary,
   navBarIcon: pallette.text,
   navBarButtonText: pallette.text,
-  navBarBorder: 'red',
-  navBarText: 'red',
+  navBarBorder: pallette.primary,
+  navBarText: pallette.text,
 
   //MODALS
   modalBackground:'#F0F0F0'
-}
-
+};

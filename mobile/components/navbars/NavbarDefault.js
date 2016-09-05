@@ -9,7 +9,7 @@ const Navbar = function (params) {
               <ION
                 name='ios-arrow-back'
                 size={22}
-                color={colour.navBarIcon}
+                color={Styles.navBarIcon}
                 style={Styles.navButton}
               />
             </View>
@@ -33,7 +33,7 @@ const Navbar = function (params) {
             <ION
               name='md-menu'
               size={22}
-              color={colour.navBarIcon}
+              color={Styles.navBarIcon}
               style={Styles.navButton}
             />
           </View>

@@ -42,17 +42,16 @@ module.exports = {
 
   navItemContainer: {
     height: styleVariables.baseNavHeight,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
   navBarButtonText: {
     fontSize: styleVariables.fontSizeH2,
-    color: 'white'
+    color: pallette.text
   },
   navBarTitle: {
     fontSize: em(styleVariables.fontSizeH2),
-    color: 'white',
-    //backgroundColor: 'pink',
+    color: pallette.text,
     fontWeight: styleVariables.headingsFontWeight
   },
   navItem: {
