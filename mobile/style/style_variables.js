@@ -51,7 +51,7 @@ window.pallette = {
   brandDanger: '#d9534f',
   success: '#3CBF88',
 
-  anchor: '#0066ff'
+  anchor: '#0066ff',
 
 };
 
@@ -206,6 +206,8 @@ window.colour = Object.assign({}, pallette, {
   alert: 'red',
   avatar: "#dbdbdb",
 
-  facebook: '#3b5998'
+  facebook:'#3b5998',
+  twitter:'#1DA1F3',
+  google:'#dd4b39'
 
 });

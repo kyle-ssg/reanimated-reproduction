@@ -35,7 +35,7 @@ module.exports = class extends React.Component {
                          placeholder="Email" style={Styles.textInput}/>
               <TextInput value={this.state.password}
                 onChangeText={(text)=>this.setState({ password: text })}
-                placeholder="Password" secureTextEntry={true}  style={Styles.textInput}/>
+                placeholder="Password" secureTextEntry={true} style={Styles.textInput}/>
             </View>
             <Button onPress={this.login.bind(this)} style={Styles.buttonPrimary}>
               <Text style={Styles.buttonText}>
@@ -50,42 +50,36 @@ module.exports = class extends React.Component {
               <TextInput value={this.state.firstName}
                          onChangeText={(text)=>this.setState({ firstName: text })}
                          placeholder="First name"
-                         secureTextEntry={true}/>
-            </View>
-            <View style={Styles.formGroup}>
+                         secureTextEntry={true} style={Styles.textInput}/>
               <TextInput value={this.state.lastName}
-                         onChangeText={(text)=>this.setState({ lastName: text })}
-                         placeholder="Last name" secureTextEntry={true}/>
-            </View>
-            <View style={Styles.formGroup}>
+                onChangeText={(text)=>this.setState({ lastName: text })}
+                placeholder="Last name" secureTextEntry={true} style={Styles.textInput}/>
               <TextInput value={this.state.email} onChangeText={(text)=>this.setState({ email: text })}
-                         placeholder="Email"/>
-            </View>
-            <View style={Styles.formGroup}>
+                placeholder="Email" style={Styles.textInput}/>
               <TextInput value={this.state.password}
-                         onChangeText={(text)=>this.setState({ password: text })}
-                         placeholder="Password" secureTextEntry={true}/>
+                onChangeText={(text)=>this.setState({ password: text })}
+                placeholder="Password" secureTextEntry={true} style={Styles.textInput}/>
             </View>
-            <Button onPress={this.register.bind(this)}>
-              <Text>
+            <Button onPress={this.register.bind(this)} style={Styles.buttonPrimary}>
+              <Text style={Styles.buttonText}>
                 Register
               </Text>
             </Button>
           </View>
           <View><H1>Or</H1></View>
-          <Button onPress={this.facebook.bind(this)}><Text>Facebook</Text></Button>
+          <Button onPress={this.facebook.bind(this)} style={Styles.buttonFacebook}>
+            <Text style={Styles.buttonText}>Facebook</Text>
+          </Button>
         </Flex>
         <Flex style={Styles.centeredContainer} tabLabel={"Examples"}>
           <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
             <View style={Styles.formGroup}>
-              <Text>Masked Date</Text>
+              <Text style={Styles.label}>Masked Date</Text>
               <TextInput value={this.state.maskedDate} onChangeText={(text)=>this.setState({ maskedDate: text })}
-                         placeholder="dd/yy" mask="11/11"/>
-            </View>
-            <View style={Styles.formGroup}>
-              <Text style={Styles.text}>Masked Time</Text>
+                         placeholder="dd/yy" mask="11/11" style={Styles.textInput}/>
+              <Text style={Styles.label}>Masked Time</Text>
               <TextInput value={this.state.maskedTime} onChangeText={(text)=>this.setState({ maskedTime: text })}
-                         placeholder="hh:mm am" mask="11:11 am"/>
+                placeholder="hh:mm am" mask="11:11 am" style={Styles.textInput}/>
             </View>
           </View>
         </Flex>

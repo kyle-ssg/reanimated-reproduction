@@ -11,7 +11,7 @@ module.exports = {
     },
     loginButtonText: {
       color: 'white',
-      fontWeight: '500',
+      fontWeight: '500'
     },
 
     buttonPrimary:{
@@ -21,5 +21,9 @@ module.exports = {
     buttonText:{
       color:base.text,
       fontSize: base.fontSizeBase
+    },
+
+    buttonFacebook:{
+      backgroundColor:colour.facebook
     }
 };

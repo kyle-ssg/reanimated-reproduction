@@ -8,7 +8,7 @@ window.pallette = {
   //secondary
   secondary: '#e6764f',
 
-  text: '#f0f0f0',
+  text: '#222222',
   textLight: '#6c6c6c',
   textLightest: '#a8a8a8',
   textLightestHighlight: '#e2e2e2',

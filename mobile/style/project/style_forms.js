@@ -15,6 +15,12 @@ module.exports = {
 
   formGroup: {
     marginBottom: base.gutterBase * 2
+  },
+
+  label: {
+    fontSize: base.fontSizeBase,
+    color: base.text,
+    marginBottom:base.gutterBase / 2
   }
 
 };
