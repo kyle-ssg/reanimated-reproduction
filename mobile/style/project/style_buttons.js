@@ -14,6 +14,10 @@ module.exports = {
       fontWeight: '500'
     },
 
+    button:{
+      height:base.buttonHeight
+    },
+
     buttonPrimary:{
       backgroundColor:base.buttonPrimary
     },

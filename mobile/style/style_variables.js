@@ -87,7 +87,7 @@ window.styleVariables = Object.assign({
   fontSizeAnchorIconLarge: 32,
 
   button: 44,
-  buttonLarge: 54,
+  buttonTall: 54,
 
   //== Components
   logoSize: 100,

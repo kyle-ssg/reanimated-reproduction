@@ -69,6 +69,8 @@ window.base = {
 
 
   //BUTTONS
+  buttonHeight:50,
+
   buttonPrimary:pallette.primary,
   buttonTextLight:pallette.textLight
 };

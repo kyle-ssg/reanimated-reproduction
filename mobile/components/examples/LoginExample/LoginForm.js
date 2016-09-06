@@ -37,7 +37,7 @@ module.exports = class extends React.Component {
                 onChangeText={(text)=>this.setState({ password: text })}
                 placeholder="Password" secureTextEntry={true} style={Styles.textInput}/>
             </View>
-            <Button onPress={this.login.bind(this)} style={Styles.buttonPrimary}>
+            <Button onPress={this.login.bind(this)} style={[ Styles.button, Styles.buttonPrimary]}>
               <Text style={Styles.buttonTextLight}>
                 Login
               </Text>

@@ -26,7 +26,7 @@ module.exports = {
 
   //Other variation
   buttonGroupLarge: {
-    height: styleVariables.buttonLarge
+    height: styleVariables.buttonTall
   },
 
   buttonTextLarge: {
