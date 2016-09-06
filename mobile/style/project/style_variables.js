@@ -3,12 +3,12 @@ window.pallette = {
 
   primary: '#e6764f',
   primaryDark: '#cb572e',
-  primaryLight: '€f1a083',
+  primaryLight: '#f1a083',
 
   //secondary
   secondary: '#e6764f',
 
-  text: '#222222',
+  text: '#f0f0f0',
   textLight: '#6c6c6c',
   textLightest: '#a8a8a8',
   textLightestHighlight: '#e2e2e2',
@@ -26,13 +26,18 @@ window.base = {
   marginBaseVertical: 10,
   marginBaseHorizontal: 10,
   paddingBase: 10,
+  paddingBaseLarge: 20,
   gutterBase: 10,
+  borderRadiusDefault: 8,
 
   //BASE
   borderWidth: 2 / PixelRatio.get(),
+  borderDefault: pallette.textLight,
 
   //TYPE
   fontSizeBase:em(1),
+
+  fontSizeSmall: em(0.5),
   fontSizeHeading: em(1.5),
   fontSizesubheading: em(1.2),
 
@@ -47,6 +52,7 @@ window.base = {
   textLight: pallette.textLight, //General app text colour
 
   //FORMS
+  inputHeight: 50, //Need to change this value in both platform variables files at the moment
   inputText: pallette.text,
   inputBackground: pallette.backgroundBase,
   inputBorder: pallette.textLightest,
@@ -59,5 +65,9 @@ window.base = {
   navBarText: pallette.text,
 
   //MODALS
-  modalBackground:'#F0F0F0'
+  modalBackground:'#F0F0F0',
+
+
+  //BUTTONS
+  buttonPrimary:pallette.primary
 };

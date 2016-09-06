@@ -1,23 +1,20 @@
 module.exports = {
-  formGroupBlue: {
-    backgroundColor: base.primaryLight,
-    padding: base.paddingBaseLarge
+
+  inputContainer: {
+    height: base.inputHeight,
+    backgroundColor: 'transparent'
   },
 
   textInput: {
-    backgroundColor: 'transparent',
-    borderBottomWidth: 1 / PixelRatio.get() * 2,
-    borderBottomColor: base.borderInput,
+    backgroundColor: base.inputBackground,
+    borderRadius: base.borderRadiusDefault,
+    marginBottom: base.gutterBase,
+    height: 50,
+    paddingLeft:base.gutterBase
   },
 
-  formGroupWhite: {
-    backgroundColor: base.white,
-    padding: base.paddingBaseLarge
-  },
-
-  textInputWhite: {
-    backgroundColor: 'transparent',
-    borderBottomWidth: 1 / PixelRatio.get() * 2,
-    borderBottomColor: base.borderDefault
+  formGroup: {
+    marginBottom: base.gutterBase * 2
   }
+
 };

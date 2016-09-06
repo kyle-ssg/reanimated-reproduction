@@ -1,7 +1,7 @@
 module.exports = {
 
   navBar: {
-    backgroundColor: base.primaryBlue
+    backgroundColor: base.navBar
   },
 
   bar: {
@@ -10,7 +10,7 @@ module.exports = {
   },
   barText: {
     fontWeight: 'bold',
-    color: pallette.pallette,
+    color: base.text,
     fontSize: base.fontSizeSmall
   },
 
@@ -27,8 +27,21 @@ module.exports = {
     borderColor: base.borderDefault
   },
 
+  navBarTitle: {
+    fontSize: em(styleVariables.fontSizeH2),
+    fontWeight: styleVariables.headingsFontWeight,
+    color: base.text
+  },
+
+  navButton:{
+    color:base.navBarIcon,
+    marginLeft: 10,
+    marginBottom: -5,
+    marginRight: 10
+  },
+
   navTileActive: {
-    backgroundColor: base.primaryBlue
+    backgroundColor: pallette.primaryLight
   },
 
   navTile0: {
@@ -40,27 +53,11 @@ module.exports = {
 
   tileTitle: {
     fontSize: em(1.25),
-    color: base.primaryBlue,
+    color: pallette.primary,
     letterSpacing: 1
   },
 
   tileTitleActive: {
-    color: base.white
-  },
-
-  tileSub: {
-    fontSize: em(0.6),
-    color: base.actionOrangeDark
-  },
-
-  tileDash: {
-    backgroundColor: base.primaryBlue,
-    height: 5,
-    width: 25,
-    marginTop: 15
-  },
-
-  tileDashActive: {
-    backgroundColor: base.actionOrangeDark
+    color: pallette.text
   }
 };

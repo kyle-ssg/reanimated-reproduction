@@ -32,15 +32,13 @@ module.exports = class extends React.Component {
           <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
             <View style={Styles.formGroup}>
               <TextInput value={this.state.email} onChangeText={(text)=>this.setState({ email: text })}
-                         placeholder="Email"/>
-            </View>
-            <View style={Styles.formGroup}>
+                         placeholder="Email" style={Styles.textInput}/>
               <TextInput value={this.state.password}
-                         onChangeText={(text)=>this.setState({ password: text })}
-                         placeholder="Password" secureTextEntry={true}/>
+                onChangeText={(text)=>this.setState({ password: text })}
+                placeholder="Password" secureTextEntry={true}  style={Styles.textInput}/>
             </View>
-            <Button onPress={this.login.bind(this)}>
-              <Text>
+            <Button onPress={this.login.bind(this)} style={Styles.buttonPrimary}>
+              <Text style={Styles.buttonText}>
                 Login
               </Text>
             </Button>

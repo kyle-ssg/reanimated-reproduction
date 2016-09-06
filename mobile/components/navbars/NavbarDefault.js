@@ -9,7 +9,6 @@ const Navbar = function (params) {
               <ION
                 name='ios-arrow-back'
                 size={22}
-                color={Styles.navBarIcon}
                 style={Styles.navButton}
               />
             </View>
@@ -33,7 +32,6 @@ const Navbar = function (params) {
             <ION
               name='md-menu'
               size={22}
-              color={Styles.navBarIcon}
               style={Styles.navButton}
             />
           </View>
@@ -48,7 +46,7 @@ const Navbar = function (params) {
 
       return (<View style={[Styles.navItemContainer, Styles.navItemTitleContainer]}>
         <Row>
-          <Text style={[Styles.navBarTitle, Styles.sukFont, Styles.container, { letterSpacing: 2 }]}>
+          <Text style={[Styles.navBarTitle, Styles.container, { letterSpacing: 2 }]}>
             {route.title}
           </Text>
         </Row>
