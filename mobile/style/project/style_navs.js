@@ -30,7 +30,7 @@ module.exports = {
   navBarTitle: {
     fontSize: em(styleVariables.fontSizeH2),
     fontWeight: styleVariables.headingsFontWeight,
-    color: base.text
+    color: base.textLight
   },
 
   navButton:{

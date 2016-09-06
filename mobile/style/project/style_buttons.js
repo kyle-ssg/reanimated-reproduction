@@ -23,6 +23,11 @@ module.exports = {
       fontSize: base.fontSizeBase
     },
 
+    buttonTextLight:{
+      color:base.buttonTextLight,
+      fontSize: base.fontSizeBase
+    },
+
     buttonFacebook:{
       backgroundColor:colour.facebook
     }

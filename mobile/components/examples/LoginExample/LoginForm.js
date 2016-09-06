@@ -38,7 +38,7 @@ module.exports = class extends React.Component {
                 placeholder="Password" secureTextEntry={true} style={Styles.textInput}/>
             </View>
             <Button onPress={this.login.bind(this)} style={Styles.buttonPrimary}>
-              <Text style={Styles.buttonText}>
+              <Text style={Styles.buttonTextLight}>
                 Login
               </Text>
             </Button>
@@ -61,14 +61,14 @@ module.exports = class extends React.Component {
                 placeholder="Password" secureTextEntry={true} style={Styles.textInput}/>
             </View>
             <Button onPress={this.register.bind(this)} style={Styles.buttonPrimary}>
-              <Text style={Styles.buttonText}>
+              <Text style={Styles.buttonTextLight}>
                 Register
               </Text>
             </Button>
           </View>
           <View><H1>Or</H1></View>
           <Button onPress={this.facebook.bind(this)} style={Styles.buttonFacebook}>
-            <Text style={Styles.buttonText}>Facebook</Text>
+            <Text style={Styles.buttonTextLight}>Facebook</Text>
           </Button>
         </Flex>
         <Flex style={Styles.centeredContainer} tabLabel={"Examples"}>

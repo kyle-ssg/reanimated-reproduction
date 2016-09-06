@@ -9,7 +9,7 @@ window.pallette = {
   secondary: '#e6764f',
 
   text: '#222222',
-  textLight: '#6c6c6c',
+  textLight: '#f0f0f0',
   textLightest: '#a8a8a8',
   textLightestHighlight: '#e2e2e2',
   buttonText: '#222222',
@@ -49,7 +49,7 @@ window.base = {
   fontSansSerif: 'helvetica neue',
 
   text: pallette.text, //General app text colour
-  textLight: pallette.textLight, //General app text colour
+  textLight: pallette.textLight, //Light app text colour
 
   //FORMS
   inputHeight: 50, //Need to change this value in both platform variables files at the moment
@@ -59,7 +59,7 @@ window.base = {
 
   //NAV
   navBar: pallette.primary,
-  navBarIcon: pallette.text,
+  navBarIcon: pallette.textLight,
   navBarButtonText: pallette.text,
   navBarBorder: pallette.primary,
   navBarText: pallette.text,
@@ -69,5 +69,6 @@ window.base = {
 
 
   //BUTTONS
-  buttonPrimary:pallette.primary
+  buttonPrimary:pallette.primary,
+  buttonTextLight:pallette.textLight
 };
