@@ -17,14 +17,14 @@ const LoggedIn = class extends React.Component {
 
     render() {
         const {profile} = this.props;
-        const logout = <Button onPress={FireAuth.logout}><Text>Logout</Text></Button>;
+        const logout = <Button onPress={FireAuth.logout} style={[Styles.button, Styles.buttonPrimary]}><Text style={Styles.buttonTextLight}>Logout</Text></Button>;
 
         if (!profile) {
             return <Loader/>;
         }
 
         return profile.emailVerified ? (
-            <Flex>
+            <Flex style={Styles.centeredContainer}>
                 <Text>
                     Hi {profile.email}
                 </Text>
@@ -34,8 +34,8 @@ const LoggedIn = class extends React.Component {
             <Text>
                 Your email address is not verified!
             </Text>
-            <Button onPress={FireAuth.resendVerification}>
-                <Text>Resend Verification Email</Text>
+            <Button onPress={FireAuth.resendVerification} style={[Styles.button, Styles.buttonPrimary]}>
+                <Text style={Styles.buttonTextLight}>Resend Verification Email</Text>
             </Button>
             {logout}
         </Flex>;

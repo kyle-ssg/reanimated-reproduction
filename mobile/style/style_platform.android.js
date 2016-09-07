@@ -2,7 +2,7 @@ module.exports = {
   navContent: {
     backgroundColor: colour.bodyBackground,
     flex: 1,
-    paddingTop: 44
+    paddingTop: base.baseNavHeight
   },
   navBarTitle: {
     fontSize: em(styleVariables.fontSizeH3),
