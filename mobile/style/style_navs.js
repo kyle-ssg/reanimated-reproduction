@@ -152,15 +152,6 @@ module.exports = {
     borderRadius: 5
   },
 
-  footer: {
-    backgroundColor: '#4A4A4A'
-  },
-
-  footerContainer: {
-    height: styleVariables.baseNavHeight,
-    justifyContent: 'center',
-  },
-
   footerIconText: {
     color: pallette.white,
     fontSize: styleVariables.fontSizeH3,

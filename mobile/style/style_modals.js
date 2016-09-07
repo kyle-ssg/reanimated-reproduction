@@ -11,5 +11,16 @@ module.exports = {
     right: 0,
     bottom: 0,
     top: 0,
+  },
+
+  webViewContainer:{
+    flex: 1,
+    justifyContent: 'center',
+    padding: 10
+  },
+
+  webView: {
+    backgroundColor: pallette.backgroundBase
   }
+
 };

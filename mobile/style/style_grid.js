@@ -20,10 +20,6 @@ module.exports = {
     opacity: 0.8,
   },
 
-  marginBase: {
-    paddingBottom: 20
-  },
-
   centeredContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -53,17 +49,5 @@ module.exports = {
     alignItems: 'center',
     justifyContent: 'space-between'
   },
-  rowDarker: {
-    backgroundColor: colour.rowDarker,
-  },
-  rowLighter: {
-    backgroundColor: colour.rowLighter,
-  },
-  rowHighlight: {
-    backgroundColor: colour.rowHighlight
-  },
-  textRow: {
-    marginRight: styleVariables.marginBaseHorizontal
-  }
 
 };

@@ -46,7 +46,7 @@ const Navbar = function (props) {
 
       return (<View style={[Styles.navItemContainer, Styles.navItemTitleContainer]}>
         <Row>
-          <Text style={[Styles.navBarTitle, Styles.container, { letterSpacing: 2 }]}>
+          <Text style={[Styles.navBarTitle, Styles.container]}>
             {route.title}
           </Text>
         </Row>
