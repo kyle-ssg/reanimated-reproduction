@@ -6,7 +6,6 @@ require('./style_variables');
 
 window.Styles = StyleSheet.create(Object.assign({},
   require('./style_alert'),
-  require('./style_message'),
   require('./style_base'),
   require('./style_buttons'),
   require('./style_forms'),
