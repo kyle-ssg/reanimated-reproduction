@@ -1,13 +1,6 @@
-require('./style_pxToEm');
-
 module.exports = {
   // Utility classes
   // -------------------------
-
-  right: {
-    alignSelf: 'flex-end',
-    margin: 5,
-  },
 
   center: {
     textAlign: 'center'
@@ -16,16 +9,6 @@ module.exports = {
   centerChildren: {
     justifyContent: 'center',
     alignItems: 'center'
-  },
-
-  opaque: {
-    backgroundColor: pallette.white
-  },
-
-  price: {
-    borderRadius: 5,
-    padding: 5,
-    backgroundColor: colour.btnDefault,
   },
 
   fullScreen: {

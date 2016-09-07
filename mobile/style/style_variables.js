@@ -195,7 +195,7 @@ window.colour = Object.assign({}, pallette, {
 
   modalBackground: 'white',
 
-  panel: 'white',
+  panel: '#f0f0f0',
 
   //nav
   navBar: pallette.secondary,
