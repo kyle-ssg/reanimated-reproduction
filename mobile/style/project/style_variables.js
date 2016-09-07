@@ -22,6 +22,7 @@ window.pallette = {
 
 window.base = {
   //SCAFFOLD
+  statusHeight:20,
   baseNavHeight: 44,
   marginBaseVertical: 10,
   marginBaseHorizontal: 10,

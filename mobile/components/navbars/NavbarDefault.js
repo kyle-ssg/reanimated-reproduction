@@ -1,4 +1,4 @@
-const Navbar = function (params) {
+const Navbar = function (props) {
   return {
     LeftButton: function (route, navigator, index, navState) {
       return index > 0 && (
@@ -27,7 +27,7 @@ const Navbar = function (params) {
     RightButton: function (route, navigator, index, navState) {
 
       return (
-        <TouchableOpacity style={Styles.navItemContainer}>
+        <TouchableOpacity onPress={props.onMenuPress} style={Styles.navItemContainer}>
           <View style={[Styles.row]}>
             <ION
               name='md-menu'
