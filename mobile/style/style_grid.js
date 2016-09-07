@@ -16,7 +16,7 @@ module.exports = {
     marginRight: -styleVariables.paddingBase,
   },
 
-  containeLoadingr: {
+  containerLoading: {
     opacity: 0.8,
   },
 
