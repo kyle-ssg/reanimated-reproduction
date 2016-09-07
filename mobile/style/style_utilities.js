@@ -2,6 +2,16 @@ module.exports = {
   // Utility classes
   // -------------------------
 
+  padded: {
+    padding: styleVariables.paddingBase
+  },
+  noPadding: {
+    paddingBottom: 0,
+    paddingTop: 0,
+    paddingLeft: 0,
+    paddingRight: 0
+  },
+
   center: {
     textAlign: 'center'
   },

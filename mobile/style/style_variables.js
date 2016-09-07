@@ -102,6 +102,7 @@ window.styleVariables = Object.assign({
   borderWidth: 1,
   borderBottomWidth: 2 / PixelRatio.get(),
   disabledOpacity: 0.2,
+  borderRadiusDefault:8,
 
   //## Images
 
@@ -133,7 +134,7 @@ window.colour = Object.assign({}, pallette, {
   iosStyle: 0,
   buttonActiveOpacity: 0.8,
   disabledOpacity: 0.8,
-  bodyBackground: '#f1f1f1', //General app  background
+  bodyBackground: '#ffffff', //General app  background
   backdropBackground: 'rgba(0,0,0,0.2)',
 
   //text
@@ -195,7 +196,7 @@ window.colour = Object.assign({}, pallette, {
 
   modalBackground: 'white',
 
-  panel: '#f0f0f0',
+  panel: '#f1f1f1',
 
   //nav
   navBar: pallette.secondary,

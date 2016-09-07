@@ -49,7 +49,12 @@ const TheComponent = class extends React.Component {
 
     renderScene(route, navigator) {
         return (
-            <Example/>
+            <View>
+                <Example/>
+                <View style={[Styles.panel,Styles.panelRounded]}>
+                    <Text>This is a panel</Text>
+                </View>
+            </View>
         );
     }
 

@@ -2,7 +2,7 @@ module.exports = {
 
   text: {
     color: colour.text,
-    fontSize: em(0.8),
+    fontSize: base.fontSizeBase,
     letterSpacing: 1
   },
 
