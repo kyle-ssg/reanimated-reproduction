@@ -6,6 +6,20 @@ module.exports = {
     letterSpacing: 1
   },
 
+  fontSizeHeading:{
+    fontSize:base.fontSizeHeading,
+    fontWeight:'bold'
+  },
+
+  fontSizeSubHeading:{
+    fontSize:base.fontSizesubheading,
+    fontWeight:'bold'
+  },
+
+  fontSizeSmall:{
+    fontSize:base.fontSizeSmall,
+  },
+
   sup: {
     fontSize: em(0.65)
   }

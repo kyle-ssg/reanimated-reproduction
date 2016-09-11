@@ -15,7 +15,6 @@ module.exports = {
     },
 
     //TILED NAV
-    tileContainer: {},
 
     navTile: {
         width: DeviceWidth / 2,

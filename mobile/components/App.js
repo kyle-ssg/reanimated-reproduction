@@ -52,7 +52,10 @@ const TheComponent = class extends React.Component {
             <View>
                 <Example/>
                 <View style={[Styles.panel,Styles.panelRounded]}>
-                    <Text>This is a panel</Text>
+                    <Text>Standard Text</Text>
+                    <Text style={Styles.fontSizeHeading}>Main Heading</Text>
+                    <Text style={Styles.fontSizeSubHeading}>Sub Heading</Text>
+                    <Text style={Styles.fontSizeSmall}>Small Text</Text>
                 </View>
             </View>
         );

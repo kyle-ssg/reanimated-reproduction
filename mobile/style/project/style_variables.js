@@ -40,7 +40,7 @@ window.base = {
 
   fontSizeSmall: em(0.5),
   fontSizeHeading: em(1.5),
-  fontSizesubheading: em(1.2),
+  fontSizeSubHeading: em(1.2),
 
   fontSizeH1: em(1.5),
   fontSizeH2: em(1.3),
