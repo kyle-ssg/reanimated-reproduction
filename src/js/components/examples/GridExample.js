@@ -54,9 +54,6 @@ const GridExample = class extends React.Component {
             <FormGroup>
               <Panel title={"Shorter Half"}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-                <Popover/>
-
               </Panel>
             </FormGroup>
           </div>
