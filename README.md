@@ -29,6 +29,12 @@ if (!host) {
 ### Web start
 ```npm start```
 
+### Prod build
+* Build once for (ready for ***Production***):
+  * `$ npm run prod` doing this will use project_dev | project_prod in place of your project.js file, minify / cachebust
+  * Open `build/index.html` through the local webserver, the build folder can be deployed anywhere
+
+
 ## Routing
 ```routes.js``` contain all page routes
 
@@ -70,11 +76,6 @@ Globally accessible by default
 ## Vanilla auth (requires import Auth from 'apis/auth/auth')
 * ``Auth.Google.login().then((token)=>{})``
 * ``Auth.Facebook.login().then((res)=>{})``
-
-### Prod build
-* Build once for (ready for ***Production***):
-  * `$ npm run build:dev` or `$ npm run build:prod`, doing this will use project_dev | project_prod in place of your project.js file
-  * Open `build/index.html` through the local webserver, the build folder can be deployed anywhere
 
 # Component Library - WEB
  **All components have prop types documented however for reference here they are**
@@ -205,7 +206,7 @@ When you run `npm start`:
 
 The approach above supports hot reloading, which is great for development. However, it also create a flash of unstyled content on load because you have to wait for the JavaScript to parse and load styles before they're applied. So for the production build, we use a different approach:
 
-When you run `npm run build`:
+When you run `npm run prod`:
 
  1. The sass-loader compiles Sass into CSS
  2. The [extract-text-webpack-plugin](https://github.com/webpack/extract-text-webpack-plugin) extracts the compiled Sass into app.css
