@@ -36,7 +36,9 @@ module.exports = {
             ])
     },
     devServer: {
-        contentBase: './dist',
+        contentBase: './build',
+        publicPath: '/',
+        historyApiFallback: true,
         hot: true
     }
 };
