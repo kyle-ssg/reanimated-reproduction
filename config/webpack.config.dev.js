@@ -1,92 +1,42 @@
-const path = require('path');
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-
-// Import the plugin:
-var DashboardPlugin = require('webpack-dashboard/plugin');
-
-// App files location
-const PATHS = {
-  app: path.resolve(__dirname, '../src/js'),
-  styles: path.resolve(__dirname, '../src/styles'),
-  build: path.resolve(__dirname, '../build')
-};
-
-const plugins = [
-  // Shared code
-  new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.bundle.js'),
-  // Avoid publishing files when compilation fails
-  new DashboardPlugin(),
-  new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify('development'),
-    __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
-  }),
-  new webpack.optimize.OccurenceOrderPlugin()
-];
-
-const sassLoaders = [
-  'style-loader',
-  'css-loader?sourceMap',
-  'postcss-loader',
-  'sass-loader?outputStyle=expanded'
-];
+// webpack.config.dev.js
+var path = require('path')
+var src = path.join(__dirname, '../src') + '/';
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  env: process.env.NODE_ENV,
-  entry: {
-    app: path.resolve(PATHS.app, 'main.js'),
-    vendor: ['react']
-  },
-  output: {
-    path: PATHS.build,
-    filename: 'js/[name].js',
-    publicPath: '/'
-  },
-  stats: {
-    colors: true,
-    reasons: true
-  },
-  resolve: {
-    // We can now require('file') instead of require('file.jsx')
-    extensions: ['', '.js', '.jsx', '.scss']
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        loaders: ['react-hot', 'babel', 'eslint-loader'],
-        include: PATHS.app
-      },
-      {
-        test: /\.scss$/,
-        loader: sassLoaders.join('!')
-      },
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader!postcss-loader'
-      },
-      // Inline base64 URLs for <=8k images, direct URLs for the rest
-      {
-        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-        loader: 'url-loader?limit=8192'
-      },
-      {
-        test: /\.json$/,
-        loader: 'json'
-      }
-    ]
-  },
-  plugins: plugins,
-  postcss: function () {
-    return [autoprefixer({
-      browsers: ['last 2 versions']
-    })];
-  },
-  devServer: {
-    stats: 'errors-only',
-    contentBase: path.resolve(__dirname, '../src'),
-    port: 8080,
-    historyApiFallback: true
-  },
-  devtool: 'eval'
+    devtool: 'cheap-eval-source-map',
+    entry: [
+        'webpack-dev-server/client?http://0.0.0.0:80',
+        'webpack/hot/only-dev-server',
+        './src/js/main.js',
+    ],
+    output: {
+        path: path.join(__dirname, '../build'),
+        filename: '[name].js'
+    },
+    plugins: require('./plugins')
+        .concat(require('./pages').map(function (page) {
+            console.log(page);
+            return new HtmlWebpackPlugin({
+                    filename: page + '.html', //output
+                    template: './src/' + page + '.html', //template to use
+                    "assets": { //add these script/link tags
+                        "client": "./main.js"
+                    }
+                }
+            )
+        })),
+    module: {
+        loaders: require('./loaders')
+            .concat([
+                {
+                    test: /\.scss$/,
+                    loaders: ['style', 'css', 'postcss', 'sass']
+                }
+            ])
+    },
+    devServer: {
+        contentBase: './dist',
+        hot: true
+    }
 };

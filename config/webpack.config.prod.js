@@ -1,101 +1,75 @@
-const path = require('path');
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-
+// webpack.config.prod.js
+// Watches + deploys files minified + cachebusted
+var path = require('path');
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-
-// App files location
-const PATHS = {
-  app: path.resolve(__dirname, '../src/js'),
-  styles: path.resolve(__dirname, '../src/styles'),
-  images: path.resolve(__dirname, '../src/images'),
-  build: path.resolve(__dirname, '../build')
-};
-
-const plugins = [
-  new CopyWebpackPlugin([
-    {
-      from: PATHS.images,
-      to: 'images'
-    }
-  ]),
-  // Shared code
-  new webpack.optimize.CommonsChunkPlugin('vendor', 'js/vendor.bundle.js'),
-  // Avoid publishing files when compilation fails
-  new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify('production'),
-    __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
-  }),
-  new webpack.optimize.OccurenceOrderPlugin(),
-  new webpack.optimize.DedupePlugin(),
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false
-    }
-  }),
-  // This plugin moves all the CSS into a separate stylesheet
-  new ExtractTextPlugin('css/app.css', { allChunks: true })
-];
-
-const sassLoaders = [
-  'css-loader?sourceMap',
-  'postcss-loader',
-  'sass-loader?outputStyle=compressed'
-];
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const src = path.join(__dirname, '../src') + '/';
 
 module.exports = {
-  entry: {
-    app: path.resolve(PATHS.app, 'main.js'),
-    vendor: ['react']
-  },
-  output: {
-    path: PATHS.build,
-    filename: 'js/[name].js',
-    publicPath: '/'
-  },
-  stats: {
-    colors: true
-  },
-  resolve: {
-    // We can now require('file') instead of require('file.jsx')
-    extensions: ['', '.js', '.jsx', '.scss', '.css']
-  },
-  module: {
-    noParse: /\.min\.js$/,
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        loaders: ['react-hot', 'babel'],
-        include: PATHS.app
-      },
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
-      },
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-      },
-      {
-        test: /\.(png|jpg|jpeg|gif|svg)$/,
-        loader: 'url-loader?limit=8192&name=images/[name].[ext]?[hash]'
-      },
-      {
-        test: /\.(woff|woff2)$/,
-        loader: 'url-loader?limit=8192&name=fonts/[name].[ext]?[hash]'
-      },
-      {
-        test: /\.json$/,
-        loader: 'json'
-      }
-    ]
-  },
-  plugins: plugins,
-  postcss: function () {
-    return [autoprefixer({
-      browsers: ['last 2 versions']
-    })];
-  },
-  devtool: 'source-map'
-};
+    devtool: 'source-map',
+
+    entry: [
+        './src/js/main.js',
+    ],
+
+    output: {
+        path: path.join(__dirname, '../build'),
+        filename: '[name].[hash].js'
+    },
+
+    plugins: require('./plugins')
+        .concat([
+
+                //Clear out build folder
+                new CleanWebpackPlugin(['build'], { root: path.join(__dirname, '../') }),
+
+                //Ensure NODE_ENV is set to production
+                new webpack.DefinePlugin({
+                    'process.env.NODE_ENV': JSON.stringify('production'),
+                    __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
+                }),
+
+                //reduce filesize
+                new webpack.optimize.OccurenceOrderPlugin(),
+
+                //remove duplicate files
+                new webpack.optimize.DedupePlugin(),
+
+                //pull inline styles into cachebusted file
+                new ExtractTextPlugin("style.[hash].css", { allChunks: true }),
+
+                //Uglify
+                new webpack.optimize.UglifyJsPlugin({
+                    compress: {
+                        warnings: false
+                    }
+                }),
+
+            ]
+            //for each page, produce a html file with base assets
+                .concat(require('./pages').map(function (page) {
+                    console.log(page);
+                    return new HtmlWebpackPlugin({
+                            filename: page + '.html', //output
+                            template: './src/' + page + '.html', //template to use
+                            "assets": { //add these script/link tags
+                                "client": "[hash].js",
+                                "style": "style.[hash].css"
+                            }
+                        }
+                    )
+                }))
+        ),
+
+    module: {
+        loaders: require('./loaders').concat([
+            {
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract("style", "css!sass")
+            }
+        ])
+    }
+}
+;
