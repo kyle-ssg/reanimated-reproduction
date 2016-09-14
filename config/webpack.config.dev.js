@@ -11,6 +11,7 @@ module.exports = {
         './src/js/main.js',
     ],
     output: {
+        publicPath:'/',
         path: path.join(__dirname, '../build'),
         filename: '[name].js'
     },
