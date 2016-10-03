@@ -27,6 +27,15 @@ const InfiniteScrollExample = class extends React.Component {
         }, 2000);
     }
 
+    addToBottom = () => {
+        let data = this.state.data.slice(0);
+        data.unshift({ key: data.length, height: this.getRandomHeight() });
+        this.setState({ data });
+        if (this.infiniteScroll) {
+          this.infiniteScroll.adjustScrollPos(this.state.randomRowHeights ? data.height * -1 : -40);
+        }
+    }
+
     rowHeight = ({ index }) => {
         if (!this.state.randomRowHeights) {
             return 40;
@@ -41,8 +50,6 @@ const InfiniteScrollExample = class extends React.Component {
         this.virtualScroll.recomputeRowHeights();
     }
 
-    virtualScrollRef = (virtualScroll) => this.virtualScroll = virtualScroll;
-
     renderRow (data) {
         return (
             <div className=".FlexTable__row" key={data.key}>
@@ -55,9 +62,9 @@ const InfiniteScrollExample = class extends React.Component {
         return (
             <div>
                 <h2>
-                    Async Infinite scroll
+                    Async Infinite scroll {this.props.reverse && '(reversed)'}
                     <Tooltip place="right">
-                        Performant infinite scroll
+                        Performant {this.props.reverse && 'reverse'} infinite scroll
                     </Tooltip>
                 </h2>
                 <InfiniteScroll
@@ -73,8 +80,11 @@ const InfiniteScrollExample = class extends React.Component {
                     isLoading={this.state.isLoading}
                     loadMore={this.loadMore}
                     renderRow={this.renderRow}
-                    virtualScrollRef={this.virtualScrollRef}
+                    ref={(infiniteScroll) => this.infiniteScroll = infiniteScroll}
+                    scrollRef={(virtualScroll) => this.virtualScroll = virtualScroll}
+                    reverse={this.props.reverse}
                 />
+                {this.props.reverse && <Button onClick={this.addToBottom}>Add Row to Bottom</Button>}
                 Use random row heights ?
                 <Switch value={this.state.randomRowHeights} onChange={this.onRandomRowHeightsChanged}/>
             </div>
@@ -82,6 +92,12 @@ const InfiniteScrollExample = class extends React.Component {
     }
 };
 
-InfiniteScrollExample.propTypes = {};
+InfiniteScrollExample.propTypes = {
+  reverse: OptionalBool
+}
+
+InfiniteScrollExample.defaultProps = {
+  reverse: false
+}
 
 module.exports = InfiniteScrollExample;

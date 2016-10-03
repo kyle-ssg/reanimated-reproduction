@@ -32,3 +32,6 @@ analytics.identify({
     name: 'Anonymous Bro'
   }
 });
+
+import InfiniteScroll from 'react-virtualized-infinite-scroll';
+window.InfiniteScroll = InfiniteScroll;
