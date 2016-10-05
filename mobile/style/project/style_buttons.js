@@ -18,6 +18,10 @@ module.exports = {
     },
 
     buttonFacebook:{
-      backgroundColor:colour.facebook
+      backgroundColor: colour.facebook
+    },
+
+    buttonGoogle: {
+      backgroundColor: colour.google
     }
 };

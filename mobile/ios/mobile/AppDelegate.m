@@ -13,7 +13,9 @@
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
 
-
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "RNGoogleSignin/RNGoogleSignin.h"
 
 @implementation AppDelegate
 
@@ -47,7 +49,8 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-  return YES;
+  return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                  didFinishLaunchingWithOptions:launchOptions];
 }
 
 
@@ -73,4 +76,22 @@
   [RCTPushNotificationManager didReceiveLocalNotification:notification];
 }
 //</PUSH NOTIFICATIONS>
+
+//<FACEBOOK SDK>
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+  [FBSDKAppEvents activateApp];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+  if( [url.absoluteString rangeOfString: @"com.googleusercontent.apps" ].location != NSNotFound ) {
+    return [RNGoogleSignin application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+  }
+  
+  return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                        openURL:url
+                                              sourceApplication:sourceApplication
+                                                     annotation:annotation];
+}
+//</FACEBOOK SDK>
+
 @end
