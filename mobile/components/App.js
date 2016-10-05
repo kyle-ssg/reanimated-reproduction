@@ -49,15 +49,15 @@ const TheComponent = class extends React.Component {
 
     renderScene(route, navigator) {
         return (
-            <View>
+            <Flex>
                 <Example/>
-                <View style={[Styles.panel,Styles.panelRounded]}>
+                {/*<View style={[Styles.panel,Styles.panelRounded]}>
                     <Text>Standard Text</Text>
                     <Text style={Styles.fontSizeHeading}>Main Heading</Text>
                     <Text style={Styles.fontSizeSubHeading}>Sub Heading</Text>
                     <Text style={Styles.fontSizeSmall}>Small Text</Text>
-                </View>
-            </View>
+                </View>*/}
+            </Flex>
         );
     }
 

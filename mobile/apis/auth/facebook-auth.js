@@ -1,21 +1,29 @@
-var RCTDeviceEventEmitter = require('RCTDeviceEventEmitter');
-var FBLoginManager = require('NativeModules').FBLoginManager;
+import { FBLoginManager } from 'react-native-facebook-login';
 
-exports.signOut = function () {
-  FBLoginManager.logout(function () {
-  });
-};
-
-exports.login = function () {
-  return new Promise((resolve, reject) => {
-    FBLoginManager.loginWithPermissions(["email"], function (error, data) {
-      if (!error) {
-        resolve(data.credentials.token);
-      } else {
-        reject(error);
-      }
+const Facebook = {
+  login: () => {
+    return new Promise((resolve, reject) => {
+      console.log('Calling loginWithPermissions');
+      FBLoginManager.loginWithPermissions(['email'], (error, data) => {
+        if (!error) {
+          resolve(data.credentials.token);
+        } else {
+          reject(error);
+        }
+      });
     });
-  });
-};
+  },
+  logout: () => {
+    return new Promise((resolve, reject) => {
+      FBLoginManager.logout((error, data) => {
+        if (!error) {
+          resolve(true);
+        } else {
+          reject(error);
+        }
+      });
+    });
+  }
+}
 
-module.exports = Auth;
+export default Facebook;

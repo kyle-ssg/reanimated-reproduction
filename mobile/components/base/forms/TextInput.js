@@ -154,7 +154,7 @@ Input.propTypes = {
   keyboardType: OptionalBool,
   onSubmit: OptionalFunc,
   onFocus: OptionalFunc,
-  textStyle: oneOf(OptionalObject, OptionalNumber),
+  textStyle: oneOfType([OptionalObject, OptionalNumber]),
 };
 
 module.exports = Input;

@@ -6,7 +6,7 @@ module.exports = {
   },
   google: {
     APIKey: 'AIzaSyC5mX6rTnIQ086weON_cdYyJS8IgZxJQP4',
-    clientID: '603463597415-q6nnmv7tihkm52m5eg0hetakktppcmdf.apps.googleusercontent.com',
+    clientID: '603463597415-em1lk1r3fe779jnsetq85ouapdfma0c3.apps.googleusercontent.com',
     iOS: '630357652827-b3ofhvkjl5jt7fljrtdudfddec305cv3.apps.googleusercontent.com'
   },
   facebook: {

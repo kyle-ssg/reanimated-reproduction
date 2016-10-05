@@ -14,3 +14,7 @@ exports.login = function () {
     });
   });
 };
+
+exports.configure = function() {
+  // Used in mobile but not here
+}

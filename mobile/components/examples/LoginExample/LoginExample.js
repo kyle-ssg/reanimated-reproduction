@@ -41,7 +41,7 @@ const LoginExample = class extends React.Component {
     }
 
     onError = (err) => {
-        alert(err);
+        alert(typeof err == 'object' ? JSON.stringify(err) : err);
     }
 
     componentDidMount() {
@@ -58,7 +58,7 @@ const LoginExample = class extends React.Component {
     renderScene(route) {
         switch (route.id) {
             case 'loading': {
-                return <Flex><Loader/></Flex>;
+                return <Flex style={Styles.centerChildren}><Loader/></Flex>;
             }
             case 'loggedIn': {
                 return (

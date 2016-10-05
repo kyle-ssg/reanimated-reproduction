@@ -53,6 +53,8 @@ const FireAuth = class {
       }
 
     });
+
+    Auth.Google.configure();
   }
 
   login = (email, password) => {
