@@ -62,7 +62,7 @@ Globally accessible by default
 
 ## Firebase auth - handles user management, fb/google/email based auth and profile data.
 
-See https://github.com/SolidStateGroup/simple-firebase-auth or https://github.com/SolidStateGroup/simple-firebase-auth
+See https://github.com/SolidStateGroup/simple-firebase-auth or https://github.com/SolidStateGroup/react-native-firebase-auth
 
 # Component Library - WEB
  **All components have prop types documented however for reference here they are**
