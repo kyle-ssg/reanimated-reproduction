@@ -1,13 +1,12 @@
 import LoginForm from './LoginForm';
 import LoggedIn from './LoggedIn';
 import NavBar from '../../navbars/NavbarDefault';
-import FireAuth from '../../../common/fire-auth';
 import Push from '../../../apis/push';
 
 const LoginExample = class extends React.Component {
     constructor(props, context) {
         super(props, context);
-        firebase.initializeApp(Project.firebase);
+        FireAuth.init(Project.firebase);
         this.state = {push: new Push(this.onNotification)};
         this.state.push.configure();
     }
@@ -45,7 +44,7 @@ const LoginExample = class extends React.Component {
     }
 
     componentDidMount() {
-        FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, this.onEmailVerified.bind(this), this.onError);
+        FireAuth.setup(this.onLogin, this.onUserChange, this.onLogout, this.onEmailVerified.bind(this), this.onError);
         AppState.addEventListener('change', this._handleAppStateChange.bind(this));
     }
 

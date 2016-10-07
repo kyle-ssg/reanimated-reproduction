@@ -61,21 +61,8 @@ Globally accessible by default
 * ``Share.twitter(url)``
 
 ## Firebase auth - handles user management, fb/google/email based auth and profile data.
-``FireAuth from 'apis/firebase/fire-auth';``
 
-``FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, this.onError);``
-
-* ``login(email, password)``
-* ``register(email, password)``
-* ``resendVerification()`` - if !(profile.emailVerified)
-* ``resetPassword(email)``
-* ``facebookLogin()`` - Uses Project.Google.APIKey, clientID
-* ``googleLogin()``
-* ``update(traits)``
-
-## Vanilla auth (requires import Auth from 'apis/auth/auth')
-* ``Auth.Google.login().then((token)=>{})``
-* ``Auth.Facebook.login().then((res)=>{})``
+See https://github.com/SolidStateGroup/simple-firebase-auth or https://github.com/SolidStateGroup/simple-firebase-auth
 
 # Component Library - WEB
  **All components have prop types documented however for reference here they are**
