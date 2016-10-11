@@ -6,7 +6,9 @@ import Push from '../../../apis/push';
 const LoginExample = class extends React.Component {
     constructor(props, context) {
         super(props, context);
-        FireAuth.init(Project.firebase);
+        FireAuth.init(Project.firebase, {
+          iosClientId: Project.google.iosClientId
+        });
         this.state = {push: new Push(this.onNotification)};
         this.state.push.configure();
     }
