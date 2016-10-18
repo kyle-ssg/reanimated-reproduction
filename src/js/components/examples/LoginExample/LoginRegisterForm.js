@@ -34,7 +34,7 @@ const LoginForm = class extends React.Component {
 
                 <FormInline>
                     <Button onClick={this.login}>Login</Button>
-                    <Button className="btn-link" onClick={this.toggleLogin}>Already a member ? </Button>
+                    <Button className="btn-link" onClick={this.toggleLogin}>New user ? </Button>
                 </FormInline>
             </div>
         ) : (
@@ -50,7 +50,7 @@ const LoginForm = class extends React.Component {
 
                 <FormInline>
                     <Button onClick={this.register}>Register</Button>
-                    <Button className="btn-link" onClick={this.toggleLogin}>New user ? </Button>
+                    <Button className="btn-link" onClick={this.toggleLogin}>Already a member ? </Button>
                 </FormInline>
             </div>
         );
