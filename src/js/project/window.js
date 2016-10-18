@@ -23,6 +23,7 @@ window.OptionalString = React.PropTypes.string;
 window.OptionalNode = React.PropTypes.node;
 window.OptionalElement = React.PropTypes.node;
 window.oneOf = React.PropTypes.oneOf;
+window.oneOfType = React.PropTypes.oneOfType;
 window.RequiredArray = React.PropTypes.array.isRequired;
 window.RequiredBool = React.PropTypes.bool.isRequired;
 window.RequiredFunc = React.PropTypes.func.isRequired;
@@ -53,7 +54,6 @@ window.Button = require('../components/base/forms/Button');
 window.Panel = require('../components/base/grid/Panel');
 window.FormGroup = require('../components/base/grid/FormGroup');
 window.InputGroup = require('../components/base/forms/InputGroup');
-window.InfiniteScroll = require('../components/base/InfiniteScroll');
 window.ListView = require('../components/base/ListView');
 window.Highlighter = require('../components/base/Highlighter');
 
