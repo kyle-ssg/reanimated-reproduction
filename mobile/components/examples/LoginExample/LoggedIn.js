@@ -1,5 +1,3 @@
-import FireAuth from '../../../common/fire-auth';
-
 const LoggedIn = class extends React.Component {
     constructor(props, context) {
         super(props, context);

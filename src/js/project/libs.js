@@ -4,8 +4,8 @@
 import Switch from 'rc-switch';
 window.Switch = Switch;
 
-import * as firebase from 'firebase';
-window.firebase = firebase;
+import FireAuth from 'simple-firebase-auth';
+window.FireAuth = FireAuth;
 
 window.cn = require('classnames');
 

@@ -1,4 +1,4 @@
-package com.mobile;
+package com.ssg.boilerplate;
 
 import android.app.Application;
 import android.util.Log;
@@ -14,6 +14,8 @@ import java.util.List;
 
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.charlires.segmentanalytics.SegmentAnalyticsPackage;
+import com.magus.fblogin.FacebookLoginPackage;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -28,7 +30,9 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
           new RNDeviceInfo(),
-          new SegmentAnalyticsPackage()
+          new SegmentAnalyticsPackage(),
+          new FacebookLoginPackage(),
+          new RNGoogleSigninPackage()
       );
     }
   };

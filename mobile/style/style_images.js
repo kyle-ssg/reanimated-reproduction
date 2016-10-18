@@ -2,7 +2,7 @@
  * Created by niallquinn on 23/08/2016.
  */
 
-module.exports = StyleSheet.create({
+module.exports = {
 
   imgFluid: {
       width: styleVariables.baseImageWidth,
@@ -19,4 +19,4 @@ module.exports = StyleSheet.create({
     borderWidth: 2,
   }
 
-});
+};

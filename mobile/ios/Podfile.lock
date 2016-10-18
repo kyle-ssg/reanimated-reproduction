@@ -1,8 +1,8 @@
 PODS:
   - Analytics (3.3.0)
-  - React (0.30.0):
-    - React/Core (= 0.30.0)
-  - React/Core (0.30.0)
+  - React (0.34.1):
+    - React/Core (= 0.34.1)
+  - React/Core (0.34.1)
   - SegmentAnalytics (0.1.0):
     - Analytics
 
@@ -19,7 +19,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Analytics: be3d952b8b0f21679e25af3b9dfbbab89597e897
-  React: ed499ad8bb72560821a80fefa59e15a18f3ec75c
+  React: fc15d22bec0ec10fe15c12749fbefdac37ddc541
   SegmentAnalytics: a3c3d9c68ec8a93c2fa7e3694d4414c41d1e94f6
 
 PODFILE CHECKSUM: d183b25ad15fc5f7f4f760bc690ba551ae0bde83
