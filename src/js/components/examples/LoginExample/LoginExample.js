@@ -25,6 +25,19 @@ module.exports = class extends React.Component {
     }
 
     onLogin = (user, profile) => {
+        user.getToken()
+            .then((token)=> {
+              console.log('got token', token);
+                fetch('https://2cc4bef7.ngrok.io/api/test_protected_endpoint/', {
+                    method: 'GET',
+                    body: null,
+                    headers: {
+                        'Authorization': `JWT ${token}`
+                    }
+                }).then(res => {
+                  res.text().then(text => console.log(text));
+                });
+            });
         this.setState({
             isLoading: false,
             user,
