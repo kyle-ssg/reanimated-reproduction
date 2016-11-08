@@ -115,7 +115,7 @@ module.exports = {
   },
 
   listItemText: {
-    color: pallette.textLight,
+    color: pallette.text,
     fontSize: styleVariables.fontSizelistitem
   },
 

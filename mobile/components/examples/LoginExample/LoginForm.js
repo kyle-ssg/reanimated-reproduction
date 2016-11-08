@@ -1,3 +1,5 @@
+import InfiniteScrollExample from '../InfiniteScrollExample';
+
 module.exports = class extends React.Component {
     constructor (props, context) {
         super(props, context);
@@ -81,7 +83,7 @@ module.exports = class extends React.Component {
                         </View>
                     </Flex>
                 </ScrollView>
-                <Flex style={Styles.centeredContainer} tabLabel={"Examples"}>
+                <Flex tabLabel={"Examples"}>
                     <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
                         <View style={Styles.formGroup}>
                             <Text style={Styles.label}>Masked Date</Text>
@@ -92,8 +94,12 @@ module.exports = class extends React.Component {
                             <TextInput value={this.state.maskedTime}
                                        onChangeText={(text) => this.setState({ maskedTime: text }) }
                                        placeholder="hh:mm am" mask="11:11 am" style={Styles.textInput}/>
+
                         </View>
                     </View>
+                    <Text style={Styles.label}>Masked Time</Text>
+                    <InfiniteScrollExample/>
+
                 </Flex>
             </ScrollableTabView>
         );
