@@ -25,6 +25,7 @@ if (!host) {
 - run ios
 - run android
 - create an apk for android
+
 ```
 alias andKey='keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android'
 
