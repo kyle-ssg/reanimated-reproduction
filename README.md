@@ -20,6 +20,22 @@ if (!host) {
 }
 ```
 
+## Useful mobile commands (paste these into ~/.bash_profile) 
+- Display sha1 key for signing 
+- run ios
+- run android
+- create an apk for android
+
+```
+alias andKey='keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android'
+
+alias ios='react-native run-ios'
+
+alias and='adb reverse tcp:8081 tcp:8081  && react-native run-android'
+
+alias andDeploy='cd ./android && ./gradlew assembleRelease && ./gradlew installRelease && cd ../'
+```
+
 ### iOS start
 ```npm run ios```
 
@@ -61,21 +77,8 @@ Globally accessible by default
 * ``Share.twitter(url)``
 
 ## Firebase auth - handles user management, fb/google/email based auth and profile data.
-``FireAuth from 'apis/firebase/fire-auth';``
 
-``FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, this.onError);``
-
-* ``login(email, password)``
-* ``register(email, password)``
-* ``resendVerification()`` - if !(profile.emailVerified)
-* ``resetPassword(email)``
-* ``facebookLogin()`` - Uses Project.Google.APIKey, clientID
-* ``googleLogin()``
-* ``update(traits)``
-
-## Vanilla auth (requires import Auth from 'apis/auth/auth')
-* ``Auth.Google.login().then((token)=>{})``
-* ``Auth.Facebook.login().then((res)=>{})``
+See https://github.com/SolidStateGroup/simple-firebase-auth or https://github.com/SolidStateGroup/react-native-firebase-auth
 
 # Component Library - WEB
  **All components have prop types documented however for reference here they are**

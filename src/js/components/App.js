@@ -25,7 +25,11 @@ export default class App extends Component {
 
   constructor (props, context) {
     super(props, context);
-    firebase.initializeApp(Project.firebase);
+    FireAuth.init(Project.firebase, {
+      fbAppId: Project.facebook.appId,
+      googleApiKey: Project.google.APIKey,
+      googleClientId: Project.google.webClientId
+    });
     this.state = {};
   }
 

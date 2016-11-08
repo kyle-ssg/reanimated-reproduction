@@ -1,5 +1,3 @@
-import FireAuth from '../../../common/fire-auth';
-
 module.exports = class extends React.Component {
     constructor (props, context) {
         super(props, context);

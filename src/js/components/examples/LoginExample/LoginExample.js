@@ -6,7 +6,6 @@ import LoginForm from './LoginRegisterForm';
 import ForgotPassword from './ForgotPassword';
 import ChangePassword from './ChangePassword';
 import UpdateProfile from './UpdateProfile';
-const FireAuth = require('../../../common/fire-auth');
 
 module.exports = class extends React.Component {
 
@@ -16,7 +15,7 @@ module.exports = class extends React.Component {
     }
 
     componentWillMount () {
-        FireAuth.init(this.onLogin, this.onUserChange, this.onLogout, ()=> {
+        FireAuth.setup(this.onLogin, this.onUserChange, this.onLogout, ()=> {
             alert("Email verified!");
         }, this.onError);
     }
@@ -26,6 +25,19 @@ module.exports = class extends React.Component {
     }
 
     onLogin = (user, profile) => {
+        user.getToken()
+            .then((token)=> {
+              console.log('got token', token);
+                fetch('https://2cc4bef7.ngrok.io/api/test_protected_endpoint/', {
+                    method: 'GET',
+                    body: null,
+                    headers: {
+                        'Authorization': `JWT ${token}`
+                    }
+                }).then(res => {
+                  res.text().then(text => console.log(text));
+                });
+            });
         this.setState({
             isLoading: false,
             user,
@@ -72,10 +84,10 @@ module.exports = class extends React.Component {
                 {!this.state.profile ? (
                     <div>
                         <FormInline>
-                            <Button disabled={this.state.isLoading} onClick={FireAuth.facebookLogin}>
+                            <Button disabled={this.state.isLoading} onClick={() => FireAuth.facebookLogin()}>
                                 Facebook
                             </Button>
-                            <Button disabled={this.state.isLoading} onClick={FireAuth.googleLogin}>
+                            <Button disabled={this.state.isLoading} onClick={() => FireAuth.googleLogin()}>
                                 Google
                             </Button>
                         </FormInline>
