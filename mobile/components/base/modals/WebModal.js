@@ -1,47 +1,4 @@
-var NavBar = function (title, goBack) {
-  return {
-    LeftButton: function () {
-      return goBack && (
-          <TouchableOpacity
-            style={[Styles.navItemContainer]}
-            onPress={goBack}>
-            <ION
-              name='ios-arrow-back'
-              size={22}
-              style={[Styles.navButton]}
-            />
-          </TouchableOpacity>
-        );
-    },
-
-    RightButton: function () {
-      return (<TouchableOpacity
-        style={[Styles.navItemContainer]}
-        onPress={closeModal}>
-        <ION
-          name='ios-close-outline'
-          size={22}
-          style={[Styles.navBarIcon]}
-        />
-      </TouchableOpacity>);
-    },
-
-    onMenuPress: function () {
-    },
-
-    Title: function () {
-
-      return title && (
-          <View style={[Styles.navItemContainer, Styles.navItemTitleContainer]}>
-            <Text style={[Styles.navBarTitle, Styles.container]}>
-              {Format.truncateText(title, 20)}
-            </Text>
-          </View>
-        );
-    }
-  };
-};
-
+import NavBar from '../../navbars/NavbarModal'
 module.exports = Component({
   getInitialState: function () {
     return {

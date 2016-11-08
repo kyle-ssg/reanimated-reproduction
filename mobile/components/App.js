@@ -1,7 +1,7 @@
 // import Example from './examples/PushExample';
 // import Example from './examples/InfiniteScrollExample';
 
-import Example from './examples/LoginExample/LoginExample';
+import Example from './examples/Examples';
 import NavBar from './navbars/NavbarDefault';
 import Menu from './menus/DefaultMenu';
 
@@ -11,6 +11,7 @@ const TheComponent = class extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {};
+        Modals(this);
     }
 
     componentDidMount() {
@@ -73,6 +74,29 @@ const TheComponent = class extends React.Component {
                         />
                     </View>
                 </SideMenu>
+                {this.state.modalComponent && (
+                    <Modal
+                        autostart={true}
+                        direction={this.state.modalDirection}
+                        animation={this.state.modalAnimation}
+                        onDismiss={closeModal}
+                        duration={this.state.modalDuration}
+                        fade={this.state.modalFade}
+                        size={this.state.modalSize} value={this.state.showModal}>
+                        {this.state.modalComponent}
+                    </Modal>
+                )}
+                {this.state.selectComponent && (
+                    <Modal direction={this.state.selectDirection}
+                           animation={this.state.selectAnimation}
+                           onDismiss={closeSelect}
+                           duration={this.state.selectDuration}
+                           fade={this.state.selectFade}
+                           size={this.state.selectSize}
+                           value={this.state.showSelect}>
+                        {this.state.selectComponent}
+                    </Modal>
+                )}
             </View>
         );
     }
