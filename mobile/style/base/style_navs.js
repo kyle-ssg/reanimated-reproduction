@@ -50,8 +50,8 @@ module.exports = {
     color: pallette.text
   },
   navBarTitle: {
-    fontSize: em(styleVariables.fontSizeH2),
-    color: pallette.text,
+    fontSize: styleVariables.fontSizeH2,
+    color: colour.navBarText,
     fontWeight: styleVariables.headingsFontWeight
   },
   navItem: {
@@ -104,7 +104,7 @@ module.exports = {
   barText: {
     fontWeight: 'bold',
     color: pallette.pallette,
-    fontSize: em(styleVariables.fontSizesubheading)
+    fontSize: styleVariables.fontSizesubheading
   },
 
   // Menu
@@ -126,7 +126,7 @@ module.exports = {
     marginRight: styleVariables.marginBaseHorizontal
   },
   menuIconClose: {
-    fontSize: em(styleVariables.fontSizeH1),
+    fontSize: styleVariables.fontSizeH1,
     color: 'white',
     marginRight: styleVariables.marginBaseHorizontal
   },
@@ -141,7 +141,7 @@ module.exports = {
     justifyContent: 'center',
   },
   menuHeadingText: {
-    fontSize: em(styleVariables.fontSizeH2),
+    fontSize: styleVariables.fontSizeH2,
     color: colour.text,
   },
 

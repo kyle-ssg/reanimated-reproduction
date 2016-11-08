@@ -48,13 +48,13 @@ module.exports = {
   // -------------------------
 
   heading: {
-    fontSize: em(styleVariables.fontSizeHeading),
+    fontSize: styleVariables.fontSizeHeading,
     color: colour.heading,
     alignSelf: 'center'
   },
 
   subheading: {
-    fontSize: em(styleVariables.fontSizesubheading),
+    fontSize: styleVariables.fontSizesubheading,
     color: colour.subheading,
     fontFamily: 'SFUIDisplay-Bold',
     alignSelf: 'center'
@@ -63,18 +63,18 @@ module.exports = {
   h1: {
     paddingTop: 0,
     fontWeight: styleVariables.headingsFontWeight,
-    fontSize: em(styleVariables.fontSizeH1),
+    fontSize: styleVariables.fontSizeH1,
   },
 
   h2: {
     paddingTop: 0,
-    fontSize: em(styleVariables.fontSizeH2),
+    fontSize: styleVariables.fontSizeH2,
     fontWeight: styleVariables.headingsFontWeight,
   },
 
   h3: {
     paddingTop: 0,
-    fontSize: em(styleVariables.fontSizeH3),
+    fontSize: styleVariables.fontSizeH3,
     fontWeight: styleVariables.headingsFontWeight,
     color: pallette.textLight
   },
@@ -84,7 +84,7 @@ module.exports = {
 
   note: {
     paddingTop: 0,
-    fontSize: em(styleVariables.fontSizeNote),
+    fontSize: styleVariables.fontSizeNote,
     fontWeight: styleVariables.mediumFontWeight,
     color: pallette.textLight,
   },
@@ -116,7 +116,7 @@ module.exports = {
 
   listItemText: {
     color: pallette.textLight,
-    fontSize: em(styleVariables.fontSizelistitem)
+    fontSize: styleVariables.fontSizelistitem
   },
 
   liContent: {
@@ -128,7 +128,7 @@ module.exports = {
 
   listTitle: {
     color: pallette.text,
-    fontSize: em(styleVariables.fontSizelistTitle),
+    fontSize: styleVariables.fontSizelistTitle,
     fontWeight: styleVariables.mediumFontWeight
   },
 

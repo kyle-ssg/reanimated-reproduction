@@ -1,5 +1,10 @@
 module.exports = {
 
+
+  button: {
+    height:styleVariables.buttonHeight
+  },
+
   actionButton: {
     borderRadius: 0,
     backgroundColor: '#4A4A4A'
@@ -12,7 +17,7 @@ module.exports = {
   buttonText: {
     color: colour.btnText,
     fontWeight: styleVariables.mediumFontWeight,
-    fontSize: 20
+    fontSize: styleVariables.fontSizeBase
   },
 
   //example variation
@@ -57,6 +62,15 @@ module.exports = {
   buttonGroupRight: {
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
+  },
+
+  buttonPrimary:{
+    backgroundColor:styleVariables.buttonPrimary
+  },
+
+  buttonTextLight:{
+    color:styleVariables.buttonTextLight,
+    fontSize: styleVariables.fontSizeBase
   },
 
 };

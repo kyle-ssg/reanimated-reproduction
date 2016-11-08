@@ -11,6 +11,7 @@ module.exports = {
   container: {
     padding: styleVariables.paddingBase,
   },
+
   noPad: {
     marginLeft: -styleVariables.paddingBase,
     marginRight: -styleVariables.paddingBase,
@@ -38,16 +39,18 @@ module.exports = {
     flexDirection: 'row',
     justifyContent: 'center'
   },
+
   row: {
     alignSelf: 'stretch',
     flexWrap: 'wrap',
     flexDirection: 'row',
     alignItems: 'center',
   },
+
   spacedRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between'
-  },
+  }
 
 };

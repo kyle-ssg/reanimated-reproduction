@@ -1,17 +1,17 @@
 module.exports = {
 
     navBar: {
-        backgroundColor: base.navBar
+        backgroundColor: styleVariables.navBar
     },
 
     bar: {
-        padding: base.paddingBaseLarge,
+        padding: styleVariables.paddingBaseLarge,
         backgroundColor: colour.secondary
     },
     barText: {
         fontWeight: 'bold',
-        color: base.text,
-        fontSize: base.fontSizeSmall
+        color: styleVariables.text,
+        fontSize: styleVariables.fontSizeSmall
     },
 
     //TILED NAV
@@ -23,17 +23,17 @@ module.exports = {
         alignItems: 'center',
         borderRightWidth: 1 / PixelRatio.get() * 2,
         borderBottomWidth: 1 / PixelRatio.get() * 2,
-        borderColor: base.borderDefault
+        borderColor: styleVariables.borderDefault
     },
 
     navBarTitle: {
-        fontSize: em(styleVariables.fontSizeH2),
+        fontSize: styleVariables.fontSizeH2,
         fontWeight: styleVariables.headingsFontWeight,
-        color: base.textLight
+        color: styleVariables.textLight
     },
 
     navButton: {
-        color: base.navBarIcon,
+        color: styleVariables.navBarIcon,
         marginLeft: 10,
         marginBottom: -5,
         marginRight: 10
@@ -70,7 +70,7 @@ module.exports = {
     menuHeading:{
         borderBottomWidth: 1 / PixelRatio.get() * 2,
         borderBottomColor:pallette.primary,
-        height:base.baseNavHeight + base.statusHeight,
+        height:styleVariables.baseNavHeight + styleVariables.statusHeight,
         justifyContent:'center'
     },
 
@@ -81,7 +81,7 @@ module.exports = {
     },
 
     menuItemText:{
-        color:base.textLight,
-        fontSize:base.fontSizeBase
+        color:styleVariables.textLight,
+        fontSize:styleVariables.fontSizeBase
     },
 };

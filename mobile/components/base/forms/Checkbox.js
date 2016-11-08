@@ -2,8 +2,6 @@
  * Created by kylejohnson on 14/11/2015.
  */
 
-var styles = require('../../../style/style_forms');
-
 module.exports = Component({
   mixins: [AnimatedToggleMixin],
   propTypes: {
@@ -46,7 +44,7 @@ module.exports = Component({
 
     return (<TouchableOpacity activeOpacity={0.8} onPress={this.onPress}>
       <Animated.View
-        style={[styles.radio, {
+        style={[Styles.radio, {
           backgroundColor: radioColor,
           borderColor: borderColour,
           width: size,

@@ -2,16 +2,15 @@ module.exports = {
 
     // APP
     navContent: {
-        padding: base.gutterBase
+        padding: styleVariables.gutterBase
     },
 
     anchor: {
-        color: base.textLight,
-        fontSize: base.fontSizeSmall
+        color: styleVariables.textLight,
+        fontSize: styleVariables.fontSizeSmall
     },
 
     //ICONS
-
     iconDefault: {
         height: 30,
         resizeMode: 'contain'
@@ -24,11 +23,10 @@ module.exports = {
 
     dropListIcon: {
         fontSize: em(1.2),
-        color: base.white
+        color: styleVariables.white
     },
 
     //ERRORS
-
     errorContainer: {
         backgroundColor: pallette.error,
         borderRadius: 8,

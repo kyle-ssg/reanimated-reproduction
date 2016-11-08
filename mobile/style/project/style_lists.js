@@ -1,27 +1,27 @@
 module.exports = {
 
   insetList: {
-    paddingLeft: base.paddingBaseLarge,
-    paddingRight: base.paddingBaseLarge
+    paddingLeft: styleVariables.paddingBaseLarge,
+    paddingRight: styleVariables.paddingBaseLarge
   },
 
   basicListItem: {
-    paddingTop: base.paddingBase,
-    paddingBottom: base.paddingBase
+    paddingTop: styleVariables.paddingBase,
+    paddingBottom: styleVariables.paddingBase
   },
 
   listFull: {
-    paddingLeft: base.paddingBase,
-    paddingRight: base.paddingBase
+    paddingLeft: styleVariables.paddingBase,
+    paddingRight: styleVariables.paddingBase
   },
 
   listHeader: {
-    paddingTop: base.paddingBase,
-    paddingLeft: base.paddingBase
+    paddingTop: styleVariables.paddingBase,
+    paddingLeft: styleVariables.paddingBase
   },
 
   listTitle: {
-    paddingBottom: base.paddingBaseSmall
+    paddingBottom: styleVariables.paddingBaseSmall
   },
 
   listUnstyled: {
@@ -29,7 +29,7 @@ module.exports = {
   },
 
   dropList: {
-    padding: base.paddingBaseLarge
+    padding: styleVariables.paddingBaseLarge
   },
 
   dropButton: {
@@ -46,6 +46,6 @@ module.exports = {
   },
 
   listBaseText: {
-    fontSize: base.fontSizeSmaller
+    fontSize: styleVariables.fontSizeSmaller
   }
 };

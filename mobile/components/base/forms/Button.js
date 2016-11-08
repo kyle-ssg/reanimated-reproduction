@@ -23,14 +23,14 @@ var Button = Component({
     }
 
     //compute styles e.g. buttonGroupLeft, big, bigRight, buttonGroupText, bigText, but
-    var groupStyle = [styles.buttonGroup,
+    var groupStyle = [Styles.buttonGroup,
       this.props.position && styles['buttonGroup' + Format.camelCase(this.props.position)],
       this.props.variation && styles['buttonGroup' + Format.camelCase(this.props.variation)],
       this.props.variation && this.props.position && styles[this.props.variation + Format.camelCase(this.props.position)],
       this.props.style
     ];
 
-    var textStyle = [styles.buttonText,
+    var textStyle = [Styles.buttonText,
       this.props.position && styles['buttonText' + Format.camelCase(this.props.position) + "Text"],
       this.props.variation && styles['buttonText' + Format.camelCase(this.props.variation)],
       this.props.variation && this.props.position && styles[this.props.variation + Format.camelCase(this.props.position) + "Text"],
@@ -56,7 +56,5 @@ var Button = Component({
     return colour.buttonActiveOpacity;
   },
 });
-
-var styles = require('../../../style/style_buttons');
 
 module.exports = Button;

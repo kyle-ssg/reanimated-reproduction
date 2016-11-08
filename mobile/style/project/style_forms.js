@@ -1,26 +1,26 @@
 module.exports = {
 
   inputContainer: {
-    height: base.inputHeight,
+    height: styleVariables.inputHeight,
     backgroundColor: 'transparent'
   },
 
   textInput: {
-    backgroundColor: base.inputBackground,
-    borderRadius: base.borderRadiusDefault,
-    marginBottom: base.gutterBase,
+    backgroundColor: styleVariables.inputBackground,
+    borderRadius: styleVariables.borderRadiusDefault,
+    marginBottom: styleVariables.gutterBase,
     height: 50,
-    paddingLeft:base.gutterBase
+    paddingLeft:styleVariables.gutterBase
   },
 
   formGroup: {
-    marginBottom: base.gutterBase * 2
+    marginBottom: styleVariables.gutterBase * 2
   },
 
   label: {
-    fontSize: base.fontSizeBase,
-    color: base.text,
-    marginBottom:base.gutterBase / 2
+    fontSize: styleVariables.fontSizeBase,
+    color: styleVariables.text,
+    marginBottom:styleVariables.gutterBase / 2
   }
 
 };

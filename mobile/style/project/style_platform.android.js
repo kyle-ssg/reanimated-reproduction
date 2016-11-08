@@ -2,10 +2,10 @@ module.exports = {
   navContent: {
     backgroundColor: colour.bodyBackground,
     flex: 1,
-    paddingTop: base.baseNavHeight
+    paddingTop: styleVariables.baseNavHeight
   },
   navBarTitle: {
-    fontSize: em(styleVariables.fontSizeH3),
+    fontSize: styleVariables.fontSizeH3,
     color: 'white',
     alignSelf: 'center',
     marginTop: 10,
