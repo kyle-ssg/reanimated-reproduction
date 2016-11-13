@@ -1,6 +1,7 @@
 import InfiniteScrollExample from './InfiniteScrollExample';
 import ExampleModal from './ExampleModal';
 import PushExample from './PushExample';
+import DigitsExample from './DigitsExample';
 
 module.exports = class extends React.Component {
     constructor (props, context) {
@@ -109,6 +110,8 @@ module.exports = class extends React.Component {
 
                             </View>
                         </View>
+                        <Text style={Styles.label}>Twitter Digits</Text>
+                        <DigitsExample/>
                         <Text style={Styles.label}>Infinite Scroll</Text>
                         <InfiniteScrollExample/>
                     </Flex>

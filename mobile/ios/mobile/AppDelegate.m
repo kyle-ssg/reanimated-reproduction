@@ -16,6 +16,8 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "RNGoogleSignin/RNGoogleSignin.h"
+#import <Fabric/Fabric.h>
+#import <DigitsKit/DigitsKit.h>
 
 @implementation AppDelegate
 
@@ -49,6 +51,9 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+  [Fabric with:@[[Digits class]]];
+  
   return [[FBSDKApplicationDelegate sharedInstance] application:application
                                   didFinishLaunchingWithOptions:launchOptions];
 }

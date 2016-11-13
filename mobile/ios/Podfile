@@ -8,7 +8,8 @@ target 'mobile' do
   pod 'Analytics'
   pod 'React', :path => '../node_modules/react-native'
   pod 'SegmentAnalytics', :path => '../node_modules/react-native-segment-analytics/ios'
-
+  pod 'Fabric'
+  pod 'Digits'
   target 'mobileTests' do
     inherit! :search_paths
     # Pods for testing

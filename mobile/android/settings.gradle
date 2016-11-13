@@ -1,6 +1,12 @@
 rootProject.name = 'mobile'
 
 include ':app'
+include ':react-native-push-notification'
+project(':react-native-push-notification').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-push-notification/android')
+include ':react-native-google-signin'
+project(':react-native-google-signin').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-google-signin/android')
+include ':react-native-fabric-digits'
+project(':react-native-fabric-digits').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fabric-digits/android')
 
 include ':react-native-device-info'
 project(':react-native-device-info').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-device-info/android')

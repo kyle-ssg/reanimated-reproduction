@@ -1,8 +1,9 @@
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Digits/iOS" "${PODS_ROOT}/Fabric/iOS" "${PODS_ROOT}/TwitterCore/iOS"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Analytics" "${PODS_ROOT}/Headers/Public/React" "${PODS_ROOT}/Headers/Public/SegmentAnalytics"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Analytics" "${PODS_ROOT}/Headers/Public/Digits" "${PODS_ROOT}/Headers/Public/Fabric" "${PODS_ROOT}/Headers/Public/React" "${PODS_ROOT}/Headers/Public/SegmentAnalytics" "${PODS_ROOT}/Headers/Public/TwitterCore"
 LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/Analytics" "$PODS_CONFIGURATION_BUILD_DIR/React" "$PODS_CONFIGURATION_BUILD_DIR/SegmentAnalytics"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/Analytics" -isystem "${PODS_ROOT}/Headers/Public/React" -isystem "${PODS_ROOT}/Headers/Public/SegmentAnalytics"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Analytics" -l"React" -l"SegmentAnalytics" -l"stdc++" -framework "JavaScriptCore"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/Analytics" -isystem "${PODS_ROOT}/Headers/Public/Digits" -isystem "${PODS_ROOT}/Headers/Public/Fabric" -isystem "${PODS_ROOT}/Headers/Public/React" -isystem "${PODS_ROOT}/Headers/Public/SegmentAnalytics" -isystem "${PODS_ROOT}/Headers/Public/TwitterCore"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"Analytics" -l"React" -l"SegmentAnalytics" -l"stdc++" -framework "Accounts" -framework "AddressBook" -framework "CoreData" -framework "CoreGraphics" -framework "DigitsKit" -framework "Fabric" -framework "Foundation" -framework "JavaScriptCore" -framework "SafariServices" -framework "Security" -framework "Social" -framework "TwitterCore" -framework "UIKit"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_ROOT = ${SRCROOT}/Pods

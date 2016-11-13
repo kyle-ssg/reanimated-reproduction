@@ -1,13 +1,20 @@
 PODS:
   - Analytics (3.3.0)
+  - Digits (2.4.0):
+    - TwitterCore (= 2.4.0)
+  - Fabric (1.6.8)
   - React (0.35.0):
     - React/Core (= 0.35.0)
   - React/Core (0.35.0)
   - SegmentAnalytics (0.1.0):
     - Analytics
+  - TwitterCore (2.4.0):
+    - Fabric
 
 DEPENDENCIES:
   - Analytics
+  - Digits
+  - Fabric
   - React (from `../node_modules/react-native`)
   - SegmentAnalytics (from `../node_modules/react-native-segment-analytics/ios`)
 
@@ -19,9 +26,12 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Analytics: be3d952b8b0f21679e25af3b9dfbbab89597e897
+  Digits: 8173fa5420d64bf490bade840e6bc36b74537d6c
+  Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
   React: d80af5410aa500d0cb1bce2cc4493a584cf2ec92
   SegmentAnalytics: a3c3d9c68ec8a93c2fa7e3694d4414c41d1e94f6
+  TwitterCore: a139904c80805ad3dde9eef1100704f96f646d1d
 
-PODFILE CHECKSUM: d183b25ad15fc5f7f4f760bc690ba551ae0bde83
+PODFILE CHECKSUM: efe7492419c8780cc95d25d5f4620de8601452fb
 
 COCOAPODS: 1.0.1

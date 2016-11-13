@@ -47,6 +47,7 @@
     "react-addons-shallow-compare": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-maskedinput": "3.2.3",
+    "react-native-fabric-digits": "1.0.21",
     "react-router": "2.6.0",
     "react-slider": "0.7.0",
     "react-sortable-hoc": "0.0.6",
