@@ -1,56 +1,59 @@
-import NavBar from '../../navbars/NavbarModal'
 module.exports = Component({
-  getInitialState: function () {
-    return {
-      name: this.props.name
-    };
-  },
+    getInitialState: function () {
+        return {
+            name: this.props.name
+        };
+    },
 
-  onNavigationStateChange: function (navState) {
-    this.setState({
-      backButtonEnabled: navState.canGoBack,
-      forwardButtonEnabled: navState.canGoForward,
-      url: navState.url,
-      title: navState.title,
-      loading: navState.loading,
-      scalesPageToFit: true
-    });
-  },
+    onNavigationStateChange: function (navState) {
+        this.setState({
+            backButtonEnabled: navState.canGoBack,
+            forwardButtonEnabled: navState.canGoForward,
+            url: navState.url,
+            title: navState.title,
+            loading: navState.loading,
+            scalesPageToFit: true
+        });
+    },
 
-  goBack: function () {
-    this.refs.navigator.refs.webview.goBack();
-  },
+    goBack: function () {
+        this.refs.webview.goBack();
+    },
 
-  renderScene: function () {
-    return (
-      <View style={Styles.webViewContainer}>
-        <WebView
-          onNavigationStateChange={this.onNavigationStateChange}
-          ref="webview"
-          style={styles.webView}
-          source={{ uri: this.props.uri }}
-          scalesPageToFit={true}
-        />
-      </View>
-    );
-  },
-  render: function () {
-    return (
+    render: function () {
+        return (
+            <Flex>
+                <Header>
+                    <Column style={{ width: 50 }}>
+                        {
+                            this.state.backButtonEnabled ? (
+                                <TouchableOpacity onPress={this.goBack}
+                                                  transparent>
+                                    <ION style={Styles.navBarButtonText} name="ios-arrow-back"/>
+                                </TouchableOpacity>
+                            ) : <View/>
+                        }
+                    </Column>
 
-      <Navigator
-        style={{ flex: 1 }}
-        navigationBar={
-          <Navigator.NavigationBar
-            style={[Styles.navBar]}
-            routeMapper={NavBar(this.state.title || this.props.title, this.state.backButtonEnabled && this.goBack)}
-            key="account-nav-bar"
-          />
-        }
-        sceneStyle={Styles.navContent}
-        ref="navigator"
-        renderScene={this.renderScene}
-        initialRoute={{ id: "home" }}
-      />
-    );
-  }
+                    <Flex style={[Styles.centeredContainer]}>
+                        <Text style={Styles.navBarText}>{this.state.title}</Text>
+                    </Flex>
+
+                    <Column style={{ width: 50, alignItems: 'flex-end' }}>
+                        <TouchableOpacity onPress={closeModal}
+                                          transparent>
+                            <ION style={Styles.navBarButtonText} name="ios-close"/>
+                        </TouchableOpacity>
+                    </Column>
+                </Header>
+                <WebView
+                    onNavigationStateChange={this.onNavigationStateChange}
+                    ref="webview"
+                    style={{flex:1}}
+                    source={{ uri: this.props.uri }}
+                    scalesPageToFit={true}
+                />
+            </Flex>
+        );
+    }
 });

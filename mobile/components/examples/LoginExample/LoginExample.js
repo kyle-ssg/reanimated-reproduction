@@ -78,7 +78,6 @@ const LoginExample = class extends React.Component {
 
     render() {
         return (<Navigator
-            sceneStyle={[Styles.body]}
             ref="navigator"
             initialRoute={{id: 'loading', title: 'Loading'}}
             renderScene={this.renderScene.bind(this)}

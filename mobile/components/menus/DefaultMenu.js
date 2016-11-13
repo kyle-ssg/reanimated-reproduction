@@ -3,15 +3,15 @@
  */
 module.exports = Component({
     displayName: 'DefaultMenu',
-
-    route: function (data) {
-        this.props.onPress(data);
-    },
     render: function () {
         var navItems = [
             {
                 text: "Home",
-                route: {id: "home", title: "Home"}
+                route: '/'
+            },
+            {
+                text: "Other",
+                route: '/other'
             }
         ];
 
@@ -23,20 +23,25 @@ module.exports = Component({
                         <ION name="ios-close" style={Styles.menuIconClose}/>
                     </View>
                 </View>
-                <ScrollView style={{flex: 1}}>
+                <ScrollView style={{ flex: 1 }}>
                     {navItems.map(function (item, i) {
                         return (
-                            <ListItem key={i} onPress={_.partial(this.route, item.route)}
-                                      style={Styles.menuItem}>
-                                <Row space>
-                                    <Flex>
-                                        {item.icon && <ION name={item.icon} style={Styles.menuIcon}/>}
-                                    </Flex>
-                                    <Text style={[Styles.menuItemText, item.isImportant && {color: colour.primary}]}>
-                                        {item.text}
-                                    </Text>
-                                </Row>
-                            </ListItem>
+                            <Link
+                                style={Styles.menuItem}
+                                activeStyle={Styles.menuItemActive}
+                                onPress={this.props.onPress} to={item.route}>
+                                <View>
+                                    <Row space>
+                                        <Flex>
+                                            {item.icon && <ION name={item.icon} style={Styles.menuIcon}/>}
+                                        </Flex>
+                                        <Text
+                                            style={[Styles.menuItemText, item.isImportant && { color: colour.primary }]}>
+                                            {item.text}
+                                        </Text>
+                                    </Row>
+                                </View>
+                            </Link>
                         );
                     }.bind(this))}
                 </ScrollView>

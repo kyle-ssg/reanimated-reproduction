@@ -48,7 +48,7 @@ module.exports = {
     "react/forbid-prop-types": "off",
     "react/jsx-boolean-value": "off",
     "react/jsx-closing-bracket-location": "off",
-    "react/jsx-curly-spacing": "warn",
+    "react/jsx-curly-spacing": 0,
     "react/jsx-indent-props": "off",
     "react/jsx-key": "warn",
     "react/jsx-max-props-per-line": "off",

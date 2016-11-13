@@ -3,9 +3,9 @@
 const Flex = class extends React.Component {
   render () {
     return (
-      <View style={[this.props.style, { flex: this.props.value }]}>
+      <Animated.View style={[this.props.style, { flex: this.props.value }]}>
         {this.props.children}
-      </View>
+      </Animated.View>
     );
   }
 };

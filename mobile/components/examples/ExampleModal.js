@@ -1,28 +1,25 @@
-import NavBar from '../navbars/NavbarModal'
 module.exports = Component({
-    renderScene: function() {
+    render: function () {
         return (
-            <View style={{flex:1, backgroundColor: colour.rowLighter, justifyContent:'center', padding:10}}>
-               <Text>Hi</Text>
-            </View>
-        )
-    },
-    render: function() {
-        return (
+            <Flex>
+                <Header>
+                    <Column style={{width:50}}>
 
-            <Navigator
-                style={{flex:1}}
-                navigationBar={
-                    <Navigator.NavigationBar
-                        style = {[Styles.navBar]}
-                        routeMapper={NavBar()}
-                    />
-                }
-                sceneStyle={Styles.navContent}
-                ref="navigator"
-                renderScene={this.renderScene}
-                initialRoute={{title:"Example Modal"}}
-            />
+                    </Column>
+
+                    <Flex style={[Styles.centeredContainer]}>
+                        <Text style={Styles.navBarText}>Title</Text>
+                    </Flex>
+
+                    <Column style={{ width: 50, alignItems:'flex-end' }}>
+                        <TouchableOpacity onPress={closeModal}
+                                          transparent>
+                            <ION style={Styles.navBarButtonText} name="ios-close"/>
+                        </TouchableOpacity>
+                    </Column>
+                </Header>
+                <Flex style={Styles.body}></Flex>
+            </Flex>
         )
     }
 });

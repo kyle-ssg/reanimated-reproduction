@@ -14,7 +14,7 @@ window.FireAuth = FireAuth;
 // Segment analytics
 import RNSegmentIO from 'react-native-segment-analytics';
 window.analytics = RNSegmentIO;
-analytics.setup('eJ4jplD0TFwOmZAyV801eB1quoAKSUBn');
+analytics.setup(Project.analytics);
 
 // Segment analytics testing - identify - normally only called once on sign up and then whenever traits change
 /*analytics.identify('luke@solidstategroup.com',
@@ -25,9 +25,14 @@ analytics.setup('eJ4jplD0TFwOmZAyV801eB1quoAKSUBn');
  }
  );*/
 // Can also use an anonymous id
-window.anonId = DeviceInfo.getUniqueID();
-analytics.identify(anonId,
-  {
-    name: 'Anonymous Mobile Bro'
-  }
-);
+// window.anonId = DeviceInfo.getUniqueID();
+// analytics.identify(anonId,
+//   {
+//     name: 'Anonymous Mobile Bro'
+//   }
+// );
+
+import {Link} from "react-router-native";
+window.Link = Link;
+
+

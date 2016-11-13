@@ -13,11 +13,6 @@ module.exports = {
     top: 0,
   },
 
-  webViewContainer:{
-    flex: 1,
-    justifyContent: 'center',
-    padding: 10
-  },
 
   webView: {
     backgroundColor: pallette.backgroundBase

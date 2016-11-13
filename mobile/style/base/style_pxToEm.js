@@ -15,7 +15,5 @@ const unit = baseUnit * ratioX;
 
 // We add an em() shortcut function
 window.em = function (value) {
-  if (unit * value>40)
-    debugger
   return unit * value;
 };

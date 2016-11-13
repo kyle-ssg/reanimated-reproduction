@@ -75,7 +75,13 @@ module.exports = {
     },
 
     menuItem:{
+        height:44,
         backgroundColor:'transparent',
+        borderBottomWidth: 1 / PixelRatio.get() * 2,
+        borderBottomColor:pallette.primary
+    },
+    menuItemActive:{
+        backgroundColor:'rgba(0,0,0,.2)',
         borderBottomWidth: 1 / PixelRatio.get() * 2,
         borderBottomColor:pallette.primary
     },

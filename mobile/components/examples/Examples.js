@@ -1,5 +1,6 @@
 import InfiniteScrollExample from './InfiniteScrollExample';
 import ExampleModal from './ExampleModal';
+import PushExample from './PushExample';
 
 module.exports = class extends React.Component {
     constructor (props, context) {
@@ -32,8 +33,8 @@ module.exports = class extends React.Component {
 
     render () {
         return (
-            <Flex>
-                <ScrollableTabView {...Constants.defaultTabStyles}>
+            <Flex style={Styles.body}>
+                <ScrollableTabView   {...Constants.defaultTabStyles}>
                     <Flex style={Styles.centeredContainer} tabLabel={"Login"}>
                         <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
                             <View style={Styles.formGroup}>
@@ -52,7 +53,7 @@ module.exports = class extends React.Component {
                         </View>
                     </Flex>
                     <ScrollView tabLabel={"Register"}>
-                        <Flex style={Styles.centeredContainer}>
+                        <Flex style={Styles.container}>
                             <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
                                 <View style={Styles.formGroup}>
                                     <TextInput value={this.state.firstName}
@@ -86,7 +87,15 @@ module.exports = class extends React.Component {
                             </View>
                         </Flex>
                     </ScrollView>
-                    <Flex tabLabel={"Examples"}>
+                    <Flex style={Styles.container} tabLabel={"Examples"}>
+                        <FormGroup>
+                            <Button onPress={()=>openModal(<ExampleModal/>)}>Open Modal</Button>
+                        </FormGroup>
+                        <FormGroup>
+                            <Button onPress={()=>openModal(<WebModal uri="https://google.com"/>)}>Open Web
+                                Modal</Button>
+                        </FormGroup>
+
                         <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
                             <View style={Styles.formGroup}>
                                 <Text style={Styles.label}>Masked Date</Text>
@@ -100,11 +109,11 @@ module.exports = class extends React.Component {
 
                             </View>
                         </View>
-                        <Text style={Styles.label}>Masked Time</Text>
+                        <Text style={Styles.label}>Infinite Scroll</Text>
                         <InfiniteScrollExample/>
                     </Flex>
-                    <Flex tabLabel={"Modals"}>
-                        <Button onPress={()=>openModal(<ExampleModal></ExampleModal>)}>Open</Button>
+                    <Flex tabLabel={"Notifications"}>
+                        <PushExample/>
                     </Flex>
                 </ScrollableTabView>
             </Flex>

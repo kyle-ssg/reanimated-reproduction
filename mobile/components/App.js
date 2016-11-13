@@ -1,25 +1,19 @@
-// import Example from './examples/PushExample';
-// import Example from './examples/InfiniteScrollExample';
-
-import Example from './examples/Examples';
-import NavBar from './navbars/NavbarDefault';
 import Menu from './menus/DefaultMenu';
 
 const TheComponent = class extends React.Component {
     displayName: 'TheComponent'
 
-    constructor(props, context) {
+    constructor (props, context) {
         super(props, context);
         this.state = {};
         Modals(this);
     }
 
-    componentDidMount() {
+    componentDidMount () {
         ReactNative.BackAndroid.addEventListener('hardwareBackPress', this.onBackPress.bind(this));
     }
 
-
-    onMenuPress() {
+    onMenuPress () {
         this.refs.menu.openMenu(true);
     }
 
@@ -33,46 +27,23 @@ const TheComponent = class extends React.Component {
         return false;
     }
 
-
-    onMenuItemPressed(data) {
+    onMenuItemPressed (data) {
         if (data.id === 'logout') {
             return AppActions.logout();
         }
         this.refs.menu.openMenu();
-        setTimeout(()=> {
-            this.refs.navigator.push(data);
-        }, 100)
     }
 
-    closeMenu() {
+    closeMenu () {
         this.refs.menu.openMenu(false);
     }
 
-    renderScene(route, navigator) {
+    render () {
         return (
             <Flex>
-                <Example/>
-            </Flex>
-        );
-    }
-
-    render() {
-        return (
-            <View style={Styles.body}>
                 <SideMenu ref="menu" menuPosition="right" menu={<Menu closeMenu={this.closeMenu.bind(this)}
                                                                       onPress={this.onMenuItemPressed.bind(this)}/>}>
-                    <View style={Styles.body}>
-                        <Navigator
-                            navigationBar={<Navigator.NavigationBar
-                                style={Styles.navBar}
-                                routeMapper={NavBar({onMenuPress: this.onMenuPress.bind(this)})}
-                            />}
-                            sceneStyle={Styles.navContent}
-                            ref="navigator"
-                            initialRoute={{id: 'home', title: 'Home'}}
-                            renderScene={this.renderScene.bind(this)}
-                        />
-                    </View>
+                    {this.props.children}
                 </SideMenu>
                 {this.state.modalComponent && (
                     <Modal
@@ -97,7 +68,7 @@ const TheComponent = class extends React.Component {
                         {this.state.selectComponent}
                     </Modal>
                 )}
-            </View>
+            </Flex>
         );
     }
 };

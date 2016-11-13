@@ -1,18 +1,25 @@
 require('./style_pxToEm');
 
+const { StatusBarManager } = NativeModules;
+const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT;
+
 module.exports = {
   //
   // Navs
   // --------------------------------------------------
 
   navBarStatic: {
-    height: 44,
+    paddingTop: STATUSBAR_HEIGHT,
+    height: styleVariables.baseNavHeight,
     justifyContent: 'center',
     borderBottomWidth: 1 / PixelRatio.get(),
     borderBottomColor: colour.navBarBorder
   },
 
   navBar: {
+    paddingTop: STATUSBAR_HEIGHT,
+    paddingBottom: STATUSBAR_HEIGHT,
+    height: styleVariables.baseNavHeight,
     alignSelf: 'stretch',
     justifyContent: 'center',
     backgroundColor: colour.navBar,
@@ -49,6 +56,7 @@ module.exports = {
     fontSize: styleVariables.fontSizeH2,
     color: pallette.text
   },
+
   navBarTitle: {
     fontSize: styleVariables.fontSizeH2,
     color: colour.navBarText,

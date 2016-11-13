@@ -4,6 +4,7 @@ module.exports = {
   api: {
     live: ''
   },
+  analytics: 'eJ4jplD0TFwOmZAyV801eB1quoAKSUBn',
   google: {
     APIKey: 'AIzaSyC5mX6rTnIQ086weON_cdYyJS8IgZxJQP4',
     iosClientId: '603463597415-em1lk1r3fe779jnsetq85ouapdfma0c3.apps.googleusercontent.com',
