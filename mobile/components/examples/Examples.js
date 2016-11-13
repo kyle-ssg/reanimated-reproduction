@@ -88,16 +88,20 @@ module.exports = class extends React.Component {
                             </View>
                         </Flex>
                     </ScrollView>
-                    <Flex style={Styles.container} tabLabel={"Examples"}>
-                        <FormGroup>
-                            <Button onPress={()=>openModal(<ExampleModal/>)}>Open Modal</Button>
-                        </FormGroup>
-                        <FormGroup>
-                            <Button onPress={()=>openModal(<WebModal uri="https://google.com"/>)}>Open Web
-                                Modal</Button>
-                        </FormGroup>
+                    <ScrollView style={Styles.container} tabLabel={"Examples"}>
 
-                        <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
+                        <FormGroup width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
+                            <Card>
+                                <FormGroup>
+                                    <Button onPress={()=>openModal(<ExampleModal/>)}>Open Modal</Button>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Button onPress={()=>openModal(<WebModal uri="https://google.com"/>)}>Open Web
+                                        Modal</Button>
+                                </FormGroup>
+                            </Card>
+                        </FormGroup>
+                        <FormGroup width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
                             <Card>
                                 <Text style={Styles.label}>Masked Date</Text>
                                 <TextInput value={this.state.maskedDate}
@@ -109,12 +113,16 @@ module.exports = class extends React.Component {
                                            placeholder="hh:mm am" mask="11:11 am" style={Styles.textInput}/>
 
                             </Card>
-                        </View>
-                        <Text style={Styles.label}>Twitter Digits</Text>
-                        <DigitsExample/>
+                        </FormGroup>
+                        <FormGroup width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
+                            <Card>
+                                <Text style={Styles.label}>Twitter Digits</Text>
+                                <DigitsExample/>
+                            </Card>
+                        </FormGroup>
                         <Text style={Styles.label}>Infinite Scroll</Text>
                         <InfiniteScrollExample/>
-                    </Flex>
+                    </ScrollView>
                     <Flex tabLabel={"Notifications"}>
                         <PushExample/>
                     </Flex>

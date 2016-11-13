@@ -12,11 +12,7 @@ module.exports = {
     height: 50,
     paddingLeft:styleVariables.gutterBase
   },
-
-  formGroup: {
-    marginBottom: styleVariables.gutterBase * 2
-  },
-
+  
   label: {
     fontSize: styleVariables.fontSizeBase,
     color: styleVariables.text,

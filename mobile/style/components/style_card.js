@@ -1,6 +1,6 @@
 module.exports = StyleSheet.create({
     card: {
-        backgroundColor: "#fff",
+        backgroundColor: styleVariables.cardBackground,
         borderRadius: 2,
         shadowColor: "#000000",
         shadowOpacity: 0.3,

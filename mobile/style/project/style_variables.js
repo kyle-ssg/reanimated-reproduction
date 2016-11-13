@@ -17,6 +17,11 @@ window.pallette = {
     error: '#f2dede',
     errorBorder: '#f2dede',
     errorText: '#a94442'
+};
+
+window.colour = {
+    bodyBackground: '#fafafa', //General app  background
+
 }
 
 window.styleVariables =  Object.assign({

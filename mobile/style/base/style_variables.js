@@ -62,6 +62,7 @@ window.styleVariables = Object.assign({
     //== Typography
     //
     //## Font, line-height, and color for body text, headings, and more.
+    cardBackground:'#fff',
     inputHeightLarge: 54,
     fontSansSerif: 'helvetica',
     fontSerif: 'helvetica',
@@ -73,7 +74,7 @@ window.styleVariables = Object.assign({
     fontSizeH2: em(1.2), //18px
     fontSizeH3: em(0.714), //10px
     fontSizeNote: em(0.786), //11px
-    fontSizelistitem: em(0.714), //10px
+    fontSizelistitem: em(1), //10px
     fontSizelistTitle: em(0.857), //12px
     fontSizeInputLarge: em(2),
     fontSizeAlert: em(1.1),
@@ -211,4 +212,4 @@ window.colour = Object.assign({}, pallette, {
     twitter: '#1DA1F3',
     google: '#dd4b39'
 
-});
+}, window.colour);
