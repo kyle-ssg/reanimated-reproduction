@@ -27,9 +27,12 @@ module.exports = Component({
                     {navItems.map(function (item, i) {
                         return (
                             <Link
+                                key={item.route}
+                                underlayColor='rgba(0,0,0,.2)'
                                 style={Styles.menuItem}
                                 activeStyle={Styles.menuItemActive}
-                                onPress={this.props.onPress} to={item.route}>
+                                onPress={this.props.onPress}
+                                to={item.route}>
                                 <View>
                                     <Row space>
                                         <Flex>

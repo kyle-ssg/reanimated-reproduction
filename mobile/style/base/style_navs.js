@@ -32,6 +32,7 @@ module.exports = {
     fontSize: styleVariables.fontSizeAlert,
     fontWeight: styleVariables.headingsFontWeight
   },
+
   actionBar: {
     paddingLeft: styleVariables.paddingBase,
     paddingRight: styleVariables.paddingBase,
@@ -40,11 +41,11 @@ module.exports = {
     flexDirection: 'row',
     backgroundColor: pallette.grayLighter
   },
+
   actionBarLink: {
     height: styleVariables.baseNavHeight,
     paddingLeft: 5,
     paddingRight: 5,
-
   },
 
   navItemContainer: {

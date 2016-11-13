@@ -76,6 +76,7 @@ module.exports = {
 
     menuItem:{
         height:44,
+        justifyContent:'center',
         backgroundColor:'transparent',
         borderBottomWidth: 1 / PixelRatio.get() * 2,
         borderBottomColor:pallette.primary
