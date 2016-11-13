@@ -2,9 +2,12 @@
 
 //Included in 99% of projects
 window.ScrollableTabView = require('react-native-scrollable-tab-view');
-window.Icon = require("react-native-vector-icons");
-window.FontAwesome = require("react-native-vector-icons/FontAwesome");
-window.ION = Animated.createAnimatedComponent(require("react-native-vector-icons/Ionicons"));
+
+import ION from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+window.FontAwesome = FontAwesome;
+window.ION = ION;
+
 window.DeviceInfo = require('react-native-device-info');
 window.SideMenu = require('react-native-side-menu');
 import {Link, Back, Forward} from "react-router-native";

@@ -26,8 +26,8 @@ window.colour = {
 
 window.styleVariables =  Object.assign({
     //SCAFFOLD
-    statusHeight: 20,
-    baseNavHeight: 44,
+    statusHeight: NativeModules.StatusBarManager.HEIGHT || 20,
+    baseNavHeight: 54,
     marginBaseVertical: 10,
     marginBaseHorizontal: 10,
     paddingBase: 10,
