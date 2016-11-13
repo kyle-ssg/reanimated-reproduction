@@ -98,7 +98,7 @@ module.exports = class extends React.Component {
                         </FormGroup>
 
                         <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
-                            <View style={Styles.formGroup}>
+                            <Card>
                                 <Text style={Styles.label}>Masked Date</Text>
                                 <TextInput value={this.state.maskedDate}
                                            onChangeText={(text) => this.setState({ maskedDate: text }) }
@@ -108,7 +108,7 @@ module.exports = class extends React.Component {
                                            onChangeText={(text) => this.setState({ maskedTime: text }) }
                                            placeholder="hh:mm am" mask="11:11 am" style={Styles.textInput}/>
 
-                            </View>
+                            </Card>
                         </View>
                         <Text style={Styles.label}>Twitter Digits</Text>
                         <DigitsExample/>

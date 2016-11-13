@@ -26,7 +26,9 @@ window.RequiredFunc = React.PropTypes.func.isRequired;
 window.RequiredNumber = React.PropTypes.number.isRequired;
 window.RequiredObject = React.PropTypes.object.isRequired;
 window.RequiredString = React.PropTypes.string.isRequired;
+window.RequiredNode = React.PropTypes.node.isRequired;
 window.RequiredElement = React.PropTypes.node.isRequired;
+
 
 //Access React Stuff
 window.NativeModules = ReactNative.NativeModules;
@@ -119,6 +121,7 @@ window.Button = require('../components/base/forms/Button');
 window.Divider = require('../components/base/Divider');
 window.Loader = require('../components/base/Loader');
 window.LinedTitle = require('../components/base/LinedTitle');
+window.Card = require('../components/base/forms/Card');
 
 //Navs
 window.TabBar = require('../components/base/navs/TabBar');
