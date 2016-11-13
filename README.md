@@ -1,46 +1,13 @@
 # React + Flux w/ ES6 Starter Project
 A boilerplate using React, Flux, webpack + hot module reloading, and ES6 + JSX via Babel. Includes useful apis for getting started.
+**See /mobile for react native readme**
 
 ## Getting Started
 
-### Installation Web
+### Installation 
 ```
 $ npm install
 ```
-
-### Installation Mobile
-```
-$ cd ./mobile && npm install
-// Add me to the top of RCTWebExecutor.m
-#import "RCTBundleURLProvider.h"
-
-//search for if (!host) and replace the code with the following
-if (!host) {
-      host = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SERVER_IP"];
-}
-```
-
-## Useful mobile commands (paste these into ~/.bash_profile) 
-- Display sha1 key for signing 
-- run ios
-- run android
-- create an apk for android
-
-```
-alias andKey='keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android'
-
-alias ios='react-native run-ios'
-
-alias and='adb reverse tcp:8081 tcp:8081  && react-native run-android'
-
-alias andDeploy='cd ./android && ./gradlew assembleRelease && ./gradlew installRelease && cd ../'
-```
-
-### iOS start
-```npm run ios```
-
-### Android start
-```npm run android```
 
 ### Web start
 ```npm start```
@@ -50,11 +17,10 @@ alias andDeploy='cd ./android && ./gradlew assembleRelease && ./gradlew installR
   * `$ npm run prod` doing this will use project_dev | project_prod in place of your project.js file, minify / cachebust
   * Open `build/index.html` through the local webserver, the build folder can be deployed anywhere
 
-
 ## Routing
 ```routes.js``` contain all page routes
 
-## How it all works
+## How flux works
 1. ```MemeComponent``` emits an action defined in ```app-actions``` (e.g. ```AppActions.sendMeme(url);``` after clicking a button)
 2. ```app-actions.js``` takes the params along with an action type defined in action-constants (e.g. ```ActionConstants.SEND_MEME```)
 3. ```meme-store.js``` picks up the action and calls events such as
@@ -75,10 +41,6 @@ Globally accessible by default
 ``import Share from 'apis/share/share'``
 * ``Share.facebook(url)``
 * ``Share.twitter(url)``
-
-## Firebase auth - handles user management, fb/google/email based auth and profile data.
-
-See https://github.com/SolidStateGroup/simple-firebase-auth or https://github.com/SolidStateGroup/react-native-firebase-auth
 
 # Component Library - WEB
  **All components have prop types documented however for reference here they are**
@@ -104,14 +66,13 @@ See https://github.com/SolidStateGroup/simple-firebase-auth or https://github.co
 
 ## Grid
 ```<Flex>{content}</Flex>``` -- creates a div with flex:1
-
 ```<FormGroup>{content}</FormGroup>``` -- wraps content with margin bottom of ```$form-group-margin-bottom```
+```<Row space={true}><div>item1</div><div>item2</div></Row>``` - creates flex row with the option to space items to extreme ends of the row 
 
 ```<FormInline>{content}</FormInline>``` -- wraps content with form-inline class ```$form-group-margin-bottom```
 
 ```<Panel title="bla" icon="bla"> <div/></Panel>``` - creates a panel with a heading and content 
 
-```<Row space={true}><div>item1</div><div>item2</div></Row>``` - creates flex row with the option to space items to extreme ends of the row 
 
 ## Addons - these require you to import the files explicitely
 
@@ -174,7 +135,6 @@ See https://github.com/SolidStateGroup/simple-firebase-auth or https://github.co
 <StarRating value={2} icon="star" max={10} editable="true" onChange={this.onChange}/>
 ```
 
-
 #Advanced - Higher order components
 **These are less about markup, they provide functionality to child components**
 
@@ -185,7 +145,6 @@ See https://github.com/SolidStateGroup/simple-firebase-auth or https://github.co
 **InputStepper - Calls back when the whole element and its children's focus has changed**
 ```<InputStepper data={[]} onChange={this.selectedItemChanged} 
         inputProps={... inputProps}>{(selectedRow, highlightRow)=>(<div>The selected element is {selectedRow}</div>)}</InputStepper>``` - creates an input that tracks up and down keystrokes against a collection of elements
-        
         
         
 ## Further Information
