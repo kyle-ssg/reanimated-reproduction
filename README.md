@@ -1,4 +1,4 @@
-# React + Redux w/ ES6 Starter Project
+# React + Flux w/ ES6 Starter Project
 A boilerplate using React, Flux, webpack + hot module reloading, and ES6 + JSX via Babel. Includes useful apis for getting started.
 
 ## Getting Started
