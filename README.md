@@ -9,6 +9,40 @@ A boilerplate using React, Flux, webpack + hot module reloading, and ES6 + JSX v
 $ npm install
 ```
 
+### Installation Mobile
+```
+$ cd ./mobile && npm install
+// Add me to the top of RCTWebExecutor.m
+#import "RCTBundleURLProvider.h"
+
+//search for if (!host) and replace the code with the following
+if (!host) {
+      host = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SERVER_IP"];
+}
+```
+
+## Useful mobile commands (paste these into ~/.bash_profile)
+- Display sha1 key for signing
+- run ios
+- run android
+- create an apk for android
+
+```
+alias andKey='keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android'
+
+alias ios='react-native run-ios'
+
+alias and='adb reverse tcp:8081 tcp:8081  && react-native run-android'
+
+alias andDeploy='cd ./android && ./gradlew assembleRelease && ./gradlew installRelease && cd ../'
+```
+
+### iOS start
+```npm run ios```
+
+### Android start
+```npm run android```
+
 ### Web start
 ```npm start```
 
@@ -41,6 +75,10 @@ Globally accessible by default
 ``import Share from 'apis/share/share'``
 * ``Share.facebook(url)``
 * ``Share.twitter(url)``
+
+## Firebase auth - handles user management, fb/google/email based auth and profile data.
+
+See https://github.com/SolidStateGroup/simple-firebase-auth or https://github.com/SolidStateGroup/react-native-firebase-auth
 
 # Component Library - WEB
  **All components have prop types documented however for reference here they are**
