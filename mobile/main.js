@@ -23,7 +23,7 @@ const DefaultHeader = withRouter((props) => {
     console.log(props);
     const canGoBack = props && props.scenes.length > 1;
     return (
-        <View >
+        <View>
             <Header>
                 <Column style={{ opacity: props.position, width: 50 }}>
                     {

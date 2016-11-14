@@ -11,6 +11,8 @@ const TheComponent = class extends React.Component {
 
     componentDidMount () {
         ReactNative.BackAndroid.addEventListener('hardwareBackPress', this.onBackPress.bind(this));
+        this.refs.menu.openMenu();
+
     }
 
     onMenuPress () {

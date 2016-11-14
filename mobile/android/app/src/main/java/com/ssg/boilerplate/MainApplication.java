@@ -13,6 +13,7 @@ import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.List;
 
+import com.proxima.RCTDigits.DigitsPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.charlires.segmentanalytics.SegmentAnalyticsPackage;
 import com.magus.fblogin.FacebookLoginPackage;
@@ -34,7 +35,8 @@ public class MainApplication extends Application implements ReactApplication {
           new RNDeviceInfo(),
           new SegmentAnalyticsPackage(),
           new FacebookLoginPackage(),
-          new RNGoogleSigninPackage()
+          new RNGoogleSigninPackage(),
+          new DigitsPackage()
       );
     }
   };

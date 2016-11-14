@@ -12,7 +12,7 @@ $ npm install
 ### Installation Mobile
 ```
 $ cd ./mobile && npm install
-// Add me to the top of RCTWebExecutor.m
+// Add me to the top of RCTWebSocketExecutor.m.m
 #import "RCTBundleURLProvider.h"
 
 //search for if (!host) and replace the code with the following

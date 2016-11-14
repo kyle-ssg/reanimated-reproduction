@@ -12,7 +12,23 @@ module.exports = class extends React.Component {
             email: "Kyle@solidstategroup.com",
             password: "test12345"
         };
+        FireAuth.init(Project.firebase, {
+            iosClientId: Project.google.iosClientId
+        });
+        FireAuth.setup(this.onLogin, this.onUserChange, this.onLogout, this.onEmailVerified.bind(this), this.onError);
     }
+
+    onUserChange = (user, profile) => {
+        alert(profile);
+    };
+
+    onEmailVerified = () => {
+        alert('Welcome Thanks for verifying your email');
+    };
+
+    onError = (err) => {
+        alert(typeof err == 'object' ? JSON.stringify(err) : err);
+    };
 
     register () {
         const { email, password, firstName, lastName } = this.state;

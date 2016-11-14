@@ -26,6 +26,12 @@ const LoginExample = class extends React.Component {
         });
     }
 
+
+    onEmailVerified = () => {
+        alert('Welcome Thanks for verifying your email');
+    }
+
+
     onUserChange = (user, profile) => {
         this.setState({user, profile});
     }
