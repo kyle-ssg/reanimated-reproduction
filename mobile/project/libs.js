@@ -26,6 +26,9 @@ var { DigitsLoginButton, DigitsLogoutButton } = Digits;
 window.DigitsLoginButton = DigitsLoginButton;
 window.DigitsLogoutButton = DigitsLogoutButton;
 
+//Firebase
+import * as firebase from 'firebase';
+
 //Firebase auth, only for some projects
 import FireAuth from 'react-native-firebase-auth';
 window.FireAuth = FireAuth;

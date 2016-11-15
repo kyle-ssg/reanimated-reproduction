@@ -12,9 +12,8 @@ module.exports = class extends React.Component {
             email: "Kyle@solidstategroup.com",
             password: "test12345"
         };
-        FireAuth.init(Project.firebase, {
-            iosClientId: Project.google.iosClientId
-        });
+        firebase.initializeApp(Project.firebase);
+        FireAuth.init({iosClientId: Project.google.iosClientId});
         FireAuth.setup(this.onLogin, this.onUserChange, this.onLogout, this.onEmailVerified.bind(this), this.onError);
     }
 

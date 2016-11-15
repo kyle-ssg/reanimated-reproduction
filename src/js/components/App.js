@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import {Link} from 'react-router';
 import Tabs from '../components/base/forms/Tabs';
 import TabItem from '../components/base/forms/TabItem';
 import Popover from '../components/base/Popover';
@@ -25,10 +26,11 @@ export default class App extends Component {
 
   constructor (props, context) {
     super(props, context);
-    FireAuth.init(Project.firebase, {
+    firebase.initializeApp(Project.firebase);
+    FireAuth.init({
       fbAppId: Project.facebook.appId,
-      googleApiKey: Project.google.APIKey,
-      googleClientId: Project.google.webClientId
+      apiKey: Project.firebase.apiKey,
+      webClientId: Project.google.webClientId
     });
     this.state = {};
   }
