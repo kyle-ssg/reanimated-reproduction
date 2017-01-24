@@ -26,7 +26,7 @@ module.exports = Component({
                 <ScrollView style={{ flex: 1 }}>
                     {navItems.map(function (item, i) {
                         return (
-                            <Link
+                            <View
                                 key={item.route}
                                 underlayColor='rgba(0,0,0,.2)'
                                 style={Styles.menuItem}
@@ -44,7 +44,7 @@ module.exports = Component({
                                         </Text>
                                     </Row>
                                 </View>
-                            </Link>
+                            </View>
                         );
                     }.bind(this))}
                 </ScrollView>

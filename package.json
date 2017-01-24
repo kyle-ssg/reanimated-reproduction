@@ -33,6 +33,8 @@
     "fetchify": "0.0.2",
     "firebase": "3.2.0",
     "flux-react-dispatcher": "1.2.5",
+    "gulp-clean": "0.3.2",
+    "gulp-watch": "4.3.11",
     "history": "3.0.0",
     "json-loader": "0.5.4",
     "lodash.findindex": "4.5.1",
