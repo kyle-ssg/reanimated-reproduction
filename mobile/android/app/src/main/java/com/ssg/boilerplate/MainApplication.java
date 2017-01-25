@@ -1,4 +1,4 @@
-package com.mobile;
+package com.ssg.boilerplate;
 
 import android.app.Application;
 import android.util.Log;

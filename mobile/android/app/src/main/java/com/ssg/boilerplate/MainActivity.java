@@ -1,4 +1,4 @@
-package com.mobile;
+package com.ssg.boilerplate;
 
 import com.facebook.react.ReactActivity;
 
