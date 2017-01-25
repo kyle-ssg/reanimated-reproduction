@@ -81,7 +81,7 @@
               android:value="f640d8339500ff715667f64ccdc95985c4fb9fa0"/>
       <meta-data
               android:name="io.Digits.ApiSecret"
-              android:value="f640d8339500ff715667f64ccdc95985c4fb9fa0"/>
+              android:value="6XJT52kvKqoZxjg4c2bJwunATqMrdEUrp44qacULiDZTt0wdbS"/>
       <!-- <react-native-fabric-digits> -->
     </application>
 
