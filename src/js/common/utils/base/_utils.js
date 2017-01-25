@@ -138,8 +138,8 @@ var Utils = {
     info("Track", event, properties);
     if (typeof analytics != "undefined") {
       analytics.track(event, properties || {});
-    } else if (typeof gaAnalytics != "undefined") {
-      gaAnalytics.trackEvent('', event, properties);
+    } else if (typeof gaTracker != "undefined") {
+      gaTracker.trackEvent('', event, properties);
     }
 
   },
@@ -148,16 +148,16 @@ var Utils = {
     info("Page", data.page, data.properties);
     if (typeof analytics != "undefined") {
       analytics.page(data.page, data.properties || {});
-    } else if (typeof gaAnalytics != "undefined") {
-      gaAnalytics.trackScreenView(data.page);
+    } else if (typeof gaTracker != "undefined") {
+      gaTracker.trackScreenView(data.page);
     }
   },
 
   recordScreenView: function (page, properties) {
     if (typeof analytics != "undefined") {
       analytics.screen(page, properties);
-    } else if (typeof gaAnalytics != "undefined") {
-      gaAnalytics.trackScreenView(page);
+    } else if (typeof gaTracker != "undefined") {
+      gaTracker.trackScreenView(page);
     }
   },
 
