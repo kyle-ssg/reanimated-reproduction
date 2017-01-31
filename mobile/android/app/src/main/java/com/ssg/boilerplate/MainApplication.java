@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.facebook.react.ReactApplication;
 import com.proxima.RCTDigits.DigitsPackage;
-import co.apptailor.googlesignin.RNGoogleSigninPackage;
+import com.reactlibrary.googlesignin.RNGoogleSignInPackage;
 import com.magus.fblogin.FacebookLoginPackage;
 import com.evollu.react.fcm.FIRMessagingPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -32,7 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
           new DigitsPackage(),
-          new RNGoogleSigninPackage(),
+          new RNGoogleSignInPackage(),
           new FIRMessagingPackage(),
           new VectorIconsPackage(),
           new GoogleAnalyticsBridgePackage(),

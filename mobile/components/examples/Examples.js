@@ -14,7 +14,31 @@ module.exports = class extends React.Component {
         };
         firebase.initializeApp(Project.firebase);
         FireAuth.init({iosClientId: Project.google.iosClientId});
-        FireAuth.setup(this.onLogin, this.onUserChange, this.onLogout, this.onEmailVerified.bind(this), this.onError);
+        FireAuth.setup(this.onLogin, this.onUserChange, this.onLogout, this.onEmailVerified, this.onError);
+    }
+
+	onLogin = (user, profile) => {
+		console.log('logged in');
+        this.setState({
+            isLoading: false,
+            user,
+            profile
+        });
+    }
+
+    onUserChange = (user, profile) => {
+        this.setState({
+            user,
+            profile
+        });
+    }
+
+    onLogout = () => {
+        this.setState({
+            isLoading: false,
+            user: null,
+            profile: null
+        });
     }
 
     onUserChange = (user, profile) => {
@@ -70,7 +94,9 @@ module.exports = class extends React.Component {
                     </Flex>
                     <ScrollView tabLabel={"Register"}>
                         <Flex style={Styles.container}>
-                            <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
+                            {!this.state.profile ? (
+							<View>
+							<View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
                                 <View style={Styles.formGroup}>
                                     <TextInput value={this.state.firstName}
                                                onChangeText={(text) => this.setState({ firstName: text }) }
@@ -100,7 +126,11 @@ module.exports = class extends React.Component {
                                 <Button onPress={this.google.bind(this) } style={Styles.buttonGoogle}>
                                     Google
                                 </Button>
-                            </View>
+							</View></View>) : (
+								<Button onClick={FireAuth.logout}>
+									Logout
+								</Button>
+							)}
                         </Flex>
                     </ScrollView>
                     <ScrollView style={Styles.container} tabLabel={"Examples"}>

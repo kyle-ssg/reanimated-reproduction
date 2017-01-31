@@ -22,6 +22,7 @@ window.DigitsLogoutButton = DigitsLogoutButton;
 
 //Firebase
 import * as firebase from 'firebase';
+window.firebase = firebase;
 
 //Firebase auth, only for some projects
 import FireAuth from 'react-native-firebase-auth';

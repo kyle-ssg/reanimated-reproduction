@@ -75,5 +75,7 @@ const ModalHeader = withRouter((props) => {
 
 module.exports = (
     /* Address Bar can be toggled on or off by setting the addressBar prop */
-    <App />
+    <App>
+		<HomePage />
+	</App>
 );

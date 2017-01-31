@@ -3526,9 +3526,9 @@ react-native-fabric-digits@^1.0.23:
   version "1.0.23"
   resolved "https://registry.yarnpkg.com/react-native-fabric-digits/-/react-native-fabric-digits-1.0.23.tgz#9172b58587caf7045192c09d10bb61a2d04b75ee"
 
-react-native-facebook-login@^1.4.0:
+"react-native-facebook-login@https://github.com/magus/react-native-facebook-login":
   version "1.4.0"
-  resolved "https://registry.yarnpkg.com/react-native-facebook-login/-/react-native-facebook-login-1.4.0.tgz#b9ec7b05bd9666d7d697d1ecc71a4c82c77f86c9"
+  resolved "https://github.com/magus/react-native-facebook-login#19e2bfeaadb19f01267be48858f0085ec1b27c72"
   dependencies:
     itypeof "^1.1.2"
 
@@ -3536,17 +3536,17 @@ react-native-fcm@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/react-native-fcm/-/react-native-fcm-5.0.0.tgz#7307a602c19f6d6cbb0116430bc5e71f463fe794"
 
-react-native-firebase-auth@^0.0.11:
+"react-native-firebase-auth@https://github.com/SolidStateGroup/react-native-firebase-auth#react-native-google-sign-in":
   version "0.0.11"
-  resolved "https://registry.yarnpkg.com/react-native-firebase-auth/-/react-native-firebase-auth-0.0.11.tgz#997457f01efe192a101a19acffb9ce18c08becd1"
+  resolved "https://github.com/SolidStateGroup/react-native-firebase-auth#0195cc7d5ce58cc7877ecf2c540f3cbc6e6ab321"
 
 react-native-google-analytics-bridge@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/react-native-google-analytics-bridge/-/react-native-google-analytics-bridge-5.0.0.tgz#2db1c050f5ce35a1a11fe9d1ab5352cd6079c9e6"
 
-react-native-google-signin@^0.8.1:
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/react-native-google-signin/-/react-native-google-signin-0.8.1.tgz#7b3c6898aadb2ceb964ebe725a2e85be223ef636"
+react-native-google-sign-in@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/react-native-google-sign-in/-/react-native-google-sign-in-0.0.8.tgz#a61a38d1f1d1be0a328d02e8799f81dd9b7cdb4f"
 
 react-native-scrollable-tab-view@^0.7.1:
   version "0.7.1"
