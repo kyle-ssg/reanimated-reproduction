@@ -31,6 +31,7 @@ platform :ios do
     sh "./scripts/deploy.sh"
     match(type: "appstore") # more information: https://codesigning.guide
     gym # Build your app - more options available
+    deliver
     pilot
 
 
@@ -45,6 +46,12 @@ platform :ios do
     gym # Build your app - more options available
     deliver(force: true)
     # frameit
+  end
+
+  desc "Generate app icons in various sizes"
+  lane :icon do
+    appicon(appicon_image_file: './fastlane/AppIcon.png',
+      appicon_devices: [:ipad, :iphone])
   end
 
   # You can define as many lanes as you want
