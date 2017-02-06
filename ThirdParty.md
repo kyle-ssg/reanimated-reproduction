@@ -2,12 +2,12 @@
 
 ## Contents
 
-1. [Firebase](#Firebase)
-2. [Facebook](#Facebook)
-3. [Google](#Google)
-4. [Fabric Digits](#Fabric-Digits)
-5. [Google Analytics](#Google-Analytics)
-6. [Branch.io](#Branch.io)
+1. [Firebase](#firebase)
+2. [Facebook](#facebook)
+3. [Google](#google)
+4. [Fabric Digits](#fabric-digits)
+5. [Google Analytics](#google-analytics)
+6. [Branch.io](#branch.io)
 
 ### Firebase
 
