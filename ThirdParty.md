@@ -47,7 +47,7 @@ Open up project settings with XCode and under the Info tab update `FacebookAppId
 
 Update the three URL types, first one with the Facebook ID, 2nd with iosClientID from `env/project_*.js` and third with the bundle ID
 
-![iOS Facebook](http://recordit.co/GDqmbyI6Gb)
+![iOS Facebook](http://g.recordit.co/GDqmbyI6Gb.gif)
 
 ##### Android
 
@@ -73,11 +73,11 @@ Go to the [Fabric Digits installation guide for iOS](https://fabric.io/kits/ios/
 
 Update the Run Script build phase from within Xcode with the correct API key and secret.
 
-![Digits Run Script](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/ThirdPartyDigits.png)
+![Digits Run Script](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/raw/master/ThirdPartyDigits.png)
 
 In the Project Navigator, right click on Info.plist within the mobile folder and 'Open as' -> 'Source Code'. Under the Fabric key update the APIKey, consumerKey and consumerSecret.
 
-![Digits Run Script](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/ThirdPartyDigits2.png)
+![Digits Run Script](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/raw/master/ThirdPartyDigits2.png)
 
 ##### Android
 
@@ -101,7 +101,7 @@ Under URL types update Item 0 -> URL Schemes -> Item 0 from `ssgfeb` to the URL 
 
 For universal linking support, go to Project Settings and under Capabilites update the Associated Domains to the 4 character domain name found in your Branch.io apps settings.
 
-![iOS Branch.io](http://recordit.co/u9xPBrOoGn)
+![iOS Branch.io](http://g.recordit.co/u9xPBrOoGn.gif)
 
 ##### Android
 
