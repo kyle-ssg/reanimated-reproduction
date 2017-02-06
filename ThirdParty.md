@@ -47,7 +47,7 @@ Open up project settings with XCode and under the Info tab update `FacebookAppId
 
 Update the three URL types, first one with the Facebook ID, 2nd with iosClientID from `env/project_*.js` and third with the bundle ID
 
-![iOS Facebook](http://g.recordit.co/GDqmbyI6Gb.gif)
+![iOS Facebook](https://g.recordit.co/GDqmbyI6Gb.gif)
 
 ##### Android
 
@@ -101,7 +101,7 @@ Under URL types update Item 0 -> URL Schemes -> Item 0 from `ssgfeb` to the URL 
 
 For universal linking support, go to Project Settings and under Capabilites update the Associated Domains to the 4 character domain name found in your Branch.io apps settings.
 
-![iOS Branch.io](http://g.recordit.co/u9xPBrOoGn.gif)
+![iOS Branch.io](https://g.recordit.co/u9xPBrOoGn.gif)
 
 ##### Android
 
