@@ -12,14 +12,30 @@ Run it to change the bundle ID on the app
 
 From the `mobile` folder.
 
+#### iOS
+
 Generate app icons:
 
 `fastlane icon`
 
-Deploy iOS Testflight build:
+Deploy Testflight build:
 
 `fastlane beta`
 
 Release production build:
 
 `fastlane release`
+
+#### Android
+
+Generate app icons:
+
+`fastlane android icon`
+
+Deploy beta build:
+
+`fastlane android beta`
+
+Release production build
+
+`fastlane android release`

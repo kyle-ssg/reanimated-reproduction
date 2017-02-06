@@ -29,6 +29,7 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
     sh "./scripts/deploy.sh"
+    lane :ios
     match(type: "appstore") # more information: https://codesigning.guide
     increment_build_number({
       xcodeproj: 'ios/mobile.xcodeproj'
@@ -55,6 +56,52 @@ platform :ios do
   lane :icon do
     appicon(appicon_image_file: './fastlane/AppIcon.png',
       appicon_devices: [:ipad, :iphone])
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    slack(
+      message: "Successfully deployed new App Update."
+    )
+  end
+
+  error do |lane, exception|
+    slack(
+      message: exception.message,
+      success: false
+    )
+  end
+end
+
+platform :android do
+  before_all do
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+  end
+
+  lane :beta do
+    # build the release variant
+    gradle(task: "assembleRelease")
+
+    # upload to Google Play
+    supply(track: "beta")
+  end
+
+  lane :release do
+    # build the release variant
+    gradle(task: "assembleRelease")
+
+    # upload to Google Play
+    supply
+  end
+
+  desc "Generate app icons in various sizes"
+  lane :icon do
+    android_appicon(appicon_image_file: './fastlane/AppIcon.png',
+      appicon_devices: [:phone, :tablet],
+      appicon_path:'./android/app/src/main/res/mipmap')
   end
 
   # You can define as many lanes as you want
