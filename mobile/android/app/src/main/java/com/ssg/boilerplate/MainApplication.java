@@ -4,6 +4,8 @@ import android.app.Application;
 import android.util.Log;
 
 import com.facebook.react.ReactApplication;
+import io.branch.rnbranch.*;
+import io.branch.referral.Branch;
 import com.proxima.RCTDigits.DigitsPackage;
 import com.reactlibrary.googlesignin.RNGoogleSignInPackage;
 import com.magus.fblogin.FacebookLoginPackage;
@@ -31,6 +33,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new RNBranchPackage(),
           new DigitsPackage(),
           new RNGoogleSignInPackage(),
           new FIRMessagingPackage(),
@@ -50,5 +53,6 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+    Branch.getAutoInstance(this);
   }
 }

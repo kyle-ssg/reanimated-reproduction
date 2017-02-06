@@ -17,7 +17,7 @@
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
       android:theme="@style/AppTheme"
-      android:launchMode="singleTop">
+      android:launchMode="singleTask">
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
@@ -29,6 +29,12 @@
         <intent-filter>
           <action android:name="fcm.ssg.boilerplate" /> <!-- CHANGE ME -->
           <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+        <intent-filter>
+          <data android:scheme="ssgfeb" android:host="open" />
+          <action android:name="android.intent.action.VIEW" />
+          <category android:name="android.intent.category.DEFAULT" />
+          <category android:name="android.intent.category.BROWSABLE" />
         </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
@@ -83,6 +89,15 @@
               android:name="io.Digits.ApiSecret"
               android:value="6XJT52kvKqoZxjg4c2bJwunATqMrdEUrp44qacULiDZTt0wdbS"/>
       <!-- <react-native-fabric-digits> -->
+
+      <!-- <BRANCH.IO> -->
+      <meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_ajwnUd3ezHRgbK5wLA0l9mbcEBo55Nso" />
+      <receiver android:name="io.branch.referral.InstallListener" android:exported="true">
+        <intent-filter>
+          <action android:name="com.android.vending.INSTALL_REFERRER" />
+        </intent-filter>
+      </receiver>
+      <!-- </BRANCH.IO> -->
     </application>
 
 </manifest>

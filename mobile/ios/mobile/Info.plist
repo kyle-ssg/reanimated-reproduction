@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>branch_key</key>
+	<dict>
+		<key>test</key>
+		<string>key_test_oiuoOp4cuIKciT1yOqXPjebjzBjYXKuF</string>
+		<key>live</key>
+		<string>key_live_ajwnUd3ezHRgbK5wLA0l9mbcEBo55Nso</string>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -87,41 +94,47 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-  <key>CFBundleURLTypes</key>
-  <array>
-    <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>fb276944269330753</string>
-      </array>
-    </dict>
-    <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>com.googleusercontent.apps.603463597415-em1lk1r3fe779jnsetq85ouapdfma0c3</string>
-      </array>
-      <key>CFBundleTypeRole</key>
-      <string>Editor</string>
-    </dict>
-    <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>org.ssg.boilerplate</string>
-      </array>
-      <key>CFBundleTypeRole</key>
-      <string>Editor</string>
-    </dict>
-  </array>
-  <key>FacebookAppID</key>
-  <string>276944269330753</string>
-  <key>FacebookDisplayName</key>
-  <string>SSG Frontend Boilerplate</string>
-  <key>LSApplicationQueriesSchemes</key>
-  <array>
-    <string>fbapi</string>
-    <string>fb-messenger-api</string>
-    <string>fbauth2</string>
-    <string>fbshareextension</string>
-  </array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ssgfeb</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb276944269330753</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.603463597415-em1lk1r3fe779jnsetq85ouapdfma0c3</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>org.ssg.boilerplate</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>276944269330753</string>
+	<key>FacebookDisplayName</key>
+	<string>SSG Frontend Boilerplate</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 </dict>
 </plist>

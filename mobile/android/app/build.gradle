@@ -126,6 +126,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-branch')
     compile project(':react-native-fabric-digits')
     compile project(':react-native-google-sign-in')
     compile 'com.google.android.gms:play-services-auth:10.0.1' // should be at least 9.0.0

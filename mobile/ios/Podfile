@@ -10,6 +10,7 @@ target 'mobile' do
   pod 'Digits'
   pod 'Firebase/Messaging'
   pod 'Google/SignIn'
+  pod 'Branch'
 
   target 'mobileTests' do
     inherit! :search_paths
