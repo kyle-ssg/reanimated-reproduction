@@ -7,7 +7,7 @@
 3. [Google](#google)
 4. [Fabric Digits](#fabric-digits)
 5. [Google Analytics](#google-analytics)
-6. [Branch.io](#branch.io)
+6. [Branch.io](#branchio)
 
 ### Firebase
 
