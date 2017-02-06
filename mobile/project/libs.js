@@ -8,17 +8,11 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 window.FontAwesome = FontAwesome;
 window.ION = ION;
 
-window.DeviceInfo = require('react-native-device-info');
 window.SideMenu = require('react-native-side-menu');
-import {Link, Back, Forward} from "react-router-native";
-window.Link = Link;
-window.Back = Back;
-window.Forward = Forward;
 
-// Segment analytics, included in all however will need to change key if used
-import RNSegmentIO from 'react-native-segment-analytics';
-window.analytics = RNSegmentIO;
-analytics.setup(Project.analytics);
+// Google analytics
+import { GoogleAnalyticsTracker} from 'react-native-google-analytics-bridge';
+window.gaTracker = new GoogleAnalyticsTracker(Project.analytics);
 
 //Digits, included in all however will need to change key if used
 var Digits = require('react-native-fabric-digits');
@@ -28,6 +22,7 @@ window.DigitsLogoutButton = DigitsLogoutButton;
 
 //Firebase
 import * as firebase from 'firebase';
+window.firebase = firebase;
 
 //Firebase auth, only for some projects
 import FireAuth from 'react-native-firebase-auth';

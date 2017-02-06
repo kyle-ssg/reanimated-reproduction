@@ -1,37 +1,90 @@
 PODS:
-  - Analytics (3.3.0)
-  - Digits (2.4.0):
-    - TwitterCore (= 2.4.0)
-  - Fabric (1.6.8)
-  - React (0.37.0):
-    - React/Core (= 0.37.0)
-  - React/Core (0.37.0)
-  - SegmentAnalytics (0.1.0):
-    - Analytics
-  - TwitterCore (2.4.0):
+  - Digits (2.6.1):
+    - TwitterCore (= 2.6.1)
+  - Fabric (1.6.11)
+  - Firebase/Core (3.10.0):
+    - FirebaseAnalytics (= 3.6.0)
+    - FirebaseCore (= 3.4.5)
+  - Firebase/Messaging (3.10.0):
+    - Firebase/Core
+    - FirebaseMessaging (= 1.2.1)
+  - FirebaseAnalytics (3.6.0):
+    - FirebaseCore (~> 3.4)
+    - FirebaseInstanceID (~> 1.0)
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleSymbolUtilities (~> 1.1)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCore (3.4.5):
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseInstanceID (1.0.8)
+  - FirebaseMessaging (1.2.1):
+    - FirebaseAnalytics (~> 3.4)
+    - FirebaseInstanceID (~> 1.0)
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleSymbolUtilities (~> 1.1)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+  - Google/Core (3.0.3):
+    - FirebaseAnalytics (~> 3.2)
+  - Google/SignIn (3.0.3):
+    - Google/Core
+    - GoogleSignIn (~> 4.0)
+  - GoogleAppUtilities (1.1.2):
+    - GoogleSymbolUtilities (~> 1.1)
+  - GoogleInterchangeUtilities (1.2.2):
+    - GoogleSymbolUtilities (~> 1.1)
+  - GoogleSignIn (4.0.1):
+    - GoogleAppUtilities (~> 1.1)
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GTMOAuth2 (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleSymbolUtilities (1.1.2)
+  - GoogleToolboxForMac/DebugUtils (2.1.0):
+    - GoogleToolboxForMac/Defines (= 2.1.0)
+  - GoogleToolboxForMac/Defines (2.1.0)
+  - GoogleToolboxForMac/Logger (2.1.0):
+    - GoogleToolboxForMac/Defines (= 2.1.0)
+  - GoogleToolboxForMac/NSData+zlib (2.1.0):
+    - GoogleToolboxForMac/Defines (= 2.1.0)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.0):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.0)
+    - GoogleToolboxForMac/Defines (= 2.1.0)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.0)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.0)
+  - GTMOAuth2 (1.1.4):
+    - GTMSessionFetcher (~> 1.1)
+  - GTMSessionFetcher (1.1.7):
+    - GTMSessionFetcher/Full (= 1.1.7)
+  - GTMSessionFetcher/Core (1.1.7)
+  - GTMSessionFetcher/Full (1.1.7):
+    - GTMSessionFetcher/Core (= 1.1.7)
+  - TwitterCore (2.6.1):
     - Fabric
 
 DEPENDENCIES:
-  - Analytics
   - Digits
   - Fabric
-  - React (from `../node_modules/react-native`)
-  - SegmentAnalytics (from `../node_modules/react-native-segment-analytics/ios`)
-
-EXTERNAL SOURCES:
-  React:
-    :path: ../node_modules/react-native
-  SegmentAnalytics:
-    :path: ../node_modules/react-native-segment-analytics/ios
+  - Firebase/Messaging
+  - Google/SignIn
 
 SPEC CHECKSUMS:
-  Analytics: be3d952b8b0f21679e25af3b9dfbbab89597e897
-  Digits: 8173fa5420d64bf490bade840e6bc36b74537d6c
-  Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
-  React: aa8f585cbea131b6781c6ad7a1aee436e1ac5ddf
-  SegmentAnalytics: a3c3d9c68ec8a93c2fa7e3694d4414c41d1e94f6
-  TwitterCore: a139904c80805ad3dde9eef1100704f96f646d1d
+  Digits: 131fcee33424799dbac63022e07b8628af2ee8e0
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  Firebase: 387f37c7dca894a02708da9ff35ba147040eae9e
+  FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
+  FirebaseCore: 1e383fdfe37b6b5d6ff88e84204bdee30276af0f
+  FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
+  FirebaseMessaging: acf66347e43c5637c697060c3001d25c809a4131
+  Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
+  GoogleAppUtilities: a8a552aa74f6597f805e45b5a3962766c3134973
+  GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
+  GoogleSignIn: a8694c0a8e6d1b0ec77c58014de5bfd4ba2fa766
+  GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
+  GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
+  GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
+  GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
+  TwitterCore: a8aea8bdaf2abd6572c8f264707a4ea4dc2d0eab
 
-PODFILE CHECKSUM: efe7492419c8780cc95d25d5f4620de8601452fb
+PODFILE CHECKSUM: 583bd044cfa8c2e42d92ed1d1e03fdf6d5791fc9
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1

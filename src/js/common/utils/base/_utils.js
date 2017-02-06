@@ -136,20 +136,29 @@ var Utils = {
       properties = data.properties;
 
     info("Track", event, properties);
-    if (typeof analytics != "undefined")
+    if (typeof analytics != "undefined") {
       analytics.track(event, properties || {});
+    } else if (typeof gaTracker != "undefined") {
+      gaTracker.trackEvent('', event, properties);
+    }
 
   },
 
   recordPageView: function (data) {
     info("Page", data.page, data.properties);
-    if (typeof analytics != "undefined")
+    if (typeof analytics != "undefined") {
       analytics.page(data.page, data.properties || {});
+    } else if (typeof gaTracker != "undefined") {
+      gaTracker.trackScreenView(data.page);
+    }
   },
 
   recordScreenView: function (page, properties) {
-    if (typeof analytics != "undefined")
+    if (typeof analytics != "undefined") {
       analytics.screen(page, properties);
+    } else if (typeof gaTracker != "undefined") {
+      gaTracker.trackScreenView(page);
+    }
   },
 
   htmlEscape: function (unsafe) {

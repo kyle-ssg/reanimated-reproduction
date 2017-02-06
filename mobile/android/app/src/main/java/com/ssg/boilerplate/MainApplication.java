@@ -4,20 +4,20 @@ import android.app.Application;
 import android.util.Log;
 
 import com.facebook.react.ReactApplication;
-import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
+import com.proxima.RCTDigits.DigitsPackage;
+import com.reactlibrary.googlesignin.RNGoogleSignInPackage;
+import com.magus.fblogin.FacebookLoginPackage;
+import com.evollu.react.fcm.FIRMessagingPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+import com.facebook.soloader.SoLoader;
 
 import java.util.Arrays;
 import java.util.List;
-
-import com.proxima.RCTDigits.DigitsPackage;
-import com.learnium.RNDeviceInfo.RNDeviceInfo;
-import com.charlires.segmentanalytics.SegmentAnalyticsPackage;
-import com.magus.fblogin.FacebookLoginPackage;
-import co.apptailor.googlesignin.RNGoogleSigninPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -31,18 +31,24 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new ReactNativePushNotificationPackage(),
-          new RNDeviceInfo(),
-          new SegmentAnalyticsPackage(),
-          new FacebookLoginPackage(),
-          new RNGoogleSigninPackage(),
-          new DigitsPackage()
+          new DigitsPackage(),
+          new RNGoogleSignInPackage(),
+          new FIRMessagingPackage(),
+          new VectorIconsPackage(),
+          new GoogleAnalyticsBridgePackage(),
+          new FacebookLoginPackage()
       );
     }
   };
 
   @Override
   public ReactNativeHost getReactNativeHost() {
-      return mReactNativeHost;
+    return mReactNativeHost;
+  }
+
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    SoLoader.init(this, /* native exopackage */ false);
   }
 }

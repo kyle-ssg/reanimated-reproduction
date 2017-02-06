@@ -1,14 +1,14 @@
 /**
  * Created by kylejohnson on 28/07/2016.
  */
-import Push from '../../apis/push';
+//import Push from '../../apis/push';
 
 const TheComponent = class extends React.Component {
   displayName:'TheComponent'
 
   constructor (props, context) {
     super(props, context);
-    this.state = { push: new Push(this.onNotification), registered: false };
+    this.state = { /*push: new Push(this.onNotification), registered: false*/ };
   }
 
   onNotification () {

@@ -131,3 +131,12 @@
 
 /* Message to show developers to configure their Answers logging */
 "ONBOARDING_MESSAGE_ANSWERS" = "Add the Answers framework to your app to enable Digits event logging automatically. Learn more at https://answers.io";
+
+/* Message to show the developers to configure Branch for invites deep linking */
+"BRANCH_INTEGRATION_MESSAGE" = "Add the Branch framework to your app to enable Digits event logging automatically. Learn more at https://branch.io";
+
+/* Default sms prefill text that is shown when a user asking their friend to join their app.*/
+"SMS_PREFILL_TEXT_DEFAULT" = "Hi %@. I'm using %@, join me!";
+
+/* Default sms prefil text that is shown when a user is asking their friend to join their app.*/
+"SMS_PREFILL_TEXT_DEFAULT_BRANCH" = "Hi %@. Install %@ at %@.";

@@ -20,9 +20,11 @@
 @class DGTDebugConfiguration;
 @class TWTRAuthConfig;
 @class UIViewController;
+@class DGTContactsFetcher;
 @protocol DGTSessionUpdateDelegate;
 @protocol DGTAuthEventDelegate;
 @protocol DGTContactsEventDelegate;
+@protocol DGTAttributionEventDelegate;
 @protocol DGTCompletionViewController;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -90,6 +92,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, weak) id<DGTContactsEventDelegate> contactsEventDelegate;
 
+/**
+ *  Be notified when an invited user is added.
+ */
+@property (nonatomic, weak) id<DGTAttributionEventDelegate> attributionEventDelegate;
 
 /**
  *  Configuration to override Digits behavior. e.g. provide a digits session stub that will be returned instead of completing the authentication flow.
@@ -125,6 +131,13 @@ NS_ASSUME_NONNULL_BEGIN
  *  Deletes the local Digits user session from this app. This will not make a network request to invalidate the session. Subsequent calls to `authenticateWith` methods will start a new Digits authentication flow.
  */
 - (void)logOut;
+
+/**
+ *  Creates an instance of a DGTContactsFetcher, which is used for fetching contact information.
+ *  This method will return nil if there is no valid digits session. this is an advanced feature 
+ *  providing direct access to contact data, and is not required when accessing Digits views.
+ */
+- (DGTContactsFetcher *)createContactsFetcher __TVOS_UNAVAILABLE;
 
 @end
 
