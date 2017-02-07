@@ -63,9 +63,16 @@ platform :ios do
   after_all do |lane|
     # This block is called, only if the executed lane was successful
 
-    slack(
-      message: "Successfully deployed new App Update."
-    )
+    if lane == :beta
+      slack(
+        message: "Successfully deployed new Testflight build."
+      )
+    end
+    if lane == :release
+      slack(
+        message: "Successfully deployed new iOS prod build."
+      )
+    end
   end
 
   error do |lane, exception|
@@ -109,9 +116,16 @@ platform :android do
   after_all do |lane|
     # This block is called, only if the executed lane was successful
 
-    slack(
-      message: "Successfully deployed new App Update."
-    )
+    if lane == :beta
+      slack(
+        message: "Successfully deployed new Android beta build."
+      )
+    end
+    if lane == :release
+      slack(
+        message: "Successfully deployed new Android prod build."
+      )
+    end
   end
 
   error do |lane, exception|

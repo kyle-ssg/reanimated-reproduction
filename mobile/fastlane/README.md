@@ -37,6 +37,11 @@ Generate app icons in various sizes
 fastlane android beta
 ```
 
+### android release
+```
+fastlane android release
+```
+
 ### android icon
 ```
 fastlane android icon
