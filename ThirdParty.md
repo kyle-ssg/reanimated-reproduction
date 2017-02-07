@@ -3,19 +3,17 @@
 ## Contents
 
 1. [Firebase](#firebase)
-2. [Facebook](#facebook)
-3. [Google](#google)
+2. [Facebook Login](#facebook-login)
+3. [Google Sign In](#google-sign-in)
 4. [Fabric Digits](#fabric-digits)
 5. [Google Analytics](#google-analytics)
 6. [Branch.io](#branchio)
 
 ### Firebase
 
-Follow the steps located here https://git.solidstategroup.com/solidstategroup/firebase-project-starter. After cloning the repo in step 1, copy the contents of the folder to the fire-auth folder in the boilerplate root directory. ```cd``` to the folder and continue following the remaining steps. Note that for step 4 you need to select hosting and for most of the other questions you simply hit enter except to "Do not overwrite index.html" which you should answer with "n"
+Start by following the instructions found here https://git.solidstategroup.com/solidstategroup/firebase-project-starter.
 
-Add Firebase to your web app in the Firebase console in order to get the basic Firebase JSON configuration object
-
-Update the `firebase` object in `env/project_*.js`
+Add a web app via the Firebase console and update the `firebase` object in `env/project_*.js`
 
 ##### iOS
 
@@ -35,7 +33,8 @@ Add an Android app in the Firebase console giving your package name and debug SH
 
 From the `google-services.json` file copy the `client_id` value where `client_type == 3` to `env/project_*.js` and replace the `google.webClientId` value with it.
 
-### Facebook
+### Facebook Login
+(https://github.com/magus/react-native-facebook-login)
 
 Create a Facebook app on https://developers.facebook.com/apps/ to get a Facebook ID
 
@@ -53,7 +52,8 @@ Update the three URL types, first one with the Facebook ID, 2nd with iosClientID
 
 Open `android/app/src/main/res/values/strings.xml` and change the Facebook app ID's for `fb_app_id` and `fb_login_protocol_scheme`.
 
-### Google
+### Google Sign In
+(https://github.com/joonhocho/react-native-google-sign-in)
 
 You should only follow this section if you do not intend to add Firebase support in your application.
 
@@ -66,6 +66,7 @@ Go to [Google Developers Console](https://developers.google.com/mobile/add?platf
 Go to [Google Developers Console](https://developers.google.com/mobile/add?platform=android&cntapi=signin&cnturl=https:%2F%2Fdevelopers.google.com%2Fidentity%2Fsign-in%2Fandroid%2Fsign-in%3Fconfigured%3Dtrue&cntlbl=Continue%20Adding%20Sign-In) and generate a `google-services.json`configuration file from either a new Google app or an existing one and replace the existing one in `mobile/android/app/src`.
 
 ### Fabric Digits
+(https://github.com/JeanLebrument/react-native-fabric-digits)
 
 ##### iOS
 
@@ -86,10 +87,12 @@ Go to the [Fabric Digits installation guide for Android](https://fabric.io/kits/
 Update the API Key and API secret in `mobile/android/app/src/main/AndroidManifest.xml` under the `<react-native-fabric-digits>` comment.
 
 ### Google Analytics
+(https://github.com/idehub/react-native-google-analytics-bridge)
 
 Once you have your Google Analytics tracking code (https://support.google.com/analytics/answer/1032385?hl=en), update the `analytics` value in `env/project_*.js`.
 
-### Branch.io
+### Branch.
+(https://github.com/BranchMetrics/react-native-branch-deep-linking)
 
 Create a Branch.io app at https://branch.io in order to get a API key and secret.
 
