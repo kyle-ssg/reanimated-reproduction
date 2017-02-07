@@ -84,16 +84,26 @@ platform :ios do
 end
 
 platform :android do
+  def increment_version_code(gradle_build: './android/app/build.gradle')
+    sh %Q{cd ../ && echo "$(awk '{sub(/versionCode [[:digit:]]+$/,"versionCode "$2+1)}1' #{gradle_build})" > #{gradle_build} && cd -}
+  end
+
   before_all do
     ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
   end
 
   lane :beta do
+    increment_version_code
+
     # build the release variant
-    gradle(task: "assembleRelease")
+    gradle(task: "assembleRelease",
+      project_dir:'./android')
 
     # upload to Google Play
-    supply(track: "beta")
+    supply(track: "beta",
+      json_key: './fastlane/android/Google Play Android Developer-4c942198c95f.json',
+      package_name: 'com.ssg.boilerplate',
+      apk_paths: ['./android/app/build/outputs/apk/app-release.apk'])
   end
 
   lane :release do
@@ -101,7 +111,9 @@ platform :android do
     gradle(task: "assembleRelease")
 
     # upload to Google Play
-    supply
+    supply(json_key: './fastlane/android/Google Play Android Developer-4c942198c95f.json',
+      package_name: 'com.ssg.boilerplate',
+      apk_paths: ['./android/app/build/outputs/apk/app-release.apk'])
   end
 
   desc "Generate app icons in various sizes"
