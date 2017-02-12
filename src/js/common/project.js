@@ -1,6 +1,6 @@
 module.exports = {
   debug: false,
-  env: 'prod',
+  env: 'dev',
   api: {
     live: ''
   },
