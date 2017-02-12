@@ -1,18 +1,3 @@
-## Useful mobile commands (paste these into ~/.bash_profile)
-- Display sha1 key for signing
-- run ios
-- run android
-- create an apk for android
-
-```
-alias andKey='keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android'
-
-alias ios='react-native run-ios'
-
-alias and='adb reverse tcp:8081 tcp:8081  && react-native run-android'
-
-alias andDeploy='cd ./android && ./gradlew assembleRelease && ./gradlew installRelease && cd ../'
-```
 ### Prod build
 * Build once for (ready for ***Production***):
   * `$ npm run prod` doing this will use project_dev | project_prod in place of your project.js file, minify / cachebust
