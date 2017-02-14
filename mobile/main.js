@@ -1,10 +1,17 @@
 import React from 'react';
+import {
+    nativeHistory,
+    Route,
+    Router,
+    StackRoute,
+    withRouter,
+} from 'react-router-native';
 
 import App from './components/App';
 import HomePage from './components/examples/Examples';
 import OtherPage from './components/examples/OtherPage';
 
-/*window.Header = (props)=> {
+window.Header = (props)=> {
     return (
         <Row style={Styles.navBar}>
             {props.children}
@@ -70,12 +77,20 @@ const ModalHeader = withRouter((props) => {
             </Header>
         </View>
     );
-});*/
+});
 
 
 module.exports = (
     /* Address Bar can be toggled on or off by setting the addressBar prop */
-    <App>
-		<HomePage />
-	</App>
+    <Router history={nativeHistory}>
+        <StackRoute path="master" component={App}>
+            <Route
+                transition="horizontal-card-stack"
+                path="/" component={HomePage} overlayComponent={(props)=><DefaultHeader {...props} title="Home"/>}/>
+            <Route
+                transition="horizontal-card-stack"
+
+                path="/other" component={OtherPage} overlayComponent={(props)=><DefaultHeader {...props} title="Other Page"/>}/>
+        </StackRoute>
+    </Router>
 );
