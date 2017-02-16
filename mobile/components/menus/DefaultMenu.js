@@ -7,20 +7,22 @@ module.exports = Component({
         var navItems = [
             {
                 text: "Home",
-                route: '/'
+                route: '/',
+                icon:'ios-close'
             },
             {
                 text: "Other",
-                route: '/other'
+                route: '/other',
+                icon:'ios-close'
             }
         ];
 
         return (
             <View style={[Styles.menu]}>
-                <View style={[Styles.menuHeading]}>
+                <View style={[Styles.menuHeading,{padding:0}]}>
                     <View space style={[Styles.row]}>
                         <Flex/>
-                        <ION name="ios-close" style={Styles.menuIconClose}/>
+                        <ION name="ios-close" style={Styles.navIcon}/>
                     </View>
                 </View>
                 <ScrollView style={{ flex: 1 }}>
@@ -35,13 +37,15 @@ module.exports = Component({
                                 to={item.route}>
                                 <View>
                                     <Row space>
-                                        <Flex>
+                                        <View>
                                             {item.icon && <ION name={item.icon} style={Styles.menuIcon}/>}
-                                        </Flex>
+                                        </View>
+                                        <Flex>
                                         <Text
                                             style={[Styles.menuItemText, item.isImportant && { color: colour.primary }]}>
                                             {item.text}
                                         </Text>
+                                        </Flex>
                                     </Row>
                                 </View>
                             </View>

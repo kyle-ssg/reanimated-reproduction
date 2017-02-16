@@ -8,7 +8,7 @@ module.exports = {
     fontSize: styleVariables.fontSizeH3,
     color: 'white',
     alignSelf: 'center',
-    marginTop: 10,
+    // marginTop: 10,
     //backgroundColor: 'pink',
     fontWeight: styleVariables.headingsFontWeight
   },

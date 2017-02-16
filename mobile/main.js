@@ -35,12 +35,12 @@ const DefaultHeader = withRouter((props) => {
                         ) : <View/>
                     }
                 </Column>
-
                 <Flex style={[{ opacity: props.progress }, Styles.centeredContainer]}>
                     <Text style={Styles.navBarText}>{props.title}</Text>
                 </Flex>
-
-                <Column style={{ opacity: props.progress, width: 50 }}/>
+                <Column style={{ opacity: props.progress, width: 50 }}>
+                    <ION style={Styles.navIcon} name="ios-menu"/>
+                </Column>
             </Header>
         </View>
     );
@@ -86,7 +86,7 @@ module.exports = (
         <StackRoute path="master" component={App}>
             <Route
                 transition="horizontal-card-stack"
-                path="/" component={HomePage} overlayComponent={(props)=><DefaultHeader {...props} title="Home"/>}/>
+                path="/" component={HomePage} overlayComponent={(props) =><DefaultHeader {...props} title="Home" />} />
             <Route
                 transition="horizontal-card-stack"
 

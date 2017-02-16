@@ -5,11 +5,6 @@ module.exports = {
         padding: styleVariables.gutterBase
     },
 
-    anchor: {
-        color: styleVariables.textLight,
-        fontSize: styleVariables.fontSizeSmall
-    },
-
     //ICONS
     iconDefault: {
         height: 30,
@@ -25,13 +20,4 @@ module.exports = {
         fontSize: em(1.2),
         color: styleVariables.white
     },
-
-    //ERRORS
-    errorContainer: {
-        backgroundColor: pallette.error,
-        borderRadius: 8,
-        borderColor: pallette.errorBorder,
-        color: pallette.errorText
-    },
-
 };

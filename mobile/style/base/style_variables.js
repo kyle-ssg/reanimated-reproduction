@@ -15,13 +15,8 @@
 window.pallette = Object.assign({}, {
 
     //primary
-    primary: '#faaf3b',
-    primaryDark: '#f79529',
-    primaryLight: '#AD70EC',
-
-    //secondary
-
-    secondary: '#0a3a81',
+    primary: '#fff',
+    secondary: '#f5f5f5',
 
     cancel: '#acafb7',
     cancelDark: '#7c828f',
@@ -105,11 +100,6 @@ window.styleVariables = Object.assign({
     disabledOpacity: 0.2,
     borderRadiusDefault: 8,
 
-    //## Images
-
-    baseImageHeight: 200,
-    baseImageWidth: 200,
-
     //## Notifications
 
     notificationWidth: 18,
@@ -161,7 +151,6 @@ window.colour = Object.assign({}, pallette, {
     //tabs
     tabIcon: pallette.primaryDark,
     tabBackground: 'white',
-    tabLine: pallette.divider,
     tabActive: pallette.primary,
     tabText: pallette.text,
 
@@ -200,7 +189,7 @@ window.colour = Object.assign({}, pallette, {
     panel: '#f1f1f1',
 
     //nav
-    navBar: pallette.secondary,
+    navBar: pallette.primary,
     navBarIcon: 'white',
     navBarButtonText: 'white',
     navBarBorder: 'transparent',

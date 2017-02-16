@@ -16,11 +16,6 @@ module.exports = {
     fontSize: em(2)
   },
 
-  footerIcon: {
-    fontSize: em(2),
-    color: colour.tabIcon,
-  },
-
   icon: {
     fontSize: em(2)
   },
@@ -77,21 +72,6 @@ module.exports = {
     fontSize: styleVariables.fontSizeH3,
     fontWeight: styleVariables.headingsFontWeight,
     color: pallette.textLight
-  },
-
-  // Emphasis & misc
-  // -------------------------
-
-  note: {
-    paddingTop: 0,
-    fontSize: styleVariables.fontSizeNote,
-    fontWeight: styleVariables.mediumFontWeight,
-    color: pallette.textLight,
-  },
-
-  productName: {
-    color: colour.primaryDark,
-    fontWeight: styleVariables.headingsFontWeight
   },
 
   // Lists
