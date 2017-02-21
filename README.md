@@ -2,11 +2,17 @@
 
 This README will help get you started using the SSG Frontend Boilerplate to set up a new project for both web and mobile or work on an existing project.
 
+## Prerequisites
+```
+brew update
+brew install yarn
+```
+
 ## Installation
 
-Install node modules for both web and mobile
+run yarn from base of the project to install mobile and web
 
-`yarn && cd mobile && yarn`
+```yarn```
 
 ## Development
 
