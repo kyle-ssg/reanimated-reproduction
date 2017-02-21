@@ -8,11 +8,9 @@ brew update
 brew install yarn
 ```
 
-## Installation
-
-run yarn from base of the project to install mobile and web
-
+## Installation (running this installs both web and mobile)
 ```yarn```
+
 
 ## Development
 
