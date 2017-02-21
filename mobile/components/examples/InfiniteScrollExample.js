@@ -10,12 +10,6 @@ const TheComponent = class extends React.Component {
         this.setState({
             isLoading: true
         });
-        setTimeout(()=> {
-            this.setState({
-                isLoading: false,
-                data: _.range(0, 100)
-            });
-        }, 1000);
     }
 
     loadMore = () => {
