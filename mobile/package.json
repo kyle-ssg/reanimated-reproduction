@@ -7,7 +7,8 @@
 		"fix": "node node_modules/eslint-watch/bin/esw -w --color --fix",
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"ios": "react-native run-ios & npm run mobile:watch",
-		"android": "react-native run-android & npm run mobile:watch"
+		"android": "react-native run-android & npm run mobile:watch",
+		"postinstall": "mkdir common"
 	},
 	"dependencies": {
 		"eslint": "^3.14.0",
