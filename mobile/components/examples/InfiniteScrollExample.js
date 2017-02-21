@@ -20,7 +20,7 @@ const TheComponent = class extends React.Component {
             const length = this.state.data.length;
             this.setState({
                 isLoading: false,
-                data: this.state.data.concat(_.range(length, length + 100))
+                data: this.state.data.concat(_.range(length, length + 10))
             });
         }, 2000);
     }
