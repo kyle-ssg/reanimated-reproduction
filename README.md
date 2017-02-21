@@ -66,3 +66,4 @@ If you need support for 3rd party integrations such as Firebase, Facebook and Fa
 - [ ] Document full app creation iOS
 - [ ] Use react-native-fcm
 - [ ] Use react-native-maps
+- [ ] Use react-native-globals
