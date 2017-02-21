@@ -120,11 +120,16 @@ module.exports = class extends React.Component {
                             </View>
                             <View><H1>Or</H1></View>
                             <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
-                                <Button onPress={this.facebook.bind(this) } style={Styles.buttonFacebook}>
-                                    Facebook
+                                <Button onPress={this.facebook.bind(this) } style={[Styles.buttonFacebook, Styles.buttonWithIcon]}>
+                                    <ION style={[Styles.buttonText,Styles.buttonIcon]} name="ios-menu"/>
+                                    <Text style={Styles.buttonText} >Facebook</Text>
                                 </Button>
                                 <Button onPress={this.google.bind(this) } style={Styles.buttonGoogle}>
-                                    Google
+                                    <Text style={Styles.buttonText}>Google</Text>
+                                </Button>
+                                <Button onPress={this.google.bind(this) } style={Styles.buttonPrimary}>
+                                    <Text style={Styles.text}>Purchase Item</Text>
+                                    <Text style={Styles.buttonSup}>(£25.00)</Text>
                                 </Button>
 							</View></View>) : (
 								<Button onClick={FireAuth.logout}>
@@ -165,8 +170,6 @@ module.exports = class extends React.Component {
                                 <DigitsExample/>
                             </Card>
                         </FormGroup>
-                        <Text style={Styles.label}>Infinite Scroll</Text>
-                        <InfiniteScrollExample/>
                     </ScrollView>
                     <Flex tabLabel={"Notifications"}>
                         <PushExample/>

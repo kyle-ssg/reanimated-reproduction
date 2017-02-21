@@ -5,6 +5,7 @@
 window.Styles = StyleSheet.create(_.merge({},
     require('./base/'),
     require('./project/style_base'),
+    require('./project/style_utilities'),
     require('./project/style_type'),
     require('./project/style_buttons'),
     require('./project/style_navs'),

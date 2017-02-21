@@ -1,7 +1,7 @@
 module.exports = StyleSheet.create({
     card: {
         backgroundColor: styleVariables.cardBackground,
-        borderRadius: 2,
+        borderRadius: styleVariables.borderRadiusDefault,
         shadowColor: "#000000",
         shadowOpacity: 0.3,
         shadowRadius: 1,

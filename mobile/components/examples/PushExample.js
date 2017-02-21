@@ -22,7 +22,7 @@ const TheComponent = class extends React.Component {
   render () {
     return (
       <Flex style={Styles.centeredContainer}>
-        <Button style={{ width: DeviceWidth / 2 }} onPress={this.sendLocalPushNotification}>
+        <Button style={Styles.rounded} onPress={this.sendLocalPushNotification}>
           <Text style={Styles.buttonText}>Send Local Push Notification</Text>
         </Button>
       </Flex>

@@ -1,7 +1,7 @@
 window.pallette = {
     backgroundBase: '#ffffff',
 
-    primary: '#ffffff',
+    primary: '#2f8cfe',
     secondary: '#f5f5f5',
 
     text: '#222222',
@@ -33,11 +33,11 @@ window.styleVariables =  Object.assign({
     borderDefault: pallette.textLight,
 
     //TYPE
-    fontSizeBase: em(1),
+    fontSizeBase: em(1.2),
 
     fontSizeSmall: em(0.5),
     fontSizeHeading: em(1.5),
-    fontSizeSubHeading: em(1.2),
+    fontSizeSubHeading: em(1.3),
 
     fontSizeIcon: 34,
 
