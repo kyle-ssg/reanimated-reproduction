@@ -13,6 +13,14 @@ module.exports = {
 
     //OFF CANVAS
 
+    navButtonRight:{
+        alignItems:'flex-end',
+    },
+
+    navButtonLeft:{
+        alignItems:'flex-start',
+    },
+
     menu:{
         height:DeviceHeight
     },

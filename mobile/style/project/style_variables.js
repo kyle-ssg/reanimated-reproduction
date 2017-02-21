@@ -39,7 +39,7 @@ window.styleVariables =  Object.assign({
     fontSizeHeading: em(1.5),
     fontSizeSubHeading: em(1.3),
 
-    fontSizeIcon: 34,
+    fontSizeIcon: 30,
 
     fontSansSerif: 'helvetica neue',
 

@@ -38,7 +38,7 @@ const DefaultHeader = withRouter((props) => {
                 <Flex style={[{ opacity: props.progress }, Styles.centeredContainer]}>
                     <Text style={Styles.navBarText}>{props.title}</Text>
                 </Flex>
-                <Column style={{ opacity: props.progress, width: 50 }}>
+                <Column style={[Styles.navButtonRight,{ opacity: props.progress, width: 50}]}>
                     <ION style={Styles.navIcon} name="ios-menu"/>
                 </Column>
             </Header>

@@ -3,7 +3,7 @@ var Constants = {
   defaultTabStyles: {
     tabBarActiveTextColor: '#333',
     tabBarInactiveTextColor: '#999',
-    tabBarUnderlineColor: '#f5f5f5',
+    tabBarUnderlineStyle: {backgroundColor:pallette.primary},
     tabBarBackgroundColor: 'white',
     underlineHeight: 4
   }

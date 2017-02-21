@@ -87,7 +87,7 @@ module.exports = class extends React.Component {
                             </View>
                             <Button onPress={this.login.bind(this) } style={[Styles.button, Styles.buttonPrimary]}>
                                 <Text style={Styles.buttonTextLight}>
-                                    Login
+                                    {'login to upper case'.toUpperCase()}
                                 </Text>
                             </Button>
                         </View>

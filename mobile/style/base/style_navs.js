@@ -24,8 +24,7 @@ module.exports = {
 
     navBarText: {
         color: 'white',
-        fontSize: styleVariables.fontSizeAlert,
-        fontWeight: styleVariables.headingsFontWeight
+        fontSize: styleVariables.fontSizeHeading,
     },
 
     navItemContainer: {
