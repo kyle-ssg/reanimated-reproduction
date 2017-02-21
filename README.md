@@ -2,25 +2,10 @@
 
 This README will help get you started using the SSG Frontend Boilerplate to set up a new project for both web and mobile or work on an existing project.
 
-## Creating a new project
+## Installation 
+*note: running this installs both web and mobile*
 
-Install the SSG Frontend CLI if you haven't done so already.
-
-```
-npm i ssg-frontend-cli -g
-```
-
-Run it to create a new project
-
-```
-ssg-frontend {project-name}
-```
-
-## Installation
-
-Install node modules for both web and mobile
-
-`yarn && cd mobile && yarn`
+``npm i``
 
 ## Development
 
@@ -49,6 +34,20 @@ alias and='adb reverse tcp:8081 tcp:8081  && react-native run-android'
 alias andDeploy='cd ./android && ./gradlew assembleRelease && ./gradlew installRelease && cd ../'
 ```
 
+
+## Creating a new project
+
+Install the SSG Frontend CLI if you haven't done so already.
+
+```
+npm i ssg-frontend-cli -g
+```
+
+Run it to create a new project
+
+```
+ssg-frontend {project-name}
+```
 ## Components
 
 Further detail on React components and the flux architecture used throughout the boilerplate can be seen in the [Components Guide](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/Components.md)
