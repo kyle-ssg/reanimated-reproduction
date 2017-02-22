@@ -121,7 +121,7 @@ module.exports = class extends React.Component {
                             <View><H1>Or</H1></View>
                             <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
                                 <Button onPress={this.facebook.bind(this) } style={[Styles.buttonFacebook, Styles.buttonWithIcon]}>
-                                    <ION style={[Styles.buttonText,Styles.buttonIcon]} name="ios-menu"/>
+                                    <ION style={[Styles.buttonText,Styles.buttonIcon]} name="logo-facebook"/>
                                     <Text style={Styles.buttonText} >Facebook</Text>
                                 </Button>
                                 <Button onPress={this.google.bind(this) } style={Styles.buttonGoogle}>
@@ -139,6 +139,29 @@ module.exports = class extends React.Component {
                         </Flex>
                     </ScrollView>
                     <ScrollView style={Styles.container} tabLabel={"Examples"}>
+                        <Card>
+                            <View style={[Styles.listContainer,Styles.noBackground]}>
+                                <ListItem style={Styles.listItem}>
+                                    <Text style={Styles.listItemTitle}>List Item Title</Text>
+                                </ListItem>
+                                <ListItem style={Styles.listItem}>
+                                    <Text style={Styles.listItemText}>List Item</Text>
+                                    <ION name="ios-arrow-forward" style={[Styles.listIcon, Styles.listActionIcon]}/>
+                                </ListItem>
+                                <ListItem style={Styles.listHeader}>
+                                    <Text style={[Styles.listHeaderText, Styles.bold]}>List Items Header</Text>
+                                </ListItem>
+                                <ListItem style={Styles.listItem}>
+                                    <ION name="ios-american-football" style={Styles.listIcon}/>
+                                    <Text style={Styles.listItemText}>List Item</Text>
+                                </ListItem>
+                                <ListItem style={[Styles.listItem, Styles.listItemLast]}>
+                                    <ION name="ios-american-football" style={Styles.listIcon}/>
+                                    <Text style={Styles.listItemText}>List Item</Text>
+                                    <ION name="ios-arrow-forward" style={[Styles.listIcon, Styles.listActionIcon]}/>
+                                </ListItem>
+                            </View>
+                        </Card>
 
                         <FormGroup width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
                             <Card>
@@ -152,7 +175,7 @@ module.exports = class extends React.Component {
                             </Card>
                         </FormGroup>
                         <FormGroup width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
-                            <Card>
+                            <Card style={Styles.container}>
                                 <Text style={Styles.label}>Masked Date</Text>
                                 <TextInput value={this.state.maskedDate}
                                            onChangeText={(text) => this.setState({ maskedDate: text }) }

@@ -1,16 +1,58 @@
 module.exports = {
 
-  basicListItem: {
-    paddingTop: styleVariables.paddingBase,
-    paddingBottom: styleVariables.paddingBase
+  listContainer: {
+    flex: 1,
+    backgroundColor: colour.listBackground
+  },
+
+  insetList:{
+    padding:styleVariables.paddingBase,
+    backgroundColor:'#fff'
+  },
+
+  listItem: {
+    padding: styleVariables.paddingBase,
+    borderBottomWidth:1,
+    borderBottomColor:'#f1f1f1',
+  },
+
+  listItemLast: {
+    borderBottomWidth:0,
+  },
+
+  liContent: {
+    flexDirection:'row',
+    alignItems:'center',
+  },
+
+  listItemText: {
+    color: pallette.text,
+    flex:1,
+  },
+
+  listIcon:{
+    fontSize:styleVariables.fontSizeBase * 1.5,
+    marginRight:styleVariables.paddingBase,
+  },
+
+  listActionIcon: {
+    fontSize:styleVariables.fontSizeBase * 2,
+  },
+
+  listItemTitle: {
+    fontWeight: 'bold'
   },
 
   listHeader: {
-    paddingTop: styleVariables.paddingBase,
-    paddingLeft: styleVariables.paddingBase
+    padding: styleVariables.paddingBase / 2,
+    backgroundColor:pallette.primary,
   },
 
-  listUnstyled: {
+  listHeaderText:{
+    color:'#fff',
+  },
+
+  listItemUnstyled: {
     borderBottomWidth: 0
   },
 

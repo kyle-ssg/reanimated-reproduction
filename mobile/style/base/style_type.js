@@ -72,50 +72,6 @@ module.exports = {
     fontSize: styleVariables.fontSizeH3,
     fontWeight: styleVariables.headingsFontWeight,
     color: pallette.textLight
-  },
-
-  // Lists
-  // -------------------------
-
-  listContainer: {
-    flex: 1,
-    paddingTop: styleVariables.paddingBase,
-    backgroundColor: colour.listBackground
-  },
-
-  li: {
-    backgroundColor: colour.listItem,
-    borderColor: colour.listItemDivider,
-    borderBottomWidth: styleVariables.borderBottomWidth,
-    justifyContent: 'center'
-  },
-
-  listItemTitle: {
-    fontWeight: 'bold'
-  },
-
-  listItemText: {
-    color: pallette.text,
-    fontSize: styleVariables.fontSizelistitem
-  },
-
-  liContent: {
-    paddingTop: 12,
-    paddingLeft: styleVariables.paddingBase,
-    paddingRight: styleVariables.paddingBase,
-    paddingBottom: 12,
-  },
-
-  listTitle: {
-    color: pallette.text,
-    fontSize: styleVariables.fontSizelistTitle,
-    fontWeight: styleVariables.mediumFontWeight
-  },
-
-  listText: {
-    color: pallette.textLight,
-    fontSize: styleVariables.fontSizelistitem,
-    fontWeight: styleVariables.mediumFontWeight
   }
 
 };

@@ -8,6 +8,6 @@ module.exports = StyleSheet.create({
         shadowOffset: {
             height: 1,
             width: 0.3,
-        }
+        },
     }
 });
