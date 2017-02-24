@@ -12,7 +12,7 @@ ssg-frontend {myproject} {com.solidstategroup.myproject}
 # Initialise git
 ```
 git init
-git remote add origin https://git.solidstategroup.com/kyle/test-deployment.git
+git remote add origin {REPO_URL}
 git add .
 git commit -m "Initial"
 git push -u origin master
