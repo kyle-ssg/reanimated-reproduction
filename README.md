@@ -59,3 +59,11 @@ For details are various tasks including changing the bundle ID, deploying builds
 ## 3rd party integrations
 
 If you need support for 3rd party integrations such as Firebase, Facebook and Fabric Digits please see [3rd Party Guide](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/ThirdParty.md)
+
+
+## todo
+- [ ] Document full app creation Android
+- [ ] Document full app creation iOS
+- [ ] Use react-native-fcm
+- [ ] Use react-native-maps
+- [ ] Use react-native-globals
