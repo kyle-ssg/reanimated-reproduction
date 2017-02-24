@@ -35,19 +35,16 @@ alias andDeploy='cd ./android && ./gradlew assembleRelease && ./gradlew installR
 ```
 
 
-## Creating a new project
-
-Install the SSG Frontend CLI if you haven't done so already.
+## Creating an deploying a new project
 
 ```
 npm i ssg-frontend-cli -g
+ssg-frontend {myproject} {com.solidstategroup.myproject}
 ```
+- [Deploy Web](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/DeployWeb.md)
+- [Deploy Mobile](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/DeployWeb.md)
 
-Run it to create a new project
 
-```
-ssg-frontend {project-name}
-```
 ## Components
 
 Further detail on React components and the flux architecture used throughout the boilerplate can be seen in the [Components Guide](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/Components.md)
