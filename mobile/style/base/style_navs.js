@@ -12,8 +12,6 @@ module.exports = {
         paddingBottom: STATUSBAR_HEIGHT,
         height: styleVariables.baseNavHeight,
         justifyContent: 'center',
-        borderBottomWidth: 1 / PixelRatio.get(),
-        borderBottomColor: colour.navBarBorder
     },
 
     navBar: {
@@ -22,29 +20,11 @@ module.exports = {
         alignSelf: 'stretch',
         justifyContent: 'center',
         backgroundColor: colour.navBar,
-        borderBottomWidth: 1 / PixelRatio.get(),
-        borderBottomColor: colour.navBarBorder
     },
 
     navBarText: {
         color: 'white',
-        fontSize: styleVariables.fontSizeAlert,
-        fontWeight: styleVariables.headingsFontWeight
-    },
-
-    actionBar: {
-        paddingLeft: styleVariables.paddingBase,
-        paddingRight: styleVariables.paddingBase,
-        padding: 5,
-        alignItems: 'center',
-        flexDirection: 'row',
-        backgroundColor: pallette.grayLighter
-    },
-
-    actionBarLink: {
-        height: styleVariables.baseNavHeight,
-        paddingLeft: 5,
-        paddingRight: 5,
+        fontSize: styleVariables.fontSizeHeading,
     },
 
     navItemContainer: {
@@ -66,34 +46,11 @@ module.exports = {
         height: 44,
         justifyContent: 'center'
     },
-    selectNavBar: {
-        backgroundColor: colour.selectNavBar,
-    },
-
-    navButton: {
-        marginLeft: 10,
-        marginBottom: -5,
-        marginRight: 10
-    },
 
     // Tabs
     // -------------------------
 
-    tabContainer: {
-        width: Dimensions.get("window").width,
-        justifyContent: 'space-between',
-        backgroundColor: colour.tabBackground
-    },
-    tabItem: {
-        flex: 1,
-        height: 44,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    tabLine: {
-        height: 5,
-        backgroundColor: colour.tabLine
-    },
+
     tabText: {
         color: colour.tabText,
         textAlign: 'center'
@@ -133,20 +90,12 @@ module.exports = {
         color: colour.primary,
         marginRight: styleVariables.marginBaseHorizontal
     },
-    menuIconClose: {
-        fontSize: styleVariables.fontSizeH1,
-        color: 'white',
-        marginRight: styleVariables.marginBaseHorizontal
-    },
     menuText: {
         color: 'white'
     },
-    menuHeading: {
-        padding: styleVariables.paddingBase,
-        marginTop: styleVariables.marginBaseVertical,
-        borderBottomWidth: 1 / PixelRatio.get(),
-        borderColor: colour.menuDivider,
-        justifyContent: 'center',
+    menuHeading:{
+        height:styleVariables.baseNavHeight + 20,
+        justifyContent:'center'
     },
     menuHeadingText: {
         fontSize: styleVariables.fontSizeH2,
@@ -158,32 +107,6 @@ module.exports = {
         height: 34,
         marginRight: 5,
         borderRadius: 5
-    },
-
-    footerIconText: {
-        color: pallette.white,
-        fontSize: styleVariables.fontSizeH3,
-    },
-
-    footerIconActive: {
-        color: pallette.white
-    },
-
-    footerItemAlert: {
-        justifyContent: "center",
-        alignItems: "center",
-        width: em(1),
-        height: em(1),
-        borderRadius: em(0.5),
-        position: 'absolute',
-        top: 5,
-        left: 10,
-        backgroundColor: colour.alert
-    },
-
-    footerItemAlertText: {
-        color: "white",
-        fontSize: em(.5),
     },
 
     listItemIcon: {

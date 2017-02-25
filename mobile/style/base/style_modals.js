@@ -15,7 +15,6 @@ module.exports = {
 
 
   webView: {
-    backgroundColor: pallette.backgroundBase
   }
 
 };

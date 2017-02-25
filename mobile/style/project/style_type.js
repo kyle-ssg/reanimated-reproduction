@@ -3,7 +3,6 @@ module.exports = {
   text: {
     color: colour.text,
     fontSize: styleVariables.fontSizeBase,
-    letterSpacing: 1
   },
 
   fontSizeHeading:{

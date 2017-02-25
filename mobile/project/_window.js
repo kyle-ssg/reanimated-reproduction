@@ -79,7 +79,6 @@ require('./libs'); // optional libs
 
 window.Component = require('../common/Component');
 window.ES6Component = require('../common/ES6Component');
-window.TextRespondView = require('../components/base/TextRespondView');
 window.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
 //Animation
@@ -106,11 +105,7 @@ window.Column = require('../components/base/grid/Column');
 window.Row = require('../components/base/grid/Row');
 
 //Modals
-window.Modals = require('../components/base/modals/Modals');
-window.WebModal = require('../components/base/modals/WebModal');
-window.Backdrop = require('../components/base/modals/Backdrop');
-window.Modal = require('../components/base/modals/Modal');
-window.ConfirmModal = require('../components/base/modals/ConfirmModal');
+// TODO: Kyle to review
 
 //Forms
 window.Switch = require('../components/base/forms/Switch');
@@ -120,12 +115,9 @@ window.Checkbox = require('../components/base/forms/Checkbox');
 window.Button = require('../components/base/forms/Button');
 window.Divider = require('../components/base/Divider');
 window.Loader = require('../components/base/Loader');
-window.LinedTitle = require('../components/base/LinedTitle');
 window.Card = require('../components/base/forms/Card');
 
 //Navs
-window.TabBar = require('../components/base/navs/TabBar');
-window.FooterTabItem = require('../components/base/navs/FooterTabItem');
 window.ListItem = require('../components/base/ListItem');
 window.InfiniteScroll = require('../components/base/InfiniteScroll');
 

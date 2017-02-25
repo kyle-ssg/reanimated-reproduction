@@ -3,16 +3,6 @@ module.exports = {
   // Forms
   // --------------------------------------------------
 
-  userNameForm: {
-    marginTop: 40,
-    marginBottom: styleVariables.marginBaseVertical
-  },
-
-  borderMessageTop: {
-    borderTopColor: 'lightgray',
-    borderTopWidth: 1
-  },
-
   //Input
 
   formGroup: {
@@ -28,19 +18,9 @@ module.exports = {
     color: colour.input,
   },
 
-  textCenter: {
-    textAlign: 'center'
-  },
-
   inputContainer: {
-    padding: 5,
+    padding: styleVariables.paddingBase / 2,
     justifyContent: 'center',
-    backgroundColor: colour.inputBackground,
-    borderColor: 'gray'
-  },
-
-  inputLargeContainer: {
-    padding: 10,
   },
 
   inputLarge: {

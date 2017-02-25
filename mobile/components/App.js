@@ -6,7 +6,6 @@ const TheComponent = class extends React.Component {
     constructor (props, context) {
         super(props, context);
         this.state = {};
-        Modals(this);
     }
 
     componentDidMount () {

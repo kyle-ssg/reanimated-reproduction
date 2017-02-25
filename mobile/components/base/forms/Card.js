@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 
 const Card = (props)=>(
-    <View style={[Styles.container, styles.card, props.style]}>
+    <View style={[styles.card, props.style]}>
         {props.children}
     </View>
 );

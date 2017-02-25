@@ -1,35 +1,59 @@
 module.exports = {
 
-  insetList: {
-    paddingLeft: styleVariables.paddingBaseLarge,
-    paddingRight: styleVariables.paddingBaseLarge
+  listContainer: {
+    flex: 1,
+    backgroundColor: colour.listBackground
   },
 
-  basicListItem: {
-    paddingTop: styleVariables.paddingBase,
-    paddingBottom: styleVariables.paddingBase
+  insetList:{
+    padding:styleVariables.paddingBase,
+    backgroundColor:'#fff'
   },
 
-  listFull: {
-    paddingLeft: styleVariables.paddingBase,
-    paddingRight: styleVariables.paddingBase
+  listItem: {
+    padding: styleVariables.paddingBase,
+    borderBottomWidth:1,
+    borderBottomColor:'#f1f1f1',
+  },
+
+  listItemLast: {
+    borderBottomWidth:0,
+  },
+
+  liContent: {
+    flexDirection:'row',
+    alignItems:'center',
+  },
+
+  listItemText: {
+    color: pallette.text,
+    flex:1,
+  },
+
+  listIcon:{
+    fontSize:styleVariables.fontSizeBase * 1.5,
+    marginRight:styleVariables.paddingBase,
+  },
+
+  listActionIcon: {
+    fontSize:styleVariables.fontSizeBase * 2,
+  },
+
+  listItemTitle: {
+    fontWeight: 'bold'
   },
 
   listHeader: {
-    paddingTop: styleVariables.paddingBase,
-    paddingLeft: styleVariables.paddingBase
+    padding: styleVariables.paddingBase / 2,
+    backgroundColor:pallette.primary,
   },
 
-  listTitle: {
-    paddingBottom: styleVariables.paddingBaseSmall
+  listHeaderText:{
+    color:'#fff',
   },
 
-  listUnstyled: {
+  listItemUnstyled: {
     borderBottomWidth: 0
-  },
-
-  dropList: {
-    padding: styleVariables.paddingBaseLarge
   },
 
   dropButton: {
@@ -43,9 +67,5 @@ module.exports = {
       height: 0,
       width: 0
     }
-  },
-
-  listBaseText: {
-    fontSize: styleVariables.fontSizeSmaller
   }
 };

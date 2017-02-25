@@ -1,12 +1,8 @@
 window.pallette = {
     backgroundBase: '#ffffff',
 
-    primary: '#e6764f',
-    primaryDark: '#cb572e',
-    primaryLight: '#f1a083',
-
-    //secondary
-    secondary: '#e6764f',
+    primary: '#2f8cfe',
+    secondary: '#f5f5f5',
 
     text: '#222222',
     textLight: '#f0f0f0',
@@ -15,8 +11,6 @@ window.pallette = {
     divider: '#a8a8a8',
 
     error: '#f2dede',
-    errorBorder: '#f2dede',
-    errorText: '#a94442'
 };
 
 window.colour = {
@@ -31,7 +25,6 @@ window.styleVariables =  Object.assign({
     marginBaseVertical: 10,
     marginBaseHorizontal: 10,
     paddingBase: 10,
-    paddingBaseLarge: 20,
     gutterBase: 10,
     borderRadiusDefault: 8,
 
@@ -40,13 +33,13 @@ window.styleVariables =  Object.assign({
     borderDefault: pallette.textLight,
 
     //TYPE
-    fontSizeBase: em(1),
+    fontSizeBase: em(1.2),
 
     fontSizeSmall: em(0.5),
     fontSizeHeading: em(1.5),
-    fontSizeSubHeading: em(1.2),
+    fontSizeSubHeading: em(1.3),
 
-    fontSizeIcon: 24,
+    fontSizeIcon: 30,
 
     fontSansSerif: 'helvetica neue',
 

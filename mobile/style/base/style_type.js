@@ -16,11 +16,6 @@ module.exports = {
     fontSize: em(2)
   },
 
-  footerIcon: {
-    fontSize: em(2),
-    color: colour.tabIcon,
-  },
-
   icon: {
     fontSize: em(2)
   },
@@ -77,65 +72,6 @@ module.exports = {
     fontSize: styleVariables.fontSizeH3,
     fontWeight: styleVariables.headingsFontWeight,
     color: pallette.textLight
-  },
-
-  // Emphasis & misc
-  // -------------------------
-
-  note: {
-    paddingTop: 0,
-    fontSize: styleVariables.fontSizeNote,
-    fontWeight: styleVariables.mediumFontWeight,
-    color: pallette.textLight,
-  },
-
-  productName: {
-    color: colour.primaryDark,
-    fontWeight: styleVariables.headingsFontWeight
-  },
-
-  // Lists
-  // -------------------------
-
-  listContainer: {
-    flex: 1,
-    paddingTop: styleVariables.paddingBase,
-    backgroundColor: colour.listBackground
-  },
-
-  li: {
-    backgroundColor: colour.listItem,
-    borderColor: colour.listItemDivider,
-    borderBottomWidth: styleVariables.borderBottomWidth,
-    justifyContent: 'center'
-  },
-
-  listItemTitle: {
-    fontWeight: 'bold'
-  },
-
-  listItemText: {
-    color: pallette.text,
-    fontSize: styleVariables.fontSizelistitem
-  },
-
-  liContent: {
-    paddingTop: 12,
-    paddingLeft: styleVariables.paddingBase,
-    paddingRight: styleVariables.paddingBase,
-    paddingBottom: 12,
-  },
-
-  listTitle: {
-    color: pallette.text,
-    fontSize: styleVariables.fontSizelistTitle,
-    fontWeight: styleVariables.mediumFontWeight
-  },
-
-  listText: {
-    color: pallette.textLight,
-    fontSize: styleVariables.fontSizelistitem,
-    fontWeight: styleVariables.mediumFontWeight
   }
 
 };

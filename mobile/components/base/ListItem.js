@@ -8,7 +8,7 @@ var Listitem = Component({
     };
   }, render: function () {
     content = (
-      <View style={[Styles.liContent, { backgroundColor: 'transparent' }]}>
+      <View style={[Styles.liContent,{ backgroundColor: 'transparent' }]}>
         {this.props.children}
       </View>
     );
@@ -16,11 +16,11 @@ var Listitem = Component({
       this.props.onPress ?
         <TouchableOpacity
           activeOpacity={0.8}
-          style={[Styles.li, this.props.style]}
+          style={[this.props.style]}
           onPress={this.props.onPress}>
           {content}
         </TouchableOpacity>
-        : <View style={[Styles.li, this.props.style]}>{content}</View>
+        : <View style={[this.props.style]}>{content}</View>
     );
   }
 });
