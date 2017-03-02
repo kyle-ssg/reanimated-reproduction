@@ -40,6 +40,11 @@ alias andDeploy='cd ./android && ./gradlew assembleRelease && ./gradlew installR
 ```
 npm i ssg-frontend-cli -g
 ssg-frontend {myproject} {com.solidstategroup.myproject}
+git init
+git remote add origin {REPO_URL}
+git add .
+git commit -m "Initial"
+git push -u origin master
 ```
 - [Deploy Web](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/DeployWeb.md)
 - [Deploy Mobile](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/DeployWeb.md)
