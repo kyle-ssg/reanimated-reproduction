@@ -1,23 +1,3 @@
-Deploy web
-==================================
-*Prerequesite*
-
-```
-npm i ssg-frontend-cli -g
-ssg-frontend {myproject} {com.solidstategroup.myproject}
-```
-
----------------
-
-# Initialise git
-```
-git init
-git remote add origin {REPO_URL}
-git add .
-git commit -m "Initial"
-git push -u origin master
-```
-
 # Set your flynn cluster
 ```
 #lists your flynn clusters
