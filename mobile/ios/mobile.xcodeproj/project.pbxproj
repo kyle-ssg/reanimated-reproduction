@@ -43,7 +43,6 @@
 		A33CA3161E40A5C000A95FE8 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33CA3131E40A5C000A95FE8 /* FBSDKLoginKit.framework */; };
 		A33CA3171E40A5C000A95FE8 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33CA3141E40A5C000A95FE8 /* FBSDKShareKit.framework */; };
 		A33CA31E1E40A62F00A95FE8 /* libRCTFBLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A33CA31D1E40A5EC00A95FE8 /* libRCTFBLogin.a */; };
-		A33CA3811E40E30200A95FE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A33CA3801E40E30200A95FE8 /* Assets.xcassets */; };
 		A34715141E37A228007264EA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A34715131E37A228007264EA /* CoreData.framework */; };
 		A34715161E37A231007264EA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A34715151E37A231007264EA /* SystemConfiguration.framework */; };
 		A34715181E37A23A007264EA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A34715171E37A23A007264EA /* libz.tbd */; };
@@ -328,7 +327,6 @@
 		A33CA3131E40A5C000A95FE8 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../node_modules/react-native-facebook-login/FacebookSDK/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		A33CA3141E40A5C000A95FE8 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../node_modules/react-native-facebook-login/FacebookSDK/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		A33CA3181E40A5EC00A95FE8 /* RCTFBLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBLogin.xcodeproj; path = "../node_modules/react-native-facebook-login/RCTFBLogin.xcodeproj"; sourceTree = "<group>"; };
-		A33CA3801E40E30200A95FE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		A34715131E37A228007264EA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A34715151E37A231007264EA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A34715171E37A23A007264EA /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -472,7 +470,6 @@
 		13B07FAE1A68108700A75B9A /* mobile */ = {
 			isa = PBXGroup;
 			children = (
-				A33CA3801E40E30200A95FE8 /* Assets.xcassets */,
 				A33CA2C21E3FEA6D00A95FE8 /* mobile-Bridging-Header.h */,
 				A347151C1E37A5C6007264EA /* mobile.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -1070,7 +1067,6 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				503C153C60BB44E18BA6E65B /* Entypo.ttf in Resources */,
-				A33CA3811E40E30200A95FE8 /* Assets.xcassets in Resources */,
 				51406D5CBB7B40E6947D6BE3 /* EvilIcons.ttf in Resources */,
 				E1FA823EE8D847B3AF67E048 /* FontAwesome.ttf in Resources */,
 				3297E3195DB3402F9B85E95F /* Foundation.ttf in Resources */,
