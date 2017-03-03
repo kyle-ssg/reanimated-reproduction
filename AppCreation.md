@@ -43,7 +43,7 @@ This determines which project.js file is deployed, this will default to project_
     **Do the following from ./mobile**
 
 
-#Replace AppIcon.png with your app icon.
+## Replace AppIcon.png with your app icon.
 This automatically gets converted into different sizes with fastlane.
 
 ## Ensure you have a valid provisioning profile installed
