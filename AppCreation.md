@@ -13,9 +13,6 @@ git commit -m "Initial"
 git push -u origin master
 ```
 
-#Replace AppIcon.png with your app icon.
-This automatically gets converted into different sizes with fastlane.
-
 # Create Web
 
 ## Set your flynn cluster
@@ -44,6 +41,10 @@ This determines which project.js file is deployed, this will default to project_
 # Create Mobile
 
     **Do the following from ./mobile**
+
+
+#Replace AppIcon.png with your app icon.
+This automatically gets converted into different sizes with fastlane.
 
 ## Ensure you have a valid provisioning profile installed
 If you've uploaded to testflight before you don't need to worry about this step, ensure that  you have the certificates required from another member of the team.
