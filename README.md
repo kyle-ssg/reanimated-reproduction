@@ -54,8 +54,8 @@ If you need support for 3rd party integrations such as Firebase, Facebook and Fa
 
 
 ## todo
-- [ x ] Document full app creation Android
-- [ x ] Document full app creation iOS
+- [x] Document full app creation Android
+- [x] Document full app creation iOS
 - [ ] Use react-native-fcm
 - [ ] Use react-native-maps
 - [ ] Use react-native-globals
