@@ -4,6 +4,9 @@ import android.app.Application;
 import android.util.Log;
 
 import com.facebook.react.ReactApplication;
+import com.smixx.fabric.FabricPackage;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import io.branch.rnbranch.*;
 import io.branch.referral.Branch;
 import com.proxima.RCTDigits.DigitsPackage;
@@ -33,6 +36,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new FabricPackage(),
           new RNBranchPackage(),
           new DigitsPackage(),
           new RNGoogleSignInPackage(),
@@ -54,5 +58,6 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     Branch.getAutoInstance(this);
+    Fabric.with(this, new Crashlytics());
   }
 }

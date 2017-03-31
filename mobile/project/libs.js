@@ -28,6 +28,13 @@ window.firebase = firebase;
 import FireAuth from 'react-native-firebase-auth';
 window.FireAuth = FireAuth;
 
+// Crashlytics
+const Fabric = require('react-native-fabric');
+const { Crashlytics } = Fabric;
+window.Crashlytics = Crashlytics;
+
+import crashlytics from 'react-native-fabric-crashlytics';
+crashlytics.init();
 
 // Segment analytics testing - identify - normally only called once on sign up and then whenever traits change
 /*analytics.identify('luke@solidstategroup.com',
