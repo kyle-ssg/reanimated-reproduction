@@ -33,6 +33,7 @@ const Fabric = require('react-native-fabric');
 const { Crashlytics } = Fabric;
 window.Crashlytics = Crashlytics;
 
+// react-native-fabric-crashlytics - Overrides React Native's default global error handler to report all fatal JS errors to Crashlytics
 import crashlytics from 'react-native-fabric-crashlytics';
 crashlytics.init();
 
