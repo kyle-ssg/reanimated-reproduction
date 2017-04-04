@@ -3,7 +3,7 @@ module.exports = [
         test: /\.css$/,
         loaders: ['style-loader', 'css-loader']
     },
-    { test: /\.json$/, loader: "json" },
+    { test: /\.json$/, loader: "json-loader" },
     {
         test: /\.js?/,
         exclude: /node_modules/,

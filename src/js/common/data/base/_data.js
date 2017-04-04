@@ -1,3 +1,10 @@
+const getQueryString = (params) => {
+	var esc = encodeURIComponent;
+	return Object.keys(params)
+    .map(k => `${esc(k)}=${esc(params[k])}`)
+    .join('&');
+}
+
 module.exports = {
   token: '',
   type: '',
@@ -47,14 +54,20 @@ module.exports = {
           'Content-Type': 'application/json; charset=utf-8'
         }
       },
-      req;
+      req,
+	  qs = '';
 
     if (this.token) { //add auth tokens to headers of all requests
       options.headers['X-Auth-Token'] = this.token;
     }
 
     if (data) {
-      options.body = JSON.stringify(data);
+      if (method == 'get' || method == 'delete') {
+				var qs = getQueryString(data);
+				url += url.indexOf('?') !== -1 ? '&' + qs : '?' + qs;
+			} else {
+        options.body = JSON.stringify(data);
+      }
     } else if (method == "post" || method == "put") {
       options.body = "{}";
     }
@@ -64,6 +77,9 @@ module.exports = {
       .then(this.status)
       .then(function (response) { //always return json
         var contentType = response.headers.get("content-type");
+        if (!contentType) {
+          contentType = response.headers.get('Content-Type');
+        }
         if (contentType && contentType.indexOf("application/json") !== -1) {
           return response.json();
         } else {

@@ -22,7 +22,7 @@ module.exports = {
         .concat([
 
                 //pull inline styles into cachebusted file
-                new ExtractTextPlugin("style.css", { allChunks: true }),
+                new ExtractTextPlugin({filename: "style.[hash].css", allChunks: true }),
             ]
             //for each page, produce a html file with base assets
                 .concat(require('./pages').map(function (page) {
@@ -43,7 +43,7 @@ module.exports = {
         loaders: require('./loaders').concat([
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
+                loader: ExtractTextPlugin.extract({fallback: "style-loader", use: "css-loader!sass-loader"})
             }
         ])
     }
