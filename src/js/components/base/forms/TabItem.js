@@ -3,6 +3,6 @@ const TabItem = (props)=>(
 );
 TabItem.displayName = "TabItem";
 TabItem.propTypes = {
-  children: OptionalElement
+  children: OptionalNode
 };
 module.exports = TabItem;

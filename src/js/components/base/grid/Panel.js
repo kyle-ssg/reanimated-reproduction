@@ -24,9 +24,9 @@ const Panel = class extends React.Component {
 Panel.displayName = "Panel";
 
 Panel.propTypes = {
-  title: OptionalObject,
+  title: oneOfType([OptionalObject, OptionalString]),
   icon: OptionalObject,
-  children: OptionalElement
+  children: OptionalNode
 };
 
 module.exports = Panel;

@@ -17,7 +17,7 @@ Flex.defaultProps = {
 Flex.propTypes = {
   className: OptionalString,
   value: OptionalNumber,
-  children: OptionalElement,
+  children: OptionalNode,
   style: React.PropTypes.any
 };
 

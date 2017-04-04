@@ -7,7 +7,7 @@ var Text = Component({
 
 Text.propTypes = {
   style: React.PropTypes.any,
-  children: OptionalElement,
+  children: OptionalNode,
 };
 
 module.exports = Text;

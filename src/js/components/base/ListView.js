@@ -49,7 +49,7 @@ ListView.defaultProps = {
 
 ListView.propTypes = {
   className: OptionalString,
-  renderNoResults: OptionalElement,
+  renderNoResults: OptionalNode,
   scrollToRow: OptionalNumber,
   renderRow: RequiredFunc,
   data: OptionalArray,

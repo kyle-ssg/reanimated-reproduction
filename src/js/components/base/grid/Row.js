@@ -21,7 +21,7 @@ var Row = (props) => {
 Row.propTypes = {
   className: OptionalString,
   space: OptionalBool,
-  children: OptionalArray,
+  children: OptionalNode,
   style: React.PropTypes.any
 };
 

@@ -22,7 +22,7 @@ const Button = class extends React.Component {
 
 Button.propTypes = {
   className: OptionalString,
-  children: OptionalElement
+  children: OptionalNode
 };
 
 module.exports = Button;

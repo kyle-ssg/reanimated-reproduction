@@ -37,7 +37,7 @@ Popover.propTypes = {
   isHover: OptionalBool,
   className: OptionalString,
   renderTitle: RequiredFunc,
-  children: OptionalElement
+  children: OptionalNode
 };
 
 module.exports = Popover;

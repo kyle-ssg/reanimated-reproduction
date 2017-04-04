@@ -14,7 +14,7 @@ const h4 = class extends React.Component {
 
 h4.propTypes = {
   style: React.PropTypes.any,
-  children: OptionalElement
+  children: OptionalNode
 };
 
 module.exports = h4;

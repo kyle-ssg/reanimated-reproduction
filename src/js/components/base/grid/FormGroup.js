@@ -6,6 +6,6 @@ const FormGroup = (props)=>(
 
 FormGroup.displayName = "FormGroup";
 FormGroup.propTypes = {
-  children: OptionalElement
+  children: OptionalNode
 };
 module.exports = FormGroup;

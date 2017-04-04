@@ -75,9 +75,9 @@ const Modal = class extends React.Component {
 };
 
 Modal.propTypes = {
-  header: OptionalElement,
-  body: OptionalElement,
-  footer: OptionalElement
+  header: OptionalNode,
+  body: OptionalNode,
+  footer: OptionalNode
 };
 
 const Confirm = class extends React.Component {
@@ -132,8 +132,8 @@ const Confirm = class extends React.Component {
 };
 
 Confirm.propTypes = {
-  header: OptionalElement,
-  body: OptionalElement,
+  header: OptionalNode,
+  body: OptionalNode,
   onYes: OptionalFunc,
   onNo: OptionalFunc,
   yesText: OptionalString,

@@ -10,7 +10,7 @@ const FormInline = (props)=>(
 FormInline.displayName = "FormInline";
 
 FormInline.propTypes = {
-  children: OptionalElement
+  children: OptionalNode
 };
 
 module.exports = FormInline;
