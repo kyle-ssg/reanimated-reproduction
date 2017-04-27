@@ -71,6 +71,10 @@ module.exports = class extends React.Component {
         FireAuth.googleLogin();
     }
 
+	badCode () {
+		a.b = c;
+	}
+
     render () {
         return (
             <Flex style={Styles.body}>
@@ -197,6 +201,19 @@ module.exports = class extends React.Component {
                     <Flex tabLabel={"Notifications"}>
                         <PushExample/>
                     </Flex>
+					<Flex tabLabel={"Crashlytics"}>
+						<Flex style={Styles.centeredContainer}>
+							<Button style={Styles.rounded} onPress={Crashlytics.crash}>
+							<Text style={Styles.buttonText}>Crash app!</Text>
+							</Button>
+							<Button style={Styles.rounded} onPress={() => Platform.OS == 'ios' ? Crashlytics.recordError('something went wrong but not really!') : Crashlytics.logException('something went wrong but not really!')}>
+							<Text style={Styles.buttonText}>Record non-fatal JS error</Text>
+							</Button>
+							<Button style={Styles.rounded} onPress={this.badCode}>
+							<Text style={Styles.buttonText}>Generate a JS crash</Text>
+							</Button>
+						</Flex>
+					</Flex>
                 </ScrollableTabView>
             </Flex>
         );
