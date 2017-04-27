@@ -4,11 +4,10 @@
   "description": "Node Express Boilerplate",
   "main": "index.js",
   "scripts": {
-    "start": "npm run webpack:prod && node ./server",
-    "dev": "nodemon --watch server --ignore server/config/config.json --watch webpack --exec node ./server",
+    "start": "npm run bundle && node ./server",
+    "dev": "./node_modules/.bin/webpack-dashboard -m -- nodemon --watch server --ignore server/config/config.json --watch webpack --exec node ./server",
     "test": "nodemon --exec mocha ./server/tests/",
-    "webpack:dev": "node & ./node_modules/.bin/webpack-dashboard -m -- webpack-dev-server --watch --hot --progress --inline --config ./config/webpack.config.dev.js",
-    "webpack:prod": "node node_modules/.bin/webpack -p --progress --config ./webpack/webpack.config.prod.js"
+    "bundle": "node node_modules/.bin/webpack -p --progress --config ./webpack/webpack.config.prod.js"
   },
   "dependencies": {
     "bootstrap": "4.0.0-alpha.6",

@@ -9,6 +9,7 @@ const spm = require('./middleware/single-page-middleware');
 const webpackMiddleware = require('./middleware/webpack-middleware');
 const isDev = process.env.NODE_ENV !== 'production';
 const app = express();
+const port = process.env.PORT || 8080;
 
 if (isDev) { //Serve files from src directory and use webpack-dev-server
 	console.log('Enabled Webpack Hot Reloading');
@@ -36,8 +37,8 @@ app.get('/', function (req, res) {
 	});
 });
 
-app.listen(3000, function () {
-	console.log('express-handlebars example server listening on: 3000');
+app.listen(port, function () {
+	console.log('express-handlebars example server listening on: ' + port);
 });
 
 
