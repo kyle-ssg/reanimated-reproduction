@@ -6,6 +6,7 @@ This README will help get you started using the SSG Frontend Boilerplate to set 
 *note: running this installs both web and mobile*
 
 ``npm i ssg-frontend-g``
+
 ``ssg-frontend project_name com.solidstategroup.id``
 
 ## Development
