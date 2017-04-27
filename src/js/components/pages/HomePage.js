@@ -3,7 +3,7 @@ module.exports = class extends React.Component {
 		return (
 			<div>
 				<div className="app-container container">
-					<p>Bullet Train is a thing that does stuff</p>
+					<p>Please login</p>
 					<FormInline>
 						<Button onClick={() => FireAuth.googleLogin()}>
 							Google

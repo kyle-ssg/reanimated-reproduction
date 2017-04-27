@@ -1,56 +1,27 @@
 {
-  "name": "ssg-webpack-es6-boilerplate",
-  "version": "0.7.1",
-  "description": "SSG React Boilerplate with Flux",
-  "repository": {
-    "git": "https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate"
-  },
-  "license": "MIT",
-  "author": "SSG",
-  "engines": {
-    "node": "6.9.4",
-    "npm": "3.10.x"
-  },
+  "name": "kimble-broker",
+  "version": "0.1.1",
+  "description": "Node Express Boilerplate",
+  "main": "index.js",
   "scripts": {
-    "prebuild": "npm run clean:build && npm run build:html && npm run env",
-    "start": "npm run webpack:prod && node server",
-    "prod": "ENV=prod && npm start",
-    "dev": "ENV=dev && npm run webpack:dev",
-    "android": "cd ./mobile && npm run android",
-    "ios": "cd ./mobile && npm run ios",
-    "build:html": "node ./bin/buildHtml.js",
-    "clean:build": "node ./bin/clean.js createdir",
-    "jscs": "jscs src/js/",
-    "lint": "eslint config src/js/** --ext .js",
-    "fix": "eslint --fix config src/js/** --ext .js",
-    "env": "node ./bin/env.js",
+    "start": "npm run webpack:prod && node ./server",
+    "dev": "nodemon --watch server --ignore server/config/config.json --watch webpack --exec node ./server",
+    "test": "nodemon --exec mocha ./server/tests/",
     "webpack:dev": "node & ./node_modules/.bin/webpack-dashboard -m -- webpack-dev-server --watch --hot --progress --inline --config ./config/webpack.config.dev.js",
-    "webpack:prod": "node node_modules/.bin/webpack -p --progress --config ./config/webpack.config.prod.js"
+    "webpack:prod": "node node_modules/.bin/webpack -p --progress --config ./webpack/webpack.config.prod.js"
   },
   "dependencies": {
-    "analytics-node": "2.1.0",
     "bootstrap": "4.0.0-alpha.6",
     "classnames": "2.2.5",
     "colors": "1.1.2",
-    "express": "4.14.1",
-    "fetchify": "0.0.2",
     "firebase": "3.2.0",
     "flux-react-dispatcher": "1.2.5",
-    "fs-extra": "2.0.0",
     "gulp": "3.9.1",
     "gulp-clean": "0.3.2",
     "gulp-watch": "4.3.11",
-    "history": "3.0.0",
-    "lodash": "4.17.4",
-    "moment": "2.14.1",
-    "ngrok": "2.2.2",
     "ps-node": "0.1.4",
     "rc-switch": "1.4.2",
-    "react": "^15.3.0",
-    "react-addons-shallow-compare": "^15.3.0",
-    "react-dom": "^15.3.0",
     "react-maskedinput": "3.3.4",
-    "react-native-fabric-digits": "1.0.21",
     "react-router": "2.6.0",
     "react-select": "1.0.0-rc.3",
     "react-slider": "0.7.0",
@@ -59,6 +30,9 @@
     "react-virtualized": "^7.0.0",
     "react-virtualized-infinite-scroll": "^0.0.4",
     "simple-firebase-auth": "^0.0.6",
-    "ssg-webpack": "0.0.1"
+    "ssg-react": "15.0.0",
+    "ssg-node-express": "4.14.1",
+    "ssg-util": "0.0.1",
+    "ssg-webpack": "2.2.1"
   }
 }

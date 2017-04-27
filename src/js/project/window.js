@@ -4,7 +4,7 @@ window.React = require('react');
 window.ReactDOM = require('react-dom');
 window.render = require('react-dom').render;
 window.moment = require('moment/min/moment.min');
-window.fetch = require('fetchify')(Promise).fetch;
+window.fetch = require('whatwg-fetch');
 
 window.OptionalArray = React.PropTypes.array;
 window.OptionalBool = React.PropTypes.bool;
