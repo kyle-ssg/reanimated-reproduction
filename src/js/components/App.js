@@ -47,7 +47,7 @@ export default class App extends Component {
 									aria-expanded="false" aria-label="Toggle navigation">
 								<span className="navbar-toggler-icon"></span>
 							</button>
-							<a className="navbar-brand" href="#">Navbar</a>
+							<Link className="navbar-brand" to={user ? window.loginRedirect : ""}>Brand</Link>
 
 							<div className="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul className="navbar-nav mr-auto">
