@@ -62,8 +62,8 @@ module.exports = {
     }
 
     if (data) {
-      if (method == 'get' || method == 'delete') {
-				var qs = getQueryString(data);
+		if (method == 'get' || method == 'delete') {
+			var qs = getQueryString(data);
 				url += url.indexOf('?') !== -1 ? '&' + qs : '?' + qs;
 			} else {
         options.body = JSON.stringify(data);

@@ -39,20 +39,20 @@ alias andDeploy='cd ./android && ./gradlew assembleRelease && ./gradlew installR
 
 ## Creating an deploying a new project
 If you are creating a new application use the following instructions
-- [App/Web Creation](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/AppCreation.md)
+- [App/Web Creation](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/docs/AppCreation.md)
 
 
 ## Components
 
-Further detail on React components and the flux architecture used throughout the boilerplate can be seen in the [Components Guide](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/Components.md)
+Further detail on React components and the flux architecture used throughout the boilerplate can be seen in the [Components Guide](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/docs/Components.md)
 
 ## Tasks
 
-For details are various tasks including changing the bundle ID, deploying builds and generating app icons please see the [Tasks Guide](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/Tasks.md)
+For details are various tasks including changing the bundle ID, deploying builds and generating app icons please see the [Tasks Guide](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/docs/Tasks.md)
 
 ## 3rd party integrations
 
-If you need support for 3rd party integrations such as Firebase, Facebook and Fabric Digits please see [3rd Party Guide](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/ThirdParty.md)
+If you need support for 3rd party integrations such as Firebase, Facebook and Fabric Digits please see [3rd Party Guide](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/docs/ThirdParty.md)
 
 
 ## todo

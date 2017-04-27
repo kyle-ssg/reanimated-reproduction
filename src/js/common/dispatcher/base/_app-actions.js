@@ -15,13 +15,6 @@ module.exports = {
       data: data
     });
   },
-  login: function (type, token) {
-    Dispatcher.handleViewAction({
-      actionType: Actions.LOGIN,
-      type,
-      token
-    });
-  },
   setUser: function (user) {
     Dispatcher.handleViewAction({
       actionType: Actions.SET_USER,

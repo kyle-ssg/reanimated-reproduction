@@ -21,5 +21,7 @@ ReactDOM.render(
   rootElement
 );
 
+
+
 //Setup for toast messages
 ReactDOM.render(<ToastMessages />, document.getElementById('toast'));

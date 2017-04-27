@@ -13,27 +13,7 @@ window.cn = require('classnames');
 
 import Bootstrap from '../../../node_modules/bootstrap/dist/js/bootstrap';
 
-// Segment analytics
-import Analytics from 'analytics-node';
-window.analytics = new Analytics('eJ4jplD0TFwOmZAyV801eB1quoAKSUBn');
+import {Link} from 'react-router';
+global.Link = Link;
 
-// Segment analytics testing - identify - normally only called once on sign up and then whenever traits change
-/*analytics.identify({
- userId: 'luke@solidstategroup.com',
- traits: {
-   name: 'Luke Fanning',
-   developer: true,
-   createdAt: new Date()
- }
-});*/
-// Can also use an anonymous id
-window.anonId = Date.now();
-analytics.identify({
-  anonymousId: anonId,
-  traits: {
-    name: 'Anonymous Bro'
-  }
-});
-
-import InfiniteScroll from 'react-virtualized-infinite-scroll';
-window.InfiniteScroll = InfiniteScroll;
+window._ = require('lodash');
