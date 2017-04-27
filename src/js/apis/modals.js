@@ -1,7 +1,9 @@
 const Provider = class extends React.Component {
 
   componentDidMount () {
-    window.closeModal = this.close;
+    if (this.props.type !== 'confirm') {
+		window.closeModal = this.close;
+	}
     $(ReactDOM.findDOMNode(this)).on('hidden.bs.modal', this._closed);
     $(ReactDOM.findDOMNode(this)).on('shown.bs.modal', this._shown);
     $(ReactDOM.findDOMNode(this)).modal({ background: true, keyboard: true, show: true });
@@ -18,14 +20,14 @@ const Provider = class extends React.Component {
     $(ReactDOM.findDOMNode(this)).off('shown.bs.modal', this._shown);
     $(ReactDOM.findDOMNode(this)).modal('hide');
     setTimeout(() => {
-      ReactDOM.unmountComponentAtNode(document.getElementById('modal'));
+      ReactDOM.unmountComponentAtNode(document.getElementById(this.props.type == 'confirm' ? 'confirm' : 'modal'));
       document.body.classList.remove('modal-open');
     }, 500);
   }
 
   _closed = ()=> {
     this.props.onClose && this.props.onClose();
-    ReactDOM.unmountComponentAtNode(document.getElementById('modal'));
+    ReactDOM.unmountComponentAtNode(document.getElementById(this.props.type == 'confirm' ? 'confirm' : 'modal'));
     document.body.classList.remove('modal-open');
   }
 
@@ -116,7 +118,7 @@ const Confirm = class extends React.Component {
 
   render () {
     return (
-      <Provider onClose={this.props.onNo} ref="modal">
+      <Provider onClose={this.props.onNo} ref="modal" type="confirm">
         <div tabIndex="-1" className="modal alert fade expand" role="dialog" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">
@@ -145,5 +147,5 @@ exports.openModal = (header, body, footer) => {
 };
 
 exports.openConfirm = (header, body, onYes, onNo) => {
-  render(<Confirm header={header} onYes={onYes} onNo={onNo} body={body}/>, document.getElementById('modal'));
+  render(<Confirm header={header} onYes={onYes} onNo={onNo} body={body}/>, document.getElementById('confirm'));
 };

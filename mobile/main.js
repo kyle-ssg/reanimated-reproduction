@@ -20,7 +20,6 @@ window.Header = (props)=> {
 };
 
 const DefaultHeader = withRouter((props) => {
-    console.log(props);
     const canGoBack = props && props.scenes.length > 1;
     return (
         <View>
@@ -47,7 +46,6 @@ const DefaultHeader = withRouter((props) => {
 });
 
 const ModalHeader = withRouter((props) => {
-    console.log(props);
     const canGoBack = props && props.scenes.length > 1;
     return (
         <View style={{backgroundColor:'white'}}>

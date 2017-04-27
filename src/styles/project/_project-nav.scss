@@ -1,6 +1,4 @@
 nav.navbar {
-  padding: 0;
-  margin-bottom: 0;
   .tabs {
     display: inline-block;
     .tabs-nav {
@@ -29,6 +27,7 @@ nav.navbar {
     }
   }
   .popover-right {
-    left: -175px;
+	  left: -75px;
+	  top: 35px;
   }
 }

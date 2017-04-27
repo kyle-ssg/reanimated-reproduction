@@ -3,114 +3,118 @@
  */
 import MaskedInput from 'react-maskedinput';
 const maskedCharacters = {
-  'a': {
-    validate(char) {
-      return /[ap]/.test(char);
-    },
-  },
-  'm': {
-    validate(char) {
-      return /\w/.test(char);
-    },
-    transform() {
-      return 'm';
-    }
-  }
+	'a': {
+		validate(char) {
+			return /[ap]/.test(char);
+		},
+	},
+	'm': {
+		validate(char) {
+			return /\w/.test(char);
+		},
+		transform() {
+			return 'm';
+		}
+	}
 };
 const Input = class extends React.Component {
-  displayName:'Input'
+	displayName: 'Input'
 
-  constructor (props, context) {
-    super(props, context);
-    this.state = { shouldValidate: false };
-  }
+	constructor(props, context) {
+		super(props, context);
+		this.state = {shouldValidate: false};
+	}
 
-  onFocus = (e) => {
-    this.setState({
-      isFocused: true
-    });
-    this.props.onFocus && this.props.onFocus(e);
-  }
+	onFocus = (e) => {
+		this.setState({
+			isFocused: true
+		});
+		this.props.onFocus && this.props.onFocus(e);
+	}
 
-  onKeyDown = (e) => {
-    if (Utils.keys.isEscape(e)) {
-      this.refs.input.blur();
-    }
-    this.props.onKeyDown && this.props.onKeyDown(e);
-  }
+	focus = () => {
+		this.refs.input.focus()
+	}
 
-  validate = () => {
-    this.setState({
-      shouldValidate: true
-    });
-  }
+	onKeyDown = (e) => {
+		if (Utils.keys.isEscape(e)) {
+			this.refs.input.blur();
+		}
+		this.props.onKeyDown && this.props.onKeyDown(e);
+	}
 
-  onBlur = (e) => {
-    this.setState({
-      shouldValidate: true,
-      isFocused: false
-    });
-    this.props.onBlur && this.props.onBlur(e);
-  }
+	validate = () => {
+		this.setState({
+			shouldValidate: true
+		});
+	}
 
-  render () {
-    const {isValid, onSearchChange, mask, placeholderChar, ...rest} = this.props;
+	onBlur = (e) => {
+		this.setState({
+			shouldValidate: true,
+			isFocused: false
+		});
+		this.props.onBlur && this.props.onBlur(e);
+	}
 
-    const className = cn({
-      'input-container': true,
-      'focused': this.state.isFocused,
-      'invalid': this.state.shouldValidate && !isValid
-    }, this.props.className);
+	render() {
+		const {isValid, onSearchChange, mask, placeholderChar, ...rest} = this.props;
 
-    const inputClassName = cn({
-      input: true
-    }, this.props.inputClassName);
+		const className = cn({
+			'input-container': true,
+			'focused': this.state.isFocused,
+			'invalid': this.state.shouldValidate && !isValid
+		}, this.props.className);
 
-    return (
-      <div
-        className={className}>
-        {mask ? (
-          <MaskedInput
-            ref="input"
-            {...rest}
-            mask={this.props.mask}
-            formatCharacters={maskedCharacters}
-            onKeyDown={this.onKeyDown}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-            className={inputClassName}
-            placeholderChar={placeholderChar}/>
-        ) : (
-          <input
-            ref="input"
-            {...rest} onFocus={this.onFocus}
-            onKeyDown={this.onKeyDown}
-            onBlur={this.onBlur}
-            className={inputClassName}/>
-        )}
-        <hr/>
-        <hr className="highlight"/>
-      </div>
-    );
-  }
+		const inputClassName = cn({
+			input: true
+		}, this.props.inputClassName);
+
+		return (
+			<div
+				className={className}>
+				{mask ? (
+						<MaskedInput
+							ref="input"
+							{...rest}
+							mask={this.props.mask}
+							formatCharacters={maskedCharacters}
+							onKeyDown={this.onKeyDown}
+							onFocus={this.onFocus}
+							onBlur={this.onBlur}
+							className={inputClassName}
+							placeholderChar={placeholderChar}/>
+					) : (
+						<input
+							ref="input"
+							{...rest} onFocus={this.onFocus}
+							onKeyDown={this.onKeyDown}
+							onBlur={this.onBlur}
+							className={inputClassName}/>
+					)}
+				<hr/>
+				<hr className="highlight"/>
+			</div>
+		);
+	}
 };
 
 Input.defaultProps = {
-  className: '',
-  placeholderChar: ' ',
-  isValid: true
+	className: '',
+	placeholderChar: ' ',
+	isValid: true
 };
 
 Input.propTypes = {
-  isValid: React.PropTypes.any,
-  onKeyDown: OptionalFunc,
-  onFocus: OptionalFunc,
-  onBlur: OptionalFunc,
-  placeholderChar: OptionalString,
-  mask: OptionalString,
-  className: React.PropTypes.any,
-  inputClassName: OptionalString,
-  onSearchChange: OptionalFunc
+	isValid: React.PropTypes.any,
+	onKeyDown: OptionalFunc,
+	onFocus: OptionalFunc,
+	onBlur: OptionalFunc,
+	placeholderChar: OptionalString,
+	mask: OptionalString,
+	className: React.PropTypes.any,
+	inputClassName: OptionalString,
+	onSearchChange: OptionalFunc
 };
 
 module.exports = Input;

@@ -1,103 +1,109 @@
 import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
-import Tabs from '../components/base/forms/Tabs';
-import TabItem from '../components/base/forms/TabItem';
 import Popover from '../components/base/Popover';
+import AccountStore from '../common/stores/account-store';
+import {browserHistory} from 'react-router';
 
-const NavTabItem = (props)=>(
-  <span value={props.value} className="flex-row row centered-container">
-    <span className={`flex-column fa fa-${props.icon} tab-icon`}/>
-    <span className="flex-column hidden-xs-down">{props.title}</span>
-  </span>
-);
-
-NavTabItem.displayName = "NavTabItem";
-NavTabItem.propTypes = {
-  value: RequiredString,
-  title: RequiredString,
-  icon: RequiredString
-};
+if (document.location.pathname != '/' && !AccountStore.getUser()) { //redirect before login
+	browserHistory.push('/?redirect=' + encodeURIComponent(document.location.pathname));
+}
 
 export default class App extends Component {
 
-  static propTypes = {
-    children: PropTypes.element.isRequired
-  };
+	static propTypes = {
+		children: PropTypes.element.isRequired
+	};
 
-  constructor (props, context) {
-    super(props, context);
-    firebase.initializeApp(Project.firebase);
-    FireAuth.init({
-      fbAppId: Project.facebook.appId,
-      apiKey: Project.firebase.apiKey,
-      webClientId: Project.google.webClientId
-    });
-    this.state = {};
-  }
 
-  selectTab = (tab) => {
-    const { history } = this.props;
+	static contextTypes = {
+		router: React.PropTypes.object.isRequired
+	};
 
-    switch (tab) {
-      case 0:
-        history.push('/');
-        break;
-      case 1:
-        history.push('layout');
-        break;
-      case 2:
-        history.push('unknownPage');
-        break;
-      case 3:
-        history.push('sassinfo');
-        break;
-    }
-  }
+	constructor(props, context) {
+		super(props, context);
+	}
 
-  getSelectedTab = () => {
-    const paths = this.props.location.pathname.split('/');
-    switch (paths[paths.length == 1 ? 0 : 1]) {
-      case '':
-        return 0;
-      case 'layout':
-        return 1;
-      default:
-        return 2;
-      case 'sassinfo':
-        return 3;
-    }
-  }
+	onLogin = () => {
+		const {redirect} = this.props.location.query;
+		this.context.router.push(redirect ? redirect : window.loginRedirect);
+	};
 
-  render () {
-    return (
-      <div>
-        <nav className="navbar navbar-fixed-top navbar-light bg-faded">
-          <Tabs value={this.getSelectedTab()} onChange={this.selectTab}>
-            <TabItem tabLabel={<NavTabItem value="home" title="Home" icon="home"/>}/>
-            <TabItem tabLabel={<NavTabItem value="layout" title="Layout" icon="th"/>}/>
-            <TabItem tabLabel={<NavTabItem value="uh" title="404" icon="meh-o"/>}/>
-            <TabItem tabLabel={<NavTabItem value="sassinfo" title="Bootstrap" icon="css3"/>}/>
-          </Tabs>
-          <div className="navbar-right">
-            <div className="flex-column">
-              <Popover isHover={true} className="popover-right" renderTitle={()=><div className="flex-column fa fa-chevron-down"/>}>
-                <span href="test">
-                     <Link to="exampleone">Example 1</Link>
-                </span>
-              </Popover>
-            </div>
-          </div>
-        </nav>
+	onLogout = () => {
+		this.context.router.replace(window.logoutRedirect);
+	};
 
-        <div>
-          {this.props.children}
-        </div>
-      </div>
-    );
-  }
+	onNoUser = () => { //User not found in firebase local storage
+
+	};
+
+	render() {
+		return (
+			<div>
+				<AccountProvider onNoUser={this.onNoUser} onLogout={this.onLogout} onLogin={this.onLogin}>
+					{({isLoading, user}) => (
+						<nav className="navbar navbar-toggleable-md navbar-light bg-faded">
+							<button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+									data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+									aria-expanded="false" aria-label="Toggle navigation">
+								<span className="navbar-toggler-icon"></span>
+							</button>
+							<Link className="navbar-brand" to={user ? window.loginRedirect : ""}>Brand</Link>
+
+							<div className="collapse navbar-collapse" id="navbarSupportedContent">
+								<ul className="navbar-nav mr-auto">
+									<li className="nav-item">
+										<Link activeClassName="active" className="nav-link"
+											  to={user ? window.loginRedirect : ""}>Home</Link>
+									</li>
+
+									<li className="nav-item">
+										<Link activeClassName="active" className="nav-link" to="404">Example
+											404</Link>
+									</li>
+
+									{user && (
+										<li className="nav-item">
+											<Link activeClassName="active" className="nav-link"
+												  to="sass">Sass</Link>
+										</li>
+									)}
+									{user && (
+										<li className="nav-item">
+											<Link activeClassName="active" className="nav-link"
+												  to="layout">Layout</Link>
+										</li>
+									)}
+								</ul>
+								{user && (
+									<div className="flex-column relative nav-link">
+										<Popover className="popover-right"
+												 renderTitle={(toggle) => (
+													 <a onClick={toggle}>
+														 {user.displayName}
+														 <div className="flex-column fa fa-chevron-down"/>
+													 </a>
+												 )}>
+											{(toggle) => (
+												<div>
+														<span href="test">
+													 <a href="#" onClick={FireAuth.logout} to="exampleone">Logout</a>
+												</span>
+												</div>
+											)}
+										</Popover>
+									</div>
+								)}
+							</div>
+						</nav>
+					)}
+				</AccountProvider>
+				{this.props.children}
+			</div>
+		);
+	}
 }
 
 App.propTypes = {
-  location: RequiredObject,
-  history: RequiredObject,
+	location: RequiredObject,
+	history: RequiredObject,
 };

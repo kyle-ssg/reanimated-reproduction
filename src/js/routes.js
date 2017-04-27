@@ -3,18 +3,27 @@ import {Route, IndexRoute, Redirect} from 'react-router';
 
 import App from './components/App';
 import HomePage from './components/pages/HomePage';
-import LayoutPage from './components/pages/LayoutPage';
-import SassPage from './components/pages/SassPage';
+import AccountPage from './components/pages/AccountPage';
 import NotFoundPage from './components/pages/NotFoundPage';
-import ExampleOne from './components/pages/ExampleOne';
+
+//Examples
+import LayoutPage from './components/pages/examples/LayoutPage';
+import SassPage from './components/pages/examples/SassPage';
+import Examples from './components/pages/examples/Examples';
 
 export default (
-  <Route path="/" component={App}>
-    <IndexRoute component={HomePage}/>
-    <Route path="layout" component={LayoutPage}/>
-    <Route path="sassinfo" component={SassPage}/>
-    <Route path="exampleone" component={ExampleOne}/>
-    <Route path="404" component={NotFoundPage}/>
-    <Redirect from="*" to="404"/>
-  </Route>
+	<Route path="/" component={App}>
+		<IndexRoute component={HomePage}/>
+		<Route path="account" component={AccountPage}/>
+		<Route path="layout" component={LayoutPage}/>
+		<Route path="sass" component={SassPage}/>
+		<Route path="example" component={Examples}/>
+		<Route path="404" component={NotFoundPage}/>
+		<Redirect from="*" to="404"/>
+	</Route>
 );
+
+//Configure login / logout redirects
+window.loginRedirect = '/account';
+window.loginPromptRedirect = '/';
+window.logoutRedirect = '/';

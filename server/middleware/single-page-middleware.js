@@ -1,4 +1,4 @@
-module.exports = function(req, res, next) {
+module.exports = function (req, res, next) {
 
 	const headers = req.headers;
 	let rewriteTarget = '/index.html';
@@ -10,7 +10,7 @@ module.exports = function(req, res, next) {
 			req.url,
 			'because the method is not GET.'
 		);
-		req.url = rewriteTarget.split('/')[rewriteTarget.split('/').length-1];
+		req.url = rewriteTarget.split('/')[rewriteTarget.split('/').length - 1];
 		return next();
 	} else if (!headers || typeof headers.accept !== 'string') {
 		console.log(
@@ -19,7 +19,7 @@ module.exports = function(req, res, next) {
 			req.url,
 			'because the client did not send an HTTP accept header.'
 		);
-		req.url = rewriteTarget.split('/')[rewriteTarget.split('/').length-1];
+		req.url = rewriteTarget.split('/')[rewriteTarget.split('/').length - 1];
 		return next();
 	} else if (headers.accept.indexOf('application/json') === 0) {
 		console.log(
@@ -28,7 +28,7 @@ module.exports = function(req, res, next) {
 			req.url,
 			'because the client prefers JSON.'
 		);
-		req.url = rewriteTarget.split('/')[rewriteTarget.split('/').length-1];
+		req.url = rewriteTarget.split('/')[rewriteTarget.split('/').length - 1];
 		return next();
 	} else if (headers.accept.indexOf('html') == -1) {
 		console.log(
@@ -37,12 +37,22 @@ module.exports = function(req, res, next) {
 			req.url,
 			'because the client does not accept HTML.'
 		);
-		req.url = '/' + req.url.split('/')[req.url.split('/').length-1];
+		req.url = '/' + req.url.split('/')[req.url.split('/').length - 1];
 		return next();
-	};
+	}
+	;
 
 	var parsedUrl = req.url;
 
+	if (parsedUrl.indexOf('/api/') !== -1) {
+		console.log(
+			'Not rewriting',
+			req.method,
+			req.url,
+			'because the path includes /api.'
+		);
+		return next();
+	}
 	if (parsedUrl.indexOf('.') !== -1 && parsedUrl.indexOf('t/') == -1) {
 		console.log(
 			'Not rewriting',
@@ -52,6 +62,8 @@ module.exports = function(req, res, next) {
 		);
 		return next();
 	}
+
+	console.log("Rewriting target", req.url);
 
 	rewriteTarget = '/';
 	req.url = rewriteTarget;

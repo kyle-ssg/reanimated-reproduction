@@ -1,4 +1,21 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        // The Fabric Gradle plugin uses an open ended version to react
+        // quickly to Android tooling updates
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
 apply plugin: "com.android.application"
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
 
 import com.android.build.OutputFile
 
@@ -135,6 +152,10 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-fabric')
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.7@aar') {
+        transitive = true;
+    }
     compile project(':react-native-branch')
     compile project(':react-native-fabric-digits')
     compile project(':react-native-google-sign-in')

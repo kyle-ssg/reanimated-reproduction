@@ -1,9 +1,7 @@
 module.exports = {
   debug: false,
   env: 'dev',
-  api: {
-    live: ''
-  },
+  api:'http://featureflagger.3qqe.flynnhub.com/api/',
   analytics: 'eJ4jplD0TFwOmZAyV801eB1quoAKSUBn',
   google: {
     iosClientId: '603463597415-em1lk1r3fe779jnsetq85ouapdfma0c3.apps.googleusercontent.com',
