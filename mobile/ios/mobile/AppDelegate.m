@@ -14,6 +14,7 @@
 
 #import <Fabric/Fabric.h>
 #import <DigitsKit/DigitsKit.h>
+#import <Crashlytics/Crashlytics.h>
 #import "RNFIRMessaging.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
@@ -44,7 +45,7 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   
-  [Fabric with:@[[Digits class]]];
+  [Fabric with:@[[Digits class], [Crashlytics class]]];
   
   [FIRApp configure];
   [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
