@@ -30,8 +30,7 @@ const TheComponent = class extends Component {
 				isLoading: false,
 				isSaving: false,
 				user: AccountStore.getUser()
-			});
-			this.props.onLogout && this.props.onLogout();
+			},this.props.onLogout);
 		});
 		this.listenTo(AccountStore, 'no-user', () => {
 			this.setState({

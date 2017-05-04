@@ -36,20 +36,18 @@ module.exports = {
 				new ExtractTextPlugin({filename: "style.[hash].css", allChunks: true}),
 
 			]
-			//for each page, produce a html file with base assets
-				.concat(require('./pages').map(function (page) {
-					console.log(page);
-					return new HtmlWebpackPlugin({
-							filename: page + '.html', //output
-							template: './src/' + page + '.html', //template to use
-							"assets": { //add these script/link tags
-								"client": "[hash].js",
-								"style": "style.[hash].css"
-							}
-						}
-					)
-				}))
-		),
+		)
+		.concat(require('./pages').map(function (page) {
+			console.log(page);
+			return new HtmlWebpackPlugin({
+					filename: page + '.handlebars', //output
+					template: './src/' + page + '.handlebars', //template to use
+					"assets": { //add these script/link tags
+						"client": "[hash].js",
+					}
+				}
+			)
+		})),
 
 	module: {
 		loaders: require('./loaders').concat([

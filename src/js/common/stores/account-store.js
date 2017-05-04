@@ -8,8 +8,8 @@ var controller = {
 				store.loaded();
 			} else {
 				if (!user) {
+					store.model = null;
 					store.trigger(store.model ? 'logout' : 'no-user');
-					store.model = user;
 				}
 			}
 		},

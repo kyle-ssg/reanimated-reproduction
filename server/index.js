@@ -18,6 +18,7 @@ if (isDev) { //Serve files from src directory and use webpack-dev-server
 	app.set('views', 'src/');
 	app.use(express.static('src'));
 } else { //Serve files from build directory
+	console.log('Running production mode');
 	app.use(express.static('build'));
 	app.set('views', 'build/');
 }

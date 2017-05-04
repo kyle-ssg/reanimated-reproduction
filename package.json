@@ -1,10 +1,10 @@
 {
-  "name": "kimble-broker",
+  "name": "ssg-frontend-boilderplate",
   "version": "0.1.1",
   "description": "Node Express Boilerplate",
   "main": "index.js",
   "scripts": {
-    "start": "npm run bundle && node ./server",
+    "start": "npm run bundle && NODE_ENV=production node ./server",
     "dev": "./node_modules/.bin/webpack-dashboard -m -- nodemon --watch server --ignore server/config/config.json --watch webpack --exec node ./server",
     "test": "nodemon --exec mocha ./server/tests/",
     "bundle": "node node_modules/.bin/webpack -p --progress --config ./webpack/webpack.config.prod.js"
