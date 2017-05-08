@@ -71,9 +71,9 @@ fastlane beta
 Either use boilerplate project or create new firebase project. Replace existing ```google-services.json``` in project.
 
 ## Create android signing key
-Enter android for alias and password
+This will create a keystore within the project used to sign the apk - do not commit it to git!
 ```
-npm run androidDeploy
+npm run keystore
 ```
 
 ## Set the app title
