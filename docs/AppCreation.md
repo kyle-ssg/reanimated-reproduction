@@ -73,7 +73,7 @@ Either use boilerplate project or create new firebase project. Replace existing 
 ## Create android signing key
 Enter android for alias and password
 ```
-keytool -genkey -v -keystore ./android/keystores/release.keystore -alias android -keyalg RSA -keysize 2048 -validity 10000
+npm run androidDeploy
 ```
 
 ## Set the app title
