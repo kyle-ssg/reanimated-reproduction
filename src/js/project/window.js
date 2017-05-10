@@ -49,7 +49,6 @@ window.FormGroup = require('../components/base/grid/FormGroup');
 window.InputGroup = require('../components/base/forms/InputGroup');
 window.ListView = require('../components/base/ListView');
 window.Highlighter = require('../components/base/Highlighter');
-window.Error = require('../components/base/Error');
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 global.Select = Select;

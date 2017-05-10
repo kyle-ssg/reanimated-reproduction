@@ -73,6 +73,28 @@ export default class App extends Component {
 												  to="layout">Layout</Link>
 										</li>
 									)}
+									{user && (
+										<li className="flex-column relative nav-link">
+											<Popover
+												className="popover-right"
+												renderTitle={(toggle) => (
+													 <a onClick={toggle}>
+														 Virtualized
+														 <div className="flex-column fa fa-chevron-down"/>
+													 </a>
+												 )}>
+												 {(toggle) => (
+													<div>
+														<Link activeClassName="active" className="nav-link" onClick={toggle}
+												 		 	to="virtualized">Examples</Link>
+														<Link activeClassName="active" className="nav-link" onClick={toggle}
+												  			to="infiniteWindowScrollList">Infinite Window Scrolling List</Link>
+													</div>
+												)}
+											</Popover>
+
+										</li>
+									)}
 								</ul>
 								{user && (
 									<div className="flex-column relative nav-link">
