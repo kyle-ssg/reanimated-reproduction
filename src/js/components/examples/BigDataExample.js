@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlexTable, AutoSizer, FlexColumn, SortDirection} from 'react-virtualized';
+import {Table, AutoSizer, Column, SortDirection} from 'react-virtualized';
 const size = 100000;
 var list = _.range(0, size).map(function (i) {
     return { id: i + 1, description: Utils.GUID() };
@@ -54,7 +54,7 @@ module.exports = class extends React.Component {
                 </h2>
                 <AutoSizer disableHeight>
                     {({ width }) => (
-                        <FlexTable
+                        <Table
                             className="table"
                             height={300}
                             width={width}
@@ -72,7 +72,7 @@ module.exports = class extends React.Component {
                                 ({ index }) => list[index]
                             }
                         >
-                            <FlexColumn
+                            <Column
                                 headerRenderer={this.renderHeader}
                                 className="test"
                                 label='ID'
@@ -80,7 +80,7 @@ module.exports = class extends React.Component {
                                 width={100}
                             />
 
-                            <FlexColumn
+                            <Column
                                 headerRenderer={this.renderHeader}
                                 width={width}
                                 label='Description'
@@ -90,7 +90,7 @@ module.exports = class extends React.Component {
                                 )}
                             />
 
-                        </FlexTable>
+                        </Table>
                     )}
                 </AutoSizer>
             </div>
