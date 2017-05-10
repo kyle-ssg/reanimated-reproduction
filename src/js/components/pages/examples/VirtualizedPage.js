@@ -2,7 +2,7 @@
  * Created by kylejohnson on 21/08/2016.
  */
 import BigDataExample from '../../examples/BigDataExample';
-import InfiniteLoadingList from '../../examples/InfiniteLoadingList';
+import InfiniteLoadingList from '../../../components/base/InfiniteLoadingList';
 
 const TheComponent = class extends React.Component {
     displayName: 'TheComponent'
