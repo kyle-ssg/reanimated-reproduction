@@ -1,20 +1,18 @@
 import Menu from './menus/DefaultMenu';
-
+import Modals from '../apis/modals';
 const TheComponent = class extends React.Component {
     displayName: 'TheComponent'
 
-    constructor (props, context) {
+    constructor(props, context) {
         super(props, context);
         this.state = {};
     }
 
-    componentDidMount () {
-        ReactNative.BackAndroid.addEventListener('hardwareBackPress', this.onBackPress.bind(this));
-        this.refs.menu.openMenu();
-
+    componentDidMount() {
+        Modals(this);
     }
 
-    onMenuPress () {
+    onMenuPress() {
         this.refs.menu.openMenu(true);
     }
 
@@ -28,47 +26,27 @@ const TheComponent = class extends React.Component {
         return false;
     }
 
-    onMenuItemPressed (data) {
+    onMenuItemPressed(data) {
         if (data.id === 'logout') {
             return AppActions.logout();
         }
-        this.refs.menu.openMenu();
     }
 
-    closeMenu () {
-        this.refs.menu.openMenu(false);
-    }
-
-    render () {
+    render() {
         return (
             <Flex>
-                <SideMenu ref="menu" menuPosition="right" menu={<Menu closeMenu={this.closeMenu.bind(this)}
-                                                                      onPress={this.onMenuItemPressed.bind(this)}/>}>
-                    {this.props.children}
-                </SideMenu>
-                {this.state.modalComponent && (
-                    <Modal
-                        autostart={true}
-                        direction={this.state.modalDirection}
-                        animation={this.state.modalAnimation}
-                        onDismiss={closeModal}
-                        duration={this.state.modalDuration}
-                        fade={this.state.modalFade}
-                        size={this.state.modalSize} value={this.state.showModal}>
-                        {this.state.modalComponent}
-                    </Modal>
-                )}
-                {this.state.selectComponent && (
-                    <Modal direction={this.state.selectDirection}
-                           animation={this.state.selectAnimation}
-                           onDismiss={closeSelect}
-                           duration={this.state.selectDuration}
-                           fade={this.state.selectFade}
-                           size={this.state.selectSize}
-                           value={this.state.showSelect}>
-                        {this.state.selectComponent}
-                    </Modal>
-                )}
+                {this.props.children}
+
+                <Modal
+                    animationType={"slide"}
+                    visible={this.state.showModal?true:false}>
+                    {this.state.modalComponent}
+                </Modal>
+                <Modal
+                    animationType={"slide"}
+                    visible={this.state.showSelect?true:false}>
+                    {this.state.selectComponent}
+                </Modal>
             </Flex>
         );
     }

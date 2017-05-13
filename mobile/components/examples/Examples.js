@@ -1,221 +1,276 @@
-import InfiniteScrollExample from './InfiniteScrollExample';
-import ExampleModal from './ExampleModal';
-import PushExample from './PushExample';
-import DigitsExample from './DigitsExample';
+// import InfiniteScrollExample from './InfiniteScrollExample';
+// import ExampleModal from './ExampleModal';
+// import PushExample from './PushExample';
+// import DigitsExample from './DigitsExample';
+//
+// module.exports = class extends React.Component {
+//     constructor(props, context) {
+//         super(props, context);
+//         this.state = {
+//             firstName: 'kyle',
+//             lastName: 'Johnson',
+//             email: "Kyle@solidstategroup.com",
+//             password: "test12345"
+//         };
+//         firebase.initializeApp(Project.firebase);
+//         FireAuth.init({ iosClientId: Project.google.iosClientId });
+//         FireAuth.setup(this.onLogin, this.onUserChange, this.onLogout, this.onEmailVerified, this.onError);
+//     }
+//
+//     onLogin = (user, profile) => {
+//         console.log('logged in');
+//         this.setState({
+//             isLoading: false,
+//             user,
+//             profile
+//         });
+//     }
+//
+//     onUserChange = (user, profile) => {
+//         this.setState({
+//             user,
+//             profile
+//         });
+//     }
+//
+//     onLogout = () => {
+//         this.setState({
+//             isLoading: false,
+//             user: null,
+//             profile: null
+//         });
+//     }
+//
+//     onUserChange = (user, profile) => {
+//         alert(profile);
+//     };
+//
+//     onEmailVerified = () => {
+//         alert('Welcome Thanks for verifying your email');
+//     };
+//
+//     onError = (err) => {
+//         alert(typeof err == 'object' ? JSON.stringify(err) : err);
+//     };
+//
+//     register() {
+//         const { email, password, firstName, lastName } = this.state;
+//         FireAuth.register(email, password, { firstName, lastName });
+//     }
+//
+//     login() {
+//         const { email, password } = this.state;
+//         FireAuth.login(email, password);
+//     }
+//
+//     facebook() {
+//         FireAuth.facebookLogin();
+//     }
+//
+//     google() {
+//         FireAuth.googleLogin();
+//     }
+//
+//     badCode() {
+//         a.b = c;
+//     }
+//
+//     navigate = () => {
+//         this.props.navigation.navigate('Other', {name: 'Lucy'})
+//     }
+//
+//     render() {
+//         return (
+//             <Flex style={Styles.body}>
+//                 <ScrollableTabView   {...Constants.defaultTabStyles}>
+//                     <Flex style={Styles.centeredContainer} tabLabel={"Login"}>
+//                         <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
+//                             <View style={Styles.formGroup}>
+//                                 <TextInput value={this.state.email}
+//                                            onChangeText={(text) => this.setState({ email: text }) }
+//                                            placeholder="Email" style={Styles.textInput}/>
+//                                 <TextInput value={this.state.password}
+//                                            onChangeText={(text) => this.setState({ password: text }) }
+//                                            placeholder="Password" secureTextEntry={true} style={Styles.textInput}/>
+//                             </View>
+//                             <Button onPress={this.login.bind(this) } style={[Styles.button, Styles.buttonPrimary]}>
+//                                 <Text style={Styles.buttonTextLight}>
+//                                     {'login to upper case'.toUpperCase()}
+//                                 </Text>
+//                             </Button>
+//                         </View>
+//                     </Flex>
+//                     <ScrollView tabLabel={"Register"}>
+//                         <Flex style={Styles.container}>
+//                             {!this.state.profile ? (
+//                                     <View>
+//                                         <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
+//                                             <View style={Styles.formGroup}>
+//                                                 <TextInput value={this.state.firstName}
+//                                                            onChangeText={(text) => this.setState({ firstName: text }) }
+//                                                            placeholder="First name"
+//                                                            secureTextEntry={true} style={Styles.textInput}/>
+//                                                 <TextInput value={this.state.lastName}
+//                                                            onChangeText={(text) => this.setState({ lastName: text }) }
+//                                                            placeholder="Last name" secureTextEntry={true}
+//                                                            style={Styles.textInput}/>
+//                                                 <TextInput value={this.state.email}
+//                                                            onChangeText={(text) => this.setState({ email: text }) }
+//                                                            placeholder="Email" style={Styles.textInput}/>
+//                                                 <TextInput value={this.state.password}
+//                                                            onChangeText={(text) => this.setState({ password: text }) }
+//                                                            placeholder="Password" secureTextEntry={true}
+//                                                            style={Styles.textInput}/>
+//                                             </View>
+//                                             <Button onPress={this.register.bind(this) } style={Styles.buttonPrimary}>
+//                                                 <Text style={Styles.buttonTextLight}>
+//                                                     Register
+//                                                 </Text>
+//                                             </Button>
+//                                         </View>
+//                                         <View><H1>Or</H1></View>
+//                                         <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
+//                                             <Button onPress={this.facebook.bind(this) }
+//                                                     style={[Styles.buttonFacebook, Styles.buttonWithIcon]}>
+//                                                 <ION style={[Styles.buttonText, Styles.buttonIcon]}
+//                                                      name="logo-facebook"/>
+//                                                 <Text style={Styles.buttonText}>Facebook</Text>
+//                                             </Button>
+//                                             <Button onPress={this.google.bind(this) } style={Styles.buttonGoogle}>
+//                                                 <Text style={Styles.buttonText}>Google</Text>
+//                                             </Button>
+//                                             <Button onPress={this.google.bind(this) } style={Styles.buttonPrimary}>
+//                                                 <Text style={Styles.text}>Purchase Item</Text>
+//                                                 <Text style={Styles.buttonSup}>(£25.00)</Text>
+//                                             </Button>
+//                                         </View></View>) : (
+//                                     <Button onClick={FireAuth.logout}>
+//                                         Logout
+//                                     </Button>
+//                                 )}
+//                         </Flex>
+//                     </ScrollView>
+//                     <ScrollView style={Styles.container} tabLabel={"Examples"}>
+//                         <Card>
+//                             <View style={[Styles.listContainer, Styles.noBackground]}>
+//                                 <ListItem onPress={this.navigate} style={Styles.listItem}>
+//                                     <Text style={Styles.listItemTitle}>List Item Title</Text>
+//                                 </ListItem>
+//                                 <ListItem onPress={this.navigate} style={Styles.listItem}>
+//                                     <Text style={Styles.listItemText}>List Item</Text>
+//                                     <ION name="ios-arrow-forward" style={[Styles.listIcon, Styles.listActionIcon]}/>
+//                                 </ListItem>
+//                                 <ListItem onPress={this.navigate} style={Styles.listHeader}>
+//                                     <Text style={[Styles.listHeaderText, Styles.bold]}>List Items Header</Text>
+//                                 </ListItem>
+//                                 <ListItem onPress={this.navigate} style={Styles.listItem}>
+//                                     <ION name="ios-american-football" style={Styles.listIcon}/>
+//                                     <Text style={Styles.listItemText}>List Item</Text>
+//                                 </ListItem>
+//                                 <ListItem onPress={this.navigate} style={[Styles.listItem, Styles.listItemLast]}>
+//                                     <ION name="ios-american-football" style={Styles.listIcon}/>
+//                                     <Text style={Styles.listItemText}>List Item</Text>
+//                                     <ION name="ios-arrow-forward" style={[Styles.listIcon, Styles.listActionIcon]}/>
+//                                 </ListItem>
+//                             </View>
+//                         </Card>
+//
+//                         <FormGroup width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
+//                             <Card>
+//                                 <FormGroup>
+//                                     <Button onPress={() => openModal(<ExampleModal/>)}>Open Modal</Button>
+//                                 </FormGroup>
+//                                 <FormGroup>
+//                                     <Button onPress={() => openModal(<WebModal uri="https://google.com"/>)}>Open Web
+//                                         Modal</Button>
+//                                 </FormGroup>
+//                             </Card>
+//                         </FormGroup>
+//                         <FormGroup width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
+//                             <Card style={Styles.container}>
+//                                 <Text style={Styles.label}>Masked Date</Text>
+//                                 <TextInput value={this.state.maskedDate}
+//                                            onChangeText={(text) => this.setState({ maskedDate: text }) }
+//                                            placeholder="dd/yy" mask="11/11" style={Styles.textInput}/>
+//                                 <Text style={Styles.label}>Masked Time</Text>
+//                                 <TextInput value={this.state.maskedTime}
+//                                            onChangeText={(text) => this.setState({ maskedTime: text }) }
+//                                            placeholder="hh:mm am" mask="11:11 am" style={Styles.textInput}/>
+//
+//                             </Card>
+//                         </FormGroup>
+//                         <FormGroup width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
+//                             <Card>
+//                                 <Text style={Styles.label}>Twitter Digits</Text>
+//                                 <DigitsExample/>
+//                             </Card>
+//                         </FormGroup>
+//                     </ScrollView>
+//                     <Flex tabLabel={"Notifications"}>
+//                         <PushExample/>
+//                     </Flex>
+//                     <Flex tabLabel={"Crashlytics"}>
+//                         <Flex style={Styles.centeredContainer}>
+//                             <Button style={Styles.rounded} onPress={Crashlytics.crash}>
+//                                 <Text style={Styles.buttonText}>Crash app!</Text>
+//                             </Button>
+//                             <Button style={Styles.rounded}
+//                                     onPress={() => Platform.OS == 'ios' ? Crashlytics.recordError('something went wrong but not really!') : Crashlytics.logException('something went wrong but not really!')}>
+//                                 <Text style={Styles.buttonText}>Record non-fatal JS error</Text>
+//                             </Button>
+//                             <Button style={Styles.rounded} onPress={this.badCode}>
+//                                 <Text style={Styles.buttonText}>Generate a JS crash</Text>
+//                             </Button>
+//                         </Flex>
+//                     </Flex>
+//                 </ScrollableTabView>
+//             </Flex>
+//         );
+//     }
+// };
 
-module.exports = class extends React.Component {
-    constructor (props, context) {
+
+import React, {Component, PropTypes} from 'react';
+import {FlatList} from 'react-native';
+const TheComponent = class extends Component {
+    displayName: 'TheComponent'
+
+    constructor(props, context) {
         super(props, context);
         this.state = {
-            firstName: 'kyle',
-            lastName: 'Johnson',
-            email: "Kyle@solidstategroup.com",
-            password: "test12345"
+            data: _.range(0, 100).map((i) => (
+                {
+                    bla: 1,
+                    key: i
+                }
+            ))
         };
-        firebase.initializeApp(Project.firebase);
-        FireAuth.init({iosClientId: Project.google.iosClientId});
-        FireAuth.setup(this.onLogin, this.onUserChange, this.onLogout, this.onEmailVerified, this.onError);
+        setInterval(() => {
+            this.setState({
+                data: [{ key: Utils.GUID() }].concat(this.state.data)
+            })
+        }, 500)
     }
 
-	onLogin = (user, profile) => {
-		console.log('logged in');
-        this.setState({
-            isLoading: false,
-            user,
-            profile
-        });
-    }
-
-    onUserChange = (user, profile) => {
-        this.setState({
-            user,
-            profile
-        });
-    }
-
-    onLogout = () => {
-        this.setState({
-            isLoading: false,
-            user: null,
-            profile: null
-        });
-    }
-
-    onUserChange = (user, profile) => {
-        alert(profile);
-    };
-
-    onEmailVerified = () => {
-        alert('Welcome Thanks for verifying your email');
-    };
-
-    onError = (err) => {
-        alert(typeof err == 'object' ? JSON.stringify(err) : err);
-    };
-
-    register () {
-        const { email, password, firstName, lastName } = this.state;
-        FireAuth.register(email, password, { firstName, lastName });
-    }
-
-    login () {
-        const { email, password } = this.state;
-        FireAuth.login(email, password);
-    }
-
-    facebook () {
-        FireAuth.facebookLogin();
-    }
-
-    google () {
-        FireAuth.googleLogin();
-    }
-
-	badCode () {
-		a.b = c;
-	}
-
-    render () {
+    render() {
         return (
-            <Flex style={Styles.body}>
-                <ScrollableTabView   {...Constants.defaultTabStyles}>
-                    <Flex style={Styles.centeredContainer} tabLabel={"Login"}>
-                        <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
-                            <View style={Styles.formGroup}>
-                                <TextInput value={this.state.email}
-                                           onChangeText={(text) => this.setState({ email: text }) }
-                                           placeholder="Email" style={Styles.textInput}/>
-                                <TextInput value={this.state.password}
-                                           onChangeText={(text) => this.setState({ password: text }) }
-                                           placeholder="Password" secureTextEntry={true} style={Styles.textInput}/>
-                            </View>
-                            <Button onPress={this.login.bind(this) } style={[Styles.button, Styles.buttonPrimary]}>
-                                <Text style={Styles.buttonTextLight}>
-                                    {'login to upper case'.toUpperCase()}
-                                </Text>
-                            </Button>
-                        </View>
-                    </Flex>
-                    <ScrollView tabLabel={"Register"}>
-                        <Flex style={Styles.container}>
-                            {!this.state.profile ? (
-							<View>
-							<View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
-                                <View style={Styles.formGroup}>
-                                    <TextInput value={this.state.firstName}
-                                               onChangeText={(text) => this.setState({ firstName: text }) }
-                                               placeholder="First name"
-                                               secureTextEntry={true} style={Styles.textInput}/>
-                                    <TextInput value={this.state.lastName}
-                                               onChangeText={(text) => this.setState({ lastName: text }) }
-                                               placeholder="Last name" secureTextEntry={true} style={Styles.textInput}/>
-                                    <TextInput value={this.state.email}
-                                               onChangeText={(text) => this.setState({ email: text }) }
-                                               placeholder="Email" style={Styles.textInput}/>
-                                    <TextInput value={this.state.password}
-                                               onChangeText={(text) => this.setState({ password: text }) }
-                                               placeholder="Password" secureTextEntry={true} style={Styles.textInput}/>
-                                </View>
-                                <Button onPress={this.register.bind(this) } style={Styles.buttonPrimary}>
-                                    <Text style={Styles.buttonTextLight}>
-                                        Register
-                                    </Text>
-                                </Button>
-                            </View>
-                            <View><H1>Or</H1></View>
-                            <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
-                                <Button onPress={this.facebook.bind(this) } style={[Styles.buttonFacebook, Styles.buttonWithIcon]}>
-                                    <ION style={[Styles.buttonText,Styles.buttonIcon]} name="logo-facebook"/>
-                                    <Text style={Styles.buttonText} >Facebook</Text>
-                                </Button>
-                                <Button onPress={this.google.bind(this) } style={Styles.buttonGoogle}>
-                                    <Text style={Styles.buttonText}>Google</Text>
-                                </Button>
-                                <Button onPress={this.google.bind(this) } style={Styles.buttonPrimary}>
-                                    <Text style={Styles.text}>Purchase Item</Text>
-                                    <Text style={Styles.buttonSup}>(£25.00)</Text>
-                                </Button>
-							</View></View>) : (
-								<Button onClick={FireAuth.logout}>
-									Logout
-								</Button>
-							)}
-                        </Flex>
-                    </ScrollView>
-                    <ScrollView style={Styles.container} tabLabel={"Examples"}>
-                        <Card>
-                            <View style={[Styles.listContainer,Styles.noBackground]}>
-                                <ListItem style={Styles.listItem}>
-                                    <Text style={Styles.listItemTitle}>List Item Title</Text>
-                                </ListItem>
-                                <ListItem style={Styles.listItem}>
-                                    <Text style={Styles.listItemText}>List Item</Text>
-                                    <ION name="ios-arrow-forward" style={[Styles.listIcon, Styles.listActionIcon]}/>
-                                </ListItem>
-                                <ListItem style={Styles.listHeader}>
-                                    <Text style={[Styles.listHeaderText, Styles.bold]}>List Items Header</Text>
-                                </ListItem>
-                                <ListItem style={Styles.listItem}>
-                                    <ION name="ios-american-football" style={Styles.listIcon}/>
-                                    <Text style={Styles.listItemText}>List Item</Text>
-                                </ListItem>
-                                <ListItem style={[Styles.listItem, Styles.listItemLast]}>
-                                    <ION name="ios-american-football" style={Styles.listIcon}/>
-                                    <Text style={Styles.listItemText}>List Item</Text>
-                                    <ION name="ios-arrow-forward" style={[Styles.listIcon, Styles.listActionIcon]}/>
-                                </ListItem>
-                            </View>
-                        </Card>
-
-                        <FormGroup width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
-                            <Card>
-                                <FormGroup>
-                                    <Button onPress={()=>openModal(<ExampleModal/>)}>Open Modal</Button>
-                                </FormGroup>
-                                <FormGroup>
-                                    <Button onPress={()=>openModal(<WebModal uri="https://google.com"/>)}>Open Web
-                                        Modal</Button>
-                                </FormGroup>
-                            </Card>
-                        </FormGroup>
-                        <FormGroup width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
-                            <Card style={Styles.container}>
-                                <Text style={Styles.label}>Masked Date</Text>
-                                <TextInput value={this.state.maskedDate}
-                                           onChangeText={(text) => this.setState({ maskedDate: text }) }
-                                           placeholder="dd/yy" mask="11/11" style={Styles.textInput}/>
-                                <Text style={Styles.label}>Masked Time</Text>
-                                <TextInput value={this.state.maskedTime}
-                                           onChangeText={(text) => this.setState({ maskedTime: text }) }
-                                           placeholder="hh:mm am" mask="11:11 am" style={Styles.textInput}/>
-
-                            </Card>
-                        </FormGroup>
-                        <FormGroup width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
-                            <Card>
-                                <Text style={Styles.label}>Twitter Digits</Text>
-                                <DigitsExample/>
-                            </Card>
-                        </FormGroup>
-                    </ScrollView>
-                    <Flex tabLabel={"Notifications"}>
-                        <PushExample/>
-                    </Flex>
-					<Flex tabLabel={"Crashlytics"}>
-						<Flex style={Styles.centeredContainer}>
-							<Button style={Styles.rounded} onPress={Crashlytics.crash}>
-							<Text style={Styles.buttonText}>Crash app!</Text>
-							</Button>
-							<Button style={Styles.rounded} onPress={() => Platform.OS == 'ios' ? Crashlytics.recordError('something went wrong but not really!') : Crashlytics.logException('something went wrong but not really!')}>
-							<Text style={Styles.buttonText}>Record non-fatal JS error</Text>
-							</Button>
-							<Button style={Styles.rounded} onPress={this.badCode}>
-							<Text style={Styles.buttonText}>Generate a JS crash</Text>
-							</Button>
-						</Flex>
-					</Flex>
-                </ScrollableTabView>
+            <Flex>
+                <FlatList
+                    getItemLayout={(data, index) => (
+                        { length: 50, offset: 50 * index, index }
+                    )}
+                    initialNumToRender={20}
+                    data={this.state.data}
+                    renderItem={({ item }) => {
+                        console.log(item);
+                        return <View style={{ height: 50 }}><Text>{item.key + ""}</Text></View>
+                    }}
+                />
             </Flex>
         );
     }
 };
+
+TheComponent.propTypes = {};
+
+module.exports = TheComponent;

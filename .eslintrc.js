@@ -31,7 +31,7 @@ module.exports = {
   "rules": {
     "strict": ["error", "global"],
     "no-unused-vars": 0,
-    "no-console": ["error", { allow: ["warn", "error"] }],
+    "no-console": "off",
     "camelcase": ["error", { "properties": "always" }],
     "consistent-return": "error",
     "arrow-spacing": "off",

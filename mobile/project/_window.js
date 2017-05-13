@@ -54,9 +54,8 @@ window.InteractionManager = ReactNative.InteractionManager;
 window.Linking = ReactNative.Linking;
 window.ListView = ReactNative.ListView;
 window.WindowedListView = ReactNative.WindowedListView;
+global.Modal = ReactNative.Modal;
 window.NativeAppEventEmitter = ReactNative.NativeAppEventEmitter;
-window.Navigator = ReactNative.Navigator;
-window.NavigatorIOS = ReactNative.NavigatorIOS;
 window.NetInfo = ReactNative.NetInfo;
 window.PixelRatio = ReactNative.PixelRatio;
 window.ProgressViewIOS = ReactNative.ProgressViewIOS;
@@ -70,6 +69,7 @@ window.SwitchIOS = ReactNative.SwitchIOS;
 window.TouchableHighlight = ReactNative.TouchableHighlight;
 window.TouchableOpacity = ReactNative.TouchableOpacity;
 window.TouchableWithoutFeedback = ReactNative.TouchableWithoutFeedback;
+window.FlatList = ReactNative.FlatList;
 window.View = ReactNative.View;
 window.StatusBarIOS = ReactNative.StatusBarIOS;
 window.WebView = ReactNative.WebView;
@@ -103,9 +103,6 @@ window.Flex = require('../components/base/grid/Flex');
 window.FormGroup = require('../components/base/grid/FormGroup');
 window.Column = require('../components/base/grid/Column');
 window.Row = require('../components/base/grid/Row');
-
-//Modals
-// TODO: Kyle to review
 
 //Forms
 window.Switch = require('../components/base/forms/Switch');
