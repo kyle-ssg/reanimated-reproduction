@@ -35,13 +35,13 @@ const TheComponent = class extends Component {
     };
 
     render() {
-        const { renderRow, renderNoResults, filterItem, placeholder } = this.props;
+        const { renderRow, renderNoResults, filterItem, placeholder, style } = this.props;
         const { search } = this.state;
         let data = filterItem ? _.filter(this.props.data, (i) => (
                 !search || filterItem(i, search)
             )) : this.props.data;
         return (
-            <Flex>
+            <Flex style={{style}}>
                 {
                     filterItem &&
                     <TextInput placeholder={placeholder}
