@@ -52,6 +52,7 @@ window.RefreshControl = ReactNative.RefreshControl;
 window.Easing = ReactNative.Easing;
 window.Image = ReactNative.Image;
 window.InteractionManager = ReactNative.InteractionManager;
+window.KeyboardAvoidingView = ReactNative.KeyboardAvoidingView;
 window.Linking = ReactNative.Linking;
 window.ListView = ReactNative.ListView;
 window.WindowedListView = ReactNative.WindowedListView;
