@@ -10,6 +10,7 @@ window.modalHeight = 95;
 window.Project = require('../common/project');
 
 //React Prop Types
+window.Any = React.PropTypes.Any;
 window.OptionalArray = React.PropTypes.array;
 window.OptionalBool = React.PropTypes.bool;
 window.OptionalFunc = React.PropTypes.func;
@@ -105,6 +106,8 @@ window.Column = require('../components/base/grid/Column');
 window.Row = require('../components/base/grid/Row');
 
 //Forms
+window.Select = require('../components/base/forms/Select');
+window.ModalSelect = require('../components/base/ModalSelect');
 window.Switch = require('../components/base/forms/Switch');
 window.TextInput = require('../components/base/forms/TextInput');
 window.Radio = require('../components/base/forms/Radio');

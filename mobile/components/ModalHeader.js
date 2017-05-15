@@ -9,7 +9,7 @@ module.exports = (props) => (
         </Flex>
 
         <Column style={{ width: 50, alignItems: 'flex-end' }}>
-            <TouchableOpacity onPress={closeModal}
+            <TouchableOpacity onPress={props.closeSelect? closeSelect : closeModal}
                               transparent>
                 <ION style={Styles.navIcon} name="ios-close"/>
             </TouchableOpacity>
