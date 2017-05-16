@@ -12,7 +12,7 @@ module.exports = {
 	],
 	output: {
 		path: '/',
-		publicPath: 'http://localhost:3000/build/',
+		publicPath: 'http://localhost:8080/build/',
 		filename: '[name].js'
 	},
 	plugins: require('./plugins').concat([

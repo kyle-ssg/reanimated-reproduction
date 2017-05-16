@@ -5,11 +5,6 @@ module.exports = [
     },
     { test: /\.json$/, loader: "json-loader" },
     {
-        test: /\.js?/,
-        exclude: /node_modules/,
-        loaders: ['babel-loader']
-    },
-    {
         test: /\.html$/,
         loader: 'html-loader?attrs[]=source:src&attrs[]=img:src'
     },
