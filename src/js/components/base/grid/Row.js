@@ -1,7 +1,6 @@
 /**
  * Created by kylejohnson on 24/07/2016.
  */
-import cn from 'classnames';
 
 var Row = (props) => {
   const { space, ...rest } = props;

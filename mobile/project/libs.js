@@ -28,6 +28,11 @@ window.firebase = firebase;
 import FireAuth from 'react-native-firebase-auth';
 window.FireAuth = FireAuth;
 
+
+import FCM,{FCMEvent} from 'react-native-fcm';
+window.FCM = FCM;
+window.FCMEvent = FCMEvent;
+
 // Crashlytics
 const Fabric = require('react-native-fabric');
 const { Crashlytics } = Fabric;
@@ -38,7 +43,19 @@ window.KeyboardAvoidingScrollView = KeyboardAwareScrollView;
 
 // react-native-fabric-crashlytics - Overrides React Native's default global error handler to report all fatal JS errors to Crashlytics
 import crashlytics from 'react-native-fabric-crashlytics';
-crashlytics.init();
+import RNFS from 'react-native-fs'
+global.RNFS = RNFS;
+
+function crashload() {
+    const path = `${RNFS.MainBundlePath}/sourcemap.js`
+    RNFS.readFile(path, 'utf8').then((contents) => {
+        crashlytics.init(contents);
+    }).catch(()=>{
+        crashlytics.init()
+    })
+}
+
+crashload();
 
 // Segment analytics testing - identify - normally only called once on sign up and then whenever traits change
 /*analytics.identify('luke@solidstategroup.com',
@@ -55,3 +72,17 @@ crashlytics.init();
 //     name: 'Anonymous Mobile Bro'
 //   }
 // );
+
+
+import FroalaEditor from 'react-froala-wysiwyg';
+window.FroalaEditor = FroalaEditor;
+window.Editor = require('../components/Editor');
+
+
+import ReactTable from 'react-table'
+import 'react-table/react-table.css'
+window.ReactTable = ReactTable;
+window.Table = require('../components/Table')
+
+import cn from 'classnames';
+window.cn = cn;

@@ -1,5 +1,6 @@
 import InfiniteScrollExample from './InfiniteScrollExample';
 import ExampleModal from './ExampleModal';
+import CrashExample from './CrashExample';
 import PushExample from './PushExample';
 import DigitsExample from './DigitsExample';
 
@@ -24,14 +25,14 @@ module.exports = class extends React.Component {
             user,
             profile
         });
-    }
+    };
 
     onUserChange = (user, profile) => {
         this.setState({
             user,
             profile
         });
-    }
+    };
 
     onLogout = () => {
         this.setState({
@@ -39,7 +40,7 @@ module.exports = class extends React.Component {
             user: null,
             profile: null
         });
-    }
+    };
 
     onUserChange = (user, profile) => {
         alert(profile);
@@ -71,19 +72,15 @@ module.exports = class extends React.Component {
         FireAuth.googleLogin();
     }
 
-    badCode() {
-        a.b = c;
-    }
-
     navigate = () => {
         this.props.navigation.navigate('Other', { name: 'Lucy' })
-    }
+    };
 
     render() {
         return (
             <Flex style={Styles.body}>
                 <ScrollableTabView   {...Constants.defaultTabStyles}>
-                    <Flex tabLabel={"Login"}>
+                    <Flex tabLabel={"Auth"}>
                         {!this.state.profile ? (
                                 <KeyboardAvoidingScrollView extraScrollHeight={54} style={{ flex: 1 }}>
                                     <Flex style={Styles.centeredContainer}>
@@ -133,23 +130,24 @@ module.exports = class extends React.Component {
                                                     </Button>
                                                 </View>
                                                 <View><H1>Or</H1></View>
-                                                <View width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
-                                                    <Button onPress={this.facebook.bind(this) }
-                                                            style={[Styles.buttonFacebook, Styles.buttonWithIcon]}>
-                                                        <ION style={[Styles.buttonText, Styles.buttonIcon]}
-                                                             name="logo-facebook"/>
-                                                        <Text style={Styles.buttonText}>Facebook</Text>
-                                                    </Button>
-                                                    <Button onPress={this.google.bind(this) }
-                                                            style={Styles.buttonGoogle}>
-                                                        <Text style={Styles.buttonText}>Google</Text>
-                                                    </Button>
-                                                    <Button onPress={this.google.bind(this) }
-                                                            style={Styles.buttonPrimary}>
-                                                        <Text style={Styles.text}>Purchase Item</Text>
-                                                        <Text style={Styles.buttonSup}>(£25.00)</Text>
-                                                    </Button>
-                                                </View></View>
+                                                    <FormGroup>
+                                                        <Button onPress={this.facebook.bind(this) }
+                                                                style={[Styles.buttonFacebook, Styles.buttonWithIcon]}>
+                                                            <ION style={[Styles.buttonText, Styles.buttonIcon]}
+                                                                 name="logo-facebook"/>
+                                                            <Text style={Styles.buttonText}>Facebook</Text>
+                                                        </Button>
+                                                    </FormGroup>
+                                                    <FormGroup>
+                                                        <Button onPress={this.google.bind(this) } style={Styles.buttonGoogle}>
+                                                            <Text style={Styles.buttonText}>Google</Text>
+                                                             <Text style={Styles.buttonSup}>Alt text</Text>
+                                                        </Button>
+                                                    </FormGroup>
+                                                    <FormGroup>
+                                                        <DigitsExample/>
+                                                    </FormGroup>
+                                                </View>
                                         </View>
                                     </Flex>
                                 </KeyboardAvoidingScrollView>
@@ -187,6 +185,9 @@ module.exports = class extends React.Component {
                                 </View>
                             </Card>
 
+                            <FormGroup>
+                                <PushExample/>
+                            </FormGroup>
                             <FormGroup width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
                                 <Card>
                                     <FormGroup>
@@ -211,13 +212,6 @@ module.exports = class extends React.Component {
 
                                 </Card>
                             </FormGroup>
-                            <FormGroup width={DeviceWidth - styleVariables.marginBaseHorizontal * 2}>
-                                <Card>
-                                    <Text style={Styles.label}>Twitter Digits</Text>
-                                    <DigitsExample/>
-                                </Card>
-                            </FormGroup>
-
 
                             <FormGroup>
                                 <Card>
@@ -274,22 +268,8 @@ module.exports = class extends React.Component {
                             </FormGroup>
                         </KeyboardAvoidingScrollView>
                     </Flex>
-                    <Flex tabLabel={"Notifications"}>
-                        <PushExample/>
-                    </Flex>
                     <Flex tabLabel={"Crashlytics"}>
-                        <Flex style={Styles.centeredContainer}>
-                            <Button style={Styles.rounded} onPress={Crashlytics.crash}>
-                                <Text style={Styles.buttonText}>Crash app!</Text>
-                            </Button>
-                            <Button style={Styles.rounded}
-                                    onPress={() => Platform.OS == 'ios' ? Crashlytics.recordError('something went wrong but not really!') : Crashlytics.logException('something went wrong but not really!')}>
-                                <Text style={Styles.buttonText}>Record non-fatal JS error</Text>
-                            </Button>
-                            <Button style={Styles.rounded} onPress={this.badCode}>
-                                <Text style={Styles.buttonText}>Generate a JS crash</Text>
-                            </Button>
-                        </Flex>
+                        <CrashExample/>
                     </Flex>
                 </ScrollableTabView>
             </Flex>

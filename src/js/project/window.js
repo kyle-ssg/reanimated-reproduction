@@ -40,7 +40,7 @@ window.Constants = require('./constants');
 //Useful components
 window.FormInline = require('../components/base/grid/FormInline');
 window.Row = require('../components/base/grid/Row');
-window.AutoComplete = require('../components/base/Autocomplete');
+window.AutoComplete = require('../components/base/forms/AutoComplete');
 window.Flex = require('../components/base/grid/Flex');
 window.Input = require('../components/base/forms/Input');
 window.Button = require('../components/base/forms/Button');
@@ -49,9 +49,12 @@ window.FormGroup = require('../components/base/grid/FormGroup');
 window.InputGroup = require('../components/base/forms/InputGroup');
 window.ListView = require('../components/base/ListView');
 window.Highlighter = require('../components/base/Highlighter');
+
+
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 global.Select = Select;
+
 //Modal
 window.openModal = require('../apis/modals').openModal;
 window.openConfirm = require('../apis/modals').openConfirm;

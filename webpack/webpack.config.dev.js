@@ -4,9 +4,9 @@ var src = path.join(__dirname, '../src') + '/';
 var webpack = require('webpack');
 
 module.exports = {
-	devtool: 'cheap-module-eval-source-map',
+	devtool: 'cheap-module-source-map',
 	entry: [
-		'webpack-hot-middleware/client',
+		'webpack-hot-middleware/client?http://localhost:8080',
 		'react-hot-loader/patch',
 		'./src/js/main.js',
 	],
@@ -16,7 +16,7 @@ module.exports = {
 		filename: '[name].js'
 	},
 	plugins: require('./plugins').concat([
-		new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoEmitOnErrorsPlugin()
 	]),
 	module: {

@@ -7,21 +7,34 @@ import '../fonts/fontawesome-webfont.woff2';
 
 import ToastMessages from './apis/toast';
 
-import {Router, browserHistory} from 'react-router';
-import routes from './routes';
+import Root from './routes';
+
 const rootElement = document.getElementById('app');
 
+// Render the React application to the DOM
+const renderApp = () => {
+    ReactDOM.render(
+        <div>
+          <Root key={Utils.GUID()}/>
+        </div>,
+        rootElement
+    );
+};
+
 if (module.hot) {
-  module.hot.accept();
+    module.hot.accept('./routes', () => renderApp());
 }
 
-// Render the React application to the DOM
-ReactDOM.render(
-  <Router history={browserHistory} routes={routes}/>,
-  rootElement
-);
-
-
-
 //Setup for toast messages
-ReactDOM.render(<ToastMessages />, document.getElementById('toast'));
+ReactDOM.render(<ToastMessages/>, document.getElementById('toast'));
+
+renderApp();
+
+if (process.env.NODE_ENV === 'development') {
+    if (module.hot) {
+        module.hot.accept('./routes', () => {
+            renderApp();
+        });
+        module.hot.accept('./routes', renderApp);
+    }
+}

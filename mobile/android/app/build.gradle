@@ -152,6 +152,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-fs')
     compile project(':react-native-fabric')
     compile('com.crashlytics.sdk.android:crashlytics:2.6.7@aar') {
         transitive = true;
