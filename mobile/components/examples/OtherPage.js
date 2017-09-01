@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-var SelectableSectionsListView = require('react-native-alphabetlistview');
+// var SelectableSectionsListView = require('react-native-alphabetlistview');
 
 const TheComponent = class extends Component {
     displayName: 'TheComponent'
