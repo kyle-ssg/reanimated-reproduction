@@ -2,9 +2,12 @@
 
 .panel {
   width: 100%;
+	background-color: $panel-bg;
   .panel-heading {
-    h1,h2,h3 {
+    i, h1,h2,h3 {
       color : $panel-heading-color;
+		font-weight: 300 !important;
+		font-size: 1.25em;
       margin: 0;
     }
     height: $panel-heading-height;

@@ -2,12 +2,17 @@
 
 This README will help get you started using the SSG Frontend Boilerplate to set up a new project for both web and mobile or work on an existing project.
 
+
+
+## Dependencies
+
+``brew install watchman && npm i react-native-cli -g`` 
+
 ## Installation 
+
 *note: running this installs both web and mobile*
 
-``npm i ssg-frontend-cli -g``
-
-``ssg-frontend project_name com.solidstategroup.id``
+``npm i``
 
 ## Development
 
@@ -52,13 +57,7 @@ For details are various tasks including changing the bundle ID, deploying builds
 
 ## 3rd party integrations
 
-If you need support for 3rd party integrations such as Firebase, Facebook and Fabric Digits please see [3rd Party Guide](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/docs/ThirdParty.md)
+If you need support for 3rd party integrations such as Firebase, Facebook and Fabric Digits please see
 
+ [3rd Party Guide](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/docs/ThirdParty.md)
 
-## todo
-- [x] Document full app creation Android
-- [x] Document full app creation iOS
-- [ ] Research filesize cause
-- [ ] Use react-native-fcm
-- [ ] Use react-native-maps
-- [ ] Use react-native-globals

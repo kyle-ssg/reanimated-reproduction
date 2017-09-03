@@ -4,12 +4,11 @@
   "private": true,
   "scripts": {
     "mobile:watch": "node ../bin/commonWatch.js",
-    "fix": "node node_modules/eslint-watch/bin/esw -w --color --fix",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "ios": "react-native run-ios & npm run mobile:watch",
     "android": "react-native run-android & npm run mobile:watch",
     "androidDeploy": "cd ./android && ./gradlew assembleRelease && ./gradlew installRelease && cd ../",
-    "postinstall": "mkdir -p common & node ../bin/patchMobile.js",
+    "postinstall": "cp ../src/js/common ./common -r",
     "keystore": "keytool -genkey -v -keystore my-release-key.keystore -alias android -keyalg RSA -keysize 2048 -validity 10000"
   },
   "dependencies": {

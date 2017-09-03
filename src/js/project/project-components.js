@@ -3,7 +3,6 @@ window.Divider = require('../components/Divider');
 window.Tooltip = require('../components/Toolip');
 window.Expand = require('../components/Expand');
 window.AccountProvider = require('../common/providers/AccountProvider');
-
 window.Loader = () => (
 	<svg version="1.1" id="loader-1" x="0px" y="0px"
      width="40px" height="40px" viewBox="0 0 50 50" style={{enableBackground:'0 0 50 50'}}>

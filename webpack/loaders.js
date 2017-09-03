@@ -9,7 +9,7 @@ module.exports = [
         loader: 'html-loader?attrs[]=source:src&attrs[]=img:src'
     },
     {
-        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ogv|mp4|webm)$/,
+        test: /\.(otf|ttf|eot|png|jpg|jpeg|gif|svg|woff|woff2|ogv|mp4|webm)$/,
         loader: 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]'
     }
 ];

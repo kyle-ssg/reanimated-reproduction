@@ -108,9 +108,9 @@ const Confirm = class extends React.Component {
   footer () {
     return (
       <div className="modal-button">
-        <button type="button" className="btn-link btn-link-secondary"
+        <button type="button" className="btn btn-secondary"
                 onClick={this.onNo}>{this.props.noText || 'No'}</button>
-        <button type="button" className="btn-link"
+        <button type="button" className="btn btn-primary"
                 onClick={this.onYes}>{this.props.yesText || 'Yes'}</button>
       </div>
     );

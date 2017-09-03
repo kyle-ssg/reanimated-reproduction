@@ -4,12 +4,16 @@
   "description": "Node Express Boilerplate",
   "main": "index.js",
   "scripts": {
+    "postinstall": "cd ./mobile && npm i",
     "start": "npm run bundle && NODE_ENV=production node ./server",
-    "dev": "./node_modules/.bin/webpack-dashboard -m -- nodemon --watch server --ignore server/config/config.json --watch webpack --exec node ./server",
+    "dev": "nodemon --watch server --ignore server/config/config.json --watch webpack --exec node ./server",
+    "android": "cd ./mobile && npm run android",
+    "ios": "cd ./mobile && npm run ios",
     "test": "nodemon --exec mocha ./server/tests/",
     "bundle": "node node_modules/.bin/webpack -p --progress --config ./webpack/webpack.config.prod.js"
   },
   "dependencies": {
+    "animate.css": "3.5.2",
     "bootstrap": "4.0.0-alpha.6",
     "classnames": "2.2.5",
     "colors": "1.1.2",

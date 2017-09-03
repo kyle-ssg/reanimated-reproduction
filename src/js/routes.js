@@ -4,11 +4,9 @@ window.loginPromptRedirect = '/';
 window.logoutRedirect = '/';
 
 import React from 'react';
-import {Route, Router, IndexRoute, Redirect, Switch} from 'react-router-dom';
-
+import {Route, Link, Router, IndexRoute, Redirect, Switch} from 'react-router-dom';
+window.Link = Link;
 import App from './components/App';
-import HomePage from './components/pages/HomePage';
-import AccountPage from './components/pages/AccountPage';
 import NotFoundPage from './components/pages/NotFoundPage';
 import AccountStore from './common/stores/account-store';
 
@@ -21,7 +19,7 @@ import SassPage from './components/pages/examples/SassPage';
 import Examples from './components/pages/examples/Examples';
 
 const authRedirect = (page) => {
-    return AccountStore.getUser() ? page :
+	return AccountStore.getUser() ? page :
 		<Redirect to={`/?redirect=${encodeURIComponent(document.location.pathname)}`}/>
 };
 

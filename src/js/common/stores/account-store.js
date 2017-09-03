@@ -24,15 +24,15 @@ var controller = {
 		}
 	});
 
-
-firebase.initializeApp(Project.firebase);
-FireAuth.init({
-	fbAppId: Project.facebook.appId,
-	apiKey: Project.firebase.apiKey,
-	webClientId: Project.google.webClientId
-});
-FireAuth.setup(controller.onLogin, controller.onLogin, controller.onLogout, () => {
-}, controller.onError)
+//If using firebase
+// firebase.initializeApp(Project.firebase);
+// FireAuth.init({
+// 	fbAppId: Project.facebook.appId,
+// 	apiKey: Project.firebase.apiKey,
+// 	webClientId: Project.google.webClientId
+// });
+// FireAuth.setup(controller.onLogin, controller.onLogin, controller.onLogout, () => {
+// }, controller.onError)
 
 
 store.dispatcherIndex = Dispatcher.register(store, function (payload) {

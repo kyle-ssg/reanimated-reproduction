@@ -13,7 +13,7 @@ const TheComponent = class extends React.Component {
   render () {
     return (
       <div className={"expand" && (this.state.value ? ' in' : '')}>
-        <div onPress={this.toggle}>
+        <div onClick={this.toggle}>
           {this.props.title} <span
           className={"fa " + (this.state.value ? 'fa-chevron-down' : 'fa-chevron-right')}/>
         </div>

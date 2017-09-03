@@ -63,19 +63,19 @@ const Froms = class extends React.Component {
         const isActive = this.state.multiValue && this.state.multiValue.indexOf(row) != -1;
         return (
             <div onMouseOver={() => highlightRow(index)}>
-                <Row space>
-                    <Button className={cn({
-                        'btn-link': true,
-                        'btn-link-hover': isHovered,
-                        'btn-link-active': isActive
-                    })}>
-                        {isHovered ? row.name : <Highlighter search={this.state.search} value={row.name}/>}
-                    </Button>
+                    <Row space>
+                        <Button className={cn({
+                            'btn-link': true,
+                            'btn-link-hover': isHovered,
+                            'btn-link-active': isActive
+                        })}>
+                            {isHovered ? row.name : <Highlighter search={this.state.search} value={row.name}/>}
+                        </Button>
 
-                    <div className="flex-column">
-                        {row.code}
-                    </div>
-                </Row>
+                        <div className="flex-column">
+                            {row.code}
+                        </div>
+                    </Row>
             </div>
         );
     };

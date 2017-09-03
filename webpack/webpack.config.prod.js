@@ -18,7 +18,7 @@ module.exports = {
 
 	output: {
 		path: path.join(__dirname, '../build'),
-		filename: '[name].[hash].js'
+		filename: '/[name].[hash].js'
 	},
 
 	plugins: require('./plugins')
@@ -33,7 +33,7 @@ module.exports = {
 				new webpack.optimize.OccurrenceOrderPlugin(),
 
 				//pull inline styles into cachebusted file
-				new ExtractTextPlugin({filename: "style.[hash].css", allChunks: true}),
+				new ExtractTextPlugin({filename: "/style.[hash].css", allChunks: true}),
 
 			]
 		)
@@ -43,7 +43,7 @@ module.exports = {
 					filename: page + '.handlebars', //output
 					template: './src/' + page + '.handlebars', //template to use
 					"assets": { //add these script/link tags
-						"client": "[hash].js",
+						"client": "/[hash].js",
 					}
 				}
 			)

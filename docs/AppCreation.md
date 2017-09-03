@@ -15,26 +15,28 @@ git push -u origin master
 
 # Create Web
 
-## Set your flynn cluster
+## Step 1 on your server create the app
 ```
-#lists your flynn clusters
-flynn cluster
-flynn cluster default mycluster
-```
-
-## Create an app
-```
-flynn create myapp --remote prod
-flynn create myapp-dev --remote dev
+ssh hetzner4
+cd /home/dokku
+dokku apps:create app-name
 ```
 
-## Push to app
-```$ git push dev```
+## step 2 on your local machine add flynn remote to repository and push master
+```
+git remote add dokku dokku@dokku1.solidstategroup.com:app-name
+git push dokku master
+```
+
+## Step 3 add ssl
+``
+dokku config:set --no-restart app-name DOKKU_LETSENCRYPT_EMAIL=ben@solidstategroup.com
+dokku letsencrypt app-name
+dokku letsencrypt:cron-job --add
+``
 
 ## Set env environment variable
-This determines which project.js file is deployed, this will default to project_dev.js.
-
-<img src="http://image.prntscr.com/image/81147f28c68c413cb9ce9774b639396e.png"/>
+dokku config:set app-name KEY=\"VAL\ WITH\ SPACES\"
 
 
 

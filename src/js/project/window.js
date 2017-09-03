@@ -4,7 +4,6 @@ window.React = require('react');
 window.ReactDOM = require('react-dom');
 window.render = require('react-dom').render;
 window.moment = require('moment/min/moment.min');
-window.fetch = require('whatwg-fetch');
 
 window.OptionalArray = React.PropTypes.array;
 window.OptionalBool = React.PropTypes.bool;
@@ -40,6 +39,7 @@ window.Constants = require('./constants');
 //Useful components
 window.FormInline = require('../components/base/grid/FormInline');
 window.Row = require('../components/base/grid/Row');
+window.Column = require('../components/base/grid/Column');
 window.AutoComplete = require('../components/base/forms/AutoComplete');
 window.Flex = require('../components/base/grid/Flex');
 window.Input = require('../components/base/forms/Input');
@@ -63,19 +63,22 @@ require('./project-components');
 
 /*eslint no-console:0*/
 window.log = function () {
-  if (Project.debug) {
-    console.log(arguments);
-  }
+    if (Project.debug) {
+        console.log(arguments);
+    }
 };
 
 window.info = function () {
-  if (Project.debug) {
-    console.info(arguments);
-  }
+    if (Project.debug) {
+        console.info(arguments);
+    }
 };
 
 window.warn = function () {
-  if (Project.debug) {
-    console.warn(arguments);
-  }
+    if (Project.debug) {
+        console.warn(arguments);
+    }
 };
+
+
+window.API= require("../common/data/api");

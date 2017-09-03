@@ -15,7 +15,7 @@ const rootElement = document.getElementById('app');
 const renderApp = () => {
     ReactDOM.render(
         <div>
-          <Root key={Utils.GUID()}/>
+            <Root key={Utils.GUID()}/>
         </div>,
         rootElement
     );

@@ -1,6 +1,15 @@
 @import "../mixins/box-shadow-mixin";
 @import "../mixins/transition-mixin";
-
+.autocomplete-container {
+	position: relative;
+	.popover {
+		min-width: 400px;
+	}
+	.autocomplete-item:hover {
+		cursor: pointer;
+		background-color: #f9f9f9;
+	}
+}
 .popover {
 	@include transition(all 300ms ease);
 	background-color: white;
@@ -13,7 +22,7 @@
 	opacity: 0;
 	min-width: 200px;
 	&.in {
-		@include box-shadow();
+		@include card2();
 		transform: scaleY(1);
 		height: auto;
 		opacity: 1;

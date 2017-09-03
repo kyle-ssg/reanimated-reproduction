@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import {Link} from 'react-router';
 import Popover from '../components/base/Popover';
 import AccountStore from '../common/stores/account-store';
 export default class App extends Component {
@@ -41,75 +40,19 @@ export default class App extends Component {
                                     aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
-                            {/*<Link className="navbar-brand" to={user ? window.loginRedirect : ""}>Brand</Link>*/}
+                            <Link className="navbar-brand" to={user ? window.loginRedirect : ""}>Plasma data platform</Link>
 
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul className="navbar-nav mr-auto">
-                                    <li className="nav-item">
-                                        <Uh to={{
-                                            pathname: '/account'
-                                        }}>Home</Uh>
-                                    </li>
 
-                                    <li className="nav-item">
+
+                                    {/*<li className="nav-item">*/}
                                         {/*<Link activeClassName="active" className="nav-link" to="404">Example*/}
                                         {/*404</Link>*/}
-                                    </li>
+                                    {/*</li>*/}
 
-                                    {user && (
-                                        <li className="nav-item">
-                                            {/*<Link activeClassName="active" className="nav-link"*/}
-                                            {/*to="sass">Sass</Link>*/}
-                                        </li>
-                                    )}
-                                    {user && (
-                                        <li className="nav-item">
-                                            {/*<Link activeClassName="active" className="nav-link"*/}
-                                            {/*to="layout">Layout</Link>*/}
-                                        </li>
-                                    )}
-                                    {user && (
-                                        <li className="flex-column relative nav-link">
-                                            <Popover
-                                                className="popover-right"
-                                                renderTitle={(toggle) => (
-                                                    <a onClick={toggle}>
-                                                        Virtualized
-                                                        <div className="flex-column fa fa-chevron-down"/>
-                                                    </a>
-                                                )}>
-                                                {(toggle) => (
-                                                    <div>
-                                                        {/*<Link activeClassName="active" className="nav-link" onClick={toggle}*/}
-                                                        {/*to="virtualized">Examples</Link>*/}
-                                                        {/*<Link activeClassName="active" className="nav-link" onClick={toggle}*/}
-                                                        {/*to="infiniteWindowScrollList">Infinite Window Scrolling List</Link>*/}
-                                                    </div>
-                                                )}
-                                            </Popover>
-
-                                        </li>
-                                    )}
                                 </ul>
-                                {user && (
-                                    <div className="flex-column relative nav-link">
-                                        <Popover className="popover-right"
-                                                 renderTitle={(toggle) => (
-                                                     <a onClick={toggle}>
-                                                         {user.displayName}
-                                                         <div className="flex-column fa fa-chevron-down"/>
-                                                     </a>
-                                                 )}>
-                                            {(toggle) => (
-                                                <div>
-														<span href="test">
-													 <a href="#" onClick={FireAuth.logout} to="exampleone">Logout</a>
-												</span>
-                                                </div>
-                                            )}
-                                        </Popover>
-                                    </div>
-                                )}
+
                             </div>
                         </nav>
                     )}

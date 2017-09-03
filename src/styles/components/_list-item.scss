@@ -1,0 +1,27 @@
+@import "../variables";
+
+.list-item {
+	cursor: pointer;
+	text-align: left;
+	display: block;
+	padding: 15px;
+	border-bottom: 1px solid #f1f1f1;
+	color: #333;
+	.list-item-nav {
+		color: #9e9e9e;
+	}
+	h1, h2, h3 {
+		margin: 0;
+		font-size: 1em;
+		font-weight: 400;
+	}
+	&.no-pad {
+		margin-left: -$input-padding-x;
+		margin-right: -$input-padding-x;
+	}
+	&:hover {
+		text-decoration: none;
+		background-color: #f9f9f9;
+		color: $link-color-active;
+	}
+}

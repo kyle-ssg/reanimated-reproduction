@@ -1,4 +1,16 @@
 nav.navbar {
+	position: absolute;
+	z-index: 2;
+	left: 0;
+	right: 0;
+	top: 0;
+	@include card1();
+	margin-bottom:10px;
+	background-color: $navbar-bg;
+	color: $navbar-color;
+	.navbar-brand, .navbar-brand:hover, .navbar-brand:active {
+		color: $navbar-color !important;
+	}
   .tabs {
     display: inline-block;
     .tabs-nav {

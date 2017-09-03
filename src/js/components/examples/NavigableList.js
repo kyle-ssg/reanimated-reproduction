@@ -34,7 +34,7 @@ const NavigableList = class extends React.Component {
         return (
             <div onMouseOver={()=>highlightRow(index)}>
                 <Row space>
-                    <Button onMouseDown={()=>this.selectRow(row)}
+                    <Button onMouseDown={()=> debugger && this.selectRow(row)}
                             className={"btn-link " + (!isSelected ? "btn-link-secondary" : "")}>
                         {isSelected ? row.name : <Highlighter search={this.state.search} value={row.name}/>}
                     </Button>
