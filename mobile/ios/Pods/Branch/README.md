@@ -70,8 +70,20 @@ There's a full demo app embedded in this repository, but you can also check out 
 Branch is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```objc
-pod "Branch"
+pod 'Branch'
 ```
+
+Then, from the command line, `cd` to your project directory, and do:
+
+```
+pod install
+pod update
+```
+
+to install the Branch pod and update it to the latest version of the SDK.
+
+Make sure to do the `pod update`.  CocoaPods may not use the latest version of the SDK otherwise!
+
 ### Carthage
 
 To integrate Branch into your project using Carthage add the following to your `Cartfile`:
@@ -110,6 +122,10 @@ If you want to add a key for both your live and test apps at the same time, you 
 2. For test app, use "test" (without double quotes) for key, String for type, and your test branch key for value.
 
 ![Branch Multi Key Demo](docs/images/branch-multi-key-plist.png)
+
+Note: If you used Fabric to install Branch as a kit, your Branch keys will be in your Info.plist as an element under the Fabric > Kits array, like this:
+
+![Branch Fabric Keys](docs/images/branch-fabric-key-plist.png)
 
 ### Register a URI Scheme Direct Deep Linking (Optional but Recommended)
 
@@ -174,18 +190,20 @@ Branch *branch = [Branch getInstance];
 let branch: Branch = Branch.getInstance()
 ```
 
+##### Testing
+
 ###### Objective-C
 
 ```objc
 #warning Remove for launch
-Branch *branch = [Branch getTestInstance];
+[Branch setUseTestBranchKey:YES];
 ```
 
 ###### Swift
 
 ```swift
 //TODO: Remove for launch
-let branch: Branch = Branch.getTestInstance();
+Branch.useTestBranchKey = YES;
 ```
 
 #### Parameters
@@ -211,7 +229,15 @@ To deep link, Branch must initialize a session to check if the user originated f
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    if (![[Branch getInstance] handleDeepLink:url]) {
+
+    BOOL branchHandled =
+        [[Branch getInstance]
+            application:application
+                openURL:url
+      sourceApplication:sourceApplication
+             annotation:annotation];
+
+    if (!branchHandled) {
         // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
     }
     return YES;
@@ -242,8 +268,17 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 
 func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-    // pass the url to the handle deep link call
-    Branch.getInstance().handleDeepLink(url)
+
+    // Pass the url to the handle deep link call
+    let branchHandled = Branch.getInstance().application(application,
+        open: url,
+        sourceApplication: sourceApplication,
+        annotation: annotation
+    )
+    if (!branchHandled) {
+        // If not handled by Branch, do other deep link routing for the
+        // Facebook SDK, Pinterest SDK, etc
+    }
 
     return true
 }
@@ -352,13 +387,13 @@ Register a controller for Branch to show when specific keys are present in the B
 ###### Objective-C
 
 ```objc
-[[Branch getInstance] registerDeepLinkController:myController forKey:@"my-key"];
+[[Branch getInstance] registerDeepLinkController:myController forKey:@"my-key" withPresentation:BNCViewControllerOptionShow];
 ```
 
 ###### Swift
 
 ```swift
-Branch.getInstance().registerDeepLinkController(myController forKey:"my-key")
+Branch.getInstance().registerDeepLinkController(myController forKey:"my-key" withPresentation: .optionShow)
 ```
 
 #### Parameters
@@ -369,26 +404,49 @@ Branch.getInstance().registerDeepLinkController(myController forKey:"my-key")
 **key** (NSString *) _required_
 : The key checked for in open / install dictionaries.
 
+**Option** (BNCViewControllerPresentationOption) _required_
+| **Option** | **Meaning**
+| --- | ---
+| BNCViewControllerOptionShow | This option pushes view controller onto the navigation stack in a similar way as the showViewController
+| BNCViewControllerOptionPush | This option pushes view controller onto the navigation stack in a similar way as the pushViewController
+| BNCViewControllerOptionPresent | This option presents view controller onto the root view controller of window in a similar way as the presentViewController
+
 #### Returns
 
 Nothing
 
 ### Retrieve session (install or open) parameters
 
-These session parameters will be available at any point later on with this command. If no params, the dictionary will be empty. This refreshes with every new session (app installs AND app opens).
+These session parameters will be available at any point later on with this command. If no parameters are available then Branch will return an empty dictionary. This refreshes with every new session (app installs AND app opens).
+
+Warning: If the Branch SDK is retrieving the latest session parameters via a network call, this method will return the *previous* session's parameters.  The best practice is to set a callback deep link handler at Branch initialization.  That handler will be called when a Branch deep link is handled and the most recent session parameters are available.
+
+Otherwise, use the `getLatestReferringParamsSynchronous` method. This method always returns the latest session parameters.  The downside is that is may block the calling thread until the current results are available.
 
 #### Methods
 
 ###### Objective-C
 
 ```objc
+// This is an example of `getLatestReferringParams`.
+// Warning: It may return the previous results.
 NSDictionary *sessionParams = [[Branch getInstance] getLatestReferringParams];
+
+// This is an example of `getLatestReferringParamsSynchronous`.
+// Warning: It may block the current thread until the latest results are available.
+NSDictionary *sessionParams = [[Branch getInstance] getLatestReferringParamsSynchronous];
 ```
 
 ###### Swift
 
 ```swift
+// This is an example of `getLatestReferringParams`.
+// Warning: It may return the previous results.
 let sessionParams = Branch.getInstance().getLatestReferringParams()
+
+// This is an example of `getLatestReferringParamsSynchronous`.
+// Warning: It may block the current thread until the latest results are available.
+let sessionParams = Branch.getInstance().getLatestReferringParamsSynchronous()
 ```
 
 #### Parameters
@@ -527,11 +585,12 @@ parameters such as the campaign name, and take special action in you app after a
 track the effectiveness of a campaign in the Branch dashboard, along with other your other Branch
 statistics, such as total installs, referrals, and app link statistics.
 
-1. External resources
+* External resources
   + [Apple Search Ads](https://searchads.apple.com/)
   + [Apple Search Ads for Developers](https://developer.apple.com/app-store/search-ads/)
   + [Apple Search Ads WWDC](https://developer.apple.com/videos/play/wwdc2016/302/)
 
+* Important: You must add the iAd.framework to your project to enable Apple Search Ad checking.
 
 #### Methods
 
@@ -622,7 +681,7 @@ branchUniversalObject.addMetadataKey("property2", value: "red")
 
 #### Parameters
 
-**canonicalIdentifier**: This is the unique identifier for content that will help Branch dedupe across many instances of the same thing. If you have a website with pathing, feel free to use that. Or if you have database identifiers for entities, use those.
+**canonicalIdentifier**: This is the unique identifier for content that will help Branch de-dupe across many instances of the same thing. If you have a website with pathing, feel free to use that. Or if you have database identifiers for entities, use those.
 
 **title**: This is the name for the content and will automatically be used for the OG tags. It will insert $og_title into the data dictionary of any link created.
 
@@ -844,6 +903,62 @@ The majority of share options only include one string of text, except email, whi
 
 ```swift
 linkProperties.addControlParam("$email_subject", withValue: "Therapists hate him.")
+```
+
+You can also optionally add HTML to the email option and customize the link text. If the link text is left out, the url itself is used
+
+```objc
+[linkProperties addControlParam:@"$email_html_header" withValue:@"<style>your awesome CSS</style>\nOr Dear Friend,"];
+[linkProperties addControlParam:@"$email_html_footer" withValue:@"Thanks!"];
+[linkProperties addControlParam:@"$email_html_link_text" withValue:@"Tap here"];
+```
+
+```swift
+linkProperties.addControlParam("$email_html_header", withValue: "<style>your awesome CSS</style>\nOr Dear Friend,")
+linkProperties.addControlParam("$email_html_footer", withValue: "Thanks!")
+linkProperties.addControlParam("$email_html_link_text", withValue: "Tap here")
+```
+
+#### Changing share text on the fly
+
+You can change the link shareText and other link parameters based on the choice the user makes on the sharesheet activity.  First, set the `BranchShareLink` delegate with an object that follows the `BranchShareLinkDelegate` protocol.
+
+The optional `- (void) branchShareLinkWillShare:` delegate method will be called just after the user selects a share action, like share by email for instance, and before the share action is shown to the user, like when the email composer is shown to the user with the share text. This is an ideal time to change the share text based on the user action.
+
+The optional `- (void) branchShareLink:didComplete:withError:` delegate method will be called after the user has completed the share action.  The `didComplete` boolean will be `YES` if the user shared the item, and `NO` if the user cancelled.  The `error` value will indicate any errors that may have occurred.
+
+###### Objective-C
+```objc
+@interface ViewController () <BranchShareLinkDelegate> 
+```
+Override the branchShareLinkWillShare function to change your shareText
+
+```objc
+- (void) branchShareLinkWillShare:(BranchShareLink*)shareLink {
+    // Link properties, such as alias or channel can be overridden here based on the users'
+    // choice stored in shareSheet.activityType.
+    shareLink.shareText = [NSString stringWithFormat:
+        @"Shared through '%@'\nfrom Branch's Branch-TestBed\nat %@.",
+        shareLink.linkProperties.channel,
+        [self.dateFormatter stringFromDate:[NSDate date]]];
+}
+```
+###### Swift
+
+```swift
+class ViewController: UITableViewController, BranchShareLinkDelegate
+```
+
+Override the branchShareLinkWillShare function to change your shareText
+
+```swift
+func branchShareLinkWillShare(_ shareLink: BranchShareLink) {
+	// Link properties, such as alias or channel can be overridden here based on the users'
+	// choice stored in shareSheet.activityType.
+	shareLink.shareText =
+	    "Shared through '\(shareLink.linkProperties.channel!)'\nfrom Branch's TestBed-Swift" +
+	    "\nat \(self.dateFormatter().string(from: Date()))."
+}
 ```
 
 #### Returns

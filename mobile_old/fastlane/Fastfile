@@ -1,0 +1,160 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://docs.fastlane.tools/actions
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.11.0"
+
+default_platform :ios
+
+platform :ios do
+  before_all do
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
+
+  desc "Submit a new Beta Build to Apple TestFlight"
+  desc "This will also make sure the profile is up to date"
+  lane :beta do
+    sh "./scripts/deploy.sh"
+    sh "fastlane icon"
+    sigh
+    produce
+    #match(type: "appstore") # more information: https://codesigning.guide
+    increment_build_number({
+      xcodeproj: 'ios/mobile.xcodeproj'
+    })
+    gym(scheme: "prod")      # Build your app
+    deliver
+    pilot
+
+
+    # You can also use other beta testing services here (run `fastlane actions`)
+  end
+
+  desc "Deploy a new version to the App Store"
+  lane :release do
+    sh "./scripts/deploy.sh"
+    # match(type: "appstore")
+    # snapshot
+    gym(scheme: "prod")      # Build your app
+    deliver(force: true)
+    # frameit
+  end
+
+  desc "Generate app icons in various sizes"
+  lane :icon do
+    appicon(appicon_image_file: './fastlane/AppIcon.png',
+      appicon_path: './ios/mobile/Images.xcassets',
+      appicon_devices: [:ipad, :iphone])
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    if lane == :beta
+      slack(
+        message: "Successfully deployed new Testflight build."
+      )
+    end
+    if lane == :release
+      slack(
+        message: "Successfully deployed new iOS prod build."
+      )
+    end
+  end
+
+  error do |lane, exception|
+    slack(
+      message: exception.message,
+      success: false
+    )
+  end
+end
+
+platform :android do
+  def increment_version_code(gradle_build: './android/app/build.gradle')
+    sh %Q{cd ../ && echo "$(awk '{sub(/versionCode [[:digit:]]+$/,"versionCode "$2+1)}1' #{gradle_build})" > #{gradle_build} && cd -}
+  end
+
+  before_all do
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+  end
+
+  lane :beta do
+    sh "./scripts/deploy.sh"
+    increment_version_code
+
+    # build the release variant
+    gradle(task: "assembleRelease",
+      project_dir:'./android')
+
+    # upload to Google Play
+    supply(track: "beta",
+      json_key: './fastlane/android/Google Play Android Developer-4c942198c95f.json',
+      package_name: 'com.ssg.boilerplate',
+      apk_paths: ['./android/app/build/outputs/apk/app-release.apk'])
+  end
+
+  lane :release do
+    # build the release variant
+    gradle(task: "assembleRelease")
+
+    # upload to Google Play
+    supply(json_key: './fastlane/android/Google Play Android Developer-4c942198c95f.json',
+      package_name: 'com.ssg.boilerplate',
+      apk_paths: ['./android/app/build/outputs/apk/app-release.apk'])
+  end
+
+  desc "Generate app icons in various sizes"
+  lane :icon do
+    android_appicon(appicon_image_file: './fastlane/AppIcon.png',
+      appicon_devices: [:phone, :tablet],
+      appicon_path:'./android/app/src/main/res/mipmap')
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    if lane == :beta
+      slack(
+        message: "Successfully deployed new Android beta build."
+      )
+    end
+    if lane == :release
+      slack(
+        message: "Successfully deployed new Android prod build."
+      )
+    end
+  end
+
+  error do |lane, exception|
+    slack(
+      message: exception.message,
+      success: false
+    )
+  end
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://docs.fastlane.tools/actions
+
+# fastlane reports which actions are used
+# No personal data is recorded. Learn more at https://github.com/fastlane/enhancer

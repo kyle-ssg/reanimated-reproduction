@@ -1,4 +1,4 @@
-/**
+8/**
  * Created by kylejohnson on 14/11/2015.
  */
 module.exports = Component({

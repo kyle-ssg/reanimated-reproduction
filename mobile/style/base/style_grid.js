@@ -8,6 +8,10 @@ module.exports = {
     marginRight: styleVariables.gutterBase
   },
 
+  col4:{
+    width:DeviceWidth / 4
+  },
+
   container: {
     padding: styleVariables.paddingBase,
   },
@@ -22,7 +26,6 @@ module.exports = {
   },
 
   centeredContainer: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
   },

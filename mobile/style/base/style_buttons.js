@@ -14,26 +14,59 @@ module.exports = {
     },
 
     //Button
+    circleButton: {
+        backgroundColor: 'white',
+        width: 34,
+        height: 34,
+        borderRadius: 34 / 2,
+        padding: 0,
+        paddingTop: 2,
+        paddingLeft: 0,
+        paddingRight: 0,
+        shadowColor: '#333',
+        shadowOffset: {
+            width: 3,
+            height: 3
+        },
+        shadowRadius: 5,
+        shadowOpacity: 0.4,
+
+    },
+
+
+    //Button
+    circleButtonText: {
+       fontSize: em(2)
+    },
 
     buttonWithIcon: {
-        flexDirection:'row',
-        alignItems:'center',
+        flexDirection: 'row',
+        alignItems: 'center',
     },
 
     buttonText: {
-        backgroundColor:'transparent',
+        backgroundColor: 'transparent',
         color: colour.btnText,
         fontWeight: styleVariables.mediumFontWeight,
         fontSize: styleVariables.fontSizeBase
     },
 
-    buttonIcon:{
-        fontSize:styleVariables.fontSizeBase * 2,
-        marginRight:styleVariables.paddingBase,
+    buttonIcon: {
+        fontSize: styleVariables.fontSizeBase * 1.5,
+        color: colour.btnText,
+        marginLeft: 10,
+        marginTop: styleVariables.fontSizeBase / 3,
     },
 
-    buttonSup:{
-        fontSize:styleVariables.fontSizeBase / 2,
+    buttonIconLeft: {
+        marginRight: styleVariables.paddingBase,
+    },
+    buttonIconRight: {
+        marginLeft: styleVariables.paddingBase,
+    },
+
+    buttonSup: {
+        fontSize: styleVariables.fontSizeBase / 2,
     },
 
     buttonGroup: {
@@ -63,4 +96,14 @@ module.exports = {
         fontSize: styleVariables.fontSizeBase
     },
 
+    buttonRounded: {
+        borderRadius: styleVariables.borderRadiusDefault,
+    },
+    buttonLeft: {
+        width: (DeviceWidth / 2) - 15,
+    },
+    buttonRight: {
+        width: (DeviceWidth / 2) - 15,
+        marginLeft: 10
+    },
 };

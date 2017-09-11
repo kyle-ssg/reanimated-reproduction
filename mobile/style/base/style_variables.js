@@ -1,17 +1,8 @@
 /**
  * Created by kylejohnson on 18/04/2016.
  */
-
-// need to require platform specific variables here
-
-//
-// Variables
-// --------------------------------------------------
-
-//== Colors
-//
-//## Gray and brand colors for use across app.
-
+import {NativeModules,PixelRatio} from 'react-native';
+var em = require('../base/style_pxToEm');
 window.pallette = Object.assign({}, {
 
     //primary
@@ -130,6 +121,7 @@ window.colour = Object.assign({}, pallette, {
 
     //text
     text: pallette.text, //General app text colour
+    anchor: pallette.anchor, //General app text colour
     textLight: pallette.textLight, //General app text colour
     label: pallette.textLightest, //text color for labels
 
@@ -171,7 +163,9 @@ window.colour = Object.assign({}, pallette, {
 
     // list items
     listBackground: 'white',
+    listBackgroundAlt: '#f9f9fa',
     listItem: 'white',
+    listItemNav: '#d9d9d9',
     listItemDivider: pallette.divider,
 
     dividerAlt: pallette.secondary,
@@ -191,6 +185,7 @@ window.colour = Object.assign({}, pallette, {
     //nav
     navBar: pallette.primary,
     navBarIcon: 'white',
+    navBarSubtitle: pallette.secondary,
     navBarButtonText: 'white',
     navBarBorder: 'transparent',
     navBarText: 'white',

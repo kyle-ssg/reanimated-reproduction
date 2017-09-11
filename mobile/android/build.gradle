@@ -3,11 +3,14 @@
 buildscript {
     repositories {
         jcenter()
-        maven { url 'https://maven.fabric.io/public' }
+        //Dependency checking plugin
+        maven {
+            url "https://plugins.gradle.org/m2/"
+            }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
-        classpath 'com.google.gms:google-services:3.0.0'
+    classpath 'com.android.tools.build:gradle:2.2.3' // <--- ANDROID_GOOGLE
+    classpath 'com.google.gms:google-services:3.0.0' // <--- ANDROID_GOOGLE, FIREBASE
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -16,13 +19,16 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url "https://jitpack.io" }
         mavenLocal()
         jcenter()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
-            // Fabric
-            maven { url 'https://maven.fabric.io/public' }
         }
+
+         maven { url "https://jitpack.io" } // ANDROID_OAUTH
+         maven { url 'https://maven.fabric.io/public' } // ANDROID_FABRIC
+
     }
 }

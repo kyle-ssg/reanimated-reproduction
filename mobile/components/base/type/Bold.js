@@ -14,7 +14,7 @@ const bold = class extends React.Component {
 
 bold.propTypes = {
   style: React.PropTypes.any,
-  children: OptionalNode
+  children: OptionalElement
 };
 
 module.exports = bold;

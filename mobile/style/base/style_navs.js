@@ -113,6 +113,16 @@ module.exports = {
         fontSize: em(2),
         marginTop: -em(0.5),
         marginBottom: -em(0.5)
-    }
+    },
 
+    menuShadow:{
+        // marginLeft:10,
+        shadowColor: "#000000",
+        shadowOpacity: 0.5,
+        shadowRadius: 2,
+        shadowOffset: {
+            height: 0,
+            width: -5
+        }
+    },
 };

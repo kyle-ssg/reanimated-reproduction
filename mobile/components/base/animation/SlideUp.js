@@ -1,11 +1,7 @@
 /**
  * Created by kylejohnson on 22/10/15.
  */
-module.exports = Component({
-  propTypes: {
-    height: OptionalNumber,
-    zoomed: OptionalNumber,
-  },
+module.exports = React.createClass({
   getDefaultProps: function () {
     return {
       height: Dimensions.get("window").height

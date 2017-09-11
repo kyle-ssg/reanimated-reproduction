@@ -1,55 +1,71 @@
 module.exports = {
-  //
-  // Forms
-  // --------------------------------------------------
+    //
+    // Forms
+    // --------------------------------------------------
 
-  //Input
+    //Input
 
-  formGroup: {
-    paddingTop: styleVariables.paddingBase,
-    paddingBottom: styleVariables.paddingBase
-  },
+    formGroup: {
+        paddingTop: styleVariables.paddingBase,
+        paddingBottom: styleVariables.paddingBase
+    },
 
-  input: {
-    fontFamily: styleVariables.fontSansSerif,
-    fontSize: styleVariables.fontSizeAlert,
-    flex: 1,
-    fontWeight: styleVariables.mediumFontWeight,
-    color: colour.input,
-  },
+    enterPinContainer:{
+        backgroundColor:'#fff',
+        borderRadius:4,
+        borderColor:colour.inputBorder,
+        borderWidth:PixelRatio.get() / 2,
+        height:styleVariables.inputHeight
+    },
 
-  inputContainer: {
-    padding: styleVariables.paddingBase / 2,
-    justifyContent: 'center',
-  },
+    pin: {
+        height: 44,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 10,
+        borderBottomWidth: 2,
+        borderColor: colour.inputBorder
+    },
 
-  inputLarge: {
-    fontSize: styleVariables.fontSizeInputLarge,
-  },
+    input: {
+        fontFamily: styleVariables.fontSansSerif,
+        fontSize: styleVariables.fontSizeAlert,
+        flex: 1,
+        fontWeight: styleVariables.mediumFontWeight,
+        color: colour.input,
+    },
 
-  disabled: {
-    opacity: styleVariables.disabledOpacity
-  },
+    inputContainer: {
+        justifyContent: 'center',
+    },
 
-  disabledText: {
-    color: colour.disabledText,
-  },
+    inputLarge: {
+        fontSize: styleVariables.fontSizeInputLarge,
+    },
 
-  // Checkboxes and radios
+    disabled: {
+        opacity: styleVariables.disabledOpacity
+    },
 
-  radioText: {
-    color: colour.radioText
-  },
+    disabledText: {
+        color: colour.disabledText,
+    },
 
-  radioTextActive: {
-    color: colour.radioTextActive
-  },
+    // Checkboxes and radios
 
-  radio: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 5,
-    borderWidth: 1 / PixelRatio.get()
-  }
+    radioText: {
+        color: colour.radioText
+    },
+
+    radioTextActive: {
+        color: colour.radioTextActive
+    },
+
+    radio: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginRight: 5,
+        borderWidth: 1 / PixelRatio.get()
+    }
 
 };

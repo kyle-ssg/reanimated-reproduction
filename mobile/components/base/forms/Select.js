@@ -9,13 +9,13 @@ const TheComponent = class extends Component {
     }
 
     isSelected = (i) => {
-        const { multiple } = this.props;
+        const {multiple} = this.props;
         const value = this.props.value || [];
         return multiple ? value.indexOf(i) !== -1 : value == i;
     };
 
     setItem = (i, selected) => {
-        const { multiple, value, onChange } = this.props;
+        const {multiple, value, onChange} = this.props;
         if (multiple) {
             if (selected) {
                 onChange((value || []).concat(i));
@@ -35,28 +35,35 @@ const TheComponent = class extends Component {
     };
 
     render() {
-        const { renderRow, renderNoResults, filterItem, placeholder, style } = this.props;
-        const { search } = this.state;
-        let data = filterItem ? _.filter(this.props.data, (i) => (
-                !search || filterItem(i, search)
-            )) : this.props.data;
+        const {renderRow, renderNoResults, filterItem, placeholder, style} = this.props;
+        const {search} = this.state;
+        let data = filterItem ? _.filter(this.props.items, (i) => (
+            !search || filterItem(i, search)
+        )) : this.props.items;
+
+
         return (
-            <Flex style={{style}}>
+            <Flex style={[{style}, {paddingTop: styleVariables.paddingBase}]}>
                 {
                     filterItem &&
-                    <TextInput placeholder={placeholder}
-                               onChangeText={(search) => this.setState({ search: search.toLowerCase() })}/>
+                    <Column>
+                        <TextInput placeholder={placeholder}
+                                   onChangeText={(search) => this.setState({search: search.toLowerCase()})}/>
+                    </Column>
                 }
-                {
-                    data && data.length ? data.map((i) => {
-                        const isSelected = this.isSelected(i);
-                        const toggleItem = () => {
-                            this.setItem(i, !isSelected)
-                        };
+                <ScrollView>
+                    {
+                        data && data.length ? data.map((i) => {
+                            const isSelected = this.isSelected(i);
+                            const toggleItem = () => {
+                                this.setItem(i, !isSelected)
+                            };
 
-                        return renderRow(i, isSelected, toggleItem);
-                    }) : renderNoResults? renderNoResults() : <Text>No Results Found for: <Bold>{search}</Bold></Text>
-                }
+                            return renderRow(i, isSelected, toggleItem);
+                        }) : renderNoResults ? renderNoResults() :
+                            <Text style={Styles.center}>No Results Found for: <Bold>{search}</Bold></Text>
+                    }
+                </ScrollView>
             </Flex>
         );
     }
@@ -64,7 +71,7 @@ const TheComponent = class extends Component {
 
 TheComponent.propTypes = {
     value: React.PropTypes.any,
-    data: React.PropTypes.array,
+    items: React.PropTypes.array,
     multiple: React.PropTypes.bool,
     filterItem: React.PropTypes.func,
     renderRow: React.PropTypes.func,

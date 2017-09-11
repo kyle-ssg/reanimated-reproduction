@@ -1,10 +1,8 @@
 /**
  * Created by kylejohnson on 22/10/15.
  */
-module.exports = Component({
+module.exports = React.createClass({
   propTypes: {
-    height: OptionalNumber,
-    zoomed: OptionalNumber,
   },
   mixins: [AnimatedToggleMixin],
   render: function () {

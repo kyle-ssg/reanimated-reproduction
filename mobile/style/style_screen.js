@@ -11,5 +11,7 @@ window.Styles = StyleSheet.create(_.merge({},
     require('./project/style_navs'),
     require('./project/style_forms'),
     require('./project/style_lists'),
-    require('./project/style_platform')
+    require('./project/style_modals'),
+    require('./project/style_platform'),
+    require('./components/style_upload')
 ));

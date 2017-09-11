@@ -14,7 +14,7 @@ const h2 = class extends React.Component {
 
 h2.propTypes = {
   style: React.PropTypes.any,
-  children: OptionalNode
+  children: OptionalElement
 };
 
 module.exports = h2;

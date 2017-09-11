@@ -30,11 +30,6 @@ xcode-select --install
 
 # Available Actions
 ## iOS
-### ios test
-```
-fastlane ios test
-```
-Runs all the tests
 ### ios beta
 ```
 fastlane ios beta
@@ -42,11 +37,6 @@ fastlane ios beta
 Submit a new Beta Build to Apple TestFlight
 
 This will also make sure the profile is up to date
-### ios release
-```
-fastlane ios release
-```
-Deploy a new version to the App Store
 ### ios icon
 ```
 fastlane ios icon
@@ -59,11 +49,6 @@ Generate app icons in various sizes
 ### android beta
 ```
 fastlane android beta
-```
-
-### android release
-```
-fastlane android release
 ```
 
 ### android icon

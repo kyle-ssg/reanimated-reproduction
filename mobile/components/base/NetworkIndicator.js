@@ -33,19 +33,5 @@ var NetworkIndicator = Component({
   },
 });
 
-var styles = StyleSheet.create({
-  bar: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: 5,
-    borderRadius: 10,
-    backgroundColor: colour.alert
-  },
-  barText: {
-    color: 'white',
-    textAlign: 'center'
-  }
-
-});
 
 module.exports = NetworkIndicator;

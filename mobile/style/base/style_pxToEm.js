@@ -1,7 +1,4 @@
-/**
- * Created by niallquinn on 23/08/2016.
- */
-
+import {Dimensions} from 'react-native';
 // Precalculate Device Dimensions for better performance
 const x = Dimensions.get('window').width;
 
@@ -14,6 +11,6 @@ const baseUnit = 12;
 const unit = baseUnit * ratioX;
 
 // We add an em() shortcut function
-window.em = function (value) {
-  return unit * value;
+module.exports = global.em = function (value) {
+    return unit * value;
 };

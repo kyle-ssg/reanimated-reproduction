@@ -6,6 +6,7 @@ require('../project/style_variables');
 require('./style_variables');
 module.exports = Object.assign({},
     require('./style_base'),
+    require('./style_utilities'),
     require('./style_buttons'),
     require('./style_forms'),
     require('./style_grid'),

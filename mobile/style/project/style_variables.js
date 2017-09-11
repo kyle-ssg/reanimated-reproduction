@@ -1,32 +1,69 @@
+import {NativeModules,PixelRatio} from 'react-native';
+var em = require('../base/style_pxToEm');
 window.pallette = {
     backgroundBase: '#ffffff',
 
-    primary: '#2f8cfe',
-    secondary: '#f5f5f5',
+    primaryBlue:'#368de8',
+    primaryBlueLight:'#61aaff',
+    primaryGreen:'#03bd69',
+    primaryGreenLight:'#00d5ac',
 
-    text: '#222222',
-    textLight: '#f0f0f0',
-    textLightest: '#a8a8a8',
+    blueGrey:'#ced6e4',
+    blueGreyDark:'#8796ab',
+
+    blueGreyText:'#848d99',
+    blueGreyDarkText:'#313c4a',
+
+    facebook:'#3b5998',
+    google:'#e83d38',
+    twitter:'#00acee',
+
+    primary: '#368de8',
+    primaryLight: '#7e8592',
+    primaryLightest: '#7e8592',
+    secondary: '#03bd69',
+    third: '#c84d38',
+
+    text: '#555',
+    textLight: '#a8a8a8',
+    textLightest: '#fff',
     textLightestHighlight: '#e2e2e2',
-    divider: '#a8a8a8',
+    divider: '#d1d1d1',
+    dividerLight: '#f9f9fa',
 
-    error: '#f2dede',
+    error: '#b94d4d',
+
+    fromGradient:'#fafafa',
+    toGradient:'#fff',
+    anchor: '#7e8592'
 };
 
 window.colour = {
-    bodyBackground: '#fafafa', //General app  background
+    errorBackground: '#c84d38',
+    bodyBackground: '#fff', //General app  background
+    bodyBackgroundAlt: '#f1f1f1', //General app  background
+    btnDefault: pallette.primaryGreen,
+    inputBackground:'#e4e7f2',
+    inputBorder:pallette.blueGrey,
+    textFaint:'rgba(255,255,255,.75)',
+    textFaintLight:'rgba(0,0,0,.2)',
 
-}
+    navBarSubtitle: pallette.blueGrey,
+};
 
 window.styleVariables =  Object.assign({
     //SCAFFOLD
     statusHeight: NativeModules.StatusBarManager.HEIGHT || 20,
     baseNavHeight: 54,
-    marginBaseVertical: 10,
-    marginBaseHorizontal: 10,
-    paddingBase: 10,
+    marginBaseVertical: em(1),
+    marginBaseHorizontal: em(1),
+    paddingBase: em(1),
+    paddingList: em(1.1),
     gutterBase: 10,
-    borderRadiusDefault: 8,
+    borderRadiusDefault: 4,
+    fontSizeH1: em(2.286),
+    fontSizeH2: em(1.75),
+    fontSizeH3: em(1.25),
 
     //BASE
     borderWidth: 2 / PixelRatio.get(),
@@ -34,8 +71,7 @@ window.styleVariables =  Object.assign({
 
     //TYPE
     fontSizeBase: em(1.2),
-
-    fontSizeSmall: em(0.5),
+    fontSizeSmall: em(0.85),
     fontSizeHeading: em(1.5),
     fontSizeSubHeading: em(1.3),
 
@@ -47,13 +83,14 @@ window.styleVariables =  Object.assign({
     textLight: pallette.textLight, //Light app text colour
 
     //FORMS
-    inputHeight: 50, //Need to change this value in both platform variables files at the moment
+    inputHeight: 44, //Need to change this value in both platform variables files at the moment
     inputText: pallette.text,
     inputBackground: pallette.backgroundBase,
     inputBorder: pallette.textLightest,
+    placeholderTextColor: pallette.blueGreyDark,
 
     //NAV
-    navBar: pallette.primary,
+    navBar: pallette.primaryBlue,
     navBarIcon: pallette.textLight,
     navBarButtonText: pallette.text,
     navBarBorder: pallette.primary,
@@ -64,7 +101,7 @@ window.styleVariables =  Object.assign({
 
 
     //BUTTONS
-    buttonHeight: 50,
+    button: 50,
 
     buttonPrimary: pallette.primary,
     buttonTextLight: pallette.textLight
