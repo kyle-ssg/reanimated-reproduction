@@ -4,249 +4,251 @@
 import React, {Component, PropTypes} from 'react';
 
 const HomePage = class extends Component {
-    static navigatorStyle = global.navbarStyle;
+	static navigatorStyle = global.navbarStyle;
 
-    displayName: 'HomePage';
+	displayName: 'HomePage';
 
-    constructor(props, context) {
-        super(props, context);
-        this.state = {};
-        ES6Component(this);
-        routeHelper.handleNavEvent(props.navigator, 'home', this.onNavigatorEvent);
-        this.initPush(true);
-    }
+	constructor(props, context) {
+		super(props, context);
+		this.state = {};
+		ES6Component(this);
+		routeHelper.handleNavEvent(props.navigator, 'home', this.onNavigatorEvent);
+		this.initPush(true);
+	}
 
-    componentDidMount() {
-        this.listenTo(AccountStore, 'change', () => this.forceUpdate());
-        API.push.getInitialNotification()
-            .then((e) => {
-                e && this.onNotification(Object.assign({}, e, {fromClick: true}));
-            })
-    }
+	componentDidMount() {
+		this.listenTo(AccountStore, 'change', () => this.forceUpdate());
+		API.push.getInitialNotification()
+			.then((e) => {
+				e && this.onNotification(Object.assign({}, e, {fromClick: true}));
+			})
+	}
 
-    onNavigatorEvent = (event) => {
-        if (event.id == Constants.navEvents.SHOW) {
-            this.props.navigator.setDrawerEnabled({side: 'right', enabled: true});
-            Utils.recordScreenView('Home Screen');
-        } else if (event.id == Constants.navEvents.HIDE) {
-            this.props.navigator.setDrawerEnabled({side: 'right', enabled: false});
-        }
-    };
-
-
-    render() {
-        const {uri} = this.state;
-
-        return (
-            <Flex>
-                <Fade value={1} style={[{flex: 1}, Styles.body]} autostart={true}>
-                    <Flex>
-                        <ScrollView>
-                            <View style={Styles.centeredContainer}>
-                                <Loader/>
-                            </View>
+	onNavigatorEvent = (event) => {
+		if (event.id == Constants.navEvents.SHOW) {
+			this.props.navigator.setDrawerEnabled({side: 'right', enabled: true});
+			Utils.recordScreenView('Home Screen');
+		} else if (event.id == Constants.navEvents.HIDE) {
+			this.props.navigator.setDrawerEnabled({side: 'right', enabled: false});
+		}
+	};
 
 
-                            {this.state.branchURL && (
-                                <FormGroup>
-                                    <TextInput value={this.state.branchURL} style={Styles.anchor}/>
-                                </FormGroup>
-                            )}
+	render() {
+		const {uri} = this.state;
+
+		return (
+			<Flex>
+				<Fade value={1} style={[{flex: 1}, Styles.body]} autostart={true}>
+					<Flex>
+						<ScrollView>
+							<View style={Styles.centeredContainer}>
+								<Loader/>
+							</View>
 
 
-                            <ListItem index={0} icon={<ION name="ios-notifications"
-                                                 style={[Styles.listIcon, {color: pallette.secondary}]}/>}>
-                                <Text>Register for Push</Text>
-                                <ReactNative.Switch value={this.state.token ? true : false}
-                                                    onChange={this.registerPush}/>
-                            </ListItem>
-
-                            <ListItem index={1} onPress={() => routeHelper.goAbout(this.props.navigator)}>
-                                <Text>About</Text>
-                                <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
-                            </ListItem>
-
-                            <ListItem index={2} onPress={this.showUpload}>
-                                <Text>Show Upload</Text>
-                                <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
-                            </ListItem>
-
-                            <ListItem  index={3} onPress={this.selectContact}>
-                                <Text>Select Contact</Text>
-                                <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
-                            </ListItem>
-                            <ListItem  index={4} onPress={this.selectMultipleContacts}>
-                                <Text>Select Multiple Contacts</Text>
-                                <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
-                            </ListItem>
-
-                            {this.state.contacts &&
-                            <Text>{_.map(this.state.contacts, 'givenName').join(',')}</Text>
-                            }
-
-                            <ListItem index={5} onPress={this.openSelect}>
-                                <Text>Generic Select</Text>
-                                <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
-                            </ListItem>
-
-                            <ListItem index={6} onPress={() => API.share('www.google.com', 'Just google')}>
-                                <Text style={Styles.anchor}>Share something</Text>
-                            </ListItem>
-
-                            <ListItem index={7} onPress={this.triggerError}>
-                                <Text style={[Styles.anchor, {color: 'red'}]}>Trigger Crashlytics error</Text>
-                            </ListItem>
-
-                            <ListItem  index={8} onPress={this.generateLink}>
-                                <Text style={[Styles.anchor]}>Generate branch link</Text>
-                            </ListItem>
-                            <ListItem  index={9} onPress={this.getInitialLink}>
-                                <Text style={[Styles.anchor]}>Get initial branch link</Text>
-                            </ListItem>
-                            <ListItem index={10} onPress={this.subscribeToLink}>
-                                <Text style={[Styles.anchor]}>Subscribe to branch link</Text>
-                            </ListItem>
-                            <Container>
-                                <FormGroup>
-                                    {
-
-                                        AccountStore.getUser() ?
-                                            <Button onPress={() => AppActions.logout()}>
-                                                Logout
-                                            </Button>
-                                            :
-                                            <Button onPress={() => routeHelper.goAccount(this.props.navigator)}>
-                                                Login Wall
-                                            </Button>
-                                    }
-                                </FormGroup>
-                            </Container>
-
-                            {uri ? <Image style={{height: 100, width: 100}} resizeMode="contain"
-                                          source={{uri}}/> : null}
+							{this.state.branchURL && (
+								<Fade value={1} autostart>
+									<Container>
+										<TextInput value={this.state.branchURL} style={Styles.anchor}/>
+									</Container>
+								</Fade>
+							)}
 
 
-                        </ScrollView>
-                    </Flex>
-                </Fade>
-            </Flex>
-        )
-    }
+							<ListItem index={0} icon={<ION name="ios-notifications"
+														   style={[Styles.listIcon, {color: pallette.secondary}]}/>}>
+								<Text>Register for Push</Text>
+								<ReactNative.Switch value={this.state.token ? true : false}
+													onChange={this.registerPush}/>
+							</ListItem>
 
-    getInitialLink = () => {
-        API.getInitialLink(this.onLink);
-    }
+							<ListItem index={1} onPress={() => routeHelper.goAbout(this.props.navigator)}>
+								<Text>About</Text>
+								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
+							</ListItem>
 
-    subscribeToLink = () => {
-        API.onLinkPressed(this.onLink);
-    }
+							<ListItem index={2} onPress={this.showUpload}>
+								<Text>Show Upload</Text>
+								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
+							</ListItem>
 
+							<ListItem index={3} onPress={this.selectContact}>
+								<Text>Select Contact</Text>
+								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
+							</ListItem>
+							<ListItem index={4} onPress={this.selectMultipleContacts}>
+								<Text>Select Multiple Contacts</Text>
+								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
+							</ListItem>
 
-    showUpload = () => {
-        API.showUpload("Upload a file", false, 100, 100, compressImageQuality = 0.8, () => {
-            this.setState({isUploading: true})
-        })
-            .then((res) => {
-                alert(JSON.stringify(res))
-            })
-    };
+							{this.state.contacts &&
+							<Text>{_.map(this.state.contacts, 'givenName').join(',')}</Text>
+							}
 
-    showCamera = () => {
-        routeHelper.showCamera(this.props.navigator, null, null, ({path, data}) => {
-            this.setState({uri: path, data})
-        })
-    };
+							<ListItem index={5} onPress={this.openSelect}>
+								<Text>Generic Select</Text>
+								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
+							</ListItem>
 
-    openSelect = () => {
-        routeHelper.openSelect(this.props.navigator, "Select a thing", {
-            items: ['item 1', 'item 2'],
-            filterItem: (contact, search) => contact.indexOf(search) !== -1,
-            onChange: (options) => this.setState({options}),
-            renderRow: (item, isSelected, toggleItem) => {
-                return (
-                    <ListItem onPress={toggleItem}>
-                        <Text>{item}</Text>
-                        <ION style={[Styles.listIcon, {color: isSelected ? colour.primary : colour.listItemNav}]}
-                             name={isSelected ? "ios-checkbox" : "ios-checkbox-outline"}/>
-                    </ListItem>
-                )
-            }
-        });
-    };
+							<ListItem index={6} onPress={() => API.share('www.google.com', 'Just google')}>
+								<Text style={Styles.anchor}>Share something</Text>
+							</ListItem>
 
-    selectContact = () => {
-        routeHelper.openContactModal(this.props.navigator, 'Select Contact', (contact) => {
-            this.setState({contacts: [contact]})
-        });
-    };
+							<ListItem index={7} onPress={this.triggerError}>
+								<Text style={[Styles.anchor, {color: 'red'}]}>Trigger Crashlytics error</Text>
+							</ListItem>
 
-    selectMultipleContacts = () => {
-        routeHelper.openContactModal(this.props.navigator, 'Select Contacts', (contact) => {
-            this.setState({contacts: [contact]})
-        }, true);
-    };
+							<ListItem index={8} onPress={this.generateLink}>
+								<Text style={[Styles.anchor]}>Generate branch link</Text>
+							</ListItem>
+							<ListItem index={9} onPress={this.getInitialLink}>
+								<Text style={[Styles.anchor]}>Get initial branch link</Text>
+							</ListItem>
+							<ListItem index={10} onPress={this.subscribeToLink}>
+								<Text style={[Styles.anchor]}>Subscribe to branch link</Text>
+							</ListItem>
+							<Container>
+								<FormGroup>
+									{
 
-    openWebModal = () => {
-        routeHelper.openWebModal(this.props.navigator, 'https://www.google.com', 'Google');
-    };
+										AccountStore.getUser() ?
+											<Button onPress={() => AppActions.logout()}>
+												Logout
+											</Button>
+											:
+											<Button onPress={() => routeHelper.goAccount(this.props.navigator)}>
+												Login Wall
+											</Button>
+									}
+								</FormGroup>
+							</Container>
 
-    generateLink = () => {
-        API.generateLink("SSG Boilerplate", {
-            route: {
-                screen: "goAbout",
-                data: {
-                    customData: "bla"
-                }
-            }
-        }, "www.solidstategroup.com")
-            .then((branchURL) => {
-                this.setState({branchURL})
-            })
-            .catch((e) => {
-                console.log(e);
-            })
-    }
-
-    registerPush = () => {
-        if (this.state.token) {
-            this.setState({token: null});
-            API.push.unsubscribe('/topics/all')
-            API.push.stop();
-        }
-        else {
-            this.initPush(false)
-        }
-
-    };
-
-    initPush = (silent) => {
-        API.push.init(this.onNotification, silent)
-            .then((token) => {
-                API.push.subscribe('/topics/all')
-                this.setState({token})
-            });
-    };
+							{uri ? <Image style={{height: 100, width: 100}} resizeMode="contain"
+										  source={{uri}}/> : null}
 
 
-    onLink = (notification) => {
-        if (notification.route) {
-            const route = notification.route;
-            routeHelper[route.screen] && routeHelper[route.screen](this.props.navigator, route.data);
-        }
-    }
+						</ScrollView>
+					</Flex>
+				</Fade>
+			</Flex>
+		)
+	}
 
-    onNotification = (notification) => {
-        if (notification.fromClick) {
-            if (notification.route) {
-                const route = JSON.parse(notification.route);
-                routeHelper[route.screen] && routeHelper[route.screen](this.props.navigator, route.data);
-            }
-        }
-    };
+	getInitialLink = () => {
+		API.getInitialLink(this.onLink);
+	}
 
-    triggerError = () => {
-        console.log({}.hell.no)
-    };
+	subscribeToLink = () => {
+		API.onLinkPressed(this.onLink);
+	}
+
+
+	showUpload = () => {
+		API.showUpload("Upload a file", false, 100, 100, compressImageQuality = 0.8, () => {
+			this.setState({isUploading: true})
+		})
+			.then((res) => {
+				alert(JSON.stringify(res))
+			})
+	};
+
+	showCamera = () => {
+		routeHelper.showCamera(this.props.navigator, null, null, ({path, data}) => {
+			this.setState({uri: path, data})
+		})
+	};
+
+	openSelect = () => {
+		routeHelper.openSelect(this.props.navigator, "Select a thing", {
+			items: ['item 1', 'item 2'],
+			filterItem: (contact, search) => contact.indexOf(search) !== -1,
+			onChange: (options) => this.setState({options}),
+			renderRow: (item, isSelected, toggleItem) => {
+				return (
+					<ListItem onPress={toggleItem}>
+						<Text>{item}</Text>
+						<ION style={[Styles.listIcon, {color: isSelected ? colour.primary : colour.listItemNav}]}
+							 name={isSelected ? "ios-checkbox" : "ios-checkbox-outline"}/>
+					</ListItem>
+				)
+			}
+		});
+	};
+
+	selectContact = () => {
+		routeHelper.openContactModal(this.props.navigator, 'Select Contact', (contact) => {
+			this.setState({contacts: [contact]})
+		});
+	};
+
+	selectMultipleContacts = () => {
+		routeHelper.openContactModal(this.props.navigator, 'Select Contacts', (contact) => {
+			this.setState({contacts: [contact]})
+		}, true);
+	};
+
+	openWebModal = () => {
+		routeHelper.openWebModal(this.props.navigator, 'https://www.google.com', 'Google');
+	};
+
+	generateLink = () => {
+		API.generateLink("SSG Boilerplate", {
+			route: {
+				screen: "goAbout",
+				data: {
+					customData: "bla"
+				}
+			}
+		}, "www.solidstategroup.com")
+			.then((branchURL) => {
+				this.setState({branchURL})
+			})
+			.catch((e) => {
+				console.log(e);
+			})
+	}
+
+	registerPush = () => {
+		if (this.state.token) {
+			this.setState({token: null});
+			API.push.unsubscribe('/topics/all')
+			API.push.stop();
+		}
+		else {
+			this.initPush(false)
+		}
+
+	};
+
+	initPush = (silent) => {
+		API.push.init(this.onNotification, silent)
+			.then((token) => {
+				API.push.subscribe('/topics/all')
+				this.setState({token})
+			});
+	};
+
+
+	onLink = (notification) => {
+		if (notification.route) {
+			const route = notification.route;
+			routeHelper[route.screen] && routeHelper[route.screen](this.props.navigator, route.data);
+		}
+	}
+
+	onNotification = (notification) => {
+		if (notification.fromClick) {
+			if (notification.route) {
+				const route = JSON.parse(notification.route);
+				routeHelper[route.screen] && routeHelper[route.screen](this.props.navigator, route.data);
+			}
+		}
+	};
+
+	triggerError = () => {
+		console.log({}.hell.no)
+	};
 }
 
 HomePage.propTypes = {};

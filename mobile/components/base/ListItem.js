@@ -23,7 +23,7 @@ var Listitem = Component({
 			</Row>
 		);
 		const animationProps = Object.assign(this.props.animationProps, {
-			delay: this.props.delay + 10 + ((Number(this.props.index || 0)) * 40),
+			delay: this.props.delay + 10 + ((Number(this.props.index || 0)) * 20),
 		})
 		return (
 			this.props.onPress ?

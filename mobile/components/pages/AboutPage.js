@@ -35,7 +35,7 @@ const HomePage = class extends Component {
                         About us
                     </H2>
 					{_.map(_.range(0,20),(i)=>(
-						<ListItem animationProps={animationProps} index={i}>
+						<ListItem index={i}>
 							<Text>List Item {i+1}</Text>
 						</ListItem>
 					))}

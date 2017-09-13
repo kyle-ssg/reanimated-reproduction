@@ -18,8 +18,6 @@
 #import <react-native-branch/RNBranch.h>
 
 
-#import <react-native-branch/RNBranch.h> // at the top
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
