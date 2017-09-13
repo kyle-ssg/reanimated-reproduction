@@ -60,3 +60,14 @@ global.Navigation = Navigation;
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 global.KeyboardAwareScrollView = KeyboardAwareScrollView;
 
+import * as Animatable from 'react-native-animatable';
+global.Animatable = Animatable;
+
+Animatable.initializeRegistryWithDefinitions({
+	basicListEntrance: {
+		from: {opacity: 0, ['translateX']: 20, ['rotateY']: "45deg"},
+		to: { opacity: 1, ['translateX']: 0, ['rotateY']: "0deg"},
+	},
+});
+
+

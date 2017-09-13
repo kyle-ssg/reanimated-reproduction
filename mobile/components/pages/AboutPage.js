@@ -29,13 +29,19 @@ const HomePage = class extends Component {
 
     render() {
         return (
-            <Flex>
+            <ScrollView style={Styles.body}>
                 <Container style={Styles.body}>
                     <H2>
                         About us
                     </H2>
+					{_.map(_.range(0,20),(i)=>(
+						<ListItem animationProps={animationProps} index={i}>
+							<Text>List Item {i+1}</Text>
+						</ListItem>
+					))}
+
                 </Container>
-            </Flex>
+            </ScrollView>
         )
     }
 };

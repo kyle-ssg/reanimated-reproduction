@@ -54,28 +54,28 @@ const HomePage = class extends Component {
                             )}
 
 
-                            <ListItem icon={<ION name="ios-notifications"
+                            <ListItem index={0} icon={<ION name="ios-notifications"
                                                  style={[Styles.listIcon, {color: pallette.secondary}]}/>}>
                                 <Text>Register for Push</Text>
                                 <ReactNative.Switch value={this.state.token ? true : false}
                                                     onChange={this.registerPush}/>
                             </ListItem>
 
-                            <ListItem onPress={() => routeHelper.goAbout(this.props.navigator)}>
+                            <ListItem index={1} onPress={() => routeHelper.goAbout(this.props.navigator)}>
                                 <Text>About</Text>
                                 <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
                             </ListItem>
 
-                            <ListItem onPress={this.showUpload}>
+                            <ListItem index={2} onPress={this.showUpload}>
                                 <Text>Show Upload</Text>
                                 <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
                             </ListItem>
 
-                            <ListItem onPress={this.selectContact}>
+                            <ListItem  index={3} onPress={this.selectContact}>
                                 <Text>Select Contact</Text>
                                 <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
                             </ListItem>
-                            <ListItem onPress={this.selectMultipleContacts}>
+                            <ListItem  index={4} onPress={this.selectMultipleContacts}>
                                 <Text>Select Multiple Contacts</Text>
                                 <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
                             </ListItem>
@@ -84,26 +84,26 @@ const HomePage = class extends Component {
                             <Text>{_.map(this.state.contacts, 'givenName').join(',')}</Text>
                             }
 
-                            <ListItem onPress={this.openSelect}>
+                            <ListItem index={5} onPress={this.openSelect}>
                                 <Text>Generic Select</Text>
                                 <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
                             </ListItem>
 
-                            <ListItem onPress={() => API.share('www.google.com', 'Just google')}>
+                            <ListItem index={6} onPress={() => API.share('www.google.com', 'Just google')}>
                                 <Text style={Styles.anchor}>Share something</Text>
                             </ListItem>
 
-                            <ListItem onPress={this.triggerError}>
+                            <ListItem index={7} onPress={this.triggerError}>
                                 <Text style={[Styles.anchor, {color: 'red'}]}>Trigger Crashlytics error</Text>
                             </ListItem>
 
-                            <ListItem onPress={this.generateLink}>
+                            <ListItem  index={8} onPress={this.generateLink}>
                                 <Text style={[Styles.anchor]}>Generate branch link</Text>
                             </ListItem>
-                            <ListItem onPress={this.getInitialLink}>
+                            <ListItem  index={9} onPress={this.getInitialLink}>
                                 <Text style={[Styles.anchor]}>Get initial branch link</Text>
                             </ListItem>
-                            <ListItem onPress={this.subscribeToLink}>
+                            <ListItem index={10} onPress={this.subscribeToLink}>
                                 <Text style={[Styles.anchor]}>Subscribe to branch link</Text>
                             </ListItem>
                             <Container>
