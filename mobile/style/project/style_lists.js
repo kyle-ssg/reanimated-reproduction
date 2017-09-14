@@ -50,8 +50,7 @@ module.exports = {
     },
 
     listItemText: {
-        color: pallette.text,
-        flex: 1,
+        color: pallette.textLight,
     },
 
     listIcon: {

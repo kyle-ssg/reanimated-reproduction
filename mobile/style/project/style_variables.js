@@ -19,6 +19,7 @@ window.pallette = {
     twitter:'#00acee',
 
     primary: '#368de8',
+    primaryDark: '#3582dc',
     primaryLight: '#7e8592',
     primaryLightest: '#7e8592',
     secondary: '#03bd69',

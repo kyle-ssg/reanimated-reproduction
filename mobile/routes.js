@@ -10,3 +10,8 @@ Navigation.registerComponent('drawer', () => require('./components/SideMenu'));
 
 //Used in auth example
 Navigation.registerComponent('/login', () => require('./components/pages/LoginPage'));
+
+
+
+//Example routes
+Navigation.registerComponent('/examples/interactive', () => require('./components/pages/InteractivePage'));

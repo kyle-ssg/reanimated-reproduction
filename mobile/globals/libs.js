@@ -63,6 +63,9 @@ global.KeyboardAwareScrollView = KeyboardAwareScrollView;
 import * as Animatable from 'react-native-animatable';
 global.Animatable = Animatable;
 
+import Interactable from 'react-native-interactable';
+global.Interactable = Interactable;
+
 Animatable.initializeRegistryWithDefinitions({
 	basicListEntrance: {
 		from: {opacity: 0, ['translateX']: 20},

@@ -15,6 +15,8 @@ module.exports = {
 
     //Button
     circleButton: {
+    	justifyContent:'center',
+		alignItems:'center',
         backgroundColor: 'white',
         width: 34,
         height: 34,

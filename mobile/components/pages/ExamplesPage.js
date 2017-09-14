@@ -68,6 +68,16 @@ const HomePage = class extends Component {
 								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
 							</ListItem>
 
+							<ListItem index={1} onPress={() => this.props.navigator.push({
+								screen:'/examples/interactive',
+								title:"Interactive examples",
+								backButtonTitle:"Home",
+								navigatorStyle:global.navbarStyle
+							})}>
+								<Text>Interactive examples</Text>
+								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
+							</ListItem>
+
 							<ListItem index={2} onPress={this.showUpload}>
 								<Text>Show Upload</Text>
 								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
