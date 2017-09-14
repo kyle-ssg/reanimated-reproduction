@@ -834,7 +834,6 @@
 		4F034FBFF79B4C1B8F3872CE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E55E0C501EE5CBC600AC29F4 /* GoogleService-Info.plist */,
 				59A1864D1A534CBEA3F0093B /* Entypo.ttf */,
 				3C4A97F72E8E4DABB06C9AA8 /* EvilIcons.ttf */,
 				8B59034A86A44E86A8D00F6E /* FontAwesome.ttf */,
@@ -922,6 +921,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				E55E0C501EE5CBC600AC29F4 /* GoogleService-Info.plist */,
 				27DCB9521F602D980097D2DE /* SSGBoilerplate.entitlements */,
 				13B07FAE1A68108700A75B9A /* mobile */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,

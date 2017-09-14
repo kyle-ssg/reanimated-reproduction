@@ -1,6 +1,7 @@
 module.exports = {
 
     text: {
+    	backgroundColor:'transparent',
         color: colour.text,
         fontSize: styleVariables.fontSizeBase,
         fontFamily: 'helvetica',

@@ -21,6 +21,8 @@ const HomePage = class extends Component {
             Utils.recordScreenView('Login Screen');
         } else if (event.id == Constants.navEvents.HIDE) {
 
+        } else if (event.id == "close") {
+        	this.props.navigator.dismissModal()
         }
     };
 
@@ -29,7 +31,7 @@ const HomePage = class extends Component {
             <Flex>
                 <Container style={Styles.body}>
                     <H2>
-                        About us
+                        You need to login to view this page
                     </H2>
                     <LoginProvider onLogin={() => this.props.onLogin(this.props.navigator)}>
                         {(user, isLoading, {facebook, google}) => (

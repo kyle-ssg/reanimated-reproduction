@@ -95,7 +95,8 @@ module.exports = {
             navigator.showModal({
                 screen: "/login",
                 title: "Login",
-                passProps: {
+				navigatorButtons: _.cloneDeep(global.modalNavButtons),
+				passProps: {
                     route,
                     onLogin: () => {
                         navigator.dismissModal();

@@ -46,7 +46,7 @@ sendPush(
     'This is a body',
     {
         route: {
-            screen: "goAbout",
+            screen: "showExampleLightbox",
             data: {
                 customData:"bla"
             }
