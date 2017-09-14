@@ -68,11 +68,16 @@ const HomePage = class extends Component {
 								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
 							</ListItem>
 
+							<ListItem index={1} onPress={this.showExampleLightbox}>
+								<Text>Example Lightbox</Text>
+								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
+							</ListItem>
+
 							<ListItem index={1} onPress={() => this.props.navigator.push({
-								screen:'/examples/interactive',
-								title:"Interactive examples",
-								backButtonTitle:"Home",
-								navigatorStyle:global.navbarStyle
+								screen: '/examples/interactive',
+								title: "Interactive examples",
+								backButtonTitle: "Home",
+								navigatorStyle: global.navbarStyle
 							})}>
 								<Text>Interactive examples</Text>
 								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
@@ -84,17 +89,27 @@ const HomePage = class extends Component {
 							</ListItem>
 
 							<ListItem index={3} onPress={this.selectContact}>
-								<Text>Select Contact</Text>
+								<Text>
+									Select Contact{' '}
+									{this.state.contacts &&
+									<Text>
+										({_.map(this.state.contacts, 'givenName').join(',')})
+									</Text>
+									}
+								</Text>
 								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
 							</ListItem>
 							<ListItem index={4} onPress={this.selectMultipleContacts}>
-								<Text>Select Multiple Contacts</Text>
+								<Text>Select Multiple Contacts{' '}
+									{this.state.contacts &&
+									<Text>
+										({_.map(this.state.contacts, 'givenName').join(',')})
+									</Text>
+									}
+								</Text>
 								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
 							</ListItem>
 
-							{this.state.contacts &&
-							<Text>{_.map(this.state.contacts, 'givenName').join(',')}</Text>
-							}
 
 							<ListItem index={5} onPress={this.openSelect}>
 								<Text>Generic Select</Text>
@@ -196,6 +211,10 @@ const HomePage = class extends Component {
 		routeHelper.openContactModal(this.props.navigator, 'Select Contacts', (contact) => {
 			this.setState({contacts: [contact]})
 		}, true);
+	};
+
+	showExampleLightbox = () => {
+		routeHelper.showExampleLightbox(this.props.navigator)
 	};
 
 	openWebModal = () => {

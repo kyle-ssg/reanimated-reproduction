@@ -15,3 +15,4 @@ Navigation.registerComponent('/login', () => require('./components/pages/LoginPa
 
 //Example routes
 Navigation.registerComponent('/examples/interactive', () => require('./components/pages/InteractivePage'));
+Navigation.registerComponent('/examples/lightbox', () => require('./components/pages/ExampleLightbox'));
