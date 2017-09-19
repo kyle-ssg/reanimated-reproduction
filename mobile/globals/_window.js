@@ -19,3 +19,8 @@ global.AjaxHandler = require('../common/ajax-handler');
 
 import dismissKeyboard from 'dismissKeyboard';
 global.dismissKeyboard = dismissKeyboard;
+
+import {
+	TouchableNativeFeedback
+} from 'react-native';
+global.TouchableNativeFeedback = TouchableNativeFeedback;

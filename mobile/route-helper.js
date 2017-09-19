@@ -103,9 +103,9 @@ module.exports = {
                         setTimeout(()=>{
                             if (AccountStore.getUser()) {
                                 if (replace) {
-                                    navigator.resetTo(route);
+                                    navigator.resetTo(_.cloneDeep(route));
                                 } else {
-                                    navigator.push(route);
+                                    navigator.push(_.cloneDeep(route));
                                 }
                             }
                         },600)
@@ -137,6 +137,9 @@ module.exports = {
 		navigator.showLightBox({
 			screen: "/examples/lightbox", // unique ID registered with Navigation.registerScreen
 			style: {
+				width:DeviceWidth,
+				height:DeviceHeight,
+				justifyContent:'center',
 				tapBackgroundToDismiss: true, // dismisses LightBox on background taps (optional)
 				backgroundBlur: "dark", // 'dark' / 'light' / 'xlight' / 'none' - the type of blur on the background
 			},

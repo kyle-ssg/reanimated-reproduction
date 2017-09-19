@@ -50,7 +50,7 @@
   [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES];
   NSError* configureError;
   [[GGLContext sharedInstance] configureWithError: &configureError];
-  NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+//cd    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
 
   return YES;
 }

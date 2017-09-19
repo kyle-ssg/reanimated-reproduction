@@ -56,6 +56,7 @@ window.Button = require('../components/base/forms/Button');
 window.Divider = require('../components/base/Divider');
 window.Loader = require('../components/base/Loader');
 window.Card = require('../components/base/forms/Card');
+window.NotificationBubble = require('../components/base/forms/NotificationBubble');
 window.Select = require('../components/base/forms/Select');
 
 //Navs

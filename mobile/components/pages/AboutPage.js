@@ -5,46 +5,50 @@ import React, {Component, PropTypes} from 'react';
 
 const HomePage = class extends Component {
 
-    static navigatorStyle = global.navbarStyle;
+	static navigatorStyle = global.navbarStyle;
 
-    displayName: 'HomePage'
+	displayName: 'HomePage'
 
-    constructor(props, context) {
-        super(props, context);
-        this.state = {};
-        routeHelper.handleNavEvent(this.props.navigator, 'about', this.onNavigatorEvent);
-    }
+	constructor(props, context) {
+		super(props, context);
+		this.state = {};
+		routeHelper.handleNavEvent(this.props.navigator, 'about', this.onNavigatorEvent);
+	}
 
-    onNavigatorEvent = (event) => {
-        if (event.id == Constants.navEvents.SHOW) {
-            Utils.recordScreenView('About Screen');
-        } else if (event.id == Constants.navEvents.HIDE) {
+	onNavigatorEvent = (event) => {
+		if (event.id == Constants.navEvents.SHOW) {
+			Utils.recordScreenView('About Screen');
+		} else if (event.id == Constants.navEvents.HIDE) {
 
-        }
-    };
+		}
+	};
 
-    onLogin = () => {
-        alert("Logged in")
-    }
+	onLogin = () => {
+		alert("Logged in")
+	}
 
-    render() {
-        return (
-            <ScrollView style={Styles.body}>
-                <Container style={Styles.body}>
-                    <H2>
-                        About us
-                    </H2>
-					{_.map(_.range(0,20),(i)=>(
-						<ListItem index={i}>
-							<Text>List Item {i+1}</Text>
-						</ListItem>
-					))}
-
-                </Container>
-            </ScrollView>
-        )
-    }
+	render() {
+		return (
+			<Flex style={Styles.body}>
+				<ScrollView>
+					<Container style={Styles.body}>
+						<H2>
+							About us
+						</H2>
+						{_.range(0, 12).map((i) => (
+							<ListItem index={i}>
+								<Text>
+									ListItem {i}
+								</Text>
+							</ListItem>
+						))}
+					</Container>
+				</ScrollView>
+			</Flex>
+		)
+	}
 };
+
 
 HomePage.propTypes = {};
 

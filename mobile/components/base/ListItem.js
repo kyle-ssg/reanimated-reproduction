@@ -14,13 +14,15 @@ var Listitem = Component({
 		};
 	}, render: function () {
 		content = (
-			<Row>
-				{this.props.icon}
-				<View
-					style={[this.props.disabled && Styles.listItemDisabled, Styles.liContent, {backgroundColor: 'transparent'}]}>
-					{this.props.children}
-				</View>
-			</Row>
+			<View>
+				<Row>
+					{this.props.icon}
+					<View
+						style={[this.props.disabled && Styles.listItemDisabled, Styles.liContent, {backgroundColor: 'transparent'}]}>
+						{this.props.children}
+					</View>
+				</Row>
+			</View>
 		);
 		const animationProps = Object.assign(this.props.animationProps, {
 			delay: this.props.delay + 10 + ((Number(this.props.index || 0)) * 20),
@@ -30,12 +32,23 @@ var Listitem = Component({
 				<Animatable.View
 					style={this.props.style || Styles.listItem}
 					{...this.props.animationProps}
-				>
-					<TouchableOpacity
-						activeOpacity={0.8}
-						onPress={this.props.disabled ? null : this.props.onPress}>
-						{content}
-					</TouchableOpacity>
+				>{
+					Platform.OS == "android" ? (
+						<TouchableNativeFeedback
+							onPress={this.props.disabled ? null : this.props.onPress}
+							background={TouchableNativeFeedback.SelectableBackgroundBorderless()}>
+							{content}
+
+						</TouchableNativeFeedback>
+					) : (
+						<TouchableOpacity
+							activeOpacity={0.8}
+							onPress={this.props.disabled ? null : this.props.onPress}>
+							{content}
+						</TouchableOpacity>
+					)
+				}
+
 				</Animatable.View>
 				: <Animatable.View
 					{...this.props.animationProps}

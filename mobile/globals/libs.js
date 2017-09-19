@@ -68,7 +68,7 @@ global.Interactable = Interactable;
 
 Animatable.initializeRegistryWithDefinitions({
 	basicListEntrance: {
-		from: {opacity: 0, ['translateX']: 20},
+		from: {opacity: 1, ['translateX']: 40},
 		to: { opacity: 1, ['translateX']: 0},
 	},
 });

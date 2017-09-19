@@ -219,6 +219,20 @@
 			remoteGlobalIDString = 3D383D621EBD27B9005632C8;
 			remoteInfo = "double-conversion-tvOS";
 		};
+		279084061F713A6000CA4F2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 279083F71F713A6000CA4F2D /* RCTAnimation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTAnimation;
+		};
+		279084081F713A6000CA4F2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 279083F71F713A6000CA4F2D /* RCTAnimation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2A28201D9B03D100D4039D;
+			remoteInfo = "RCTAnimation-tvOS";
+		};
 		279834101F5D625D004BA1D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F33AE5CF49484DFA82B8AB6E /* BVLinearGradient.xcodeproj */;
@@ -534,6 +548,7 @@
 		27536D181F5D940F00AA5892 /* RNGoogleSignInEventsBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGoogleSignInEventsBridge.m; sourceTree = SOURCE_ROOT; };
 		277F06C81F5DB93700BADFBB /* QBImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QBImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		277F06F91F5DB99A00BADFBB /* RSKImageCropper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RSKImageCropper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		279083F71F713A6000CA4F2D /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		27DCB9521F602D980097D2DE /* SSGBoilerplate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SSGBoilerplate.entitlements; sourceTree = "<group>"; };
 		31C08BA45547470EB72610D3 /* libimageCropPicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libimageCropPicker.a; sourceTree = "<group>"; };
 		322050F4476D44EBBB861385 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
@@ -626,7 +641,7 @@
 		E52FA9D31F25F68000BA1E1E /* BridgeUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeUtils.swift; sourceTree = "<group>"; };
 		E52FA9D41F25F68000BA1E1E /* ChartDataSetConfigUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartDataSetConfigUtils.swift; sourceTree = "<group>"; };
 		E52FA9D51F25F68000BA1E1E /* EntryToDictionaryUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryToDictionaryUtils.swift; sourceTree = "<group>"; };
-		E55E0C501EE5CBC600AC29F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E55E0C501EE5CBC600AC29F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E6D93B50F9C14CCEA64EA284 /* libRNShare.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNShare.a; sourceTree = "<group>"; };
 		EF15C2C1B01C45EE8B35663D /* libReactNativeNavigation.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeNavigation.a; sourceTree = "<group>"; };
 		F33AE5CF49484DFA82B8AB6E /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
@@ -745,6 +760,7 @@
 		13B07FAE1A68108700A75B9A /* mobile */ = {
 			isa = PBXGroup;
 			children = (
+				E55E0C501EE5CBC600AC29F4 /* GoogleService-Info.plist */,
 				E52FA99A1F25F67500BA1E1E /* ExampleBridgingHeader.h */,
 				E518AD891F0BFFC100500791 /* AppDelegate.h */,
 				E518AD8A1F0BFFC100500791 /* AppDelegate.m */,
@@ -831,6 +847,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		279083F81F713A6000CA4F2D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				279084071F713A6000CA4F2D /* libRCTAnimation.a */,
+				279084091F713A6000CA4F2D /* libRCTAnimation.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		4F034FBFF79B4C1B8F3872CE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -890,6 +915,7 @@
 				F33AE5CF49484DFA82B8AB6E /* BVLinearGradient.xcodeproj */,
 				0CBD976E532046EBB1DBA7F9 /* Interactable.xcodeproj */,
 				5BD93FEE4D924D7FB89D106F /* Lottie.xcodeproj */,
+				279083F71F713A6000CA4F2D /* RCTAnimation.xcodeproj */,
 				914D33692FAB46C49EA37BC9 /* LottieReactNative.xcodeproj */,
 				A870DF4527034FBE806D1359 /* ReactNativeNavigation.xcodeproj */,
 				1BC385C27DEF4E2B9920E6C6 /* RCTCamera.xcodeproj */,
@@ -921,7 +947,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				E55E0C501EE5CBC600AC29F4 /* GoogleService-Info.plist */,
 				27DCB9521F602D980097D2DE /* SSGBoilerplate.entitlements */,
 				13B07FAE1A68108700A75B9A /* mobile */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -1307,6 +1332,10 @@
 					ProjectRef = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
 				},
 				{
+					ProductGroup = 279083F81F713A6000CA4F2D /* Products */;
+					ProjectRef = 279083F71F713A6000CA4F2D /* RCTAnimation.xcodeproj */;
+				},
+				{
 					ProductGroup = E53FDDBB1E45FBC90086448F /* Products */;
 					ProjectRef = 1BC385C27DEF4E2B9920E6C6 /* RCTCamera.xcodeproj */;
 				},
@@ -1506,6 +1535,20 @@
 			fileType = archive.ar;
 			path = "libdouble-conversion.a";
 			remoteRef = 27759C0C1F69811A00143B01 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		279084071F713A6000CA4F2D /* libRCTAnimation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTAnimation.a;
+			remoteRef = 279084061F713A6000CA4F2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		279084091F713A6000CA4F2D /* libRCTAnimation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTAnimation.a;
+			remoteRef = 279084081F713A6000CA4F2D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		279834111F5D625D004BA1D1 /* libBVLinearGradient.a */ = {
@@ -1967,6 +2010,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/NativeAnimation/**",
 					"$(SRCROOT)/../node_modules/react-native-facebook-login/FacebookSDK/**",
 				);
 				HEADER_SEARCH_PATHS = (
@@ -2027,6 +2071,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/NativeAnimation/**",
 					"$(SRCROOT)/../node_modules/react-native-facebook-login/FacebookSDK/**",
 				);
 				HEADER_SEARCH_PATHS = (
