@@ -9,7 +9,6 @@ import java.util.List;
 import com.facebook.react.ReactApplication;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.clipsub.rnbottomsheet.RNBottomSheetPackage;
-import io.branch.rnbranch.RNBranchPackage;
 import com.magus.fblogin.FacebookLoginPackage;
 import com.reactlibrary.googlesignin.RNGoogleSignInPackage;
 import com.evollu.react.fcm.FIRMessagingPackage;

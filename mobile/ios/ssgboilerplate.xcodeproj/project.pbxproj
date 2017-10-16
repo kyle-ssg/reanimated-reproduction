@@ -792,6 +792,30 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		274560711F87C9A00039F285 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				EF15C2C1B01C45EE8B35663D /* libReactNativeNavigation.a */,
+				47B07F1256954305BD1A8117 /* libRNVectorIcons.a */,
+				7ACE219E7F844D8EBA5926A7 /* libRNDeviceInfo.a */,
+				A74DE2F7EABC4EABA1624972 /* libRCTCamera.a */,
+				3EE5C9CDB8DC4F8BACFABBD2 /* libRCTImageResizer.a */,
+				09996A1E88DB47EDABD9B81F /* libRNFetchBlob.a */,
+				1C493F3B15ED4579B21A0273 /* libBVLinearGradient.a */,
+				E6D93B50F9C14CCEA64EA284 /* libRNShare.a */,
+				26FD4FC567CF416EA30568DB /* libRCTContacts.a */,
+				4EA6F3223A3045E9951115CB /* libLottie.a */,
+				3338E59478AD414193247E47 /* libLottieReactNative.a */,
+				77B76BCC26C24C2ABDE296CD /* libRNFS.a */,
+				CD5FAEF973FB4D50B40F26D4 /* libInteractable.a */,
+				3E3C00FCCBD441AEA7EFA06E /* libRNSVG.a */,
+				415701A6538744948A6E8EDE /* libRCTFBLogin.a */,
+				4C9556AC7C444896A127A51F /* libreact-native-branch.a */,
+				31C08BA45547470EB72610D3 /* libimageCropPicker.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		27529AE11F5D84A200C96794 /* React */ = {
 			isa = PBXGroup;
 			children = (
@@ -954,6 +978,7 @@
 				4F034FBFF79B4C1B8F3872CE /* Resources */,
 				52974E9925DF58909E2BD74A /* Frameworks */,
 				B07141BB4A9D15A288616AD1 /* Pods */,
+				274560711F87C9A00039F285 /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";

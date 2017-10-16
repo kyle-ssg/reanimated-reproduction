@@ -40,6 +40,7 @@ var PushManager = class {
     stop = () => {
         this.token = null;
         this.notificationListener && this.notificationListener.remove();
+		this.notificationListener = null;
     } // remove old listener
     init = (onNotification, silent) => {
 
