@@ -12,7 +12,6 @@
 ### Firebase
 
 Start by following the instructions found here https://git.solidstategroup.com/solidstategroup/firebase-project-starter.
-
 Add a web app via the Firebase console and update the `firebase` object in `env/project_*.js`
 
 ##### iOS
@@ -38,13 +37,9 @@ From the `google-services.json` file copy the `client_id` value where `client_ty
 
 Create a Facebook app on https://developers.facebook.com/apps/ to get a Facebook ID
 
-Update the `facebook` object in `env/project_*.js`
-
 ##### iOS
-
-Open up project settings with XCode and under the Info tab update `FacebookAppId` and `FacebookDisplayName`.
-
-Update the three URL types, first one with the Facebook ID, 2nd with iosClientID from `env/project_*.js` and third with the bundle ID
+Open up project settings with info.plist tab update `FacebookAppId` and `FacebookDisplayName`.
+Update the three URL types, first one with the Facebook ID
 
 ![iOS Facebook](http://g.recordit.co/GDqmbyI6Gb.gif)
 
@@ -55,41 +50,11 @@ Open `android/app/src/main/res/values/strings.xml` and change the Facebook app I
 ### Google Sign In
 (https://github.com/joonhocho/react-native-google-sign-in)
 
-You should only follow this section if you do not intend to add Firebase support in your application.
-
-##### iOS
-
-Go to [Google Developers Console](https://developers.google.com/mobile/add?platform=ios&cntapi=signin&cnturl=https:%2F%2Fdevelopers.google.com%2Fidentity%2Fsign-in%2Fios%2Fsign-in%3Fconfigured%3Dtrue&cntlbl=Continue%20Adding%20Sign-In) and generate a `GoogleService-Info.plist` configuration file from either a new Google app or an existing one and replace the existing one in `mobile/ios`.
-
-##### Android
-
-Go to [Google Developers Console](https://developers.google.com/mobile/add?platform=android&cntapi=signin&cnturl=https:%2F%2Fdevelopers.google.com%2Fidentity%2Fsign-in%2Fandroid%2Fsign-in%3Fconfigured%3Dtrue&cntlbl=Continue%20Adding%20Sign-In) and generate a `google-services.json`configuration file from either a new Google app or an existing one and replace the existing one in `mobile/android/app/src`.
-
-### Fabric Digits
-(https://github.com/JeanLebrument/react-native-fabric-digits)
-
-##### iOS
-
-Go to the [Fabric Digits installation guide for iOS](https://fabric.io/kits/ios/digits/install). You will need to log in to create Twitter applications and get API keys.
-
-Update the Run Script build phase from within Xcode with the correct API key and secret.
-
-![Digits Run Script](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/raw/master/ThirdPartyDigits.png)
-
-In the Project Navigator, right click on Info.plist within the mobile folder and 'Open as' -> 'Source Code'. Under the Fabric key update the APIKey, consumerKey and consumerSecret.
-
-![Digits Run Script](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/raw/master/ThirdPartyDigits2.png)
-
-##### Android
-
-Go to the [Fabric Digits installation guide for Android](https://fabric.io/kits/android/digits/install). You will need to log in to create Twitter applications and get API keys.
-
-Update the API Key and API secret in `mobile/android/app/src/main/AndroidManifest.xml` under the `<react-native-fabric-digits>` comment.
+Download the google services json and plist from firebase
 
 ### Google Analytics
-(https://github.com/idehub/react-native-google-analytics-bridge)
-
-Once you have your Google Analytics tracking code (https://support.google.com/analytics/answer/1032385?hl=en), update the `analytics` value in `env/project_*.js`.
+(react-native-google-analytics)
+change global.GA_ID
 
 ### Branch.
 (https://github.com/BranchMetrics/react-native-branch-deep-linking)
@@ -98,7 +63,7 @@ Create a Branch.io app at https://branch.io in order to get a API key and secret
 
 ##### iOS
 
-Open up `Info.plist` inside the `mobile` folder and update the `branch_key` live and test values
+Open up `Info.plist` and update the `branch_key` live and test values
 
 Under URL types update Item 0 -> URL Schemes -> Item 0 from `ssgfeb` to the URL scheme you are going to use.
 
@@ -107,8 +72,6 @@ For universal linking support, go to Project Settings and under Capabilites upda
 ![iOS Branch.io](http://g.recordit.co/u9xPBrOoGn.gif)
 
 ##### Android
-
 Open up `AndroidManifest.xml` and find the `<intent-filter>` with `android:scheme` set to `ssgfeb`. Update this value with the URL scheme you are going to use.
-
 Within the same file update the `io.branch.sdk.BranchKey` metadata value with the live Branch.io API key.
 
