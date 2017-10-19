@@ -8,6 +8,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const src = path.join(__dirname, '../src') + '/';
+var WebpackBundleSizeAnalyzerPlugin = require('webpack-bundle-size-analyzer').WebpackBundleSizeAnalyzerPlugin;
 
 module.exports = {
 	devtool: 'source-map',
@@ -31,6 +32,7 @@ module.exports = {
 
 				//reduce filesize
 				new webpack.optimize.OccurrenceOrderPlugin(),
+			new WebpackBundleSizeAnalyzerPlugin('./plain-report.txt'),
 
 				//pull inline styles into cachebusted file
 				new ExtractTextPlugin({filename: "/style.[hash].css", allChunks: true}),

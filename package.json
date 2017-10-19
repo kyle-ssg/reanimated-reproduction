@@ -39,6 +39,7 @@
     "simple-firebase-auth": "^0.0.6",
     "ssg-node-express": "4.14.2",
     "ssg-react": "15.6.1",
-    "ssg-webpack": "2.2.1"
+    "ssg-webpack": "2.2.1",
+    "webpack-bundle-size-analyzer": "2.7.0"
   }
 }
