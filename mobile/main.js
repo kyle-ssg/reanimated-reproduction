@@ -46,14 +46,14 @@ const getUser = new Promise(function (resolve) {
 	} else {
 		AsyncStorage.getItem('user', (err, res) => {
 			if (res) {
-				AccountStore.setModel(JSON.parse(res))
+				AccountStore.setUser(JSON.parse(res))
 			}
 			resolve(res)
 		});
 	}
 });
 
-Promise.all([getUser, iconsLoaded]).then((user) => {
+Promise.all([getUser, iconsLoaded]).then(([user]) => {
 	global.iconsMap = iconsMap;
 
 	global.modalNavButtons = {
@@ -74,45 +74,72 @@ Promise.all([getUser, iconsLoaded]).then((user) => {
 		bottom: 0, // optional, default is 0.
 		right: 0 // optional, default is 0.
 	}
-	Navigation.startTabBasedApp({
-		tabs: [
-			{
-				label: 'One', // tab label as appears under the icon in iOS (optional)
-				screen: '/', // unique ID registered with Navigation.registerScreen
-				icon: iconsMap['ios-home'], // local image asset for the tab icon unselected state (optional on iOS)
-				selectedIcon: iconsMap['ios-home'], // local image asset for the tab icon selected state (optional, iOS only. On Android, Use `tabBarSelectedButtonColor` instead)
-				iconInsets,
-				title: 'Screen One', // title of the screen as appears in the nav bar (optional)
-				navigatorStyle: {}, // override the navigator style for the tab screen, see "Styling the navigator" below (optional),
-				navigatorButtons: {} // override the nav buttons for the tab screen, see "Adding buttons to the navigator" below (optional)
+	// Navigation.startTabBasedApp({
+	// 	tabs: [
+	// 		{
+	// 			label: 'One', // tab label as appears under the icon in iOS (optional)
+	// 			screen: '/', // unique ID registered with Navigation.registerScreen
+	// 			icon: iconsMap['ios-home'], // local image asset for the tab icon unselected state (optional on iOS)
+	// 			selectedIcon: iconsMap['ios-home'], // local image asset for the tab icon selected state (optional, iOS only. On Android, Use `tabBarSelectedButtonColor` instead)
+	// 			iconInsets,
+	// 			title: 'Screen One', // title of the screen as appears in the nav bar (optional)
+	// 			navigatorStyle: {}, // override the navigator style for the tab screen, see "Styling the navigator" below (optional),
+	// 			navigatorButtons: {} // override the nav buttons for the tab screen, see "Adding buttons to the navigator" below (optional)
+	// 		},
+	// 		{
+	// 			label: 'Two',
+	// 			iconInsets,
+	// 			screen: '/about', // unique ID registered with Navigation.registerScreen
+	// 			icon: iconsMap['ios-chatbubbles'], // local image asset for the tab icon unselected state (optional on iOS)
+	// 			selectedIcon: iconsMap['ios-chatbubbles'], // local image asset for the tab icon selected state (optional, iOS only. On Android, Use `tabBarSelectedButtonColor` instead)
+	// 			title: 'Screen Two'
+	// 		}
+	// 	],
+	// 	tabsStyle: { // optional, add this if you want to style the tab bar beyond the defaults
+	// 		// tabBarHideShadow: true,
+	// 		// tabBarButtonColor: '#ffff00', // optional, change the color of the tab icons and text (also unselected). On Android, add this to appStyle
+	// 		// tabBarSelectedButtonColor: '#ff9900', // optional, change the color of the selected tab icon and text (only selected). On Android, add this to appStyle
+	// 		// tabBarBackgroundColor: '#551A8B', // optional, change the background color of the tab bar
+	// 		initialTabIndex: 1, // optional, the default selected bottom tab. Default: 0. On Android, add this to appStyle
+	// 	},
+	// 	appStyle: {
+	// 		bottomBarBorderColor: "red",
+	// 		orientation: 'portrait', // Sets a specific orientation to the entire app. Default: 'auto'. Supported values: 'auto', 'landscape', 'portrait'
+	// 		bottomTabBadgeTextColor: 'red', // Optional, change badge text color. Android only
+	// 		bottomTabBadgeBackgroundColor: 'green', // Optional, change badge background color. Android only
+	// 		icon: iconsMap['ios-arrow-back'], // local image asset for the tab icon unselected state (optional on iOS)
+	// 		hideBackButtonTitle: true / false // Hide back button title. Default is false. If `backButtonTitle` provided so it will take into account and the `backButtonTitle` value will show. iOS only
+	// 	},
+	// 	passProps: {}, // simple serializable object that will pass as props to all top screens (optional)
+	// 	animationType: 'slide-down' // optional, add transition animation to root change: 'none', 'slide-down', 'fade'
+	// });
+
+	//Start at login screen, todo: could perhaps start at challenge screen
+	Navigation.startSingleScreenApp({
+			screen: {
+				title: user? "Dashboard": 'JigsawBox',
+				navigatorStyle: {
+					screenBackgroundColor: '#fff',
+				},
+				screen: user ? AccountStore.isCoach() ? "/coach" : "/client" : '/', // unique ID registered with Navigation.registerScreen
+				navigatorButtons: {
+					leftButtons: []
+				}, // override the nav buttons for the screen, see "Adding buttons to the navigator" below (optional)
 			},
-			{
-				label: 'Two',
-				iconInsets,
-				screen: '/about', // unique ID registered with Navigation.registerScreen
-				icon: iconsMap['ios-chatbubbles'], // local image asset for the tab icon unselected state (optional on iOS)
-				selectedIcon: iconsMap['ios-chatbubbles'], // local image asset for the tab icon selected state (optional, iOS only. On Android, Use `tabBarSelectedButtonColor` instead)
-				title: 'Screen Two'
+			drawer: { // optional, add this if you want a side menu drawer in your app
+				right: { // optional, define if you want a drawer from the right
+					screen: 'drawer', // unique ID registered with Navigation.registerScreen
+				},
+				style: {
+					backgroundColor: 'transparent',
+					drawerShadow: 'NO',
+					contentOverlayColor: 'rgba(0,0,0,.5)',
+					rightDrawerWidth: ((DeviceWidth - 64) / DeviceWidth) * 100
+				},
+				disableOpenGesture: !user // optional, can the drawer be opened with a swipe instead of button
 			}
-		],
-		tabsStyle: { // optional, add this if you want to style the tab bar beyond the defaults
-			// tabBarHideShadow: true,
-			// tabBarButtonColor: '#ffff00', // optional, change the color of the tab icons and text (also unselected). On Android, add this to appStyle
-			// tabBarSelectedButtonColor: '#ff9900', // optional, change the color of the selected tab icon and text (only selected). On Android, add this to appStyle
-			// tabBarBackgroundColor: '#551A8B', // optional, change the background color of the tab bar
-			initialTabIndex: 1, // optional, the default selected bottom tab. Default: 0. On Android, add this to appStyle
-		},
-		appStyle: {
-			bottomBarBorderColor: "red",
-			orientation: 'portrait', // Sets a specific orientation to the entire app. Default: 'auto'. Supported values: 'auto', 'landscape', 'portrait'
-			bottomTabBadgeTextColor: 'red', // Optional, change badge text color. Android only
-			bottomTabBadgeBackgroundColor: 'green', // Optional, change badge background color. Android only
-			icon: iconsMap['ios-arrow-back'], // local image asset for the tab icon unselected state (optional on iOS)
-			hideBackButtonTitle: true / false // Hide back button title. Default is false. If `backButtonTitle` provided so it will take into account and the `backButtonTitle` value will show. iOS only
-		},
-		passProps: {}, // simple serializable object that will pass as props to all top screens (optional)
-		animationType: 'slide-down' // optional, add transition animation to root change: 'none', 'slide-down', 'fade'
-	});
+		}
+	);
 });
 
 console.disableYellowBox = true;

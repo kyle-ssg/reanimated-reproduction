@@ -14,7 +14,6 @@ import routeHelper from '../route-helper';
 global.routeHelper = routeHelper;
 //
 global.API = require('./api');
-global.AjaxHandler = require('../common/ajax-handler');
 
 
 import dismissKeyboard from 'dismissKeyboard';

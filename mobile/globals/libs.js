@@ -5,8 +5,8 @@ import moment from 'moment';
 global.moment = moment;
 
 window.Project = require('../common/project');
-window.Utils = require('../common/utils');
-window.Format = require('../common/format');
+window.Utils = require('../common/utils/utils');
+window.Format = require('../common/utils/format');
 
 import Dispatcher  from'../common/dispatcher/dispatcher';
 import AppActions  from'../common/dispatcher/app-actions';
@@ -74,3 +74,8 @@ Animatable.initializeRegistryWithDefinitions({
 });
 
 
+import {
+	CachedImage,
+	ImageCacheProvider
+} from 'react-native-cached-image';
+global.CachedImage = CachedImage;

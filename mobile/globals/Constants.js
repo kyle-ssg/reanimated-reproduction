@@ -1,16 +1,17 @@
 global.Constants = {
     simulate: {
-        TIMED_TOKEN: false,
-        SHOULD_CHANGE_PASSWORD: false,
-        NO_SECRET_WORD: false,
-        NOT_READ_RESULTS: false,
-        NO_RESULTS: false, //Not implemented
-        SKIP_SECURITY: false //Not implemented
+		PROFILE_INCOMPLETE: false
     },
     navEvents: {
         SHOW: 'didAppear',
         HIDE: 'didDisappear'
-    }
+    },
+	courseCoverAspectRatio: "1200x400",
+	avatarAspectRatio: "120x120",
+	defaultColor:"#36a7de",
+	timeoutTempUser: 60000*30,
+
+	defaultCourseCover: "https://images.pexels.com/photos/3797/black-and-white-sport-fight-boxer.jpg"
 };
 
 module.exports = Constants;
