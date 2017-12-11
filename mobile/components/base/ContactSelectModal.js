@@ -1,9 +1,10 @@
 //propTypes: uri: RequiredString
+state = {isLoading:true};
 const NativeModal = class extends React.Component {
     constructor(props) {
         super(props);
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
-        this.state = { isLoading: true }
+        this.state = state
     }
 
     onNavigatorEvent(event) {
@@ -12,6 +13,7 @@ const NativeModal = class extends React.Component {
         } else if (event.id == Constants.navEvents.SHOW) {
             API.contacts.getAll()
                 .then(({ error, contacts }) => {
+					state = { contacts, error, isLoading: false };
                     this.setState({ contacts, error, isLoading: false })
                 })
         } else {
