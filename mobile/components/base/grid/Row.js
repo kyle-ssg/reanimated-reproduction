@@ -1,9 +1,15 @@
-module.exports = Component({
-  render: function () {
-    return (
-      <View style={[Styles.row, this.props.space && { justifyContent: 'space-between' }, this.props.style]}>
-        {this.props.children}
-      </View>
-    );
-  }
-});
+import React, {Component, PropTypes} from 'react';
+
+const TheComponent = (props)=>(
+	<View style={[Styles.row, props.space && { justifyContent: 'space-between' }, props.style]}>
+		{props.children}
+	</View>
+);
+
+TheComponent.displayName = "TheComponent";
+
+TheComponent.propTypes = {
+	children: OptionalObject
+};
+
+module.exports = TheComponent;

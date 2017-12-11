@@ -1,9 +1,15 @@
-module.exports = Component({
-  render: function () {
-    return (
-      <View style={[Styles.formGroup, this.props.style]}>
-        {this.props.children}
-      </View>
-    );
-  }
-});
+import React, {Component, PropTypes} from 'react';
+
+const TheComponent = (props)=>(
+	<View style={[Styles.formGroup, props.style]}>
+		{props.children}
+	</View>
+);
+
+TheComponent.displayName = "TheComponent";
+
+TheComponent.propTypes = {
+	children: OptionalObject
+};
+
+module.exports = TheComponent;

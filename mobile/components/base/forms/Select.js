@@ -43,19 +43,21 @@ const TheComponent = class extends Component {
 
 
 		return (
-			<Flex style={[{style}, {paddingTop: styleVariables.paddingBase}]}>
+			<Flex style={[Styles.body, {style}]}>
 				{
 					filterItem &&
-					<Column>
-						<TextInput placeholder={placeholder}
-								   onChangeText={(search) => this.setState({search: search.toLowerCase()})}/>
-					</Column>
+					<FormGroup>
+						<Column>
+							<TextInput placeholder={placeholder}
+									   onChangeText={(search) => this.setState({search: search.toLowerCase()})}/>
+						</Column>
+					</FormGroup>
 				}
 				{
 					data && data.length ? (
 						<FlatList
 							data={data}
-							renderItem={({item,index}) => {
+							renderItem={({item, index}) => {
 								const isSelected = this.isSelected(item);
 								const toggleItem = () => {
 									this.setItem(item, !isSelected)
@@ -63,8 +65,8 @@ const TheComponent = class extends Component {
 								return renderRow(item, isSelected, toggleItem);
 							}}
 						/>
-					): renderNoResults ? renderNoResults() :
-					<Text style={Styles.center}>No Results Found for: <Bold>{search}</Bold></Text>
+					) : renderNoResults ? renderNoResults() :
+						<Text style={Styles.center}>No Results Found for: <Bold>{search}</Bold></Text>
 				}
 
 			</Flex>

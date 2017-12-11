@@ -113,7 +113,7 @@ const Input = class TextInput extends React.Component {
 
     getHeight(text) {
         var lines = text.match(/\n/g);
-        var linesToShow = Math.min((Math.max(lines && lines.length || 0), (this.props.minLines || 0)), this.props.maxLines);
+        var linesToShow = Math.min(Math.max((lines && lines.length || 0), (this.props.minLines || 0)), this.props.maxLines);
         if (isNaN(linesToShow)) {
             linesToShow = 0;
         }

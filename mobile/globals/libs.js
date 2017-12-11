@@ -26,9 +26,9 @@ import LinearGradient from 'react-native-linear-gradient';
 global.LinearGradient = LinearGradient;
 
 import {
-    Analytics,
-    Hits as GAHits,
-    Experiment as GAExperiment
+	Analytics,
+	Hits as GAHits,
+	Experiment as GAExperiment
 } from 'react-native-google-analytics';
 
 global.GA_ID = '';
@@ -52,12 +52,15 @@ import RNFS from 'react-native-fs'
 global.RNFS = RNFS;
 global.Auth = require('./auth');
 
+import RNFetchBlob from 'react-native-fetch-blob'
+global.RNFetchBlob = RNFetchBlob;
+
 
 import{Navigation} from 'react-native-navigation';
 global.Navigation = Navigation;
 
 
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 global.KeyboardAwareScrollView = KeyboardAwareScrollView;
 
 import * as Animatable from 'react-native-animatable';
@@ -69,13 +72,37 @@ global.Interactable = Interactable;
 Animatable.initializeRegistryWithDefinitions({
 	basicListEntrance: {
 		from: {opacity: 1, ['translateX']: 40},
-		to: { opacity: 1, ['translateX']: 0},
+		to: {opacity: 1, ['translateX']: 0},
+	},
+	basicListEntranceFade: {
+		from: {opacity: 0, ['translateX']: 40},
+		to: {opacity: 1, ['translateX']: 0},
 	},
 });
 
+
+import SegmentedControlTab from 'react-native-segmented-control-tab'
+global.SegmentedControlTab = SegmentedControlTab;
 
 import {
 	CachedImage,
 	ImageCacheProvider
 } from 'react-native-cached-image';
-global.CachedImage = CachedImage;
+var Img = CachedImage;
+global.ImageCacheProvider = ImageCacheProvider;
+global.CachedImage = (props)=>(
+	<ImageCacheProvider urlsToPreload={[props.source.uri]}>
+		<Img {...props} renderImage={(props)=> props.children ? (
+			<ReactNative.ImageBackground imageStyle={props.style} {...props}/>
+		) : (
+			<Image imageStyle={props.style} {...props}/>
+		)}/>
+	</ImageCacheProvider>
+)
+
+import ImageResizer from 'react-native-image-resizer';
+global.ImageResizer = ImageResizer
+
+global.cdn = (url)=> {
+	return url.indexOf("change-please.s3-eu-west-1.amazonaws") ==-1 ? url : `${Project.api}image/${encodeURIComponent(url)}`
+}

@@ -23,7 +23,7 @@ module.exports = {
     },
 
     navBarText: {
-        color: 'white',
+        color: styleVariables.navBarText,
         fontSize: styleVariables.fontSizeHeading,
     },
 
@@ -39,7 +39,7 @@ module.exports = {
 
     navBarTitle: {
         fontSize: styleVariables.fontSizeH2,
-        color: colour.navBarText,
+        color: styleVariables.navBarText,
         fontWeight: styleVariables.headingsFontWeight
     },
     navItem: {

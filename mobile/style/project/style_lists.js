@@ -61,7 +61,7 @@ module.exports = {
     listIconNav: {
         fontSize: styleVariables.fontSizeBase * 1.5,
         marginRight: styleVariables.paddingBase,
-        color: colour.blueGreyText
+        color: colour.textFaintLight
     },
 
     listActionIcon: {

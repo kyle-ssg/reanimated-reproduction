@@ -1,5 +1,6 @@
 //https://github.com/wix/react-native-navigation/wiki/Styling-the-navigator
 global.navbarStyle = {
+    statusBarTextColorScheme: 'dark',
     topBarElevationShadowEnabled: false,
     navBarNoBorder: true,
     navBarBackgroundColor: styleVariables.navBar,
@@ -35,7 +36,7 @@ module.exports = {
     navBar: {},
 
     barText: {
-        color: 'white'
+        color: 'black'
     },
 
 

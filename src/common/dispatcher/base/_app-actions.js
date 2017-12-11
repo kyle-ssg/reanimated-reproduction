@@ -46,6 +46,12 @@ module.exports = {
             user
         });
     },
+    updateProfile: function (profile) { //Login with an unused token
+        Dispatcher.handleViewAction({
+            actionType: Actions.UPDATE_PROFILE,
+			profile
+        });
+    },
     logout: function () {
         Dispatcher.handleViewAction({ //Logout
             actionType: Actions.LOGOUT

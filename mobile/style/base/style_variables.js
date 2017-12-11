@@ -35,6 +35,8 @@ window.pallette = Object.assign({}, {
     dark: '#333',
     white: '#fff',
     brandDanger: '#d9534f',
+    brandSuccess: '#3CBF88',
+    brandDangerDark: '#bb5952',
     success: '#3CBF88',
 
     anchor: '#0066ff',
@@ -188,7 +190,7 @@ window.colour = Object.assign({}, pallette, {
     navBarSubtitle: pallette.secondary,
     navBarButtonText: 'white',
     navBarBorder: 'transparent',
-    navBarText: 'white',
+    navBarText: 'black',
     alert: 'red',
     avatar: "#dbdbdb",
 

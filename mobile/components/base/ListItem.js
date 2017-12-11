@@ -1,19 +1,15 @@
-var Listitem = Component({
-	displayName: 'ListItem',
-	getDefaultProps: function () {
-		return {
-			onPress: null,
-			text: null,
-			delay: 0,
-			animationProps: {
-				animation: 'basicListEntrance',
-				duration: 250,
-				easing: 'ease-out-quart',
-			},
-			underlayColor: colour.inputBackground,
-		};
-	}, render: function () {
-		content = (
+import React, {Component, PropTypes} from 'react';
+
+const TheComponent = class extends Component {
+	displayName: 'TheComponent'
+
+	constructor(props, context) {
+		super(props)
+		this.state = {};
+	}
+
+	render() {
+		var content = (
 			<View>
 				<Row>
 					{this.props.icon}
@@ -28,32 +24,44 @@ var Listitem = Component({
 			delay: this.props.delay + 10 + ((Number(this.props.index || 0)) * 20),
 		})
 		return (
-			this.props.onPress ?
+			this.props.onPress ? (
 				<Animatable.View
 					style={this.props.style || Styles.listItem}
 					{...this.props.animationProps}
-				>{
-					Platform.OS == "android" ? (
-						<TouchableNativeFeedback
-							onPress={this.props.disabled ? null : this.props.onPress}
-							background={TouchableNativeFeedback.SelectableBackgroundBorderless()}>
-							{content}
-
-						</TouchableNativeFeedback>
-					) : (
-						<TouchableOpacity
-							activeOpacity={0.8}
-							onPress={this.props.disabled ? null : this.props.onPress}>
-							{content}
-						</TouchableOpacity>
-					)
-				}
-
+				>
+					{
+						Platform.OS == "android" ? (
+							<TouchableNativeFeedback
+								onPress={this.props.disabled ? null : this.props.onPress}
+								background={TouchableNativeFeedback.SelectableBackgroundBorderless()}>
+								{content}
+							</TouchableNativeFeedback>
+						) : (
+							<TouchableOpacity
+								activeOpacity={0.8}
+								onPress={this.props.disabled ? null : this.props.onPress}>
+								{content}
+							</TouchableOpacity>
+						)
+					}
 				</Animatable.View>
-				: <Animatable.View
+			) : (
+				<Animatable.View
 					{...this.props.animationProps}
 					style={[this.props.style || Styles.listItem]}>{content}</Animatable.View>
+			)
 		);
 	}
-});
-module.exports = Listitem;
+};
+TheComponent.defaultProps = {
+	onPress: null,
+	text: null,
+	delay: 0,
+	animationProps: {
+		animation: 'basicListEntrance',
+		duration: 250,
+		easing: 'ease-out-quart',
+	},
+	underlayColor: colour.inputBackground,
+}
+module.exports = TheComponent;

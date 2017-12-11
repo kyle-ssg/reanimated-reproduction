@@ -14,4 +14,5 @@ module.exports = {
     "BLOCK": "BLOCK",
     "SET_CHAT_NAME": "SET_CHAT_NAME",
     "GET_CHAT": "GET_CHAT",
+    "UPDATE_PROFILE": "UPDATE_PROFILE",
 };

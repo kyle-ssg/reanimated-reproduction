@@ -116,29 +116,17 @@ Promise.all([getUser, iconsLoaded]).then(([user]) => {
 
 	//Start at login screen, todo: could perhaps start at challenge screen
 	Navigation.startSingleScreenApp({
-			screen: {
-				title: user? "Dashboard": 'JigsawBox',
-				navigatorStyle: {
-					screenBackgroundColor: '#fff',
-				},
-				screen: user ? AccountStore.isCoach() ? "/coach" : "/client" : '/', // unique ID registered with Navigation.registerScreen
-				navigatorButtons: {
-					leftButtons: []
-				}, // override the nav buttons for the screen, see "Adding buttons to the navigator" below (optional)
-			},
-			drawer: { // optional, add this if you want a side menu drawer in your app
-				right: { // optional, define if you want a drawer from the right
-					screen: 'drawer', // unique ID registered with Navigation.registerScreen
-				},
-				style: {
-					backgroundColor: 'transparent',
-					drawerShadow: 'NO',
-					contentOverlayColor: 'rgba(0,0,0,.5)',
-					rightDrawerWidth: ((DeviceWidth - 64) / DeviceWidth) * 100
-				},
-				disableOpenGesture: !user // optional, can the drawer be opened with a swipe instead of button
-			}
-		}
+            screen: {
+                title: 'SSG Boilerplate',
+                navigatorStyle: {
+                    screenBackgroundColor: '#fff',
+                },
+                screen: '/', // unique ID registered with Navigation.registerScreen
+                navigatorButtons: {
+                    leftButtons: []
+                }, // override the nav buttons for the screen, see "Adding buttons to the navigator" below (optional)
+            },
+        }
 	);
 });
 

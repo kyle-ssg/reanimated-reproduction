@@ -40,7 +40,7 @@ var PushManager = class {
     stop = () => {
         this.token = null;
         this.notificationListener && this.notificationListener.remove();
-		this.notificationListener = null;
+        this.notificationListener = null;
     } // remove old listener
     init = (onNotification, silent) => {
 
@@ -94,6 +94,7 @@ const Contacts = require('react-native-contacts');
 const parseContact = (contact) => {
     let search = "";
 
+
     if (contact.givenName) {
         search += contact.givenName.toLowerCase();
     }
@@ -118,9 +119,9 @@ var contacts = {
             contacts: contacts && contacts.map(parseContact)
         })))
         : new Promise((resolve) => Contacts.getAllWithoutPhotos((error, contacts) => resolve({
-            error,
-            contacts: contacts && contacts.map(parseContact)
-        })))
+        error,
+        contacts: contacts && contacts.map(parseContact)
+    })))
 };
 
 module.exports = {
@@ -168,12 +169,11 @@ module.exports = {
         return branch.createBranchUniversalObject("share", {
             title,
             metadata
-        })
-            .then((branchUniversalObject) => {
-                let controlParams = {};
-                return branchUniversalObject.generateShortUrl({}, controlParams)
-                    .then(({url}) => url);
-            });
+        }).then((branchUniversalObject) => {
+            let controlParams = {};
+            return branchUniversalObject.generateShortUrl({}, controlParams)
+                .then(({url}) => url);
+        });
     },
     getInitialLink: (cb) => {
         initialLinkCb = cb;

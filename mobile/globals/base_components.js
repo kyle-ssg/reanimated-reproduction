@@ -24,13 +24,9 @@ window.Component = require('../common/Component');
 window.ES6Component = require('../common/ES6Component');
 
 //Animation
-window.AnimatedToggleMixin = require('../components/base/animation/AnimatedToggleMixin');
 window.Fade = require('../components/base/animation/Fade');
-window.SlideDown = require('../components/base/animation/SlideDown');
 window.SlideUp = require('../components/base/animation/SlideUp');
-window.Expand = require('../components/base/animation/Expand');
-window.Scale = require('../components/base/animation/Scale');
-window.Expand = require('../components/base/animation/Expand');
+
 
 //Typography
 window.Text = require('../components/base/forms/Text');
@@ -48,10 +44,7 @@ window.Column = require('../components/base/grid/Column');
 window.Row = require('../components/base/grid/Row');
 
 //Forms
-window.Switch = require('../components/base/forms/Switch');
 window.TextInput = require('../components/base/forms/TextInput');
-window.Radio = require('../components/base/forms/Radio');
-window.Checkbox = require('../components/base/forms/Checkbox');
 window.Button = require('../components/base/forms/Button');
 window.Divider = require('../components/base/Divider');
 window.Loader = require('../components/base/Loader');

@@ -1,10 +1,10 @@
 var BaseStore = require('./_store'),
-    _data = require('../data/_data');
+    _data = require('../data/base/_data');
 
 var controller = {
 
         logout: function () {
-            Utils.recordAction("User", "logout");
+            Utils.record("User", "logout");
             store.refreshToken = null;
             store.token = null;
             store.model = null;
@@ -30,7 +30,7 @@ var controller = {
             return this.model;
         },
 
-        setModel: function (user) {
+        setUser: function (user) {
             _data.setToken(user.token);
             store.model = user;
             // controller.getWithToken(user.token)

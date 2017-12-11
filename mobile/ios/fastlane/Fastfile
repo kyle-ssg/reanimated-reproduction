@@ -30,7 +30,7 @@ platform :ios do
 
   desc "Submit a new Beta Build to Apple TestFlight"
   lane :beta do
-      produce(app_name: 'PatientView')
+      produce(app_name: 'Chorus Beta App')
       sigh
       increment_build_number
       gym(scheme: "prod")      # Build your app

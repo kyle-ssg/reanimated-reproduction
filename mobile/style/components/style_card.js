@@ -2,12 +2,12 @@ module.exports = StyleSheet.create({
     card: {
         backgroundColor: styleVariables.cardBackground,
         borderRadius: styleVariables.borderRadiusDefault,
-        shadowColor: "#000000",
-        shadowOpacity: 0.3,
-        shadowRadius: 1,
+        shadowColor: "#555",
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
         shadowOffset: {
-            height: 1,
-            width: 0.3,
+            height: 0,
+            width: 0,
         },
     }
 });

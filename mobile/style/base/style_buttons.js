@@ -56,8 +56,7 @@ module.exports = {
     buttonIcon: {
         fontSize: styleVariables.fontSizeBase * 1.5,
         color: colour.btnText,
-        marginLeft: 10,
-        marginTop: styleVariables.fontSizeBase / 3,
+        marginRight: 10,
     },
 
     buttonIconLeft: {

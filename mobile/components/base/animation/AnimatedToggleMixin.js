@@ -1,5 +1,6 @@
 /**
  * Created by kylejohnson on 09/01/2016.
+ * deprecated, copy existing logic to components you wish to animate
  */
 module.exports = {
   getDefaultProps: function () {

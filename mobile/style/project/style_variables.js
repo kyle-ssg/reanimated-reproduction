@@ -31,6 +31,7 @@ window.pallette = {
     textLightestHighlight: '#e2e2e2',
     divider: '#d1d1d1',
     dividerLight: '#f9f9fa',
+	brandDanger: '#9C1033',
 
     error: '#b94d4d',
 
@@ -43,13 +44,25 @@ window.colour = {
     errorBackground: '#c84d38',
     bodyBackground: '#fff', //General app  background
     bodyBackgroundAlt: '#f1f1f1', //General app  background
-    btnDefault: pallette.primaryGreen,
     inputBackground:'#e4e7f2',
     inputBorder:pallette.blueGrey,
     textFaint:'rgba(255,255,255,.75)',
     textFaintLight:'rgba(0,0,0,.2)',
 
-    navBarSubtitle: pallette.blueGrey,
+    //nav
+    navBar: pallette.primary,
+    navBarIcon: pallette.navBarText,
+    navBarSubtitle: pallette.secondary,
+    navBarButtonText: pallette.navBarText,
+    navBarBorder: 'transparent',
+    navBarText: pallette.navBarText,
+    alert: 'red',
+    avatar: "#dbdbdb",
+
+    //BUTTON / SELECT COLOURS
+    btnText: "white",
+    btnDefault: pallette.primary,
+    btnAlt: pallette.primary,
 };
 
 window.styleVariables =  Object.assign({
@@ -91,11 +104,12 @@ window.styleVariables =  Object.assign({
     placeholderTextColor: pallette.blueGreyDark,
 
     //NAV
-    navBar: pallette.primaryBlue,
-    navBarIcon: pallette.textLight,
+    navBar: pallette.navBar,
+    navBarIcon: pallette.text,
     navBarButtonText: pallette.text,
     navBarBorder: pallette.primary,
-    navBarText: pallette.white,
+    navBarText: pallette.text,
+    navColor:pallette.navBarText,
 
     //MODALS
     modalBackground: '#F0F0F0',
