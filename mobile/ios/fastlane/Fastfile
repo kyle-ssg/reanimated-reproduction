@@ -30,7 +30,7 @@ platform :ios do
 
   desc "Submit a new Beta Build to Apple TestFlight"
   lane :beta do
-      produce(app_name: 'Chorus Beta App')
+      produce(app_name: 'SSG Frontend Boilerplate')
       sigh
       increment_build_number
       gym(scheme: "prod")      # Build your app
@@ -41,7 +41,7 @@ platform :ios do
     appicon(
         appicon_path: './app/Images.xcassets',
         appicon_image_file: 'AppIcon.png',
-        appicon_devices: [:ipad, :iphone])
+        appicon_devices: [:ipad, :iphone, :ios_marketing])
   end
 
 
