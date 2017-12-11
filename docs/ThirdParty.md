@@ -52,10 +52,6 @@ Open `android/app/src/main/res/values/strings.xml` and change the Facebook app I
 
 Download the google services json and plist from firebase
 
-### Google Analytics
-(react-native-google-analytics)
-change global.GA_ID
-
 ### Branch.
 (https://github.com/BranchMetrics/react-native-branch-deep-linking)
 

@@ -25,17 +25,6 @@ global.MaterialIcon = MaterialIcon;
 import LinearGradient from 'react-native-linear-gradient';
 global.LinearGradient = LinearGradient;
 
-import {
-	Analytics,
-	Hits as GAHits,
-	Experiment as GAExperiment
-} from 'react-native-google-analytics';
-
-global.GA_ID = '';
-global.Analytics = Analytics;
-global.GAHits = GAHits;
-let clientId = DeviceInfo.getUniqueID();
-global.ga = new Analytics(GA_ID, clientId, 1, DeviceInfo.getUserAgent());
 
 import DeviceInfo from 'react-native-device-info';
 global.DeviceInfo = DeviceInfo;

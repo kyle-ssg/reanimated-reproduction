@@ -1,4 +1,1 @@
-#import "Core.h"
-
-#import "GGLContext+SignIn.h"
-#import "GoogleSignIn.h"
+../../../../Google/Headers/GGLSignIn/Public/SignIn.h

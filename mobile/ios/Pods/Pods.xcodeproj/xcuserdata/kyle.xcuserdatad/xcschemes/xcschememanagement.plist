@@ -9,96 +9,45 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>7</integer>
 		</dict>
 		<key>Charts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>8</integer>
 		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>9</integer>
 		</dict>
-		<key>Pods-patientview.xcscheme</key>
+		<key>Pods-ssgboilerplate.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>10</integer>
 		</dict>
 		<key>Protobuf.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>11</integer>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>12</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>005E392CD94611BD3CBC853C897B3F2B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1F20AF1021D661E72EA5D65237B46AC0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3FE83000446CCF15D3752E80857A4E18</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>516BED67422C4A709EBDC531DECED84A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7B63F32F0D868D7C41DCE2FC3853BACA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>83419103C2E9F44170422E7EA4B754D8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BB46474897B70126F345CF335711BB8F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C5B80060FE8C664DF08841000F41D515</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D78081F0BD413B3FCE9FE5762925123F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F307B842FF76B2DE6C55DB67C0885325</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

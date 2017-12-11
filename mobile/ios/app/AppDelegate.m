@@ -7,8 +7,10 @@
 //REACT_NATIVE_NAVIGATION
 #import "RCCManager.h"
 
+#import <Firebase.h>
+
 //PUSH_NOTIFICATIONS_IOS
-#import "RNFIRMessaging.h"
+#import "RNFirebaseMessaging.h"
 
 //FACEBOOK_LOGIN
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
@@ -57,23 +59,29 @@
 
 // PUSH_NOTIFICATIONS_IOS
 
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
-{
-  [RNFIRMessaging willPresentNotification:notification withCompletionHandler:completionHandler];
-}
-
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler
-{
-  [RNFIRMessaging didReceiveNotificationResponse:response withCompletionHandler:completionHandler];
-}
-
-//You can skip this method if you don't want to use local notification
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-  [RNFIRMessaging didReceiveLocalNotification:notification];
+  [RNFirebaseMessaging didReceiveLocalNotification:notification];
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler{
-  [RNFIRMessaging didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo {
+  [RNFirebaseMessaging didReceiveRemoteNotification:userInfo];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo
+fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler{
+  [RNFirebaseMessaging didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+       willPresentNotification:(UNNotification *)notification
+         withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+  [RNFirebaseMessaging willPresentNotification:notification withCompletionHandler:completionHandler];
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void (^)(void))completionHandler {
+  [RNFirebaseMessaging didReceiveNotificationResponse:response withCompletionHandler:completionHandler];
 }
 
 //END OF PUSH_NOTIFICATIONS_IOS
