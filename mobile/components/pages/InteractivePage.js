@@ -91,118 +91,78 @@ const Grid = class extends Component {
 
 	constructor(props, context) {
 		super(props, context);
+		this._deltaY = new Animated.Value(0);
+		this._deltaX = new Animated.Value(0);
+
 		this.state = {};
 	}
 
 	render() {
 		const strength = 200,
-			falloff= 10,
-			damping =  1-0.7,
-			tension = 300
+			falloff = 10,
+			damping = 1 - 0.5,
+			tension = 200
 
 
 		const snapPointsY = [
-			{y: 0,damping,tension},
-			{y: -DeviceHeight,damping,tension},
-			{y: -DeviceHeight * 2,damping,tension},
+			{y: 0, damping, tension},
+			{y: -DeviceHeight, damping, tension},
+			{y: -DeviceHeight * 2, damping, tension},
 		]
 		const snapPointsX = [
-			{x: 0,damping,tension},
-			{x: -DeviceWidth,damping,tension},
-			{x: -DeviceWidth * 2,damping,tension},
+			{x: 0, damping, tension},
+			{x: -DeviceWidth, damping, tension},
+			{x: -DeviceWidth * 2, damping, tension},
 		]
 
 		const gravityPointsY = [
-			{y: 0,strength, falloff, damping},
-			{y: -DeviceHeight,strength, falloff, damping},
-			{y: -DeviceHeight * 2,strength, falloff, damping},
+			{y: 0, strength, falloff, damping},
+			{y: -DeviceHeight, strength, falloff, damping},
+			{y: -DeviceHeight * 2, strength, falloff, damping},
 		]
-		const gravityPointsX = [
-			{x: 0,strength, falloff, damping},
-			{x: -DeviceWidth,strength, falloff, damping},
-			{x: -DeviceWidth * 2,strength, falloff, damping},
-		]
+		const backgroundColor = this._deltaX.interpolate({
+			inputRange: [-DeviceWidth*2, -DeviceWidth,0],
+			outputRange: ["red","blue","green"],
+			extrapolateRight: 'clamp'
+		});
+		const boundariesY = {bottom: 0, top:DeviceHeight*-2,bounce:0}
+		const boundariesX = {right: 0, left:DeviceWidth*-2,bounce:0}
 
 		return (
 			<Interactable.View
-				style={{backgroundColor: 'white', height: DeviceHeight * 3, width: DeviceWidth}}
+				style={{height: DeviceHeight * 3, width: DeviceWidth}}
 				verticalOnly={true}
+				boundaries={boundariesY}
 				snapPoints={snapPointsY}
-				gravityPoints={gravityPointsY}
-				animatedValueX={this._deltaX}>
-				<Flex>
-					<Interactable.View
-						style={{backgroundColor: 'white', height: DeviceHeight, width: DeviceWidth * 3}}
-						horizontalOnly={true}
-						snapPoints={snapPointsX}
-						animatedValueX={this._deltaX}>
-						<Row style={{width: DeviceWidth * 3, height: DeviceHeight}}>
-							<Flex style={Styles.centeredContainer}>
-								<H1>
-									Slide 1a
-								</H1>
-							</Flex>
-							<Flex style={Styles.centeredContainer}>
-								<H1>
-									Slide 2a
-								</H1>
-							</Flex>
-							<Flex style={Styles.centeredContainer}>
-								<H1>
-									Slide 3a
-								</H1>
-							</Flex>
-						</Row>
-					</Interactable.View>
-					<Interactable.View
-						style={{backgroundColor: 'white', height: DeviceHeight, width: DeviceWidth * 3}}
-						horizontalOnly={true}
-						snapPoints={snapPointsX}
-						animatedValueX={this._deltaX}>
-						<Row style={{width: DeviceWidth * 3, height: DeviceHeight}}>
-							<Flex style={Styles.centeredContainer}>
-								<H1>
-									Slide 1b
-								</H1>
-							</Flex>
-							<Flex style={Styles.centeredContainer}>
-								<H1>
-									Slide 2b
-								</H1>
-							</Flex>
-							<Flex style={Styles.centeredContainer}>
-								<H1>
-									Slide 3b
-								</H1>
-							</Flex>
-						</Row>
-					</Interactable.View>
-
-					<Interactable.View
-						style={{backgroundColor: 'white', height: DeviceHeight, width: DeviceWidth * 3}}
-						horizontalOnly={true}
-						snapPoints={snapPointsX}
-						animatedValueX={this._deltaX}>
-						<Row style={{width: DeviceWidth * 3, height: DeviceHeight}}>
-							<Flex style={Styles.centeredContainer}>
-								<H1>
-									Slide 1c
-								</H1>
-							</Flex>
-							<Flex style={Styles.centeredContainer}>
-								<H1>
-									Slide 2c
-								</H1>
-							</Flex>
-							<Flex style={Styles.centeredContainer}>
-								<H1>
-									Slide 3c
-								</H1>
-							</Flex>
-						</Row>
-					</Interactable.View>
-
-				</Flex>
+				animatedValueY={this._deltaY}>
+				<Animated.View style={{backgroundColor}}>
+					{["a","b","c"].map((x)=>(
+						<Interactable.View
+							style={{height: DeviceHeight, width: DeviceWidth * 3}}
+							boundaries={boundariesX}
+							horizontalOnly={true}
+							snapPoints={snapPointsX}
+							animatedValueX={this._deltaX}>
+							<Row style={{width: DeviceWidth * 3, height: DeviceHeight}}>
+								<Flex style={Styles.centeredContainer}>
+									<H1>
+										Slide 1{x}
+									</H1>
+								</Flex>
+								<Flex style={Styles.centeredContainer}>
+									<H1>
+										Slide 2{x}
+									</H1>
+								</Flex>
+								<Flex style={Styles.centeredContainer}>
+									<H1>
+										Slide 3{x}
+									</H1>
+								</Flex>
+							</Row>
+						</Interactable.View>
+					))}
+				</Animated.View>
 			</Interactable.View>
 		);
 	}
