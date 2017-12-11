@@ -1,4 +1,4 @@
-package com.solidstategroup.patientview;
+package com.solidstategroup.boilerplate;
 
 import android.app.Application;
 import android.util.Log;

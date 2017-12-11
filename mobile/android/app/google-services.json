@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:268006930875:android:8b311d769e1e766e",
         "android_client_info": {
-          "package_name": "com.solidstategroup.patientview"
+          "package_name": "com.solidstategroup.boilerplate"
         }
       },
       "oauth_client": [

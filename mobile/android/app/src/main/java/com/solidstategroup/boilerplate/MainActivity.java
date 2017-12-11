@@ -1,4 +1,4 @@
-package com.solidstategroup.patientview;
+package com.solidstategroup.boilerplate;
 
 import com.reactnativenavigation.controllers.SplashActivity;
 import io.branch.rnbranch.*; // <-- add this
