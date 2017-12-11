@@ -41,7 +41,8 @@ const SwipeableRow = class extends Component {
 							justifyContent: 'center',
 							width: 54
 						}}>
-							<ION style={{color: 'white', marginTop:em(0.2), fontSize: em(2.5)}} name="md-heart-outline"/>
+							<ION style={{color: 'white', marginTop: em(0.2), fontSize: em(2.5)}}
+								 name="md-heart-outline"/>
 						</Animated.View>
 					</View>
 					<View style={styles.iconContainer}>
@@ -55,7 +56,8 @@ const SwipeableRow = class extends Component {
 							justifyContent: 'center',
 							width: 54
 						}}>
-							<ION style={{color: 'white', marginTop:em(0.2), fontSize: em(2.5)}} name="ios-share-outline"/>
+							<ION style={{color: 'white', marginTop: em(0.2), fontSize: em(2.5)}}
+								 name="ios-share-outline"/>
 						</Animated.View>
 					</View>
 				</Row>
@@ -66,7 +68,7 @@ const SwipeableRow = class extends Component {
 					ref={(content) => this.content = content}
 					horizontalOnly={true}
 					dragWithSpring={{tension: 2000, damping: 0.5}}
-					snapPoints={[{x: 0, tension:100}, {tension:100,x: -64 * 2}]}
+					snapPoints={[{x: 0, tension: 100}, {tension: 100, x: -64 * 2}]}
 					boundaries={{right: 0}}
 					animatedValueX={this._deltaX}>
 					<View style={{padding: 20, borderColor: '#d1d1d1', justifyContent: 'center'}}>
@@ -83,6 +85,128 @@ const SwipeableRow = class extends Component {
 	}
 };
 
+
+const Grid = class extends Component {
+	displayName: 'TheComponent'
+
+	constructor(props, context) {
+		super(props, context);
+		this.state = {};
+	}
+
+	render() {
+		const strength = 200,
+			falloff= 10,
+			damping =  1-0.7,
+			tension = 300
+
+
+		const snapPointsY = [
+			{y: 0,damping,tension},
+			{y: -DeviceHeight,damping,tension},
+			{y: -DeviceHeight * 2,damping,tension},
+		]
+		const snapPointsX = [
+			{x: 0,damping,tension},
+			{x: -DeviceWidth,damping,tension},
+			{x: -DeviceWidth * 2,damping,tension},
+		]
+
+		const gravityPointsY = [
+			{y: 0,strength, falloff, damping},
+			{y: -DeviceHeight,strength, falloff, damping},
+			{y: -DeviceHeight * 2,strength, falloff, damping},
+		]
+		const gravityPointsX = [
+			{x: 0,strength, falloff, damping},
+			{x: -DeviceWidth,strength, falloff, damping},
+			{x: -DeviceWidth * 2,strength, falloff, damping},
+		]
+
+		return (
+			<Interactable.View
+				style={{backgroundColor: 'white', height: DeviceHeight * 3, width: DeviceWidth}}
+				verticalOnly={true}
+				snapPoints={snapPointsY}
+				gravityPoints={gravityPointsY}
+				animatedValueX={this._deltaX}>
+				<Flex>
+					<Interactable.View
+						style={{backgroundColor: 'white', height: DeviceHeight, width: DeviceWidth * 3}}
+						horizontalOnly={true}
+						snapPoints={snapPointsX}
+						animatedValueX={this._deltaX}>
+						<Row style={{width: DeviceWidth * 3, height: DeviceHeight}}>
+							<Flex style={Styles.centeredContainer}>
+								<H1>
+									Slide 1a
+								</H1>
+							</Flex>
+							<Flex style={Styles.centeredContainer}>
+								<H1>
+									Slide 2a
+								</H1>
+							</Flex>
+							<Flex style={Styles.centeredContainer}>
+								<H1>
+									Slide 3a
+								</H1>
+							</Flex>
+						</Row>
+					</Interactable.View>
+					<Interactable.View
+						style={{backgroundColor: 'white', height: DeviceHeight, width: DeviceWidth * 3}}
+						horizontalOnly={true}
+						snapPoints={snapPointsX}
+						animatedValueX={this._deltaX}>
+						<Row style={{width: DeviceWidth * 3, height: DeviceHeight}}>
+							<Flex style={Styles.centeredContainer}>
+								<H1>
+									Slide 1b
+								</H1>
+							</Flex>
+							<Flex style={Styles.centeredContainer}>
+								<H1>
+									Slide 2b
+								</H1>
+							</Flex>
+							<Flex style={Styles.centeredContainer}>
+								<H1>
+									Slide 3b
+								</H1>
+							</Flex>
+						</Row>
+					</Interactable.View>
+
+					<Interactable.View
+						style={{backgroundColor: 'white', height: DeviceHeight, width: DeviceWidth * 3}}
+						horizontalOnly={true}
+						snapPoints={snapPointsX}
+						animatedValueX={this._deltaX}>
+						<Row style={{width: DeviceWidth * 3, height: DeviceHeight}}>
+							<Flex style={Styles.centeredContainer}>
+								<H1>
+									Slide 1c
+								</H1>
+							</Flex>
+							<Flex style={Styles.centeredContainer}>
+								<H1>
+									Slide 2c
+								</H1>
+							</Flex>
+							<Flex style={Styles.centeredContainer}>
+								<H1>
+									Slide 3c
+								</H1>
+							</Flex>
+						</Row>
+					</Interactable.View>
+
+				</Flex>
+			</Interactable.View>
+		);
+	}
+};
 
 const TheComponent = class extends Component {
 	displayName: 'TheComponent'
@@ -123,6 +247,9 @@ const TheComponent = class extends Component {
 			outputRange: ["0deg", "1200deg"],
 			extrapolateRight: 'clamp'
 		});
+
+
+		return <Grid/>
 
 		return (
 			<Flex>
