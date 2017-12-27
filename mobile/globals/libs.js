@@ -29,9 +29,6 @@ global.LinearGradient = LinearGradient;
 import DeviceInfo from 'react-native-device-info';
 global.DeviceInfo = DeviceInfo;
 
-import Share from 'react-native-share';
-global.Share = Share;
-
 import Animation from 'lottie-react-native';
 global.Animation = Animation;
 

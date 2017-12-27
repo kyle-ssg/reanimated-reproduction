@@ -3,8 +3,8 @@
  */
 import React, {Component, PropTypes} from 'react';
 import AccountStore from '../stores/account-store';
-import Auth from 'react-native-firebase-auth/auth'
-Auth.Google.configure({                 clientID: Project.google.iosClientId,
+Auth.Google.configure({
+    clientID: Project.google.iosClientId,
     scopes: ['openid', 'email', 'profile'],
     shouldFetchBasicProfile: true
 });

@@ -20,7 +20,7 @@ const TheComponent = class extends Component {
 			if (selected) {
 				onChange((value || []).concat(i));
 			} else {
-				const index = value.indexOf(i);
+				const index = _.findIndex(value, i);
 				value.splice(index, 1);
 				onChange(value);
 			}

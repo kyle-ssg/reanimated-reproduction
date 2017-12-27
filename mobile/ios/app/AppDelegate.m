@@ -19,6 +19,9 @@
 //BRANCH
 #import <react-native-branch/RNBranch.h>
 
+//TWITTER_LOGIN
+#import <React/RCTLinkingManager.h>
+
 
 @implementation AppDelegate
 
@@ -97,20 +100,22 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 }
 
 // Facebook/Google/Branch.io URL handling
+
+  // Facebook/Google/Branch.io URL handling
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-  if (![RNBranch.branch application:application openURL:url sourceApplication:sourceApplication annotation:annotation]) {
-    if( [url.absoluteString rangeOfString: @"com.googleusercontent.apps" ].location != NSNotFound ) {
-      return [[GIDSignIn sharedInstance] handleURL:url sourceApplication:sourceApplication annotation:annotation];
+    if (![RNBranch.branch application:application openURL:url sourceApplication:sourceApplication annotation:annotation]) {
+      if( [url.absoluteString rangeOfString: @"com.googleusercontent.apps" ].location != NSNotFound ) {
+        return [[GIDSignIn sharedInstance] handleURL:url sourceApplication:sourceApplication annotation:annotation];
+      }
+      
+      return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                            openURL:url
+                                                  sourceApplication:sourceApplication
+                                                         annotation:annotation];
     }
-    
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                sourceApplication:sourceApplication
-                                                       annotation:annotation];
+    return [RCTLinkingManager application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
   }
-  
-  return YES;
-}
+
 
 // Branch.io
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *restorableObjects))restorationHandler {

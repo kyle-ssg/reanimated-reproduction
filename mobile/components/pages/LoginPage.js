@@ -2,7 +2,6 @@
  * Created by kylejohnson on 28/01/2017.
  */
 import React, {Component, PropTypes} from 'react';
-import Auth from 'react-native-firebase-auth/auth';
 
 const HomePage = class extends Component {
 
@@ -10,7 +9,7 @@ const HomePage = class extends Component {
 
     displayName: 'HomePage'
 
-    constructor(props, context) {
+    constructor (props, context) {
         super(props, context);
         this.state = {};
         routeHelper.handleNavEvent(this.props.navigator, 'login', this.onNavigatorEvent);
@@ -22,11 +21,11 @@ const HomePage = class extends Component {
         } else if (event.id == Constants.navEvents.HIDE) {
 
         } else if (event.id == "close") {
-        	this.props.navigator.dismissModal()
+            this.props.navigator.dismissModal()
         }
     };
 
-    render() {
+    render () {
         return (
             <Flex>
                 <Container style={Styles.body}>
@@ -34,7 +33,7 @@ const HomePage = class extends Component {
                         You need to login to view this page
                     </H2>
                     <LoginProvider onLogin={() => this.props.onLogin(this.props.navigator)}>
-                        {(user, isLoading, {facebook, google}) => (
+                        {(user, isLoading, { facebook, google, twitter }) => (
                             <Container style={Styles.body}>
                                 <FormGroup>
                                     <Button disabled={isLoading} onPress={facebook}>
@@ -44,6 +43,11 @@ const HomePage = class extends Component {
                                 <FormGroup>
                                     <Button disabled={isLoading} onPress={google}>
                                         Google login
+                                    </Button>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Button disabled={isLoading} onPress={twitter}>
+                                        Twitter login
                                     </Button>
                                 </FormGroup>
                             </Container>

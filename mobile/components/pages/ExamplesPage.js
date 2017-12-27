@@ -138,7 +138,7 @@ const HomePage = class extends Component {
 									{
 
 										AccountStore.getUser() ?
-											<Button onPress={() => AppActions.logout()}>
+											<Button onPress={() => routeHelper.logout(this.props.navigator)}>
 												Logout
 											</Button>
 											:
@@ -218,7 +218,7 @@ const HomePage = class extends Component {
 	};
 
 	openWebModal = () => {
-		routeHelper.openWebModal(this.props.navigator, 'https://www.google.com', 'Google');
+		routeHelper.openWebModal('https://www.google.com', 'Google');
 	};
 
 	generateLink = () => {
