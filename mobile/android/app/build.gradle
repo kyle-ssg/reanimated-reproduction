@@ -105,7 +105,6 @@ dependencies {
     compile "com.facebook.react:react-native:+"  // From node_modules
     compile project(':react-native-navigation')
     compile project(':react-native-contacts')
-    compile project(':react-native-share')
     compile project(':react-native-linear-gradient')
     compile project(':react-native-svg')
     compile project(':lottie-react-native')
@@ -116,7 +115,6 @@ dependencies {
     compile project(':react-native-image-resizer')
     compile project(':react-native-camera')
     compile project(':react-native-device-info')
-    compile project(':react-native-charts-wrapper')
     compile project(':react-native-vector-icons')
 
 }

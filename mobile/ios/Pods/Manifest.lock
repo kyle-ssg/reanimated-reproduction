@@ -2,9 +2,6 @@ PODS:
   - Branch (0.17.10):
     - Branch/Core (= 0.17.10)
   - Branch/Core (0.17.10)
-  - Charts (3.0.1):
-    - Charts/Core (= 3.0.1)
-  - Charts/Core (3.0.1)
   - Firebase/Analytics (4.0.0):
     - Firebase/Core
   - Firebase/Core (4.0.0):
@@ -58,20 +55,16 @@ PODS:
   - GoogleUtilities (1.3.2):
     - GoogleSymbolUtilities (~> 1.1)
   - Protobuf (3.3.0)
-  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Branch
-  - Charts (= 3.0.1)
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/Messaging
   - Google/SignIn
-  - SwiftyJSON (= 3.1.4)
 
 SPEC CHECKSUMS:
   Branch: 29745957de17eb5973627f4c7720bd0eb390fd45
-  Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
   Firebase: 284eea779b73fdff309791817da7c68bff8dd572
   FirebaseAnalytics: 6f08e746f7d66f5452931bc2e822b5df9c66b64a
   FirebaseCore: 85ad466044c2f013cdb167f85d426d15b128114a
@@ -87,8 +80,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 3cc0acdc300766ee6e8845e477c5329a617c7c9c
+PODFILE CHECKSUM: 48a4f653d095f226017ed066de5281ade1b140bf
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.2.0

@@ -7,11 +7,11 @@ target 'ssgboilerplate' do
 
   # Pods for trainmate
 
-#	pod 'Fabric'
-#	pod 'Crashlytics'
+#crashlytics	pod 'Fabric'
+#crashlytics	pod 'Crashlytics'
+#charts   pod 'Charts', '3.0.1'
+#charts   pod 'SwiftyJSON', '3.1.4'
     pod 'Google/SignIn'
-    pod 'SwiftyJSON', '3.1.4'
-    pod 'Charts', '3.0.1'
     pod 'Branch'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'

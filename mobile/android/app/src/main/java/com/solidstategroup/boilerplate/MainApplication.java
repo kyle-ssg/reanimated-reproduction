@@ -20,7 +20,6 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 
-import cl.json.RNSharePackage;
 import com.airbnb.android.react.lottie.LottiePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.evollu.react.fcm.FIRMessagingPackage;
@@ -33,7 +32,6 @@ import com.rnfs.RNFSPackage;
 import com.rt2zz.reactnativecontacts.ReactNativeContacts;
 import fr.bamlab.rnimageresizer.ImageResizerPackage;
 import com.horcrux.svg.SvgPackage;
-import com.github.wuxudong.rncharts.MPAndroidChartPackage;
 import io.branch.rnbranch.RNBranchPackage;
 import io.branch.referral.Branch;
 

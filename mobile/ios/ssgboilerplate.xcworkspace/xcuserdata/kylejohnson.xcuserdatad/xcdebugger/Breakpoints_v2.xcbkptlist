@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RNGoogleSignIn.swift"
+            timestampString = "536078558.107742"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "signIn()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RNGoogleSignIn.swift"
+            timestampString = "536078558.109541"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "sign(inWillDispatch:error:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SSGBoilerplate.RNGoogleSignIn.sign(inWillDispatch: Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.GIDSignIn&gt;, error: Swift.Optional&lt;Swift.Error&gt;) -&gt; ()"
+                  moduleName = "SSGBoilerplate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kylejohnson/ssg-frontend-boilerplate/mobile/ios/RNGoogleSignIn.swift"
+                  timestampString = "536078558.140648"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc SSGBoilerplate.RNGoogleSignIn.sign(inWillDispatch: Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.GIDSignIn&gt;, error: Swift.Optional&lt;Swift.Error&gt;) -&gt; ()"
+                  moduleName = "SSGBoilerplate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kylejohnson/ssg-frontend-boilerplate/mobile/ios/RNGoogleSignIn.swift"
+                  timestampString = "536078558.144316"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "38">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RNGoogleSignIn.swift"
+            timestampString = "536078558.109906"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "sign(inWillDispatch:error:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SSGBoilerplate.RNGoogleSignIn.sign(inWillDispatch: Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.GIDSignIn&gt;, error: Swift.Optional&lt;Swift.Error&gt;) -&gt; ()"
+                  moduleName = "SSGBoilerplate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kylejohnson/ssg-frontend-boilerplate/mobile/ios/RNGoogleSignIn.swift"
+                  timestampString = "536078230.327751"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc SSGBoilerplate.RNGoogleSignIn.sign(inWillDispatch: Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.GIDSignIn&gt;, error: Swift.Optional&lt;Swift.Error&gt;) -&gt; ()"
+                  moduleName = "SSGBoilerplate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kylejohnson/ssg-frontend-boilerplate/mobile/ios/RNGoogleSignIn.swift"
+                  timestampString = "536078230.33049"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "38">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
