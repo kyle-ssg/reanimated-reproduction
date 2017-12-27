@@ -53,17 +53,13 @@ module.exports = {
         Auth.logout()
         AppActions.logout(null)
         navigator.resetTo({
-            title: 'JigsawBox',
+            title: 'SSG Boilerplate',
             screen: '/', // unique ID registered with Navigation.registerScreen
             navigatorButtons: {
                 leftButtons: []
             }, // override the nav buttons for the screen, see "Adding buttons to the navigator" below (optional)
         });
-        setTimeout(() => {
-            Navigation.dismissAllModals();
-        }, 2000);
-
-
+        Navigation.dismissAllModals();
     },
 
     goPurchase: function (navigator, id) {
