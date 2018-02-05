@@ -44,9 +44,9 @@ ps.lookup({
             if (process.pid != _process.pid && process.arguments.length && process.arguments[0].indexOf("commonWatch")!=-1) {
                 console.log("Watch already running, goodbye!");
                 _process.exit();
-            } else {
-                init();
             }
         }
-    });
+	});
+
+	init();
 });
