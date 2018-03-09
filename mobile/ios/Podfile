@@ -17,6 +17,8 @@ target 'ssgboilerplate' do
     pod 'Firebase/Messaging'
     pod 'Firebase/Analytics'
 
+  pod 'ReactNativeFabric', :path => '../node_modules/react-native-fabric'
+
 end
 
 post_install do |installer|

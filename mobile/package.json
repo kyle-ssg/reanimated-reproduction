@@ -12,8 +12,14 @@
     "keystore": "keytool -genkey -v -keystore my-release-key.keystore -alias android -keyalg RSA -keysize 2048 -validity 10000"
   },
   "dependencies": {
+    "react-native-fabric": "^0.5.1",
+    "react-native-fabric-crashlytics": "^0.1.8",
+    "react": "16.2.0",
+    "react-native": "0.53.0",
+    "flux-react-dispatcher": "^1.2.5",
+    "events": "^1.1.1",
     "inputmask-core": "^2.2.0",
-    "lottie-react-native": "https://github.com/kyle-ssg/lottie-react-native",
+    "lottie-react-native": "^2.3.2",
     "react-native-animatable": "^1.2.3",
     "react-native-bottomsheet": "1.6.3",
     "react-native-branch": "^2.0.0",
@@ -33,15 +39,20 @@
     "react-native-interactable": "0.1.3",
     "react-native-keyboard-aware-scroll-view": "^0.4.1",
     "react-native-linear-gradient": "^2.0.0",
-    "react-native-navigation": "1.1.323",
+    "react-native-navigation": "1.1.402",
     "react-native-scrollable-tab-view": "^0.7.1",
     "react-native-segmented-control-tab": "^3.2.1",
     "react-native-session-length": "0.0.1",
     "react-native-svg": "5.4.1",
     "react-native-twitter": "https://github.com/kyle-ssg/react-native-twitter#master",
-    "react-native-vector-icons": "^4.4.3",
-    "ssg-react-native": "0.50.0",
+    "react-native-vector-icons": "4.5.0",
     "ssg-util": "0.0.1"
+  },
+  "devDependencies": {
+    "babel-jest": "22.4.1",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "22.4.2",
+    "react-test-renderer": "16.2.0"
   },
   "jest": {
     "preset": "react-native"

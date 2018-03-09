@@ -6,7 +6,7 @@ const x = Dimensions.get('window').width;
 const ratioX = x < 375 ? (x < 320 ? 0.75 : 0.875) : 1;
 
 // We set our base font size value
-const baseUnit = 12;
+const baseUnit = 14;
 // We're simulating EM by changing font size according to Ratio
 const unit = baseUnit * ratioX;
 

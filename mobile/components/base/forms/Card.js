@@ -1,15 +1,23 @@
 import React, {Component, PropTypes} from 'react';
 
-const Card = (props)=>(
-    <View style={[styles.card, props.style]}>
-        {props.children}
-    </View>
-);
+const Card = (props) =
+>
+(
+< View
+style = {[styles.card, props.style
+]}>
+{
+	props.children
+}
+</
+View >
+)
+;
 
 Card.displayName = "Card";
 
 Card.propTypes = {
-    children: RequiredNode
+	children: RequiredNode
 };
 
 module.exports = Card;

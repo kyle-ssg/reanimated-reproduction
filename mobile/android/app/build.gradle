@@ -81,9 +81,16 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-fabric')
+
+   //REACT NATIVE FIREBASE
     compile(project(':react-native-firebase')) {
         transitive = false
     }
+   compile 'com.google.firebase:firebase-core:10.0.1' //this decides your firebase SDK version
+   compile 'com.google.firebase:firebase-analytics:10.0.1' //this decides your firebase SDK version
+
+
     compile project(':react-native-twitter')
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -95,12 +102,13 @@ dependencies {
     compile project(':react-native-branch')
     compile project(':react-native-facebook-login')
     compile project(':react-native-google-sign-in')
-    compile project(':react-native-fcm')
     compile project(':react-native-interactable')
     //ANDROID_PUSH_NOTIFICATIONS
    compile project(':react-native-fcm')
-   compile 'com.google.firebase:firebase-core:10.0.1' //this decides your firebase SDK version
 
+   compile('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
+             transitive = true;
+         }
     compile project(':react-native-fs')
     compile "com.facebook.react:react-native:+"  // From node_modules
     compile project(':react-native-navigation')
