@@ -29,8 +29,8 @@ const history = createBrowserHistory();
 
 const TheComponent = class extends React.Component {
 
-    render() {
-        return (
+	render() {
+		return (
 			<Router history={history}>
 				<App>
 					<Switch>
@@ -47,8 +47,8 @@ const TheComponent = class extends React.Component {
 					</Switch>
 				</App>
 			</Router>
-        );
-    }
+		);
+	}
 };
 
 TheComponent.propTypes = {};

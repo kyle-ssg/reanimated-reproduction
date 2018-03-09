@@ -32,7 +32,7 @@ module.exports = {
 
 				//reduce filesize
 				new webpack.optimize.OccurrenceOrderPlugin(),
-			new WebpackBundleSizeAnalyzerPlugin('./plain-report.txt'),
+				new WebpackBundleSizeAnalyzerPlugin('./plain-report.txt'),
 
 				//pull inline styles into cachebusted file
 				new ExtractTextPlugin({filename: "/style.[hash].css", allChunks: true}),

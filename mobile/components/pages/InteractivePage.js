@@ -121,12 +121,12 @@ const Grid = class extends Component {
 			{y: -DeviceHeight * 2, strength, falloff, damping},
 		]
 		const backgroundColor = this._deltaX.interpolate({
-			inputRange: [-DeviceWidth*2, -DeviceWidth,0],
-			outputRange: ["red","blue","green"],
+			inputRange: [-DeviceWidth * 2, -DeviceWidth, 0],
+			outputRange: ["red", "blue", "green"],
 			extrapolateRight: 'clamp'
 		});
-		const boundariesY = {bottom: 0, top:DeviceHeight*-2,bounce:0}
-		const boundariesX = {right: 0, left:DeviceWidth*-2,bounce:0}
+		const boundariesY = {bottom: 0, top: DeviceHeight * -2, bounce: 0}
+		const boundariesX = {right: 0, left: DeviceWidth * -2, bounce: 0}
 
 		return (
 			<Interactable.View
@@ -136,7 +136,7 @@ const Grid = class extends Component {
 				snapPoints={snapPointsY}
 				animatedValueY={this._deltaY}>
 				<Animated.View style={{backgroundColor}}>
-					{["a","b","c"].map((x)=>(
+					{["a", "b", "c"].map((x)=>(
 						<Interactable.View
 							style={{height: DeviceHeight, width: DeviceWidth * 3}}
 							boundaries={boundariesX}

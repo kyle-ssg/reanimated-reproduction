@@ -1,4 +1,3 @@
-
 import 'react-native-globals';
 import './window'; //platform specific globals
 import './libs';

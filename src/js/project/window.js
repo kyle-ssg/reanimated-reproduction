@@ -63,22 +63,22 @@ require('./project-components');
 
 /*eslint no-console:0*/
 window.log = function () {
-    if (Project.debug) {
-        console.log(arguments);
-    }
+	if (Project.debug) {
+		console.log(arguments);
+	}
 };
 
 window.info = function () {
-    if (Project.debug) {
-        console.info(arguments);
-    }
+	if (Project.debug) {
+		console.info(arguments);
+	}
 };
 
 window.warn = function () {
-    if (Project.debug) {
-        console.warn(arguments);
-    }
+	if (Project.debug) {
+		console.warn(arguments);
+	}
 };
 
 
-window.API= require("../common/data/api");
+window.API = require("../common/data/api");

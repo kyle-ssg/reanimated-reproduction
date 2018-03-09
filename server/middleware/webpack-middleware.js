@@ -10,7 +10,7 @@ module.exports = function (app) {
 	const middleware = webpackDevMiddleware(compiler, {
 		publicPath: config.output.publicPath,
 		contentBase: 'src',
-		stats: { colors: true },
+		stats: {colors: true},
 	});
 	app.use(middleware);
 

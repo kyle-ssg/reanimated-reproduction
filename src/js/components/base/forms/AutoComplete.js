@@ -93,10 +93,10 @@ const AutoComplete = class extends React.Component {
 							<div>
 								<Row>
 									{this.props.multiple ? this.props.value && this.props.value.map((value, i) => (
-											<div key={i} className="multi-select-item">
-												{this.props.renderSelectedItem(value, () => this.removeItem(i))}
-											</div>
-										)) : (
+										<div key={i} className="multi-select-item">
+											{this.props.renderSelectedItem(value, () => this.removeItem(i))}
+										</div>
+									)) : (
 										this.props.value && (
 											<div className="multi-select-item">
 												{this.props.renderSelectedItem(this.props.value, () => this.removeItem())}

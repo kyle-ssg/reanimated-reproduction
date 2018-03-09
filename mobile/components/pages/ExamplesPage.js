@@ -121,7 +121,8 @@ const HomePage = class extends Component {
 							</ListItem>
 
 							<ListItem index={7} onPress={this.triggerError}>
-								<Text style={[Styles.anchor, {color: 'red'}]}>Trigger Crashlytics error (this will crash the app)</Text>
+								<Text style={[Styles.anchor, {color: 'red'}]}>Trigger Crashlytics error (this will crash
+									the app)</Text>
 							</ListItem>
 
 							<ListItem index={8} onPress={this.generateLink}>

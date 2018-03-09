@@ -4,7 +4,7 @@
 const Tabs = class extends React.Component {
 	displayName: 'Tabs'
 
-	render () {
+	render() {
 		return (
 			<div className="tabs">
 				<div className="tabs-nav-container">

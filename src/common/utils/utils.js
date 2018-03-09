@@ -1,4 +1,1 @@
-module.exports = Object.assign({}, require('./base/_utils'), {
-
-
-});
+module.exports = Object.assign({}, require('./base/_utils'), {});

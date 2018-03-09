@@ -1,7 +1,7 @@
 /**
  * Created by kylejohnson on 29/07/2016.
  */
-import { AutoSizer, List, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
+import {AutoSizer, List, CellMeasurer, CellMeasurerCache} from 'react-virtualized';
 import RenderCount from './RenderCount';
 
 const ListView = class extends React.Component {
@@ -29,11 +29,12 @@ const ListView = class extends React.Component {
 			this.refs.resizer.refs.list.forceUpdateGrid();
 		}, 1000);
 	}
+
 	componentWillUnmount() {
 		clearInterval(this.cacheTimer);
 	}
 
-	rowRenderer = ({ index, key, parent, style }) => {
+	rowRenderer = ({index, key, parent, style}) => {
 		if (index < this.props.data.length) {
 			return (
 				<CellMeasurer
@@ -55,15 +56,15 @@ const ListView = class extends React.Component {
 	}
 
 	render() {
-		const { data, containerHeight, rowHeight, windowScrolling } = this.props;
+		const {data, containerHeight, rowHeight, windowScrolling} = this.props;
 		const rowCount = data.length;
 
 		if (windowScrolling && !containerHeight) {
 			return (
 				<WindowScroller>
-					{({ height, isScrolling, scrollTop }) => (
+					{({height, isScrolling, scrollTop}) => (
 						<AutoSizer ref="resizer" disableHeight={true}>
-							{({ width }) => (
+							{({width}) => (
 								<List
 									autoHeight
 									ref="list"
@@ -88,7 +89,7 @@ const ListView = class extends React.Component {
 
 		return (
 			<AutoSizer ref="resizer" disableHeight={this.props.containerHeight ? true : false}>
-				{({ height, width }) => (
+				{({height, width}) => (
 					<List
 						ref="list"
 						className={this.props.className}

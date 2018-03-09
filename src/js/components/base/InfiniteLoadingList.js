@@ -1,4 +1,4 @@
-import { WindowScroller, InfiniteLoader, AutoSizer, List, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
+import {WindowScroller, InfiniteLoader, AutoSizer, List, CellMeasurer, CellMeasurerCache} from 'react-virtualized';
 
 const InfiniteLoadingList = class extends React.Component {
 	displayName: 'InfiniteLoadingList'
@@ -12,11 +12,11 @@ const InfiniteLoadingList = class extends React.Component {
 		});
 	}
 
-	isRowLoaded = ({ index }) => !this.props.hasNextPage || index < this.props.data.length;
+	isRowLoaded = ({index}) => !this.props.hasNextPage || index < this.props.data.length;
 
-	rowRenderer = ({ index, key, parent, style }) => {
+	rowRenderer = ({index, key, parent, style}) => {
 		var content;
-		if (!this.isRowLoaded({ index })) {
+		if (!this.isRowLoaded({index})) {
 			content = this.props.renderLoading ? this.props.renderLoading() : 'Loading...';
 		} else {
 			content = this.props.renderRow(this.props.data[index], index);
@@ -38,22 +38,23 @@ const InfiniteLoadingList = class extends React.Component {
 	}
 
 	render() {
-		const { isNextPageLoading, loadNextPage, hasNextPage, data, windowScrolling } = this.props;
-		const loadMoreRows = isNextPageLoading ? () => { } : loadNextPage;
+		const {isNextPageLoading, loadNextPage, hasNextPage, data, windowScrolling} = this.props;
+		const loadMoreRows = isNextPageLoading ? () => {
+		} : loadNextPage;
 		const rowCount = hasNextPage ? data.length + 1 : data.length;
 
 		if (windowScrolling && !this.props.containerHeight) {
 			return (
 				<WindowScroller>
-					{({ height, isScrolling, scrollTop }) => (
+					{({height, isScrolling, scrollTop}) => (
 						<InfiniteLoader
 							isRowLoaded={this.isRowLoaded}
 							loadMoreRows={loadMoreRows}
 							rowCount={rowCount}
 						>
-							{({ onRowsRendered, registerChild }) => (
+							{({onRowsRendered, registerChild}) => (
 								<AutoSizer ref="resizer" disableHeight={true}>
-									{({ width }) => (
+									{({width}) => (
 										<List
 											autoHeight
 											ref={registerChild}
@@ -82,9 +83,9 @@ const InfiniteLoadingList = class extends React.Component {
 				loadMoreRows={loadMoreRows}
 				rowCount={rowCount}
 			>
-				{({ onRowsRendered, registerChild }) => (
+				{({onRowsRendered, registerChild}) => (
 					<AutoSizer ref="resizer" disableHeight={this.props.containerHeight ? true : false}>
-						{({ height, width }) => (
+						{({height, width}) => (
 							<List
 								ref={registerChild}
 								onRowsRendered={onRowsRendered}

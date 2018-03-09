@@ -1,7 +1,7 @@
 @import "../variables";
 
 button {
-	border-radius:2px !important;
+	border-radius: 2px !important;
 	font-weight: 200 !important;
 	text-transform: uppercase;
 	box-shadow: rgba(0, 0, 0, 0.26) 0px 2px 5px 0px;
@@ -35,6 +35,6 @@ button {
 	color: $link-color-active;
 }
 
-.btn-danger i{
+.btn-danger i {
 	color: white;
 }

@@ -90,5 +90,5 @@ import ImageResizer from 'react-native-image-resizer';
 global.ImageResizer = ImageResizer
 
 global.cdn = (url)=> {
-	return url.indexOf("change-please.s3-eu-west-1.amazonaws") ==-1 ? url : `${Project.api}image/${encodeURIComponent(url)}`
+	return url.indexOf("change-please.s3-eu-west-1.amazonaws") == -1 ? url : `${Project.api}image/${encodeURIComponent(url)}`
 }

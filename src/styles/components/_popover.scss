@@ -1,5 +1,6 @@
 @import "../mixins/box-shadow-mixin";
 @import "../mixins/transition-mixin";
+
 .autocomplete-container {
 	position: relative;
 	.popover {
@@ -10,6 +11,7 @@
 		background-color: #f9f9f9;
 	}
 }
+
 .popover {
 	@include transition(all 300ms ease);
 	background-color: white;

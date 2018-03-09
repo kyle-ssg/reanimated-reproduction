@@ -6,7 +6,6 @@ const TheComponent = (props)=>(
 
 TheComponent.displayName = "TheComponent";
 
-TheComponent.propTypes = {
-};
+TheComponent.propTypes = {};
 
 module.exports = TheComponent;

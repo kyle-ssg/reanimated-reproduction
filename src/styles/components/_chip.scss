@@ -1,20 +1,20 @@
 @import "../variables";
 
 .chip {
-  height: 32px;
-  background-color: $input-placeholder-color;
-  padding: 0 10px;
-  border-radius: 16px;
-  .chip-icon {
-    cursor: pointer;
-    margin-left: $input-padding-x;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color: $input-placeholder-color;
-    background: darken($input-placeholder-color, 25);
-  }
+	height: 32px;
+	background-color: $input-placeholder-color;
+	padding: 0 10px;
+	border-radius: 16px;
+	.chip-icon {
+		cursor: pointer;
+		margin-left: $input-padding-x;
+		width: 24px;
+		height: 24px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+		color: $input-placeholder-color;
+		background: darken($input-placeholder-color, 25);
+	}
 }

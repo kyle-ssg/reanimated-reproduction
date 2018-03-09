@@ -14,7 +14,8 @@ const TheComponent = class extends Component {
 			<View style={[{
 				width: size,
 				height: size,
-				borderRadius:size/2},Styles.notificationBubble,this.props.style]}>
+				borderRadius: size / 2
+			}, Styles.notificationBubble, this.props.style]}>
 				{typeof this.props.children == "string" ? (
 					<Text style={Styles.notificationBubbleText}>{this.props.children}</Text>
 				) : this.props.children}
@@ -24,7 +25,7 @@ const TheComponent = class extends Component {
 };
 
 TheComponent.defaultProps = {
-	size:16
+	size: 16
 };
 TheComponent.propTypes = {};
 

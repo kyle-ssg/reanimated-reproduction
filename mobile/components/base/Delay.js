@@ -6,9 +6,7 @@ const TheComponent = class extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {};
-		setTimeout(() = > this.setState({ready: true}), this.props.delay
-	)
-		;
+		setTimeout(() => this.setState({ready: true}), this.props.delay);
 	}
 
 	render() {

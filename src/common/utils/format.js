@@ -1,3 +1,1 @@
-module.exports = Object.assign({}, require('./base/_format'), {
-
-});
+module.exports = Object.assign({}, require('./base/_format'), {});

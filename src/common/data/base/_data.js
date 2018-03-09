@@ -25,9 +25,9 @@ module.exports = {
 
 							(
 
-							err.error.indexOf("not authenticated")!=-1 ||
-							err.error.indexOf("noTokenFound")!=-1) ||
-							err.error.indexOf("Session expired")!=-1
+							err.error.indexOf("not authenticated") != -1 ||
+							err.error.indexOf("noTokenFound") != -1) ||
+							err.error.indexOf("Session expired") != -1
 						) {
 							AppActions.setUser(null)
 						}

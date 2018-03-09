@@ -74,24 +74,24 @@ const Input = class extends React.Component {
 			<div
 				className={className}>
 				{mask ? (
-						<MaskedInput
-							ref="input"
-							{...rest}
-							mask={this.props.mask}
-							formatCharacters={maskedCharacters}
-							onKeyDown={this.onKeyDown}
-							onFocus={this.onFocus}
-							onBlur={this.onBlur}
-							className={inputClassName}
-							placeholderChar={placeholderChar}/>
-					) : (
-						<input
-							ref="input"
-							{...rest} onFocus={this.onFocus}
-							onKeyDown={this.onKeyDown}
-							onBlur={this.onBlur}
-							className={inputClassName}/>
-					)}
+					<MaskedInput
+						ref="input"
+						{...rest}
+						mask={this.props.mask}
+						formatCharacters={maskedCharacters}
+						onKeyDown={this.onKeyDown}
+						onFocus={this.onFocus}
+						onBlur={this.onBlur}
+						className={inputClassName}
+						placeholderChar={placeholderChar}/>
+				) : (
+					<input
+						ref="input"
+						{...rest} onFocus={this.onFocus}
+						onKeyDown={this.onKeyDown}
+						onBlur={this.onBlur}
+						className={inputClassName}/>
+				)}
 				<hr/>
 				<hr className="highlight"/>
 			</div>

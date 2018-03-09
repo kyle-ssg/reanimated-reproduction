@@ -5,18 +5,18 @@ import BigDataExample from '../../examples/BigDataExample';
 import InfiniteLoadingList from '../../../components/base/InfiniteLoadingList';
 
 const TheComponent = class extends React.Component {
-    displayName: 'TheComponent'
+	displayName: 'TheComponent'
 
-    constructor (props, context) {
-        super(props, context);
-        this.state = {
+	constructor(props, context) {
+		super(props, context);
+		this.state = {
 			data: this.generateData(),
 			infiniteData: this.generateData(),
 			loading: false
 		};
-    }
+	}
 
-	generateData (offset = 0) {
+	generateData(offset = 0) {
 		var data = [];
 		for (var i = 0; i < 100; i++) {
 			var str = "This is row " + (offset + i + 1);
@@ -44,9 +44,9 @@ const TheComponent = class extends React.Component {
 		this.setState({infiniteData: this.state.infiniteData.concat(this.generateData(this.state.infiniteData.length))});
 	}
 
-    render () {
-        return (
-            <div className="app-container container">
+	render() {
+		return (
+			<div className="app-container container">
 				<div>
 					<h1>Dynamic row height list</h1>
 					<ListView
@@ -80,9 +80,9 @@ const TheComponent = class extends React.Component {
 						renderRow={this.renderInfiniteListRow}
 					/>
 				</div>
-            </div>
-        );
-    }
+			</div>
+		);
+	}
 };
 
 const styles = {

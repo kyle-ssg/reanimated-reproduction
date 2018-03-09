@@ -23,7 +23,8 @@ const FormGroup = class extends Component {
 				<label htmlFor={id} className="cols-sm-2 control-label">{props.title}</label>
 				<div>
 					<div>
-						<Input ref="input" {... props.inputProps} isValid={props.isValid} disabled={props.disabled} value={props.value}
+						<Input ref="input" {... props.inputProps} isValid={props.isValid} disabled={props.disabled}
+							   value={props.value}
 							   onChange={props.onChange} type={props.type || 'text'} name={id} id={id}
 							   placeholder={props.placeholder}/>
 					</div>
@@ -34,14 +35,14 @@ const FormGroup = class extends Component {
 };
 
 FormGroup.propTypes = {
-  disabled: OptionalBool,
-  title: RequiredString,
-  isValid: React.PropTypes.any,
-  inputProps: OptionalObject,
-  value: OptionalString,
-  onChange: OptionalFunc,
-  type: OptionalString,
-  placeholder: OptionalString
+	disabled: OptionalBool,
+	title: RequiredString,
+	isValid: React.PropTypes.any,
+	inputProps: OptionalObject,
+	value: OptionalString,
+	onChange: OptionalFunc,
+	type: OptionalString,
+	placeholder: OptionalString
 };
 
 module.exports = FormGroup;

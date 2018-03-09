@@ -82,15 +82,15 @@ TheComponent.propTypes = {};
 
 var styles = StyleSheet.create({
 	lightboxOuter: {
-		backgroundColor:'transparent',
-		justifyContent:'center',
-		alignItems:'center',
-		paddingBottom:40,
-		paddingTop:40,
+		backgroundColor: 'transparent',
+		justifyContent: 'center',
+		alignItems: 'center',
+		paddingBottom: 40,
+		paddingTop: 40,
 	},
 
 	lightbox: {
-		paddingTop:40,
+		paddingTop: 40,
 		width: DeviceWidth - 40,
 		borderRadius: 5,
 		backgroundColor: 'white'

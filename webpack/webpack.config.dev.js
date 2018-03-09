@@ -16,7 +16,7 @@ module.exports = {
 		filename: '[name].js'
 	},
 	plugins: require('./plugins').concat([
-        new webpack.HotModuleReplacementPlugin(),
+		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoEmitOnErrorsPlugin()
 	]),
 	module: {

@@ -1,6 +1,6 @@
 // https://github.com/react-tools/react-table
 module.exports = class extends React.Component {
-	constructor () {
+	constructor() {
 		super();
 
 
@@ -27,7 +27,7 @@ module.exports = class extends React.Component {
 	};
 
 	renderSelectedItem = (value, remove) => (
-		<Row style={{ width: 400 }} space className="chip">
+		<Row style={{width: 400}} space className="chip">
 			<span>{value.name}</span>
 			<span onClick={remove} className="chip-icon">
         <span className="fa fa-close"/>
@@ -35,7 +35,7 @@ module.exports = class extends React.Component {
 		</Row>
 	)
 
-	render () {
+	render() {
 
 		return (
 			<form onSubmit={(e) => {
@@ -45,7 +45,7 @@ module.exports = class extends React.Component {
 				<Row>
 					<AutoComplete
 						ref="autocomplete"
-						inputProps={{ style: { width: 400, paddingBottom: 10 } }}
+						inputProps={{style: {width: 400, paddingBottom: 10}}}
 						placeholder={this.props.placeholder}
 						isAbsolute={true}
 						value={this.props.value}

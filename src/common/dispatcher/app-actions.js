@@ -13,7 +13,7 @@ module.exports = _.assign({}, require('./base/_app-actions'), {
 			bill,
 		});
 	},
-	markAsPaid: function (id,userId) { //when the device goes offline
+	markAsPaid: function (id, userId) { //when the device goes offline
 		Dispatcher.handleViewAction({
 			actionType: Actions.MARK_AS_PAID,
 			id,

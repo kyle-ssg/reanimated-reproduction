@@ -1,4 +1,3 @@
-
 import React, {Component, PropTypes} from 'react';
 
 const TheComponent = class extends Component {
@@ -56,7 +55,7 @@ const TheComponent = class extends Component {
 		});
 		return (
 			<Animated.View
-				style={[{ overflow: 'hidden', justifyContent: 'center', height: height }, this.props.style]}>
+				style={[{overflow: 'hidden', justifyContent: 'center', height: height}, this.props.style]}>
 				{this.props.children}
 			</Animated.View>
 		);

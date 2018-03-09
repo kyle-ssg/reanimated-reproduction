@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 
 const TheComponent = (props)=>(
-	<View style={[Styles.row, props.space && { justifyContent: 'space-between' }, props.style]}>
+	<View style={[Styles.row, props.space && {justifyContent: 'space-between'}, props.style]}>
 		{props.children}
 	</View>
 );

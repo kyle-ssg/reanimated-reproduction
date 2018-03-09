@@ -1,9 +1,10 @@
 //openWebModal(navigator,'www.google.com','Google')
 //push.init.then((token)=>{})
 
-import ImagePicker from 'react-native-image-crop-picker';
+// import ImagePicker from 'react-native-image-crop-picker';
 import BottomSheet from 'react-native-bottomsheet';
-import branch from 'react-native-branch'
+import branch from 'react-native-branch';
+global.branch = branch;
 
 let linkCb = null;
 let initialLinkCb = null;
@@ -11,7 +12,7 @@ let link = null;
 let checkedInitialLink = null;
 let initialLink = null;
 
-import firebase from 'react-native-firebase'
+import firebase from 'react-native-firebase';
 const FCM = firebase.messaging();
 
 var PushManager = class {
@@ -99,9 +100,10 @@ const parseContact = (contact) => {
 	return Object.assign({}, contact, {search});
 };
 
+const Share = require('react-native-share');
 
-var share = (url, message, title, subject, excludedActivityTypes) => {
-	ReactNative.Share.share({message,title,url}, {subject,excludedActivityTypes})
+var share = (uri, message, title, subject, excludedActivityTypes, type) => {
+	Share.open({uri, message, title, subject, excludedActivityTypes, type})
 };
 
 var contacts = {
@@ -177,7 +179,6 @@ module.exports = {
 	share,
 	contacts
 };
-
 
 branch.subscribe(({error, params}) => {
 	if (error) {
