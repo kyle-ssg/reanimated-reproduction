@@ -1,0 +1,35 @@
+table{
+	background:$white;
+
+	thead{
+		background:$body-bg-alt;
+
+		th{
+			font-weight:normal;
+			font-size:16px;
+			color:$text-blue-dark;
+			padding:5px 10px;
+		}
+	}
+	tbody{
+		tr{
+			border-bottom:1px solid $input-border-color;
+
+			&:last-of-type{
+				border-bottom:none;
+			}
+		}
+		td{
+			color:$text-blue-light;
+			padding:$default-padding;
+
+			&.negative{
+				color:$alert-danger-bg;
+			}
+
+			&.positive{
+				color:$add-green
+			}
+		}
+	}
+}

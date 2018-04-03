@@ -25,7 +25,7 @@ const Provider = class extends React.Component {
 		}, 500);
 	}
 
-	_closed = ()=> {
+	_closed = () => {
 		this.props.onClose && this.props.onClose();
 		ReactDOM.unmountComponentAtNode(document.getElementById(this.props.type == 'confirm' ? 'confirm' : 'modal'));
 		document.body.classList.remove('modal-open');
@@ -46,18 +46,6 @@ Provider.propTypes = {
 };
 
 const Modal = class extends React.Component {
-	header() {
-		return this.props.header || '';
-	}
-
-	body() {
-		return this.props.body || '';
-	}
-
-	footer() {
-		return this.props.footer || '';
-	}
-
 	render() {
 
 		return (
@@ -65,9 +53,7 @@ const Modal = class extends React.Component {
 				<div tabIndex="-1" className="modal alert fade expand" role="dialog" aria-hidden="true">
 					<div className="modal-dialog">
 						<div className="modal-content">
-							<div className="modal-header">{this.header()}</div>
-							<div className="modal-body">{this.body()}</div>
-							<div className="modal-footer">{this.footer()}</div>
+							{this.props.body}
 						</div>
 					</div>
 				</div>
@@ -91,12 +77,12 @@ const Confirm = class extends React.Component {
 		return this.props.body || '';
 	}
 
-	onNo = ()=> {
+	onNo = () => {
 		this.props.onNo && this.props.onNo();
 		this.refs.modal.close();
 	}
 
-	onYes = ()=> {
+	onYes = () => {
 		this.props.onYes && this.props.onYes();
 		this.refs.modal.close();
 	}
@@ -120,13 +106,16 @@ const Confirm = class extends React.Component {
 		return (
 			<Provider onClose={this.props.onNo} ref="modal" type="confirm">
 				<div tabIndex="-1" className="modal alert fade expand" role="dialog" aria-hidden="true">
-					<div className="modal-dialog">
-						<div className="modal-content">
-							<div className="modal-header">{this.header()}</div>
-							<div className="modal-body">{this.body()}</div>
-							<div className="modal-footer">{this.footer()}</div>
+					{this.props.content ? this.props.content : (
+						<div className="modal-dialog">
+							<div className="modal-content">
+								<div className="modal-header">{this.header()}</div>
+								<div className="modal-body">{this.body()}</div>
+								<div className="modal-footer">{this.footer()}</div>
+							</div>
 						</div>
-					</div>
+					)}
+
 				</div>
 			</Provider>
 		);
@@ -140,6 +129,10 @@ Confirm.propTypes = {
 	onNo: OptionalFunc,
 	yesText: OptionalString,
 	noText: OptionalString,
+};
+
+exports.openCustomModal = (content) => {
+	render(<Modal content={content}/>, document.getElementById('modal'));
 };
 
 exports.openModal = (header, body, footer) => {

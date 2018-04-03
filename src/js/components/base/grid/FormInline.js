@@ -1,16 +1,16 @@
 /**
  * Created by kylejohnson on 30/07/2016.
  */
-const FormInline = (props)=>(
+const TheComponent = (props)=>(
 	<div className="form-inline">
 		{props.children}
 	</div>
 );
 
-FormInline.displayName = "FormInline";
+TheComponent.displayName = "FormInline";
 
-FormInline.propTypes = {
+TheComponent.propTypes = {
 	children: OptionalNode
 };
 
-module.exports = FormInline;
+module.exports = TheComponent;

@@ -8,18 +8,66 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const src = path.join(__dirname, '../src') + '/';
-var WebpackBundleSizeAnalyzerPlugin = require('webpack-bundle-size-analyzer').WebpackBundleSizeAnalyzerPlugin;
 
 module.exports = {
 	devtool: 'source-map',
 
-	entry: [
-		'./src/js/main.js',
-	],
+	mode: "production",
 
+	entry: {
+		main: './src/js/main.js'
+	},
+	optimization: {
+		splitChunks: {
+			chunks: 'all',
+			minSize: 0,
+			maxAsyncRequests: Infinity,
+			maxInitialRequests: Infinity,
+			name: true,
+			cacheGroups: {
+				default: {
+					name: 'main',
+					chunks: 'async',
+					minSize: 30000,
+					minChunks: 2,
+					maxAsyncRequests: 5,
+					maxInitialRequests: 3,
+					priority: -20,
+					test: function (module) {
+						var test = module.resource && module.resource.indexOf('node_modules') ==-1;
+						test && console.log("Main > " + module.resource)
+						return test;
+					},
+					reuseExistingChunk: true,
+				},
+				vendors: {
+					name: 'vendors',
+					enforce: true,
+					test: function (module) {
+						var test = module.resource && module.resource.indexOf('node_modules') != -1;
+						return test;
+					},
+					priority: -10,
+					reuseExistingChunk: true,
+				},
+				components: {
+					name: 'components',
+					enforce: true,
+					test: function (module) {
+						var test = module.resource && module.resource.indexOf('node_modules') == -1
+						&& module.resource && module.resource.indexOf('js/components') != -1;
+						test && console.log("Components > " + module.resource)
+						return test;
+					},
+					priority: -10,
+					reuseExistingChunk: true,
+				},
+			},
+		},
+	},
 	output: {
 		path: path.join(__dirname, '../build'),
-		filename: '/[name].[hash].js'
+		filename: '[name].[hash].js'
 	},
 
 	plugins: require('./plugins')
@@ -32,7 +80,6 @@ module.exports = {
 
 				//reduce filesize
 				new webpack.optimize.OccurrenceOrderPlugin(),
-				new WebpackBundleSizeAnalyzerPlugin('./plain-report.txt'),
 
 				//pull inline styles into cachebusted file
 				new ExtractTextPlugin({filename: "/style.[hash].css", allChunks: true}),
@@ -52,18 +99,15 @@ module.exports = {
 		})),
 
 	module: {
-		loaders: require('./loaders').concat([
+		rules: require('./loaders').concat([
 			{
-				loader: 'babel-loader',
+				use: 'babel-loader',
 				test: /\.js?/,
-				exclude: /node_modules/,
-				query: {
-					plugins: ['lodash']
-				}
+				exclude: /node_modules/
 			},
 			{
 				test: /\.scss$/,
-				loader: ExtractTextPlugin.extract({fallback: "style-loader", use: "css-loader!sass-loader"})
+				use: ExtractTextPlugin.extract({fallback: "style-loader", use: "css-loader!sass-loader"})
 			}
 		])
 	}

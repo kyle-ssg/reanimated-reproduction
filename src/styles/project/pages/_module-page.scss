@@ -1,0 +1,76 @@
+.module{
+	h1{
+		margin-bottom:$default-margin*2;
+		height:50px;
+	}
+
+	.panel-tray{
+		width:100%;
+	}
+}
+
+.media-section{
+	background:$body-bg-alt;
+	text-align: center;
+	height:350px;
+	margin-left:-$default-margin*3;
+	margin-right:-$default-margin*3;
+	margin-bottom:$default-margin*2;
+
+	&.audio{
+		height:auto;
+		padding:20px 0;
+	}
+
+	&.image{
+		height:auto;
+
+		img{
+			width:100%;
+		}
+	}
+
+	img{
+		height:100%;
+	}
+
+	& > div{
+		height:90%;
+		margin:0 auto;
+	}
+
+	&.docs{
+		padding:$default-padding*2 0;
+		height:200px;
+
+		& > div{
+			display: inline-block;
+		}
+	}
+}
+
+.download-link{
+	padding-top:5px;
+	display: block;
+}
+
+.text-section{
+	padding-bottom:20px;
+}
+
+.document{
+	@extend .card;
+	text-align: center;
+	height:150px;
+
+	p{
+		height: 25px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		position: relative;
+		top: calc(50% - 15px);
+		&.sup {
+			height:12px;
+		}
+	}
+}

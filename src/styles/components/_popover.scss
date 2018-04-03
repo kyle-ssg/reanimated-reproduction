@@ -1,6 +1,5 @@
 @import "../mixins/box-shadow-mixin";
 @import "../mixins/transition-mixin";
-
 .autocomplete-container {
 	position: relative;
 	.popover {
@@ -11,29 +10,48 @@
 		background-color: #f9f9f9;
 	}
 }
-
 .popover {
-	@include transition(all 300ms ease);
-	background-color: white;
+	background-color: $text-blue-default;
 	z-index: 2000;
 	width: 100%;
-	transform-origin: top;
 	position: absolute;
-	overflow: hidden;
 	transform: scaleY(0);
-	opacity: 0;
 	min-width: 200px;
-	&.in {
-		@include card2();
-		transform: scaleY(1);
-		height: auto;
-		opacity: 1;
+	max-width: 475px;
+	color:$white;
+	border-radius: $default-border-radius;
+	padding:$default-padding $default-padding * 2;
+	top:10px!important;
+
+	ul{
+		margin:0;
+	}
+
+	li{
+		width:19%;
+		text-align: center;
+	}
+
+	button{
+		color:$white;
+		width:100%;
+		height:50px;
+		padding:0;
+
+		i{
+			font-size:20px;
+			display: block;
+		}
+
+		p{
+			margin:0;
+		}
 	}
 }
 
 .popover-inner {
 	a {
-		padding: 0px 10px;
+		padding: 0 10px;
 		display: block;
 		height: 44px;
 		line-height: 44px;
@@ -46,4 +64,27 @@
 
 .relative {
 	position: relative !important;
+}
+
+//HACKS
+
+.popover{
+	position: relative;
+	&::before{
+		width: 0;
+		height: 0;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-bottom: 10px solid $text-blue-default;
+		content:"";
+		position: absolute;
+		top:-10px;
+		left:calc(50% - 10px);
+	}
+}
+
+@media (max-width: 480px){
+	.popover{
+		max-width: 75vw;
+	}
 }

@@ -1,20 +1,44 @@
-//MARGIN AND PADDING
-$font-family: Roboto, sans-serif;
+//BASIC DEFAULTS
+$default-border-radius:4px;
+$default-padding:10px;
+$default-margin:10px;
+$grid-gutter-width-base: 20px !default;
+
+//FONTS
+$font-family: Futura, sans-serif;
 
 // COLORS
+$white:#fff;
 
-$body-bg: #edeff1;
-$body-color: #333 !default;
+$body-bg: #f9f9f9;
+$body-bg-alt: #f2f6f9;
+$body-color: #838f9f !default;
 
-$brand-primary: rgb(5, 141, 199);
-$brand-primary: rgb(5, 141, 199);
-$brand-secondary: rgb(255, 152, 0);
-$alert-danger-bg: rgb(178, 18, 18);
-$alert-danger-border: rgb(203, 25, 48);
+$brand-primary: rgb(98, 186, 229);
+$brand-secondary: rgb(225, 105, 53);
+$highlight-green: rgb(0,213,172);
+$select-green: rgb(157,216,114);
+$add-green: rgb(103,231,146);
+
+$alert-danger-bg: rgb(234, 96, 96);
+$alert-danger-border: rgb(234, 96, 96);
 $alert-danger-text: rgb(255, 255, 255);
 
+//TYPE
+$text-blue-dark:#334153;
+$text-blue-default:#929ea4;
+$text-blue-light:#838F9F;
+
+$text-grey-dark:#666;
+$text-grey-light:#BCBCBC;
+
+//NAVS
 $navbar-color: white;
-$navbar-bg: #0288d1;
+$navbar-bg: #22262e;
+
+//NAVS
+$toast-bg: rgba(255,255,255,1);
+$toast-color: #62bae5;
 
 // INPUT
 $input-border-radius: 0px;
@@ -22,17 +46,17 @@ $input-height: 50px;
 $input-line-height: 25px;
 $input-font-size: inherit;
 $input-font-weight: 200;
-$input-border-color: rgb(224, 224, 224);
-$input-placeholder-color: rgb(224, 224, 224);
-$input-border-highlight-color: rgb(0, 188, 212);
+$input-border-color: rgb(230, 233, 238);
+$input-placeholder-color: rgba(146, 158, 164, 0.5);
+$input-border-highlight-color: rgb(98, 186, 229);
 
-$pagination-color: #333;
+$pagination-color: #22262e;
 
 //BUTTONS
-$btn-border-radius: 0;
-$btn-height: 44px;
+$btn-border-radius: 25px;
+$btn-height: 50px;
 $btn-secondary-bg: white;
-$btn-primary-bg: rgb(11, 188, 108);
+$btn-primary-bg: rgb(98, 186, 229);
 $btn-primary-light-bg: lighten($btn-primary-bg, 10);
 $link-color: #999;
 $link-color-active: rgb(5, 141, 199);
@@ -41,14 +65,14 @@ $btn-default-color: rgb(255, 255, 255);
 $hover-bg: rgb(240, 240, 240);
 $hover-color: inherits;
 
-//Panel
+//PANEL
 $panel-heading-height: 50px;
 $panel-bg: white;
 $panel-heading-bg: #039be5;
 $panel-heading-color: white;
 
 //TABS
-$tab-inactive-color: darken(white, 10);
+$tab-inactive-color: darken(white,10);
 $tab-active-color: white;
 
 //SCAFFOLDING
@@ -67,3 +91,5 @@ $modal-header-border-width: 0;
 
 //TRANSITIONS
 $button-transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
+
+$facebook:#3B5998;

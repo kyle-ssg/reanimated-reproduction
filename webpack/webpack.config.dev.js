@@ -1,15 +1,17 @@
 // webpack.config.dev.js
-var path = require('path')
-var src = path.join(__dirname, '../src') + '/';
 var webpack = require('webpack');
 
 module.exports = {
-	devtool: 'cheap-module-source-map',
+	devtool: 'eval',
+	mode:"development",
 	entry: [
-		'webpack-hot-middleware/client?http://localhost:8080',
+		'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false',
 		'react-hot-loader/patch',
 		'./src/js/main.js',
 	],
+	devServer:{
+		outputPath:__dirname
+	},
 	output: {
 		path: '/',
 		publicPath: 'http://localhost:8080/build/',
@@ -17,19 +19,29 @@ module.exports = {
 	},
 	plugins: require('./plugins').concat([
 		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoEmitOnErrorsPlugin()
+		new webpack.NoEmitOnErrorsPlugin(),
+		new webpack.ProvidePlugin({
+			$: "jquery",
+			jQuery: "jquery"
+		})
 	]),
 	module: {
-		loaders: require('./loaders')
+		rules: require('./loaders')
 			.concat([
 				{
 					test: /\.js?/,
 					exclude: /node_modules/,
-					loaders: ['babel-loader']
+					use: ['babel-loader']
 				},
 				{
 					test: /\.scss$/,
-					loaders: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+					use: [{
+						loader: "style-loader" // creates style nodes from JS strings
+					}, {
+						loader: "css-loader" // translates CSS into CommonJS
+					}, {
+						loader: "sass-loader" // compiles Sass to CSS
+					}]
 				}
 			])
 	},

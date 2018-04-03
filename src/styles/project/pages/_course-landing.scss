@@ -1,0 +1,132 @@
+.course-hero{
+	background:url('https://images.pexels.com/photos/3797/black-and-white-sport-fight-boxer.jpg') 0 center;
+	background-size:cover;
+	color:$white;
+	position: relative;
+	overflow:hidden;
+	height:400px;
+
+	.overlay{
+		width: 0;
+		height: 0;
+		border-top: 700px solid deepskyblue;
+		border-right: 500px solid transparent;
+		position: absolute;
+		top:0;
+		left:0;
+	}
+
+	.overlay2{
+		position: absolute;
+		top:0;
+		left:0;
+		width:100%;
+		height:75px;
+		background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
+	}
+
+	h1{
+		margin:0;
+		height: 60px;
+	}
+
+	.panel.dark{
+		padding:20px;
+
+		ul{
+			li{
+				float:left;
+				padding: 0 20px;
+
+				i{
+					font-size:40px;
+					color:$text-blue-light;
+					margin-right:$default-margin;
+				}
+
+				& > div{
+					float:left;
+					p{
+						margin:0;
+					}
+				}
+			}
+		}
+	}
+}
+
+.hero-content{
+	height:calc(300px - 40px );
+
+	.hero-detail{
+		width:300px;
+		ul{
+			float:right;
+			margin-right:20px;
+		}
+
+		& > div{
+			float:right;
+		}
+	}
+}
+
+.course-avatar{
+	height:75px;
+	width:75px;
+	margin-right:10px;
+}
+
+@media (max-width: 480px){
+	.course-hero{
+		height:300px;
+		.overlay{
+			border-top:200px solid deepskyblue;
+			border-right:350px solid transparent;
+		}
+
+		h1{
+			font-size:30px;
+			width:100%;
+		}
+
+		.panel.dark{
+			ul{
+				li{
+					padding:0;
+				}
+			}
+
+			.btn-hollow{
+				padding-left:10px;
+				padding-right:10px;
+			}
+		}
+	}
+
+	.hero-content{
+		height:auto;
+		& > div{
+			float:none!important;
+		}
+
+		.hero-detail{
+			ul{
+				float:left;
+			}
+
+			& > div{
+				float:left;
+				margin-right:10px;
+			}
+		}
+	}
+
+	.course-avatar{
+		display:none;
+	}
+
+	.client-summary{
+		width:100%;
+	}
+}
