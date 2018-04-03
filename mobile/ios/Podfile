@@ -7,8 +7,8 @@ target 'ssgboilerplate' do
 
   # Pods for trainmate
 
-#crashlytics	pod 'Fabric'
-#crashlytics	pod 'Crashlytics'
+pod 'Fabric'
+pod 'Crashlytics'
 #charts   pod 'Charts', '3.0.1'
 #charts   pod 'SwiftyJSON', '3.1.4'
     pod 'Google/SignIn'
@@ -16,8 +16,6 @@ target 'ssgboilerplate' do
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'Firebase/Analytics'
-
-  pod 'ReactNativeFabric', :path => '../node_modules/react-native-fabric'
 
 end
 

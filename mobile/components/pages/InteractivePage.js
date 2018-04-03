@@ -41,8 +41,7 @@ const SwipeableRow = class extends Component {
 							justifyContent: 'center',
 							width: 54
 						}}>
-							<ION style={{color: 'white', marginTop: em(0.2), fontSize: em(2.5)}}
-								 name="md-heart-outline"/>
+							<ION style={{color: 'white', marginTop:em(0.2), fontSize: em(2.5)}} name="md-heart-outline"/>
 						</Animated.View>
 					</View>
 					<View style={styles.iconContainer}>
@@ -56,19 +55,18 @@ const SwipeableRow = class extends Component {
 							justifyContent: 'center',
 							width: 54
 						}}>
-							<ION style={{color: 'white', marginTop: em(0.2), fontSize: em(2.5)}}
-								 name="ios-share-outline"/>
+							<ION style={{color: 'white', marginTop:em(0.2), fontSize: em(2.5)}} name="ios-share-outline"/>
 						</Animated.View>
 					</View>
 				</Row>
 				<Interactable.View
 					style={{backgroundColor: 'white', height: 64}}
-					onSnap={this.onFilterSnap}
+					onSnapStart={this.onFilterSnap}
 					boun
 					ref={(content) => this.content = content}
 					horizontalOnly={true}
 					dragWithSpring={{tension: 2000, damping: 0.5}}
-					snapPoints={[{x: 0, tension: 100}, {tension: 100, x: -64 * 2}]}
+					snapPoints={[{x: 0, tension:100}, {tension:100,x: -64 * 2}]}
 					boundaries={{right: 0}}
 					animatedValueX={this._deltaX}>
 					<View style={{padding: 20, borderColor: '#d1d1d1', justifyContent: 'center'}}>
@@ -85,88 +83,6 @@ const SwipeableRow = class extends Component {
 	}
 };
 
-
-const Grid = class extends Component {
-	displayName: 'TheComponent'
-
-	constructor(props, context) {
-		super(props, context);
-		this._deltaY = new Animated.Value(0);
-		this._deltaX = new Animated.Value(0);
-
-		this.state = {};
-	}
-
-	render() {
-		const strength = 200,
-			falloff = 10,
-			damping = 1 - 0.5,
-			tension = 200
-
-
-		const snapPointsY = [
-			{y: 0, damping, tension},
-			{y: -DeviceHeight, damping, tension},
-			{y: -DeviceHeight * 2, damping, tension},
-		]
-		const snapPointsX = [
-			{x: 0, damping, tension},
-			{x: -DeviceWidth, damping, tension},
-			{x: -DeviceWidth * 2, damping, tension},
-		]
-
-		const gravityPointsY = [
-			{y: 0, strength, falloff, damping},
-			{y: -DeviceHeight, strength, falloff, damping},
-			{y: -DeviceHeight * 2, strength, falloff, damping},
-		]
-		const backgroundColor = this._deltaX.interpolate({
-			inputRange: [-DeviceWidth * 2, -DeviceWidth, 0],
-			outputRange: ["red", "blue", "green"],
-			extrapolateRight: 'clamp'
-		});
-		const boundariesY = {bottom: 0, top: DeviceHeight * -2, bounce: 0}
-		const boundariesX = {right: 0, left: DeviceWidth * -2, bounce: 0}
-
-		return (
-			<Interactable.View
-				style={{height: DeviceHeight * 3, width: DeviceWidth}}
-				verticalOnly={true}
-				boundaries={boundariesY}
-				snapPoints={snapPointsY}
-				animatedValueY={this._deltaY}>
-				<Animated.View style={{backgroundColor}}>
-					{["a", "b", "c"].map((x)=>(
-						<Interactable.View
-							style={{height: DeviceHeight, width: DeviceWidth * 3}}
-							boundaries={boundariesX}
-							horizontalOnly={true}
-							snapPoints={snapPointsX}
-							animatedValueX={this._deltaX}>
-							<Row style={{width: DeviceWidth * 3, height: DeviceHeight}}>
-								<Flex style={Styles.centeredContainer}>
-									<H1>
-										Slide 1{x}
-									</H1>
-								</Flex>
-								<Flex style={Styles.centeredContainer}>
-									<H1>
-										Slide 2{x}
-									</H1>
-								</Flex>
-								<Flex style={Styles.centeredContainer}>
-									<H1>
-										Slide 3{x}
-									</H1>
-								</Flex>
-							</Row>
-						</Interactable.View>
-					))}
-				</Animated.View>
-			</Interactable.View>
-		);
-	}
-};
 
 const TheComponent = class extends Component {
 	displayName: 'TheComponent'
@@ -208,9 +124,6 @@ const TheComponent = class extends Component {
 			extrapolateRight: 'clamp'
 		});
 
-
-		return <Grid/>
-
 		return (
 			<Flex>
 				<View style={styles.container}>
@@ -237,7 +150,7 @@ const TheComponent = class extends Component {
 					</Animated.View>
 
 					<Interactable.View
-						onSnap={this.onFilterSnap}
+						onSnapStart={this.onFilterSnap}
 						ref={(content) => this.content = content}
 						verticalOnly={true}
 						snapPoints={[{y: 0}, {y: -FILTER_HEIGHT}]}

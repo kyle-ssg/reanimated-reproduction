@@ -134,6 +134,13 @@ const HomePage = class extends Component {
 							<ListItem index={10} onPress={this.subscribeToLink}>
 								<Text style={[Styles.anchor]}>Subscribe to branch link</Text>
 							</ListItem>
+							{this.state.link && (
+								<ListItem>
+									<Text>
+										{JSON.stringify(this.state.link,null,2)}
+									</Text>
+								</ListItem>
+							)}
 							<Container>
 								<FormGroup>
 									{
@@ -260,11 +267,8 @@ const HomePage = class extends Component {
 	};
 
 
-	onLink = (notification) => {
-		if (notification.route) {
-			const route = notification.route;
-			routeHelper[route.screen] && routeHelper[route.screen](this.props.navigator, route.data);
-		}
+	onLink = (link) => {
+		this.setState({link})
 	}
 
 	onNotification = (notification) => {

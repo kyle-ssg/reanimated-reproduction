@@ -28,8 +28,8 @@
 		27536D1A1F5D940F00AA5892 /* RNGoogleSignInBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 27536D161F5D940F00AA5892 /* RNGoogleSignInBridge.m */; };
 		27536D1B1F5D940F00AA5892 /* RNGoogleSignInEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27536D171F5D940F00AA5892 /* RNGoogleSignInEvents.swift */; };
 		27536D1C1F5D940F00AA5892 /* RNGoogleSignInEventsBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 27536D181F5D940F00AA5892 /* RNGoogleSignInEventsBridge.m */; };
+		2761642020582856000DF219 /* libSMXCrashlytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2761641D2058284C000DF219 /* libSMXCrashlytics.a */; };
 		2763BB172052CD6A003E9CF8 /* libLottieReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2763BB162052CD46003E9CF8 /* libLottieReactNative.a */; };
-		2763BB672052E84A003E9CF8 /* libSMXCrashlytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2763BB642052E835003E9CF8 /* libSMXCrashlytics.a */; };
 		277F06FA1F5DB99A00BADFBB /* RSKImageCropper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277F06F91F5DB99A00BADFBB /* RSKImageCropper.framework */; };
 		277F06FB1F5DB99A00BADFBB /* RSKImageCropper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 277F06F91F5DB99A00BADFBB /* RSKImageCropper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		277F06FC1F5DB99F00BADFBB /* QBImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277F06C81F5DB93700BADFBB /* QBImagePicker.framework */; };
@@ -145,6 +145,20 @@
 			remoteGlobalIDString = 3400A8081CEB54A6008A0BC7;
 			remoteInfo = imageCropPicker;
 		};
+		2761641C2058284C000DF219 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 276163DB2058284C000DF219 /* SMXCrashlytics.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D8D9DB831C6D03DB009FBC0E;
+			remoteInfo = SMXCrashlytics;
+		};
+		2761641E2058284C000DF219 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 276163DB2058284C000DF219 /* SMXCrashlytics.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6463C84C1EBA12A60095B8CD;
+			remoteInfo = "SMXCrashlytics-tvOS";
+		};
 		2763BAFC2052C999003E9CF8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
@@ -207,20 +221,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 84FE12EF1E4C1485009B157C;
 			remoteInfo = LottieLibraryIOS;
-		};
-		2763BB632052E835003E9CF8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2763BB5E2052E835003E9CF8 /* SMXCrashlytics.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D8D9DB831C6D03DB009FBC0E;
-			remoteInfo = SMXCrashlytics;
-		};
-		2763BB652052E835003E9CF8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2763BB5E2052E835003E9CF8 /* SMXCrashlytics.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6463C84C1EBA12A60095B8CD;
-			remoteInfo = "SMXCrashlytics-tvOS";
 		};
 		27759C061F69811A00143B01 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -547,9 +547,9 @@
 		27536D161F5D940F00AA5892 /* RNGoogleSignInBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGoogleSignInBridge.m; sourceTree = SOURCE_ROOT; };
 		27536D171F5D940F00AA5892 /* RNGoogleSignInEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNGoogleSignInEvents.swift; sourceTree = SOURCE_ROOT; };
 		27536D181F5D940F00AA5892 /* RNGoogleSignInEventsBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGoogleSignInEventsBridge.m; sourceTree = SOURCE_ROOT; };
+		276163DB2058284C000DF219 /* SMXCrashlytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SMXCrashlytics.xcodeproj; path = "../node_modules/react-native-fabric/ios/SMXCrashlytics.xcodeproj"; sourceTree = "<group>"; };
 		2763BB112052CD46003E9CF8 /* LottieReactNative.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LottieReactNative.xcodeproj; path = "../node_modules/lottie-react-native/src/ios/LottieReactNative.xcodeproj"; sourceTree = "<group>"; };
 		2763BB4F2052CD90003E9CF8 /* Lottie.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Lottie.xcodeproj; path = "../node_modules/lottie-ios/Lottie.xcodeproj"; sourceTree = "<group>"; };
-		2763BB5E2052E835003E9CF8 /* SMXCrashlytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SMXCrashlytics.xcodeproj; path = "../node_modules/react-native-fabric/ios/SMXCrashlytics.xcodeproj"; sourceTree = "<group>"; };
 		277F06C81F5DB93700BADFBB /* QBImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QBImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		277F06F91F5DB99A00BADFBB /* RSKImageCropper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RSKImageCropper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		279083F71F713A6000CA4F2D /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
@@ -656,7 +656,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2763BB672052E84A003E9CF8 /* libSMXCrashlytics.a in Frameworks */,
+				2761642020582856000DF219 /* libSMXCrashlytics.a in Frameworks */,
 				27B59A8A1FDEF36A0098937B /* libRNFirebase.a in Frameworks */,
 				27536C5F1F5D8E4300AA5892 /* FBSDKCoreKit.framework in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
@@ -877,6 +877,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		276163DC2058284C000DF219 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2761641D2058284C000DF219 /* libSMXCrashlytics.a */,
+				2761641F2058284C000DF219 /* libSMXCrashlytics.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2763BB092052CCEB003E9CF8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -901,15 +910,6 @@
 				2763BB592052CD90003E9CF8 /* Lottie.framework */,
 				2763BB5B2052CD90003E9CF8 /* Lottie.framework */,
 				2763BB5D2052CD90003E9CF8 /* libLottie.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		2763BB5F2052E835003E9CF8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2763BB642052E835003E9CF8 /* libSMXCrashlytics.a */,
-				2763BB662052E835003E9CF8 /* libSMXCrashlytics.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -981,6 +981,7 @@
 				F33AE5CF49484DFA82B8AB6E /* BVLinearGradient.xcodeproj */,
 				2763BB4F2052CD90003E9CF8 /* Lottie.xcodeproj */,
 				0CBD976E532046EBB1DBA7F9 /* Interactable.xcodeproj */,
+				276163DB2058284C000DF219 /* SMXCrashlytics.xcodeproj */,
 				279083F71F713A6000CA4F2D /* RCTAnimation.xcodeproj */,
 				A870DF4527034FBE806D1359 /* ReactNativeNavigation.xcodeproj */,
 				2763BB112052CD46003E9CF8 /* LottieReactNative.xcodeproj */,
@@ -988,7 +989,6 @@
 				CDD3724DC94E4515A2C1307D /* RCTContacts.xcodeproj */,
 				27536C8E1F5D90E400AA5892 /* RCTFBLogin.xcodeproj */,
 				C396815AD7B4439596367C04 /* RCTImageResizer.xcodeproj */,
-				2763BB5E2052E835003E9CF8 /* SMXCrashlytics.xcodeproj */,
 				27B59A4C1FDEF2310098937B /* RNFirebase.xcodeproj */,
 				C6E2E8A018704A5A9ADE879E /* RNDeviceInfo.xcodeproj */,
 				4A67D821793941FF85C6D975 /* RNFetchBlob.xcodeproj */,
@@ -1284,6 +1284,7 @@
 				DD1B71BD45811AC954DB9EED /* [CP] Embed Pods Frameworks */,
 				FE75F977BA391C3EE465F881 /* [CP] Copy Pods Resources */,
 				E554C2DD1EE8C40200509F8D /* Embed Frameworks */,
+				2763BBDF2052F635003E9CF8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1452,8 +1453,8 @@
 					ProjectRef = 3C0DE850F9DD4B15B678FC74 /* RNVectorIcons.xcodeproj */;
 				},
 				{
-					ProductGroup = 2763BB5F2052E835003E9CF8 /* Products */;
-					ProjectRef = 2763BB5E2052E835003E9CF8 /* SMXCrashlytics.xcodeproj */;
+					ProductGroup = 276163DC2058284C000DF219 /* Products */;
+					ProjectRef = 276163DB2058284C000DF219 /* SMXCrashlytics.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1541,6 +1542,20 @@
 			remoteRef = 27536D401F5DAB9D00AA5892 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		2761641D2058284C000DF219 /* libSMXCrashlytics.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSMXCrashlytics.a;
+			remoteRef = 2761641C2058284C000DF219 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2761641F2058284C000DF219 /* libSMXCrashlytics.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSMXCrashlytics.a;
+			remoteRef = 2761641E2058284C000DF219 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		2763BAFD2052C999003E9CF8 /* libjsinspector.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1602,20 +1617,6 @@
 			fileType = archive.ar;
 			path = libLottie.a;
 			remoteRef = 2763BB5C2052CD90003E9CF8 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2763BB642052E835003E9CF8 /* libSMXCrashlytics.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libSMXCrashlytics.a;
-			remoteRef = 2763BB632052E835003E9CF8 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2763BB662052E835003E9CF8 /* libSMXCrashlytics.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libSMXCrashlytics.a;
-			remoteRef = 2763BB652052E835003E9CF8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		27759C071F69811A00143B01 /* libthird-party.a */ = {
@@ -1939,6 +1940,19 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		2763BBDF2052F635003E9CF8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" f640d8339500ff715667f64ccdc95985c4fb9fa0 d8ec0256c38db1991e728ac918038d9de7290f0d199bf148c67410557e505fda";
+		};
 		A5445E8AEF523F61F9B6F6C9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1954,7 +1968,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DD1B71BD45811AC954DB9EED /* [CP] Embed Pods Frameworks */ = {
@@ -1965,18 +1979,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ssgboilerplate/Pods-ssgboilerplate-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Branch/Branch.framework",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Branch.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

@@ -100,10 +100,8 @@ const parseContact = (contact) => {
 	return Object.assign({}, contact, {search});
 };
 
-const Share = require('react-native-share');
-
 var share = (uri, message, title, subject, excludedActivityTypes, type) => {
-	Share.open({uri, message, title, subject, excludedActivityTypes, type})
+	ReactNative.Share.share({message,title,url:uri},{subject,excludedActivityTypes})
 };
 
 var contacts = {

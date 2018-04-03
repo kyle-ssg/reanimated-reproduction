@@ -131,3 +131,8 @@ Promise.all([getUser, iconsLoaded]).then(([user]) => {
 });
 
 console.disableYellowBox = true;
+
+
+import crashlytics from 'react-native-fabric-crashlytics';
+const path = `${RNFS.MainBundlePath}/sourcemap.js`
+crashlytics.init()

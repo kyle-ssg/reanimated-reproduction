@@ -81,7 +81,6 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-fabric')
 
    //REACT NATIVE FIREBASE
     compile(project(':react-native-firebase')) {

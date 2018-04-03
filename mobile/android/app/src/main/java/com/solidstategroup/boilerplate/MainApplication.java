@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.facebook.react.ReactApplication;
-import com.smixx.fabric.FabricPackage;
 import ga.piroro.rnt.RNTPackage;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.clipsub.rnbottomsheet.RNBottomSheetPackage;

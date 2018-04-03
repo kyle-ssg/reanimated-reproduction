@@ -22,6 +22,8 @@
 //TWITTER_LOGIN
 #import <React/RCTLinkingManager.h>
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate
 
@@ -43,7 +45,8 @@
   self.window.backgroundColor = [UIColor whiteColor];
   [[RCCManager sharedInstance] initBridgeWithBundleURL:jsCodeLocation launchOptions:launchOptions];
 
-  
+  //  FABRIC AND CRASHLYTICS
+      [Fabric with:@[[Crashlytics class]]];
   //PUSH_NOTIFICATIONS_IOS
   [FIRApp configure];
   [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];

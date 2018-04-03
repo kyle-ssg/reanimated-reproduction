@@ -37,7 +37,7 @@ const TheComponent = class extends Component {
 			this.props.textStyle
 		];
 
-		return Platform.OS == "android" ? (
+		return Platform.OS == "android" && Platform.Version >= 21 ? (
 			<View style={{opacity: this.props.disabled ? 0.5 : 1}}>
 				<TouchableNativeFeedback
 					{...touchableProps}
