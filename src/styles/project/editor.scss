@@ -1,12 +1,38 @@
 
 .jsb-editor {
-	[data-cmd="linkList"] {
-		display: none !important;
+  [data-cmd="linkList"] {
+    display: none !important;
+  }
+  .fr-popup .fr-command.fr-btn i, .fr-popup .fr-command.fr-btn i {
+    font-size: 24px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 9px;
+  }
+}
+
+.fr-toolbar.fr-top{
+	border-top:none;
+
+	button{
+		box-shadow:none;
 	}
-	.fr-popup .fr-command.fr-btn i, .fr-popup .fr-command.fr-btn i {
-		font-size: 24px;
-		margin-top: 8px;
-		margin-bottom: 8px;
-		margin-left: 9px;
+
+	.fr-separator{
+		margin:2px 5px;
+	}
+}
+
+.question{
+	.fr-box{
+		position: relative;
+		left:9px;
+	}
+	.fr-toolbar.fr-top{
+		box-shadow:none;
+	}
+
+	.fr-box.fr-basic.fr-top .fr-wrapper{
+		box-shadow:none;
 	}
 }

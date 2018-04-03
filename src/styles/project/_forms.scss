@@ -1,0 +1,143 @@
+//BOOTSTRAP 4 PLACEHOLDER ISSUE
+.input-default::-webkit-input-placeholder { color: $input-placeholder-color; }  /* WebKit, Blink, Edge */
+.input-default:-moz-placeholder { color:  $input-placeholder-color; }  /* Mozilla Firefox 4 to 18 */
+.input-default::-moz-placeholder { color:  $input-placeholder-color; }  /* Mozilla Firefox 19+ */
+.input-default:-ms-input-placeholder { color:  $input-placeholder-color; }  /* Internet Explorer 10-11 */
+.input-default::-ms-input-placeholder { color:  $input-placeholder-color; }  /* Microsoft Edge */
+//--------------------------------
+
+input, textarea{
+    background:$white;
+    border-radius: $default-border-radius;
+    border:1px solid $input-border-color;
+    padding:$default-padding;
+}
+
+label{
+    margin-bottom:5px;
+}
+
+.full-form{
+    input, textarea{
+        width:100%;
+
+		&.interval{
+			width:25%;
+			text-align: center;
+		}
+
+	}
+}
+
+fieldset{
+    margin-bottom:$default-margin;
+}
+
+.sorting{
+	line-height: 44px;
+	float:left;
+	li{
+		padding:0 10px;
+
+		&.active{
+			color:$text-blue-dark;
+		}
+	}
+}
+
+.prepend-input{
+	position:relative;
+	i{
+		position: absolute;
+		top:15px;
+		left:10px;
+	}
+
+	input{
+		text-indent:20px;
+	}
+}
+
+.invite-coach{
+	padding-bottom:$default-margin * 2;
+	margin-bottom:$default-margin * 2;
+	border-bottom: 1px solid rgba($text-blue-light, 0.1);
+
+	input{
+		width:300px;
+	}
+}
+.coach-detail{
+	height:50px;
+	padding-top: 7px;
+
+	p{margin:0;}
+}
+
+.form-default, .form-footer{
+	color:$text-blue-dark;
+
+	h1,h2,h3,h4,h5{
+		color:$text-blue-dark;
+	}
+
+	.plan{
+		padding:10px;
+	}
+}
+
+.radio-button{
+	border-radius:4px;
+	text-align: center;
+	padding:10px 20px;
+	border:1px solid $input-border-color;
+	margin-bottom:20px;
+	color:$text-blue-dark;
+	cursor: pointer;
+
+	p{
+		font-size:0.8em!important;
+	}
+
+	h4{
+		font-weight: bold;
+	}
+
+	&.selected{
+		background:$brand-secondary;
+		p, h4{
+			color:$white;
+		}
+	}
+}
+
+@media(max-width:480px){
+	.content-row > *{
+		display:block;
+	}
+
+	.search-container{
+		float:none!important;
+		width:100%;
+
+		input{
+			width:100%;
+		}
+	}
+
+	.list-row{
+		.coach-detail{
+			.list-item-title{
+				font-size:12px;
+			}
+		}
+
+		li{
+			button{
+				width:calc(100% / 3);
+				float:left;
+				min-width:100px;
+			}
+		}
+	}
+}

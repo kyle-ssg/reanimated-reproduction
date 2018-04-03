@@ -1,0 +1,105 @@
+.split-list{
+    width:100%;
+    margin-bottom: 5px;
+    @extend .clearfix;
+    li:first-of-type{
+        float:left;
+    }
+    li:last-of-type{
+        float:right;
+    }
+}
+
+.list-row{
+	li{
+		padding:$default-padding;
+		@extend .clearfix;
+		border-bottom:1px solid rgba($text-blue-default, 0.1);
+
+		img{
+			margin-right:10px;
+		}
+
+		.list-item-title{
+			margin:0;
+			font-size:18px;
+			color:$text-blue-dark;
+		}
+		.list-item-subtext{
+			margin:0;
+			font-size:14px;
+		}
+
+		& * >{
+			display: inline-block;
+		}
+
+		button{
+			min-width:130px;
+		}
+	}
+}
+
+//TODO: decide whether to have ot not
+//.list-item-content{
+//	br{
+//		display: none;
+//	}
+//}
+
+.list-item-content + ul{
+	width:auto!important;
+	float:right;
+}
+
+.list-title{
+	width:50%;
+}
+
+.list-actions{
+
+}
+
+@media (max-width:480px){
+	.panel{
+		.list-inline{
+			li{
+				width:100%;
+			}
+			button, a{
+				width:100%;
+				margin-bottom:$default-margin;
+			}
+		}
+	}
+
+	.panel .list-item-content{
+		& + ul.unfloated{
+			float:left;
+			clear:left;
+
+			li{
+				width:auto;
+				float:left;
+				padding:0;
+			}
+		}
+
+		& + ul li{
+			&.delete-icon{
+				.question-tooltip{
+					width: 25px;
+				}
+			}
+			.question-tooltip{
+				width: 35px;
+				height: 35px;
+				text-align: center;
+
+				i{
+					color:#838f9f;
+				}
+			}
+		}
+	}
+}

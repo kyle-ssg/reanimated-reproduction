@@ -16,13 +16,10 @@ module.exports = {
 
 		switch (res.status) {
 			case 404:
-				ErrorModal(null, 'API Not found: ');
 				break;
 			case 503:
-				ErrorModal(null, error);
 				break;
 			default:
-				ErrorModal(null, error);
 		}
 
 		if (store) {

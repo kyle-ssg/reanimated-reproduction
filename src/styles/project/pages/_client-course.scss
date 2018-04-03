@@ -1,0 +1,41 @@
+.action-title{
+	padding-left:$default-margin * 2;
+	h3{
+		margin-bottom: $default-margin / 5;
+	}
+}
+
+.client-summary{
+ 	width:50%;
+
+	& > * {
+		display:inline-block;
+		vertical-align: middle;
+	}
+
+	.column{
+		padding:0 20px;
+	}
+
+	&.next{
+		text-align: right;
+		opacity: 0.6;
+		&.disabled {
+			cursor: not-allowed;
+		}
+	}
+}
+
+.response{
+	border-bottom: none;
+	img{
+		width:40px;
+		margin-right:10px;
+	}
+	& > div{
+		width:calc(100% - 50px);
+		p{
+			opacity: 1;
+		}
+	}
+}

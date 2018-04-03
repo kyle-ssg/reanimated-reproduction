@@ -1,8 +1,8 @@
-$enable-flex: true;
+$enable-flex: false;
 
 // Core variables and mixins
 //@import "~bootstrap/scss/custom";
-@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/_variables";
 @import "~bootstrap/scss/mixins";
 
 // Reset and dependencies

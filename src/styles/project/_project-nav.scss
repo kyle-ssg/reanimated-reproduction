@@ -5,41 +5,41 @@ nav.navbar {
 	right: 0;
 	top: 0;
 	@include card1();
-	margin-bottom: 10px;
+	margin-bottom:10px;
 	background-color: $navbar-bg;
 	color: $navbar-color;
 	.navbar-brand, .navbar-brand:hover, .navbar-brand:active {
 		color: $navbar-color !important;
 	}
-	.tabs {
-		display: inline-block;
-		.tabs-nav {
-			width: 380px;
-		}
-		.btn {
-			background-color: transparent;
-			color: $navbar-color;
-			&.tab-active {
-				color: $brand-secondary;
-			}
-			border-color: transparent;
-		}
-		.tab-item {
-			padding: 0;
-		}
-	}
-	.navbar-right {
-		float: right;
-		height: 44px;
-		> * {
-			display: inline-block;
-			height: 44px;
-			line-height: 44px;
-			display: inline-block;
-		}
-	}
-	.popover-right {
-		left: -75px;
-		top: 35px;
-	}
+  .tabs {
+    display: inline-block;
+    .tabs-nav {
+      width: 380px;
+    }
+    .btn {
+      background-color: transparent;
+      color: $navbar-color;
+      &.tab-active {
+        color: $brand-secondary;
+      }
+      border-color: transparent;
+    }
+    .tab-item {
+      padding: 0;
+    }
+  }
+  .navbar-right {
+    float: right;
+    height: 44px;
+    > * {
+      display: inline-block;
+      height: 44px;
+      line-height: 44px;
+      display: inline-block;
+    }
+  }
+  .popover-right {
+	  left: -75px;
+	  top: 35px;
+  }
 }
