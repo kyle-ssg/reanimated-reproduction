@@ -3,8 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "postinstall": "cp -R ../src/common ./ && rm ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json",
-    "mobile:watch": "node ../bin/commonWatch.js",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "ios": "react-native run-ios & npm run mobile:watch",
     "android": "react-native run-android & npm run mobile:watch",
