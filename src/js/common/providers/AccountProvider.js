@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import AccountStore from '../stores/account-store';
-const TheComponent = class extends ES6Component {
+const TheComponent = class extends Component {
 	displayName: 'TheComponent'
 
 	constructor(props, context) {
@@ -9,6 +9,8 @@ const TheComponent = class extends ES6Component {
 			isLoading: true,
 			user: AccountStore.getUser()
 		};
+
+		ES6Component(this);
 
 		this.listenTo(AccountStore, 'change', () => {
 			this.setState({

@@ -12,6 +12,11 @@ module.exports = {
 		}
 	},
 
+
+	phoneNumber: function (number) {
+		return phoneUtil.format(phoneUtil.parse(number, DeviceInfo.getDeviceCountry()), PNF.E164)
+	},
+
 	money: function (value, defaultValue) {
 		if (value == 0) {
 			return defaultValue == null ? "FREE" : defaultValue;
@@ -29,6 +34,18 @@ module.exports = {
 			return a.diff(b, 'years');
 		}
 		return value;
+	},
+
+	dateAndTime: function (value) {
+		return Format.moment(value, 'MMMM Do YYYY, h:mm a');
+	},
+
+	monthAndYear: function (value) {
+		return Format.moment(value, 'MMM YYYY');
+	},
+
+	time: function (value) { //DATE > 10:00pm
+		return Format.moment(value, 'hh:mm a');
 	},
 
 	countdown: function (value) { //DATE > NOW || 10d1h10m
@@ -61,12 +78,47 @@ module.exports = {
 		return value;
 	},
 
+	moment: function (value, format) { //DATE, hh:mm > 23:00
+		if (value) {
+			var m = moment(value);
+			return m.format(format);
+		}
+		return value;
+	},
+
 	nearestTen: function (value) { //11 > 10
 		return value >= 10 ? value : '0' + value;
 	},
 
 	camelCase: function (val) { //hello world > Hello world
 		return val.charAt(0).toUpperCase() + val.slice(1).toLowerCase();
+	},
+
+	fullName: function (person) { //{firstName:'Kyle', lastName:'Johnson'} > Kyle Johnson
+		if (!person) {
+			return '';
+		}
+		var fn = person.firstName || '',
+			sn = person.lastName || '';
+
+		return fn ? Format.camelCase(fn) + ' ' + Format.camelCase(sn) : Format.camelCase(sn);
+	},
+
+	initialAndLastName: function (person) { //{firstName:'Kyle', lastName:'Johnson'} > K. Johnson
+		var value = Format.fullName(person),
+			words;
+
+		if (!value) {
+			return value;
+		}
+
+		words = value.split(' ');
+
+		if (words.length > 1) {
+			return words[0].charAt(0).toUpperCase() + '.' + ' ' + words[words.length - 1];
+		}
+
+		return value;
 	},
 
 	cssImage: function (value) { //lol.jpg  > url('lol.jpg')

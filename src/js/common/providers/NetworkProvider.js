@@ -2,7 +2,7 @@ import NetworkStore from '../stores/network-store';
 
 import React, {Component, PropTypes} from 'react';
 
-const TheComponent = class extends ES6Component {
+const TheComponent = class extends Component {
 
 	constructor(props, context) {
 		super(props, context);
@@ -10,6 +10,7 @@ const TheComponent = class extends ES6Component {
 			isConnected: NetworkStore.isConnected,
 		};
 
+		ES6Component(this);
 	}
 
 	componentWillMount() {

@@ -42,6 +42,29 @@ var Utils = {
 		}
 	},
 
+	getPaging: function (currentPage, totalPages, rangeAround) { //provides paging information based on properties
+		totalPages = Math.max(totalPages, currentPage);
+		var around = (rangeAround - 1) / 2,
+			startPage = Math.min(totalPages - rangeAround + 1, Math.max(1, currentPage - around)),
+			endPage = Math.min(totalPages + 1, startPage + rangeAround);
+
+		if (startPage < 1) {
+			startPage = 1;
+		}
+
+		return {
+			currentPage,
+			totalPages,
+			showFirstPage: startPage > 1,
+			showLastPage: endPage <= totalPages,
+			prevTruncated: startPage > 2, /// i.e 1 ... 3,4,5
+			nextTruncated: totalPages > endPage, /// i.e 3,4,5 ... 10
+			canPrev: currentPage !== 1, // can go back a page
+			canNext: currentPage !== totalPages, // can go forward a page
+			range: _.range(startPage, endPage) // [1,2,3,4,5,6,7,8,9,10]
+		};
+	},
+
 	toParam: function (obj) { //{min:100,max:200} -> ?min=100&max=200
 		return Object.keys(obj).map(function (k) {
 			return encodeURIComponent(k) + '=' + encodeURIComponent(obj[k]);
@@ -136,11 +159,30 @@ var Utils = {
 		// }
 	},
 
+	htmlEscape: function (unsafe) {
+		return unsafe
+			.replace(/&/g, "&amp;")
+			.replace(/</g, "&lt;")
+			.replace(/>/g, "&gt;")
+			.replace(/"/g, "&quot;")
+			.replace(/'/g, "&#039;");
+	},
+
 	playAudio: function (file) {
 		if (Audio && file) {
 			var audio = new Audio(file);
 			audio.play();
 		}
+	},
+
+	getCookies: function () {
+		var pairs = document.cookie.split(";");
+		var cookies = {};
+		for (var i = 0; i < pairs.length; i++) {
+			var pair = pairs[i].split("=");
+			cookies[pair[0].trim()] = unescape(pair[1]);
+		}
+		return cookies;
 	},
 
 	accents: [

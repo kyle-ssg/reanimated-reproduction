@@ -46,6 +46,12 @@ module.exports = {
 			user
 		});
 	},
+	updateProfile: function (profile) { //Login with an unused token
+		Dispatcher.handleViewAction({
+			actionType: Actions.UPDATE_PROFILE,
+			profile
+		});
+	},
 	logout: function () {
 		Dispatcher.handleViewAction({ //Logout
 			actionType: Actions.LOGOUT
@@ -73,6 +79,37 @@ module.exports = {
 		Dispatcher.handleViewAction({
 			actionType: Actions.SET_PUSH_TOKEN,
 			token,
+		});
+	},
+//    Chat
+	getChat: function (id) {
+		Dispatcher.handleViewAction({
+			actionType: Actions.GET_CHAT,
+			id
+		});
+	},
+	sendMessage: function (message, type, group) {
+		Dispatcher.handleViewAction({
+			actionType: Actions.SEND_MESSAGE,
+			message: {message, type, group},
+		});
+	},
+	setChatName: function (name) {
+		Dispatcher.handleViewAction({
+			actionType: Actions.SET_CHAT_NAME,
+			name
+		});
+	},
+	report: function (data) {
+		Dispatcher.handleViewAction({
+			actionType: Actions.REPORT,
+			data
+		});
+	},
+	block: function (id) {
+		Dispatcher.handleViewAction({
+			actionType: Actions.BLOCK,
+			id
 		});
 	}
 };
