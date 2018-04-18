@@ -15,54 +15,16 @@ module.exports = {
         fontWeight: "400"
     },
 
-    screenTitle: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginBottom: styleVariables.marginBaseVertical,
-    },
-
     paragraph: {
         marginBottom: styleVariables.marginBaseVertical,
     },
 
     textSmall: {
-        fontSize: 12,
-    },
-
-    textWhite: {
-        color: pallette.white,
-    },
-
-    textBlueGrey: {
-        color: pallette.blueGrey,
-    },
-
-    textBlueGreyDark: {
-        color: pallette.blueGreyDark,
-    },
-
-    textBlueGreyDefault: {
-        color: pallette.blueGreyText,
+        fontSize: styleVariables.fontSizeSmall,
     },
 
     textFaint: {
         color: colour.textFaint
-    },
-
-    textFaintLight: {
-        color: colour.textFaintLight
-    },
-
-    textPrimary: {
-        color: pallette.primary
-    },
-
-    textSecondary: {
-        color: pallette.secondary
-    },
-
-    textThird: {
-        color: pallette.third
     },
 
     textError: {
@@ -76,10 +38,6 @@ module.exports = {
 
     errorText: {
         color: pallette.error,
-    },
-
-    highlightText: {
-        color: pallette.highlight
     },
 
     fontSizeHeading: {
@@ -98,10 +56,6 @@ module.exports = {
 
     sup: {
         fontSize: em(0.65)
-    },
-
-    smallRowText: {
-        fontSize: 13,
     },
 
 };

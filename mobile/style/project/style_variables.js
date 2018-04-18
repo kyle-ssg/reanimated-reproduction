@@ -3,17 +3,6 @@ var em = require('../base/style_pxToEm');
 window.pallette = {
     backgroundBase: '#ffffff',
 
-    primaryBlue:'#368de8',
-    primaryBlueLight:'#61aaff',
-    primaryGreen:'#03bd69',
-    primaryGreenLight:'#00d5ac',
-
-    blueGrey:'#ced6e4',
-    blueGreyDark:'#8796ab',
-
-    blueGreyText:'#848d99',
-    blueGreyDarkText:'#313c4a',
-
     facebook:'#3b5998',
     google:'#e83d38',
     twitter:'#00acee',

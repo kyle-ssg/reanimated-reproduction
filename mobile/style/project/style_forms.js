@@ -23,16 +23,6 @@ module.exports = {
 		marginBottom: styleVariables.gutterBase / 2
 	},
 
-	headerText: {
-		fontSize: styleVariables.fontSizeBase / 1.25,
-	},
-
-	errorContainer: {
-		padding: styleVariables.paddingBase,
-		alignItems: 'center',
-		justifyContent: 'center'
-	},
-
 	inputAppendContainer: {
 		position: 'relative',
 	},
@@ -48,16 +38,7 @@ module.exports = {
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
-	segmentedTabStyle: {
-		backgroundColor: "white",
-		borderColor: colour.primary
-	},
-	segmentedTabActiveStyle: {
-		backgroundColor: colour.primary
-	},
-	segmentedTabTextStyle: {
-		color: colour.text
-	},
+
 	inputIndent: {
 		paddingLeft: 40,
 	},

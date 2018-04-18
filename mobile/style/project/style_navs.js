@@ -50,15 +50,10 @@ module.exports = {
         alignItems: 'flex-start',
     },
 
-    menu: {
-        height: DeviceHeight
-    },
-
     menuItem: {
         height: 34,
         justifyContent: 'flex-start',
     },
-    menuItemActive: {},
 
     menuItemText: {
         fontSize: em(1.5),
@@ -75,10 +70,4 @@ module.exports = {
         color: pallette.secondary,
         backgroundColor: 'transparent'
     },
-
-    menuItemImage: {
-        width: 34,
-        height: 34,
-        borderRadius: 34 / 2
-    }
 };

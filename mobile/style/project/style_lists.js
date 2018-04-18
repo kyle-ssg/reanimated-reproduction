@@ -25,12 +25,6 @@ module.exports = {
     },
 
     listItemAlt: {
-        minHeight: 44,
-        justifyContent: 'center',
-        alignItems: 'stretch',
-        borderBottomWidth: 1,
-        paddingLeft: styleVariables.paddingBase,
-        paddingRight: styleVariables.paddingBase,
         borderBottomColor: colour.divider,
         backgroundColor: colour.listBackgroundAlt,
     },
@@ -64,57 +58,15 @@ module.exports = {
         color: colour.textFaintLight
     },
 
-    listActionIcon: {
-        fontSize: styleVariables.fontSizeBase * 2,
-        color: styleVariables.listItemText,
-    },
-
     listItemTitle: {
         fontWeight: 'bold'
-    },
-
-    listHeader: {
-        padding: styleVariables.paddingBase / 2,
-        backgroundColor: pallette.listHeader,
     },
 
     listHeaderText: {
         color: '#fff',
     },
 
-    listSubText: {
-        fontSize:styleVariables.fontSizeSmall,
-    },
-
-    listItemUnstyled: {
-        borderBottomWidth: 0
-    },
-
-    dropButton: {
-        height: em(3),
-        width: em(3),
-        borderRadius: em(3) / 2,
-        shadowColor: "#000000",
-        shadowOpacity: 0.3,
-        shadowRadius: 3,
-        shadowOffset: {
-            height: 0,
-            width: 0
-        }
-    },
-    listItemFlag: {
-        height: 40,
-        width: 55,
-        marginRight:styleVariables.marginBaseHorizontal,
-    },
-
     indentListItem:{
         paddingLeft:30,
-    },
-    whiteShadowTop:{
-        shadowColor: '#fff',
-        shadowOffset: { width: 0, height: -6 },
-        shadowOpacity: 0.8,
-        shadowRadius: 4,
     },
 };
