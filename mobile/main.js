@@ -123,8 +123,14 @@ Navigation.startSingleScreenApp({
 			},
 			screen: '/', // unique ID registered with Navigation.registerScreen
 			navigatorButtons: {
-				leftButtons: []
-			}, // override the nav buttons for the screen, see "Adding buttons to the navigator" below (optional)
+				leftButtons: [],
+				rightButtons: [
+					{
+						icon: iconsMap['ios-menu'], // for icon button, provide the local image asset name
+						id: 'back', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+					}
+				]
+			},
 		},
 	}
 );

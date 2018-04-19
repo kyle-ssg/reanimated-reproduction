@@ -14,7 +14,9 @@ window.pallette = {
     secondary: '#03bd69',
     third: '#c84d38',
 
-    text: '#555',
+	navBarText: '#fff',
+
+    text: '#333',
     textLight: '#a8a8a8',
     textLightest: '#fff',
     textLightestHighlight: '#e2e2e2',
@@ -88,7 +90,7 @@ window.styleVariables =  Object.assign({
     placeholderTextColor: pallette.textLightest,
 
     //NAV
-    navBar: pallette.navBar,
+    navBar: colour.navBar,
     navBarIcon: pallette.text,
     navBarButtonText: pallette.text,
     navBarBorder: pallette.primary,

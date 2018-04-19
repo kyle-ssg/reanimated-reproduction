@@ -55,9 +55,18 @@ module.exports = {
         navigator.resetTo({
             title: 'SSG Boilerplate',
             screen: '/', // unique ID registered with Navigation.registerScreen
-            navigatorButtons: {
-                leftButtons: []
-            }, // override the nav buttons for the screen, see "Adding buttons to the navigator" below (optional)
+			navigatorButtons: {
+				leftButtons: [{
+					icon: iconsMap['ios-arrow-back'], // for icon button, provide the local image asset name
+					id: 'back', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+				}],
+				rightButtons: [
+					{
+						icon: iconsMap['ios-menu'], // for icon button, provide the local image asset name
+						id: 'back', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+					}
+				]
+			},
         });
         Navigation.dismissAllModals();
     },
@@ -168,6 +177,16 @@ module.exports = {
         })
     },
 
+	goInteractive: (navigator) => {
+		navigator.push({
+			screen: "/examples/interactive",
+			title: "Interactive examples",
+			backButtonTitle: "",
+			navigatorStyle: global.navbarStyle,
+			passProps: {}
+		});
+	},
+
     openContactModal: (navigator, title, onChange, multiple) => {
         navigator.showModal({
             screen: "/select-contact",
@@ -191,7 +210,7 @@ module.exports = {
     goAccount: function (navigator) {
         routeHelper.loginWall(navigator, {
             screen: "/about",
-            title: "About",
+            title: "About!",
             backButtonTitle: "",
             passProps: {}
         }, false)
