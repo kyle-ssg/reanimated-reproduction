@@ -20,8 +20,8 @@ window.RequiredNode = React.PropTypes.node.isRequired;
 window.RequiredElement = React.PropTypes.node.isRequired;
 
 
-window.Component = require('../common/Component');
-window.ES6Component = require('../common/ES6Component');
+window.Component = require('../common-mobile/Component');
+window.ES6Component = require('../common-mobile/ES6Component');
 
 //Animation
 window.Fade = require('../components/base/animation/Fade');

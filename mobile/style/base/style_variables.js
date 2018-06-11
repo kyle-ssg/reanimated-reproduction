@@ -81,7 +81,7 @@ window.styleVariables = Object.assign({
     //== Components
     logoSize: 100,
     //
-    //## Define common padding and border radius sizes and more.
+    //## Define common-mobile padding and border radius sizes and more.
 
     baseNavHeight: 44,
     marginBaseVertical: 10,

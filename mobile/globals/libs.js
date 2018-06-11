@@ -4,13 +4,13 @@ global._ = _;
 import moment from 'moment';
 global.moment = moment;
 
-window.Project = require('../common/project');
-window.Utils = require('../common/utils/utils');
-window.Format = require('../common/utils/format');
+window.Project = require('../common-mobile/project');
+window.Utils = require('../common-mobile/utils/utils');
+window.Format = require('../common-mobile/utils/format');
 
-import Dispatcher  from'../common/dispatcher/dispatcher';
-import AppActions  from'../common/dispatcher/app-actions';
-import Actions  from'../common/dispatcher/action-constants';
+import Dispatcher  from '../common-mobile/dispatcher/dispatcher';
+import AppActions  from '../common-mobile/dispatcher/app-actions';
+import Actions  from '../common-mobile/dispatcher/action-constants';
 global.Dispatcher = Dispatcher;
 global.AppActions = AppActions;
 global.Actions = Actions;
@@ -36,7 +36,6 @@ global.Animation = Animation;
 // global.DatePicker = DatePicker;
 import RNFS from 'react-native-fs'
 global.RNFS = RNFS;
-global.Auth = require('./auth');
 
 import RNFetchBlob from 'react-native-fetch-blob'
 global.RNFetchBlob = RNFetchBlob;
@@ -92,3 +91,7 @@ global.ImageResizer = ImageResizer
 global.cdn = (url)=> {
 	return url.indexOf("change-please.s3-eu-west-1.amazonaws") == -1 ? url : `${Project.api}image/${encodeURIComponent(url)}`
 }
+
+
+
+// global.Auth = require('./auth');

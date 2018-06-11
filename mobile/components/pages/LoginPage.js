@@ -32,27 +32,7 @@ const HomePage = class extends Component {
 					<H2>
 						You need to login to view this page
 					</H2>
-					<LoginProvider onLogin={() => this.props.onLogin(this.props.navigator)}>
-						{(user, isLoading, {facebook, google, twitter}) => (
-							<Container style={Styles.body}>
-								<FormGroup>
-									<Button disabled={isLoading} onPress={facebook}>
-										Facebook login
-									</Button>
-								</FormGroup>
-								<FormGroup>
-									<Button disabled={isLoading} onPress={google}>
-										Google login
-									</Button>
-								</FormGroup>
-								<FormGroup>
-									<Button disabled={isLoading} onPress={twitter}>
-										Twitter login
-									</Button>
-								</FormGroup>
-							</Container>
-						)}
-					</LoginProvider>
+
 				</Container>
 			</Flex>
 		)
