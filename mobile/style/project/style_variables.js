@@ -3,17 +3,6 @@ var em = require('../base/style_pxToEm');
 window.pallette = {
     backgroundBase: '#ffffff',
 
-    primaryBlue:'#368de8',
-    primaryBlueLight:'#61aaff',
-    primaryGreen:'#03bd69',
-    primaryGreenLight:'#00d5ac',
-
-    blueGrey:'#ced6e4',
-    blueGreyDark:'#8796ab',
-
-    blueGreyText:'#848d99',
-    blueGreyDarkText:'#313c4a',
-
     facebook:'#3b5998',
     google:'#e83d38',
     twitter:'#00acee',
@@ -25,7 +14,9 @@ window.pallette = {
     secondary: '#03bd69',
     third: '#c84d38',
 
-    text: '#555',
+	navBarText: '#fff',
+
+    text: '#333',
     textLight: '#a8a8a8',
     textLightest: '#fff',
     textLightestHighlight: '#e2e2e2',
@@ -56,13 +47,10 @@ window.colour = {
     navBarButtonText: pallette.navBarText,
     navBarBorder: 'transparent',
     navBarText: pallette.navBarText,
-    alert: 'red',
-    avatar: "#dbdbdb",
 
     //BUTTON / SELECT COLOURS
     btnText: "white",
     btnDefault: pallette.primary,
-    btnAlt: pallette.primary,
 };
 
 window.styleVariables =  Object.assign({
@@ -88,9 +76,7 @@ window.styleVariables =  Object.assign({
     fontSizeSmall: em(0.85),
     fontSizeHeading: em(1.5),
     fontSizeSubHeading: em(1.3),
-
     fontSizeIcon: 30,
-
     fontSansSerif: 'helvetica neue',
 
     text: pallette.text, //General app text colour
@@ -99,12 +85,12 @@ window.styleVariables =  Object.assign({
     //FORMS
     inputHeight: 44, //Need to change this value in both platform variables files at the moment
     inputText: pallette.text,
-    inputBackground: pallette.backgroundBase,
+    inputBackground: colour.inputBackground,
     inputBorder: pallette.textLightest,
-    placeholderTextColor: pallette.blueGreyDark,
+    placeholderTextColor: pallette.textLightest,
 
     //NAV
-    navBar: pallette.navBar,
+    navBar: colour.navBar,
     navBarIcon: pallette.text,
     navBarButtonText: pallette.text,
     navBarBorder: pallette.primary,
@@ -114,10 +100,8 @@ window.styleVariables =  Object.assign({
     //MODALS
     modalBackground: '#F0F0F0',
 
-
     //BUTTONS
     button: 50,
-
     buttonPrimary: pallette.primary,
     buttonTextLight: pallette.textLight
 }, require('./style_platform_variables'));

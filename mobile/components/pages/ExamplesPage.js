@@ -45,8 +45,6 @@ const HomePage = class extends Component {
 							<View style={Styles.centeredContainer}>
 								<Loader/>
 							</View>
-
-
 							{this.state.branchURL && (
 								<Fade value={1} autostart>
 									<Container>
@@ -54,8 +52,6 @@ const HomePage = class extends Component {
 									</Container>
 								</Fade>
 							)}
-
-
 							<ListItem index={0} icon={<ION name="ios-notifications"
 														   style={[Styles.listIcon, {color: pallette.secondary}]}/>}>
 								<Text>Register for Push</Text>
@@ -73,12 +69,7 @@ const HomePage = class extends Component {
 								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
 							</ListItem>
 
-							<ListItem index={1} onPress={() => this.props.navigator.push({
-								screen: '/examples/interactive',
-								title: "Interactive examples",
-								backButtonTitle: "Home",
-								navigatorStyle: global.navbarStyle
-							})}>
+							<ListItem index={1} onPress={() => routeHelper.goInteractive(this.props.navigator)}>
 								<Text>Interactive examples</Text>
 								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
 							</ListItem>
@@ -109,8 +100,6 @@ const HomePage = class extends Component {
 								</Text>
 								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
 							</ListItem>
-
-
 							<ListItem index={5} onPress={this.openSelect}>
 								<Text>Generic Select</Text>
 								<ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
@@ -159,7 +148,6 @@ const HomePage = class extends Component {
 
 							{uri ? <Image style={{height: 100, width: 100}} resizeMode="contain"
 										  source={{uri}}/> : null}
-
 
 						</ScrollView>
 					</Flex>

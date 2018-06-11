@@ -4,5 +4,4 @@ module.exports = {
 	debug: true,
 	appVersion: 1,
 	env: 'prod',
-	api: 'http://trainmate-api.flynn.eventspro.xyz/',
 };

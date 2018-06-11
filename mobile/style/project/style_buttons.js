@@ -9,22 +9,6 @@ module.exports = {
         fontSize: styleVariables.fontSizeBase
     },
 
-    buttonWhite:{
-        backgroundColor:pallette.white,
-    },
-
-    buttonWhiteText:{
-        color:pallette.primaryBlue,
-    },
-
-    buttonGreen:{
-        backgroundColor:pallette.primaryGreen
-    },
-
-    ButtonError:{
-        backgroundColor:pallette.error
-    },
-
     buttonSup:{
         fontSize:styleVariables.fontSizeBase / 1.5,
     },
@@ -47,12 +31,6 @@ module.exports = {
         backgroundColor:'transparent'
     },
 
-    capsuleButton:{
-        height:34,
-        borderRadius:17,
-        borderColor:pallette.blueGreyText,
-    },
-
     sideMenu:{
         flexDirection:'row',
         alignItems:'center',
@@ -66,5 +44,18 @@ module.exports = {
         color:'#fff',
         fontSize:20,
         marginRight:5
-    }
+    },
+
+	dropButton: {
+		height: em(3),
+		width: em(3),
+		borderRadius: em(3) / 2,
+		shadowColor: "#000000",
+		shadowOpacity: 0.3,
+		shadowRadius: 3,
+		shadowOffset: {
+			height: 0,
+			width: 0
+		}
+	},
 };

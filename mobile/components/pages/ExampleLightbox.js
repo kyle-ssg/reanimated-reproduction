@@ -18,27 +18,9 @@ const TheComponent = class extends Component {
 
 	render() {
 		return (
-			<View style={styles.lightboxOuter}>
-				<View style={{
-					backgroundColor: 'white',
-					alignSelf: 'center',
-					top: 0,
-					zIndex: 2,
-					position: 'absolute',
-					borderRadius: 40,
-					width: 80,
-					height: 80,
-					justifyContent: 'center'
-				}}>
-					<View style={{
-						backgroundColor: pallette.secondary,
-						alignSelf: 'center',
-						borderRadius: 35,
-						width: 70,
-						height: 70,
-						justifyContent: 'center',
-						alignItems: 'center'
-					}}>
+			<View style={Styles.lightboxOuter}>
+				<View style={Styles.roundedAnimationContainer}>
+					<View style={Styles.roundedAnimationInner}>
 						<Animation
 							ref={animation => {
 								this.animation = animation;
@@ -47,7 +29,7 @@ const TheComponent = class extends Component {
 					</View>
 
 				</View>
-				<View style={styles.lightbox}>
+				<View style={Styles.lightbox}>
 					<View style={[{alignSelf: 'center'}]}>
 						<H1 style={Styles.textCenter}>Congratulations</H1>
 						{this.state.loaded && (
@@ -81,19 +63,6 @@ const TheComponent = class extends Component {
 TheComponent.propTypes = {};
 
 var styles = StyleSheet.create({
-	lightboxOuter: {
-		backgroundColor: 'transparent',
-		justifyContent: 'center',
-		alignItems: 'center',
-		paddingBottom: 40,
-		paddingTop: 40,
-	},
 
-	lightbox: {
-		paddingTop: 40,
-		width: DeviceWidth - 40,
-		borderRadius: 5,
-		backgroundColor: 'white'
-	}
 })
 module.exports = TheComponent;

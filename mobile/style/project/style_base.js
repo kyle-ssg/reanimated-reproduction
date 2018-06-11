@@ -1,25 +1,4 @@
 module.exports = {
-    fullPageImage:{
-        height:DeviceHeight,
-        width:DeviceWidth,
-    },
-
-    onboardingImageContainer:{
-        height:DeviceWidth/2,
-        overflow:'hidden',
-        justifyContent:'center',
-        marginTop:styleVariables.marginBaseVertical * 2,
-        marginBottom:styleVariables.marginBaseVertical * 2,
-    },
-
-    onboardingImage:{
-        height:DeviceWidth/2,
-        resizeMode:'contain',
-    },
-    onboardingLoginImage:{
-        height:DeviceWidth/2.5,
-        resizeMode:'contain',
-    },
 
     hero :{
         overflow:'hidden',
@@ -38,16 +17,6 @@ module.exports = {
         },
         shadowRadius: 5,
         shadowOpacity: 0.4,
-    },
-
-    avatarShadow: {
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 0,
-        },
-        shadowRadius: 3,
-        shadowOpacity: 0.5,
     },
 
     // APP
@@ -70,21 +39,25 @@ module.exports = {
         marginRight:10
     },
 
-    dropListIcon: {
-        fontSize: em(1.2),
-        color: styleVariables.white
-    },
+	roundedAnimationContainer:{
+		backgroundColor: 'white',
+		alignSelf: 'center',
+		top: 0,
+		zIndex: 2,
+		position: 'absolute',
+		borderRadius: 40,
+		width: 80,
+		height: 80,
+		justifyContent: 'center'
+	},
 
-    // APP
-    stationName: {
-        width: DeviceWidth / 3.3,
-    },
-
-    actionContainer:{
-        padding:styleVariables.paddingBase,
-    },
-
-    marginTopLarge:{
-        marginTop:styleVariables.marginBaseVertical * 2,
-    }
+	roundedAnimationInner:{
+		backgroundColor: pallette.secondary,
+		alignSelf: 'center',
+		borderRadius: 35,
+		width: 70,
+		height: 70,
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
 };
