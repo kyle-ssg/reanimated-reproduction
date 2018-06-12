@@ -2,10 +2,6 @@
 
 pidfile=./file-watch.pid
 
-if [[ $1 ]]; then
-    rm $pidfile
-fi
-
 # If the pid file exists we must already be running
 if ! ln -s "pid=$$" "$pidfile"; then
   echo "Already running. Exiting." >&2

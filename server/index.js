@@ -1,6 +1,3 @@
-global.fetch = require('fetchify')(Promise).fetch; // polyfil
-global._ = require('lodash');
-
 const bodyParser = require('body-parser');
 const api = require('./api');
 const exphbs = require('express-handlebars');
@@ -12,34 +9,36 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 if (isDev) { //Serve files from src directory and use webpack-dev-server
-	console.log('Enabled Webpack Hot Reloading');
-	webpackMiddleware(app);
-
-	app.set('views', 'src/');
-	app.use(express.static('src'));
+    console.log('Enabled Webpack Hot Reloading');
+    webpackMiddleware(app);
+    app.set('views', 'web/');
+    app.use(express.static('web'));
 } else { //Serve files from build directory
-	console.log('Running production mode');
-	app.use(express.static('build'));
-	app.set('views', 'build/');
+    console.log('Running production mode');
+    app.use(express.static('build'));
+    app.set('views', 'build/');
 }
 
+//todo: use html in production
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 // parse various different custom JSON types as JSON
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 app.use('/api', api());
 app.use(spm);
+
+
 app.get('/', function (req, res) {
-	console.log("Returning index");
-	return res.render('index', {
-		isDev
-	});
+    console.log("Returning index");
+    return res.render('index', {
+        isDev
+    });
 });
 
 app.listen(port, function () {
-	console.log('express-handlebars example server listening on: ' + port);
+    console.log('Server listening on: ' + port);
 });
 
 

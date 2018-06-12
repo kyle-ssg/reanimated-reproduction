@@ -1,27 +1,57 @@
-# SSG Frontend Boilerplate
+## Prerequisites
 
-This README will help get you started using the SSG Frontend Boilerplate to set up a new project for both web and mobile or work on an existing project.
-
-
-
-## Dependencies
-
-``brew install watchman && npm i react-native-cli -g`` 
-
-## Installation 
-
-``npm i``
-
-## Development
-
-```npm run dev```
+What things you need to install the software and how to install them
 
 
-## Build for production
+| Location                                                     | Suggested Version       |
+| -------------                                                |:-------------:|
+| <a href="https://nodejs.org/en/">NodeJS</a>                     | >= 6.0.0 | 
+| <a href="https://nodejs.org/en/">npm</a>                        | >= 4.0.0 | 
 
-```npm start```
 
+## Installing
+```
+npm i
+```
 
-## Components
+## Running
+**Development**
 
-Further detail on React components and the flux architecture used throughout the boilerplate can be seen in the [Components Guide](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/docs/Components.md)
+Hot reloading for client / server 
+```
+npm run dev
+```
+
+**Production**
+
+You can deploy this application on [Heroku](https://www.heroku.com/) and [Dokku](http://dokku.viewdocs.io/dokku/) without making any changes, other than the API URL in [project_prod.js](/env/project_prod.js)  
+
+Bundles, minifies and cache busts the project to a build folder and runs node in production. This can be used as part of your deployment script.
+
+```
+npm start
+```
+**E2E Testing**
+
+This project uses [Nightwatch](http://nightwatchjs.org/) for automated end to end testing with chromedriver.
+```
+npm test
+```
+
+## Built With
+- React
+- Webpack
+- Node
+- Nightwatch
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/kyle-ssg/c36a03aebe492e45cbd3eefb21cb0486) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Getting Help
+
+If you encounter a bug or feature request we would like to hear about it. Before you submit an issue please search existing issues in order to prevent duplicates. 
+
+## Get in touch
+
+If you have any questions about our projects you can email <a href="mailto:projects@solidstategroup.com">projects@solidstategroup.com</a>.
