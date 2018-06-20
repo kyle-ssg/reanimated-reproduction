@@ -1,4 +1,6 @@
+import BottomSheet from 'react-native-bottomsheet';
 import firebase from 'react-native-firebase';
+
 const FCM = firebase.messaging();
 const analytics = firebase.analytics();
 const Notifications = firebase.notifications();
@@ -25,7 +27,7 @@ var PushManager = class {
         this.onNotification = onNotification;
 
         if (!this.notificationListener) {
-            FCM.onMessage((notification)=> {
+            FCM.onMessage((notification) => {
                 if (this.notificationListener)
                     this.notificationListener(notification)
                 notification.finish();
@@ -74,10 +76,14 @@ var push = new PushManager();
 global.API = {
 
 
-    trackEvent: function(data) {
+    log: function () {
+
+    },
+
+    trackEvent: function (data) {
         if (analytics) {
             const {event, ...rest} = data;
-            if (!data)  {
+            if (!data) {
                 console.error("Passed null event data")
             }
             console.info("track", data);
@@ -85,15 +91,73 @@ global.API = {
                 console.error("Invalid event provided", data);
             }
 
-            analytics.logEvent(event.toLowerCase().replace(/ /g,"_"), rest)
+            analytics.logEvent(event.toLowerCase().replace(/ /g, "_"), rest)
 
         }
 
     },
-    trackPage: function(name) {
+    trackPage: function (name) {
         if (analytics) {
             analytics.setCurrentScreen(name, name)
         }
+    },
+    share: (uri, message, title, subject, excludedActivityTypes, type) => {
+        ReactNative.Share.share({message, title, url: uri}, {subject, excludedActivityTypes})
+    },
+    showOptions: (title, options, cancelButton = true, dark = true) => {
+        return new Promise((resolve) => {
+            cancelButton && options.push("Cancel");
+            BottomSheet.showBottomSheetWithOptions({
+                options,
+                title,
+                dark,
+                cancelButtonIndex: cancelButton && options.length - 1,
+            }, (value) => {
+                resolve(value);
+            });
+        })
+    },
+    getContacts: (includePhotos) => {
+        if (typeof Contacts == "undefined")
+            alert("You need to link react-native-contacts to use this function");
+        return Promise.resolve([]);
+        includePhotos ?
+            new Promise((resolve) => Contacts.getAll((error, contacts) => resolve({
+                error,
+                contacts: contacts && contacts.map(parseContact)
+            })))
+            : new Promise((resolve) => Contacts.getAllWithoutPhotos((error, contacts) => resolve({
+                error,
+                contacts: contacts && contacts.map(parseContact)
+            })))
+    },
+    showUpload: (title, multiple, width, height, compressImageQuality = 0.8, onStart) => {
+        return new Promise((resolve) => {
+            API.showOptions(title, ["Camera", "Upload a Photo"]).then((i) => {
+                if (typeof ImagePicker == "undefined")
+                    alert("You need to link react-native-image-picker to use this function")
+                //todo : handle multiple
+                if (i == 0 || i == 1) {
+                    const options = {
+                        cropping: width || height ? true : false,
+                        multiple,
+                        width,
+                        height,
+                        compressImageQuality
+                    };
+
+                    const func = i ? ImagePicker.openPicker : ImagePicker.openCamera
+
+                    return func(options)
+                        .then(({path}) => {
+                            onStart && onStart(path);
+
+                            resolve({path})
+
+                        });
+                }
+            })
+        })
     },
 
     generateLink: (title, metadata, $fallback_url) => {

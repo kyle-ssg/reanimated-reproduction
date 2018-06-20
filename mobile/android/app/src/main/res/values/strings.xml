@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">boilerplate</string>
+    <string name="app_name">SSGFrontend</string>
+    <string name="fb_app_id">276944269330753</string>
+    <string name="fb_login_protocol_scheme">fb276944269330753</string>
 </resources>

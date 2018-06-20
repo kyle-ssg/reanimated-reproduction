@@ -1,5 +1,17 @@
 import PropTypes from 'prop-types';
+//Lodash
+import each from 'lodash/each';
+import map from 'lodash/map';
+import filter from 'lodash/filter';
+import find from 'lodash/find';
+import partial from 'lodash/partial';
+import merge from 'lodash/cloneDeep';
+import cloneDeep from 'lodash/cloneDeep';
+import findIndex from 'lodash/findIndex';
+import range from 'lodash/range';
+import keyBy from 'lodash/keyBy';
 
+window._ = {each, filter, find, partial, findIndex, merge, range, map, cloneDeep, keyBy};
 //React Prop Types, todo: move to react-native-globals
 window.Any = PropTypes.any;
 window.OptionalArray = PropTypes.array;
@@ -20,3 +32,25 @@ window.RequiredObject = PropTypes.object.isRequired;
 window.RequiredString = PropTypes.string.isRequired;
 window.RequiredNode = PropTypes.node.isRequired;
 window.RequiredElement = PropTypes.node.isRequired;
+
+import Interactable from 'react-native-interactable';
+global.Interactable = Interactable;
+
+import Animation from 'lottie-react-native';
+global.Animation = Animation;
+
+import Navigation from 'react-native-navigation';
+global.Navigation = Navigation;
+
+import * as Animatable from 'react-native-animatable';
+
+Animatable.initializeRegistryWithDefinitions({
+    basicListEntrance: {
+        from: {opacity: 1, ['translateX']: 40},
+        to: {opacity: 1, ['translateX']: 0},
+    },
+    basicListEntranceFade: {
+        from: {opacity: 0, ['translateX']: 40},
+        to: {opacity: 1, ['translateX']: 0},
+    },
+});

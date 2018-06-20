@@ -23,6 +23,25 @@ module.exports = {
         });
     },
 
+    homeScreen: () => {
+        return {
+            title: 'SSG Boilerplate',
+            navigatorStyle: {
+                screenBackgroundColor: '#fff',
+            },
+            screen: '/', // unique ID registered with Navigation.registerScreen
+            navigatorButtons: {
+                leftButtons: [],
+                rightButtons: [
+                    {
+                        icon: iconsMap['ios-menu'], // for icon button, provide the local image asset name
+                        id: 'back', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+                    }
+                ]
+            }
+        }
+    },
+
     //Global handling for pages - can plug into analytics / deep linmking
     handleNavEvent: (navigator, id, cb) => {
         navigator.setOnNavigatorEvent((event) => {
@@ -52,94 +71,8 @@ module.exports = {
         });
     },
 
-    logout: (navigator) => {
-        Auth.logout()
-        AppActions.logout(null)
-        navigator.resetTo({
-            title: 'SSG Boilerplate',
-            screen: '/', // unique ID registered with Navigation.registerScreen
-            navigatorButtons: {
-                leftButtons: []
-            }, // override the nav buttons for the screen, see "Adding buttons to the navigator" below (optional)
-        });
-        Navigation.dismissAllModals();
-    },
-
-    goPurchase: function (navigator, id) {
-        routeHelper.loginWall(navigator, {
-            title: 'Your Purchase',
-            screen: '/purchase', // unique ID registered with Navigation.registerScreen
-            passProps: { id },
-            navigatorButtons: {
-                leftButtons: []
-            }, // override the nav buttons for the screen, see "Adding buttons to the navigator" below (optional)
-        })
-    },
-
-    goHome: function (navigator) {
-        return AccountStore.isCoach() ? routeHelper.goNotImplemented(navigator) : routeHelper.goClient(navigator)
-    },
-
-    goClient: function (navigator) {
-        routeHelper.loginWall(navigator, {
-            title: 'Dashboard',
-            screen: '/client', // unique ID registered with Navigation.registerScreen
-            backButtonHidden: true,
-            navigatorButtons: {
-                leftButtons: []
-            }, // override the nav buttons for the screen, see "Adding buttons to the navigator" below (optional)
-        })
-    },
-
-    goNotImplemented: function (navigator) {
-        routeHelper.loginWall(navigator, {
-            title: 'Coming Soon',
-            screen: '/coming-soon', // unique ID registered with Navigation.registerScreen
-            navigatorButtons: {
-                leftButtons: []
-            }, // override the nav buttons for the screen, see "Adding buttons to the navigator" below (optional)
-        })
-    },
-
-    //Login redirect if user is not logged in
-    loginWall: (navigator, route, replace) => {
-        if (AccountStore.getUser()) { // user already logged in
-            if (replace) {
-                navigator.resetTo(_.cloneDeep(route));
-            } else {
-                navigator.push(_.cloneDeep(route));
-            }
-        } else {
-            navigator.showLightBox({
-                screen: "/login",
-                title: "Login",
-                style: {
-                    width: DeviceWidth,
-                    height: DeviceHeight,
-                    justifyContent: 'center',
-                    tapBackgroundToDismiss: true, // dismisses LightBox on background taps (optional)
-                    backgroundBlur: "dark", // 'dark' / 'light' / 'xlight' / 'none' - the type of blur on the background
-                },
-                navigatorButtons: _.cloneDeep(global.modalNavButtons),
-                passProps: {
-                    route,
-                    onLogin: () => {
-                        Navigation.dismissLightBox();
-                        if (AccountStore.getUser()) {
-                            if (replace) {
-                                navigator.resetTo(_.cloneDeep(route));
-                            } else {
-                                navigator.push(_.cloneDeep(route));
-                            }
-                        }
-                    }
-                }
-            });
-        }
-    },
-
     goAbout: (navigator) => {
-        routeHelper.loginWall(navigator, {
+        navigator.push({
             screen: "/about",
             title: "About",
             backButtonTitle: "",
@@ -153,7 +86,7 @@ module.exports = {
             title: title || '',
             navigatorButtons: _.cloneDeep(global.modalNavButtons),
             navigatorStyle: global.navbarStyle,
-            passProps: { uri, title }
+            passProps: {uri, title}
         });
     },
 
@@ -177,17 +110,17 @@ module.exports = {
             title: title || '',
             navigatorButtons: _.cloneDeep(global.modalNavButtons),
             navigatorStyle: global.navbarStyle,
-            passProps: { onChange, multiple }
+            passProps: {onChange, multiple}
         });
     },
 
-    openSelect: (navigator, title, { items, renderRow, onChange, multiple, filterItem }) => {
+    openSelect: (navigator, title, {items, renderRow, onChange, multiple, filterItem}) => {
         navigator.showModal({
             screen: "/select",
             title: title || '',
             navigatorButtons: _.cloneDeep(global.modalNavButtons),
             navigatorStyle: global.navbarStyle,
-            passProps: { items, renderRow, onChange, multiple, filterItem }
+            passProps: {items, renderRow, onChange, multiple, filterItem}
         });
     },
 

@@ -1,13 +1,10 @@
-var appStart = new Date().valueOf();
-import './app/project/globals'
-import './app/routes'
+import {Navigation} from 'react-native-navigation';
 
-import routeHelper  from'./app/route-helper';
-global.routeHelper = routeHelper;
-
-import{Navigation} from 'react-native-navigation';
+require('./app/project/globals');
+require('./app/routes');
 import ION from 'react-native-vector-icons/Ionicons';
-import styleVariables from './app/styles/styleVariables';
+import styleVariables from './app/style/project/style_variables';
+
 const replaceSuffixPattern = /--(active|big|small|very-big)/g;
 const defaultIconProvider = ION;
 
@@ -23,7 +20,6 @@ const icons = {
 };
 
 global.iconsMap = {};
-
 let iconsLoaded = new Promise((resolve, reject) => { //cache all icons as images
     new Promise.all(
         Object.keys(icons).map(iconName => {
@@ -36,7 +32,7 @@ let iconsLoaded = new Promise((resolve, reject) => { //cache all icons as images
         })
     ).then(sources => {
         Object.keys(icons)
-            .forEach((iconName, idx) => iconsMap[iconName] = sources[idx]);
+            .forEach((iconName, idx) => iconsMap[iconName] = sources[idx])
 
         // Call resolve (and we are done)
         resolve(true);
@@ -44,7 +40,16 @@ let iconsLoaded = new Promise((resolve, reject) => { //cache all icons as images
 });
 
 const getUser = new Promise(function (resolve) {
-   resolve();
+    if (Constants.simulate.NEW_USER) {
+        resolve(null)
+    } else {
+        AsyncStorage.getItem('user', (err, res) => {
+            if (res) {
+                AccountStore.setUser(JSON.parse(res))
+            }
+            resolve(res)
+        });
+    }
 });
 
 Promise.all([getUser, iconsLoaded]).then(([user]) => {
@@ -59,34 +64,14 @@ Promise.all([getUser, iconsLoaded]).then(([user]) => {
             }
         ]
     };
-
-
-    //Start at login screen, todo: could perhaps start at challenge screen
     Navigation.startSingleScreenApp({
-            screen: {
-                title: 'SSG Boilerplate',
-                navigatorStyle: {
-                    screenBackgroundColor: '#fff',
-                },
-                screen: '/', // unique ID registered with Navigation.registerScreen
-                navigatorButtons: {
-                    leftButtons: []
-                }, // override the nav buttons for the screen, see "Adding buttons to the navigator" below (optional)
-            },
+            screen: routeHelper.homeScreen(),
         }
     );
 });
 
+console.disableYellowBox = true;
 
 
-//Used to track initial render time
-global.appStart = appStart;
-
-//Crash logging
 import crashlytics from 'react-native-fabric-crashlytics';
 crashlytics.init();
-
-
-
-
-

@@ -34,7 +34,7 @@
   [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES]; // <-- add this
 
   //REACT_NATIVE_FABRIC
-  [Fabric with:@[[Crashlytics class]]];
+ // [Fabric with:@[[Crashlytics class]]];
 
   //REACT_NATIVE_FUREBASE
   [FIRApp configure];

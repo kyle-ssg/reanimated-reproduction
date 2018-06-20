@@ -1,27 +1,10 @@
 import './polyfill';
 import './api';
-
-//Lodash
-import each from 'lodash/each';
-import map from 'lodash/map';
-import filter from 'lodash/filter';
-import find from 'lodash/find';
-import partial from 'lodash/partial';
-import cloneDeep from 'lodash/cloneDeep';
-import findIndex from 'lodash/findIndex';
-import range from 'lodash/range';
-import keyBy from 'lodash/keyBy';
-
-window._ = {each, filter, find, partial, findIndex, range, map, cloneDeep, keyBy};
-
-
 import 'react-native-globals'; //Adds <View etc to global scope
+import '../style/style_screen';
+import './base-components';
+import './project-components';
 
-import {globalise} from '../components/base-components'; //Adds <Flex,Row,Container etc
-globalise();
-
-import Fade from '../components/animation/Fade'
-import Loader from '../components/animation/Loader'
 
 import ION from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -29,12 +12,6 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 global.FontAwesome = FontAwesome;
 global.ION = ION;
 global.MaterialIcon = MaterialIcon;
-
-
-
-global.Fade = Fade;
-global.Loader = Loader;
-
 
 import Constants from '../../common-mobile/constants';
 import Utils from '../../common-mobile/utils/utils';
