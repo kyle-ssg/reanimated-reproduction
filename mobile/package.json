@@ -8,7 +8,7 @@
     "ios": "react-native run-ios & npm run mobile:watch",
     "android": "react-native run-android & npm run mobile:watch",
     "androidDeploy": "cd ./android && ./gradlew assembleRelease && ./gradlew installRelease && cd ../",
-    "postinstall": "cp ../src/js/common ./common -r",
+    "postinstall": "cp -r ../src/js/common ./common",
     "keystore": "keytool -genkey -v -keystore my-release-key.keystore -alias android -keyalg RSA -keysize 2048 -validity 10000"
   },
   "dependencies": {
