@@ -36,6 +36,8 @@
 		27BB7DDF20CF4CF800E8012B /* libLottieReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BB7DAA20CF4C4700E8012B /* libLottieReactNative.a */; };
 		27BB7E4420CF4FC300E8012B /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BB7E4320CF4FB300E8012B /* libRNVectorIcons.a */; };
 		27BB7E4520CF4FCF00E8012B /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BB7E3220CF4F9600E8012B /* libRNDeviceInfo.a */; };
+		27E2ED0F210B4BFD00E5F273 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E2ED0E210B4BFD00E5F273 /* File.swift */; };
+		27E2ED47210B4C6E00E5F273 /* libBleClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E2ED46210B4C5C00E5F273 /* libBleClient.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -233,6 +235,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = D8AFADBD1BEE6F3F00A4592D;
 			remoteInfo = ReactNativeNavigation;
+		};
+		27E2ED45210B4C5C00E5F273 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27E2ED41210B4C5C00E5F273 /* BleClient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D73F06E81D48E17B00AD5963;
+			remoteInfo = BleClient;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -494,6 +503,9 @@
 		27BB7E0220CF4F9600E8012B /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/ios/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		27BB7E3E20CF4FB300E8012B /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		27C60BD1F0324328902B1E63 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		27E2ED0D210B4BFC00E5F273 /* boilerplate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "boilerplate-Bridging-Header.h"; sourceTree = "<group>"; };
+		27E2ED0E210B4BFD00E5F273 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		27E2ED41210B4C5C00E5F273 /* BleClient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BleClient.xcodeproj; path = "../node_modules/react-native-ble-plx/ios/BleClient.xcodeproj"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* boilerplate-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "boilerplate-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* boilerplate-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "boilerplate-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -529,6 +541,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27E2ED47210B4C6E00E5F273 /* libBleClient.a in Frameworks */,
 				2770749120D93C85000A314A /* libInteractable.a in Frameworks */,
 				27BB7E4520CF4FCF00E8012B /* libRNDeviceInfo.a in Frameworks */,
 				27BB7DDF20CF4CF800E8012B /* libLottieReactNative.a in Frameworks */,
@@ -803,6 +816,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		27E2ED42210B4C5C00E5F273 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27E2ED46210B4C5C00E5F273 /* libBleClient.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -859,6 +880,7 @@
 				7042FE30F0AB4E5ABA177A42 /* RNFirebase.xcodeproj */,
 				27BB7E3E20CF4FB300E8012B /* RNVectorIcons.xcodeproj */,
 				27BB7CF420CF384500E8012B /* SMXCrashlytics.xcodeproj */,
+				27E2ED41210B4C5C00E5F273 /* BleClient.xcodeproj */,
 				2770745A20D93C5C000A314A /* Interactable.xcodeproj */,
 				F1418E7B40BE4084ACA9A9A9 /* ReactNativeNavigation.xcodeproj */,
 			);
@@ -877,6 +899,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				27E2ED0E210B4BFD00E5F273 /* File.swift */,
 				27BB7DA220CF3F3100E8012B /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* boilerplate */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -886,6 +909,7 @@
 				EEEFCDCE1E1EC5E3A4A4DD7D /* Pods */,
 				6776A8E0749E4A1F90FDEB32 /* Resources */,
 				27BB7E9C20CF51A900E8012B /* Recovered References */,
+				27E2ED0D210B4BFC00E5F273 /* boilerplate-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -1018,6 +1042,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = RS9E45N5W4;
+						LastSwiftMigration = 0940;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1044,6 +1069,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 27E2ED42210B4C5C00E5F273 /* Products */;
+					ProjectRef = 27E2ED41210B4C5C00E5F273 /* BleClient.xcodeproj */;
+				},
 				{
 					ProductGroup = 2770745B20D93C5C000A314A /* Products */;
 					ProjectRef = 2770745A20D93C5C000A314A /* Interactable.xcodeproj */;
@@ -1292,6 +1321,13 @@
 			fileType = archive.ar;
 			path = libReactNativeNavigation.a;
 			remoteRef = 27BB7ED020CF51AC00E8012B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		27E2ED46210B4C5C00E5F273 /* libBleClient.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBleClient.a;
+			remoteRef = 27E2ED45210B4C5C00E5F273 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */ = {
@@ -1662,6 +1698,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				27E2ED0F210B4BFD00E5F273 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1718,6 +1755,7 @@
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = RS9E45N5W4;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1749,6 +1787,7 @@
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = RS9E45N5W4;
@@ -1779,6 +1818,7 @@
 			baseConfigurationReference = 8C0757643909FC04EE57E40C /* Pods-boilerplate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = RS9E45N5W4;
@@ -1800,6 +1840,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.ssg.boilerplate;
 				PRODUCT_NAME = boilerplate;
+				SWIFT_OBJC_BRIDGING_HEADER = "boilerplate-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1809,6 +1853,7 @@
 			baseConfigurationReference = A2CF2A4B65DC97D10F56F571 /* Pods-boilerplate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RS9E45N5W4;
 				HEADER_SEARCH_PATHS = (
@@ -1829,6 +1874,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.ssg.boilerplate;
 				PRODUCT_NAME = boilerplate;
+				SWIFT_OBJC_BRIDGING_HEADER = "boilerplate-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

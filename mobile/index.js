@@ -38,21 +38,21 @@ let iconsLoaded = new Promise((resolve, reject) => { //cache all icons as images
         resolve(true);
     })
 });
+//
+// const getUser = new Promise(function (resolve) {
+//     if (Constants.simulate.NEW_USER) {
+//         resolve(null)
+//     } else {
+//         AsyncStorage.getItem('user', (err, res) => {
+//             if (res) {
+//                 AccountStore.setUser(JSON.parse(res))
+//             }
+//             resolve(res)
+//         });
+//     }
+// });
 
-const getUser = new Promise(function (resolve) {
-    if (Constants.simulate.NEW_USER) {
-        resolve(null)
-    } else {
-        AsyncStorage.getItem('user', (err, res) => {
-            if (res) {
-                AccountStore.setUser(JSON.parse(res))
-            }
-            resolve(res)
-        });
-    }
-});
-
-Promise.all([getUser, iconsLoaded]).then(([user]) => {
+Promise.all([Promise.resolve(), iconsLoaded]).then(([user]) => {
     global.iconsMap = iconsMap;
 
     global.modalNavButtons = {

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 //Lodash
 import each from 'lodash/each';
 import map from 'lodash/map';
+import uniqBy from 'lodash/uniqBy';
 import filter from 'lodash/filter';
 import find from 'lodash/find';
 import partial from 'lodash/partial';
@@ -11,7 +12,7 @@ import findIndex from 'lodash/findIndex';
 import range from 'lodash/range';
 import keyBy from 'lodash/keyBy';
 
-window._ = {each, filter, find, partial, findIndex, merge, range, map, cloneDeep, keyBy};
+window._ = {each, filter,uniqBy, find, partial, findIndex, merge, range, map, cloneDeep, keyBy};
 //React Prop Types, todo: move to react-native-globals
 window.Any = PropTypes.any;
 window.OptionalArray = PropTypes.array;

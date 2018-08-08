@@ -12,5 +12,4 @@ target 'boilerplate' do
   pod 'Firebase/Core', '~> 4.13'
   pod 'Firebase/Messaging', '~> 4.13'
   pod 'Firebase/Analytics', '~> 4.13'
-
 end
