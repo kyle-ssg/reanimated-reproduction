@@ -13,7 +13,7 @@ var PushManager = class {
     getInitialNotification = () => Notifications.getInitialNotification();
 
     subscribe = (topic) => {
-        return FCM.subscribeToTopic(topic);
+        // return FCM.subscribeToTopic(topic);
     }
     unsubscribe = (topic) => {
         return FCM.unsubscribeFromTopic(topic);

@@ -93,7 +93,6 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-ble-plx')
     compile project(':react-native-bottomsheet')
     compile project(':react-native-interactable')
     compile project(':react-native-navigation')

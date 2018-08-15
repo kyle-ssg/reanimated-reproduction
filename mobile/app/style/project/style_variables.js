@@ -32,11 +32,12 @@ window.pallette = {
 };
 
 window.colour = {
+    activeBorder: '#3582dc',
     errorBackground: '#c84d38',
     bodyBackground: '#fff', //General app  background
     bodyBackgroundAlt: '#f1f1f1', //General app  background
-    inputBackground:'#e4e7f2',
-    inputBorder:pallette.blueGrey,
+    inputBackground:'#fff',
+    inputBorder:"#d9d9d9",
     textFaint:'rgba(255,255,255,.75)',
     textFaintLight:'rgba(0,0,0,.2)',
 
@@ -50,7 +51,7 @@ window.colour = {
 
     //BUTTON / SELECT COLOURS
     btnText: "white",
-    btnDefault: pallette.primary,
+    buttonDefault: pallette.secondary,
 };
 
 window.styleVariables =  Object.assign({
@@ -87,7 +88,8 @@ window.styleVariables =  Object.assign({
     inputText: pallette.text,
     inputBackground: colour.inputBackground,
     inputBorder: pallette.textLightest,
-    placeholderTextColor: pallette.textLightest,
+    inputBorderWidth: 1/PixelRatio.get()*3,
+    placeholderTextColor: pallette.textLight,
 
     //NAV
     navBar: colour.navBar,
@@ -101,7 +103,6 @@ window.styleVariables =  Object.assign({
     modalBackground: '#F0F0F0',
 
     //BUTTONS
-    button: 50,
-    buttonPrimary: pallette.primary,
+    buttonHeight: 50,
     buttonTextLight: pallette.textLight
 }, require('./style_platform_variables'));

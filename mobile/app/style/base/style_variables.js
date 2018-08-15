@@ -177,7 +177,7 @@ window.colour = Object.assign({}, pallette, {
 
     //BUTTON / SELECT COLOURS
     btnText: pallette.buttonText,
-    btnDefault: pallette.primary,
+    buttonDefault: pallette.primary,
     btnAlt: pallette.primary,
 
     modalBackground: 'white',

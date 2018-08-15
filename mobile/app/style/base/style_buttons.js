@@ -5,14 +5,6 @@ module.exports = {
         height: styleVariables.buttonHeight
     },
 
-    buttonFacebook: {
-        backgroundColor: colour.facebook
-    },
-
-    buttonGoogle: {
-        backgroundColor: colour.google
-    },
-
     //Button
     circleButton: {
     	justifyContent:'center',
@@ -73,10 +65,10 @@ module.exports = {
     buttonGroup: {
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colour.btnDefault,
+        backgroundColor: colour.buttonDefault,
         paddingLeft: styleVariables.paddingBase,
         paddingRight: styleVariables.paddingBase,
-        height: styleVariables.button
+        height: styleVariables.buttonHeight
     },
 
     buttonGroupLeft: {
