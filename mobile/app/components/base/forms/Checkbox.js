@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-let json = require("./checkbox.json")
+
+let json = require("./checkbox.json");
 const TheComponent = class extends Component {
     displayName: 'TheComponent'
 
@@ -12,9 +13,9 @@ const TheComponent = class extends Component {
     componentWillUpdate(newProps) {
         if (newProps.value !== this.props.value) {
             Animated.timing(this.animatedValue, {
-                toValue: newProps.value ? 0.5 : 1,
-                duration: 1000,
-                easing: Easing.linear,
+                toValue: newProps.value?0.5:0,
+                duration: 700,
+                easing: newProps.value? Easing.linear :Easing.out(Easing.cubic),
             }).start();
         }
     }
@@ -31,6 +32,6 @@ const TheComponent = class extends Component {
 
 TheComponent.propTypes = {};
 var styles = StyleSheet.create({
-    checkbox: {width: 54, height:54}
+    checkbox: {width: 54, height: 54}
 });
 module.exports = TheComponent;
