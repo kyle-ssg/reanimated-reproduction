@@ -9,7 +9,7 @@
     "androidDeploy": "cd ./android && ./gradlew assembleRelease && ./gradlew installRelease && cd ../",
     "postinstall": "cp -r ../common ./common-mobile",
     "keystore": "keytool -genkey -v -keystore my-release-key.keystore -alias android -keyalg RSA -keysize 2048 -validity 10000",
-    "test": "detox",
+    "test": "detox test",
     "watch": "cd ./bin && sh ./common-watch.sh"
   },
   "dependencies": {
@@ -48,7 +48,7 @@
     "configurations": {
       "ios.sim.debug": {
         "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/boilerplate.app/",
-        "build": "xcodebuild -workspace ios/ssgboilerplate.xcworkspace -scheme local -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "build": "xcodebuild -workspace ios/boilerplate.xcworkspace -scheme boilerplate -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 8 Plus"
       }
