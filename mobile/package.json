@@ -24,7 +24,6 @@
     "react-native-globals": "^0.50.0",
     "react-native-interactable": "git+https://github.com/gabeboning/react-native-interactable.git#master",
     "react-native-navigation": "^1.1.471",
-    "react-native-shadow": "^1.2.2",
     "react-native-svg": "^6.5.2",
     "react-native-vector-icons": "^4.6.0"
   },

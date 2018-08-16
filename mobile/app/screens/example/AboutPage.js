@@ -7,7 +7,7 @@ const HomePage = class extends Component {
 
     static navigatorStyle = global.navbarStyle;
 
-    displayName: 'HomePage'
+    displayName: 'HomePage';
 
     constructor(props, context) {
         super(props, context);
@@ -25,7 +25,7 @@ const HomePage = class extends Component {
 
     onLogin = () => {
         alert("Logged in")
-    }
+    };
 
     render() {
         return (

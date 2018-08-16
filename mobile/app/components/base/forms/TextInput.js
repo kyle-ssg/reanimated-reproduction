@@ -169,34 +169,46 @@
 //
 // module.exports = Input;
 
+import InputMask from 'inputmask-core';
 
 import React, {Component, PropTypes} from 'react';
 
 const TheComponent = class extends Component {
     displayName: 'TheComponent'
 
-    constructor(props, context) {
-        super(props, context);
-        this.state = {};
+    componentWillMount() {
         this.animation = new Animated.Value(0)
     }
+
+    clear = () => {
+        this.refs.input.clear();
+    };
+
+    blur = () => {
+        this.refs.input.blur();
+    };
+
+    focus = () => {
+        this.refs.input.focus();
+    };
 
     onFocus = () => {
         Animated.timing(this.animation, {
             toValue: 1,
-            duration: 350,
-            easing:Easing.cubic
+            duration: 300,
+            easing: Easing.cubic
         }).start();
-    }
+        this.props.onFocus && this.props.onFocus();
+    };
 
     onBlur = () => {
         Animated.timing(this.animation, {
             toValue: 0,
-            duration: 350,
-            easing:Easing.cubic
+            duration: 300,
+            easing: Easing.cubic
         }).start();
-    }
-
+        this.props.onBlur && this.props.onBlur();
+    };
 
     render() {
         return (
@@ -207,12 +219,11 @@ const TheComponent = class extends Component {
                     onBlur={this.onBlur}
                     style={[this.props.style, Styles.textInput]}
                 />
-                <Animated.View style={{
+                <Animated.View style={[{
                     marginTop: -styleVariables.inputBorderWidth,
                     transform: [{scaleX: this.animation}],
                     backgroundColor: colour.activeBorder, height: 1 / PixelRatio.get() * 4
-                }}
-                />
+                }]}/>
             </View>
         );
     }

@@ -41,7 +41,7 @@ const HomePage = class extends Component {
             <Flex>
                 <Fade value={1} style={[{flex: 1}, Styles.body]} autostart={true}>
                     <Flex>
-                        <ScrollView>
+                        <ScrollView keyboardShouldPersistTaps={"handled"}>
                             <Container>
                                 <TextInput placeholder={"Example input"}/>
                             </Container>
