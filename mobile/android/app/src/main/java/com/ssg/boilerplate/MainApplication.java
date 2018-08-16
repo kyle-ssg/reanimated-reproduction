@@ -2,7 +2,6 @@
 package com.ssg.boilerplate;
 import android.app.Application;
 import com.facebook.react.ReactApplication;
-import com.polidea.reactnativeble.BlePackage;
 import com.clipsub.rnbottomsheet.RNBottomSheetPackage;
 import com.wix.interactable.Interactable;
 import com.facebook.react.ReactNativeHost;

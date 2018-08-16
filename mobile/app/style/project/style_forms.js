@@ -1,22 +1,13 @@
 module.exports = {
 
-	inputContainer: {
-		height: styleVariables.inputHeight
-	},
-
 	textInput: {
-		flex: 1,
+		height:styleVariables.inputHeight,
+		fontSize:styleVariables.fontSizeBase,
 		backgroundColor: colour.inputBackground,
 		paddingLeft: styleVariables.gutterBase,
-	},
-
-	inputDefault: {
-		backgroundColor: colour.inputBackground,
-		borderRadius: 4,
-		borderColor: colour.inputBorder,
-		borderWidth: PixelRatio.get() / 2,
-		height: styleVariables.inputHeight
-	},
+        borderColor: colour.inputBorder,
+        borderBottomWidth:styleVariables.inputBorderWidth
+},
 
 	label: {
 		color: styleVariables.text,

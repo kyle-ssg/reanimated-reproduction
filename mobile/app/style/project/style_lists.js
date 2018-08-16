@@ -15,17 +15,17 @@ module.exports = {
         // justifyContent: 'center',
         alignItems: 'stretch',
         alignSelf:'stretch',
-        borderBottomWidth: 1,
+        borderBottomWidth: 1/PixelRatio.get(),
         paddingLeft: styleVariables.paddingBase,
         paddingRight: styleVariables.paddingBase,
-        borderBottomColor: colour.dividerLight,
+        borderBottomColor: colour.divider,
         backgroundColor: colour.listBackground,
         paddingTop:styleVariables.paddingBase,
         paddingBottom:styleVariables.paddingBase,
     },
 
     listItemAlt: {
-        borderBottomColor: colour.divider,
+        borderBottomColor: colour.dividerAlt,
         backgroundColor: colour.listBackgroundAlt,
     },
 

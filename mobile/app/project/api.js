@@ -14,22 +14,26 @@ var PushManager = class {
 
     subscribe = (topic) => {
         return FCM.subscribeToTopic(topic);
-    }
+    };
+
     unsubscribe = (topic) => {
         return FCM.unsubscribeFromTopic(topic);
-    }
+    };
+
     stop = () => {
         this.token = null;
         this.notificationListener = null;
-    } // remove old listener
+    }; // remove old listener
+
     init = (onNotification, silent) => {
 
         this.onNotification = onNotification;
 
         if (!this.notificationListener) {
             FCM.onMessage((notification) => {
-                if (this.notificationListener)
-                    this.notificationListener(notification)
+                if (this.notificationListener) {
+                    this.notificationListener(notification);
+                }
                 notification.finish();
             })
         }
@@ -41,7 +45,7 @@ var PushManager = class {
                 return //these notifications are duplicate and pointless
 
             this.onNotification && this.onNotification(Object.assign({}, notification, {fromClick: notification._notificationType == "notification_response"}))
-        }
+        };
 
         if (this.token) {
             return Promise.resolve(this.token);

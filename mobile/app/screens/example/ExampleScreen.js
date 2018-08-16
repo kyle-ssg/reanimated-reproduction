@@ -1,150 +1,301 @@
+/**
+ * Created by kylejohnson on 28/01/2017.
+ */
 import React, {Component, PropTypes} from 'react';
-import {BleManager} from 'react-native-ble-plx';
+import AccountStore from "../../../common-mobile/stores/account-store";
 
-const TheComponent = class extends Component {
-    displayName: 'TheComponent'
+const HomePage = class extends Component {
+    static navigatorStyle = global.navbarStyle;
+
+    displayName: 'HomePage';
 
     constructor(props, context) {
         super(props, context);
         this.state = {};
-        this.manager = new BleManager()
-        this.startScanning();
-        this.prefixUUID = "f000aa"
-        this.suffixUUID = "-0451-4000-b000-000000000000"
-
+        ES6Component(this);
+        routeHelper.handleNavEvent(props.navigator, 'home', this.onNavigatorEvent);
+        this.initPush(true);
     }
 
-    info(message) {
-        this.setState({info: message})
-    }
-
-    error(message) {
-        this.setState({info: "ERROR: " + message})
-    }
-
-    serviceUUID(num) {
-        return this.prefixUUID + num + "0" + this.suffixUUID
-    }
-
-    notifyUUID(num) {
-        return this.prefixUUID + num + "1" + this.suffixUUID
-    }
-
-    writeUUID(num) {
-        return this.prefixUUID + num + "2" + this.suffixUUID
-    }
-
-    updateValue(key, value) {
-        this.setState({values: {...this.state.values, [key]: value}})
-    }
-
-    async setupNotifications(device) {
-        for (const id in this.sensors) {
-            const service = this.serviceUUID(id)
-            const characteristicW = this.writeUUID(id)
-            const characteristicN = this.notifyUUID(id)
-
-            const characteristic = await device.writeCharacteristicWithResponseForService(
-                service, characteristicW, "AQ==" /* 0x01 in hex */
-            )
-
-            this.sensors = {
-                0: "Temperature",
-                1: "Accelerometer",
-                2: "Humidity",
-                3: "Magnetometer",
-                4: "Barometer",
-                5: "Gyroscope"
-            }
-
-
-            device.monitorCharacteristicForService(service, characteristicN, (error, characteristic) => {
-                if (error) {
-                    this.error(error.message)
-                    return
-                }
-                this.updateValue(characteristic.uuid, characteristic.value)
+    componentDidMount() {
+        this.listenTo(AccountStore, 'change', () => this.forceUpdate());
+        API.push.getInitialNotification()
+            .then((e) => {
+                e && this.onNotification(Object.assign({}, e, {fromClick: true}));
             })
+    }
+
+    onNavigatorEvent = (event) => {
+        if (event.id == routeHelper.navEvents.SHOW) {
+            this.props.navigator.setDrawerEnabled({side: 'right', enabled: true});
+            API.trackPage('Home Screen');
+        } else if (event.id == routeHelper.navEvents.HIDE) {
+            this.props.navigator.setDrawerEnabled({side: 'right', enabled: false});
+        }
+    };
+
+
+    render() {
+        const {uri} = this.state;
+        return (
+            <Flex>
+                <Fade value={1} style={[{flex: 1}, Styles.body]} autostart={true}>
+                    <Flex>
+                        <ScrollView keyboardShouldPersistTaps={"handled"}>
+                            <Row>
+                                <Flex value={1}>
+                                    <Container>
+                                        <FormGroup>
+                                            <TextInput placeholder={"Example input"}/>
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <TextInput placeholder={"Example input"}/>
+                                        </FormGroup>
+                                    </Container>
+                                </Flex>
+                                <Flex/>
+                            </Row>
+                            <View style={Styles.centeredContainer}>
+                                <Loader/>
+                            </View>
+
+
+                            {this.state.branchURL && (
+                                <Fade value={1} autostart>
+                                    <Container>
+                                        <TextInput value={this.state.branchURL} style={Styles.anchor}/>
+                                    </Container>
+                                </Fade>
+                            )}
+
+
+                            <ListItem index={0} icon={<ION name="ios-notifications"
+                                                           style={[Styles.listIcon, {color: pallette.secondary}]}/>}>
+                                <Text>Register for Push</Text>
+                                <ReactNative.Switch value={this.state.token ? true : false}
+                                                    onChange={this.registerPush}/>
+                            </ListItem>
+
+                            <ListItem index={1} onPress={() => routeHelper.goAbout(this.props.navigator)}>
+                                <Text>About</Text>
+                                <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
+                            </ListItem>
+
+                            <ListItem index={1} onPress={this.showExampleLightbox}>
+                                <Text>Example Lightbox</Text>
+                                <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
+                            </ListItem>
+
+                            <ListItem index={1} onPress={() => this.props.navigator.push({
+                                screen: '/examples/interactive',
+                                title: "Interactive examples",
+                                backButtonTitle: "Home",
+                                navigatorStyle: global.navbarStyle
+                            })}>
+                                <Text>Interactive examples</Text>
+                                <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
+                            </ListItem>
+
+                            <ListItem index={2} onPress={this.showUpload}>
+                                <Text>Show Upload</Text>
+                                <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
+                            </ListItem>
+
+                            <ListItem index={3} onPress={this.selectContact}>
+                                <Text>
+                                    Select Contact{' '}
+                                    {this.state.contacts &&
+                                    <Text>
+                                        ({_.map(this.state.contacts, 'givenName').join(',')})
+                                    </Text>
+                                    }
+                                </Text>
+                                <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
+                            </ListItem>
+                            <ListItem index={4} onPress={this.selectMultipleContacts}>
+                                <Text>Select Multiple Contacts{' '}
+                                    {this.state.contacts &&
+                                    <Text>
+                                        ({_.map(this.state.contacts, 'givenName').join(',')})
+                                    </Text>
+                                    }
+                                </Text>
+                                <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
+                            </ListItem>
+
+
+                            <ListItem index={5} onPress={this.openSelect}>
+                                <Text>Generic Select</Text>
+                                <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
+                            </ListItem>
+
+                            <ListItem index={6} onPress={() => API.share('www.google.com', 'Just google')}>
+                                <Text style={Styles.anchor}>Share something</Text>
+                            </ListItem>
+
+                            <ListItem index={8} onPress={this.generateLink}>
+                                <Text style={[Styles.anchor]}>Generate branch link</Text>
+                            </ListItem>
+                            <ListItem index={9} onPress={this.getInitialLink}>
+                                <Text style={[Styles.anchor]}>Get initial branch link</Text>
+                            </ListItem>
+                            <ListItem index={10} onPress={this.subscribeToLink}>
+                                <Text style={[Styles.anchor]}>Subscribe to branch link</Text>
+                            </ListItem>
+
+                            <ListItem index={7} onPress={this.triggerError}>
+                                <Text style={[Styles.anchor, {color: 'red'}]}>Trigger Crashlytics error (this will crash
+                                    the app)</Text>
+                            </ListItem>
+
+                            <Container>
+                                <FormGroup>
+                                    {
+
+                                        AccountStore.getUser() ?
+                                            <Button onPress={() => routeHelper.logout(this.props.navigator)}>
+                                                Logout
+                                            </Button>
+                                            :
+                                            <Button onPress={() => routeHelper.goAccount(this.props.navigator)}>
+                                                Login Wall
+                                            </Button>
+                                    }
+                                </FormGroup>
+                            </Container>
+
+                            {uri ? <Image style={{height: 100, width: 100}} resizeMode="contain"
+                                          source={{uri}}/> : null}
+
+
+                        </ScrollView>
+                    </Flex>
+                </Fade>
+            </Flex>
+        )
+    }
+
+    getInitialLink = () => {
+        API.getInitialLink(this.onLink);
+    }
+
+    subscribeToLink = () => {
+        API.onLinkPressed(this.onLink);
+    }
+
+
+    showUpload = () => {
+        API.showUpload("Upload a file", false, 100, 100, compressImageQuality = 0.8, () => {
+            this.setState({isUploading: true})
+        })
+            .then((res) => {
+                alert(JSON.stringify(res))
+            })
+    };
+
+    showCamera = () => {
+        routeHelper.showCamera(this.props.navigator, null, null, ({path, data}) => {
+            this.setState({uri: path, data})
+        })
+    };
+
+    openSelect = () => {
+        routeHelper.openSelect(this.props.navigator, "Select a thing", {
+            items: ['item 1', 'item 2'],
+            filterItem: (contact, search) => contact.indexOf(search) !== -1,
+            onChange: (options) => this.setState({options}),
+            renderRow: (item, isSelected, toggleItem) => {
+                return (
+                    <ListItem onPress={toggleItem}>
+                        <Text>{item}</Text>
+                        <ION style={[Styles.listIcon]}
+                             name={isSelected ? "ios-checkbox" : "ios-checkbox-outline"}/>
+                    </ListItem>
+                )
+            }
+        });
+    };
+
+    selectContact = () => {
+        routeHelper.openContactModal(this.props.navigator, 'Select Contact', (contact) => {
+            this.setState({contacts: [contact]})
+        });
+    };
+
+    selectMultipleContacts = () => {
+        routeHelper.openContactModal(this.props.navigator, 'Select Contacts', (contact) => {
+            this.setState({contacts: [contact]})
+        }, true);
+    };
+
+    showExampleLightbox = () => {
+        routeHelper.showExampleLightbox(this.props.navigator)
+    };
+
+    openWebModal = () => {
+        routeHelper.openWebModal('https://www.google.com', 'Google');
+    };
+
+    generateLink = () => {
+        API.generateLink("SSG Boilerplate", {
+            route: {
+                screen: "goAbout",
+                data: {
+                    customData: "bla"
+                }
+            }
+        }, "www.solidstategroup.com")
+            .then((branchURL) => {
+                this.setState({branchURL})
+            })
+            .catch((e) => {
+                console.log(e);
+            })
+    }
+
+    registerPush = () => {
+        if (this.state.token) {
+            this.setState({token: null});
+            API.push.unsubscribe('/topics/all')
+            API.push.stop();
+        }
+        else {
+            this.initPush(false)
+        }
+
+    };
+
+    initPush = (silent) => {
+        API.push.init(this.onNotification, silent)
+            .then((token) => {
+                API.push.subscribe('/topics/all')
+                this.setState({token})
+            });
+    };
+
+
+    onLink = (notification) => {
+        if (notification.route) {
+            const route = notification.route;
+            routeHelper[route.screen] && routeHelper[route.screen](this.props.navigator, route.data);
         }
     }
 
-    startScanning = () => {
-        this.manager.startDeviceScan(null, null, (err, res) => { //step 1 get the list of devices
-            if (err) {
-                console.log(err);
-                setTimeout(() => {
-                    this.startScanning();
-                }, 200);
-            } else {
-                if (res.isConnectable && (res.name || res.localName)) {
-                    console.log(res.id, res.name);
-                    res.connect() // step 2: connect to the device
-                        .then((device) => { //step 3 discover the device's services
-                            this.info("Discovering services and characteristics");
-                            return device.discoverAllServicesAndCharacteristics();
-                        })
-                        .then((device) => {
-                            this.setState({
-                                devices:
-                                    _.uniqBy((this.state.devices || []).concat([device])
-                                        , "id")
-                            });
-                        })
-                }
+    onNotification = (notification) => {
+        if (notification.fromClick) {
+            if (notification.route) {
+                const route = JSON.parse(notification.route);
+                routeHelper[route.screen] && routeHelper[route.screen](this.props.navigator, route.data);
             }
-        })
-    }
+        }
+    };
 
-    writeData = (device) => {
+    triggerError = () => {
+        console.log({}.hell.no)
+    };
+}
 
-        return device.services()
-            .then((services) => {
-                return Promise.all(services.map((service) => {//step 4: for each service, get all the characteristics
-                    return service.characteristics()
-                        .then((characteristics) => {
-                            _.each(characteristics, (c) => {
-                                if (c.isWritableWithoutResponse) {
-                                    console.log("Writing to characteristic")
-                                    c.writeWithoutResponse("RElDS1M=")
-                                }
-                                if(c.isNotifiable) {
-                                    c.monitor((err,c)=>{
-                                        alert(c.value)
-                                    })
-                                }
-                            })
-                            return {
-                                service,
-                                characteristics
-                            }
-                        })
-                }))
-            })
-            .then((services) => {
-                this.setState({services})
-                this.info("Listening...")
-            }, (error) => {
-                this.error(error.message)
-            })
-    }
+HomePage.propTypes = {};
 
-    render() {
-        return this.state.devices && this.state.devices.length ? (
-            <View>
-                {this.state.devices.map((d) => (
-                    <ListItem onPress={()=>this.writeData(d)}>
-                        <Text style={Styles.listItemText}>
-                            {d.localName || d.name}
-                        </Text>
-                    </ListItem>
-                ))}
-            </View>
-        ) : (
-            <Text>Searching...</Text>
-        );
-    }
-};
 
-TheComponent.propTypes = {};
-
-module.exports = TheComponent;
+module.exports = HomePage;

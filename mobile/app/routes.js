@@ -6,10 +6,6 @@ Navigation.registerComponent('/webmodal', () => require('./components/base/Nativ
 Navigation.registerComponent('/select', () => require('./components/base/SelectModal'));
 Navigation.registerComponent('/select-contact', () => require('./components/base/ContactSelectModal'));
 
-//Used in auth example
-
-
-
 //Example routes
 Navigation.registerComponent('/about', () => require('./screens/example/AboutPage'));
 Navigation.registerComponent('/examples/interactive', () => require('./screens/example/InteractivePage'));

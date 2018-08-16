@@ -13,30 +13,10 @@ module.exports = {
         fontSize:styleVariables.fontSizeBase / 1.5,
     },
 
-    buttonFacebook:{
-        backgroundColor:pallette.facebook,
-    },
-
-    buttonGoogle:{
-        backgroundColor:pallette.google,
-    },
-
-    buttonTwitter:{
-        backgroundColor:pallette.twitter,
-    },
-
     hollowButton:{
         borderWidth:PixelRatio.get()/2,
         borderColor:'#fff',
         backgroundColor:'transparent'
-    },
-
-    sideMenu:{
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent:'center',
-        padding:5,
-        height:40
     },
 
     buttonIcon:{
