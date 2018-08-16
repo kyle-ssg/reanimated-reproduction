@@ -39,7 +39,7 @@ const HomePage = class extends Component {
         const {uri} = this.state;
         console.log(this.props.value)
         return (
-            <Flex>
+            <Flex testID="example-screen">
                 <Fade value={1} style={[{flex: 1}, Styles.body]} autostart={true}>
                     <Flex>
                         <ScrollView keyboardShouldPersistTaps={"handled"}>
