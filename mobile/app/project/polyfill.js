@@ -42,16 +42,3 @@ global.Animation = Animation;
 
 import Navigation from 'react-native-navigation';
 global.Navigation = Navigation;
-
-import * as Animatable from 'react-native-animatable';
-
-Animatable.initializeRegistryWithDefinitions({
-    basicListEntrance: {
-        from: {opacity: 1, ['translateX']: 40},
-        to: {opacity: 1, ['translateX']: 0},
-    },
-    basicListEntranceFade: {
-        from: {opacity: 0, ['translateX']: 40},
-        to: {opacity: 1, ['translateX']: 0},
-    },
-});
