@@ -1,63 +1,57 @@
-# SSG Frontend Boilerplate
+## Prerequisites
 
-This README will help get you started using the SSG Frontend Boilerplate to set up a new project for both web and mobile or work on an existing project.
+What things you need to install the software and how to install them
 
 
+| Location                                                     | Suggested Version       |
+| -------------                                                |:-------------:|
+| <a href="https://nodejs.org/en/">NodeJS</a>                     | >= 6.0.0 | 
+| <a href="https://nodejs.org/en/">npm</a>                        | >= 4.0.0 | 
 
-## Dependencies
 
-``brew install watchman && npm i react-native-cli -g`` 
-
-## Installation 
-
-*note: running this installs both web and mobile*
-
-``npm i``
-
-## Development
-
-#### iOS start
-```npm run ios```
-
-#### Android start
-```npm run android```
-
-#### Web start
-```npm start```
-
-## Useful mobile commands (paste these into ~/.bash_profile)
-- Display sha1 key for signing
-- run ios
-- run android
-- create an apk for android
-
+## Installing
 ```
-alias andKey='keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android'
-
-alias ios='react-native run-ios'
-
-alias and='adb reverse tcp:8081 tcp:8081  && react-native run-android'
-
-alias andDeploy='cd ./android && ./gradlew assembleRelease && ./gradlew installRelease && cd ../'
+npm i
 ```
 
+## Running
+**Development**
 
-## Creating an deploying a new project
-If you are creating a new application use the following instructions
-- [App/Web Creation](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/docs/AppCreation.md)
+Hot reloading for client / server 
+```
+npm run dev
+```
 
+**Production**
 
-## Components
+You can deploy this application on [Heroku](https://www.heroku.com/) and [Dokku](http://dokku.viewdocs.io/dokku/) without making any changes, other than the API URL in [project_prod.js](/env/project_prod.js)  
 
-Further detail on React components and the flux architecture used throughout the boilerplate can be seen in the [Components Guide](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/docs/Components.md)
+Bundles, minifies and cache busts the project to a build folder and runs node in production. This can be used as part of your deployment script.
 
-## Tasks
+```
+npm start
+```
+**E2E Testing**
 
-For details are various tasks including changing the bundle ID, deploying builds and generating app icons please see the [Tasks Guide](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/docs/Tasks.md)
+This project uses [Nightwatch](http://nightwatchjs.org/) for automated end to end testing with chromedriver.
+```
+npm test
+```
 
-## 3rd party integrations
+## Built With
+- React
+- Webpack
+- Node
+- Nightwatch
 
-If you need support for 3rd party integrations such as Firebase, Facebook and Fabric Digits please see
+## Contributing
 
- [3rd Party Guide](https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate/blob/master/docs/ThirdParty.md)
+Please read [CONTRIBUTING.md](https://gist.github.com/kyle-ssg/c36a03aebe492e45cbd3eefb21cb0486) for details on our code of conduct, and the process for submitting pull requests to us.
 
+## Getting Help
+
+If you encounter a bug or feature request we would like to hear about it. Before you submit an issue please search existing issues in order to prevent duplicates. 
+
+## Get in touch
+
+If you have any questions about our projects you can email <a href="mailto:projects@solidstategroup.com">projects@solidstategroup.com</a>.

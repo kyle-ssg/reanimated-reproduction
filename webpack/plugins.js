@@ -1,5 +1,4 @@
 const path = require('path')
-const pages = require('./pages');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
@@ -15,9 +14,7 @@ module.exports = [
     new webpack.IgnorePlugin(/\.\/locale$/),
     //Copy static content
     new CopyWebpackPlugin([
-        { from: './src/images', to: path.join(__dirname, '../build/images') },
-        { from: './src/fonts', to: path.join(__dirname, '../build/fonts') }
-    ].concat(pages.map(function (p) {
-        return { from: './src/' + p + '.html' }; //copy all pages
-    })))
+        {from: path.join(__dirname, '../web/images'), to: path.join(__dirname, '../build/images')},
+        {from: path.join(__dirname, '../web/fonts'), to: path.join(__dirname, '../build/fonts')}
+    ])
 ];

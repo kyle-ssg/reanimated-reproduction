@@ -6,11 +6,17 @@
 //  Copyright (c) 2014 Branch Metrics. All rights reserved.
 //
 
+#if __has_feature(modules)
+@import Foundation;
+#else
 #import <Foundation/Foundation.h>
+#endif
 
 @interface BNCSystemObserver : NSObject
 
-+ (NSString *)getUniqueHardwareId:(BOOL *)isReal isDebug:(BOOL)debug andType:(NSString **)type;
++ (NSString *)getUniqueHardwareId:(BOOL *)isReal
+                          isDebug:(BOOL)debug
+                          andType:(NSString *__autoreleasing*)type;
 + (NSString *)getVendorId;
 + (NSString *)getDefaultUriScheme;
 + (NSString *)getAppVersion;
@@ -22,9 +28,8 @@
 + (NSString *)getOSVersion;
 + (NSNumber *)getScreenWidth;
 + (NSNumber *)getScreenHeight;
-+ (NSNumber *)getUpdateState;
-+ (void)setUpdateState;
 + (BOOL)isSimulator;
 + (BOOL)adTrackingSafe;
++ (NSString*) getAdId;
 
 @end

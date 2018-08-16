@@ -6,64 +6,78 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const src = path.join(__dirname, '../src') + '/';
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
-	devtool: 'source-map',
+    devtool: 'source-map',
 
-	entry: [
-		'./src/js/main.js',
-	],
+    entry: {
+        main: './web/main.js'
+    },
+    optimization: { //chunk bundle into Libraries, App JS and dumb components
+        minimizer: [
+            new UglifyJSPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true, // set to true if you want JS source maps
+                extractComments:true,
+                uglifyOptions: {
+                    compress: {
+                        drop_console: true,
+                    }
+                }
+            })
+        ],
+    },
+    externals: {
+        // require("jquery") is external and available
+        //  on the global var jQuery
+        "jquery": "jQuery",
+    },
+    output: {
+        path: path.join(__dirname, '../build'),
+        filename: '[name].[hash].js',
+        publicPath: '/'
+    },
 
-	output: {
-		path: path.join(__dirname, '../build'),
-		filename: '/[name].[hash].js'
-	},
+    plugins: require('./plugins')
+        .concat([
+                //Clear out build folder
+                new CleanWebpackPlugin(['build'], {root: path.join(__dirname, '../')}),
 
-	plugins: require('./plugins')
-		.concat([
-				//Clear out build folder
-				new CleanWebpackPlugin(['build'], {root: path.join(__dirname, '../')}),
+                //reduce filesize
+                new webpack.optimize.OccurrenceOrderPlugin(),
 
-				// Reduce lodash size
-				new LodashModuleReplacementPlugin(),
+                //pull inline styles into cachebusted file
+                new ExtractTextPlugin({filename: "style.[hash].css", allChunks: true}),
 
-				//reduce filesize
-				new webpack.optimize.OccurrenceOrderPlugin(),
+            ]
+        )
+        .concat(require('./pages').map(function (page) {
+            console.log(page);
+            return new HtmlWebpackPlugin({
+                    filename: page + '.handlebars', //output
+                    template: './web/' + page + '.handlebars', //template to use
+                    "assets": { //add these script/link tags
+                        "client": "/[hash].js",
+                        "style": "style.[hash].css"
+                    }
+                }
+            )
+        })),
 
-				//pull inline styles into cachebusted file
-				new ExtractTextPlugin({filename: "/style.[hash].css", allChunks: true}),
-
-			]
-		)
-		.concat(require('./pages').map(function (page) {
-			console.log(page);
-			return new HtmlWebpackPlugin({
-					filename: page + '.handlebars', //output
-					template: './src/' + page + '.handlebars', //template to use
-					"assets": { //add these script/link tags
-						"client": "/[hash].js",
-					}
-				}
-			)
-		})),
-
-	module: {
-		loaders: require('./loaders').concat([
-			{
-				loader: 'babel-loader',
-				test: /\.js?/,
-				exclude: /node_modules/,
-				query: {
-					plugins: ['lodash']
-				}
-			},
-			{
-				test: /\.scss$/,
-				loader: ExtractTextPlugin.extract({fallback: "style-loader", use: "css-loader!sass-loader"})
-			}
-		])
-	}
+    module: {
+        rules: require('./loaders').concat([
+            {
+                use: 'babel-loader',
+                test: /\.js?/,
+                exclude: /node_modules/
+            },
+            {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({fallback: "style-loader", use: "css-loader!sass-loader"})
+            }
+        ])
+    }
 }
 ;

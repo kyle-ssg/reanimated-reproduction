@@ -19,7 +19,7 @@
           "client_type": 1,
           "android_info": {
             "package_name": "com.ssg.boilerplate",
-            "certificate_hash": "C70CF32D49EFC75641ED3097DA75E9DC8D9862B2"
+            "certificate_hash": "c70cf32d49efc75641ed3097da75e9dc8d9862b2"
           }
         },
         {
@@ -30,6 +30,9 @@
       "api_key": [
         {
           "current_key": "AIzaSyBNdxjpx5b5O0cXIBeXVQaK4Dn0bDekUwQ"
+        },
+        {
+          "current_key": "AIzaSyCC-BTYL-DuOMt7hrK18Q-PhOM0FVpgpd8"
         }
       ],
       "services": {
@@ -40,10 +43,10 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "603463597415-tgt7b2cf2oiqrcut83v0u4ctr8mkk8bv.apps.googleusercontent.com",
+              "client_id": "603463597415-em1lk1r3fe779jnsetq85ouapdfma0c3.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.solidstategroup.rnfire"
+                "bundle_id": "org.ssg.boilerplate"
               }
             },
             {
