@@ -1,81 +1,11 @@
 import BottomSheet from 'react-native-bottomsheet';
 import firebase from 'react-native-firebase';
-
-const FCM = firebase.messaging();
 const analytics = firebase.analytics();
-const Notifications = firebase.notifications();
 
-var PushManager = class {
-    static token = null;
-    static onNotification = null;
+import push from './push-notifications-api';
 
 
-    getInitialNotification = () => Notifications.getInitialNotification();
 
-    subscribe = (topic) => {
-        return FCM.subscribeToTopic(topic);
-    };
-
-    unsubscribe = (topic) => {
-        return FCM.unsubscribeFromTopic(topic);
-    };
-
-    stop = () => {
-        this.token = null;
-        this.notificationListener = null;
-    }; // remove old listener
-
-    init = (onNotification, silent) => {
-
-        this.onNotification = onNotification;
-
-        if (!this.notificationListener) {
-            FCM.onMessage((notification) => {
-                if (this.notificationListener) {
-                    this.notificationListener(notification);
-                }
-                notification.finish();
-            })
-        }
-
-        this.notificationListener = (notification) => {
-            //Callback if notification is valid
-
-            if (notification._notificationType == "will_present_notification")
-                return //these notifications are duplicate and pointless
-
-            this.onNotification && this.onNotification(Object.assign({}, notification, {fromClick: notification._notificationType == "notification_response"}))
-        };
-
-        if (this.token) {
-            return Promise.resolve(this.token);
-        }
-
-        return new Promise((resolve, reject) => {
-            if (!silent) {
-                FCM.requestPermission(); // for iOS
-            }
-
-            FCM.getToken().then(token => {
-                if (token) {
-                    this.token = token;
-                    resolve(this.token);
-                }
-                // store fcm token in your server
-            });
-
-
-            this.refreshTokenListener = FCM.onTokenRefresh((token) => {
-                if (token) {
-                    this.token = token;
-                    resolve(this.token);
-                }
-                // fcm token may not be available on first load, catch it here
-            });
-        });
-    }
-};
-var push = new PushManager();
 
 global.API = {
 

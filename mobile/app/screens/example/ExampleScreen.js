@@ -37,6 +37,7 @@ const HomePage = class extends Component {
 
     render() {
         const {uri} = this.state;
+        console.log(this.props.value)
         return (
             <Flex testID="example-screen">
                 <Fade value={1} style={[{flex: 1}, Styles.body]} autostart={true}>
@@ -46,10 +47,18 @@ const HomePage = class extends Component {
                                 <Flex value={1}>
                                     <Container>
                                         <FormGroup>
-                                            <TextInput placeholder={"Example input"}/>
+                                            <TextInput
+                                                onChangeText={(val) => this.setState({val})}
+                                                value={this.state.val}
+                                                placeholder={"Example input"}/>
                                         </FormGroup>
                                         <FormGroup>
-                                            <TextInput placeholder={"Example input"}/>
+                                            <TextInput
+
+                                                onChangeText={(val2) => this.setState({val2})}
+                                                value={this.state.val2}
+                                                mask={"11:11 am"}
+                                                placeholder={"Example input"}/>
                                         </FormGroup>
                                     </Container>
                                 </Flex>

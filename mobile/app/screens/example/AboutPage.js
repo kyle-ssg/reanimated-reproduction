@@ -37,7 +37,9 @@ const HomePage = class extends Component {
                         </H2>
                         <View style={Styles.noPad}>
                             {_.range(0, 12).map((i) => (
-                                <ListItem index={i}>
+                                <ListItem
+                                    animationProps={Animations.listItem}
+                                    index={i}>
                                     <Text>
                                         ListItem {i}
                                     </Text>

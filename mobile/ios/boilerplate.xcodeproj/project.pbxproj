@@ -13,7 +13,6 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* boilerplateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* boilerplateTests.m */; };
-		0949FACE3BC34109B7E64B2E /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AB596D144AB4A2BB37B624C /* Zocial.ttf */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -22,13 +21,11 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		261EDD656DDF4F4694647006 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E4EBDD5EA3F471C8BA89919 /* FontAwesome.ttf */; };
 		272E416F20DA5655004AADEE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272E416D20DA5655004AADEE /* LaunchScreen.xib */; };
 		2770749120D93C85000A314A /* libInteractable.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2770745F20D93C5C000A314A /* libInteractable.a */; };
 		277DA67D20CF1CA800767B45 /* libreact-native-branch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 277DA67B20CF1C5900767B45 /* libreact-native-branch.a */; };
 		277DA6EF20CF221800767B45 /* branch.json in Resources */ = {isa = PBXBuildFile; fileRef = 277DA6C820CF221800767B45 /* branch.json */; };
 		277DA6F220CF22AA00767B45 /* branch.debug.json in Resources */ = {isa = PBXBuildFile; fileRef = 277DA6F120CF22A900767B45 /* branch.debug.json */; };
-		27A7B313212478D400D083AC /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A7B30D212478C800D083AC /* libRNSVG.a */; };
 		27BB7D2320CF385900E8012B /* libSMXCrashlytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BB7D2020CF384500E8012B /* libSMXCrashlytics.a */; };
 		27BB7DA320CF3F3100E8012B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27BB7DA220CF3F3100E8012B /* GoogleService-Info.plist */; };
 		27BB7DA420CF45EA00E8012B /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BB7DA120CF3E5000E8012B /* libRNFirebase.a */; };
@@ -51,20 +48,12 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* boilerplateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* boilerplateTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
-		41167E99659C4EDCAFCBE5A7 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D68DC6E56CD472987AC1B84 /* SimpleLineIcons.ttf */; };
 		4CEE4CDFD369A9529549C5D1 /* Pods_boilerplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A06DB3F0DF02ED06902C2C /* Pods_boilerplate.framework */; };
-		4CFBB3E326BF4A699B0758AD /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B49663D85ABF439685D96B3D /* Foundation.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
-		6B597E08AFD04B34B47649BE /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A65F603FA1684BA189B194B9 /* Feather.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		8F6CF4C609874BDCBAD8C67E /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E1B3F71C0DD4D17A7999F68 /* Entypo.ttf */; };
-		A63D8FF6904E45F4AB67EAA1 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27C60BD1F0324328902B1E63 /* MaterialCommunityIcons.ttf */; };
 		AD04D8BA10D1489CB2ABA6D9 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0252E15EA11547BBBA5E92AF /* libReactNativeNavigation.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		DADE537291F04283836202AA /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02F8516B183B4C83A7AB187B /* Octicons.ttf */; };
-		DEF12FFD8B76407F8A693B03 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6420AD96FFAA40CE8B45E6B4 /* MaterialIcons.ttf */; };
 		F831576367BD4586BAA116E8 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EB0F758A45547CA994D968D /* Ionicons.ttf */; };
-		FEDED16FB9DB40299E8392F9 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18FA4840B27A4DF8AC5BC93F /* EvilIcons.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -498,6 +487,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = boilerplate/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		18FA4840B27A4DF8AC5BC93F /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		27260C0F2125B40A009E2438 /* boilerplate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = boilerplate.entitlements; path = boilerplate/boilerplate.entitlements; sourceTree = "<group>"; };
 		272E416E20DA5655004AADEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = app/Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2770745A20D93C5C000A314A /* Interactable.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Interactable.xcodeproj; path = "../node_modules/react-native-interactable/lib/ios/Interactable.xcodeproj"; sourceTree = "<group>"; };
 		277DA67620CF1C5900767B45 /* RNBranch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBranch.xcodeproj; path = "../node_modules/react-native-branch/ios/RNBranch.xcodeproj"; sourceTree = "<group>"; };
@@ -548,7 +538,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27A7B313212478D400D083AC /* libRNSVG.a in Frameworks */,
 				2770749120D93C85000A314A /* libInteractable.a in Frameworks */,
 				27BB7E4520CF4FCF00E8012B /* libRNDeviceInfo.a in Frameworks */,
 				27BB7DDF20CF4CF800E8012B /* libLottieReactNative.a in Frameworks */,
@@ -683,6 +672,7 @@
 		13B07FAE1A68108700A75B9A /* boilerplate */ = {
 			isa = PBXGroup;
 			children = (
+				27260C0F2125B40A009E2438 /* boilerplate.entitlements */,
 				277DA6F120CF22A900767B45 /* branch.debug.json */,
 				277DA6C820CF221800767B45 /* branch.json */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -1051,6 +1041,11 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = RS9E45N5W4;
 						LastSwiftMigration = 0940;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1567,17 +1562,7 @@
 				27BB7DA320CF3F3100E8012B /* GoogleService-Info.plist in Resources */,
 				272E416F20DA5655004AADEE /* LaunchScreen.xib in Resources */,
 				277DA6EF20CF221800767B45 /* branch.json in Resources */,
-				8F6CF4C609874BDCBAD8C67E /* Entypo.ttf in Resources */,
-				FEDED16FB9DB40299E8392F9 /* EvilIcons.ttf in Resources */,
-				6B597E08AFD04B34B47649BE /* Feather.ttf in Resources */,
-				261EDD656DDF4F4694647006 /* FontAwesome.ttf in Resources */,
-				4CFBB3E326BF4A699B0758AD /* Foundation.ttf in Resources */,
 				F831576367BD4586BAA116E8 /* Ionicons.ttf in Resources */,
-				A63D8FF6904E45F4AB67EAA1 /* MaterialCommunityIcons.ttf in Resources */,
-				DEF12FFD8B76407F8A693B03 /* MaterialIcons.ttf in Resources */,
-				DADE537291F04283836202AA /* Octicons.ttf in Resources */,
-				41167E99659C4EDCAFCBE5A7 /* SimpleLineIcons.ttf in Resources */,
-				0949FACE3BC34109B7E64B2E /* Zocial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1834,6 +1819,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = boilerplate/boilerplate.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = RS9E45N5W4;
@@ -1869,6 +1855,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = boilerplate/boilerplate.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RS9E45N5W4;
 				HEADER_SEARCH_PATHS = (
