@@ -138,6 +138,7 @@ const TextInput = class extends Component {
                     onChangeText={this.onChangeText}
                     style={[this.props.style, Styles.textInput]}
                     value={this.props.value}
+                    testID={this.props.testID}
                 />
                 <Animated.View style={[{
                     marginTop: -styleVariables.inputBorderWidth,
@@ -168,5 +169,6 @@ TextInput.propTypes = {
     onSubmit: OptionalFunc,
     onFocus: OptionalFunc,
     textStyle: oneOfType([OptionalObject, OptionalNumber]),
+    testID: OptionalString
 };
 module.exports = TextInput;

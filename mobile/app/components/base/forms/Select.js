@@ -49,7 +49,8 @@ const TheComponent = class extends Component {
 					<FormGroup>
 						<Column>
 							<TextInput placeholder={placeholder}
-									   onChangeText={(search) => this.setState({search: search.toLowerCase()})}/>
+									   onChangeText={(search) => this.setState({search: search.toLowerCase()})}
+										 testID={this.props.searchTestID}/>
 						</Column>
 					</FormGroup>
 				}
@@ -81,6 +82,7 @@ TheComponent.propTypes = {
 	filterItem: React.PropTypes.func,
 	renderRow: React.PropTypes.func,
 	placeholder: React.PropTypes.string,
+	searchTestID: OptionalString
 };
 
 module.exports = TheComponent;

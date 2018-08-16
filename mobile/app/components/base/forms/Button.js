@@ -42,6 +42,7 @@ const TheComponent = class extends Component {
 				<TouchableNativeFeedback
 					{...touchableProps}
 					background={TouchableNativeFeedback.Ripple('rgba(255,255,255,.5)')}
+					testID={this.props.testID}
 				>
 					<View style={groupStyle}>
 						{typeof this.props.children == "string" ? (
@@ -53,7 +54,8 @@ const TheComponent = class extends Component {
 		) : (
 			<View style={{opacity: this.props.disabled ? 0.5 : 1}}>
 				<TouchableOpacity {...touchableProps}
-								  style={groupStyle}>
+								  style={groupStyle}
+									testID={this.props.testID}>
 					{typeof this.props.children == "string" ? (
 						<Text pointerEvents="none" style={textStyle}>{this.props.children}</Text>
 					) : this.props.children}
@@ -78,7 +80,8 @@ TheComponent.propTypes = {
 	style: React.PropTypes.any,
 	textStyle: OptionalObject, // style for the button text
 	disabled: OptionalBool, // whether the button is disabled
-	variation: OptionalString // a way to use predefined style variations (e.g. large, warning)
+	variation: OptionalString, // a way to use predefined style variations (e.g. large, warning)
+	testID: OptionalString // used for e2e testing
 }
 
 module.exports = TheComponent;
