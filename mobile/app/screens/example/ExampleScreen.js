@@ -217,8 +217,7 @@ const HomePage = class extends Component {
                 return (
                     <ListItem onPress={toggleItem}>
                         <Text>{item}</Text>
-                        <ION style={[Styles.listIcon]}
-                             name={isSelected ? "ios-checkbox" : "ios-checkbox-outline"}/>
+                        <Checkbox value={isSelected}/>
                     </ListItem>
                 )
             }

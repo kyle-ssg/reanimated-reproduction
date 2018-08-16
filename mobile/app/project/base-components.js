@@ -5,27 +5,6 @@ global.Dispatcher = Dispatcher;
 global.AppActions = AppActions;
 global.Actions = Actions;
 
-//React Prop Types, todo: move to react-native-globals
-window.Any = React.PropTypes.any;
-window.OptionalArray = React.PropTypes.array;
-window.OptionalBool = React.PropTypes.bool;
-window.OptionalFunc = React.PropTypes.func;
-window.OptionalNumber = React.PropTypes.number;
-window.OptionalObject = React.PropTypes.object;
-window.OptionalString = React.PropTypes.string;
-window.OptionalNode = React.PropTypes.node;
-window.OptionalElement = React.PropTypes.node;
-window.oneOf = React.PropTypes.oneOf;
-window.oneOfType = React.PropTypes.oneOfType;
-window.RequiredArray = React.PropTypes.array.isRequired;
-window.RequiredBool = React.PropTypes.bool.isRequired;
-window.RequiredFunc = React.PropTypes.func.isRequired;
-window.RequiredNumber = React.PropTypes.number.isRequired;
-window.RequiredObject = React.PropTypes.object.isRequired;
-window.RequiredString = React.PropTypes.string.isRequired;
-window.RequiredNode = React.PropTypes.node.isRequired;
-window.RequiredElement = React.PropTypes.node.isRequired;
-
 
 window.Component = require('../../common-mobile/Component');
 window.ES6Component = require('../../common-mobile/ES6Component');
@@ -51,12 +30,10 @@ window.Column = require('../components/base/grid/Column');
 window.Row = require('../components/base/grid/Row');
 
 //Forms
+window.Checkbox = require('../components/base/forms/Checkbox');
 window.TextInput = require('../components/base/forms/TextInput');
 window.Button = require('../components/base/forms/Button');
-window.Divider = require('../components/base/Divider');
 window.Loader = require('../components/base/Loader');
-window.Card = require('../components/base/forms/Card');
-window.NotificationBubble = require('../components/base/forms/NotificationBubble');
 window.Select = require('../components/base/forms/Select');
 
 //Navs
