@@ -29,7 +29,7 @@ module.exports = {
 
     input: {
         fontFamily: styleVariables.fontSansSerif,
-        fontSize: styleVariables.fontSizeAlert,
+        fontSize: styleVariables.fontSizeBase,
         flex: 1,
         fontWeight: styleVariables.mediumFontWeight,
         color: colour.input,

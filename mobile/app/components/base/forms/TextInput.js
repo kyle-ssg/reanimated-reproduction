@@ -210,6 +210,87 @@ const TheComponent = class extends Component {
         this.props.onBlur && this.props.onBlur();
     };
 
+    onChangeText = (text) => {
+        if (this.props.mask) {
+            // Masking
+            if (!this.mask) {
+                // Create new mask
+                this.mask = new InputMask({
+                    pattern: this.props.mask,
+                    formatCharacters: {
+                        'a': {
+                            validate(char) {
+                                return /[ap]/.test(char);
+                            }
+                        },
+                        'm': {
+                            validate(char) {
+                                return /\w/.test(char);
+                            },
+                            transform() {
+                                return 'm';
+                            }
+                        }
+                    }
+                });
+            }
+
+            if (text.length > this.mask.selection.start) {
+                // Character(s) were typed, ignore if text exceeds length of mask
+                if (this.mask.selection.start === this.props.mask.length) {
+                    return;
+                }
+
+                // It does not, extract the character(s) that were added
+                text = text.slice(this.mask.selection.start);
+
+                // Add it to the input mask
+                if (text.length > 1) {
+                    this.mask.paste(text);
+                }
+                else {
+                    // Perform additional inputs to skip non-pattern characters. Input will be converted
+                    // to the non-pattern character.
+                    while (!this.isMaskPatternChar(this.props.mask[this.mask.selection.start]) &&
+                    this.mask.selection.start !== this.props.mask.length) {
+                        // On failure abort loop as cursor position will not change
+                        if (!this.mask.input(text)) {
+                            break;
+                        }
+                    }
+
+                    this.mask.input(text);
+                }
+            }
+            else if (text.length < this.mask.selection.start) {
+                // Character(s) were deleted, delete up to current length
+                while (this.mask.selection.start != text.length)
+                    this.mask.backspace();
+
+                // Check whether more backspaces are required until we reach a pattern char or nothing is left
+                while (this.mask.selection.start && !this.isMaskPatternChar(this.props.mask[this.mask.selection.start - 1])) {
+                    this.mask.backspace();
+                }
+            }
+
+            // Update text
+            this.props.onChangeText(this.mask.getValue().slice(0, this.mask.selection.start));
+        }
+        else {
+            // No masking, just update text
+            this.props.onChangeText(text);
+        }
+    }
+
+    isMaskPatternChar(char) {
+        if (!char || char.length !== 1) {
+            return false;
+        }
+
+        return char === '1' || char === 'a' || char === 'A' || char === '*' || char === '#';
+    }
+
+
     render() {
         return (
             <View>
@@ -217,6 +298,7 @@ const TheComponent = class extends Component {
                     {...this.props}
                     onFocus={this.onFocus}
                     onBlur={this.onBlur}
+                    onChangeText={this.onChangeText}
                     style={[this.props.style, Styles.textInput]}
                 />
                 <Animated.View style={[{

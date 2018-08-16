@@ -2,7 +2,7 @@ module.exports = {
 
 	textInput: {
 		height:styleVariables.inputHeight,
-		lineHeight:styleVariables.inputHeight,
+		fontSize:styleVariables.fontSizeBase,
 		backgroundColor: colour.inputBackground,
 		paddingLeft: styleVariables.gutterBase,
         borderColor: colour.inputBorder,

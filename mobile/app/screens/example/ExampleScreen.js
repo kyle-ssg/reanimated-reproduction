@@ -42,9 +42,19 @@ const HomePage = class extends Component {
                 <Fade value={1} style={[{flex: 1}, Styles.body]} autostart={true}>
                     <Flex>
                         <ScrollView keyboardShouldPersistTaps={"handled"}>
-                            <Container>
-                                <TextInput placeholder={"Example input"}/>
-                            </Container>
+                            <Row>
+                                <Flex value={1}>
+                                    <Container>
+                                        <FormGroup>
+                                            <TextInput placeholder={"Example input"}/>
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <TextInput placeholder={"Example input"}/>
+                                        </FormGroup>
+                                    </Container>
+                                </Flex>
+                                <Flex/>
+                            </Row>
                             <View style={Styles.centeredContainer}>
                                 <Loader/>
                             </View>
