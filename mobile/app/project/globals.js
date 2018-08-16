@@ -1,6 +1,6 @@
 import './polyfill';
 import './animations';
-import './api';
+import './api/api';
 import 'react-native-globals'; //Adds <View etc to global scope
 import '../style/style_screen';
 import './base-components';
