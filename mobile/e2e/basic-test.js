@@ -1,4 +1,4 @@
-describe('Login', () => {
+describe('Basic Tests', () => {
   beforeEach(async () => {
     await device.reloadReactNative();
   });
