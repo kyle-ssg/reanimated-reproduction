@@ -29,6 +29,7 @@
     "react-native-firebase": "^4.3.8",
     "react-native-globals": "^0.50.0",
     "react-native-interactable": "git+https://github.com/gabeboning/react-native-interactable.git#master",
+    "react-native-linear-gradient": "^2.4.0",
     "react-native-navigation": "^1.1.471",
     "react-native-svg": "^6.5.2",
     "react-native-vector-icons": "^4.6.0"

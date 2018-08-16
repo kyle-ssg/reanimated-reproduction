@@ -19,6 +19,7 @@ module.exports = {
     openDrawer: (navigator) => {
         navigator.toggleDrawer({
             side: 'right',
+            to: 'open',
             animated: true
         });
     },
@@ -35,7 +36,7 @@ module.exports = {
                 rightButtons: [
                     {
                         icon: iconsMap['ios-menu'], // for icon button, provide the local image asset name
-                        id: 'back', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+                        id: 'side-menu', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
                     }
                 ]
             }
@@ -63,7 +64,10 @@ module.exports = {
                 routeHelper[event.link] && routeHelper[event.link](navigator);
             } else if (event.id == 'side-menu') {
                 //Handle open drawer
-                routeHelper.openDrawer(navigator);
+                navigator.toggleDrawer({
+                    side: 'right',
+                    animated: true
+                });
             }
 
             cb && cb(event);

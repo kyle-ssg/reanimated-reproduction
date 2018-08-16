@@ -25,7 +25,9 @@ const TheComponent = class extends Component {
 							ref={animation => {
 								this.animation = animation;
 							}}
-							style={{width: 70, height: 70}} source={require('./success.json')}/>
+							style={{width: 70, height: 70}}
+							source={require('./success.json')}
+							/>
 					</View>
 
 				</View>
@@ -50,7 +52,7 @@ const TheComponent = class extends Component {
 					</View>
 
 					<FormGroup>
-						<Button style={{alignSelf: 'center', width: 200}} onPress={Navigation.dismissLightBox}>
+						<Button style={{alignSelf: 'center', width: 200}} onPress={this.props.navigator.dismissLightBox}>
 							Ok
 						</Button>
 					</FormGroup>

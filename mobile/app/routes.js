@@ -10,3 +10,6 @@ Navigation.registerComponent('/select-contact', () => require('./components/base
 Navigation.registerComponent('/about', () => require('./screens/example/AboutPage'));
 Navigation.registerComponent('/examples/interactive', () => require('./screens/example/InteractivePage'));
 Navigation.registerComponent('/examples/lightbox', () => require('./screens/example/ExampleLightbox'));
+
+// Components
+Navigation.registerComponent('side-menu', () => require('./components/SideMenu'));

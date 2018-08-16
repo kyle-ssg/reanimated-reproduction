@@ -31,3 +31,6 @@ global.Dispatcher = Dispatcher;
 global.ES6Component = ES6Component;
 global.AppActions = AppActions;
 global.Actions = Actions;
+
+import LinearGradient from 'react-native-linear-gradient';
+global.LinearGradient = LinearGradient;

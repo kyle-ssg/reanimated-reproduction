@@ -2,6 +2,7 @@
 package com.ssg.boilerplate;
 import android.app.Application;
 import com.facebook.react.ReactApplication;
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.clipsub.rnbottomsheet.RNBottomSheetPackage;
 import com.wix.interactable.Interactable;
 import com.facebook.react.ReactNativeHost;
@@ -67,7 +68,8 @@ public class MainApplication extends NavigationApplication {
                                new LottiePackage(),
                                new VectorIconsPackage(),
                                new RNDeviceInfo(),
-                               new RNBranchPackage()
+                               new RNBranchPackage(),
+                               new LinearGradientPackage()
                         );
     }
 

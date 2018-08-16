@@ -65,9 +65,13 @@ Promise.all([Promise.resolve(), iconsLoaded]).then(([user]) => {
         ]
     };
     Navigation.startSingleScreenApp({
-            screen: routeHelper.homeScreen(),
+        screen: routeHelper.homeScreen(),
+        drawer: {
+            right: {
+                screen: 'side-menu'
+            }
         }
-    );
+    });
 });
 
 console.disableYellowBox = true;
