@@ -6,7 +6,6 @@ import '../style/style_screen';
 import './base-components';
 import './project-components';
 
-
 import ION from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
@@ -34,3 +33,9 @@ global.Actions = Actions;
 
 import LinearGradient from 'react-native-linear-gradient';
 global.LinearGradient = LinearGradient;
+
+import moment from 'moment';
+global.moment = moment;
+
+import _ from 'lodash';
+global._ = _;
