@@ -3,9 +3,7 @@
 
 .popover {
 	@include transition(all 300ms ease);
-	border: none;
 	background-color: white;
-	color: $body-color;
 	z-index: 2000;
 	width: 100%;
 	transform-origin: top;
@@ -20,27 +18,15 @@
 		height: auto;
 		opacity: 1;
 	}
-	a {
-		border-bottom: 1px solid #f1f1f1;
-		display: block !important;
-		padding-top: 10px !important;
-		padding: 10px;
-		text-align: center;
-		&:hover {
-			text-decoration: none;
-			background: #f1f1f1;
-		}
-	}
-}
-
-.popover-right .popover-inner {
-	left: auto;
-	right: 40px;
 }
 
 .popover-inner {
-	position: absolute !important;
-	left: 10px;
+	a {
+		padding: 0px 10px;
+		display: block;
+		height: 44px;
+		line-height: 44px;
+	}
 }
 
 .absolute {

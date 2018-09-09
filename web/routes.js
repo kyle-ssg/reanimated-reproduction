@@ -15,6 +15,7 @@ export default (
             {/*Examples*/}
             <Route path="/example/sass" component={require('./components/pages/examples/SassPage').default}/>
             <Route path="/example/layout" component={require('./components/pages/examples/LayoutPage').default}/>
+            <Route path="/example/components" component={require('./components/pages/examples/ComponentsPage').default}/>
             {/*END OF EXAMPLES*/}
 
             <Route component={require('./components/pages/NotFoundPage').default}/>

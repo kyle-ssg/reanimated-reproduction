@@ -1,8 +1,9 @@
-import countryData from './country-data';
-import Tabs from '../base/forms/Tabs';
-import StarRating from '../base/StarRating';
+import countryData from '../../examples/country-data';
 import Switch from 'rc-switch';
-import Slider from 'react-slider';
+import cn from 'classnames';
+import Slider, { Range } from 'rc-slider';
+import 'rc-slider/assets/index.css';
+import AutoComplete from '../../extras/virtualised/AutoComplete';
 
 const Froms = class extends React.Component {
 	displayName: 'Froms'
@@ -68,7 +69,7 @@ const Froms = class extends React.Component {
 						'btn-link-hover': isHovered,
 						'btn-link-active': isActive
 					})}>
-						{isHovered ? row.name : <Highlighter search={this.state.search} value={row.name}/>}
+						{isHovered ? row.name : <HighlightKeyword search={this.state.search} value={row.name}/>}
 					</Button>
 
 					<div className="flex-column">
@@ -90,7 +91,7 @@ const Froms = class extends React.Component {
 						'btn-link-hover': isHovered,
 						'btn-link-active': isActive
 					})}>
-						{isHovered ? row.name : <Highlighter search={this.state.search} value={row.name}/>}
+						{isHovered ? row.name : <HighlightKeyword search={this.state.search} value={row.name}/>}
 					</Button>
 					<div className="flex-column">
 						{row.code}
@@ -182,10 +183,6 @@ const Froms = class extends React.Component {
 					</Panel>
 				</FormGroup>
 				<FormGroup>
-					<StarRating icon={'star'} onChange={this.onStarChange} editable={true} value={this.state.val}
-								max={5}/>
-				</FormGroup>
-				<FormGroup>
 					<Panel title={<h3>Tabs</h3>}>
 						<Tabs value={this.state.tab} onChange={this.selectTab}>
 							<div tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
@@ -198,15 +195,6 @@ const Froms = class extends React.Component {
 					</Panel>
 				</FormGroup>
 
-				<FormGroup>
-					<Slider onChange={this.onSliderChange} defaultValue={this.state.slider} withBars/>
-
-					<FormInline>
-						<span>{this.state.slider + ""}</span>
-					</FormInline>
-				</FormGroup>
-
-
 			</div>
 		);
 	}
@@ -214,4 +202,4 @@ const Froms = class extends React.Component {
 
 Froms.propTypes = {};
 
-module.exports = Froms;
+export default Froms;

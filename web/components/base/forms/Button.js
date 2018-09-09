@@ -17,7 +17,6 @@ const Button = window.Button = class extends React.Component {
         const {children, ...rest} = this.props;
         return (
             <button ref="button" {...rest} onMouseUp={this.onMouseUp}
-
                     className={cn({
                         'btn': true,
                     }, (this.props.className || "btn-primary"))}

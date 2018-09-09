@@ -62,9 +62,9 @@ const FocusMonitor = class extends React.Component {
 };
 
 FocusMonitor.propTypes = {
-	isHover: OptionalBool,
-	onFocusChanged: RequiredFunc,
-	children: RequiredElement
+	isHover: propTypes.bool,
+	onFocusChanged: propTypes.func,
+	children: propTypes.node
 };
 
 export default FocusMonitor;

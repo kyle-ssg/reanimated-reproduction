@@ -44,6 +44,11 @@ class App extends Component {
                                     Layout
                                 </Link>
                             </li>
+                            <li className={"nav-item"}>
+                                <Link to={"/example/components"} className={"nav-link"}>
+                                    Components
+                                </Link>
+                            </li>
                         </React.Fragment>
                         {/*End of Examples*/}
                     </ul>

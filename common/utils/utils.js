@@ -1,4 +1,4 @@
-module.exports = Object.assign({}, require('./base/_utils'), {
+module.exports = window.Utils = Object.assign({}, require('./base/_utils'), {
 
 
 });

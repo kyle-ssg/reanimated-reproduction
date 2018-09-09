@@ -8,6 +8,7 @@ import {hot} from 'react-hot-loader'
 import Switch from 'rc-switch';
 
 // Util
+import '../../common/utils/utils'
 import '../../common/utils/format'
 import '../../common/constants'
 import '../../common/project';
@@ -29,10 +30,14 @@ import '../components/base/forms/Input';
 import '../components/base/forms/InputGroup';
 import '../components/base/forms/Button';
 import '../components/base/forms/Panel';
+import '../components/base/forms/Tabs';
+
+import '../components/base/HighlightKeyword';
 
 
 
 window.React = React;
+React.PropTypes = propTypes;
 window.propTypes = propTypes;
 window.hot = hot;
 window.AppState = AppState;

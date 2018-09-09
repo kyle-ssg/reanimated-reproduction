@@ -1,8 +1,11 @@
 /**
  * Created by kylejohnson on 30/07/2016.
  */
+import React from 'react';
+import propTypes from 'prop-types';
+
 const Tabs = window.Tabs = class extends React.Component {
-    displayName: 'Tabs';
+    displayName = 'Tabs';
 
     render() {
         return (
@@ -50,9 +53,9 @@ Tabs.defaultProps = {
 };
 
 Tabs.propTypes = {
-    onChange: OptionalFunc,
-    children: RequiredElement,
-    value: OptionalNumber
+    onChange: propTypes.func,
+    children: propTypes.node,
+    value: propTypes.number
 };
 
 //Example Usage

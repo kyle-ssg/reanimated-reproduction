@@ -1,5 +1,6 @@
 @import "../variables";
 
+
 button.btn {
 	border-radius: $btn-border-radius;
 	box-shadow: rgba(75, 75, 75, 0.11) 0px 1px 6px, rgba(75, 75, 75, 0.11) 0px 1px 4px;
@@ -17,14 +18,23 @@ button.btn {
 		background: $btn-primary-bg-hover;
 	}
 }
-.btn-link {
+button.btn-link {
+	color: $link-color;
 	box-shadow: none !important;
+	&.btn-link-active {
+		color: $link-color-secondary;
+		&:hover {
+			color: $link-color-secondary;
+
+		}
+	}
 }
-.btn-link:hover {
+button.btn-link:hover {
+	color: $link-color;
 	background-color: transparent !important;
 	text-decoration: none;
 }
 
-.btn-link-secondary {
+button.btn-link-secondary {
 	color: $link-color-secondary;
 }
