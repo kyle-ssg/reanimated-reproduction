@@ -112,7 +112,7 @@ const AutoComplete = class extends React.Component {
                                     )}
 
                                 </Row>
-                                <div className="autocomplete-container">
+                                <div className={"autocomplete-container" + (this.props.isAbsolute ? ' relative' :'')}>
                                     <div className={classNames}>
                                         <div>
                                             <ListView

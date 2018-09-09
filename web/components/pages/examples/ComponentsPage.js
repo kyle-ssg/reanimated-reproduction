@@ -105,7 +105,7 @@ const Froms = class extends React.Component {
 		<Row space className="chip">
 			<span>{value.name}</span>
 			<span onClick={remove} className="chip-icon">
-        <span className="fa fa-close"/>
+        <span className="ion-ios-close"/>
       </span>
 		</Row>
 	)
@@ -202,4 +202,4 @@ const Froms = class extends React.Component {
 
 Froms.propTypes = {};
 
-export default Froms;
+export default hot(module)(Froms);
