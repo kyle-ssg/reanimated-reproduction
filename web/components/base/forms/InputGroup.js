@@ -1,58 +1,53 @@
-/**
- * Created by kylejohnson on 25/07/2016.
- */
-import React, {Component, PropTypes} from 'react';
+import React from 'react';
+import propTypes from 'prop-types';
 
-const FormGroup = class extends Component {
-	displayName: 'FormGroup'
+const InputGroup = window.InputGroup = ({
+                    className,
+                    disabled,
+                    id = Utils.GUID(),
+                    inputProps,
+                    isValid,
+                    onChange,
+                    placeholder,
+                    title,
+                    value,
+                }) => (
+    <div className={"form-group"}>
+        <label htmlFor={id} className="cols-sm-2 control-label">{title}</label>
 
-	constructor(props, context) {
-		super(props, context);
-		this.state = {};
-	}
-
-	focus = () => {
-		this.refs.input.focus();
-	};
-
-	render() {
-		const {props} = this;
-		const id = Utils.GUID();
-		const {inputProps} = this.props;
-		return (
-			<div className={"form-group "}>
-				<label htmlFor={id} className="cols-sm-2 control-label">{props.title}</label>
-				{inputProps && inputProps.error && (
-					<span>
-					<span> - </span>
-					<span id={props.inputProps.name ? props.inputProps.name + "-error" : ''} className={"text-danger"}>
-						{inputProps.error}
+        {inputProps && inputProps.error && (
+            <span>
+				<span> - </span>
+				<span id={inputProps.name ? inputProps.name + "-error" : ''} className={"text-danger"}>
+					{inputProps.error}
 				</span>
-					</span>
-				)}
+			</span>
+        )}
 
-				<div>
-					<div>
-						<Input ref="input" {...props.inputProps} isValid={props.isValid} disabled={props.disabled}
-							   value={props.value}
-							   onChange={props.onChange} type={props.type || 'text'} id={id}
-							   placeholder={props.placeholder}/>
-					</div>
-				</div>
-			</div>
-		);
-	}
+        <div>
+            <div>
+                <Input ref="input" {...inputProps}
+                       isValid={isValid}
+                       disabled={disabled}
+                       value={value}
+                       onChange={onChange}
+                       id={id}
+                       placeholder={placeholder}/>
+            </div>
+        </div>
+    </div>
+);
+
+InputGroup.defaultProps = {};
+
+InputGroup.propTypes = {
+    className: propTypes.string,
+    disabled: propTypes.bool,
+    id: propTypes.string,
+    inputProps: propTypes.object,
+    isValid: propTypes.bool,
+    onChange: propTypes.func,
+    placeholder: propTypes.string,
+    title: propTypes.string,
+    value: propTypes.string,
 };
-
-FormGroup.propTypes = {
-	disabled: OptionalBool,
-	title: React.PropTypes.any,
-	isValid: React.PropTypes.any,
-	inputProps: OptionalObject,
-	value: OptionalString,
-	onChange: OptionalFunc,
-	type: OptionalString,
-	placeholder: OptionalString
-};
-
-module.exports = FormGroup;

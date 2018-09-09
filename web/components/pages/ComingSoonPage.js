@@ -1,19 +1,15 @@
 import React, {Component, PropTypes} from 'react';
+export default hot(module)(class NotFoundView extends Component {
 
-const TheComponent = class extends Component {
-	displayName: 'ComingSoon'
-	componentWillMount() {
-		API.trackPage(Constants.pages.COMING_SOON)
-	}
-	render() {
-		return (
-			<div className={"app-container container"}>
-				<h3>Coming Soon</h3>
+    componentDidMount = () => {
+        API.trackPage(Constants.pages.NOT_FOUND);
+    };
+
+    render() {
+        return (
+            <div className='container app-container text-center'>
+                <h3>Coming Soon</h3>
 			</div>
-		);
-	}
-};
-
-TheComponent.propTypes = {};
-
-module.exports = TheComponent;
+        );
+    }
+});

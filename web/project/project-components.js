@@ -1,25 +1,5 @@
-window.Project = require('../../common/project');
-window.Dispatcher = require('../../common/dispatcher/dispatcher');
-window.AppActions = require('../../common/dispatcher/app-actions');
-window.Actions = require('../../common/dispatcher/action-constants');
-window.Format = require('../../common/utils/format');
-window.ES6Component = require('../../common/ES6Component');
-
-window.AccountProvider = require('../../common/providers/AccountProvider');
-window.RenderInfo = require('../../common/providers/RenderInfo');
-
-//Useful components
-window.Row = require('../components/base/grid/Row');
-window.Flex = require('../components/base/grid/Flex');
-window.Column = require('../components/base/grid/Column');
-window.Input = require('../components/base/forms/Input');
-window.Button = require('../components/base/forms/Button');
-window.Panel = require('../components/base/grid/Panel');
-window.FormGroup = require('../components/base/grid/FormGroup');
-window.InputGroup = require('../components/base/forms/InputGroup');
-window.Panel = require('../components/base/grid/Panel');
-window.FormGroup = require('../components/base/grid/FormGroup');
-window.InputGroup = require('../components/base/forms/InputGroup');
+import AccountProvider from '../../common/providers/AccountProvider';
+window.AccountProvider = AccountProvider;
 
 
 window.PanelSearch = require('../components/PanelSearch');

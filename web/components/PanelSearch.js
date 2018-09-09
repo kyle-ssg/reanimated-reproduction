@@ -1,12 +1,7 @@
 import React, {Component, PropTypes} from 'react';
-
-const TheComponent = class extends Component {
-    displayName: 'TheComponent'
-
-    constructor(props, context) {
-        super(props, context);
-        this.state = {};
-    }
+const PanelSearch = class extends Component {
+    displayName = 'PanelSearch';
+    state = {};
 
     filter() {
         const {search} = this.state;
@@ -45,13 +40,13 @@ const TheComponent = class extends Component {
     }
 };
 
-TheComponent.propTypes = {
-    title: React.PropTypes.string,
-    items: React.PropTypes.any,
-    search: OptionalString,
-    renderRow: RequiredFunc,
-    renderNoResults: PropTypes.any,
-    filterRow: OptionalFunc,
+PanelSearch.propTypes = {
+    title: propTypes.string,
+    items: propTypes.any,
+    search: propTypes.string,
+    renderRow: propTypes.func.isRequired,
+    renderNoResults: propTypes.node,
+    filterRow: propTypes.func,
 };
 
-module.exports = TheComponent;
+module.exports = PanelSearch;

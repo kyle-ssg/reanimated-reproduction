@@ -1,3 +1,3 @@
-module.exports = Object.assign({}, require('./base/format-base'), {
+export default Object.assign({}, require('./base/format-base'), {
 
 });

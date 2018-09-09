@@ -1,5 +1,6 @@
-var BaseStore = require('./base/_store');
 import {AppState, AsyncStorage} from 'react-native';
+
+import BaseStore from './base/_store';
 const SESSION_KEY = "__SESSION_TIMER__";
 let currentState = true;
 let interval = null;
@@ -50,3 +51,5 @@ AppState.addEventListener('change', (nextAppState) => {
 		}
 	}
 });
+
+export default store;

@@ -1,4 +1,4 @@
-module.exports = function (context, onUnmount) {
+global.ES6Component = function (context, onUnmount) {
 	context._listeners = [];
 
 	context.listenTo = function (store, event, callback) {

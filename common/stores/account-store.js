@@ -1,7 +1,7 @@
-var BaseStore = require('./base/_store');
-var data = require('./base/_data');
+import BaseStore from './base/_store';
+import data from './base/_data';
 
-var controller = {
+const controller = {
         register: (data) => {
             store.saving();
             controller.onLogin({});

@@ -2,11 +2,10 @@
 var webpack = require('webpack');
 
 module.exports = {
-    devtool: 'eval',
+    devtool: 'cheap-module-eval-source-map',
     mode: "development",
     entry: [
-        'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false',
-        'react-hot-loader/patch',
+        'webpack-hot-middleware/client?reload=false',
         './web/main.js',
     ],
     devServer: {
@@ -34,11 +33,6 @@ module.exports = {
     module: {
         rules: require('./loaders')
             .concat([
-                {
-                    test: /\.js?/,
-                    exclude: /node_modules/,
-                    use: ['babel-loader']
-                },
                 {
                     test: /\.scss$/,
                     use: [{

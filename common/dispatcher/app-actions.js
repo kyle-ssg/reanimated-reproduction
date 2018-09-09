@@ -1,3 +1,6 @@
-module.exports = Object.assign({}, require('./base/_app-actions'), {
+const Actions = Object.assign({}, require('./base/_app-actions'), {
 
 });
+
+export default Actions;
+window.Actions = Actions;

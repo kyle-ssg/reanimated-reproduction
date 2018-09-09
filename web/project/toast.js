@@ -30,11 +30,11 @@ Message.defaultProps = {
 };
 
 Message.propTypes = {
-  children: OptionalNode,
-  expiry: OptionalNumber,
-  content: OptionalNode,
-  remove: RequiredFunc,
-  isRemoving: OptionalBool
+  children: propTypes.node,
+  expiry: propTypes.number,
+  content: propTypes.node,
+  remove: propTypes.func,
+  isRemoving: propTypes.bool
 };
 
 module.exports = Message;

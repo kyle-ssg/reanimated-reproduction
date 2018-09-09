@@ -1,7 +1,11 @@
 /**
  * Created by kylejohnson on 30/07/2016.
  */
+import React from 'react';
 import MaskedInput from 'react-maskedinput';
+import propTypes from 'prop-types';
+
+
 import cn from 'classnames';
 const maskedCharacters = {
 	'a': {
@@ -18,8 +22,9 @@ const maskedCharacters = {
 		}
 	}
 };
-const Input = class extends React.Component {
-	displayName: 'Input'
+
+const Input = window.Input = class extends React.Component {
+	displayName: 'Input';
 
 	constructor(props, context) {
 		super(props, context);
@@ -31,24 +36,24 @@ const Input = class extends React.Component {
 			isFocused: true
 		});
 		this.props.onFocus && this.props.onFocus(e);
-	}
+	};
 
 	focus = () => {
 		this.refs.input.focus()
-	}
+	};
 
 	onKeyDown = (e) => {
 		if (Utils.keys.isEscape(e)) {
 			this.refs.input.blur();
 		}
 		this.props.onKeyDown && this.props.onKeyDown(e);
-	}
+	};
 
 	validate = () => {
 		this.setState({
 			shouldValidate: true
 		});
-	}
+	};
 
 	onBlur = (e) => {
 		this.setState({
@@ -56,10 +61,10 @@ const Input = class extends React.Component {
 			isFocused: false
 		});
 		this.props.onBlur && this.props.onBlur(e);
-	}
+	};
 
 	render() {
-		const {isValid, onSearchChange, mask, placeholderChar, ...rest} = this.props;
+		const {isValid, mask, placeholderChar, ...rest} = this.props;
 
 		const className = cn({
 			'input-container': true,
@@ -107,15 +112,13 @@ Input.defaultProps = {
 };
 
 Input.propTypes = {
-	isValid: React.PropTypes.any,
-	onKeyDown: OptionalFunc,
-	onFocus: OptionalFunc,
-	onBlur: OptionalFunc,
-	placeholderChar: OptionalString,
-	mask: OptionalString,
-	className: React.PropTypes.any,
-	inputClassName: OptionalString,
-	onSearchChange: OptionalFunc
+	isValid: propTypes.bool,
+	onKeyDown: propTypes.func,
+	onFocus: propTypes.func,
+	onBlur: propTypes.func,
+	placeholderChar: propTypes.string,
+	mask: propTypes.string,
+	className: propTypes.string,
+	inputClassName: propTypes.string,
+	onSearchChange: propTypes.func
 };
-
-module.exports = Input;

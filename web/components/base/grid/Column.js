@@ -1,23 +1,22 @@
-//propTypes: value: OptionalNumber
-const cn = require('classnames');
-const Column = class extends React.Component {
-  render () {
-    return (
-      <div {... this.props} className={(this.props.className||'') + ' flex-column'}>
-        {this.props.children}
-      </div>
-    );
-  }
-};
+import React from 'react';
+import cn from 'classnames';
+import propTypes from 'prop-types';
 
-Column.defaultProps = {
-};
+const Column = window.Column = ({className, children, ...rest}) => (
+    <div
+        {...rest}
+        className={cn({
+            'flex-column': true,
+        }, className)}>
+        {children}
+    </div>
+);
+
+Column.defaultProps = {};
 
 Column.propTypes = {
-  className: OptionalString,
-  value: OptionalNumber,
-  children: OptionalNode,
-  style: React.PropTypes.any
+    className: propTypes.string,
+    value: propTypes.number,
+    children: propTypes.node,
+    style: propTypes.any
 };
-
-module.exports = Column;

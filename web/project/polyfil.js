@@ -1,12 +1,44 @@
+import React from 'react';
+import propTypes from 'prop-types';
+
 import Promise from 'promise-polyfill';
 import 'whatwg-fetch';
 import {AsyncStorage, AppState, NetInfo, Clipboard} from 'polyfill-react-native';
+import {hot} from 'react-hot-loader'
+import Switch from 'rc-switch';
 
+// Util
+import '../../common/utils/format'
+import '../../common/constants'
+import '../../common/project';
+
+//Flux
+import '../../common/dispatcher/dispatcher';
+import '../../common/dispatcher/app-actions'
+import '../../common/dispatcher/action-constants'
+import '../../common/ES6Component';
+
+//Grid Components
+import '../components/base/grid/FormGroup';
+import '../components/base/grid/Row';
+import '../components/base/grid/Flex';
+import '../components/base/grid/Column';
+
+//Form Components
+import '../components/base/forms/Input';
+import '../components/base/forms/InputGroup';
+import '../components/base/forms/Button';
+import '../components/base/forms/Panel';
+
+
+
+window.React = React;
+window.propTypes = propTypes;
+window.hot = hot;
 window.AppState = AppState;
 window.NetInfo = NetInfo;
 window.Clipboard = Clipboard;
 window.AsyncStorage = AsyncStorage;
-import Switch from 'rc-switch';
 window.Switch = Switch;
 
 // To add to window

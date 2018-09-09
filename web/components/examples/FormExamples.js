@@ -1,6 +1,5 @@
 import countryData from './country-data';
 import Tabs from '../base/forms/Tabs';
-import TabItem from '../base/forms/TabItem';
 import StarRating from '../base/StarRating';
 import Switch from 'rc-switch';
 import Slider from 'react-slider';
@@ -189,12 +188,12 @@ const Froms = class extends React.Component {
 				<FormGroup>
 					<Panel title={<h3>Tabs</h3>}>
 						<Tabs value={this.state.tab} onChange={this.selectTab}>
-							<TabItem tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
+							<div tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
 								<h2>Tab 1 content</h2>
-							</TabItem>
-							<TabItem tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
+							</div>
+							<div tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
 								<h2>Tab 2 content</h2>
-							</TabItem>
+							</div>
 						</Tabs>
 					</Panel>
 				</FormGroup>

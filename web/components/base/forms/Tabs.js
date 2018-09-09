@@ -1,8 +1,8 @@
 /**
  * Created by kylejohnson on 30/07/2016.
  */
-const Tabs = class extends React.Component {
-    displayName: 'Tabs'
+const Tabs = window.Tabs = class extends React.Component {
+    displayName: 'Tabs';
 
     render() {
         return (
@@ -55,14 +55,12 @@ Tabs.propTypes = {
     value: OptionalNumber
 };
 
-module.exports = Tabs;
-
 //Example Usage
 //   <Tabs value={this.state.tab} onChange={this.selectTab}>
-//     <TabItem tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
+//     <div tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
 //       <h2>Tab 1 content</h2>
-//     </TabItem>
-//     <TabItem tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
+//     </div>
+//     <div tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
 //       <h2>Tab 2 content</h2>
-//     </TabItem>
+//     </div>
 //   </Tabs>

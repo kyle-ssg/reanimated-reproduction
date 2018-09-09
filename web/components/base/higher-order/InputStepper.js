@@ -56,11 +56,11 @@ const InputStepper = class extends React.Component {
 };
 
 InputStepper.propTypes = {
-  onFocusChanged: OptionalFunc,
-  children: RequiredFunc,
-  data: OptionalArray,
-  onChange: OptionalFunc,
-  inputProps: OptionalObject
+  onFocusChanged: propTypes.func,
+  children: propTypes.node,
+  data: propTypes.array,
+  onChange: propTypes.func,
+  inputProps: propTypes.object
 };
 
-module.exports = InputStepper;
+export default InputStepper;

@@ -1,4 +1,4 @@
-module.exports = function (options) {
+export default function (options) {
 	return React.createClass(_.assign({}, options, {
 		_listeners: [],
 		setTheme: function (theme) {

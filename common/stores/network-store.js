@@ -19,11 +19,10 @@ var handleIsConnected = (isConnected) => {
 	}
 };
 
-module.exports = store;
-
-
 NetInfo.isConnected.fetch().then(handleIsConnected);
 NetInfo.isConnected.addEventListener(
 	'change',
 	handleIsConnected
 );
+
+export default store;

@@ -5,7 +5,7 @@ const getQueryString = (params) => {
 		.join('&');
 }
 
-module.exports = {
+export default {
 	token: '',
 	type: '',
 

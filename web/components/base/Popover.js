@@ -1,7 +1,8 @@
 import FocusMonitor from './higher-order/FocusMonitor';
 import cn from 'classnames';
+
 const Popover = class extends React.Component {
-  displayName: 'Popover'
+  displayName: 'Popover';
 
   constructor (props, context) {
     super(props, context);
@@ -12,7 +13,7 @@ const Popover = class extends React.Component {
 
   toggle = ()=>{
     this.refs.focus.toggle();
-  }
+  };
 
   render () {
     var classNames = cn({
@@ -39,10 +40,10 @@ const Popover = class extends React.Component {
 };
 
 Popover.propTypes = {
-  isHover: OptionalBool,
-  className: OptionalString,
-  renderTitle: RequiredFunc,
-  children: Any
+  isHover: propTypes.bool,
+  className: propTypes.string,
+  renderTitle: propTypes.func,
+  children: propTypes.any
 };
 
-module.exports = Popover;
+export default Popover;

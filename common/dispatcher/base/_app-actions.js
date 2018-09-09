@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 
     connected: function () { //when the device comes online
         Dispatcher.handleViewAction({

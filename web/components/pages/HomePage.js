@@ -1,28 +1,27 @@
 import React from "react";
 
-module.exports = class extends React.Component {
+export default hot(module)(class extends React.Component {
     static contextTypes = {
-        router: React.PropTypes.object.isRequired
+        router: propTypes.object.isRequired
     };
 
-    constructor(props, context) {
-        super(props, context);
-        this.state = {};
-    }
-
-    componentWillMount() {
-
+    componentDidMount() {
+        API.trackPage(Constants.pages.HOME_PAGE);
     }
 
     render = () => {
         return (
-            <AccountProvider onLogout={this.onLogout} onLogin={this.onLogin}>
-                {() => (
-                    <div>
-                        Home
-                    </div>
-                )}
-            </AccountProvider>
+            <div className="app-container container">
+                <AccountProvider onLogout={this.onLogout} onLogin={this.onLogin}>
+                    {() => (
+                        <div>
+                            <h1>
+                                Home
+                            </h1>
+                        </div>
+                    )}
+                </AccountProvider>
+            </div>
         );
     }
-};
+});

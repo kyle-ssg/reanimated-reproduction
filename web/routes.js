@@ -1,26 +1,29 @@
 import React from 'react';
-import {Route, IndexRoute, Redirect} from 'react-router';
-
-import App from './components/App'; //App Wrapper
-import HomePage from './components/pages/HomePage';
-import NotFoundPage from './components/pages/NotFoundPage';
-
-
-window.Link = Link;
-
+import {Route, Redirect, Switch} from "react-router-dom";
+import App from './App'; //App Wrapper
 
 export default (
-    <Route path="/" component={App}>
-        <IndexRoute component={HomePage}/>
+    <App>
 
-        {/*Examples*/}
-        <Route path="/example/sass" component={require('./components/examples/pages/SassPage')}/>
-        <Route path="/example/layout" component={require('./components/examples/pages/LayoutPage')}/>
+        {/*Render these above content per page*/}
+        <Route path="/example/sass" component={()=><div className={"text-center"}>Header defined in router.js</div>}/>
 
+        {/*Render one of these routes*/}
+        <Switch>
+            <Route path="/" exact component={require('./components/pages/HomePage').default}/>
 
-        <Route path="login" component={HomePage}/>
-        <Route path="signup" component={HomePage}/>
-        <Route path="404" component={NotFoundPage}/>
-        <Redirect from="*" to="404"/>
-    </Route>
+            {/*Examples*/}
+            <React.Fragment>
+                <Route path="/example/sass" component={require('./components/pages/examples/SassPage').default}/>
+                <Route path="/example/layout" component={require('./components/pages/examples/LayoutPage').default}/>
+            </React.Fragment>
+            {/*END OF EXAMPLES*/}
+
+            <Route component={require('./components/pages/NotFoundPage').default}/>
+        </Switch>
+
+        {/*Render these below content per page*/}
+        <Route path="/example/sass" component={()=><div className={"text-center"}>Footer defined in router.js</div>}/>
+
+    </App>
 );

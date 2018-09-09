@@ -21,4 +21,4 @@ module.exports = {
       .setValue('[name="password"]', password)
       .click('#login-btn');
   },
-}
+};

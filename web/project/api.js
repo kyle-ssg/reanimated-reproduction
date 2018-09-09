@@ -20,9 +20,9 @@ global.API = {
             // TODO?
         });
     },
-    trackEvent: function(data) {
+    trackEvent: function (data) {
         if (Project.ga) {
-            if (!data)  {
+            if (!data) {
                 console.error("Passed null event data")
             }
             console.info("track", data);
@@ -38,7 +38,7 @@ global.API = {
         }
 
     },
-    trackPage: function(title) {
+    trackPage: function (title) {
         if (Project.ga) {
             ga('send', {
                 hitType: 'pageview',
@@ -49,15 +49,15 @@ global.API = {
         }
     },
     log() {
-        console.log.apply(this,arguments)
+        console.log.apply(this, arguments)
     },
     info() {
-        console.info.apply(this,arguments)
+        console.info.apply(this, arguments)
     },
     error() {
-        console.info.apply(this,arguments)
+        console.info.apply(this, arguments)
     },
     warn() {
-        console.info.apply(this,arguments)
+        console.info.apply(this, arguments)
     },
 };

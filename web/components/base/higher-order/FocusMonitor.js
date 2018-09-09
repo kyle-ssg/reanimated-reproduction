@@ -67,4 +67,4 @@ FocusMonitor.propTypes = {
 	children: RequiredElement
 };
 
-module.exports = FocusMonitor;
+export default FocusMonitor;

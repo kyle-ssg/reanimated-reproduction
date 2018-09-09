@@ -2,8 +2,10 @@
  * Created by kylejohnson on 24/07/2016.
  */
 import cn from 'classnames';
+import React from 'react';
+import propTypes from 'prop-types';
 
-var Row = (props) => {
+var Row = window.Row = (props) => {
   const { space, ...rest } = props;
 
   return (
@@ -18,11 +20,11 @@ var Row = (props) => {
   )
 };
 
-Row.propTypes = {
-  className: OptionalString,
-  space: OptionalBool,
-  children: OptionalNode,
-  style: React.PropTypes.any
-};
+Row.displayName = 'Row';
 
-module.exports = Row;
+Row.propTypes = {
+  className: propTypes.string,
+  space: propTypes.bool,
+  children: propTypes.node,
+  style: propTypes.any
+};

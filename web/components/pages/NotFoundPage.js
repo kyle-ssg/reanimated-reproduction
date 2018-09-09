@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
 
-export default class NotFoundView extends Component {
+export default hot(module)(class NotFoundView extends Component {
 
-    componentWillMount = () => {
+    displayName = 'NotFoundPage';
+
+    componentDidMount = () => {
         API.trackPage(Constants.pages.NOT_FOUND);
     };
 
@@ -16,4 +17,4 @@ export default class NotFoundView extends Component {
             </div>
         );
     }
-}
+});
