@@ -6,24 +6,22 @@ export default (
     <App>
 
         {/*Render these above content per page*/}
-        <Route path="/example/sass" component={()=><div className={"text-center"}>Header defined in router.js</div>}/>
+        <Route path="/example/sass" component={() => <div className={"text-center"}>Header defined in router.js</div>}/>
 
         {/*Render one of these routes*/}
         <Switch>
             <Route path="/" exact component={require('./components/pages/HomePage').default}/>
 
             {/*Examples*/}
-            <React.Fragment>
-                <Route path="/example/sass" component={require('./components/pages/examples/SassPage').default}/>
-                <Route path="/example/layout" component={require('./components/pages/examples/LayoutPage').default}/>
-            </React.Fragment>
+            <Route path="/example/sass" component={require('./components/pages/examples/SassPage').default}/>
+            <Route path="/example/layout" component={require('./components/pages/examples/LayoutPage').default}/>
             {/*END OF EXAMPLES*/}
 
             <Route component={require('./components/pages/NotFoundPage').default}/>
         </Switch>
 
         {/*Render these below content per page*/}
-        <Route path="/example/sass" component={()=><div className={"text-center"}>Footer defined in router.js</div>}/>
+        <Route path="/example/sass" component={() => <div className={"text-center"}>Footer defined in router.js</div>}/>
 
     </App>
 );
