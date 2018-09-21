@@ -40,7 +40,7 @@ const LayoutPage = class extends React.Component {
                 <h1>
                     Grid
                 </h1>
-                <div className="row list-group">
+                <div className="row ">
                     <div className="list-group-item col-md-6 col-xs-12">
                         col-md-6 col-xs-12
                     </div>
@@ -52,7 +52,7 @@ const LayoutPage = class extends React.Component {
                 <h1>
                     Responsive Ordering
                 </h1>
-                <div className="row list-group">
+                <div className="row ">
                     <div className="list-group-item order-example col-md-6 col-xs-12 col-md-order-1 col-xs-order-2">
                         col-md-order-1 col-xs-order-2
                     </div>
@@ -63,12 +63,12 @@ const LayoutPage = class extends React.Component {
 
                 <h1>Responsive flexbox</h1>
 
-                <div className="row list-group">
+                <div className="row ">
                     <div className="col-xs-12 col-sm-6 list-group-item">
                         1 of 2 (stacked on mobile)
                     </div>
                     <div className="col-xs-12 col-sm-6 list-group-item">
-                        1 of 2 (stacked on mobile)
+                        2 of 2 (stacked on mobile)
                     </div>
                 </div>
 
@@ -78,7 +78,7 @@ const LayoutPage = class extends React.Component {
                     the heights of columns. The entire grid system (mixins and predefined classes), switch from floats
                     to display: flex;.</p>
 
-                <div className="row list-group">
+                <div className="row">
 
                     <div className="col-lg-3 list-group-item">
                         <h3>Item 1</h3>
@@ -129,23 +129,23 @@ const LayoutPage = class extends React.Component {
 
                 <h1>Auto-layout columns</h1>
 
-                <div className="row list-group">
-                    <div className="col-md col-xs-12 list-group-item">
+                <div className="row ">
+                    <div className="col list-group-item">
                         1 of 2
                     </div>
-                    <div className="col-md col-xs-12 list-group-item">
-                        1 of 2
+                    <div className="col list-group-item">
+                        2 of 2
                     </div>
                 </div>
-                <div className="row list-group">
-                    <div className="col-xs list-group-item">
+                <div className="row">
+                    <div className="col list-group-item">
                         1 of 3
                     </div>
-                    <div className="col-xs list-group-item">
-                        1 of 3
+                    <div className="col list-group-item">
+                        2 of 3
                     </div>
-                    <div className="col-xs list-group-item">
-                        1 of 3
+                    <div className="col list-group-item">
+                        3 of 3
                     </div>
                 </div>
 
