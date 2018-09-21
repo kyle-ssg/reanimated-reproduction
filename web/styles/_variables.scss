@@ -66,12 +66,6 @@ $tab-inactive-color: rgba(255, 255, 255, .75);
 $tab-active-color: #36a39c;
 $tab-line-color: #36a39c;
 
-//SCAFFOLDING
-$mobile-portrait: 320px;
-$mobile-landscape: 480px;
-$tablet-portrait: 768px;
-$tablet-landscape: 1024px;
-
 //GRID
 $input-padding-x: .75rem !default;
 $input-padding-y: 1rem !default;
@@ -100,3 +94,13 @@ $aside-width:250px;
 //Toast
 $toast-bg:rgba(0,0,0,.9);
 $toast-color:white;
+
+//Scaffolding
+$breakpoints: (
+    mobile-small: 320px,
+    mobile: 375px,
+    handheld-device: 576px,
+    tablet: 768px,
+    tablet-large: 992px,
+    desktop: 1200px
+)

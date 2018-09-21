@@ -1,0 +1,39 @@
+.hero{
+    &--blue{
+        background:blue;
+    }
+
+    &--red{
+        background:red;
+    }
+
+    &__title{
+        color:#fff;
+    }
+
+    &__image{
+        opacity:0.5;
+    }
+
+    &__text{
+
+        &__intro{
+            color:yellow;
+        }
+
+        &__body{
+            color:darkred;
+        }
+    }
+}
+
+@media (max-width: #{map-get($breakpoints, mobile)}) {
+    .hero{
+        background:black;
+
+        &__image{
+            border:1px solid red;
+        }
+    }
+}
+
