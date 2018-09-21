@@ -33,12 +33,12 @@ textarea {
 	}
 
 	input.input {
-		border: none !important;
-		border-width: 0!important;
-		outline: none !important;
-		box-shadow: none !important;
-		background-image: none !important;
-		-webkit-appearance: none !important;
+		border: none ;
+		border-width: 0;
+		outline: none ;
+		box-shadow: none ;
+		background-image: none ;
+		-webkit-appearance: none ;
 		background-image: none;
 
 		&:read-only {
@@ -52,16 +52,16 @@ textarea {
 		padding: 0px;
 		position: relative;
 		width: 100%;
-		border: none !important;
-		border-width: 0!important;
-		outline: none !important;
-		box-shadow: none !important;
-		background-image: none !important;
-		-webkit-appearance: none !important;
+		border: none ;
+		border-width: 0;
+		outline: none ;
+		box-shadow: none ;
+		background-image: none ;
+		-webkit-appearance: none ;
 		background-image: none;
 		color: rgba(0, 0, 0, 0.870588);
 		height: 100%;
-		background-color: white !important;
+		background-color: white ;
 		&::-webkit-input-placeholder {
 			font-family: $font-family;
 			font-weight: 100;
@@ -85,13 +85,15 @@ textarea {
 		}
 	}
 
-	&.error hr {
-		border-color: $alert-danger-border;
+	&.error {
+		input{
+			background-color: $alert-danger-border;
+		}
 	}
 
-	&.error, &.focused {
-		hr.highlight {
-			transform: scaleX(1);
+	&.focused {
+		input{
+			background-color:darken(#fff,5);
 		}
 	}
 }
