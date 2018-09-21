@@ -1,6 +1,10 @@
 .hero{
+    background:#f3f3f3;
+    color:#000;
+
     &--blue{
         background:blue;
+        color:#fff;
     }
 
     &--red{
@@ -8,7 +12,6 @@
     }
 
     &__title{
-        color:#fff;
     }
 
     &__image{
@@ -18,7 +21,7 @@
     &__text{
 
         &__intro{
-            color:yellow;
+            color:grey;
         }
 
         &__body{

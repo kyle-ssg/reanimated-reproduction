@@ -1,0 +1,19 @@
+.panel{
+    background:$panel-bg;
+
+    &__title{
+
+    }
+
+    &__text{
+
+    }
+
+    &--dark{
+
+    }
+
+    &--rounded{
+        border-radius: $default-border-radius;
+    }
+}

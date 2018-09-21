@@ -31,6 +31,27 @@ export default hot(module)(class extends React.Component {
                                     <p className="hero__text__body">Hero text body</p>
                                 </div>
                             </div>
+
+                            <div className="row">
+                                <div className="col">
+                                    <div className="panel">
+                                        <h3 className="panel__title">Panel 1 title</h3>
+                                        <p className="panel__text">Panel 1 text</p>
+                                    </div>
+                                </div>
+                                <div className="col">
+                                    <div className="panel">
+                                        <h3 className="panel__title">Panel 2 title</h3>
+                                        <p className="panel__text">Panel 2 text</p>
+                                    </div>
+                                </div>
+                                <div className="col">
+                                    <div className="panel">
+                                        <h3 className="panel__title">Panel 3 title</h3>
+                                        <p className="panel__text">Panel 3 text</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     )}
                 </AccountProvider>
