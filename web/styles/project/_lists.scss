@@ -2,14 +2,14 @@
     list-style-type: none;
     padding-left:0;
 
-    li{
+    &__item{
         height:40px;
         width:40px;
         padding:5px;
         border:1px solid #2e2e2e;
         border-radius: 50%;
 
-        span{
+        &__content{
             display: block;
             background:#2e2e2e;
             height:28px;
