@@ -5,7 +5,7 @@ import InputStepper from './helpers/InputStepper';
 import ListView from './ListView';
 
 const AutoComplete = class extends React.Component {
-    displayName: 'MultiSelect'
+    static displayName = 'MultiSelect';
 
     constructor(props, context) {
         super(props, context);

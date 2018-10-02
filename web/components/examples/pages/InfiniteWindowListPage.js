@@ -5,7 +5,7 @@ import BigDataExample from '../BigDataExample';
 import InfiniteLoadingList from '../../base/InfiniteLoadingList';
 
 const TheComponent = class extends React.Component {
-	displayName: 'TheComponent'
+	static displayName = 'TheComponent';
 
 	constructor(props, context) {
 		super(props, context);

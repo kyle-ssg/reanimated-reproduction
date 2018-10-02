@@ -1,12 +1,11 @@
 import countryData from '../../examples/country-data';
 import Switch from 'rc-switch';
 import cn from 'classnames';
-import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import AutoComplete from '../../extras/virtualised/AutoComplete';
 
 const Froms = class extends React.Component {
-	displayName: 'Froms'
+	static displayName = 'ComponentsPage';
 
 	constructor(props, context) {
 		super(props, context);

@@ -5,26 +5,38 @@ import cn from 'classnames';
 import React from 'react';
 import propTypes from 'prop-types';
 
-var Row = window.Row = (props) => {
-  const { space, ...rest } = props;
-
-  return (
-    <div
-      {... rest}
-      className={cn({
-        'flex-row': true,
-        space: props.space
-      }, props.className)}>
-      {props.children}
-    </div>
-  )
-};
+const Row = ({
+  children,
+  className,
+  space,
+  ...rest
+}) => (
+  <div
+    {...rest}
+    className={cn({
+      'flex-row': true,
+      space,
+    }, className)}
+  >
+    {children}
+  </div>
+);
 
 Row.displayName = 'Row';
+
+Row.defaultProps = {
+  children: null,
+  className: '',
+  space: false,
+  style: null,
+};
 
 Row.propTypes = {
   className: propTypes.string,
   space: propTypes.bool,
   children: propTypes.node,
-  style: propTypes.any
+  style: propTypes.any,
 };
+
+window.Row = Row;
+export default Row;

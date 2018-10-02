@@ -1,5 +1,5 @@
 const InfiniteScrollExample = class extends React.Component {
-	displayName: 'InfiniteScrollExample'
+	static displayName = 'InfiniteScrollExample';
 
 	constructor(props, context) {
 		super(props, context);

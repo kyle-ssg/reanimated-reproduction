@@ -1,7 +1,7 @@
 module.exports = {
-    clearDown: function(browser,done) {
-        done();
-    },
+  clearDown(browser, done) {
+    done();
+  },
   logout: (browser) => {
     browser
       .waitForElementNotPresent('.toast-message', 10000)

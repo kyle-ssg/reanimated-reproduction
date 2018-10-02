@@ -4,7 +4,7 @@
 import { AutoSizer, List, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
 
 const ListView = class extends React.Component {
-    displayName: 'ListView'
+    static displayName = 'ListView';
 
     constructor(props) {
         super(props);
