@@ -1,8 +1,8 @@
 
 stages:
     - test
-    - deploy
-    - deploydevelop
+    # - deploy
+    # - deploydevelop
 
 test:
     image: timbru31/java-node
@@ -18,16 +18,16 @@ test:
         - develop
         - master
 
-deploy:
-    image: ilyasemenov/gitlab-ci-git-push
-    stage: deploy
-    script: git-push dokku@dokku1.solidstategroup.com:app-name
-    only:
-        - master
+# deploy:
+#     image: ilyasemenov/gitlab-ci-git-push
+#     stage: deploy
+#     script: git-push dokku@dokku1.solidstategroup.com:app-name
+#     only:
+#         - master
 
-deploydevelop:
-    image: ilyasemenov/gitlab-ci-git-push
-    stage: deploydevelop
-    script: git-push dokku@dokku1.solidstategroup.com:app-name-dev
-    only:
-        - develop
+# deploydevelop:
+#     image: ilyasemenov/gitlab-ci-git-push
+#     stage: deploydevelop
+#     script: git-push dokku@dokku1.solidstategroup.com:app-name-dev
+#     only:
+#         - develop
