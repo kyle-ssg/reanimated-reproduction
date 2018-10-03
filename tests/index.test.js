@@ -5,6 +5,7 @@ const fork = require('child_process').fork;
 process.env.PORT = 8081;
 
 var server;
+window = global;
 const Project = require('../common/project');
 const fetch = require('node-fetch');
 
