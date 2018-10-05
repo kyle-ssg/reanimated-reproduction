@@ -1,4 +1,4 @@
-export default {
+module.exports = {
 
     connected: function () { //when the device comes online
         Dispatcher.handleViewAction({
@@ -60,6 +60,12 @@ export default {
         Dispatcher.handleViewAction({
             actionType: Actions.LOGIN,
             details
+        });
+    },
+    setToken: function (token) {
+        Dispatcher.handleViewAction({
+            actionType: Actions.SET_TOKEN,
+            token
         });
     },
 };

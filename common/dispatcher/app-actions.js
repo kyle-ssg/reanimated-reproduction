@@ -1,6 +1,6 @@
-const Actions = Object.assign({}, require('./base/_app-actions'), {
+const AppActions = Object.assign({}, require('./base/_app-actions'), {
 
 });
 
-export default Actions;
-window.Actions = Actions;
+export default AppActions;
+window.AppActions = AppActions;

@@ -1,7 +1,7 @@
 /**
  * Created by kyle-ssg on 10/02/15.
  */
-export default {
+module.exports = {
     "ACTIVE": "ACTIVE",
     "INACTIVE": "INACTIVE",
     "CONNECTED": "CONNECTED",
@@ -13,4 +13,5 @@ export default {
     "REGISTER": "REGISTER",
     "SET_USER": "SET_USER",
     "REFRESH": "REFRESH",
+    "SET_TOKEN": "SET_TOKEN",
 };
