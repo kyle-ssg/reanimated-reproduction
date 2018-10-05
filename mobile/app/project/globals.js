@@ -39,3 +39,6 @@ global.moment = moment;
 
 import _ from 'lodash';
 global._ = _;
+
+import ViewOverflow from 'react-native-view-overflow';
+global.ViewOverflow = ViewOverflow;
