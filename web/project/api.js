@@ -8,7 +8,7 @@ global.API = {
         // ErrorModal(null, error);
         break;
       default:
-            // ErrorModal(null, error);
+      // ErrorModal(null, error);
     }
 
     res.json().then((error) => {
@@ -63,19 +63,27 @@ global.API = {
     }
   },
   log() {
-    // eslint-disable-next-line
-    console.log.apply(this, arguments);
+    if (__DEV__) {
+      // eslint-disable-next-line
+      console.log.apply(this, arguments);
+    }
   },
   info() {
-    // eslint-disable-next-line
-    console.info.apply(this, arguments);
+    if (__DEV__) {
+      // eslint-disable-next-line
+      console.log.apply(this, arguments);
+    }
   },
   error() {
-    // eslint-disable-next-line
-    console.info.apply(this, arguments);
+    if (__DEV__) {
+      // eslint-disable-next-line
+      console.log.apply(this, arguments);
+    }
   },
   warn() {
-    // eslint-disable-next-line
-    console.info.apply(this, arguments);
+    if (__DEV__) {
+      // eslint-disable-next-line
+      console.info.apply(this, arguments);
+    }
   },
 };
