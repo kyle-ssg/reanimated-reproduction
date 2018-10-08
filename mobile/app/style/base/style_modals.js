@@ -30,11 +30,11 @@ module.exports = {
 		justifyContent: 'center',
 		alignItems: 'center',
 		paddingBottom: 40,
-		paddingTop: 40,
+        paddingTop: 40,
+        height: DeviceHeight - 40
 	},
 
 	lightbox: {
-		paddingTop: 40,
 		width: DeviceWidth - 40,
 		borderRadius: 5,
 		backgroundColor: 'white'

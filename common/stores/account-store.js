@@ -16,14 +16,7 @@ const controller = {
     store.saved();
   },
   setToken: (token) => {
-    store.user = {};
-    AsyncStorage.getItem('isDemo', (err, res) => {
-      if (res) {
-        store.isDemo = true;
-      }
-      data.setToken(token);
-      return controller.onLogin();
-    });
+    data.setToken(token);
   },
   login: () => {
     store.loading();
@@ -60,6 +53,9 @@ store.dispatcherIndex = Dispatcher.register(store, (payload) => {
       break;
     case Actions.LOGIN:
       controller.login(action.details);
+      break;
+    case Actions.SET_TOKEN:
+      controller.setToken(action.token);
       break;
     default:
   }

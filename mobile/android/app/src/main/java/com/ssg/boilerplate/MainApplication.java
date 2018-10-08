@@ -44,6 +44,9 @@ import com.oblador.vectoricons.VectorIconsPackage;
 //REACT_NATIVE_DEVICE_INFO
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 
+//REACT_NATIVE_VIEW_OVERFLOW
+import com.entria.views.RNViewOverflowPackage;
+
 public class MainApplication extends NavigationApplication {
     @Override
     public boolean isDebug() {
@@ -69,7 +72,8 @@ public class MainApplication extends NavigationApplication {
                                new VectorIconsPackage(),
                                new RNDeviceInfo(),
                                new RNBranchPackage(),
-                               new LinearGradientPackage()
+                               new LinearGradientPackage(),
+                               new RNViewOverflowPackage()
                         );
     }
 
