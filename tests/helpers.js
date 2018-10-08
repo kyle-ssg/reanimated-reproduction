@@ -1,7 +1,7 @@
 module.exports = {
-    clearDown: function(browser,done) {
-        done();
-    },
+  clearDown(browser, done) {
+    done();
+  },
   logout: (browser) => {
     browser
       .waitForElementNotPresent('.toast-message', 10000)
@@ -10,7 +10,7 @@ module.exports = {
       .pause(200) // Allows the dropdown to fade in
       .click('#logout-link');
 
-    browser.expect.element('#existing-member-btn').to.be.visible;
+    return browser.expect.element('#existing-member-btn').to.be.visible;
   },
   login: (browser, url, email, password) => {
     browser

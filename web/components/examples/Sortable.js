@@ -5,7 +5,7 @@ const SortableItem = SortableElement(({value}) => <div style={{backgroundColor: 
 	className="btn-link">{value}</Button><Divider/></div>);
 
 const SortableList = class extends React.Component {
-	displayName: 'SortableList'
+	static displayName = 'SortableList';
 
 	forceUpdateGrid() {
 		this.refs.list.forceUpdateGrid();

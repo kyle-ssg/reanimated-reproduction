@@ -1,4 +1,6 @@
-const Actions = Object.assign({}, require('./base/_action-constants'), {
+import base from './base/_action-constants';
+
+const Actions = Object.assign({}, base, {
 
 });
 

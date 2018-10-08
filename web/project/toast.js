@@ -1,23 +1,25 @@
 import cn from 'classnames';
-const Message = class extends React.Component {
-  displayName: 'Message'
 
-  componentDidMount () {
+const Message = class extends React.Component {
+  static displayName = 'Message';
+
+  componentDidMount() {
     setTimeout(this.props.remove, this.props.expiry);
   }
 
-  render () {
+  render() {
     const className = cn({
       'toast-message': true,
       'alert alert-warning fade': true,
-      'in': !this.props.isRemoving,
-      'removing out': this.props.isRemoving
+      in: !this.props.isRemoving,
+      'removing out': this.props.isRemoving,
     });
 
     return (
       <div className={className}>
+        {/* eslint-disable-next-line */}
         <a onClick={this.props.remove} className="pull-xs-right">
-          <ion className="icon ion-md-close"/>
+          <ion className="icon ion-md-close" />
         </a>
         {this.props.children}
       </div>
@@ -26,57 +28,66 @@ const Message = class extends React.Component {
 };
 
 Message.defaultProps = {
-  expiry: 5000
+  expiry: 5000,
 };
 
 Message.propTypes = {
   children: propTypes.node,
   expiry: propTypes.number,
-  content: propTypes.node,
   remove: propTypes.func,
-  isRemoving: propTypes.bool
+  isRemoving: propTypes.bool,
 };
 
 module.exports = Message;
 
 const Toast = class extends React.Component {
-  displayName: 'ToastMessages'
+  static displayName = 'ToastMessages';
 
-  constructor (props, context) {
+  constructor(props, context) {
     super(props, context);
     this.state = { messages: [] };
     window.toast = this.toast;
   }
 
   toast = (content, expiry) => {
-    var { messages } = this.state,
-      id = Utils.GUID();
-    messages.unshift({ content, expiry, id: id });
+    const { messages } = this.state;
+
+
+    const id = Utils.GUID();
+    messages.unshift({ content, expiry, id });
     this.setState({ messages });
   }
 
   remove = (id) => {
-    var index = _.findIndex(this.state.messages, { id });
-    var messages = this.state.messages;
+    const index = _.findIndex(this.state.messages, { id });
+    const messages = this.state.messages;
 
     if (index > -1) {
       messages[index].isRemoving = true;
-      setTimeout(()=> {
-        var index = _.findIndex(this.state.messages, { id });
-        var messages = this.state.messages;
-        messages.splice(index, 1);
-        this.setState({ messages });
+      setTimeout(() => {
+        const newIndex = _.findIndex(this.state.messages, { id });
+        // eslint-disable-next-line
+        const newMessages = this.state.messages;
+        newMessages.splice(newIndex, 1);
+        this.setState({ messages: newMessages });
       }, 500);
       this.setState({ messages });
     }
   }
 
-  render () {
+  render() {
     return (
       <div className="toast-messages">
-        {this.state.messages.map((message)=><Message key={message.id} isRemoving={message.isRemoving}
-                                                     remove={()=>this.remove(message.id)}
-                                                     expiry={message.expiry}>{message.content}</Message>)}
+        {this.state.messages.map(message => (
+          <Message
+            key={message.id}
+            isRemoving={message.isRemoving}
+            remove={() => this.remove(message.id)}
+            expiry={message.expiry}
+          >
+            {message.content}
+          </Message>
+        ))}
       </div>
     );
   }

@@ -1,23 +1,23 @@
-import {render} from 'react-dom';
+import { render } from 'react-dom';
+/* eslint-disable */
 
 const Provider = class extends React.Component {
-
-  componentDidMount () {
+  componentDidMount() {
     if (this.props.type !== 'confirm') {
-		window.closeModal = this.close;
-	}
+      window.closeModal = this.close;
+    }
     $(ReactDOM.findDOMNode(this)).on('hidden.bs.modal', this._closed);
     $(ReactDOM.findDOMNode(this)).on('shown.bs.modal', this._shown);
     $(ReactDOM.findDOMNode(this)).modal({ background: true, keyboard: true, show: true });
   }
 
-  show () {
+  show() {
     $(ReactDOM.findDOMNode(this)).on('hidden.bs.modal', this.unmount);
     $(ReactDOM.findDOMNode(this)).modal('show');
-    $(ReactDOM.findDOMNode(this)).style = "";
+    $(ReactDOM.findDOMNode(this)).style = '';
   }
 
-  close = () => { //use when you wish to trigger closing manually
+  close = () => { // use when you wish to trigger closing manually
     $(ReactDOM.findDOMNode(this)).off('hidden.bs.modal', this._closed);
     $(ReactDOM.findDOMNode(this)).off('shown.bs.modal', this._shown);
     $(ReactDOM.findDOMNode(this)).modal('hide');
@@ -27,41 +27,40 @@ const Provider = class extends React.Component {
     }, 500);
   }
 
-  _closed = ()=> {
+  _closed = () => {
     this.props.onClose && this.props.onClose();
     ReactDOM.unmountComponentAtNode(document.getElementById(this.props.type == 'confirm' ? 'confirm' : 'modal'));
     document.body.classList.remove('modal-open');
   }
 
-  _shown () {
+  _shown() {
     this.isVisible = true;
   }
 
-  render () {
+  render() {
     return this.props.children;
   }
 };
 
 Provider.propTypes = {
   children: RequiredElement,
-  onClose: OptionalFunc
+  onClose: OptionalFunc,
 };
 
 const Modal = class extends React.Component {
-  header () {
+  header() {
     return this.props.header || '';
   }
 
-  body () {
+  body() {
     return this.props.body || '';
   }
 
-  footer () {
+  footer() {
     return this.props.footer || '';
   }
 
-  render () {
-
+  render() {
     return (
       <Provider ref="modal">
         <div tabIndex="-1" className="modal alert fade expand" role="dialog" aria-hidden="true">
@@ -81,44 +80,54 @@ const Modal = class extends React.Component {
 Modal.propTypes = {
   header: OptionalNode,
   body: OptionalNode,
-  footer: OptionalNode
+  footer: OptionalNode,
 };
 
 const Confirm = class extends React.Component {
-  header () {
+  header() {
     return this.props.header || '';
   }
 
-  body () {
+  body() {
     return this.props.body || '';
   }
 
-  onNo = ()=> {
+  onNo = () => {
     this.props.onNo && this.props.onNo();
     this.refs.modal.close();
   }
 
-  onYes = ()=> {
+  onYes = () => {
     this.props.onYes && this.props.onYes();
     this.refs.modal.close();
   }
 
-  closed () {
+  closed() {
     this.onNo();
   }
 
-  footer () {
+  footer() {
     return (
       <div className="modal-button">
-        <button type="button" className="btn-link btn-link-secondary"
-                onClick={this.onNo}>{this.props.noText || 'No'}</button>
-        <button type="button" className="btn-link"
-                onClick={this.onYes}>{this.props.yesText || 'Yes'}</button>
+        <button
+          type="button"
+          className="btn-link btn-link-secondary"
+          onClick={this.onNo}
+        >
+          {this.props.noText || 'No'}
+        </button>
+        <button
+          type="button"
+          className="btn-link"
+          onClick={this.onYes}
+        >
+          {this.props.yesText || 'Yes'}
+        </button>
       </div>
     );
   }
 
-  render () {
+  render() {
     return (
       <Provider onClose={this.props.onNo} ref="modal" type="confirm">
         <div tabIndex="-1" className="modal alert fade expand" role="dialog" aria-hidden="true">
@@ -145,9 +154,9 @@ Confirm.propTypes = {
 };
 
 exports.openModal = (header, body, footer) => {
-  render(<Modal header={header} footer={footer} body={body}/>, document.getElementById('modal'));
+  render(<Modal header={header} footer={footer} body={body} />, document.getElementById('modal'));
 };
 
 exports.openConfirm = (header, body, onYes, onNo) => {
-  render(<Confirm header={header} onYes={onYes} onNo={onNo} body={body}/>, document.getElementById('confirm'));
+  render(<Confirm header={header} onYes={onYes} onNo={onNo} body={body} />, document.getElementById('confirm'));
 };

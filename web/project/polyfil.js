@@ -3,29 +3,31 @@ import propTypes from 'prop-types';
 
 import Promise from 'promise-polyfill';
 import 'whatwg-fetch';
-import {AsyncStorage, AppState, NetInfo, Clipboard} from 'polyfill-react-native';
-import {hot} from 'react-hot-loader'
+import {
+  AsyncStorage, AppState, NetInfo, Clipboard,
+} from 'polyfill-react-native';
+import { hot } from 'react-hot-loader';
 import Switch from 'rc-switch';
 
 // Util
-import '../../common/utils/utils'
-import '../../common/utils/format'
-import '../../common/constants'
+import '../../common/utils/utils';
+import '../../common/utils/format';
+import '../../common/constants';
 import '../../common/project';
 
-//Flux
+// Flux
 import '../../common/dispatcher/dispatcher';
-import '../../common/dispatcher/app-actions'
-import '../../common/dispatcher/action-constants'
+import '../../common/dispatcher/app-actions';
+import '../../common/dispatcher/action-constants';
 import '../../common/ES6Component';
 
-//Grid Components
+// Grid Components
 import '../components/base/grid/FormGroup';
 import '../components/base/grid/Row';
 import '../components/base/grid/Flex';
 import '../components/base/grid/Column';
 
-//Form Components
+// Form Components
 import '../components/base/forms/Input';
 import '../components/base/forms/InputGroup';
 import '../components/base/forms/Button';
@@ -35,8 +37,8 @@ import '../components/base/forms/Tabs';
 import '../components/base/HighlightKeyword';
 
 
-
 window.React = React;
+// eslint-disable-next-line
 React.PropTypes = propTypes;
 window.propTypes = propTypes;
 window.hot = hot;
@@ -48,31 +50,31 @@ window.Switch = Switch;
 
 // To add to window
 if (!window.Promise) {
-    window.Promise = Promise;
+  window.Promise = Promise;
 }
 
-//Object Assign
-if (typeof Object.assign != 'function') {
-    Object.assign = function (target, varArgs) {
-        'use strict';
-        if (target == null) { // TypeError if undefined or null
-            throw new TypeError('Cannot convert undefined or null to object');
+// Object Assign
+/* eslint-disable */
+if (typeof Object.assign !== 'function') {
+  Object.assign = function (target, varArgs) {
+    if (target == null) { // TypeError if undefined or null
+      throw new TypeError('Cannot convert undefined or null to object');
+    }
+
+    const to = Object(target);
+
+    for (let index = 1; index < arguments.length; index++) {
+      const nextSource = arguments[index];
+
+      if (nextSource != null) { // Skip over if undefined or null
+        for (const nextKey in nextSource) {
+          // Avoid bugs when hasOwnProperty is shadowed
+          if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+            to[nextKey] = nextSource[nextKey];
+          }
         }
-
-        var to = Object(target);
-
-        for (var index = 1; index < arguments.length; index++) {
-            var nextSource = arguments[index];
-
-            if (nextSource != null) { // Skip over if undefined or null
-                for (var nextKey in nextSource) {
-                    // Avoid bugs when hasOwnProperty is shadowed
-                    if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
-                        to[nextKey] = nextSource[nextKey];
-                    }
-                }
-            }
-        }
-        return to;
-    };
+      }
+    }
+    return to;
+  };
 }

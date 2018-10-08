@@ -7,7 +7,7 @@ import AutoComplete from '../base/Autocomplete';
 import data from './country-data';
 
 const NavigableList = class extends React.Component {
-	displayName: 'NavigableList'
+	static displayName = 'NavigableList';
 
 	constructor(props, context) {
 		super(props, context);

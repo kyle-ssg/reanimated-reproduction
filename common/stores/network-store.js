@@ -1,28 +1,30 @@
-var BaseStore = require('./base/_store');
-import {NetInfo} from 'react-native';
+// eslint-disable-next-line
+import { NetInfo } from 'react-native';
+
+const BaseStore = require('./base/_store');
 
 
-var store = Object.assign({}, BaseStore, {
-	id: 'network',
-	isConnected: true,
+const store = Object.assign({}, BaseStore, {
+  id: 'network',
+  isConnected: true,
 });
 
-var handleIsConnected = (isConnected) => {
-	if (isConnected != store.isConnected) {
-		store.isConnected = isConnected;
-		store.changed();
-		if (isConnected) {
-			AppActions.connected(isConnected);
-		} else {
-			AppActions.disconnected(isConnected);
-		}
-	}
+const handleIsConnected = (isConnected) => {
+  if (isConnected !== store.isConnected) {
+    store.isConnected = isConnected;
+    store.changed();
+    if (isConnected) {
+      AppActions.connected(isConnected);
+    } else {
+      AppActions.disconnected(isConnected);
+    }
+  }
 };
 
 NetInfo.isConnected.fetch().then(handleIsConnected);
 NetInfo.isConnected.addEventListener(
-	'change',
-	handleIsConnected
+  'change',
+  handleIsConnected,
 );
 
 export default store;
