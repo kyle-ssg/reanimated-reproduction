@@ -1,8 +1,6 @@
 const ReactDispatcher = require('flux-react-dispatcher');
 
-const _Dispatcher = new ReactDispatcher();
-
-const Dispatcher = Object.assign(_Dispatcher, {
+const Dispatcher = Object.assign(new ReactDispatcher(), {
   handleViewAction(action) {
     const that = this;
 

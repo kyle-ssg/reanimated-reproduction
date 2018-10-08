@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import { Component } from 'react';
+import propTypes from 'prop-types';
 import NetworkStore from '../stores/network-store';
 
 
-const TheComponent = class extends Component {
+class NetworkProvider extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -19,10 +20,12 @@ const TheComponent = class extends Component {
   }
 
   render() {
-    const { isConnected } = this.state;
-    return this.props.children(isConnected);
+    const { state: { isConnected }, props: { children } } = this;
+    return children(isConnected);
   }
-};
+}
 
-TheComponent.propTypes = {};
-export default TheComponent;
+NetworkProvider.propTypes = {
+  children: propTypes.node,
+};
+export default NetworkProvider;

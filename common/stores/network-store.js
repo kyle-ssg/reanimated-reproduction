@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import { NetInfo } from 'react-native';
 
 const BaseStore = require('./base/_store');
@@ -9,7 +10,7 @@ const store = Object.assign({}, BaseStore, {
 });
 
 const handleIsConnected = (isConnected) => {
-  if (isConnected != store.isConnected) {
+  if (isConnected !== store.isConnected) {
     store.isConnected = isConnected;
     store.changed();
     if (isConnected) {

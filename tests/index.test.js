@@ -6,10 +6,8 @@ const fork = require('child_process').fork;
 process.env.PORT = 8081;
 
 let server;
-const fetch = require('node-fetch');
-const Project = require('../common/project');
 
-global.testHelpers = require('./helpers');
+const testHelpers = require('./helpers');
 
 module.exports = Object.assign(
   {

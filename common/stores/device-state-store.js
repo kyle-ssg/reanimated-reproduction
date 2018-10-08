@@ -1,13 +1,12 @@
+// eslint-disable-next-line
 import { AppState, AsyncStorage } from 'react-native';
-
 import BaseStore from './base/_store';
 
 const SESSION_KEY = '__SESSION_TIMER__';
 let currentState = true;
 let interval = null;
-const _callback = null;
 
-var store = Object.assign({}, BaseStore, {
+const store = Object.assign({}, BaseStore, {
   id: 'device',
   model: { isActive: true },
   getLastSession() {
@@ -26,7 +25,9 @@ const checkSession = () => {
   }
   return AsyncStorage.getItem(SESSION_KEY, (err, res) => {
     if (res) {
-      store.model = Object.assign({}, store.model, { lastSession: new Date().valueOf() - parseInt(res) });
+      store.model = Object.assign({}, store.model, {
+        lastSession: new Date().valueOf() - parseInt(res),
+      });
       store.changed();
     }
   });
@@ -35,7 +36,7 @@ const checkSession = () => {
 checkSession();
 // Calls back when app is in foreground with the date value of the last active session
 AppState.addEventListener('change', (nextAppState) => {
-  const isActive = nextAppState == 'active';
+  const isActive = nextAppState === 'active';
   if (currentState !== isActive) {
     currentState = isActive;
     store.model = Object.assign({}, store.model, { isActive });
@@ -45,7 +46,9 @@ AppState.addEventListener('change', (nextAppState) => {
           AppActions.active(store.model.lastSession);
         });
     } else { // App is inactive, stop recording session
-      interval && clearInterval(interval);
+      if (interval) {
+        clearInterval(interval);
+      }
       interval = null;
       store.changed();
       AppActions.inactive();

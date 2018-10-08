@@ -1,8 +1,16 @@
 import BaseStore from './base/_store';
 import data from './base/_data';
 
+const store = Object.assign({}, BaseStore, {
+  id: 'account',
+  getUser() {
+    return store.model;
+  },
+
+});
+
 const controller = {
-  register: (data) => {
+  register: () => {
     store.saving();
     controller.onLogin({});
     store.saved();
@@ -17,9 +25,11 @@ const controller = {
       return controller.onLogin();
     });
   },
-  login: (data) => {
+  login: () => {
     store.loading();
-    controller.onLogin({});
+    setTimeout(() => {
+      controller.onLogin({});
+    });
     store.loaded();
   },
 
@@ -28,22 +38,12 @@ const controller = {
     controller.setToken(res && res.token);
   },
 
-
   setUser(user) {
-    store.onLogin(res);
+    store.onLogin(user);
     store.loaded();
   },
 
 };
-
-
-const store = Object.assign({}, BaseStore, {
-  id: 'account',
-  getUser() {
-    return store.model;
-  },
-
-});
 
 store.dispatcherIndex = Dispatcher.register(store, (payload) => {
   const action = payload.action; // this is our action from handleViewAction

@@ -1,3 +1,5 @@
-export default Object.assign({}, require('./base/_action-constants'), {
+import base from './base/_action-constants';
+
+export default Object.assign({}, base, {
 
 });
