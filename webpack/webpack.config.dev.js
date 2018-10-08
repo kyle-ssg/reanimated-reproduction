@@ -23,6 +23,9 @@ module.exports = {
   },
   plugins: require('./plugins').concat([
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      __DEV__: true,
+    }),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',

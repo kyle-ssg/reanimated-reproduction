@@ -184,10 +184,10 @@ const Froms = class extends React.Component {
 				<FormGroup>
 					<Panel title={<h3>Tabs</h3>}>
 						<Tabs value={this.state.tab} onChange={this.selectTab}>
-							<div tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
+							<div tablabel={(<span className="fa fa-phone tab-icon"/>)}>
 								<h2>Tab 1 content</h2>
 							</div>
-							<div tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
+							<div tablabel={(<span className="fa fa-phone tab-icon"/>)}>
 								<h2>Tab 2 content</h2>
 							</div>
 						</Tabs>

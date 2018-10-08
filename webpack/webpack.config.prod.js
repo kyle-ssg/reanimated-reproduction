@@ -44,6 +44,10 @@ module.exports = {
     .concat([
         // Clear out build folder
         new CleanWebpackPlugin(['build'], { root: path.join(__dirname, '../') }),
+      
+        new webpack.DefinePlugin({
+          __DEV__: false,
+        }),
 
         //reduce filesize
         new webpack.optimize.OccurrenceOrderPlugin(),

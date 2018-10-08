@@ -113,7 +113,7 @@ ListView.defaultProps = {
 
 ListView.propTypes = {
     className: propTypes.string,
-    renderNoResults: propTypes.func,
+    renderNoResults: propTypes.node,
     scrollToRow: propTypes.number,
     renderRow: propTypes.func,
     data: propTypes.array,
