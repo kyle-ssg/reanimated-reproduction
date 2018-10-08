@@ -62,4 +62,20 @@ global.API = {
       });
     }
   },
+  log() {
+    // eslint-disable-next-line
+    console.log.apply(this, arguments);
+  },
+  info() {
+    // eslint-disable-next-line
+    console.info.apply(this, arguments);
+  },
+  error() {
+    // eslint-disable-next-line
+    console.info.apply(this, arguments);
+  },
+  warn() {
+    // eslint-disable-next-line
+    console.info.apply(this, arguments);
+  },
 };
