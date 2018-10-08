@@ -94,7 +94,7 @@ const TheComponent = class extends Component {
 };
 
 TheComponent.propTypes = {
-  children: propTypes.node,
+  children: propTypes.func,
   onLogin: propTypes.func,
   onLogout: propTypes.func,
   onSave: propTypes.func,

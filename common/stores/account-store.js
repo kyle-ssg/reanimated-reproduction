@@ -57,6 +57,7 @@ store.dispatcherIndex = Dispatcher.register(store, (payload) => {
     case Actions.SET_TOKEN:
       controller.setToken(action.token);
       break;
+    default:
   }
 });
 

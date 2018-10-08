@@ -54,8 +54,8 @@ HighlightKeyword.propTypes = {
     className: propTypes.string,
     search: propTypes.string,
     value: propTypes.string,
-    renderHighlight: propTypes.node,
-    renderText: propTypes.string
+    renderHighlight: propTypes.func,
+    renderText: propTypes.func
 };
 
 export default HighlightKeyword;
