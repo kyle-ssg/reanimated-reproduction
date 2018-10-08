@@ -48,6 +48,8 @@ window.Clipboard = Clipboard;
 window.AsyncStorage = AsyncStorage;
 window.Switch = Switch;
 
+// TODO: We may be able to remove these with new babel env preset
+
 // To add to window
 if (!window.Promise) {
   window.Promise = Promise;
