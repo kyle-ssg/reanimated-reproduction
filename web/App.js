@@ -23,7 +23,6 @@ class App extends Component {
   };
 
   render() {
-    API.log('test')
     return (
       <div>
         <nav className={"navbar navbar-fixed-top navbar-light"}>
