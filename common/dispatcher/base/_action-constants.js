@@ -11,6 +11,7 @@ export default {
   'LOGIN': 'LOGIN',
   'LOGOUT': 'LOGOUT',
   'REGISTER': 'REGISTER',
+  'SET_TOKEN': 'SET_TOKEN',
   'SET_USER': 'SET_USER',
   'REFRESH': 'REFRESH',
 };
