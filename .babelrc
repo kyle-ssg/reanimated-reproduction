@@ -1,15 +1,25 @@
 {
-  "presets": ["react"],
+  "presets": [
+    "@babel/preset-react",
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": [
+            "last 2 versions"
+          ]
+        },
+        "modules": false
+      }
+    ]
+  ],
   "plugins": [
     "react-hot-loader/babel",
-    "babel-plugin-transform-class-properties",
+    "@babel/plugin-proposal-class-properties",
     "babel-plugin-transform-object-rest-spread",
     "transform-es2015-modules-commonjs"
   ],
   "env": {
-    "targets": {
-      "browsers": ["last 2 versions"]
-    },
     "production": {
       "plugins": [
         "transform-react-remove-prop-types",
