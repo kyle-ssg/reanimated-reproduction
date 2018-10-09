@@ -214,4 +214,4 @@ const LayoutPage = class extends React.Component {
 
 LayoutPage.propTypes = {};
 
-export default LayoutPage;
+export default hot(module)(LayoutPage);
