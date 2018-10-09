@@ -1,6 +1,5 @@
-//Define common loaders for different file types
+// Define common loaders for different file types
 module.exports = [
-  { test: /bootstrap.+\.(jsx|js)$/, use: 'imports-loader?jQuery=jquery,$=jquery,this=>window' },
   {
     test: /\.js?/,
     exclude: /node_modules/,
