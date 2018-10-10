@@ -1,3 +1,3 @@
-export default Object.assign({}, require('./base/format-base'), {
+import base from './base/format-base';
 
-});
+export default Object.assign({}, base, {});

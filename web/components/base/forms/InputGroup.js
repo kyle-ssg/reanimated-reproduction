@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 
 
 class InputGroup extends Component {
-
   render() {
     const {
       props: {
@@ -23,7 +22,7 @@ class InputGroup extends Component {
         {inputProps && inputProps.error && (
           <span>
             <span> - </span>
-            <span id={inputProps.name ? inputProps.name + "-error" : ''} className={"text-danger"}>
+            <span id={inputProps.name ? `${inputProps.name}-error` : ''} className="text-danger">
               {inputProps.error}
             </span>
           </span>
@@ -31,13 +30,15 @@ class InputGroup extends Component {
 
         <div>
           <div>
-            <Input ref="input" {...inputProps}
-                   isValid={isValid}
-                   disabled={disabled}
-                   value={value}
-                   onChange={onChange}
-                   id={id}
-                   placeholder={placeholder}
+            <Input
+              ref="input"
+              {...inputProps}
+              isValid={isValid}
+              disabled={disabled}
+              value={value}
+              onChange={onChange}
+              id={id}
+              placeholder={placeholder}
             />
           </div>
         </div>
