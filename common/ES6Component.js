@@ -1,10 +1,10 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable no-param-reassign, func-names */
 
-// todo: this could be a class and more appropriately named
-global.ES6Component = (context, onUnmount) => {
+
+module.exports = function (context, onUnmount) {
   context._listeners = [];
 
-  context.listenTo = (store, event, callback) => {
+  context.listenTo = function (store, event, callback) {
     this._listeners.push({
       store,
       event,
@@ -14,14 +14,16 @@ global.ES6Component = (context, onUnmount) => {
     return this._listeners.length;
   };
 
-  context.stopListening = (index) => {
+  context.stopListening = function (index) {
     const listener = this._listeners[index];
     listener.store.off(listener.event, listener.callback);
   };
 
-  context.componentWillUnmount = () => {
+  context.componentWillUnmount = function () {
     _.each(this._listeners, (listener, index) => {
-      if (listener) this.stopListening(index);
+      if (listener) {
+        this.stopListening(index);
+      }
     });
     if (onUnmount) {
       onUnmount();
