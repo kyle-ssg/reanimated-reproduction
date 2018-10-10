@@ -5,12 +5,7 @@ import cn from 'classnames';
 import React from 'react';
 import propTypes from 'prop-types';
 
-const Row = ({
-  children,
-  className,
-  space,
-  ...rest
-}) => (
+const Row = ({ children, className, space, ...rest }) => (
   <div
     {...rest}
     className={cn({

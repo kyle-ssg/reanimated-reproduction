@@ -11,9 +11,9 @@
     "dev": "npm run lint:watch & npm run env_dev && node_modules/.bin/nodemon --watch server --ignore server/config/config.json --watch webpack --exec node ./server",
     "env_dev": "ENV=dev node ./bin/env.js",
     "env_prod": "ENV=prod node ./bin/env.js",
-    "lint": "eslint web/**/*.js tests/**/*.js common/**/*.js",
-    "lint:fix": "eslint --fix web/**/*.js common/**/*.js",
-    "lint:watch": "esw -w -f table --changed web/**/*.js common/**/*.js",
+    "lint": "eslint 'web/**/*.js' 'tests/**/*.js' 'common/**/*.js'",
+    "lint:fix": "eslint --fix 'web/**/*.js' 'common/**/*.js'",
+    "lint:watch": "esw -w --changed 'web/**/*.js' 'common/**/*.js'",
     "start": "npm run env_prod && npm run bundle && NODE_ENV=production node ./server",
     "test": "nightwatch ./tests/index.test.js"
   },

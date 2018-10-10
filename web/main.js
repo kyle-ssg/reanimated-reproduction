@@ -3,8 +3,8 @@ import './project/libs';
 import './project/api';
 import './project/project-components';
 import './styles/styles.scss';
+import { BrowserRouter as Router } from 'react-router-dom';
 import ToastMessages from './project/toast';
-import {BrowserRouter as Router} from 'react-router-dom';
 
 import routes from './routes';
 
@@ -12,20 +12,18 @@ import routes from './routes';
 const rootElement = document.getElementById('app');
 
 // Render the React application to the DOM
-AsyncStorage.getItem("t", (err,res)=>{
-    if (res){
-        AppActions.setToken(res)
-    }
+AsyncStorage.getItem('t', (err, res) => {
+  if (res) {
+    AppActions.setToken(res);
+  }
 
-    setTimeout(()=>{
-        ReactDOM.render(
-            <Router>{routes}</Router>,
-            rootElement
-        );
-    },1)
-
-
+  setTimeout(() => {
+    ReactDOM.render(
+      <Router>{routes}</Router>,
+      rootElement,
+    );
+  }, 1);
 });
 
-//Setup for toast messages
+// Setup for toast messages
 ReactDOM.render(<ToastMessages />, document.getElementById('toast'));

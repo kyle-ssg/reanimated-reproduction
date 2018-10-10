@@ -4,63 +4,64 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const Tabs = window.Tabs = class extends React.Component {
-  displayName = 'Tabs';
+const Tabs = ({ children, className, onChange, value }) => (
+  <div className={`tabs ${className || ''}`}>
+    <div className="tabs-nav">
+      {children.map((child, i) => {
+        const isSelected = value === i;
+        return (
+          <Button
+            id={child.props.id}
+            key={`button${i}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              onChange(i);
+            }}
+            className={`btn-tab btn-primary${isSelected ? ' tab-active' : ''}`}
+          >
+            {child.props.tablabel}
+          </Button>
+        );
+      })}
+    </div>
+    <div
+      className="tab-line"
+      style={{
+        width: `${100 / children.length}%`,
+        left: `${100 / children.length * value}%`,
+      }}
+    />
+    <div className="tabs-content">
+      {children.map((child, i) => {
+        const isSelected = value === i;
+        return (
+          <div key={`content${i}`} className={`tab-item${isSelected ? ' tab-active' : ''}`}>
+            {child}
+          </div>
+        );
+      })}
+    </div>
+  </div>
+);
 
-  render() {
-    return (
-      <div className={"tabs " + (this.props.className || "")}>
-        <div className="tabs-nav">
-          {this.props.children.map((child, i) => {
-            var isSelected = this.props.value == i;
-            return (
-              <Button
-                id={child.props.id}
-                key={'button' + i}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  e.preventDefault();
-                  this.props.onChange(i)
-                }}
-                className={"btn-tab btn-primary" + (isSelected ? ' tab-active' : '')}
-              >
-                {child.props.tablabel}
-              </Button>
-            );
-          })}
-        </div>
-        <div className="tab-line" style={{
-          width: 100 / this.props.children.length + "%",
-          left: 100 / this.props.children.length * this.props.value + "%"
-        }}
-        />
-        <div className="tabs-content">
-          {this.props.children.map((child, i) => {
-            var isSelected = this.props.value == i;
-            return (
-              <div key={'content' + i} className={'tab-item' + (isSelected ? ' tab-active' : '')}>
-                {child}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    );
-  }
-};
+Tabs.displayName = 'Tabs';
 
 Tabs.defaultProps = {
   className: '',
-  value: 0
+  value: 0,
 };
 
 Tabs.propTypes = {
-  onChange: propTypes.func,
-  children: propTypes.node,
-  value: propTypes.number
+  className: propTypes.string,
+  onChange: propTypes.func.isRequired,
+  children: propTypes.node.isRequired,
+  value: propTypes.number,
 };
 
-//Example Usage
+window.Tabs = Tabs;
+
+// Example Usage
 //   <Tabs value={this.state.tab} onChange={this.selectTab}>
 //     <div tabLabel={(<span className="fa fa-phone tab-icon"/>)}>
 //       <h2>Tab 1 content</h2>

@@ -13,7 +13,9 @@ const InputStepper = class extends React.Component {
 
   onFocusChanged = (isFocused) => {
     this.setState({ isFocused, selectedRow: isFocused ? 0 : -1 });
-    this.props.onFocusChanged && this.props.onFocusChanged(isFocused);
+    if (this.props.onFocusChanged) {
+      this.props.onFocusChanged(isFocused);
+    }
   };
 
   onKeyDown = (e) => {
@@ -49,7 +51,7 @@ const InputStepper = class extends React.Component {
     );
 
     return (
-      <div className={'list-container'}>
+      <div className="list-container">
         {this.props.children(theInput, this.state.selectedRow, this.highlightRow)}
       </div>
     );
