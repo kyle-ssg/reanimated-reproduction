@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign, func-names */
 
 
-module.exports = function (context, onUnmount) {
+const ES6Component = function (context, onUnmount) {
   context._listeners = [];
 
   context.listenTo = function (store, event, callback) {
@@ -30,3 +30,7 @@ module.exports = function (context, onUnmount) {
     }
   };
 };
+
+window.ES6Component = ES6Component;
+
+export default ES6Component;
