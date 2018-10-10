@@ -15,7 +15,9 @@ const Panel = ({ className, icon, title, action, children }) => (
       <Row space>
         <Row className="flex-1">
           {icon && (
-            <span className="panel-icon"><ion className={cn({ icon: true }, icon)} /></span>
+            <span className="panel-icon">
+              <ion className={cn({ icon: true }, icon)}/>
+            </span>
           )}
           {title}
         </Row>

@@ -22,7 +22,7 @@ window._ = {
 
 window.React = require('react');
 window.ReactDOM = require('react-dom');
-window.Link = require('react-router-dom').Link;
+global.Link = require('react-router-dom').Link;
 
 // Analytics
 /* eslint-disable */
