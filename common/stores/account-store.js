@@ -32,7 +32,7 @@ const controller = {
   },
 
   setUser(user) {
-    store.onLogin(user);
+    controller.onLogin(user);
     store.loaded();
   },
 
