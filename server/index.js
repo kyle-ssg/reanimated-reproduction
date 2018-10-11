@@ -6,6 +6,7 @@ const webpackMiddleware = require('./middleware/webpack-middleware');
 const isDev = process.env.NODE_ENV !== 'production';
 const app = express();
 const port = process.env.PORT || 8080;
+const path = require('path');
 
 app.use('/api', api());
 
