@@ -10,6 +10,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
+  mode: 'production',
 
   entry: {
     main: './web/main.js',
@@ -59,8 +60,8 @@ module.exports = {
     ).concat(require('./pages').map(function (page) {
       console.log(page);
       return new HtmlWebpackPlugin({
-        filename: `${page}.handlebars`, // output
-        template: `./web/${page}.handlebars`, // template to use
+        filename: `${page}.html`, // output
+        template: `./web/${page}.html`, // template to use
         'assets': { // add these script/link tags
           'client': '/[hash].js',
           'style': 'style.[hash].css',

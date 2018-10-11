@@ -1,6 +1,7 @@
 // webpack.config.dev.js
-var webpack = require('webpack');
-
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   mode: 'development',
@@ -12,9 +13,9 @@ module.exports = {
     outputPath: __dirname,
   },
   output: {
-    path: '/',
-    publicPath: 'http://localhost:8080/build/',
+    path: path.join(__dirname, '../build'),
     filename: '[name].js',
+    publicPath: '/',
   },
   externals: {
     // require('jquery') is external and available
@@ -30,9 +31,15 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      jquery: 'jquery'
+      jquery: 'jquery',
+    }),
+  ]).concat(require('./pages').map(function (page) {
+    console.log(page);
+    return new HtmlWebpackPlugin({
+      filename: `${page}.html`, // output
+      template: `./web/${page}.html`, // template to use
     })
-  ]),
+  })),
   module: {
     rules: require('./loaders')
       .concat([
