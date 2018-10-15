@@ -10,9 +10,10 @@ const path = require('path');
 
 app.use('/api', api());
 
+var devMiddleware;
 if (isDev) { // Serve files from src directory and use webpack-dev-server
   console.log('Enabled Webpack Hot Reloading');
-  webpackMiddleware(app);
+  devMiddleware = webpackMiddleware(app);
 } else {
   console.log('Running production mode');
 }
@@ -26,7 +27,20 @@ app.use(spm);
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
-  res.sendFile(path.resolve('build/index.html'));
+  if (!isDev) {
+    res.sendFile(path.resolve('build/index.html'));
+  } else {
+    const compiler = devMiddleware.context.compiler;
+    const filename = path.join(compiler.outputPath, 'index.html');
+    compiler.outputFileSystem.readFile(filename, (err, result) => {
+      if (err) {
+        return next(err);
+      }
+      res.set('content-type','text/html');
+      res.send(result);
+      res.end();
+    })
+  }
 });
 
 app.listen(port, function () {
