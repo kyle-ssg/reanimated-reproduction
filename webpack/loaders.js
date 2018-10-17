@@ -1,7 +1,7 @@
 // Define common loaders for different file types
 module.exports = [
   {
-    test: /\.js?/,
+    test: /\.m?js$/,
     exclude: /node_modules/,
     use: ['babel-loader'],
   },
