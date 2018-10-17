@@ -30,7 +30,7 @@ app.use(spm);
 app.use(bodyParser.json());
 
 // Fallback for non-root routes i.e. /page
-app.get('/', function (req, res) {
+app.get('/', function (req, res, next) {
   if (!isDev) {
     res.sendFile(path.resolve('build/index.html'));
   } else {
