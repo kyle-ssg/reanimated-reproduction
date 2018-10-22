@@ -11,7 +11,7 @@ const Message = class extends React.Component {
     const className = cn({
       'toast-message': true,
       'alert alert-warning fade': true,
-      in: !this.props.isRemoving,
+      show: !this.props.isRemoving,
       'removing out': this.props.isRemoving,
     });
 
@@ -34,6 +34,7 @@ Message.defaultProps = {
 Message.propTypes = {
   children: propTypes.node,
   expiry: propTypes.number,
+  content: propTypes.node,
   remove: propTypes.func,
   isRemoving: propTypes.bool,
 };
