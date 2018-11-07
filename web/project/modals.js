@@ -63,7 +63,7 @@ const Modal = class extends React.Component {
   render() {
     return (
       <Provider ref="modal">
-        <div tabIndex="-1" className="modal alert fade expand" role="dialog" aria-hidden="true">
+        <div tabIndex="-1" className="modal fade expand" role="dialog" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">{this.header()}</div>
@@ -130,7 +130,7 @@ const Confirm = class extends React.Component {
   render() {
     return (
       <Provider onClose={this.props.onNo} ref="modal" type="confirm">
-        <div tabIndex="-1" className="modal alert fade expand" role="dialog" aria-hidden="true">
+        <div tabIndex="-1" className="modal fade expand" role="dialog" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">{this.header()}</div>
