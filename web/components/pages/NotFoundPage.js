@@ -4,16 +4,16 @@ export default hot(module)(class NotFoundView extends Component {
   displayName = 'NotFoundPage';
 
   componentDidMount = () => {
-    API.trackPage(Constants.pages.NOT_FOUND);
+      API.trackPage(Constants.pages.NOT_FOUND);
   };
 
   render() {
-    return (
-      <div className="container app-container text-center">
-        <h1>Oops, we can&apos;t seem to find this page!</h1>
-        <hr/>
-        <Link to="/">Back To Home View</Link>
-      </div>
-    );
+      return (
+          <div className="container app-container text-center">
+              <h1>Oops, we can&apos;t seem to find this page!</h1>
+              <hr/>
+              <Link to="/">Back To Home View</Link>
+          </div>
+      );
   }
 });

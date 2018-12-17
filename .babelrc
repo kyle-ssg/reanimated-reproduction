@@ -17,7 +17,7 @@
     "react-hot-loader/babel",
     "@babel/plugin-proposal-class-properties",
     "babel-plugin-transform-object-rest-spread",
-    "transform-es2015-modules-commonjs"
+    "@babel/plugin-transform-modules-commonjs"
   ],
   "env": {
     "production": {

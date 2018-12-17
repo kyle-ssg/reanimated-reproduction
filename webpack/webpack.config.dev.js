@@ -2,6 +2,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   mode: 'development',
@@ -33,7 +34,7 @@ module.exports = {
       jQuery: 'jquery',
       jquery: 'jquery',
     }),
-  ]).concat(require('./pages').map(function (page) {
+  ]).concat(require('./pages').map((page) => {
     console.log(page);
     return new HtmlWebpackPlugin({
       filename: `${page}.html`, // output

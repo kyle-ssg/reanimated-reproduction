@@ -3,14 +3,14 @@ import cn from 'classnames';
 import propTypes from 'prop-types';
 
 const Column = ({ className, children, ...rest }) => (
-  <div
-    {...rest}
-    className={cn({
-      'flex-column': true,
-    }, className)}
-  >
-    {children}
-  </div>
+    <div
+      {...rest}
+      className={cn({
+          'flex-column': true,
+      }, className)}
+    >
+        {children}
+    </div>
 );
 
 Column.displayName = 'Column';
@@ -18,10 +18,10 @@ Column.displayName = 'Column';
 Column.defaultProps = {};
 
 Column.propTypes = {
-  className: propTypes.string,
-  value: propTypes.number,
-  children: propTypes.node,
-  style: propTypes.any,
+    className: propTypes.string,
+    value: propTypes.number,
+    children: propTypes.node,
+    style: propTypes.any,
 };
 
 window.Column = Column;

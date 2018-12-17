@@ -50,14 +50,14 @@ module.exports = {
           __DEV__: false,
         }),
 
-        //reduce filesize
+        // reduce filesize
         new webpack.optimize.OccurrenceOrderPlugin(),
 
         // pull inline styles into cachebusted file
         new ExtractTextPlugin({ filename: 'style.[hash].css', allChunks: true }),
 
       ]
-    ).concat(require('./pages').map(function (page) {
+    ).concat(require('./pages').map((page) => {
       console.log(page);
       return new HtmlWebpackPlugin({
         filename: `${page}.html`, // output

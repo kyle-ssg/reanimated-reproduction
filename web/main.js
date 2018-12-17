@@ -13,16 +13,16 @@ const rootElement = document.getElementById('app');
 
 // Render the React application to the DOM
 AsyncStorage.getItem('t', (err, res) => {
-  if (res) {
-    AppActions.setToken(res);
-  }
+    if (res) {
+        AppActions.setToken(res);
+    }
 
-  setTimeout(() => {
-    ReactDOM.render(
-      <Router>{routes}</Router>,
-      rootElement,
-    );
-  }, 1);
+    setTimeout(() => {
+        ReactDOM.render(
+            <Router>{routes}</Router>,
+            rootElement,
+        );
+    }, 1);
 });
 
 // Setup for toast messages

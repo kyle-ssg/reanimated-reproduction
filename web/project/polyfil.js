@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import Promise from 'promise-polyfill';
 import 'whatwg-fetch';
 import {
-  AsyncStorage, AppState, NetInfo, Clipboard,
+    AsyncStorage, AppState, NetInfo, Clipboard,
 } from 'polyfill-react-native';
 import { hot } from 'react-hot-loader';
 import Switch from 'rc-switch';
@@ -33,8 +33,12 @@ import '../components/base/forms/InputGroup';
 import '../components/base/forms/Button';
 import '../components/base/forms/Panel';
 import '../components/base/forms/Tabs';
+import { Radio, RadioGroup } from '../components/base/forms/Radio';
 
 import '../components/base/HighlightKeyword';
+
+window.Radio = Radio;
+window.RadioGroup = RadioGroup;
 
 
 window.React = React;
@@ -52,7 +56,7 @@ window.Switch = Switch;
 
 // To add to window
 if (!window.Promise) {
-  window.Promise = Promise;
+    window.Promise = Promise;
 }
 
 // Object Assign

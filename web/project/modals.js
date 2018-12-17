@@ -43,8 +43,8 @@ const Provider = class extends React.Component {
 };
 
 Provider.propTypes = {
-  children: RequiredElement,
-  onClose: OptionalFunc,
+  children: propTypes.node,
+  onClose: propTypes.func,
 };
 
 const Modal = class extends React.Component {
@@ -63,12 +63,12 @@ const Modal = class extends React.Component {
   render() {
     return (
       <Provider ref="modal">
-        <div tabIndex="-1" className="modal fade expand" role="dialog" aria-hidden="true">
+        <div tabIndex="-1" className={'modal fade expand ' + (this.props.className ? this.props.className : '')} role="dialog" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">
-              <div className="modal-header">{this.header()}</div>
+              {this.props.header ? <div className="modal-header">{this.header()}</div> : null}
               <div className="modal-body">{this.body()}</div>
-              <div className="modal-footer">{this.footer()}</div>
+              {this.props.footer ? <div className="modal-footer">{this.footer()}</div> : null}
             </div>
           </div>
         </div>
@@ -78,9 +78,9 @@ const Modal = class extends React.Component {
 };
 
 Modal.propTypes = {
-  header: OptionalNode,
-  body: OptionalNode,
-  footer: OptionalNode,
+  header: propTypes.node,
+  body: propTypes.node,
+  footer: propTypes.node,
 };
 
 const Confirm = class extends React.Component {
@@ -109,20 +109,20 @@ const Confirm = class extends React.Component {
   footer() {
     return (
       <div className="modal-button">
-        <button
+        <Button
           type="button"
-          className="btn-link btn-link-secondary"
+          className="btn btn--hollow"
           onClick={this.onNo}
         >
           {this.props.noText || 'No'}
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
-          className="btn-link"
+          className="btn btn--primary ml-1"
           onClick={this.onYes}
         >
           {this.props.yesText || 'Yes'}
-        </button>
+        </Button>
       </div>
     );
   }
@@ -145,18 +145,18 @@ const Confirm = class extends React.Component {
 };
 
 Confirm.propTypes = {
-  header: OptionalNode,
-  body: OptionalNode,
-  onYes: OptionalFunc,
-  onNo: OptionalFunc,
-  yesText: OptionalString,
-  noText: OptionalString,
+  header: propTypes.node,
+  body: propTypes.node,
+  onYes: propTypes.func,
+  onNo: propTypes.func,
+  yesText: propTypes.string,
+  noText: propTypes.string,
 };
 
-exports.openModal = (header, body, footer) => {
-  render(<Modal header={header} footer={footer} body={body} />, document.getElementById('modal'));
+export const openModal = (props) => {
+  render(<Modal {...props} />, document.getElementById('modal'));
 };
 
-exports.openConfirm = (header, body, onYes, onNo) => {
+export const openConfirm = (header, body, onYes, onNo) => {
   render(<Confirm header={header} onYes={onYes} onNo={onNo} body={body} />, document.getElementById('confirm'));
 };

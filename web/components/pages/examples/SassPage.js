@@ -7,102 +7,102 @@ class SassPage extends Component {
   displayName = 'SassPage';
 
   componentDidMount = () => {
-    API.trackPage(Constants.pages.NOT_FOUND);
+      API.trackPage(Constants.pages.NOT_FOUND);
   };
 
   render() {
-    return (
-      <div className="app-container container">
-        <h1>Why use Bootstrap?</h1>
-        <p>
+      return (
+          <div className="app-container container">
+              <h1>Why use Bootstrap?</h1>
+              <p>
           Bootstrap’s flexbox grid includes support for every feature from their
-          <a
-            href="http://v4-alpha.getbootstrap.com/layout/grid/"
-          >
+                  <a
+                    href="http://v4-alpha.getbootstrap.com/layout/grid/"
+                  >
             default grid system
-          </a>
+                  </a>
           , and then some.
-        </p>
+              </p>
 
-        <p>
+              <p>
           It allows us to use all the regular repsonsive breakpoint classes without having to write an entire
           grid system from scratch
-        </p>
+              </p>
 
-        <ul>
-          <li>
-            <a href="http://v4-alpha.getbootstrap.com/layout/grid#sass-mixins">Grid mixins</a>
-            {' '}
+              <ul>
+                  <li>
+                      <a href="http://v4-alpha.getbootstrap.com/layout/grid#sass-mixins">Grid mixins</a>
+                      {' '}
             and
-            {' '}
-            <a
-              href="http://v4-alpha.getbootstrap.com/layout/grid#predefined-classes"
-            >
+                      {' '}
+                      <a
+                        href="http://v4-alpha.getbootstrap.com/layout/grid#predefined-classes"
+                      >
               predefined classes
-            </a>
+                      </a>
             include support for flexbox. Just
-            {' '}
-            <a
-              href="http://v4-alpha.getbootstrap.com/getting-started/flexbox"
-            >
+                      {' '}
+                      <a
+                        href="http://v4-alpha.getbootstrap.com/getting-started/flexbox"
+                      >
               enable flexbox support
-            </a>
+                      </a>
             to utilize them as you would otherwise.
-          </li>
-          <li>Nesting, offsets, pushes, and pulls are all supported in the flexbox grid system.</li>
-          <li>
+                  </li>
+                  <li>Nesting, offsets, pushes, and pulls are all supported in the flexbox grid system.</li>
+                  <li>
             Flexbox grid columns without a set width will automatically layout with equal widths. For
             example, four columns will each automatically be 25% wide.
-          </li>
-          <li>
+                  </li>
+                  <li>
             Flexbox grid columns have significantly more alignment options available, including vertical
             alignment.
-          </li>
-          <li>
+                  </li>
+                  <li>
             Unlike the default grid system where a grid column starts as full-width in the
-            <code>xs</code>
+                      <code>xs</code>
             tier, flexbox requires a
-            {' '}
-            <code>.col-(breakpoint)</code>
-            {' '}
+                      {' '}
+                      <code>.col-(breakpoint)</code>
+                      {' '}
             class for each tier.
-          </li>
-        </ul>
+                  </li>
+              </ul>
 
 
-        <h3>Familiar syntax</h3>
+              <h3>Familiar syntax</h3>
 
-        <p>
+              <p>
           We need a grid system for any project we do, so the fact it has a familiar syntax that other
           potential new starters /front ends would be comfortable with is a bonus, and quicker to get them
           started with on the boilerplate then if we had our own custom grid styes (which would likely be
           based on a bootstrap style of grid anyway).
-        </p>
+              </p>
 
-        <h3>Well supported and well documented</h3>
+              <h3>Well supported and well documented</h3>
 
-        <p>Lots of examples available.</p>
+              <p>Lots of examples available.</p>
 
-        <h3>Lightweight</h3>
+              <h3>Lightweight</h3>
 
-        <p>
+              <p>
           We only need to use the Bootstrap Grid system, The functional side of the boilerplate for popovers,
           modals etc can be done in React. So don’t need all the extra weight of the Bootstrap JS components
           etc.
-        </p>
+              </p>
 
 
-        <h3>Source files</h3>
-        <p>
+              <h3>Source files</h3>
+              <p>
           The bootstrap source files are currently located in the
-          <code>node_modules</code>
-          {' '}
+                  <code>node_modules</code>
+                  {' '}
           folder, which
           allows for easy updating via npm.
-        </p>
+              </p>
 
-      </div>
-    );
+          </div>
+      );
   }
 }
 

@@ -8,23 +8,25 @@ const app = express();
 const port = process.env.PORT || 8080;
 const path = require('path');
 
-// Intercept all API requests
-app.use('/api', api());
 
 var devMiddleware;
 if (isDev) { // Serve files from web directory and use webpack-dev-server
-  console.log('Enabled Webpack Hot Reloading');
-  devMiddleware = webpackMiddleware(app);
+    console.log('Enabled Webpack Hot Reloading');
+    devMiddleware = webpackMiddleware(app);
 } else {
-  console.log('Running production mode');
+    console.log('Running production mode');
 }
+
+// Intercept all API requests
+app.use('/api', api());
+
 
 // Serve up the build folder as a static view (server running in production mode)
 app.use(express.static('build'));
 app.set('views', 'build/');
 
 // Rewrite request URL if necessary
-app.use(spm);
+// app.use(spm);
 
 // Parse various different custom JSON types as JSON
 app.use(bodyParser.json());
