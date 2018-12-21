@@ -18,8 +18,8 @@
     "test:e2e": "nightwatch ./tests/e2e/index.test.js",
     "test:unit": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --opts ./tests/mocha.opts \"./common/**/*.test.js\"",
     "test:unit:watch": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --watch --opts ./tests/mocha.opts \"./common/**/*.test.js\"",
-    "test:pact": "cross-env NODE_ENV=pactTest mocha --opts ./tests/mocha.opts \"**/*.test.pact.js\"",
-    "test:pact:publish": "cross-env NODE_ENV=pactTest mocha --opts ./tests/mocha.opts \"**/*.test.pact.js\"",
+    "test:pact": "cross-env NODE_ENV=pactTest mocha --opts ./tests/mocha.opts \"**/*.pact.js\"",
+    "test:pact:publish": "node tests/pact/helpers/pact.publish.js",
     "test:coverage": "istanbul cover ./web/main.js"
   },
   "engines": {
@@ -81,6 +81,7 @@
     "copy-webpack-plugin": "4.5.2",
     "css-loader": "0.28.11",
     "docz": "^0.12.5",
+    "dotenv": "^6.1.0",
     "eslint": "5.6.1",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-airbnb-base": "13.1.0",

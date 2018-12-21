@@ -1,13 +1,36 @@
 const { Matchers: { like } } = require('@pact-foundation/pact');
 
-module.exports = (uponReceiving, method, path, body, status = 200) => pact.addInteraction({
+module.exports = ({
+    body,
+    method,
+    path,
+    requestBody = null,
+    state = 'Default',
+    status = 200,
     uponReceiving,
-    withRequest: {
-        method,
-        path,
-    },
-    willRespondWith: {
-        status,
-        body: like(body),
-    },
-});
+}) => {
+    const interaction = {
+        state,
+        uponReceiving,
+        withRequest: {
+            method: method.toUpperCase(),
+            path,
+        },
+        willRespondWith: {
+            status,
+            body,
+        },
+    };
+    if (requestBody) {
+        interaction.withRequest.headers = {
+            'Content-Type': 'application/json',
+        };
+
+        interaction.willRespondWith.headers = {
+            'Content-Type': 'application/json',
+        };
+
+        interaction.withRequest.body = requestBody;
+    }
+    return pact.addInteraction(interaction);
+};

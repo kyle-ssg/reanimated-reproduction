@@ -1,14 +1,20 @@
 import fetch from 'node-fetch';
+import { Pact } from '@pact-foundation/pact';
+import path from 'path';
 
-const path = require('path');
-const { Pact } = require('@pact-foundation/pact');
+import executeTests from '../helpers/initialise-tests';
+import allTests from './index.example.pact';
 
 global.fetch = fetch;
 
-const { setup: mockServer } = require('./helpers/pact.mock-server');
+const { setup: mockServer } = require('../helpers/pact.mock-server');
+
+require('dotenv').config();
+
+executeTests(allTests);
 
 before((done) => {
-    global.port = 9001;
+    global.port = 9000;
     global.api = `http://localhost:${global.port}`;
     global.pact = new Pact({
         port: global.port,
@@ -20,18 +26,22 @@ before((done) => {
         consumer: 'boilerplate-web'/* the name of your consumer */,
         provider: 'boilerplate-api', /* the name of your provider */
     });
-    Promise.all([mockServer(global.port), pact.setup()])
+    Promise.all([
+        pact.setup(),
+        mockServer(global.port),
+    ])
         .then(() => done());
 });
 
 afterEach((done) => {
     console.log('verifying');
-    // done();
     pact.verify().then(() => done());
 });
 
 after((done) => {
     console.log('pact complete');
-    // done();
-    pact.finalize().then(() => done());
+    pact.finalize().then(() => {
+        done();
+        process.exit();
+    });
 });
