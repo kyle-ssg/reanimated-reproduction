@@ -23,11 +23,7 @@ const HighlightKeyword = window.HighlightKeyword = class extends React.Component
 
     chop(text, search) { // recursively render bits of text into renderText and renderHighlight sections
         const regexp = new RegExp(search, 'i');
-
-
         const mark = text.search(regexp);
-
-
         const len = search.length;
 
         if (!search || !text || mark === -1) {

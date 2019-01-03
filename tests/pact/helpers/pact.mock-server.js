@@ -20,6 +20,6 @@ export default (url, method, body, requestBody, headers = {}) => {
 };
 
 export const setup = port => new Promise((resolve) => {
-    console.log('SERVER LISTENING', port)
+    console.log('SERVER LISTENING', port);
     app.listen(port + 1, resolve);
 });

@@ -27,7 +27,7 @@ import groupBy from 'lodash/groupBy';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import Cookies from 'js-cookie';
 
-window.moment = require('moment/min/moment.min');
+window.moment = require('moment');
 
 window._ = {
     each,

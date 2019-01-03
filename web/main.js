@@ -18,6 +18,12 @@ AsyncStorage.getItem('t', (err, res) => {
     }
 
     setTimeout(() => {
+        // prefill e2e dom elements with markup
+        if (E2E && document.getElementById('e2e-request')) {
+            document.getElementById('e2e-request').innerHTML = '{}';
+            document.getElementById('e2e-error').innerHTML = '{}';
+        }
+
         ReactDOM.render(
             <Router>{routes}</Router>,
             rootElement,

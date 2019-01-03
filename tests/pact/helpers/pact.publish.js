@@ -9,7 +9,7 @@ if (process.env.PACT_BROKER) {
         pactBrokerUsername: process.env.PACT_BROKER_USERNAME,
         pactBrokerPassword: process.env.PACT_BROKER_PASSWORD,
         tags: ['prod', 'test'],
-        consumerVersion: `${process.env.CI_COMMIT_REF_NAME}.${(process.env.TRAVIS_BUILD_NUMBER) ? process.env.TRAVIS_BUILD_NUMBER : Math.floor(new Date() / 1000)}`,
+        consumerVersion: `${process.env.CI_COMMIT_REF_NAME}.${Math.floor(new Date() / 1000)}`,
     };
 
     pact.publishPacts(opts)
