@@ -7,6 +7,7 @@
     "ios": "react-native run-ios & npm run watch",
     "android": "react-native run-android & npm run watch",
     "androidDeploy": "cd ./android && ./gradlew assembleRelease && ./gradlew installRelease && cd ../",
+    "apk": "cd ./android && ./gradlew assembleRelease && open ./app/build/outputs/apk/release && cd ../",
     "postinstall": "cp -r ../common ./common-mobile",
     "keystore": "keytool -genkey -v -keystore my-release-key.keystore -alias android -keyalg RSA -keysize 2048 -validity 10000",
     "test": "detox test",
