@@ -1,4 +1,5 @@
 import { Navigation } from 'react-native-navigation';
+
 module.exports = {
     navEvents: {
         SHOW: 'didAppear',
@@ -56,7 +57,7 @@ module.exports = {
 
             if (event.type == 'DeepLink') {
                 // Handle deep linking
-                routeHelper[event.link] && routeHelper[event.link](navigator);
+                routes[event.link] && navigator.push(routes[event.link]());
             } else if (event.id == 'side-menu') {
                 // Handle open drawer
                 navigator.toggleDrawer({
