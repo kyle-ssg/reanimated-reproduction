@@ -7,7 +7,7 @@ import InputMask from 'inputmask-core';
 import React, { Component, PropTypes } from 'react';
 
 const TextInput = class extends Component {
-    displayName: 'TextInput'
+    static displayName = 'TextInput'
 
     componentWillMount() {
         this.animation = new Animated.Value(0);
@@ -28,9 +28,9 @@ const TextInput = class extends Component {
     onFocus = () => {
         Animated.timing(this.animation, {
             toValue: 1,
-            duration: 300,
+            duration: 200,
             useNativeDriver: true, // <-- Add this
-            easing: Easing.cubic,
+            easing: Animations.deceleration,
         }).start();
         this.props.onFocus && this.props.onFocus();
     };

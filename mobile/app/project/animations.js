@@ -1,4 +1,5 @@
 import * as Animatable from 'react-native-animatable';
+import { Easing } from 'react-native';
 
 Animatable.initializeRegistryWithDefinitions({
     basicListEntrance: {
@@ -12,6 +13,9 @@ Animatable.initializeRegistryWithDefinitions({
 });
 
 global.Animations = {
+    acceleration: Easing.bezier(0.4, 0.0, 1, 1), // See https://material.io/design/motion/speed.html#easing
+    deceleration: Easing.bezier(0.0, 0.0, 0.2, 1), // See https://material.io/design/motion/speed.html#easing
+    standard: Easing.bezier(0.4, 0.0, 0.2, 1), // See https://material.io/design/motion/speed.html#easing
     listItem: {
         useNativeDriver: true,
         animation: 'basicListEntrance',
