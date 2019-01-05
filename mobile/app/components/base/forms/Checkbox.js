@@ -1,6 +1,7 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
-let json = require("./checkbox.json");
+const json = require('./checkbox.json');
+
 const TheComponent = class extends Component {
     displayName: 'TheComponent'
 
@@ -13,9 +14,9 @@ const TheComponent = class extends Component {
     componentWillUpdate(newProps) {
         if (newProps.value !== this.props.value) {
             Animated.timing(this.animatedValue, {
-                toValue: newProps.value?0.5:0,
+                toValue: newProps.value ? 0.5 : 0,
                 duration: 700,
-                easing: newProps.value? Easing.linear :Easing.out(Easing.cubic),
+                easing: newProps.value ? Easing.linear : Easing.out(Easing.cubic),
             }).start();
         }
     }
@@ -23,15 +24,16 @@ const TheComponent = class extends Component {
     render() {
         return (
             <Animation
-                progress={this.animatedValue}
-                ref="animation" style={styles.checkbox}
-                source={json}/>
+              progress={this.animatedValue}
+              ref="animation" style={styles.checkbox}
+              source={json}
+            />
         );
     }
 };
 
 TheComponent.propTypes = {};
 var styles = StyleSheet.create({
-    checkbox: {width: 54, height: 54}
+    checkbox: { width: 54, height: 54 },
 });
 module.exports = TheComponent;

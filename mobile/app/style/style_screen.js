@@ -2,6 +2,7 @@
  * Created by kylejohnson on 07/09/15.
  */
 import merge from 'lodash/merge';
+
 window.Styles = StyleSheet.create(merge({},
     require('./base/'),
     require('./project/style_base'),
@@ -13,5 +14,4 @@ window.Styles = StyleSheet.create(merge({},
     require('./project/style_lists'),
     require('./project/style_modals'),
     require('./project/style_platform'),
-    require('./components/style_upload')
-));
+    require('./components/style_upload')));

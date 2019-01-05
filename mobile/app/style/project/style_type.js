@@ -1,18 +1,18 @@
 module.exports = {
 
     text: {
-    	backgroundColor:'transparent',
+    	backgroundColor: 'transparent',
         color: colour.text,
         fontSize: styleVariables.fontSizeBase,
         fontFamily: 'helvetica',
     },
 
     h1: {
-        marginBottom: styleVariables.marginBaseVertical * 2
+        marginBottom: styleVariables.marginBaseVertical * 2,
     },
 
     h2: {
-        fontWeight: "400"
+        fontWeight: '400',
     },
 
     paragraph: {
@@ -24,11 +24,11 @@ module.exports = {
     },
 
     textFaint: {
-        color: colour.textFaint
+        color: colour.textFaint,
     },
 
     textError: {
-        color: colour.errorText
+        color: colour.errorText,
     },
 
     anchor: {
@@ -42,12 +42,12 @@ module.exports = {
 
     fontSizeHeading: {
         fontSize: styleVariables.fontSizeHeading,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
 
     fontSizeSubHeading: {
         fontSize: styleVariables.fontSizesubheading,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
 
     fontSizeSmall: {
@@ -55,7 +55,7 @@ module.exports = {
     },
 
     sup: {
-        fontSize: em(0.65)
+        fontSize: em(0.65),
     },
 
 };

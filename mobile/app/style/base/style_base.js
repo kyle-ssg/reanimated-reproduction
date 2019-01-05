@@ -6,13 +6,13 @@ module.exports = {
 
     body: {
         flex: 1,
-        backgroundColor: colour.bodyBackground
+        backgroundColor: colour.bodyBackground,
     },
 
     avatar: {
         height: styleVariables.avatarHeight,
         width: styleVariables.avatarWidth,
-        borderRadius: styleVariables.avatarRadius
+        borderRadius: styleVariables.avatarRadius,
     },
 
     divider: {

@@ -3,5 +3,5 @@
  */
 
 module.exports = {
-  inputHeight: 54,
+    inputHeight: 54,
 };

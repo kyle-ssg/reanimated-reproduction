@@ -2,26 +2,26 @@ module.exports = {
 
     listContainer: {
         flex: 1,
-        backgroundColor: colour.listBackground
+        backgroundColor: colour.listBackground,
     },
 
     insetList: {
         padding: styleVariables.paddingBase,
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
     },
 
     listItem: {
         minHeight: 44,
         // justifyContent: 'center',
         alignItems: 'stretch',
-        alignSelf:'stretch',
-        borderBottomWidth: 1/PixelRatio.get(),
+        alignSelf: 'stretch',
+        borderBottomWidth: 1 / PixelRatio.get(),
         paddingLeft: styleVariables.paddingBase,
         paddingRight: styleVariables.paddingBase,
         borderBottomColor: colour.divider,
         backgroundColor: colour.listBackground,
-        paddingTop:styleVariables.paddingBase,
-        paddingBottom:styleVariables.paddingBase,
+        paddingTop: styleVariables.paddingBase,
+        paddingBottom: styleVariables.paddingBase,
     },
 
     listItemAlt: {
@@ -30,7 +30,7 @@ module.exports = {
     },
 
     listItemDisabled: {
-        opacity: .5
+        opacity: 0.5,
     },
 
     listItemLast: {
@@ -55,18 +55,18 @@ module.exports = {
     listIconNav: {
         fontSize: styleVariables.fontSizeBase * 1.5,
         marginRight: styleVariables.paddingBase,
-        color: colour.textFaintLight
+        color: colour.textFaintLight,
     },
 
     listItemTitle: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
 
     listHeaderText: {
         color: '#fff',
     },
 
-    indentListItem:{
-        paddingLeft:30,
+    indentListItem: {
+        paddingLeft: 30,
     },
 };

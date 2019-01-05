@@ -4,13 +4,13 @@
 
 import InputMask from 'inputmask-core';
 
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
 const TextInput = class extends Component {
     displayName: 'TextInput'
 
     componentWillMount() {
-        this.animation = new Animated.Value(0)
+        this.animation = new Animated.Value(0);
     }
 
     clear = () => {
@@ -30,7 +30,7 @@ const TextInput = class extends Component {
             toValue: 1,
             duration: 300,
             useNativeDriver: true, // <-- Add this
-            easing: Easing.cubic
+            easing: Easing.cubic,
         }).start();
         this.props.onFocus && this.props.onFocus();
     };
@@ -40,7 +40,7 @@ const TextInput = class extends Component {
             toValue: 0,
             duration: 300,
             useNativeDriver: true, // <-- Add this
-            easing: Easing.cubic
+            easing: Easing.cubic,
         }).start();
         this.props.onBlur && this.props.onBlur();
     };
@@ -56,7 +56,7 @@ const TextInput = class extends Component {
                         'a': {
                             validate(char) {
                                 return /[ap]/.test(char);
-                            }
+                            },
                         },
                         'm': {
                             validate(char) {
@@ -64,9 +64,9 @@ const TextInput = class extends Component {
                             },
                             transform() {
                                 return 'm';
-                            }
-                        }
-                    }
+                            },
+                        },
+                    },
                 });
             }
 
@@ -82,12 +82,11 @@ const TextInput = class extends Component {
                 // Add it to the input mask
                 if (text.length > 1) {
                     this.mask.paste(text);
-                }
-                else {
+                } else {
                     // Perform additional inputs to skip non-pattern characters. Input will be converted
                     // to the non-pattern character.
-                    while (!this.isMaskPatternChar(this.props.mask[this.mask.selection.start]) &&
-                    this.mask.selection.start !== this.props.mask.length) {
+                    while (!this.isMaskPatternChar(this.props.mask[this.mask.selection.start])
+                    && this.mask.selection.start !== this.props.mask.length) {
                         // On failure abort loop as cursor position will not change
                         if (!this.mask.input(text)) {
                             break;
@@ -96,11 +95,9 @@ const TextInput = class extends Component {
 
                     this.mask.input(text);
                 }
-            }
-            else if (text.length < this.mask.selection.start) {
+            } else if (text.length < this.mask.selection.start) {
                 // Character(s) were deleted, delete up to current length
-                while (this.mask.selection.start != text.length)
-                    this.mask.backspace();
+                while (this.mask.selection.start != text.length) this.mask.backspace();
 
                 // Check whether more backspaces are required until we reach a pattern char or nothing is left
                 while (this.mask.selection.start && !this.isMaskPatternChar(this.props.mask[this.mask.selection.start - 1])) {
@@ -109,11 +106,10 @@ const TextInput = class extends Component {
             }
 
             const value = this.mask.getValue().slice(0, this.mask.selection.start);
-            console.log(value)
+            console.log(value);
             // Update text
             this.props.onChangeText && this.props.onChangeText();
-        }
-        else {
+        } else {
             // No masking, just update text
             this.props.onChangeText && this.props.onChangeText(text);
         }
@@ -132,19 +128,21 @@ const TextInput = class extends Component {
         return (
             <View>
                 <ReactNative.TextInput
-                    {...this.props}
-                    onFocus={this.onFocus}
-                    onBlur={this.onBlur}
-                    onChangeText={this.onChangeText}
-                    style={[this.props.style, Styles.textInput]}
-                    value={this.props.value}
-                    testID={this.props.testID}
+                  {...this.props}
+                  onFocus={this.onFocus}
+                  onBlur={this.onBlur}
+                  onChangeText={this.onChangeText}
+                  style={[this.props.style, Styles.textInput]}
+                  value={this.props.value}
+                  testID={this.props.testID}
                 />
                 <Animated.View style={[{
                     marginTop: -styleVariables.inputBorderWidth,
-                    transform: [{scaleX: this.animation}],
-                    backgroundColor: colour.activeBorder, height: 1 / PixelRatio.get() * 4
-                }]}/>
+                    transform: [{ scaleX: this.animation }],
+                    backgroundColor: colour.activeBorder,
+                    height: 1 / PixelRatio.get() * 4,
+                }]}
+                />
             </View>
         );
     }
@@ -169,6 +167,6 @@ TextInput.propTypes = {
     onSubmit: OptionalFunc,
     onFocus: OptionalFunc,
     textStyle: oneOfType([OptionalObject, OptionalNumber]),
-    testID: OptionalString
+    testID: OptionalString,
 };
 module.exports = TextInput;

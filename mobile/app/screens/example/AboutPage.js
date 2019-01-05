@@ -1,10 +1,9 @@
 /**
  * Created by kylejohnson on 28/01/2017.
  */
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
 const HomePage = class extends Component {
-
     static navigatorStyle = global.navbarStyle;
 
     displayName: 'HomePage';
@@ -24,7 +23,7 @@ const HomePage = class extends Component {
     };
 
     onLogin = () => {
-        alert("Logged in")
+        alert('Logged in');
     };
 
     render() {
@@ -36,12 +35,15 @@ const HomePage = class extends Component {
                             About us
                         </H2>
                         <View style={Styles.noPad}>
-                            {_.range(0, 12).map((i) => (
+                            {_.range(0, 12).map(i => (
                                 <ListItem
-                                    animationProps={Animations.listItem}
-                                    index={i}>
+                                  animationProps={Animations.listItem}
+                                  index={i}
+                                >
                                     <Text>
-                                        ListItem {i}
+                                        ListItem
+                                        {' '}
+                                        {i}
                                     </Text>
                                 </ListItem>
                             ))}
@@ -49,7 +51,7 @@ const HomePage = class extends Component {
                     </Container>
                 </ScrollView>
             </Flex>
-        )
+        );
     }
 };
 

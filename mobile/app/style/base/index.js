@@ -14,5 +14,4 @@ module.exports = Object.assign({},
     require('./style_modals'),
     require('./style_navs'),
     require('./style_panels'),
-    require('./style_type')
-);
+    require('./style_type'));

@@ -1,8 +1,8 @@
 /**
  * Created by kylejohnson on 28/01/2017.
  */
-import React, {Component, PropTypes} from 'react';
-import AccountStore from "../../../common-mobile/stores/account-store";
+import React, { Component, PropTypes } from 'react';
+import AccountStore from '../../../common-mobile/stores/account-store';
 
 const HomePage = class extends Component {
     static navigatorStyle = global.navbarStyle;
@@ -21,44 +21,46 @@ const HomePage = class extends Component {
         this.listenTo(AccountStore, 'change', () => this.forceUpdate());
         API.push.getInitialNotification()
             .then((e) => {
-                e && this.onNotification(Object.assign({}, e, {fromClick: true}));
-            })
+                e && this.onNotification(Object.assign({}, e, { fromClick: true }));
+            });
     }
 
     onNavigatorEvent = (event) => {
         if (event.id == routeHelper.navEvents.SHOW) {
-            this.props.navigator.setDrawerEnabled({side: 'right', enabled: true});
+            this.props.navigator.setDrawerEnabled({ side: 'right', enabled: true });
             API.trackPage('Home Screen');
         } else if (event.id == routeHelper.navEvents.HIDE) {
-            this.props.navigator.setDrawerEnabled({side: 'right', enabled: false});
+            this.props.navigator.setDrawerEnabled({ side: 'right', enabled: false });
         }
     };
 
 
     render() {
-        const {uri} = this.state;
-        console.log(this.props.value)
+        const { uri } = this.state;
+        const { push } = this.props.navigator;
         return (
             <Flex testID="example-screen">
-                <Fade value={1} style={[{flex: 1}, Styles.body]} autostart={true}>
+                <Fade value={1} style={[{ flex: 1 }, Styles.body]} autostart>
                     <Flex>
-                        <ScrollView keyboardShouldPersistTaps={"handled"}>
+                        <ScrollView keyboardShouldPersistTaps="handled">
                             <Row>
                                 <Flex value={1}>
                                     <Container>
                                         <FormGroup>
                                             <TextInput
-                                                onChangeText={(val) => this.setState({val})}
-                                                value={this.state.val}
-                                                placeholder={"Example input"}/>
+                                              onChangeText={val => this.setState({ val })}
+                                              value={this.state.val}
+                                              placeholder="Example input"
+                                            />
                                         </FormGroup>
                                         <FormGroup>
                                             <TextInput
 
-                                                onChangeText={(val2) => this.setState({val2})}
-                                                value={this.state.val2}
-                                                mask={"11:11 am"}
-                                                placeholder={"Example input"}/>
+                                              onChangeText={val2 => this.setState({ val2 })}
+                                              value={this.state.val2}
+                                              mask="11:11 am"
+                                              placeholder="Example input"
+                                            />
                                         </FormGroup>
                                     </Container>
                                 </Flex>
@@ -78,14 +80,22 @@ const HomePage = class extends Component {
                             )}
 
 
-                            <ListItem index={0} icon={<ION name="ios-notifications"
-                                                           style={[Styles.listIcon, {color: pallette.secondary}]}/>}>
+                            <ListItem
+                              index={0} icon={(
+                                  <ION
+                                    name="ios-notifications"
+                                    style={[Styles.listIcon, { color: pallette.secondary }]}
+                                  />
+)}
+                            >
                                 <Text>Register for Push</Text>
-                                <ReactNative.Switch value={this.state.token ? true : false}
-                                                    onChange={this.registerPush}/>
+                                <ReactNative.Switch
+                                  value={!!this.state.token}
+                                  onChange={this.registerPush}
+                                />
                             </ListItem>
 
-                            <ListItem index={1} onPress={() => routeHelper.goAbout(this.props.navigator)}>
+                            <ListItem index={1} onPress={() => this.props.navigator.push(routeHelper.aboutScreen())}>
                                 <Text>About</Text>
                                 <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
                             </ListItem>
@@ -95,12 +105,14 @@ const HomePage = class extends Component {
                                 <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
                             </ListItem>
 
-                            <ListItem index={1} onPress={() => this.props.navigator.push({
-                                screen: '/examples/interactive',
-                                title: "Interactive examples",
-                                backButtonTitle: "Home",
-                                navigatorStyle: global.navbarStyle
-                            })}>
+                            <ListItem
+                              index={1} onPress={() => this.props.navigator.push({
+                                  screen: '/examples/interactive',
+                                  title: 'Interactive examples',
+                                  backButtonTitle: 'Home',
+                                  navigatorStyle: global.navbarStyle,
+                              })}
+                            >
                                 <Text>Interactive examples</Text>
                                 <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
                             </ListItem>
@@ -112,21 +124,32 @@ const HomePage = class extends Component {
 
                             <ListItem index={3} onPress={this.selectContact}>
                                 <Text>
-                                    Select Contact{' '}
-                                    {this.state.contacts &&
+                                    Select Contact
+                                    {' '}
+                                    {this.state.contacts
+                                    && (
                                     <Text>
-                                        ({_.map(this.state.contacts, 'givenName').join(',')})
+                                        (
+                                        {_.map(this.state.contacts, 'givenName').join(',')}
+)
                                     </Text>
+                                    )
                                     }
                                 </Text>
                                 <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
                             </ListItem>
                             <ListItem index={4} onPress={this.selectMultipleContacts}>
-                                <Text>Select Multiple Contacts{' '}
-                                    {this.state.contacts &&
+                                <Text>
+Select Multiple Contacts
+                                    {' '}
+                                    {this.state.contacts
+                                    && (
                                     <Text>
-                                        ({_.map(this.state.contacts, 'givenName').join(',')})
+                                        (
+                                        {_.map(this.state.contacts, 'givenName').join(',')}
+)
                                     </Text>
+                                    )
                                     }
                                 </Text>
                                 <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
@@ -153,35 +176,44 @@ const HomePage = class extends Component {
                             </ListItem>
 
                             <ListItem index={7} onPress={this.triggerError}>
-                                <Text style={[Styles.anchor, {color: 'red'}]}>Trigger Crashlytics error (this will crash
-                                    the app)</Text>
+                                <Text style={[Styles.anchor, { color: 'red' }]}>
+Trigger Crashlytics error (this will crash
+                                    the app)
+                                </Text>
                             </ListItem>
 
                             <Container>
                                 <FormGroup>
                                     {
 
-                                        AccountStore.getUser() ?
-                                            <Button onPress={() => routeHelper.logout(this.props.navigator)}>
+                                        AccountStore.getUser()
+                                            ? (
+                                                <Button onPress={() => routeHelper.logout(this.props.navigator)}>
                                                 Logout
-                                            </Button>
-                                            :
-                                            <Button onPress={() => routeHelper.goAccount(this.props.navigator)}>
+                                                </Button>
+                                            )
+                                            : (
+                                                <Button onPress={() => routeHelper.goAccount(this.props.navigator)}>
                                                 Login Wall
-                                            </Button>
+                                                </Button>
+                                            )
                                     }
                                 </FormGroup>
                             </Container>
 
-                            {uri ? <Image style={{height: 100, width: 100}} resizeMode="contain"
-                                          source={{uri}}/> : null}
+                            {uri ? (
+                                <Image
+                                  style={{ height: 100, width: 100 }} resizeMode="contain"
+                                  source={{ uri }}
+                                />
+                            ) : null}
 
 
                         </ScrollView>
                     </Flex>
                 </Fade>
             </Flex>
-        )
+        );
     }
 
     getInitialLink = () => {
@@ -194,50 +226,48 @@ const HomePage = class extends Component {
 
 
     showUpload = () => {
-        API.showUpload("Upload a file", false, 100, 100, compressImageQuality = 0.8, () => {
-            this.setState({isUploading: true})
+        API.showUpload('Upload a file', false, 100, 100, compressImageQuality = 0.8, () => {
+            this.setState({ isUploading: true });
         })
             .then((res) => {
-                alert(JSON.stringify(res))
-            })
-    };
-
-    showCamera = () => {
-        routeHelper.showCamera(this.props.navigator, null, null, ({path, data}) => {
-            this.setState({uri: path, data})
-        })
+                alert(JSON.stringify(res));
+            });
     };
 
     openSelect = () => {
-        routeHelper.openSelect(this.props.navigator, "Select a thing", {
-            items: ['item 1', 'item 2'],
-            filterItem: (contact, search) => contact.indexOf(search) !== -1,
-            onChange: (options) => this.setState({options}),
-            renderRow: (item, isSelected, toggleItem) => {
-                return (
+        this.props.navigator.showModal(
+            routeHelper.selectScreen('Select a thing', {
+                items: ['item 1', 'item 2'],
+                filterItem: (contact, search) => contact.indexOf(search) !== -1,
+                onChange: options => this.setState({ options }),
+                renderRow: (item, isSelected, toggleItem) => (
                     <ListItem onPress={toggleItem}>
                         <Text>{item}</Text>
                         <Checkbox value={isSelected}/>
                     </ListItem>
-                )
-            }
-        });
+                ),
+            }),
+        );
     };
 
     selectContact = () => {
-        routeHelper.openContactModal(this.props.navigator, 'Select Contact', (contact) => {
-            this.setState({contacts: [contact]})
-        });
+        this.props.navigator.showModal(
+            routeHelper.contactScreen('Select Contact', (contact) => {
+                this.setState({ contacts: [contact] });
+            }),
+        );
     };
 
     selectMultipleContacts = () => {
-        routeHelper.openContactModal(this.props.navigator, 'Select Contacts', (contact) => {
-            this.setState({contacts: [contact]})
-        }, true);
+        this.props.navigator.showModal(
+            routeHelper.contactScreen('Select Contacts', (contact) => {
+                this.setState({ contacts: [contact] });
+            }, true),
+        );
     };
 
     showExampleLightbox = () => {
-        routeHelper.showExampleLightbox(this.props.navigator)
+        this.props.navigator.showLightBox(routeHelper.exampleLightbox());
     };
 
     openWebModal = () => {
@@ -245,39 +275,37 @@ const HomePage = class extends Component {
     };
 
     generateLink = () => {
-        API.generateLink("SSG Boilerplate", {
+        API.generateLink('SSG Boilerplate', {
             route: {
-                screen: "goAbout",
+                screen: 'aboutScreen',
                 data: {
-                    customData: "bla"
-                }
-            }
-        }, "www.solidstategroup.com")
+                    customData: 'bla',
+                },
+            },
+        }, 'www.solidstategroup.com')
             .then((branchURL) => {
-                this.setState({branchURL})
+                this.setState({ branchURL });
             })
             .catch((e) => {
                 console.log(e);
-            })
+            });
     }
 
     registerPush = () => {
         if (this.state.token) {
-            this.setState({token: null});
-            API.push.unsubscribe('/topics/all')
+            this.setState({ token: null });
+            API.push.unsubscribe('/topics/all');
             API.push.stop();
+        } else {
+            this.initPush(false);
         }
-        else {
-            this.initPush(false)
-        }
-
     };
 
     initPush = (silent) => {
         API.push.init(this.onNotification, silent)
             .then((token) => {
-                API.push.subscribe('/topics/all')
-                this.setState({token})
+                API.push.subscribe('/topics/all');
+                this.setState({ token });
             });
     };
 
@@ -285,7 +313,7 @@ const HomePage = class extends Component {
     onLink = (notification) => {
         if (notification.route) {
             const route = notification.route;
-            routeHelper[route.screen] && routeHelper[route.screen](this.props.navigator, route.data);
+            routeHelper[route.screen] && this.props.navigator.push(routeHelper[route.screen](route.data));
         }
     }
 
@@ -293,15 +321,15 @@ const HomePage = class extends Component {
         if (notification.fromClick) {
             if (notification.route) {
                 const route = JSON.parse(notification.route);
-                routeHelper[route.screen] && routeHelper[route.screen](this.props.navigator, route.data);
+                routeHelper[route.screen] && this.props.navigator.push(routeHelper[route.screen](route.data));
             }
         }
     };
 
     triggerError = () => {
-        console.log({}.hell.no)
+        console.log({}.hell.no);
     };
-}
+};
 
 HomePage.propTypes = {};
 

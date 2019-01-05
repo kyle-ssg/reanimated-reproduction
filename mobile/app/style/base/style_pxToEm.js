@@ -1,4 +1,4 @@
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 // Precalculate Device Dimensions for better performance
 const x = Dimensions.get('window').width;
 

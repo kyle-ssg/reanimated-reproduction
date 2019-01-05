@@ -1,15 +1,15 @@
 module.exports = {
-  //
-  // Panels
-  // --------------------------------------------------
+    //
+    // Panels
+    // --------------------------------------------------
 
-  panel: {
-    backgroundColor: colour.panel,
-    padding: styleVariables.paddingBase,
-    margin:styleVariables.gutterBase
-  },
+    panel: {
+        backgroundColor: colour.panel,
+        padding: styleVariables.paddingBase,
+        margin: styleVariables.gutterBase,
+    },
 
-  panelRounded:{
-    borderRadius:styleVariables.borderRadiusDefault
-  }
+    panelRounded: {
+        borderRadius: styleVariables.borderRadiusDefault,
+    },
 };

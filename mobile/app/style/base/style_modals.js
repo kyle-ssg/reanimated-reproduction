@@ -5,8 +5,8 @@ module.exports = {
 
     modal: {
         position: 'absolute',
-        height: Dimensions.get("window").height,
-        width: Dimensions.get("window").width,
+        height: Dimensions.get('window').height,
+        width: Dimensions.get('window').width,
         left: 0,
         right: 0,
         bottom: 0,
@@ -25,20 +25,20 @@ module.exports = {
         opacity: 0.5,
     },
 
-	lightboxOuter: {
-		backgroundColor: 'transparent',
-		justifyContent: 'center',
-		alignItems: 'center',
-		paddingBottom: 40,
+    lightboxOuter: {
+        backgroundColor: 'transparent',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingBottom: 40,
         paddingTop: 40,
-        height: DeviceHeight - 40
-	},
+        height: DeviceHeight - 40,
+    },
 
-	lightbox: {
-		width: DeviceWidth - 40,
-		borderRadius: 5,
-		backgroundColor: 'white'
-	},
+    lightbox: {
+        width: DeviceWidth - 40,
+        borderRadius: 5,
+        backgroundColor: 'white',
+    },
 
     webView: {},
 

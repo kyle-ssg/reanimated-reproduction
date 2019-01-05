@@ -1,4 +1,4 @@
-//https://github.com/wix/react-native-navigation/wiki/Styling-the-navigator
+// https://github.com/wix/react-native-navigation/wiki/Styling-the-navigator
 global.navbarStyle = {
     statusBarTextColorScheme: 'dark',
     topBarElevationShadowEnabled: false,
@@ -17,11 +17,11 @@ module.exports = {
         paddingTop: styleVariables.statusHeight,
         paddingBottom: styleVariables.statusHeight,
         height: 64,
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
 
     navBarText: {
-        marginTop:10,
+        marginTop: 10,
         fontWeight: '400',
         color: 'white',
         fontSize: 18,
@@ -29,18 +29,18 @@ module.exports = {
 
     navIcon: {
         fontSize: 28,
-        color:'white',
-        marginTop:10
+        color: 'white',
+        marginTop: 10,
     },
 
     navBar: {},
 
     barText: {
-        color: 'black'
+        color: 'black',
     },
 
 
-    //OFF CANVAS
+    // OFF CANVAS
 
     navButtonRight: {
         alignItems: 'flex-end',
@@ -58,7 +58,7 @@ module.exports = {
     menuItemText: {
         fontSize: em(1.5),
         color: styleVariables.textLight,
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
     },
     menuItemIcon: {
         width: 34,
@@ -68,6 +68,6 @@ module.exports = {
         textAlign: 'center',
         lineHeight: 34,
         color: pallette.secondary,
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
     },
 };

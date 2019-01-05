@@ -1,30 +1,30 @@
 module.exports = {
-    rounded:{
-        borderRadius:styleVariables.borderRadiusDefault,
+    rounded: {
+        borderRadius: styleVariables.borderRadiusDefault,
     },
-    noBackground:{
-        backgroundColor:'transparent'
-    },
-
-    textRight:{
-        textAlign:'right',
+    noBackground: {
+        backgroundColor: 'transparent',
     },
 
-    underline:{
-        borderBottomWidth:PixelRatio.get() / 2,
-        borderColor:pallette.dividerLight
+    textRight: {
+        textAlign: 'right',
     },
 
-    verticalCenter:{
-        justifyContent:'center'
+    underline: {
+        borderBottomWidth: PixelRatio.get() / 2,
+        borderColor: pallette.dividerLight,
     },
 
-    horizontalCenter:{
-        alignItems:'center',
+    verticalCenter: {
+        justifyContent: 'center',
     },
 
-    paddingHorizontal:{
-        paddingLeft:styleVariables.paddingBase,
-        paddingRight:styleVariables.paddingBase,
+    horizontalCenter: {
+        alignItems: 'center',
+    },
+
+    paddingHorizontal: {
+        paddingLeft: styleVariables.paddingBase,
+        paddingRight: styleVariables.paddingBase,
     },
 };
