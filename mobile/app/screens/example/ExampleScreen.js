@@ -2,6 +2,8 @@
  * Created by kylejohnson on 28/01/2017.
  */
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
+
 import AccountStore from '../../../common-mobile/stores/account-store';
 
 const HomePage = class extends Component {

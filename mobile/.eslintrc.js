@@ -71,6 +71,7 @@ module.exports = {
         '$': true,
         '_': true,
         '__DEV__': true,
+        'Animations': true,
         'Animated': true,
         'AccountStore': true,
         'Actions': true,

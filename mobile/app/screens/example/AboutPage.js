@@ -2,11 +2,16 @@
  * Created by kylejohnson on 28/01/2017.
  */
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
 
 const HomePage = class extends Component {
     static navigatorStyle = global.navbarStyle;
 
-    displayName: 'HomePage';
+    static propTypes = {
+        navigator: propTypes.object,
+    };
+
+    static displayName = 'ExampleScreen';
 
     constructor(props, context) {
         super(props, context);
@@ -17,9 +22,10 @@ const HomePage = class extends Component {
     onNavigatorEvent = (event) => {
         if (event.id === routes.navEvents.SHOW) {
             API.trackPage('About Screen');
-        } else if (event.id === routes.navEvents.HIDE) {
-
         }
+        // else if (event.id === routes.navEvents.HIDE) {
+        //
+        // }
     };
 
     onLogin = () => {
@@ -37,7 +43,8 @@ const HomePage = class extends Component {
                         <View style={Styles.noPad}>
                             {_.range(0, 12).map(i => (
                                 <ListItem
-                                  animationProps={Animations.listItem}
+                                  key={i}
+                                  // animationProps={Animations.listItem}
                                   index={i}
                                 >
                                     <Text>
