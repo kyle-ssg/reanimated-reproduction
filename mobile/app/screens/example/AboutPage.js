@@ -1,7 +1,7 @@
 /**
  * Created by kylejohnson on 28/01/2017.
  */
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 
 const HomePage = class extends Component {
     static navigatorStyle = global.navbarStyle;
@@ -11,13 +11,13 @@ const HomePage = class extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {};
-        routeHelper.handleNavEvent(this.props.navigator, 'about', this.onNavigatorEvent);
+        routes.handleNavEvent(this.props.navigator, 'about', this.onNavigatorEvent);
     }
 
     onNavigatorEvent = (event) => {
-        if (event.id == routeHelper.navEvents.SHOW) {
+        if (event.id === routes.navEvents.SHOW) {
             API.trackPage('About Screen');
-        } else if (event.id == routeHelper.navEvents.HIDE) {
+        } else if (event.id === routes.navEvents.HIDE) {
 
         }
     };

@@ -1,19 +1,23 @@
 /**
  * Created by kylejohnson on 28/01/2017.
  */
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import AccountStore from '../../../common-mobile/stores/account-store';
 
 const HomePage = class extends Component {
     static navigatorStyle = global.navbarStyle;
 
-    displayName: 'HomePage';
+    static displayName= 'ExamplesScreen';
+
+    static propTypes = {
+        navigator: propTypes.object,
+    }
 
     constructor(props, context) {
         super(props, context);
         this.state = {};
         ES6Component(this);
-        routeHelper.handleNavEvent(props.navigator, 'home', this.onNavigatorEvent);
+        routes.handleNavEvent(props.navigator, 'home', this.onNavigatorEvent);
         this.initPush(true);
     }
 
@@ -21,23 +25,135 @@ const HomePage = class extends Component {
         this.listenTo(AccountStore, 'change', () => this.forceUpdate());
         API.push.getInitialNotification()
             .then((e) => {
-                e && this.onNotification(Object.assign({}, e, { fromClick: true }));
+                if (e) this.onNotification(Object.assign({}, e, { fromClick: true }));
             });
     }
 
     onNavigatorEvent = (event) => {
-        if (event.id == routeHelper.navEvents.SHOW) {
+        if (event.id === routes.navEvents.SHOW) {
             this.props.navigator.setDrawerEnabled({ side: 'right', enabled: true });
             API.trackPage('Home Screen');
-        } else if (event.id == routeHelper.navEvents.HIDE) {
+        } else if (event.id === routes.navEvents.HIDE) {
             this.props.navigator.setDrawerEnabled({ side: 'right', enabled: false });
         }
     };
 
+    getInitialLink = () => {
+        API.getInitialLink(this.onLink);
+    }
+
+    subscribeToLink = () => {
+        API.onLinkPressed(this.onLink);
+    }
+
+
+    showUpload = () => {
+        API.showUpload('Upload a file', false, 100, 100, 0.8, () => {
+            this.setState({ isUploading: true });
+        })
+            .then((res) => {
+                alert(JSON.stringify(res));
+            });
+    };
+
+    openSelect = () => {
+        this.props.navigator.showModal(
+            routes.selectScreen('Select a thing', {
+                items: ['item 1', 'item 2'],
+                filterItem: (contact, search) => contact.indexOf(search) !== -1,
+                onChange: options => this.setState({ options }),
+                renderRow: (item, isSelected, toggleItem) => (
+                    <ListItem onPress={toggleItem}>
+                        <Text>{item}</Text>
+                        <Checkbox value={isSelected}/>
+                    </ListItem>
+                ),
+            }),
+        );
+    };
+
+    selectContact = () => {
+        this.props.navigator.showModal(
+            routes.contactScreen('Select Contact', (contact) => {
+                this.setState({ contacts: [contact] });
+            }),
+        );
+    };
+
+    selectMultipleContacts = () => {
+        this.props.navigator.showModal(
+            routes.contactScreen('Select Contacts', (contact) => {
+                this.setState({ contacts: [contact] });
+            }, true),
+        );
+    };
+
+    showExampleLightbox = () => {
+        this.props.navigator.showLightBox(routes.exampleLightbox());
+    };
+
+    openWebModal = () => {
+        routes.openWebModal('https://www.google.com', 'Google');
+    };
+
+    generateLink = () => {
+        API.generateLink('SSG Boilerplate', {
+            route: {
+                screen: 'aboutScreen',
+                data: {
+                    customData: 'bla',
+                },
+            },
+        }, 'www.solidstategroup.com')
+            .then((branchURL) => {
+                this.setState({ branchURL });
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }
+
+    registerPush = () => {
+        if (this.state.token) {
+            this.setState({ token: null });
+            API.push.unsubscribe('/topics/all');
+            API.push.stop();
+        } else {
+            this.initPush(false);
+        }
+    };
+
+    initPush = (silent) => {
+        API.push.init(this.onNotification, silent)
+            .then((token) => {
+                API.push.subscribe('/topics/all');
+                this.setState({ token });
+            });
+    };
+
+
+    onLink = (notification) => {
+        if (notification.route) {
+            const route = notification.route;
+            if (routes[route.screen]) this.props.navigator.push(routes[route.screen](route.data));
+        }
+    }
+
+    onNotification = (notification) => {
+        if (notification.fromClick) {
+            if (notification.route) {
+                const route = JSON.parse(notification.route);
+                if (routes[route.screen]) this.props.navigator.push(routes[route.screen](route.data));
+            }
+        }
+    };
+
+    triggerError = () => {
+        console.log({}.hell.no);
+    };
 
     render() {
         const { uri } = this.state;
-        const { push } = this.props.navigator;
         return (
             <Flex testID="example-screen">
                 <Fade value={1} style={[{ flex: 1 }, Styles.body]} autostart>
@@ -86,7 +202,7 @@ const HomePage = class extends Component {
                                     name="ios-notifications"
                                     style={[Styles.listIcon, { color: pallette.secondary }]}
                                   />
-)}
+                            )}
                             >
                                 <Text>Register for Push</Text>
                                 <ReactNative.Switch
@@ -95,7 +211,7 @@ const HomePage = class extends Component {
                                 />
                             </ListItem>
 
-                            <ListItem index={1} onPress={() => this.props.navigator.push(routeHelper.aboutScreen())}>
+                            <ListItem index={1} onPress={() => this.props.navigator.push(routes.aboutScreen())}>
                                 <Text>About</Text>
                                 <ION name="ios-arrow-forward" style={[Styles.listIconNav]}/>
                             </ListItem>
@@ -128,11 +244,11 @@ const HomePage = class extends Component {
                                     {' '}
                                     {this.state.contacts
                                     && (
-                                    <Text>
-                                        (
-                                        {_.map(this.state.contacts, 'givenName').join(',')}
-)
-                                    </Text>
+                                        <Text>
+                                            (
+                                            {_.map(this.state.contacts, 'givenName').join(',')}
+                                            )
+                                        </Text>
                                     )
                                     }
                                 </Text>
@@ -140,15 +256,15 @@ const HomePage = class extends Component {
                             </ListItem>
                             <ListItem index={4} onPress={this.selectMultipleContacts}>
                                 <Text>
-Select Multiple Contacts
+                                    Select Multiple Contacts
                                     {' '}
                                     {this.state.contacts
                                     && (
-                                    <Text>
-                                        (
-                                        {_.map(this.state.contacts, 'givenName').join(',')}
-)
-                                    </Text>
+                                        <Text>
+                                            (
+                                            {_.map(this.state.contacts, 'givenName').join(',')}
+                                            )
+                                        </Text>
                                     )
                                     }
                                 </Text>
@@ -177,29 +293,9 @@ Select Multiple Contacts
 
                             <ListItem index={7} onPress={this.triggerError}>
                                 <Text style={[Styles.anchor, { color: 'red' }]}>
-Trigger Crashlytics error (this will crash
-                                    the app)
+                                    Trigger Crashlytics error (this will crash the app)
                                 </Text>
                             </ListItem>
-
-                            <Container>
-                                <FormGroup>
-                                    {
-
-                                        AccountStore.getUser()
-                                            ? (
-                                                <Button onPress={() => routeHelper.logout(this.props.navigator)}>
-                                                Logout
-                                                </Button>
-                                            )
-                                            : (
-                                                <Button onPress={() => routeHelper.goAccount(this.props.navigator)}>
-                                                Login Wall
-                                                </Button>
-                                            )
-                                    }
-                                </FormGroup>
-                            </Container>
 
                             {uri ? (
                                 <Image
@@ -215,120 +311,6 @@ Trigger Crashlytics error (this will crash
             </Flex>
         );
     }
-
-    getInitialLink = () => {
-        API.getInitialLink(this.onLink);
-    }
-
-    subscribeToLink = () => {
-        API.onLinkPressed(this.onLink);
-    }
-
-
-    showUpload = () => {
-        API.showUpload('Upload a file', false, 100, 100, compressImageQuality = 0.8, () => {
-            this.setState({ isUploading: true });
-        })
-            .then((res) => {
-                alert(JSON.stringify(res));
-            });
-    };
-
-    openSelect = () => {
-        this.props.navigator.showModal(
-            routeHelper.selectScreen('Select a thing', {
-                items: ['item 1', 'item 2'],
-                filterItem: (contact, search) => contact.indexOf(search) !== -1,
-                onChange: options => this.setState({ options }),
-                renderRow: (item, isSelected, toggleItem) => (
-                    <ListItem onPress={toggleItem}>
-                        <Text>{item}</Text>
-                        <Checkbox value={isSelected}/>
-                    </ListItem>
-                ),
-            }),
-        );
-    };
-
-    selectContact = () => {
-        this.props.navigator.showModal(
-            routeHelper.contactScreen('Select Contact', (contact) => {
-                this.setState({ contacts: [contact] });
-            }),
-        );
-    };
-
-    selectMultipleContacts = () => {
-        this.props.navigator.showModal(
-            routeHelper.contactScreen('Select Contacts', (contact) => {
-                this.setState({ contacts: [contact] });
-            }, true),
-        );
-    };
-
-    showExampleLightbox = () => {
-        this.props.navigator.showLightBox(routeHelper.exampleLightbox());
-    };
-
-    openWebModal = () => {
-        routeHelper.openWebModal('https://www.google.com', 'Google');
-    };
-
-    generateLink = () => {
-        API.generateLink('SSG Boilerplate', {
-            route: {
-                screen: 'aboutScreen',
-                data: {
-                    customData: 'bla',
-                },
-            },
-        }, 'www.solidstategroup.com')
-            .then((branchURL) => {
-                this.setState({ branchURL });
-            })
-            .catch((e) => {
-                console.log(e);
-            });
-    }
-
-    registerPush = () => {
-        if (this.state.token) {
-            this.setState({ token: null });
-            API.push.unsubscribe('/topics/all');
-            API.push.stop();
-        } else {
-            this.initPush(false);
-        }
-    };
-
-    initPush = (silent) => {
-        API.push.init(this.onNotification, silent)
-            .then((token) => {
-                API.push.subscribe('/topics/all');
-                this.setState({ token });
-            });
-    };
-
-
-    onLink = (notification) => {
-        if (notification.route) {
-            const route = notification.route;
-            routeHelper[route.screen] && this.props.navigator.push(routeHelper[route.screen](route.data));
-        }
-    }
-
-    onNotification = (notification) => {
-        if (notification.fromClick) {
-            if (notification.route) {
-                const route = JSON.parse(notification.route);
-                routeHelper[route.screen] && this.props.navigator.push(routeHelper[route.screen](route.data));
-            }
-        }
-    };
-
-    triggerError = () => {
-        console.log({}.hell.no);
-    };
 };
 
 HomePage.propTypes = {};
