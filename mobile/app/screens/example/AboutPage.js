@@ -44,7 +44,7 @@ const HomePage = class extends Component {
                             {_.range(0, 12).map(i => (
                                 <ListItem
                                   key={i}
-                                  // animationProps={Animations.listItem}
+                                  animationProps={Animations.listItem}
                                   index={i}
                                 >
                                     <Text>

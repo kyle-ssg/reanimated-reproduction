@@ -3,7 +3,7 @@ import { Easing } from 'react-native';
 
 Animatable.initializeRegistryWithDefinitions({
     basicListEntrance: {
-        from: { opacity: 1, 'translateX': 40 },
+        from: { opacity: 0, 'translateX': 20 },
         to: { opacity: 1, 'translateX': 0 },
     },
     basicListEntranceFade: {
@@ -12,14 +12,17 @@ Animatable.initializeRegistryWithDefinitions({
     },
 });
 
+const acceleration = Easing.bezier(0.4, 0.0, 1, 1);
+const deceleration = Easing.bezier(0.0, 0.0, 0.2, 1);
+const standard = Easing.bezier(0.4, 0.0, 0.2, 1);
 global.Animations = {
-    acceleration: Easing.bezier(0.4, 0.0, 1, 1), // See https://material.io/design/motion/speed.html#easing
-    deceleration: Easing.bezier(0.0, 0.0, 0.2, 1), // See https://material.io/design/motion/speed.html#easing
-    standard: Easing.bezier(0.4, 0.0, 0.2, 1), // See https://material.io/design/motion/speed.html#easing
+    acceleration, // See https://material.io/design/motion/speed.html#easing
+    deceleration, // See https://material.io/design/motion/speed.html#easing
+    standard, // See https://material.io/design/motion/speed.html#easing
     listItem: {
         useNativeDriver: true,
         animation: 'basicListEntrance',
-        duration: 360,
-        easing: 'ease-in-cubic',
+        duration: 150,
+        easing: acceleration,
     },
 };
