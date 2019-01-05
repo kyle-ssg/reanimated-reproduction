@@ -9,7 +9,7 @@ const NativeModal = class extends React.Component {
     onNavigatorEvent(event) {
         if (event.id == 'close') {
             this.props.navigator.dismissModal();
-        } else if (event.id == routeHelper.navEvents.SHOW) {
+        } else if (event.id == routes.navEvents.SHOW) {
 
         } else {
         }

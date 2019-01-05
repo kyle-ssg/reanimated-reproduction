@@ -5,9 +5,9 @@ const SideMenuLink = props => (
         <Row style={{ flexWrap: 'nowrap' }}>
             <Column>
                 {props.image
-                    ? <Image style={Styles.menuItemImage} source={props.image} />
-                    : <ION style={Styles.menuItemIcon} name={props.icon} />
-				}
+                    ? <Image style={Styles.menuItemImage} source={props.image}/>
+                    : <ION style={Styles.menuItemIcon} name={props.icon}/>
+                }
             </Column>
             <Column>
                 <Text style={Styles.menuItemText}>
@@ -25,43 +25,43 @@ SideMenuLink.propTypes = {
 };
 
 const TheComponent = class extends Component {
-	displayName: 'TheComponent'
+    displayName: 'TheComponent'
 
-	constructor(props, context) {
-	    super(props, context);
-	    this.state = {};
-	}
+    constructor(props, context) {
+        super(props, context);
+        this.state = {};
+    }
 
 
-	linkPressed = (link) => {
-	    routeHelper.closeDrawer(this.props.navigator);
-	    this.props.navigator.handleDeepLink({
-	        link,
-	    });
-	};
+    linkPressed = (link) => {
+        routes.closeDrawer(this.props.navigator);
+        this.props.navigator.handleDeepLink({
+            link,
+        });
+    };
 
-	render() {
-	    return (
-    <LinearGradient
-      style={[{ flex: 1 }, Styles.statusContent, Styles.menuShadow]}
-      colors={[pallette.fromGradient, pallette.toGradient]}
-    >
-        <TouchableOpacity style={styles.closeButton}>
-            <ION name="ios-close-circle-outline"/>
-        </TouchableOpacity>
-        <Flex>
-            <SideMenuLink
-              onPress={this.linkPressed} text="Link 1" to="link1"
-              icon="ios-link"
-            />
-            <SideMenuLink
-              onPress={this.linkPressed} text="Link 2" to="link2"
-              icon="ios-link"
-            />
-        </Flex>
-    </LinearGradient>
-	    );
-	}
+    render() {
+        return (
+            <LinearGradient
+              style={[{ flex: 1 }, Styles.statusContent, Styles.menuShadow]}
+              colors={[pallette.fromGradient, pallette.toGradient]}
+            >
+                <TouchableOpacity style={styles.closeButton}>
+                    <ION name="ios-close-circle-outline"/>
+                </TouchableOpacity>
+                <Flex>
+                    <SideMenuLink
+                      onPress={this.linkPressed} text="Link 1" to="aboutScreen"
+                      icon="ios-link"
+                    />
+                    <SideMenuLink
+                      onPress={this.linkPressed} text="Link 2" to="homeScreen"
+                      icon="ios-link"
+                    />
+                </Flex>
+            </LinearGradient>
+        );
+    }
 };
 
 var styles = StyleSheet.create({
