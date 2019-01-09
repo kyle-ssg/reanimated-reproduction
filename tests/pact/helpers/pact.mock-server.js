@@ -1,25 +1,18 @@
-const app = require('express')();
+const map = require('lodash/map');
 
+const { mock, setup } = require('./pact.server');
+const allTests = require('../tests/index.pact');
 
-export default (url, method, body, requestBody, headers = {}) => {
-    method = method.toLowerCase();
-    app[method.toLowerCase()](url, (req, res) => {
-        res.json(body);
+setup(3000)
+    .then(() => {
+        map(allTests, (tests) => {
+            const { path: testsPath } = tests;
+            map(tests, (test, method) => {
+                if (typeof test !== 'object') return;
+                const { body, requestBody, path: testPath } = test;
+                const path = testPath || testsPath;
+                console.log('Mocking', path, method);
+                mock(path, method, body, requestBody);
+            });
+        });
     });
-    const options = {
-        headers: {
-            'Content-Type': 'application/json',
-            ...headers,
-        },
-        method,
-    };
-    if (method !== 'get') {
-        options.body = JSON.stringify(requestBody || {});
-    }
-    return () => fetch(global.api + url, options).then(res => res.json());
-};
-
-export const setup = port => new Promise((resolve) => {
-    console.log('SERVER LISTENING', port);
-    app.listen(port + 1, resolve);
-});

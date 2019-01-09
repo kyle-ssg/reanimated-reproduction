@@ -26,4 +26,4 @@ const allTests = {
     },
 };
 
-export default allTests;
+module.exports = allTests;

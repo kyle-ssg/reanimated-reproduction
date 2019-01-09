@@ -3,18 +3,18 @@ import { Pact } from '@pact-foundation/pact';
 import path from 'path';
 
 import executeTests from '../helpers/initialise-tests';
-import allTests from './index.example.pact';
+import allTests from './index.pact';
 
 global.fetch = fetch;
 
-const { setup: mockServer } = require('../helpers/pact.mock-server');
+const { setup: mockServer } = require('../helpers/pact.server');
 
 require('dotenv').config();
 
 executeTests(allTests);
 
 before((done) => {
-    global.port = 9000;
+    global.port = 3213;
     global.api = `http://localhost:${global.port}`;
     global.pact = new Pact({
         port: global.port,
