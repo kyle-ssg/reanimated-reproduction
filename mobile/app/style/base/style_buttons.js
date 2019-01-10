@@ -2,13 +2,13 @@ module.exports = {
 
 
     button: {
-        height: styleVariables.buttonHeight
+        height: styleVariables.buttonHeight,
     },
 
-    //Button
+    // Button
     circleButton: {
-    	justifyContent:'center',
-		alignItems:'center',
+    	justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: 'white',
         width: 34,
         height: 34,
@@ -20,7 +20,7 @@ module.exports = {
         shadowColor: '#333',
         shadowOffset: {
             width: 3,
-            height: 3
+            height: 3,
         },
         shadowRadius: 5,
         shadowOpacity: 0.4,
@@ -28,9 +28,9 @@ module.exports = {
     },
 
 
-    //Button
+    // Button
     circleButtonText: {
-       fontSize: em(2)
+        fontSize: em(2),
     },
 
     buttonWithIcon: {
@@ -42,7 +42,7 @@ module.exports = {
         backgroundColor: 'transparent',
         color: colour.btnText,
         fontWeight: styleVariables.mediumFontWeight,
-        fontSize: styleVariables.fontSizeBase
+        fontSize: styleVariables.fontSizeBase,
     },
 
     buttonIcon: {
@@ -68,7 +68,7 @@ module.exports = {
         backgroundColor: colour.buttonDefault,
         paddingLeft: styleVariables.paddingBase,
         paddingRight: styleVariables.paddingBase,
-        height: styleVariables.buttonHeight
+        height: styleVariables.buttonHeight,
     },
 
     buttonGroupLeft: {
@@ -81,12 +81,12 @@ module.exports = {
     },
 
     buttonPrimary: {
-        backgroundColor: styleVariables.buttonPrimary
+        backgroundColor: styleVariables.buttonPrimary,
     },
 
     buttonTextLight: {
         color: styleVariables.buttonTextLight,
-        fontSize: styleVariables.fontSizeBase
+        fontSize: styleVariables.fontSizeBase,
     },
 
     buttonRounded: {
@@ -97,6 +97,6 @@ module.exports = {
     },
     buttonRight: {
         width: (DeviceWidth / 2) - 15,
-        marginLeft: 10
+        marginLeft: 10,
     },
 };

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-//Lodash
+// Lodash
 import each from 'lodash/each';
 import map from 'lodash/map';
 import uniqBy from 'lodash/uniqBy';
@@ -12,8 +12,14 @@ import findIndex from 'lodash/findIndex';
 import range from 'lodash/range';
 import keyBy from 'lodash/keyBy';
 
-window._ = {each, filter,uniqBy, find, partial, findIndex, merge, range, map, cloneDeep, keyBy};
-//React Prop Types, todo: move to react-native-globals
+import Interactable from 'react-native-interactable';
+
+import Animation from 'lottie-react-native';
+
+import Navigation from 'react-native-navigation';
+
+window._ = { each, filter, uniqBy, find, partial, findIndex, merge, range, map, cloneDeep, keyBy };
+// React Prop Types, todo: move to react-native-globals
 window.Any = PropTypes.any;
 window.OptionalArray = PropTypes.array;
 window.OptionalBool = PropTypes.bool;
@@ -33,12 +39,6 @@ window.RequiredObject = PropTypes.object.isRequired;
 window.RequiredString = PropTypes.string.isRequired;
 window.RequiredNode = PropTypes.node.isRequired;
 window.RequiredElement = PropTypes.node.isRequired;
-
-import Interactable from 'react-native-interactable';
 global.Interactable = Interactable;
-
-import Animation from 'lottie-react-native';
 global.Animation = Animation;
-
-import Navigation from 'react-native-navigation';
 global.Navigation = Navigation;

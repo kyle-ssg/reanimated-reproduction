@@ -1,20 +1,18 @@
 import firebase from 'react-native-firebase';
+
 const FCM = firebase.messaging();
 const Notifications = firebase.notifications();
 const PushManager = class {
     static token = null;
+
     static onNotification = null;
 
 
     getInitialNotification = () => Notifications.getInitialNotification();
 
-    subscribe = (topic) => {
-        return FCM.subscribeToTopic(topic);
-    };
+    subscribe = topic => FCM.subscribeToTopic(topic);
 
-    unsubscribe = (topic) => {
-        return FCM.unsubscribeFromTopic(topic);
-    };
+    unsubscribe = topic => FCM.unsubscribeFromTopic(topic);
 
     stop = () => {
         this.token = null;
@@ -22,7 +20,6 @@ const PushManager = class {
     }; // remove old listener
 
     init = (onNotification, silent) => {
-
         this.onNotification = onNotification;
 
         if (!this.notificationListener) {
@@ -31,16 +28,15 @@ const PushManager = class {
                     this.notificationListener(notification);
                 }
                 notification.finish();
-            })
+            });
         }
 
         this.notificationListener = (notification) => {
-            //Callback if notification is valid
+            // Callback if notification is valid
 
-            if (notification._notificationType == "will_present_notification")
-                return //these notifications are duplicate and pointless
+            if (notification._notificationType == 'will_present_notification') return; // these notifications are duplicate and pointless
 
-            this.onNotification && this.onNotification(Object.assign({}, notification, {fromClick: notification._notificationType == "notification_response"}))
+            this.onNotification && this.onNotification(Object.assign({}, notification, { fromClick: notification._notificationType == 'notification_response' }));
         };
 
         if (this.token) {
@@ -52,7 +48,7 @@ const PushManager = class {
                 FCM.requestPermission(); // for iOS
             }
 
-            FCM.getToken().then(token => {
+            FCM.getToken().then((token) => {
                 if (token) {
                     this.token = token;
                     resolve(this.token);

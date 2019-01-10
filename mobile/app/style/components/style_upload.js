@@ -6,7 +6,7 @@ module.exports = {
         width: em(10),
         height: em(10),
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     uploadInner: {
         borderRadius: em(3.75),
@@ -21,10 +21,10 @@ module.exports = {
         justifyContent: 'center',
         alignItems: 'center',
         width: em(10),
-        height: em(10)
+        height: em(10),
     },
     uploadIcon: {
         fontSize: em(4),
         color: pallette.white,
-    }
+    },
 };

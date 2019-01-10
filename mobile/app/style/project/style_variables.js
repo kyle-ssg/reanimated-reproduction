@@ -1,11 +1,13 @@
-import {NativeModules,PixelRatio} from 'react-native';
-var em = require('../base/style_pxToEm');
+import { NativeModules, PixelRatio } from 'react-native';
+
+const em = require('../base/style_pxToEm');
+
 window.pallette = {
     backgroundBase: '#ffffff',
 
-    facebook:'#3b5998',
-    google:'#e83d38',
-    twitter:'#00acee',
+    facebook: '#3b5998',
+    google: '#e83d38',
+    twitter: '#00acee',
 
     primary: '#368de8',
     primaryDark: '#3582dc',
@@ -14,7 +16,7 @@ window.pallette = {
     secondary: '#03bd69',
     third: '#c84d38',
 
-	navBarText: '#fff',
+    navBarText: '#fff',
 
     text: '#333',
     textLight: '#a8a8a8',
@@ -22,26 +24,26 @@ window.pallette = {
     textLightestHighlight: '#e2e2e2',
     divider: '#d1d1d1',
     dividerLight: '#f9f9fa',
-	brandDanger: '#9C1033',
+    brandDanger: '#9C1033',
 
     error: '#b94d4d',
 
-    fromGradient:'#fafafa',
-    toGradient:'#fff',
-    anchor: '#7e8592'
+    fromGradient: '#fafafa',
+    toGradient: '#fff',
+    anchor: '#7e8592',
 };
 
 window.colour = {
     activeBorder: '#3582dc',
     errorBackground: '#c84d38',
-    bodyBackground: '#fff', //General app  background
-    bodyBackgroundAlt: '#f1f1f1', //General app  background
-    inputBackground:'#fff',
-    inputBorder:"#d9d9d9",
-    textFaint:'rgba(255,255,255,.75)',
-    textFaintLight:'rgba(0,0,0,.2)',
+    bodyBackground: '#fff', // General app  background
+    bodyBackgroundAlt: '#f1f1f1', // General app  background
+    inputBackground: '#fff',
+    inputBorder: '#d9d9d9',
+    textFaint: 'rgba(255,255,255,.75)',
+    textFaintLight: 'rgba(0,0,0,.2)',
 
-    //nav
+    // nav
     navBar: pallette.primary,
     navBarIcon: pallette.navBarText,
     navBarSubtitle: pallette.secondary,
@@ -49,13 +51,13 @@ window.colour = {
     navBarBorder: 'transparent',
     navBarText: pallette.navBarText,
 
-    //BUTTON / SELECT COLOURS
-    btnText: "white",
+    // BUTTON / SELECT COLOURS
+    btnText: 'white',
     buttonDefault: pallette.secondary,
 };
 
-window.styleVariables =  Object.assign({
-    //SCAFFOLD
+window.styleVariables = Object.assign({
+    // SCAFFOLD
     statusHeight: NativeModules.StatusBarManager.HEIGHT || 20,
     baseNavHeight: 54,
     marginBaseVertical: em(1),
@@ -68,11 +70,11 @@ window.styleVariables =  Object.assign({
     fontSizeH2: em(1.75),
     fontSizeH3: em(1.25),
 
-    //BASE
+    // BASE
     borderWidth: 2 / PixelRatio.get(),
     borderDefault: pallette.textLight,
 
-    //TYPE
+    // TYPE
     fontSizeBase: em(1.2),
     fontSizeSmall: em(0.85),
     fontSizeHeading: em(1.5),
@@ -80,29 +82,29 @@ window.styleVariables =  Object.assign({
     fontSizeIcon: 30,
     fontSansSerif: 'helvetica neue',
 
-    text: pallette.text, //General app text colour
-    textLight: pallette.textLight, //Light app text colour
+    text: pallette.text, // General app text colour
+    textLight: pallette.textLight, // Light app text colour
 
-    //FORMS
-    inputHeight: 44, //Need to change this value in both platform variables files at the moment
+    // FORMS
+    inputHeight: 44, // Need to change this value in both platform variables files at the moment
     inputText: pallette.text,
     inputBackground: colour.inputBackground,
     inputBorder: pallette.textLightest,
-    inputBorderWidth: 1/PixelRatio.get()*3,
+    inputBorderWidth: 1 / PixelRatio.get() * 3,
     placeholderTextColor: pallette.textLight,
 
-    //NAV
+    // NAV
     navBar: colour.navBar,
     navBarIcon: pallette.text,
     navBarButtonText: pallette.text,
     navBarBorder: pallette.primary,
     navBarText: pallette.text,
-    navColor:pallette.navBarText,
+    navColor: pallette.navBarText,
 
-    //MODALS
+    // MODALS
     modalBackground: '#F0F0F0',
 
-    //BUTTONS
+    // BUTTONS
     buttonHeight: 50,
-    buttonTextLight: pallette.textLight
+    buttonTextLight: pallette.textLight,
 }, require('./style_platform_variables'));

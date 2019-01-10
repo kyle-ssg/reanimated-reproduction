@@ -2,7 +2,7 @@ require('./style_pxToEm');
 
 module.exports = {
 
-    //so 14 is em(1), 28 is em(2)
+    // so 14 is em(1), 28 is em(2)
 
     //
     // Typography
@@ -13,12 +13,12 @@ module.exports = {
 
     text: {
         color: colour.text,
-        fontSize: em(2)
+        fontSize: em(2),
     },
 
 
     textError: {
-        color: colour.errorText
+        color: colour.errorText,
     },
 
 
@@ -31,22 +31,22 @@ module.exports = {
     },
 
     textBottom: {
-        textAlignVertical: 'bottom'
+        textAlignVertical: 'bottom',
     },
 
     icon: {
-        fontSize: em(2)
+        fontSize: em(2),
     },
 
     anchor: {
         color: pallette.anchor,
         fontWeight: '500',
-        fontSize: em(styleVariables.fontSizeAnchor)
+        fontSize: em(styleVariables.fontSizeAnchor),
     },
 
     debug: {
         borderWidth: styleVariables.borderWidth,
-        borderColor: pallette.brandDanger
+        borderColor: pallette.brandDanger,
     },
 
     p: {
@@ -54,7 +54,7 @@ module.exports = {
     },
 
     bold: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
 
     // Headings
@@ -63,14 +63,14 @@ module.exports = {
     heading: {
         fontSize: styleVariables.fontSizeHeading,
         color: colour.heading,
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
 
     subheading: {
         fontSize: styleVariables.fontSizesubheading,
         color: colour.subheading,
         fontFamily: 'SFUIDisplay-Bold',
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
 
     h1: {
@@ -89,7 +89,7 @@ module.exports = {
         paddingTop: 0,
         fontSize: styleVariables.fontSizeH3,
         fontWeight: styleVariables.headingsFontWeight,
-        color: pallette.textLight
-    }
+        color: pallette.textLight,
+    },
 
 };

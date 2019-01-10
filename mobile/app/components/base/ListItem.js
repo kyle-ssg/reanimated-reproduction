@@ -1,21 +1,22 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import * as Animatable from 'react-native-animatable';
 
 const TheComponent = class extends Component {
     displayName: 'TheComponent'
 
     constructor(props, context) {
-        super(props)
+        super(props);
         this.state = {};
     }
 
     render() {
-        var content = (
+        const content = (
             <View>
                 <Row>
                     {this.props.icon}
                     <View
-                        style={[this.props.disabled && Styles.listItemDisabled, Styles.liContent, {backgroundColor: 'transparent'}]}>
+                      style={[this.props.disabled && Styles.listItemDisabled, Styles.liContent, { backgroundColor: 'transparent' }]}
+                    >
                         {this.props.children}
                     </View>
                 </Row>
@@ -28,20 +29,22 @@ const TheComponent = class extends Component {
         return (
             this.props.onPress ? (
                 <TheView
-                    style={this.props.style || Styles.listItem}
-                    {...animationProps}
+                  style={this.props.style || Styles.listItem}
+                  {...animationProps}
                 >
                     {
-                        Platform.OS == "android" ? (
+                        Platform.OS == 'android' ? (
                             <TouchableNativeFeedback
-                                onPress={this.props.disabled ? null : this.props.onPress}
-                                background={TouchableNativeFeedback.SelectableBackgroundBorderless()}>
+                              onPress={this.props.disabled ? null : this.props.onPress}
+                              background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
+                            >
                                 {content}
                             </TouchableNativeFeedback>
                         ) : (
                             <TouchableOpacity
-                                activeOpacity={0.8}
-                                onPress={this.props.disabled ? null : this.props.onPress}>
+                              activeOpacity={0.8}
+                              onPress={this.props.disabled ? null : this.props.onPress}
+                            >
                                 {content}
                             </TouchableOpacity>
                         )
@@ -49,8 +52,11 @@ const TheComponent = class extends Component {
                 </TheView>
             ) : (
                 <Animatable.View
-                    {...this.props.animationProps}
-                    style={[this.props.style || Styles.listItem]}>{content}</Animatable.View>
+                  {...this.props.animationProps}
+                  style={[this.props.style || Styles.listItem]}
+                >
+                    {content}
+                </Animatable.View>
             )
         );
     }

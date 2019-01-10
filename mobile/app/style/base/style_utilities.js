@@ -9,22 +9,22 @@ module.exports = {
         paddingBottom: 0,
         paddingTop: 0,
         paddingLeft: 0,
-        paddingRight: 0
+        paddingRight: 0,
     },
 
     center: {
-        textAlign: 'center'
+        textAlign: 'center',
     },
 
     shortText: {
         width: DeviceWidth / 1.5,
-        alignSelf:'center',
-        textAlign:'center'
+        alignSelf: 'center',
+        textAlign: 'center',
     },
 
     centerChildren: {
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
 
     fullScreen: {
@@ -33,12 +33,12 @@ module.exports = {
         bottom: 0,
         left: 0,
         right: 0,
-        height: Dimensions.get("window").height,
+        height: Dimensions.get('window').height,
     },
 
     backdrop: {
         flex: 1,
-        backgroundColor: styleVariables.backdropBackground
+        backgroundColor: styleVariables.backdropBackground,
     },
 
     iconMiddle: {

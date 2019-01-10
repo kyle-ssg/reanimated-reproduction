@@ -3,19 +3,19 @@ module.exports = {
     // Forms
     // --------------------------------------------------
 
-    //Input
+    // Input
 
     formGroup: {
         paddingTop: styleVariables.paddingBase,
-        paddingBottom: styleVariables.paddingBase
+        paddingBottom: styleVariables.paddingBase,
     },
 
-    enterPinContainer:{
-        backgroundColor:'#fff',
-        borderRadius:4,
-        borderColor:colour.inputBorder,
-        borderWidth:PixelRatio.get() / 2,
-        height:styleVariables.inputHeight
+    enterPinContainer: {
+        backgroundColor: '#fff',
+        borderRadius: 4,
+        borderColor: colour.inputBorder,
+        borderWidth: PixelRatio.get() / 2,
+        height: styleVariables.inputHeight,
     },
 
     pin: {
@@ -24,7 +24,7 @@ module.exports = {
         alignItems: 'center',
         margin: 10,
         borderBottomWidth: 2,
-        borderColor: colour.inputBorder
+        borderColor: colour.inputBorder,
     },
 
     input: {
@@ -44,7 +44,7 @@ module.exports = {
     },
 
     disabled: {
-        opacity: styleVariables.disabledOpacity
+        opacity: styleVariables.disabledOpacity,
     },
 
     disabledText: {
@@ -54,18 +54,18 @@ module.exports = {
     // Checkboxes and radios
 
     radioText: {
-        color: colour.radioText
+        color: colour.radioText,
     },
 
     radioTextActive: {
-        color: colour.radioTextActive
+        color: colour.radioTextActive,
     },
 
     radio: {
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 5,
-        borderWidth: 1 / PixelRatio.get()
-    }
+        borderWidth: 1 / PixelRatio.get(),
+    },
 
 };

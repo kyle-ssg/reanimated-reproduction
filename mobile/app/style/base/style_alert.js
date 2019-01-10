@@ -1,14 +1,14 @@
 module.exports = {
-  //
-  // Alerts
-  // --------------------------------------------------
+    //
+    // Alerts
+    // --------------------------------------------------
 
-  alert: {
-    fontSize: styleVariables.fontSizeAlert
-  },
+    alert: {
+        fontSize: styleVariables.fontSizeAlert,
+    },
 
-  alertIcon: {
-    fontSize: styleVariables.fontSizeIcon
-  },
+    alertIcon: {
+        fontSize: styleVariables.fontSizeIcon,
+    },
 
 };

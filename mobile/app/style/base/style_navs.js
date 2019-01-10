@@ -34,17 +34,17 @@ module.exports = {
 
     navBarButtonText: {
         fontSize: styleVariables.fontSizeH2,
-        color: pallette.text
+        color: pallette.text,
     },
 
     navBarTitle: {
         fontSize: styleVariables.fontSizeH2,
         color: styleVariables.navBarText,
-        fontWeight: styleVariables.headingsFontWeight
+        fontWeight: styleVariables.headingsFontWeight,
     },
     navItem: {
         height: 44,
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
 
     // Tabs
@@ -53,10 +53,10 @@ module.exports = {
 
     tabText: {
         color: colour.tabText,
-        textAlign: 'center'
+        textAlign: 'center',
     },
     tabActive: {
-        backgroundColor: colour.tabActive
+        backgroundColor: colour.tabActive,
     },
 
     // Bar
@@ -64,12 +64,12 @@ module.exports = {
 
     bar: {
         padding: styleVariables.paddingBase,
-        backgroundColor: colour.secondary
+        backgroundColor: colour.secondary,
     },
     barText: {
         fontWeight: 'bold',
         color: pallette.pallette,
-        fontSize: styleVariables.fontSizesubheading
+        fontSize: styleVariables.fontSizesubheading,
     },
 
     // Menu
@@ -77,25 +77,25 @@ module.exports = {
 
     menu: {
         backgroundColor: colour.menu,
-        position: "absolute",
+        position: 'absolute',
         top: 0,
         left: 0,
-        width: Dimensions.get("window").width / 1.5,
+        width: Dimensions.get('window').width / 1.5,
         borderRightWidth: 1 / PixelRatio.get(),
         borderColor: pallette.divider,
-        height: Dimensions.get("window").height
+        height: Dimensions.get('window').height,
     },
     menuIcon: {
         fontSize: styleVariables.fontSizeIcon,
         color: colour.primary,
-        marginRight: styleVariables.marginBaseHorizontal
+        marginRight: styleVariables.marginBaseHorizontal,
     },
     menuText: {
-        color: 'white'
+        color: 'white',
     },
-    menuHeading:{
-        height:styleVariables.baseNavHeight + 20,
-        justifyContent:'center'
+    menuHeading: {
+        height: styleVariables.baseNavHeight + 20,
+        justifyContent: 'center',
     },
     menuHeadingText: {
         fontSize: styleVariables.fontSizeH2,
@@ -106,23 +106,23 @@ module.exports = {
         width: 34,
         height: 34,
         marginRight: 5,
-        borderRadius: 5
+        borderRadius: 5,
     },
 
     listItemIcon: {
         fontSize: em(2),
         marginTop: -em(0.5),
-        marginBottom: -em(0.5)
+        marginBottom: -em(0.5),
     },
 
-    menuShadow:{
+    menuShadow: {
         // marginLeft:10,
-        shadowColor: "#000000",
+        shadowColor: '#000000',
         shadowOpacity: 0.5,
         shadowRadius: 2,
         shadowOffset: {
             height: 0,
-            width: -5
-        }
+            width: -5,
+        },
     },
 };

@@ -1,30 +1,35 @@
 /**
  * Created by kylejohnson on 28/01/2017.
  */
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
+import propTypes from 'prop-types';
 
 const HomePage = class extends Component {
-
     static navigatorStyle = global.navbarStyle;
 
-    displayName: 'HomePage';
+    static propTypes = {
+        navigator: propTypes.object,
+    };
+
+    static displayName = 'ExampleScreen';
 
     constructor(props, context) {
         super(props, context);
         this.state = {};
-        routeHelper.handleNavEvent(this.props.navigator, 'about', this.onNavigatorEvent);
+        routes.handleNavEvent(this.props.navigator, 'about', this.onNavigatorEvent);
     }
 
     onNavigatorEvent = (event) => {
-        if (event.id == routeHelper.navEvents.SHOW) {
+        if (event.id === routes.navEvents.SHOW) {
             API.trackPage('About Screen');
-        } else if (event.id == routeHelper.navEvents.HIDE) {
-
         }
+        // else if (event.id === routes.navEvents.HIDE) {
+        //
+        // }
     };
 
     onLogin = () => {
-        alert("Logged in")
+        alert('Logged in');
     };
 
     render() {
@@ -36,12 +41,16 @@ const HomePage = class extends Component {
                             About us
                         </H2>
                         <View style={Styles.noPad}>
-                            {_.range(0, 12).map((i) => (
+                            {_.range(0, 12).map(i => (
                                 <ListItem
-                                    animationProps={Animations.listItem}
-                                    index={i}>
+                                  key={i}
+                                  animationProps={Animations.listItem}
+                                  index={i}
+                                >
                                     <Text>
-                                        ListItem {i}
+                                        ListItem
+                                        {' '}
+                                        {i}
                                     </Text>
                                 </ListItem>
                             ))}
@@ -49,7 +58,7 @@ const HomePage = class extends Component {
                     </Container>
                 </ScrollView>
             </Flex>
-        )
+        );
     }
 };
 

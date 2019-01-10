@@ -1,7 +1,7 @@
-import expect from 'expect';
-import map from 'lodash/map';
-import mock from './pact.mock-server';
-import addInteraction from './interaction-helper';
+const expect = require('expect');
+const map = require('lodash/map');
+const { mock } = require('./pact.server');
+const addInteraction = require('./interaction-helper');
 
 export default allTests => new Promise((resolve) => {
     // Execute all the tests

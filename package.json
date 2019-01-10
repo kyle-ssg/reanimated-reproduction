@@ -19,6 +19,7 @@
     "test:unit": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --opts ./tests/mocha.opts \"./common/**/*.test.js\"",
     "test:unit:watch": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --watch --opts ./tests/mocha.opts \"./common/**/*.test.js\"",
     "test:pact": "cross-env NODE_ENV=pactTest mocha --opts ./tests/mocha.opts \"**/*.pact.js\"",
+    "test:pact:server": "cross-env MOCK_SERVER=true node_modules/.bin/nodemon --watch tests --exec node ./tests/pact/helpers/pact.mock-server.js",
     "test:pact:publish": "node tests/pact/helpers/pact.publish.js",
     "test:coverage": "istanbul cover ./web/main.js"
   },
