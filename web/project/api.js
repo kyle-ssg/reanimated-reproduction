@@ -1,6 +1,13 @@
 /* istanbul ignore next */
 const API = {
     ajaxHandler(store, res) {
+        if (res instanceof Error) {
+            // Catch programming errors
+            console.log(res);
+            store.error = res.message;
+            store.goneABitWest();
+            return;
+        }
         switch (res.status) {
             case 404:
                 // ErrorModal(null, 'API Not found: ');
