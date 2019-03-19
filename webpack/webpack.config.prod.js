@@ -8,6 +8,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
+const whitelabel = typeof process.env.WHITELABEL === 'undefined' ? false : process.env.WHITELABEL;
+const styles = whitelabel ? path.join(__dirname, `../web/styles/whitelabel/${process.env.WHITELABEL}`) : path.join(__dirname, '../web/styles');
+
 module.exports = {
     devtool: 'source-map',
     mode: 'production',
@@ -35,6 +38,11 @@ module.exports = {
     //  on the global var jQuery
         'jquery': 'jQuery',
     },
+    resolve: {
+        alias: {
+            styles,
+        },
+    },
     output: {
         path: path.join(__dirname, '../build'),
         filename: '[name].[hash].js',
@@ -48,6 +56,7 @@ module.exports = {
 
             new webpack.DefinePlugin({
                 __DEV__: false,
+                whitelabel: JSON.stringify(process.env.WHITELABEL),
             }),
 
             // reduce filesize

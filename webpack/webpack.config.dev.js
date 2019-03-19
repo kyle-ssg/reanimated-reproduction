@@ -3,9 +3,12 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
+const whitelabel = typeof process.env.WHITELABEL === 'undefined' ? false : process.env.WHITELABEL;
+const styles = whitelabel ? path.join(__dirname, `../web/styles/whitelabel/${process.env.WHITELABEL}`) : path.join(__dirname, '../web/styles');
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
     mode: 'development',
+    stats: 'errors-only',
     entry: [
         'webpack-hot-middleware/client?reload=false',
         './web/main.js',
@@ -17,16 +20,23 @@ module.exports = {
         path: path.join(__dirname, '../build'),
         filename: '[name].js',
         publicPath: '/',
+        devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]',
     },
     externals: {
     // require('jquery') is external and available
     //  on the global var jQuery
         'jquery': 'jQuery',
     },
+    resolve: {
+        alias: {
+            styles,
+        },
+    },
     plugins: require('./plugins').concat([
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             __DEV__: true,
+            whitelabel: JSON.stringify(process.env.WHITELABEL),
         }),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.ProvidePlugin({
@@ -47,11 +57,23 @@ module.exports = {
                 {
                     test: /\.scss$/,
                     use: [{
-                        loader: 'style-loader', // creates style nodes from JS strings
+                        loader: 'style-loader',
+                        options: {
+                            sourceMap: true,
+                            convertToAbsoluteUrls: false,
+                        },
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                            sourceMap: true,
+                        },
                     }, {
-                        loader: 'css-loader', // translates CSS into CommonJS
-                    }, {
-                        loader: 'sass-loader', // compiles Sass to CSS
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                        },
                     }],
                 },
             ]),
