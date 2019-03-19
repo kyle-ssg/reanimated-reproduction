@@ -49,7 +49,7 @@ export default hot(module)(class extends React.Component {
                           <div className="col">
                               <div className="panel">
                                   <h3 className="panel__title">Panel 3 title</h3>
-                                  <p className="panel__text">Panel 3 text</p>
+                                  <p className="panel__text">Panel 4 text</p>
                               </div>
                           </div>
                       </div>
