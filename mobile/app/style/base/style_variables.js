@@ -1,47 +1,19 @@
 /**
  * Created by kylejohnson on 18/04/2016.
  */
-import { NativeModules, PixelRatio } from 'react-native';
+import { PixelRatio } from 'react-native';
 
 const em = require('../base/style_pxToEm');
 
 window.pallette = Object.assign({}, {
 
-    // primary
-    primary: '#fff',
-    secondary: '#f5f5f5',
-
-    cancel: '#acafb7',
-    cancelDark: '#7c828f',
-
-    // text
-
-    text: '#333',
-    textLight: '#333',
-    textLightest: '#B6B6B6',
-    textLightestHighlight: '#CDCDCD',
-    buttonText: 'white',
-    divider: '#dbdbdb',
-
-    // radio, checkbox switch etc
-
-    toggle: '#B6B6B6',
-    toggleAlt: '#CDCDCD',
-    toggleActive: '#3CBF88',
-    toggleActiveAlt: '#46D899',
-
-
-    grayLighter: '#eaeaea',
-    warning: '#DE000B',
-    warningText: '#fff',
-    dark: '#333',
-    white: '#fff',
-    brandDanger: '#d9534f',
-    brandSuccess: '#3CBF88',
-    brandDangerDark: '#bb5952',
+    bodyBackground: '#fff', // General app  background
+    primary: '#3896DF',
+    secondary: '#D8315B',
     success: '#3CBF88',
-
-    anchor: '#0066ff',
+    divider: '#d1d1d1',
+    textLight: '#a8a8a8',
+    text: '#4c4c4c',
 
 }, window.pallette);
 
@@ -50,40 +22,39 @@ window.pallette = Object.assign({}, {
 window.styleVariables = Object.assign({
 
     //= = Typography
-    //
-    // ## Font, line-height, and color for body text, headings, and more.
-    cardBackground: '#fff',
-    inputHeightLarge: 54,
-    fontSansSerif: 'helvetica',
-    fontSerif: 'helvetica',
-    fonstSizeParagraph: em(1.1),
-    fontSizeAnchor: em(1.1),
-    fontSizeHeading: em(1.7),
-    fontSizesubheading: em(1.2), // 18px
+    fontSizeBase: em(1),
     fontSizeH1: em(2.286), // 32px
-    fontSizeH2: em(1.2), // 18px
-    fontSizeH3: em(0.714), // 10px
-    fontSizeNote: em(0.786), // 11px
-    fontSizelistitem: em(1), // 10px
-    fontSizelistTitle: em(0.857), // 12px
-    fontSizeInputLarge: em(2),
+    fontSizeH2: em(1.75), // 24px
+    fontSizeH3: em(1.25), // 17px
+    fontSizeH4: em(1), // 14px
+    fontSizeParagraph: em(1.2), // 16px
+
     fontSizeAlert: em(1.1),
     fontSizeIcon: em(2),
-    heroFontSize: em(5.2),
-    headingsFontWeight: 'bold',
-    mediumFontWeight: '300',
-    fontSizeAnchorIcon: em(2),
 
+    fontSizeAnchor: em(1.1),
+    fontSizeAnchorIcon: em(2),
     fontSizeAnchorLarge: em(2),
     fontSizeAnchorIconLarge: em(2.6),
+
+
+    // Buttons
+    buttonHeight: 55,
+
+    // Inputs
+    fontSizeInputLarge: em(2),
+
+    // Lists
+    fontSizelistitem: em(1), // 10px
+    fontSizelistTitle: em(0.857), // 12px
 
     button: 44,
     buttonTall: 54,
 
-    //= = Components
-    logoSize: 100,
     //
     // ## Define common-mobile padding and border radius sizes and more.
+
+    // Nav
 
     baseNavHeight: 44,
     marginBaseVertical: 10,
@@ -155,8 +126,7 @@ window.colour = Object.assign({}, pallette, {
     notificationText: '#fff',
 
     // switch
-    switch: pallette.toggle,
-    switchBackground: pallette.toggleAlt,
+
     switchActive: pallette.toggleActive, // text color for labels
     switchActiveBackground: pallette.toggleActiveAlt, // text color for labels
 
@@ -168,7 +138,7 @@ window.colour = Object.assign({}, pallette, {
     // list items
     listBackground: 'white',
     listBackgroundAlt: '#f9f9fa',
-    listItem: 'white',
+    listItem: 'transparent',
     listItemNav: '#d9d9d9',
     listItemDivider: pallette.divider,
 
@@ -178,7 +148,7 @@ window.colour = Object.assign({}, pallette, {
     loader: pallette.text,
 
     // BUTTON / SELECT COLOURS
-    btnText: pallette.buttonText,
+
     buttonDefault: pallette.primary,
     btnAlt: pallette.primary,
 
@@ -189,7 +159,7 @@ window.colour = Object.assign({}, pallette, {
     // nav
     navBar: pallette.primary,
     navBarIcon: 'white',
-    navBarSubtitle: pallette.secondary,
+    // navBarSubtitle: pallette.secondary,
     navBarButtonText: 'white',
     navBarBorder: 'transparent',
     navBarText: 'black',

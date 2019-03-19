@@ -1,30 +1,9 @@
+// Here you can override any style and it'll only be overridden in android - e.g. h1: { ... }
 module.exports = {
-    navContent: {
-        backgroundColor: colour.bodyBackground,
-        flex: 1,
-        paddingTop: styleVariables.baseNavHeight,
+    signUpH1Android: {
+        marginTop: 40,
     },
-    statusContent: {
-        paddingTop: StatusBar.currentHeight,
+    textInputAndroid: {
+        // elevation: 4,
     },
-    navBarTitle: {
-        fontSize: styleVariables.fontSizeH3,
-        color: 'white',
-        alignSelf: 'center',
-        // marginTop: 10,
-        // backgroundColor: 'pink',
-        fontWeight: styleVariables.headingsFontWeight,
-    },
-    navItemTitleContainer: {
-        flex: 1,
-        // backgroundColor: 'red',
-        alignSelf: 'center',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        left: -27,
-    },
-};
-
-window.platformVariables = {
-    inputHeight: 54,
 };

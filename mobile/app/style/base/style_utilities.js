@@ -2,9 +2,6 @@ module.exports = {
     // Utility classes
     // -------------------------
 
-    padded: {
-        padding: styleVariables.paddingBase,
-    },
     noPadding: {
         paddingBottom: 0,
         paddingTop: 0,
@@ -12,28 +9,16 @@ module.exports = {
         paddingRight: 0,
     },
 
-    center: {
+    textCenter: {
         textAlign: 'center',
     },
 
-    shortText: {
-        width: DeviceWidth / 1.5,
-        alignSelf: 'center',
-        textAlign: 'center',
+    textLeft: {
+        textAlign: 'left',
     },
 
-    centerChildren: {
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-
-    fullScreen: {
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
-        height: Dimensions.get('window').height,
+    textRight: {
+        textAlign: 'right',
     },
 
     backdrop: {
@@ -41,8 +26,8 @@ module.exports = {
         backgroundColor: styleVariables.backdropBackground,
     },
 
-    iconMiddle: {
-        paddingLeft: 10,
-        paddingRight: 10,
+    padded: {
+        padding: styleVariables.paddingBase,
     },
+
 };

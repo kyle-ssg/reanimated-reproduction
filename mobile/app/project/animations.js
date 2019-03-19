@@ -12,6 +12,8 @@ Animatable.initializeRegistryWithDefinitions({
     },
 });
 
+global.Animatable = Animatable;
+
 const acceleration = Easing.bezier(0.4, 0.0, 1, 1);
 const deceleration = Easing.bezier(0.0, 0.0, 0.2, 1);
 const standard = Easing.bezier(0.4, 0.0, 0.2, 1);

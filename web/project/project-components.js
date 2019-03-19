@@ -1,3 +1,5 @@
+import routes from '../routes';
+global.routes = routes;
 import AccountProvider from '../../common/providers/AccountProvider';
 
 window.AccountProvider = AccountProvider;

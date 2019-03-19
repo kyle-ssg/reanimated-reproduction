@@ -39,7 +39,7 @@ platform :ios do
 
   lane :icon do
     appicon(
-        appicon_path: './app/Images.xcassets',
+        appicon_path: './boilerplate/Images.xcassets',
         appicon_image_file: 'AppIcon.png',
         appicon_devices: [:ipad, :iphone, :ios_marketing])
   end

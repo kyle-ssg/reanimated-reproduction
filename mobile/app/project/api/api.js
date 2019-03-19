@@ -3,15 +3,63 @@ import firebase from 'react-native-firebase';
 
 import branch from 'react-native-branch';
 import push from './push-notifications-api';
+import auth from './auth';
 
 const analytics = firebase.analytics();
 
 
 global.API = {
 
+    ajaxHandler(store, res) {
+        switch (res.status) {
+            case 404:
+                // ErrorModal(null, 'API Not found: ');
+                break;
+            case 503:
+                // ErrorModal(null, error);
+                break;
+            default:
+            // ErrorModal(null, error);
+        }
 
-    log() {
+        if (!res.clone) {
+            store.error = res.error || res.message || 'Unknown Error';
+            return store.goneABitWest();
+        }
 
+        res.clone().json().then((error) => {
+            if (store) {
+                // eslint-disable-next-line
+                store.error = error.error || 'Unknown Error';
+                store.goneABitWest();
+            }
+        }).catch(() => {
+            res.text().then((error) => {
+                if (store) {
+                    // eslint-disable-next-line
+                    console.log(error ? error : 'Unknown error ' + error);
+                    // eslint-disable-next-line
+                    store.error = error || 'Unknown error';
+                    store.goneABitWest();
+                }
+            })
+                .catch((err) => {
+                    if (store) {
+                        // eslint-disable-next-line
+                        console.log('Unknown error', err);
+                        const error = 'Unknown error';
+                        // eslint-disable-next-line
+                        store.error = error;
+                        store.goneABitWest();
+                    }
+                });
+        });
+    },
+
+    log(namespace, ...args) {
+        if (Project.logs[namespace]) {
+            console.log.apply(this, args);
+        }
     },
 
     trackEvent(data) {
@@ -36,29 +84,33 @@ global.API = {
     share: (uri, message, title, subject, excludedActivityTypes, type) => {
         ReactNative.Share.share({ message, title, url: uri }, { subject, excludedActivityTypes });
     },
-    showOptions: (title, options, cancelButton = true, dark = true) => new Promise((resolve) => {
+    showOptions: (title, options, cancelButton = true, dark = false, destructiveOption) => new Promise((resolve) => {
         cancelButton && options.push('Cancel');
         BottomSheet.showBottomSheetWithOptions({
             options,
             title,
             dark,
+            destructiveButtonIndex: destructiveOption && cancelButton ? options.length - 2 : options.length - 1,
             cancelButtonIndex: cancelButton && options.length - 1,
         }, (value) => {
+            if (cancelButton && value === options.length - 1) return;
             resolve(value);
         });
     }),
     getContacts: (includePhotos) => {
-        if (typeof Contacts === 'undefined') alert('You need to link react-native-contacts to use this function');
+        if (typeof Contacts === 'undefined') {
+            return Promise.reject(new Error('You need to link react-native-contacts to use this function'));
+        }
         return Promise.resolve([]);
-        includePhotos
-            ? new Promise(resolve => Contacts.getAll((error, contacts) => resolve({
-                error,
-                contacts: contacts && contacts.map(parseContact),
-            })))
-            : new Promise(resolve => Contacts.getAllWithoutPhotos((error, contacts) => resolve({
-                error,
-                contacts: contacts && contacts.map(parseContact),
-            })));
+        // includePhotos
+        //     ? new Promise(resolve => Contacts.getAll((error, contacts) => resolve({
+        //         error,
+        //         contacts: contacts && contacts.map(parseContact),
+        //     })))
+        //     : new Promise(resolve => Contacts.getAllWithoutPhotos((error, contacts) => resolve({
+        //         error,
+        //         contacts: contacts && contacts.map(parseContact),
+        //     })));
     },
     showUpload: (title, multiple, width, height, compressImageQuality = 0.8, onStart) => new Promise((resolve) => {
         API.showOptions(title, ['Camera', 'Upload a Photo']).then((i) => {
@@ -85,9 +137,9 @@ global.API = {
         });
     }),
 
-    generateLink: (title, metadata, $fallback_url) => branch.createBranchUniversalObject('share', {
+    generateLink: (title, customMetadata, $fallback_url) => branch.createBranchUniversalObject('share', {
         title,
-        metadata,
+        customMetadata,
     }).then((branchUniversalObject) => {
         const controlParams = {};
         return branchUniversalObject.generateShortUrl({}, controlParams)
@@ -98,6 +150,7 @@ global.API = {
         return initialLink ? cb(link) : null;
     },
     push,
+    auth,
 };
 
 

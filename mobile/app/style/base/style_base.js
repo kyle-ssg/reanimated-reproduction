@@ -6,19 +6,13 @@ module.exports = {
 
     body: {
         flex: 1,
-        backgroundColor: colour.bodyBackground,
-    },
-
-    avatar: {
-        height: styleVariables.avatarHeight,
-        width: styleVariables.avatarWidth,
-        borderRadius: styleVariables.avatarRadius,
+        backgroundColor: pallette.bodyBackground,
     },
 
     divider: {
         height: (1 / PixelRatio.get()) * 2,
         alignSelf: 'stretch',
-        borderColor: colour.divider,
+        borderColor: pallette.divider,
         borderBottomWidth: 1 / PixelRatio.get(),
     },
 

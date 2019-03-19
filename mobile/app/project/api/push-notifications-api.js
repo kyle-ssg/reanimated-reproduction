@@ -10,7 +10,10 @@ const PushManager = class {
 
     getInitialNotification = () => Notifications.getInitialNotification();
 
-    subscribe = topic => FCM.subscribeToTopic(topic);
+    subscribe = (topic) => {
+        console.log(`Subscribed to${topic}`);
+        return FCM.subscribeToTopic(topic);
+    }
 
     unsubscribe = topic => FCM.unsubscribeFromTopic(topic);
 
@@ -44,17 +47,20 @@ const PushManager = class {
         }
 
         return new Promise((resolve, reject) => {
+            const prom = Platform.OS === 'ios' && !silent ? FCM.requestPermission() : Promise.resolve();
             if (!silent) {
                 FCM.requestPermission(); // for iOS
             }
 
-            FCM.getToken().then((token) => {
-                if (token) {
-                    this.token = token;
-                    resolve(this.token);
-                }
-                // store fcm token in your server
-            });
+            prom.then(() => {
+                FCM.getToken().then((token) => {
+                    if (token) {
+                        this.token = token;
+                        resolve(this.token);
+                    }
+                    // store fcm token in your server
+                });
+            }).catch(e => reject(e));
 
 
             this.refreshTokenListener = FCM.onTokenRefresh((token) => {

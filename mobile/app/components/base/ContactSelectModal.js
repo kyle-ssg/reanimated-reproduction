@@ -1,31 +1,26 @@
-// propTypes: uri: RequiredString
-let state = { isLoading: true };
-const NativeModal = class extends React.Component {
+const ContactSelectModal = class extends React.Component {
+    static displayName = 'ContactSelectModal';
+
     static propTypes = {
-        navigator: propTypes.object,
+        componentId: propTypes.string,
         onChange: propTypes.func.isRequired,
     }
 
-    constructor(props) {
-        super(props);
-        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
-        this.state = state;
-    }
+    state = {};
 
-    onNavigatorEvent(event) {
-        if (event.id === 'close') {
-            this.props.navigator.dismissModal();
-        } else if (event.id === routes.navEvents.SHOW) {
-            API.getContacts()
-                .then(({ error, contacts }) => {
-                    state = { contacts, error, isLoading: false };
-                    this.setState({ contacts, error, isLoading: false });
-                });
-        }
+    componentDidMount(event) { // todo:
+        API.getContacts()
+            .then(({ error, contacts }) => {
+                this.setState({ contacts, error, isLoading: false });
+            })
+            .catch((err) => {
+                Navigation.dismissModal(this.props.componentId);
+                alert(err);
+            });
     }
 
     onDone = () => {
-        this.props.navigator.dismissModal();
+        Navigation.dismissModal(this.props.componentId);
         this.props.onChange(this.state.value);
     };
 
@@ -71,4 +66,4 @@ const NativeModal = class extends React.Component {
     }
 };
 
-module.exports = NativeModal;
+module.exports = ContactSelectModal;

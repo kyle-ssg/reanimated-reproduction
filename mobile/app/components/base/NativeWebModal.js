@@ -1,60 +1,55 @@
-// propTypes: uri: RequiredString
-const NativeModal = class extends React.Component {
-    constructor(props) {
-        super(props);
-        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
-        this.state = {};
+import propTypes from 'prop-types';
+import { WebView } from 'react-native-webview';
+
+const WebModal = class extends React.PureComponent {
+    static displayName = 'WebModal'
+
+    static propTypes = {
+        componentId: propTypes.string,
+        uri: propTypes.string.isRequired,
     }
 
-    onNavigatorEvent(event) {
-        if (event.id == 'close' || event.id == 'back') {
-            this.props.navigator.dismissModal();
+    onNavigatorEvent(event) { // todo
+        if (event.id === 'close' || event.id === 'back') {
+            Navigation.dismissModal(this.props.componentId);
         } else {
             this.refs.webview.goBack();
         }
     }
 
-	onNavigationStateChange = (navState) => {
-	    const buttons = navState.canGoBack ? {
-	        leftButtons: [
-	            {
-	                icon: iconsMap['ios-arrow-back'], // for icon button, provide the local image asset name
-	                id: 'back2', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
-	            },
-	        ],
-	    } : {
-	        leftButtons: [
-	            {
-	                icon: iconsMap['ios-arrow-back'], // for icon button, provide the local image asset name
-	                id: 'back', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
-	            },
-	        ],
-	    };
+    onNavigationStateChange = (navState) => {
+        // const buttons = navState.canGoBack ? {
+        //     leftButtons: [
+        //         {
+        //             icon: global.iconsMap['ios-arrow-back'], // for icon button, provide the local image asset name
+        //             id: 'back2', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+        //         },
+        //     ],
+        // } : {
+        //     leftButtons: [
+        //         {
+        //             icon: global.iconsMap['ios-arrow-back'], // for icon button, provide the local image asset name
+        //             id: 'back', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+        //         },
+        //     ],
+        // };
+        //
+        // this.props.navigator.setButtons(buttons);
+    };
 
-	    this.props.navigator.setButtons(buttons);
-
-	    // this.props.navigator.setTitle({
-	    //     title: navState.title || this.props.title,
-	    //     navigatorStyle: {
-	    //         navBarTextColor: styleVariables.navColor,
-	    //         navBarButtonColor: styleVariables.navColor
-	    //     },
-	    // });
-	}
-
-	render() {
-	    return (
-    <Flex>
-        <WebView
-          onNavigationStateChange={this.onNavigationStateChange}
-          ref="webview"
-          style={{ flex: 1 }}
-          source={{ uri: this.props.uri }}
-          scalesPageToFit
-        />
-    </Flex>
-	    );
-	}
+    render() {
+        return (
+            <Flex>
+                <WebView
+                  onNavigationStateChange={this.onNavigationStateChange}
+                  ref="webview"
+                  style={{ flex: 1 }}
+                  source={{ uri: this.props.uri }}
+                  scalesPageToFit
+                />
+            </Flex>
+        );
+    }
 };
 
-module.exports = NativeModal;
+module.exports = WebModal;

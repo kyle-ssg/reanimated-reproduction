@@ -43,15 +43,15 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
+              "client_id": "603463597415-q6nnmv7tihkm52m5eg0hetakktppcmdf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
               "client_id": "603463597415-em1lk1r3fe779jnsetq85ouapdfma0c3.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "org.ssg.boilerplate"
               }
-            },
-            {
-              "client_id": "603463597415-q6nnmv7tihkm52m5eg0hetakktppcmdf.apps.googleusercontent.com",
-              "client_type": 3
             }
           ]
         },

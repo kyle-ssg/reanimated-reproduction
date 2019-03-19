@@ -1,15 +1,16 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import propTypes from 'prop-types';
 
-const TheComponent = props => (
+const Row = props => (
     <View style={[Styles.row, props.space && { justifyContent: 'space-between' }, props.style]}>
         {props.children}
     </View>
 );
 
-TheComponent.displayName = 'TheComponent';
+Row.displayName = 'Row';
 
-TheComponent.propTypes = {
-    children: OptionalObject,
+Row.propTypes = {
+    children: propTypes.node,
 };
 
-module.exports = TheComponent;
+module.exports = Row;

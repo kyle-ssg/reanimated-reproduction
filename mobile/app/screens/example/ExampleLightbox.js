@@ -1,77 +1,81 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 
-const TheComponent = class extends Component {
-    displayName: 'TheComponent'
+import Lightbox from '../../components/base/Lightbox';
 
-    constructor(props, context) {
-        super(props, context);
-        this.state = {};
-    }
+const ExampleLightbox = class extends Component {
+    static displayName = 'ExampleLightbox';
+
+    static propTypes = {
+        dismiss: propTypes.func,
+    };
+
+    state = {};
 
     componentDidMount() {
-        setTimeout(() => {
+        this.animTimer = setTimeout(() => {
             this.animation.play();
         }, 500);
 
-        setTimeout(() => this.setState({ loaded: true }), 2000);
+        this.loadedTimer = setTimeout(() => this.setState({ loaded: true }), 2000);
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.animTimer);
+        clearTimeout(this.loadedTimer);
     }
 
     render() {
+        const { dismiss } = this.props;
         return (
-            <View style={Styles.lightboxOuter}>
-                <ViewOverflow style={Styles.lightbox}>
-                    <ViewOverflow style={{ alignSelf: 'center', width: 80, height: 80 }}>
-                        <View style={Styles.roundedAnimationContainer}>
-                            <View style={Styles.roundedAnimationInner}>
-                                <Animation
-                                  ref={(animation) => {
-                                      this.animation = animation;
-                                  }}
-                                  loop={false}
-                                  style={{ width: 70, height: 70 }} source={require('./success.json')}
-                                />
-                            </View>
+            <ViewOverflow style={Styles.lightbox}>
+                <ViewOverflow style={{ alignSelf: 'center', width: 80, height: 80 }}>
+                    <View style={Styles.roundedAnimationContainer}>
+                        <View style={Styles.roundedAnimationInner}>
+                            <Animation
+                              ref={(animation) => {
+                                  this.animation = animation;
+                              }}
+                              loop={false}
+                              style={{ width: 70, height: 70 }} source={require('./success.json')}
+                            />
                         </View>
-                    </ViewOverflow>
-                    <View style={[Styles.padded, { alignSelf: 'center', marginTop: -40 }]}>
-                        <H1 style={Styles.textCenter}>Congratulations</H1>
-                        {this.state.loaded && (
-                            <H3 style={Styles.textCenter}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                                ac
-                                odio viverra nulla viverra
-                                odio viverra nulla viverra
-                                odio viverra nulla viverra
-                                odio viverra nulla viverra
-                                odio viverra nulla viverra
-                                odio viverra nulla viverra
-                                odio viverra nulla viverra
-
-                            </H3>
-                        )}
-                        <H3 style={Styles.textCenter}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
-                            odio viverra nulla viverra
-
-                        </H3>
                     </View>
-
-                    <FormGroup>
-                        <Button
-                          style={{ alignSelf: 'center', width: 200 }}
-                          onPress={this.props.navigator.dismissLightBox}
-                        >
-                            Ok
-
-                        </Button>
-                    </FormGroup>
                 </ViewOverflow>
-            </View>
+                <View style={[Styles.padded, { alignSelf: 'center', marginTop: -40 }]}>
+                    <H1 style={Styles.textCenter}>Congratulations</H1>
+                    {this.state.loaded && (
+                    <H3 style={Styles.textCenter}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                    ac
+                    odio viverra nulla viverra
+                    odio viverra nulla viverra
+                    odio viverra nulla viverra
+                    odio viverra nulla viverra
+                    odio viverra nulla viverra
+                    odio viverra nulla viverra
+                    odio viverra nulla viverra
+
+                    </H3>
+                    )}
+                    <H3 style={Styles.textCenter}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
+                odio viverra nulla viverra
+
+                    </H3>
+                </View>
+
+                <FormGroup>
+                    <Button
+                      style={{ alignSelf: 'center', width: 200 }}
+                      onPress={dismiss}
+                    >
+                Ok
+
+                    </Button>
+                </FormGroup>
+            </ViewOverflow>
         );
     }
 };
 
-TheComponent.propTypes = {};
-
-const styles = StyleSheet.create({});
-module.exports = TheComponent;
+module.exports = Lightbox(ExampleLightbox);

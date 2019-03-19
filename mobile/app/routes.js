@@ -1,132 +1,150 @@
 import { Navigation } from 'react-native-navigation';
 
-module.exports = {
+const routes = {
+
+    // The initial screen
+    homeScreen: () => ({
+        component: {
+            name: '/',
+            options: _.merge({}, global.navbarStyle, { topBar: { title: { text: 'Home' } } }),
+        },
+    }),
+
+    // Standardised routing for logging out
+    logout() {
+        AppActions.logout();
+        Navigation.setRoot({
+            root: routes.homeScreen(),
+        });
+    },
+
+    webModal: (uri, title) => routes.withStack({
+        component: {
+            name: '/webmodal',
+            passProps: { uri },
+            options: _.merge({}, global.navbarStyle, global.modalNavButtons, {
+                topBar: { title: { text: title || '' } },
+            }),
+        },
+    }),
+
     navEvents: {
+        WILL_SHOW: 'willAppear',
         SHOW: 'didAppear',
         HIDE: 'didDisappear',
     },
 
-    closeDrawer: (navigator) => {
-        navigator.toggleDrawer({
-            to: 'closed',
-            side: 'right',
-            animated: true,
-        });
-    },
-
-    openDrawer: (navigator) => {
-        navigator.toggleDrawer({
-            side: 'right',
-            to: 'open',
-            animated: true,
-        });
-    },
-
-    homeScreen: () => ({
-        title: 'SSG Boilerplate',
-        navigatorStyle: {
-            screenBackgroundColor: '#fff',
-        },
-        screen: '/', // unique ID registered with Navigation.registerScreen
-        navigatorButtons: {
-            leftButtons: [],
-            rightButtons: [
-                {
-                    icon: iconsMap['ios-menu'], // for icon button, provide the local image asset name
-                    id: 'side-menu', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
-                },
-            ],
+    // Shorthand for wrapping a screen in a stack
+    withStack: (screen, options) => ({
+        stack: {
+            children: [screen],
+            options,
         },
     }),
 
-    // Global handling for pages - can plug into analytics / deep linmking
-    handleNavEvent: (navigator, id, cb) => {
-        navigator.setOnNavigatorEvent((event) => {
-            switch (event.id) {
-                case 'willAppear':
-                    global.currentNavigator = navigator;
-                    global.currentScreen = id;
-                    break;
-                case 'didAppear':
-                    break;
-                case 'willDisappear':
-                    break;
-                case 'didDisappear':
-                    break;
-            }
+    // Shorthand for wrapping a screen in a stack
+    tab: (title, image) => ({
+        text: title,
+        icon: image,
+        iconColor: styleVariables.tabIcon,
+        textColor: styleVariables.tabText,
+        selectedIconColor: styleVariables.tabIconActive,
+        selectedTextColor: styleVariables.tabTextActive,
+        disableIconTint: true,
+    }),
 
-            if (event.type == 'DeepLink') {
-                // Handle deep linking
-                routes[event.link] && navigator.push(routes[event.link]());
-            } else if (event.id == 'side-menu') {
-                // Handle open drawer
-                navigator.toggleDrawer({
-                    side: 'right',
-                    animated: true,
-                });
-            }
+    selectModal: (title, { items, renderRow, onChange, multiple, filterItem, autoclose }) => routes.withStack({
+        component: { name: '/select',
+            passProps: { items, renderRow, onChange, multiple, filterItem, autoclose },
+            options: _.merge({}, global.navbarStyle, global.modalNavButtons, {
+                topBar: {
+                    drawBehind: false,
+                    background: {
+                        color: pallette.bodyBackground,
+                        translucent: false,
+                    },
+                },
+            }),
+        },
+    }),
 
-            cb && cb(event);
-        });
-    },
-
-    aboutScreen: () => (
-        {
-            screen: '/about',
-            title: 'About',
-            backButtonTitle: '',
-            passProps: {},
-        }
-    ),
-
-    webScreen: (uri, title) => ({
-        screen: '/webmodal',
-        title: title || '',
-        navigatorButtons: _.cloneDeep(global.modalNavButtons),
-        navigatorStyle: global.navbarStyle,
-        passProps: { uri, title },
+    // A styleguide screen used to show off all components
+    markupScreen: () => ({
+        component: {
+            name: '/markup',
+            options: { ...global.navbarStyle },
+        },
     }),
 
     exampleLightbox: () => ({
-        screen: '/examples/lightbox', // unique ID registered with Navigation.registerScreen
-        style: {
-            width: DeviceWidth,
-            height: DeviceHeight,
-            justifyContent: 'center',
-            tapBackgroundToDismiss: true, // dismisses LightBox on background taps (optional)
-            backgroundBlur: 'dark', // 'dark' / 'light' / 'xlight' / 'none' - the type of blur on the background
+        component: {
+            name: '/example/lightbox',
+            options: {
+                overlay: {
+                    interceptTouchOutside: true,
+                },
+            },
         },
-        adjustSoftInput: 'resize', // android only, adjust soft input, modes: 'nothing', 'pan', 'resize', 'unspecified' (optional, default 'unspecified')
     }),
 
-    contactScreen: (title, onChange, multiple) => ({
-        screen: '/select-contact',
-        title: title || '',
-        navigatorButtons: _.cloneDeep(global.modalNavButtons),
-        navigatorStyle: global.navbarStyle,
-        passProps: { onChange, multiple },
+    aboutScreen: () => ({
+        component: {
+            name: '/example/about',
+            options: _.merge({}, global.navbarStyle, {
+                topBar: {
+                    title: {
+                        text: 'About',
+                    },
+                },
+            }),
+        },
     }),
 
-    selectScreen: (title, { items, renderRow, onChange, multiple, filterItem }) => ({
-        screen: '/select',
-        title: title || '',
-        navigatorButtons: _.cloneDeep(global.modalNavButtons),
-        navigatorStyle: global.navbarStyle,
-        passProps: { items, renderRow, onChange, multiple, filterItem },
+    interactiveScreen: () => ({
+        component: {
+            name: '/example/interactive',
+            options: _.merge({}, global.navbarStyle, {
+                topBar: {
+                    title: {
+                        text: 'Interactables',
+                    },
+                },
+            }),
+        },
     }),
 
+    contactSelectModal: (title, onChange) => ({
+        component: {
+            name: '/contact-select',
+            passProps: { onChange },
+            options: _.merge({}, global.navbarStyle, global.modalNavButtons, {
+                topBar: {
+                    title: {
+                        text: title || '',
+                    },
+                },
+            }),
+        },
+    }),
 };
 
 // BASE Routes
 Navigation.registerComponent('/', () => require('./screens/example/ExampleScreen'));
-Navigation.registerComponent('/webmodal', () => require('./components/base/NativeWebModal'));
+Navigation.registerComponent('/markup', () => require('./screens/__MarkupScreen__'));
 Navigation.registerComponent('/select', () => require('./components/base/SelectModal'));
-Navigation.registerComponent('/select-contact', () => require('./components/base/ContactSelectModal'));
+Navigation.registerComponent('/webmodal', () => require('./components/base/NativeWebModal'));
+Navigation.registerComponent('/contact-select', () => require('./components/base/ContactSelectModal'));
 
-// Example routes
-Navigation.registerComponent('/about', () => require('./screens/example/AboutPage'));
-Navigation.registerComponent('/examples/interactive', () => require('./screens/example/InteractivePage'));
-Navigation.registerComponent('/examples/lightbox', () => require('./screens/example/ExampleLightbox'));
+// EXAMPLE Routes
+Navigation.registerComponent('/example/lightbox', () => require('./screens/example/ExampleLightbox'));
+Navigation.registerComponent('/example/about', () => require('./screens/example/AboutScreen'));
+Navigation.registerComponent('/example/interactive', () => require('./screens/example/InteractiveScreen'));
 
-// Components
-Navigation.registerComponent('side-menu', () => require('./components/SideMenu'));
+Navigation.events().registerNavigationButtonPressedListener(({ buttonId, componentId }) => {
+    if (buttonId === 'close') {
+        Navigation.dismissModal(componentId);
+    }
+});
+
+global.routes = routes;
+module.exports = routes;

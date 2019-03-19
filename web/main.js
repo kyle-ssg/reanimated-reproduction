@@ -6,7 +6,6 @@ import './styles/styles.scss';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ToastMessages from './project/toast';
 
-import routes from './routes';
 
 
 const rootElement = document.getElementById('app');

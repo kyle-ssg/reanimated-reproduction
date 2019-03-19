@@ -16,8 +16,6 @@ import Interactable from 'react-native-interactable';
 
 import Animation from 'lottie-react-native';
 
-import Navigation from 'react-native-navigation';
-
 window._ = { each, filter, uniqBy, find, partial, findIndex, merge, range, map, cloneDeep, keyBy };
 // React Prop Types, todo: move to react-native-globals
 window.Any = PropTypes.any;
@@ -41,4 +39,4 @@ window.RequiredNode = PropTypes.node.isRequired;
 window.RequiredElement = PropTypes.node.isRequired;
 global.Interactable = Interactable;
 global.Animation = Animation;
-global.Navigation = Navigation;
+global.propTypes = PropTypes;
