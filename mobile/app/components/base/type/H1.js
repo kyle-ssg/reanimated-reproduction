@@ -7,7 +7,7 @@
 const h1 = class extends React.Component {
     render() {
         return (
-            <Text style={[Styles.h1, this.props.style]}>{this.props.children}</Text>
+            <Text {...this.props} style={[Styles.h1, this.props.style]}>{this.props.children}</Text>
         );
     }
 };

@@ -1,32 +1,34 @@
 /**
  * Created by kylejohnson on 09/09/15.
  */
-import React, { Component, PropTypes } from 'react';
-
+import React, { PureComponent } from 'react';
 
 const json = Object.assign({}, require('./loader.json'));
 
 json.assets[0].layers[0].shapes[0].it[1].c.k = [50 / 255, 140 / 255, 255 / 255, 1];
 
-const TheComponent = class extends Component {
-	displayName: 'TheComponent'
+const Loader = class extends PureComponent {
+    static displayName = 'LOADER';
 
-	componentDidMount() {
-	    this.refs.animation.play();
-	}
+    componentDidMount() {
+        this.refs.animation.play();
+    }
 
-	render() {
-	    return (
-    <View style={{ opacity: 0.75 }}>
-        <Animation
-          ref="animation" style={{ width: 40 * 1.25, height: 30 * 1.25 }} loop
-          source={json}
-        />
-    </View>
-	    );
-	}
+    render() {
+        return (
+            <View style={{ opacity: 0.75 }}>
+                <Animation
+                  ref="animation" style={{
+                      width: 40 * 1.25,
+                      height: 30 * 1.25,
+                  }} loop
+                  source={json}
+                />
+            </View>
+        );
+    }
 };
 
-TheComponent.propTypes = {};
+Loader.propTypes = {};
 
-module.exports = TheComponent;
+module.exports = Loader;

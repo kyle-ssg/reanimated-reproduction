@@ -1,110 +1,41 @@
 import { NativeModules, PixelRatio } from 'react-native';
 
+import { Platform, Dimensions } from 'react-native';
+
 const em = require('../base/style_pxToEm');
 
+
+const tabHeight = (() => {
+    const isIphoneX = () => {
+        let dimensions;
+        if (Platform.OS !== 'ios') {
+            return false;
+        }
+        if (Platform.isPad || Platform.isTVOS) {
+            return false;
+        }
+        dimensions = Dimensions.get('window');
+        if (dimensions.height === 812 || dimensions.width === 812) { // Checks for iPhone X in portrait or landscape
+            return true;
+        }
+        if (dimensions.height === 896 || dimensions.width === 896) {
+            return true;
+        }
+        return false;
+    };
+
+    if (isIphoneX()) {
+        return 84; // iPhone X
+    } if (Platform.OS == 'ios') {
+        return 50; // Other iPhones
+    }
+    return 56; // Android
+})();
+
 window.pallette = {
-    backgroundBase: '#ffffff',
 
-    facebook: '#3b5998',
-    google: '#e83d38',
-    twitter: '#00acee',
-
-    primary: '#368de8',
-    primaryDark: '#3582dc',
-    primaryLight: '#7e8592',
-    primaryLightest: '#7e8592',
-    secondary: '#03bd69',
-    third: '#c84d38',
-
-    navBarText: '#fff',
-
-    text: '#333',
-    textLight: '#a8a8a8',
-    textLightest: '#fff',
-    textLightestHighlight: '#e2e2e2',
-    divider: '#d1d1d1',
-    dividerLight: '#f9f9fa',
-    brandDanger: '#9C1033',
-
-    error: '#b94d4d',
-
-    fromGradient: '#fafafa',
-    toGradient: '#fff',
-    anchor: '#7e8592',
-};
-
-window.colour = {
-    activeBorder: '#3582dc',
-    errorBackground: '#c84d38',
-    bodyBackground: '#fff', // General app  background
-    bodyBackgroundAlt: '#f1f1f1', // General app  background
-    inputBackground: '#fff',
-    inputBorder: '#d9d9d9',
-    textFaint: 'rgba(255,255,255,.75)',
-    textFaintLight: 'rgba(0,0,0,.2)',
-
-    // nav
-    navBar: pallette.primary,
-    navBarIcon: pallette.navBarText,
-    navBarSubtitle: pallette.secondary,
-    navBarButtonText: pallette.navBarText,
-    navBarBorder: 'transparent',
-    navBarText: pallette.navBarText,
-
-    // BUTTON / SELECT COLOURS
-    btnText: 'white',
-    buttonDefault: pallette.secondary,
 };
 
 window.styleVariables = Object.assign({
-    // SCAFFOLD
-    statusHeight: NativeModules.StatusBarManager.HEIGHT || 20,
-    baseNavHeight: 54,
-    marginBaseVertical: em(1),
-    marginBaseHorizontal: em(1),
-    paddingBase: em(1),
-    paddingList: em(1.1),
-    gutterBase: 10,
-    borderRadiusDefault: 4,
-    fontSizeH1: em(2.286),
-    fontSizeH2: em(1.75),
-    fontSizeH3: em(1.25),
 
-    // BASE
-    borderWidth: 2 / PixelRatio.get(),
-    borderDefault: pallette.textLight,
-
-    // TYPE
-    fontSizeBase: em(1.2),
-    fontSizeSmall: em(0.85),
-    fontSizeHeading: em(1.5),
-    fontSizeSubHeading: em(1.3),
-    fontSizeIcon: 30,
-    fontSansSerif: 'helvetica neue',
-
-    text: pallette.text, // General app text colour
-    textLight: pallette.textLight, // Light app text colour
-
-    // FORMS
-    inputHeight: 44, // Need to change this value in both platform variables files at the moment
-    inputText: pallette.text,
-    inputBackground: colour.inputBackground,
-    inputBorder: pallette.textLightest,
-    inputBorderWidth: 1 / PixelRatio.get() * 3,
-    placeholderTextColor: pallette.textLight,
-
-    // NAV
-    navBar: colour.navBar,
-    navBarIcon: pallette.text,
-    navBarButtonText: pallette.text,
-    navBarBorder: pallette.primary,
-    navBarText: pallette.text,
-    navColor: pallette.navBarText,
-
-    // MODALS
-    modalBackground: '#F0F0F0',
-
-    // BUTTONS
-    buttonHeight: 50,
-    buttonTextLight: pallette.textLight,
 }, require('./style_platform_variables'));

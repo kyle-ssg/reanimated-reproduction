@@ -1,22 +1,33 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import propTypes from 'prop-types';
 
-const TheComponent = class extends Component {
-	displayName: 'TheComponent'
+const Delay = class extends Component {
 
-	constructor(props, context) {
-	    super(props, context);
-	    this.state = {};
-	    setTimeout(() => this.setState({ ready: true }), this.props.delay);
-	}
+    static displayName = 'Delay';
 
-	render() {
-	    return this.props.children[this.state.ready ? 1 : 0];
-	}
+    static propTypes = {
+        children: propTypes.node,
+        delay: propTypes.number,
+    };
+
+    static defaultProps = {
+        delay: 500,
+    };
+
+    constructor(props, context) {
+        super(props, context);
+        this.state = {};
+        this.timeout = setTimeout(() => this.setState({ ready: true }), props.delay);
+    }
+
+    componentWillUnmount() {
+        clearTimeout(this.timeout);
+    }
+
+    render() {
+        return this.props.children[this.state.ready ? 1 : 0];
+    }
 };
 
-TheComponent.propTypes = {};
-TheComponent.defaultProps = {
-    delay: 50,
-};
 
-module.exports = TheComponent;
+module.exports = Delay;

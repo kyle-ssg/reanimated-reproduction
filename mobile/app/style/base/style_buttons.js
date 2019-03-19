@@ -1,36 +1,7 @@
 module.exports = {
 
-
     button: {
         height: styleVariables.buttonHeight,
-    },
-
-    // Button
-    circleButton: {
-    	justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-        width: 34,
-        height: 34,
-        borderRadius: 34 / 2,
-        padding: 0,
-        paddingTop: 2,
-        paddingLeft: 0,
-        paddingRight: 0,
-        shadowColor: '#333',
-        shadowOffset: {
-            width: 3,
-            height: 3,
-        },
-        shadowRadius: 5,
-        shadowOpacity: 0.4,
-
-    },
-
-
-    // Button
-    circleButtonText: {
-        fontSize: em(2),
     },
 
     buttonWithIcon: {
@@ -40,34 +11,24 @@ module.exports = {
 
     buttonText: {
         backgroundColor: 'transparent',
-        color: colour.btnText,
-        fontWeight: styleVariables.mediumFontWeight,
-        fontSize: styleVariables.fontSizeBase,
+        color: 'white',
     },
 
     buttonIcon: {
-        fontSize: styleVariables.fontSizeBase * 1.5,
-        color: colour.btnText,
+        fontSize: em(1),
+        color: 'white',
         marginRight: 10,
     },
 
-    buttonIconLeft: {
-        marginRight: styleVariables.paddingBase,
-    },
     buttonIconRight: {
-        marginLeft: styleVariables.paddingBase,
-    },
-
-    buttonSup: {
-        fontSize: styleVariables.fontSizeBase / 2,
+        marginLeft: 10,
+        marginRight: 0,
     },
 
     buttonGroup: {
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colour.buttonDefault,
-        paddingLeft: styleVariables.paddingBase,
-        paddingRight: styleVariables.paddingBase,
+        backgroundColor: pallette.primary,
         height: styleVariables.buttonHeight,
     },
 
@@ -75,28 +36,9 @@ module.exports = {
         borderTopRightRadius: 0,
         borderBottomRightRadius: 0,
     },
+
     buttonGroupRight: {
         borderTopLeftRadius: 0,
         borderBottomLeftRadius: 0,
-    },
-
-    buttonPrimary: {
-        backgroundColor: styleVariables.buttonPrimary,
-    },
-
-    buttonTextLight: {
-        color: styleVariables.buttonTextLight,
-        fontSize: styleVariables.fontSizeBase,
-    },
-
-    buttonRounded: {
-        borderRadius: styleVariables.borderRadiusDefault,
-    },
-    buttonLeft: {
-        width: (DeviceWidth / 2) - 15,
-    },
-    buttonRight: {
-        width: (DeviceWidth / 2) - 15,
-        marginLeft: 10,
     },
 };

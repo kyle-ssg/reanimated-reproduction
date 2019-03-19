@@ -1,80 +1,118 @@
 import { Navigation } from 'react-native-navigation';
-import ION from 'react-native-vector-icons/Ionicons';
 import crashlytics from 'react-native-fabric-crashlytics';
-import styleVariables from './app/style/project/style_variables';
 
+import './app/project/globals';
+import './app/routes';
+import loadIcons from './load-icons';
 
-require('./app/project/globals');
-require('./app/routes');
-
-const replaceSuffixPattern = /--(active|big|small|very-big)/g;
-const defaultIconProvider = ION;
-
-const icons = {
-    'ios-menu': [30, styleVariables.navColor],
-    'ios-add': [30, styleVariables.navColor],
-    'ios-chatbubbles': [34, styleVariables.navColor],
-    'ios-home': [34, styleVariables.navColor],
-    'md-close': [30, styleVariables.navColor],
-    'md-more': [30, styleVariables.navColor],
-    'ios-arrow-back': [30, styleVariables.navColor],
-    'ios-search': [30, styleVariables.navColor],
-};
-
-global.iconsMap = {};
-const iconsLoaded = new Promise((resolve, reject) => { // cache all icons as images
-    new Promise.all(
-        Object.keys(icons).map((iconName) => {
-            const Provider = icons[iconName][2] || defaultIconProvider; // Ionicons
-            return Provider.getImageSource(
-                iconName.replace(replaceSuffixPattern, ''),
-                icons[iconName][0],
-                icons[iconName][1],
-            );
-        }),
-    ).then((sources) => {
-        Object.keys(icons)
-            .forEach((iconName, idx) => iconsMap[iconName] = sources[idx]);
-
-        // Call resolve (and we are done)
-        resolve(true);
-    });
+const getUser = () => new Promise((resolve) => {
+    setTimeout(() => {
+        AsyncStorage.getItem('user', (err, user) => { // Load the user from async storage
+            resolve(user && JSON.parse(user));
+        });
+    }, Constants.simulate.NEW_USER ? 500 : 0);
 });
-//
-// const getUser = new Promise(function (resolve) {
-//     if (Constants.simulate.NEW_USER) {
-//         resolve(null)
-//     } else {
-//         AsyncStorage.getItem('user', (err, res) => {
-//             if (res) {
-//                 AccountStore.setUser(JSON.parse(res))
-//             }
-//             resolve(res)
-//         });
-//     }
-// });
 
-Promise.all([Promise.resolve(), iconsLoaded]).then(([user]) => {
-    global.iconsMap = iconsMap;
-
+const initialiseApp = (user) => {
     global.modalNavButtons = {
-        leftButtons: [],
-        rightButtons: [
-            {
-                icon: iconsMap['md-close'], // for icon button, provide the local image asset name
-                id: 'close', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
-            },
-        ],
+        topBar: {
+            leftButtons: [],
+            rightButtons: [
+                {
+                    icon: global.iconsMap['md-close'], // for icon button, provide the local image asset name
+                    id: 'close', // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+                },
+            ],
+        },
     };
-    Navigation.startSingleScreenApp({
-        screen: routes.homeScreen(),
-        drawer: {
-            right: {
-                screen: 'side-menu',
+
+    // Determine the initial route\
+    const screen = routes.homeScreen();
+
+    const defaultOptions = {
+        topBar: {
+            elevation: 0,
+        },
+    };
+    const duration = 400;
+    // const duration = null;
+    const fromFade = 0;
+    const toFade = 1;
+    const fromX = DeviceWidth;
+    const toX = 0;
+
+    if (Platform.OS === 'android') {
+        defaultOptions._animations = {
+            push: {
+                waitForRender: true,
             },
+        };
+        defaultOptions.animations = {
+            push: {
+                content: {
+                    x: {
+                        from: fromX,
+                        to: toX,
+                        interpolation: 'decelerate',
+                    },
+                    alpha: {
+                        from: fromFade,
+                        to: toFade,
+                        duration,
+                        interpolation: 'decelerate',
+                    },
+                },
+            },
+            pop: {
+                topBar: {
+                    alpha: {
+                        from: toFade,
+                        to: fromFade,
+                    },
+                },
+                content: {
+                    x: {
+                        from: toX,
+                        to: fromX * 2.5,
+                        duration,
+                        interpolation: 'accelerateDecelerate',
+                    },
+                    alpha: {
+                        from: toFade,
+                        to: fromFade,
+                        duration,
+                        interpolation: 'accelerateDecelerate',
+                    },
+                },
+            },
+        };
+    }
+    Navigation.setDefaultOptions(defaultOptions);
+
+    Navigation.setRoot({
+        root: {
+            ...routes.withStack(screen),
         },
     });
-});
+};
 
+
+Promise.all([
+    getUser(),
+    loadIcons(),
+])
+    .then(([user]) => {
+        initialiseApp(user);
+
+        Navigation.events().registerAppLaunchedListener(() => {
+            initialiseApp(user);
+        });
+    });
+
+// eslint-disable-next-line
 console.disableYellowBox = true;
 crashlytics.init();
+
+if (Constants.simulate.NOT_ACCEPTED_TERMS) {
+    AsyncStorage.removeItem(Constants.strings.ACCEPTED_TERMS);
+}

@@ -10,29 +10,9 @@ module.exports = {
         paddingBottom: styleVariables.paddingBase,
     },
 
-    enterPinContainer: {
-        backgroundColor: '#fff',
-        borderRadius: 4,
-        borderColor: colour.inputBorder,
-        borderWidth: PixelRatio.get() / 2,
-        height: styleVariables.inputHeight,
-    },
-
-    pin: {
-        height: 44,
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: 10,
-        borderBottomWidth: 2,
-        borderColor: colour.inputBorder,
-    },
-
     input: {
-        fontFamily: styleVariables.fontSansSerif,
         fontSize: styleVariables.fontSizeBase,
         flex: 1,
-        fontWeight: styleVariables.mediumFontWeight,
-        color: colour.input,
     },
 
     inputContainer: {
@@ -66,6 +46,53 @@ module.exports = {
         justifyContent: 'center',
         marginRight: 5,
         borderWidth: 1 / PixelRatio.get(),
+    },
+
+
+    // adherium
+
+    textInput: {
+        height: styleVariables.inputHeight,
+        fontSize: styleVariables.inputFontSizeBase,
+        backgroundColor: pallette.inputBackground,
+        paddingLeft: styleVariables.gutterBase,
+        borderBottomColor: pallette.CoolGray,
+        borderBottomWidth: styleVariables.inputBorderWidth,
+    },
+
+    inputLabel: {
+        color: pallette.primary,
+        fontSize: 16,
+    },
+
+    inputLabelFlat: {
+        color: pallette.primary,
+        fontSize: 12,
+    },
+
+    label: {
+        color: styleVariables.text,
+        marginBottom: styleVariables.gutterBase / 2,
+    },
+
+    inputAppendContainer: {
+        position: 'relative',
+    },
+
+    inputAppend: {
+        position: 'absolute',
+        zIndex: 1,
+        left: 0,
+        top: 0,
+        backgroundColor: 'transparent',
+        height: 54,
+        width: 54,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    inputIndent: {
+        paddingLeft: 40,
     },
 
 };

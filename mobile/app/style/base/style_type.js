@@ -2,20 +2,34 @@ require('./style_pxToEm');
 
 module.exports = {
 
-    // so 14 is em(1), 28 is em(2)
 
     //
     // Typography
     // --------------------------------------------------
 
-    // Body text
-    // -------------------------
-
-    text: {
-        color: colour.text,
-        fontSize: em(2),
+    paragraph: {
+        fontSize: styleVariables.fontSizeParagraph,
     },
 
+    h1: {
+        fontSize: styleVariables.fontSizeH1,
+    },
+
+    h2: {
+        fontSize: styleVariables.fontSizeH2,
+    },
+
+    h3: {
+        fontSize: styleVariables.fontSizeH3,
+    },
+    h4: {
+        fontSize: styleVariables.fontSizeH4,
+    },
+
+    text: {
+        color: pallette.text,
+        fontSize: em(2),
+    },
 
     textError: {
         color: colour.errorText,
@@ -39,14 +53,7 @@ module.exports = {
     },
 
     anchor: {
-        color: pallette.anchor,
-        fontWeight: '500',
-        fontSize: em(styleVariables.fontSizeAnchor),
-    },
 
-    debug: {
-        borderWidth: styleVariables.borderWidth,
-        borderColor: pallette.brandDanger,
     },
 
     p: {
@@ -56,40 +63,104 @@ module.exports = {
     bold: {
         fontWeight: 'bold',
     },
+    text: {
+        backgroundColor: 'transparent',
+        color: pallette.primaryLightest,
+        fontSize: styleVariables.fontSizeBase,
+    },
 
-    // Headings
-    // -------------------------
+    onboardingH1: {
+        fontSize: 24,
+        color: pallette.primaryDarkAlt,
+        fontFamily: styleVariables.paragraphText,
+    },
 
-    heading: {
+    paragraph: {
+        marginBottom: styleVariables.marginBaseVertical,
+        fontFamily: styleVariables.paragraphText,
+        lineHeight: 28,
+        fontSize: 18,
+        color: pallette.primaryDark,
+        // letterSpacing: 0.9
+    },
+    paragraphMutedItallic: {
+        fontSize: 18,
+        textAlign: 'center',
+        color: pallette.primaryDarkAlt,
+    },
+    legalText: {
+        lineHeight: 22,
+        fontSize: 16,
+        color: 'black',
+    },
+    legalTextSmall: {
+        lineHeight: 22,
+        fontSize: 14,
+        color: pallette.primaryDark,
+    },
+
+    paragraphMuted: {
+        marginBottom: styleVariables.marginBaseVertical,
+        fontFamily: styleVariables.paragraphText,
+        lineHeight: 25,
+        fontSize: 16,
+        opacity: 0.6,
+        color: pallette.primaryDark,
+    },
+    paragraphMutedSmall: {
+        marginBottom: styleVariables.marginBaseVertical,
+        fontFamily: styleVariables.paragraphText,
+        lineHeight: 25,
+        fontSize: 14,
+        opacity: 0.6,
+        color: pallette.primaryDark,
+    },
+
+    textSmall: {
+        fontSize: styleVariables.fontSizeSmall,
+    },
+
+    textFaint: {
+        color: pallette.textFaint,
+    },
+
+
+    textError: {
+        color: colour.errorText,
+    },
+
+    errorText: {
+        color: pallette.error,
+    },
+
+    fontSizeHeading: {
         fontSize: styleVariables.fontSizeHeading,
-        color: colour.heading,
-        alignSelf: 'center',
+        fontWeight: 'bold',
     },
 
-    subheading: {
+    fontSizeSubHeading: {
         fontSize: styleVariables.fontSizesubheading,
-        color: colour.subheading,
-        fontFamily: 'SFUIDisplay-Bold',
-        alignSelf: 'center',
+        fontWeight: 'bold',
     },
 
-    h1: {
-        paddingTop: 0,
-        fontWeight: styleVariables.headingsFontWeight,
-        fontSize: styleVariables.fontSizeH1,
+    fontSizeSmall: {
+        fontSize: styleVariables.fontSizeSmall,
     },
 
-    h2: {
-        paddingTop: 0,
-        fontSize: styleVariables.fontSizeH2,
-        fontWeight: styleVariables.headingsFontWeight,
+    sup: {
+        fontSize: em(0.65),
     },
 
-    h3: {
-        paddingTop: 0,
-        fontSize: styleVariables.fontSizeH3,
-        fontWeight: styleVariables.headingsFontWeight,
-        color: pallette.textLight,
+    anchor: {
+        color: pallette.primaryDark,
+        fontFamily: styleVariables.headerText,
+        textDecorationLine: 'underline',
+        letterSpacing: em(0.06),
+        fontSize: em(0.86),
+    },
+    dosageUnitText: {
+        color: pallette.primaryDark,
+        fontSize: 24,
     },
 
 };

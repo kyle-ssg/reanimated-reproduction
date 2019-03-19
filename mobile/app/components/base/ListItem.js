@@ -1,10 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import ReactNative, { Platform, TouchableNativeFeedback } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
-const TheComponent = class extends Component {
-    displayName: 'TheComponent'
+const ListItem = class extends Component {
+    static displayName = 'ListItem';
 
-    constructor(props, context) {
+    constructor(props) {
         super(props);
         this.state = {};
     }
@@ -25,7 +26,7 @@ const TheComponent = class extends Component {
         const animationProps = this.props.animationProps ? Object.assign(this.props.animationProps, {
             delay: this.props.delay + 10 + ((Number(this.props.index || 0)) * 50),
         }) : {};
-        const TheView = this.props.animationProps ? Animatable.View : View;
+        const TheView = this.props.animationProps ? Animatable.View : ReactNative.View;
         return (
             this.props.onPress ? (
                 <TheView
@@ -33,7 +34,7 @@ const TheComponent = class extends Component {
                   {...animationProps}
                 >
                     {
-                        Platform.OS == 'android' ? (
+                        Platform.OS === 'android' ? (
                             <TouchableNativeFeedback
                               onPress={this.props.disabled ? null : this.props.onPress}
                               background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
@@ -61,13 +62,13 @@ const TheComponent = class extends Component {
         );
     }
 };
-TheComponent.defaultProps = {
+ListItem.defaultProps = {
     onPress: null,
     text: null,
     delay: 0,
     animationProps: null,
-    underlayColor: colour.inputBackground,
+    underlayColor: pallette.inputBackground,
 };
 
 
-module.exports = TheComponent;
+module.exports = ListItem;

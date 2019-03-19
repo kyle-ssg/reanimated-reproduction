@@ -6,7 +6,11 @@ module.exports = {
         backgroundColor: 'transparent',
     },
     bodyAlt: {
-        backgroundColor: colour.bodyBackgroundAlt,
+        backgroundColor: pallette.backgroundLight,
+    },
+
+    bodyWithTabs: {
+        backgroundColor: pallette.bodyBackground,
     },
 
     shadow: {
@@ -17,11 +21,6 @@ module.exports = {
         },
         shadowRadius: 5,
         shadowOpacity: 0.4,
-    },
-
-    // APP
-    navContent: {
-        padding: styleVariables.gutterBase,
     },
 
     // ICONS
@@ -52,7 +51,7 @@ module.exports = {
     },
 
     roundedAnimationInner: {
-        backgroundColor: pallette.secondary,
+        backgroundColor: 'white',
         alignSelf: 'center',
         borderRadius: 35,
         width: 70,

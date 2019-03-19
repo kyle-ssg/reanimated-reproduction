@@ -4,13 +4,14 @@
 
 import InputMask from 'inputmask-core';
 
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
 
-const TextInput = class extends Component {
+const AnimatedInput = Animated.createAnimatedComponent(ReactNative.TextInput);
+const TextInput = class extends PureComponent {
     static displayName = 'TextInput'
 
     componentWillMount() {
-        this.animation = new Animated.Value(0);
+        this.animation = new Animated.Value(0.0001);
     }
 
     clear = () => {
@@ -28,24 +29,25 @@ const TextInput = class extends Component {
     onFocus = () => {
         Animated.timing(this.animation, {
             toValue: 1,
-            duration: 200,
+            duration: 150,
             useNativeDriver: true, // <-- Add this
-            easing: Animations.deceleration,
+            easing: Animations.standard,
         }).start();
-        this.props.onFocus && this.props.onFocus();
+        if (this.props.onFocus) this.props.onFocus();
     };
 
     onBlur = () => {
         Animated.timing(this.animation, {
-            toValue: 0,
+            toValue: 0.0001,
             duration: 300,
             useNativeDriver: true, // <-- Add this
             easing: Easing.cubic,
         }).start();
-        this.props.onBlur && this.props.onBlur();
+        if (this.props.onBlur) this.props.onBlur();
     };
 
     onChangeText = (text) => {
+        if (!this.props.onChangeText) return;
         if (this.props.mask) {
             // Masking
             if (!this.mask) {
@@ -106,12 +108,11 @@ const TextInput = class extends Component {
             }
 
             const value = this.mask.getValue().slice(0, this.mask.selection.start);
-            console.log(value);
             // Update text
-            this.props.onChangeText && this.props.onChangeText();
+            this.props.onChangeText(value);
         } else {
             // No masking, just update text
-            this.props.onChangeText && this.props.onChangeText(text);
+            this.props.onChangeText(text);
         }
     }
 
@@ -125,22 +126,32 @@ const TextInput = class extends Component {
 
 
     render() {
+        // If you wanted animated shadows
+        // const shadowOpacity = this.animation.interpolate({
+        //     inputRange: [0, 1],
+        //     outputRange: [0.2, 0.3], // 0 : 150, 0.5 : 75, 1 : 0
+        // });
         return (
             <View>
-                <ReactNative.TextInput
+                {this.props.title && (
+                    <FormGroup>
+                        <Text style={Styles.inputLabel}>{this.props.title}</Text>
+                    </FormGroup>
+                )}
+                <AnimatedInput
                   {...this.props}
                   onFocus={this.onFocus}
                   onBlur={this.onBlur}
                   onChangeText={this.onChangeText}
-                  style={[this.props.style, Styles.textInput]}
+                  style={[Styles.textInput, Styles.textInputAndroid, this.props.style]}
                   value={this.props.value}
                   testID={this.props.testID}
                 />
                 <Animated.View style={[{
-                    marginTop: -styleVariables.inputBorderWidth,
+                    marginTop: -(Math.round(1 / PixelRatio.get() * 3)),
                     transform: [{ scaleX: this.animation }],
-                    backgroundColor: colour.activeBorder,
-                    height: 1 / PixelRatio.get() * 4,
+                    backgroundColor: pallette.primary,
+                    height: Math.round(1 / PixelRatio.get() * 6),
                 }]}
                 />
             </View>
@@ -163,10 +174,17 @@ TextInput.propTypes = {
     style: React.PropTypes.any,
     secureTextInput: OptionalBool,
     disabled: OptionalBool,
-    keyboardType: OptionalBool,
+    keyboardType: OptionalString,
     onSubmit: OptionalFunc,
     onFocus: OptionalFunc,
     textStyle: oneOfType([OptionalObject, OptionalNumber]),
     testID: OptionalString,
 };
-module.exports = TextInput;
+
+// const styles = StyleSheet.create({
+//
+// });
+
+
+export default TextInput;
+export const FlatInput = props => <TextInput {...props} style={[Styles.flatInput, props.style]}/>;
