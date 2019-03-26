@@ -56,10 +56,8 @@ global.API = {
         });
     },
 
-    log(namespace, ...args) {
-        if (Project.logs[namespace]) {
-            console.log.apply(this, args);
-        }
+    log(...args) {
+        console.log(...args);
     },
 
     trackEvent(data) {
