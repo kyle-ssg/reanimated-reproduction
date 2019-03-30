@@ -1,19 +1,19 @@
 
-#stages:
-#    - test
-#    #- deploy
-#
-#test:
+stages:
+    - test
+    #- deploy
+
+test:
 #    image: solidstategroup/node-java-chrome:1.0
-#    stage: test
-#    script:
-#        - npm i
-#        #        - npm run test:e2e
-#        - npm run test:pact
-#        - npm run test:pact:publish
-#    only:
-#        - develop
-#        - master
+    stage: test
+    script:
+        - npm i
+        #        - npm run test:e2e
+        - npm run test:pact
+        - npm run test:pact:publish
+    only:
+        - develop
+        - master
 
 #deploy:
 #    image: ilyasemenov/gitlab-ci-git-push
