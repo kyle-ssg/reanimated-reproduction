@@ -9,7 +9,7 @@ module.exports = {
         alignItems: 'center',
         paddingBottom: 40,
         paddingTop: 40,
-        height: DeviceHeight - 40,
+        height: DeviceHeight,
     },
 
     lightbox: {

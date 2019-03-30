@@ -56,8 +56,8 @@ module.exports = {
         fontSize: styleVariables.inputFontSizeBase,
         backgroundColor: pallette.inputBackground,
         paddingLeft: styleVariables.gutterBase,
-        borderBottomColor: pallette.CoolGray,
-        borderBottomWidth: styleVariables.inputBorderWidth,
+        borderBottomColor: pallette.divider,
+        borderBottomWidth: StyleSheet.hairlineWidth,
     },
 
     inputLabel: {

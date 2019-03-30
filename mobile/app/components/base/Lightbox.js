@@ -9,7 +9,7 @@ export default (WrappedComponent) => {
 
         state = {
             slideInFromTop: {
-                easing: Animations.deceleration,
+                easing: Animations.standard,
                 from: { translateY: -DeviceHeight },
                 to: { translateY: 0 },
             },
@@ -22,7 +22,7 @@ export default (WrappedComponent) => {
         dismiss = () => {
             this.setState({
                 slideInFromTop: {
-                    easing: Animations.deceleration,
+                    easing: Animations.acceleration,
                     from: { translateY: 0 },
                     to: { translateY: -DeviceHeight },
                 },

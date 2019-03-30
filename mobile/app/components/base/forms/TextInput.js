@@ -127,10 +127,6 @@ const TextInput = class extends PureComponent {
 
     render() {
         // If you wanted animated shadows
-        // const shadowOpacity = this.animation.interpolate({
-        //     inputRange: [0, 1],
-        //     outputRange: [0.2, 0.3], // 0 : 150, 0.5 : 75, 1 : 0
-        // });
         return (
             <View>
                 {this.props.title && (
