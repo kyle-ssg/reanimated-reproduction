@@ -4,7 +4,7 @@ stages:
     #- deploy
 
 test:
-#    image: solidstategroup/node-java-chrome:1.0
+    image: lakoo/node-alpine-gcloud
     stage: test
     script:
         - npm i
