@@ -1,8 +1,16 @@
 
 //STANDARD REACT_NATIVE STUFF
 package com.ssg.boilerplate;
-import android.app.Application;
-import com.facebook.react.ReactApplication;
+
+import com.facebook.react.ReactNativeHost;
+import com.facebook.react.ReactPackage;
+import com.facebook.soloader.SoLoader;
+
+import java.util.Arrays;
+import java.util.List;
+
+// Keep this here for 'react-native link'
+// import com.facebook.react.ReactApplication;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.reactnativecommunity.netinfo.NetInfoPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
@@ -10,12 +18,6 @@ import com.magus.fblogin.FacebookLoginPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.clipsub.rnbottomsheet.RNBottomSheetPackage;
 import com.wix.interactable.Interactable;
-import com.facebook.react.ReactNativeHost;
-import com.facebook.react.ReactPackage;
-import com.facebook.react.shell.MainReactPackage;
-import com.facebook.soloader.SoLoader;
-import java.util.Arrays;
-import java.util.List;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;  // <--- import
 
 //REAT_NATIVE_NAVIGATION
@@ -23,7 +25,6 @@ import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
 import android.support.annotation.Nullable;
-
 
 //REACT_NATIVE_BRANCH
 import io.branch.rnbranch.RNBranchPackage;
@@ -76,31 +77,33 @@ public class MainApplication extends NavigationApplication {
     }
 
     protected List<ReactPackage> getPackages() {
-           return Arrays.<ReactPackage>asList(
-                                 new RNBottomSheetPackage(),
-                                 new Interactable(),
+        return Arrays.<ReactPackage>asList(
+            // Keep this here for `react-native link`
+            // new MainReactPackage(),
+            new RNBottomSheetPackage(),
+            new Interactable(),
 
-                               //REACT_NATIVE_FIRE_BASE
-                                   new RNFirebasePackage(),
-                                   new RNFirebaseMessagingPackage(),
-                                   new RNFirebaseAnalyticsPackage(),
-                                   new RNFirebaseNotificationsPackage(),
-                               //END OF REACT_NATIVE_FIRE_BASE
+            //REACT_NATIVE_FIRE_BASE
+            new RNFirebasePackage(),
+            new RNFirebaseMessagingPackage(),
+            new RNFirebaseAnalyticsPackage(),
+            new RNFirebaseNotificationsPackage(),
+            //END OF REACT_NATIVE_FIRE_BASE
 
-                               new FabricPackage(),
-                               new LottiePackage(),
-                               new VectorIconsPackage(),
-                               new RNDeviceInfo(),
-                               new RNBranchPackage(),
-                               new FacebookLoginPackage(),
-                               new SvgPackage(),
-                               new RNGoogleSigninPackage(),
-                               new LinearGradientPackage(),
-                               new RNViewOverflowPackage(),
-                               new AsyncStoragePackage(),
-                               new NetInfoPackage(),
-                               new RNCWebViewPackage()
-                        );
+            new FabricPackage(),
+            new LottiePackage(),
+            new VectorIconsPackage(),
+            new RNDeviceInfo(),
+            new RNBranchPackage(),
+            new FacebookLoginPackage(),
+            new SvgPackage(),
+            new RNGoogleSigninPackage(),
+            new LinearGradientPackage(),
+            new RNViewOverflowPackage(),
+            new AsyncStoragePackage(),
+            new NetInfoPackage(),
+            new RNCWebViewPackage()
+        );
     }
 
     @Override
