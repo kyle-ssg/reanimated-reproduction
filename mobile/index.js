@@ -97,17 +97,15 @@ const initialiseApp = (user) => {
 };
 
 
-Promise.all([
-    getUser(),
-    loadIcons(),
-])
-    .then(([user]) => {
-        initialiseApp(user);
-
-        Navigation.events().registerAppLaunchedListener(() => {
+Navigation.events().registerAppLaunchedListener(() => {
+    Promise.all([
+        getUser(),
+        loadIcons(),
+    ])
+        .then(([user]) => {
             initialiseApp(user);
         });
-    });
+});
 
 // eslint-disable-next-line
 console.disableYellowBox = true;
