@@ -646,10 +646,10 @@
 				A3EE488D223AA67A00980424 /* libRNCWebView.a in Frameworks */,
 				A3EE488C223AA67200980424 /* libRNCNetInfo.a in Frameworks */,
 				A3EE488B223AA66A00980424 /* libRNCAsyncStorage.a in Frameworks */,
-				A33CCE26223A958000C726CC /* JavaScriptCore.framework in Frameworks */,
 				A3D1FC2722397C35001684D7 /* libReactNativePermissions.a in Frameworks */,
 				A3D1FBEB22397C2E001684D7 /* libreact-native-branch.a in Frameworks */,
 				2701E1CB22207C87008CED0E /* libReactNativeNavigation.a in Frameworks */,
+				A33CCE26223A958000C726CC /* JavaScriptCore.framework in Frameworks */,
 				A3D1FB7422397977001684D7 /* FBSDKLoginKit.framework in Frameworks */,
 				A3D1FB7322397977001684D7 /* FBSDKCoreKit.framework in Frameworks */,
 				2775E35D21EF454200461FB6 /* libRNGoogleSignin.a in Frameworks */,
@@ -2135,6 +2135,7 @@
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-view-overflow/ios",
+					"$(SRCROOT)/../node_modules/react-native-branch/ios",
 				);
 				INFOPLIST_FILE = boilerplate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2183,6 +2184,7 @@
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-view-overflow/ios",
+					"$(SRCROOT)/../node_modules/react-native-branch/ios",
 				);
 				INFOPLIST_FILE = boilerplate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
