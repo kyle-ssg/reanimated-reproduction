@@ -167,7 +167,7 @@ TextInput.propTypes = {
     mask: OptionalString,
     onChangeText: OptionalFunc,
     height: OptionalNumber,
-    style: React.PropTypes.any,
+    style: propTypes.any,
     secureTextInput: OptionalBool,
     disabled: OptionalBool,
     keyboardType: OptionalString,

@@ -1,14 +1,10 @@
 import routes from '../routes';
-global.routes = routes;
 import AccountProvider from '../../common/providers/AccountProvider';
 
-window.AccountProvider = AccountProvider;
-
-
-window.PanelSearch = require('../components/PanelSearch');
-
 // Useful for components used all the time within a project
-window.Loader = () => (
+global.routes = routes;
+global.AccountProvider = AccountProvider;
+global.Loader = () => (
     <svg
       version="1.1"
       id="loader-1"
@@ -36,6 +32,5 @@ window.Loader = () => (
     </svg>
 );
 
-window.Loader.displayName = 'Loader';
-
-window.Tooltip = require('../components/Toolip');
+global.Loader.displayName = 'Loader';
+global.Tooltip = require('../components/Toolip');

@@ -6,8 +6,6 @@ import './styles/styles.scss';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ToastMessages from './project/toast';
 
-
-
 const rootElement = document.getElementById('app');
 
 // Render the React application to the DOM
@@ -24,7 +22,7 @@ AsyncStorage.getItem('t', (err, res) => {
         }
 
         ReactDOM.render(
-            <Router>{routes}</Router>,
+            <Router>{global.routes}</Router>,
             rootElement,
         );
     }, 1);

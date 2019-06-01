@@ -11,7 +11,7 @@ const compiler = webpack(config);
 
 module.exports = function (app) {
     const middleware = webpackDevMiddleware(compiler, {
-        logLevel: 'info',
+        stats: 'errors-only',
         publicPath: config.output.publicPath,
 
     });

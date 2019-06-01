@@ -14,7 +14,7 @@ class Examples extends React.Component {
         };
     }
 
-    componentWillReceiveProps(nextProps, nextContext) {
+    componentWillReceiveProps(nextProps) {
         this.setState({
             ...nextProps,
         });
@@ -45,7 +45,7 @@ class Examples extends React.Component {
                 </FormGroup>
                 {
                     children.map((child, i) => (
-                        <FormGroup>
+                        <FormGroup key={i}>
                             <h3>
                                 {child.type.displayName}
                             </h3>

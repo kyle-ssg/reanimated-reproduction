@@ -2,7 +2,7 @@
 const API = {
     ajaxHandler(store, res) {
         if (res instanceof Error) {
-            // Catch programming errors
+            // eslint-disable-next-line
             console.log(res);
             store.error = res.message;
             store.goneABitWest();
