@@ -16,6 +16,24 @@
 	.subtitle {
 		font-size: 0.8em;
 	}
+
+	&__desc{
+		display:none!important;
+	}
+
+	.project-list-item__desc{
+		display:none!important;
+	}
+
+	&--open{
+		.project-list-item__desc{
+			display:flex!important;
+		}
+
+		.project-list-item__icon{
+			transform: rotate(180deg);
+		}
+	}
 }
 
 .chevron::before {

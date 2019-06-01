@@ -1,6 +1,6 @@
 import Switch from 'rc-switch';
 import cn from 'classnames';
-import countryData from '../country-data';
+import countryData from './country-data';
 import 'rc-slider/assets/index.css';
 import AutoComplete from '../../extras/virtualised/AutoComplete';
 

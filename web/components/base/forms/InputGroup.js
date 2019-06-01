@@ -14,11 +14,14 @@ class InputGroup extends Component {
                 placeholder,
                 title,
                 value,
+                inputGroupClassName,
+                className,
             },
         } = this;
+
         return (
-            <div className="form-group">
-                <label htmlFor={id} className="cols-sm-2 control-label">{title}</label>
+            <div className={`${className} form-group mb-0`}>
+                {title ? (<label htmlFor={id} className="cols-sm-2 control-label">{title}</label>) : null}
                 {inputProps && inputProps.error && (
                 <span>
                     <span> - </span>
@@ -28,20 +31,18 @@ class InputGroup extends Component {
                 </span>
                 )}
 
-                <div>
-                    <div>
-                        <Input
-                          ref="input"
-                          {...inputProps}
-                          isValid={isValid}
-                          disabled={disabled}
-                          value={value}
-                          onChange={onChange}
-                          id={id}
-                          placeholder={placeholder}
-                        />
-                    </div>
-                </div>
+                <Input
+                  ref="input"
+                  {...inputProps}
+                  isValid={isValid}
+                  disabled={disabled}
+                  value={value}
+                  onChange={onChange}
+                  id={id}
+                  placeholder={placeholder}
+                  className={inputGroupClassName}
+                  inputClassName={inputGroupClassName}
+                />
             </div>
         );
     }

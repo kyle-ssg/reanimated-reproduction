@@ -1,8 +1,8 @@
 @import "3rdParty/index";
-@import "variables";
 @import "components/index";
 @import "project/index";
 @import "flexbox/index";
+@import "variables";
 
 .faint {
   color: $text-muted;
@@ -18,6 +18,12 @@
   padding: 10px;
   margin-top: -10px;
   background-color: #f1f1f1
+}
+
+
+.row.no-pad{
+  margin-left: -$grid-gutter-width;
+  margin-right: -$grid-gutter-width;
 }
 
 .feature-value-container {
@@ -44,12 +50,21 @@
   cursor: pointer;
 }
 
-body {
-  background: #fff;
-  font-family: $font-family;
-  font-weight: 200;
+#app {
+  min-height: 100%;
 }
 
+html,body {
+  background: $body-bg;
+  font-family: $font-family;
+  font-weight: 200;
+  height: 100%;
+  margin: 0;
+  background-color: white;
+}
+.homepage {
+  height: 100%;
+}
 a {
   color: $link-color;
   font-weight: 400;
@@ -82,10 +97,6 @@ input:disabled {
 
 .inline-block {
   display: inline-block;
-}
-
-.app-container {
-  margin-top: 50px;
 }
 
 hr {

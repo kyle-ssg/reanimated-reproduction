@@ -11,6 +11,7 @@ export default (
         {/* Render one of these routes */}
         <Switch>
             <Route path="/" exact component={require('./components/pages/HomePage').default}/>
+            <Route path="/markup" exact component={require('./components/pages/_Markup_Page_').default}/>
 
             {/* Examples */}
             <Route path="/example/sass" component={require('./components/pages/examples/SassPage').default}/>

@@ -5,7 +5,7 @@ const getQueryString = (params) => {
         .join('&');
 };
 
-module.exports = {
+const _data = global._data = {
     token: '',
     type: '',
 
@@ -73,9 +73,10 @@ module.exports = {
 
         if (method != 'get') options.headers['Content-Type'] = 'application/json; charset=utf-8';
 
-        if (this.token) { // add auth tokens to headers of all requests
+        if (this.token && url.indexOf('api.trello') === -1) {
             options.headers.AUTHORIZATION = `Token ${this.token}`;
         }
+
 
         if (data) {
             if (method == 'get') {
@@ -119,3 +120,5 @@ module.exports = {
         this.token = _token;
     },
 };
+
+module.exports = _data;

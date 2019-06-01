@@ -5,26 +5,26 @@ const BaseStore = require('./base/_store');
 
 
 const store = Object.assign({}, BaseStore, {
-  id: 'network',
-  isConnected: true,
+    id: 'network',
+    isConnected: true,
 });
 
 const handleIsConnected = (isConnected) => {
-  if (isConnected !== store.isConnected) {
-    store.isConnected = isConnected;
-    store.changed();
-    if (isConnected) {
-      AppActions.connected(isConnected);
-    } else {
-      AppActions.disconnected(isConnected);
+    if (isConnected !== store.isConnected) {
+        store.isConnected = isConnected;
+        store.changed();
+        if (isConnected) {
+            AppActions.connected(isConnected);
+        } else {
+            AppActions.disconnected(isConnected);
+        }
     }
-  }
 };
 
 NetInfo.isConnected.fetch().then(handleIsConnected);
 NetInfo.isConnected.addEventListener(
-  'change',
-  handleIsConnected,
+    'change',
+    handleIsConnected,
 );
 
 export default store;

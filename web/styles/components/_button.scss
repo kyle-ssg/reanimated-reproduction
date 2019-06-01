@@ -12,12 +12,30 @@ button.btn {
 	border: 10px;
 	box-sizing: border-box;
 	display: inline-block;
+	background: $btn-primary-bg;
 	transition: $button-transition;
+	text-transform: uppercase;
 	&:hover {
 		color: $btn-primary-color-hover;
 		background: $btn-primary-bg-hover;
+
+	}
+
+	&--homepage {
+		text-transform: uppercase;
+		font-weight: 200;
+		background-color: white;
+		color: $btn-primary-bg-hover;
+		padding: 0 40px;
+		line-height: 44px;
+		border-radius: 500px;
+		&:hover{
+			background: white;
+			color: $btn-primary-bg-hover;
+		}
 	}
 }
+
 button.btn-link {
 	color: $link-color;
 	box-shadow: none !important;
