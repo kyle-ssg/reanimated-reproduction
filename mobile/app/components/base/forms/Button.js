@@ -95,9 +95,9 @@ export const TabPillButton = props => (
     <Button {...props} style={[styles.TabButtonPill, props.style]}>
         <Text
           pointerEvents="none" style={[
-          styles.TabButtonPillText,
-          props.textStyle,
-      ]}
+              styles.TabButtonPillText,
+              props.textStyle,
+          ]}
         >
             {props.children}
         </Text>

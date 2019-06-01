@@ -41,7 +41,6 @@ class InputGroup extends Component {
                   id={id}
                   placeholder={placeholder}
                   className={inputGroupClassName}
-                  inputClassName={inputGroupClassName}
                 />
             </div>
         );

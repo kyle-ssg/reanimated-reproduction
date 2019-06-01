@@ -42,8 +42,6 @@ window.RadioGroup = RadioGroup;
 
 
 window.React = React;
-// eslint-disable-next-line
-console.log(propTypes);
 // React.PropTypes = propTypes;
 window.propTypes = propTypes;
 window.hot = hot;

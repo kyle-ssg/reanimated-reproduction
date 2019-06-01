@@ -1,25 +1,26 @@
 const FCM = require('fcm-push');
-const config = "AAAAjIE7vWc:APA91bHRMcMB-secDvrfc6cRoV5g_W26WPMKKl-uXKudlLJn7M5-vDPNr3NdmoOqCopCS8SfkmCBHitDzdEEjfYpFr-BFJdYsney93JBfaXRc5Ary5PTFnuJOneIw-PVuU8GT9BkoFOf"
+
+const config = 'AAAAjIE7vWc:APA91bHRMcMB-secDvrfc6cRoV5g_W26WPMKKl-uXKudlLJn7M5-vDPNr3NdmoOqCopCS8SfkmCBHitDzdEEjfYpFr-BFJdYsney93JBfaXRc5Ary5PTFnuJOneIw-PVuU8GT9BkoFOf';
 const APP_NAME = 'ssg-boilerplate';
 const fcm = new FCM(config);
 
 
-//See
+// See
 const sendPush = (to, title, body, data, tag) => {
     try {
-        var message = {
+        const message = {
             to, // required fill with device token or topics
-            notification: {  //https://firebase.google.com/docs/reference/admin/node/admin.messaging.NotificationMessagePayload
+            notification: { // https://firebase.google.com/docs/reference/admin/node/admin.messaging.NotificationMessagePayload
                 title,
                 body,
-                click_action: 'fcm.' + APP_NAME + '.open',
+                click_action: `fcm.${APP_NAME}.open`,
                 icon: 'ic_notification',
                 sound: 'default',
-                badge: "1",
+                badge: '1',
             },
             // see https://firebase.google.com/docs/reference/admin/node/admin.messaging.MessagingOptions
-            priority: "high",
-            content_available: true
+            priority: 'high',
+            content_available: true,
         };
         message.data = data;
 
@@ -27,11 +28,11 @@ const sendPush = (to, title, body, data, tag) => {
             message.notification.tag = tag;
         }
 
-        fcm.send(message, function (err, response) {
+        fcm.send(message, (err, response) => {
             if (err) {
-                console.log("Something has gone wrong!", err);
+                console.log('Something has gone wrong!', err);
             } else {
-                console.log("Successfully sent with response: ", response);
+                console.log('Successfully sent with response: ', response);
             }
         });
     } catch (e) {
@@ -46,10 +47,11 @@ sendPush(
     'This is a body',
     {
         route: {
-            screen: "showExampleLightbox",
+            screen: 'showExampleLightbox',
             data: {
-                customData:"bla"
-            }
-        }
+                customData: 'bla',
+            },
+        },
     },
-    'message');
+    'message',
+);

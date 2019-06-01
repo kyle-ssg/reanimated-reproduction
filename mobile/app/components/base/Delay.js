@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
 const Delay = class extends Component {
-
     static displayName = 'Delay';
 
     static propTypes = {

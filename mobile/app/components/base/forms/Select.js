@@ -46,15 +46,15 @@ const Select = class extends Component {
                 {
                     filterItem
                     && (
-                        <FormGroup style={{backgroundColor: '#FCF8F5'}}>
+                        <FormGroup style={{ backgroundColor: '#FCF8F5' }}>
                             <Container>
                                 <TextInput
-                                    style={{backgorundColor: 'red', shadowOpacity: 0, borderBottomWidth: 0}}
+                                  style={{ backgorundColor: 'red', shadowOpacity: 0, borderBottomWidth: 0 }}
                                   placeholder={placeholder}
                                   onChangeText={search => this.setState({ search: search.toLowerCase() })}
                                   testID={this.props.searchTestID}
                                 />
-                                </Container>
+                            </Container>
 
                         </FormGroup>
                     )

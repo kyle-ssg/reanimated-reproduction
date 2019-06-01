@@ -128,27 +128,31 @@ const API = {
         }
     },
     log() {
-        if (__DEV__) {
+        const [type, ...rest] = arguments;
+        if (__DEV__ && Project.logs[type]) {
             // eslint-disable-next-line
-            console.log.apply(this, arguments);
+            console.log.apply(this, rest);
         }
     },
     info() {
-        if (__DEV__) {
+        const [type, ...rest] = arguments;
+        if (__DEV__ && Project.logs[type]) {
             // eslint-disable-next-line
-            console.log.apply(this, arguments);
+            console.log.apply(this, rest);
         }
     },
     error() {
-        if (__DEV__) {
+        const [type, ...rest] = arguments;
+        if (__DEV__ && Project.logs[type]) {
             // eslint-disable-next-line
-            console.log.apply(this, arguments);
+            console.log.apply(this, rest);
         }
     },
     warn() {
-        if (__DEV__) {
+        const [type, ...rest] = arguments;
+        if (__DEV__ && Project.logs[type]) {
             // eslint-disable-next-line
-            console.info.apply(this, arguments);
+            console.info.apply(this, rest);
         }
     },
 };

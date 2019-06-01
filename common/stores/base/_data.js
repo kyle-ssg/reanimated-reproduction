@@ -26,7 +26,7 @@ const _data = global._data = {
                     };
                     document.getElementById('e2e-error').innerText = JSON.stringify(error);
                 }
-                API.log(response.url, response.status, err);
+                API.log('DATA', response.url, response.status, err);
             });
         return Promise.reject(response);
     },
@@ -111,7 +111,7 @@ const _data = global._data = {
                 return {};
             })
             .then((response) => {
-                API.log(url, 200, response);
+                API.log('DATA', url, 200, response);
                 return response;
             });
     },

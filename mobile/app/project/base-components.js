@@ -10,6 +10,8 @@ import Button, { ButtonAlt, ButtonPrimary, ButtonSecondary, ButtonTertiary, Butt
 import Flex from '../components/base/grid/Flex';
 import Text from '../components/base/forms/Text';
 
+import H3, { H3StyleGuide } from '../components/base/type/H3';
+
 global.Dispatcher = Dispatcher;
 global.AppActions = AppActions;
 global.Actions = Actions;
@@ -27,7 +29,6 @@ global.H1 = require('../components/base/type/H1');
 global.H2 = require('../components/base/type/H2');
 global.H4 = require('../components/base/type/H4');
 
-import H3, { H3StyleGuide } from '../components/base/type/H3';
 global.H3 = H3;
 global.H3StyleGuide = H3StyleGuide;
 

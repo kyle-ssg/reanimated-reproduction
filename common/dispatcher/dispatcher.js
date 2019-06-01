@@ -9,7 +9,7 @@ const Dispatcher = Object.assign(new ReactDispatcher(), {
             action,
         };
 
-        API.log(payload.action.actionType, payload.action);
+        API.log('DISPATCHER', payload.action.actionType, payload.action);
 
         that.dispatch(payload);
     },

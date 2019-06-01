@@ -36,7 +36,7 @@ class Examples extends React.Component {
             <div>
                 <FormGroup className="pb-2">
                     <Input
-                      inputClassName="input--default"
+                      className="input--default"
                       type="text"
                       value={search}
                       placeholder="Search for cards or lists..."
