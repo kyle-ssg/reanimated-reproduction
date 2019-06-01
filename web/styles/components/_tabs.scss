@@ -45,3 +45,9 @@
 .tab-icon {
 	margin-right: $input-padding-x;
 }
+.tab-item {
+	display: none;
+	&.tab-active {
+		display: block;
+	}
+}
