@@ -74,6 +74,7 @@ class MarkupPage extends Component {
                         body
                     </Panel>
                     <InputGroup type="email" title="Default" placeholder="Test"/>
+                    <Input type="email" title="Default" placeholder="Test"/>
                     <InputGroup
                       onChange={(e) => {
                           this.setState({ val: Utils.safeParseEventValue(e) });
@@ -104,13 +105,13 @@ class MarkupPage extends Component {
                       placeholder="hh:mm am"
                       title="Masked"
                     />
-                    <Switch id="switch" onMouseUp={this.toggleCheck} checked={this.state.checked}/>
-                    <Tabs value={this.state.tab} onChange={this.selectTab}>
-                        <div tablabel={(<span className="fa fa-phone tab-icon"/>)}>
-                            <h2>Tab 1 content</h2>
+                    <Switch id="switch" onMouseUp={() => this.setState({ checked: !this.state.checked })} checked={this.state.checked}/>
+                    <Tabs value={this.state.tab} onChange={tab => this.setState({ tab })}>
+                        <div tablabel="Tab 1">
+                            <p>Tab 1 content</p>
                         </div>
-                        <div tablabel={(<span className="fa fa-phone tab-icon"/>)}>
-                            <h2>Tab 2 content</h2>
+                        <div tablabel="Tab 2">
+                            <p>Tab 2 content</p>
                         </div>
                     </Tabs>
                 </Examples>
