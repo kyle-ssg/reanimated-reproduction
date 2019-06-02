@@ -114,6 +114,14 @@ class MarkupPage extends Component {
                             <p>Tab 2 content</p>
                         </div>
                     </Tabs>
+                    <DatePicker
+                      selected={this.state.startDate}
+                      onChange={this.handleChange}
+                      showTimeSelect
+                      timeFormat="HH:mm"
+                      timeIntervals={15}
+                      dateFormat="MMMM d, yyyy h:mm aa"
+                    />
                 </Examples>
             </div>
         );

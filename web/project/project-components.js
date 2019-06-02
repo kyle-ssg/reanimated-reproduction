@@ -1,9 +1,12 @@
 import routes from '../routes';
 import AccountProvider from '../../common/providers/AccountProvider';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.min.css';
 
 // Useful for components used all the time within a project
 global.routes = routes;
 global.AccountProvider = AccountProvider;
+global.DatePicker = DatePicker;
 global.Loader = () => (
     <svg
       version="1.1"
