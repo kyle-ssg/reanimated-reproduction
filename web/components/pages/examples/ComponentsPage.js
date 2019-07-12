@@ -115,6 +115,35 @@ const Froms = class extends React.Component {
   render() {
       return (
           <div className="container">
+              <FormGroup className="mt-5">
+                  <h4>Typeography</h4>
+                  <h1>Heading H1</h1>
+                  <h2>Heading H2</h2>
+                  <h3>Heading H2</h3>
+                  <h4>Heading H2</h4>
+              </FormGroup>
+
+              <FormGroup className="mt-5">
+                  <h4>Buttons</h4>
+                  <Button>Primary</Button>
+              </FormGroup>
+              <FormGroup>
+                  <ButtonSecondary>Secondary</ButtonSecondary>
+              </FormGroup>
+
+              <FormGroup className="mt-5">
+                  <h4>Forms</h4>
+                  <Tabs value={this.state.tab} onChange={this.selectTab}>
+                      <div tablabel="Tab 1">
+                          <p>Tab 1 content</p>
+                      </div>
+                      <div tablabel="Tab 2">
+                          <p>Tab 2 content</p>
+                      </div>
+                  </Tabs>
+              </FormGroup>
+
+
               <h2>
           Panel
                   <Tooltip>
@@ -126,10 +155,13 @@ const Froms = class extends React.Component {
 
               </Panel>
               <h2>Inputs</h2>
-              <InputGroup type="email" title="Default" inputGroupClassName="form-control" placeholder="Test"/>
               <InputGroup
-                  inputGroupClassName="form-control"
-                  onChange={(e) => {
+                type="email" title="Default" inputGroupClassName="form-control"
+                placeholder="Test"
+              />
+              <InputGroup
+                inputGroupClassName="form-control"
+                onChange={(e) => {
                     this.setState({ val: Utils.safeParseEventValue(e) });
                 }}
                 isValid={this.state.val}
@@ -138,6 +170,7 @@ const Froms = class extends React.Component {
                 placeholder="Required Input"
               />
               <InputGroup
+                inputGroupClassName="form-control"
                 onChange={(e) => {
                     this.setState({ email: Utils.safeParseEventValue(e) });
                 }}
@@ -147,12 +180,14 @@ const Froms = class extends React.Component {
                 placeholder="Enter an Email"
               />
               <InputGroup
+                inputGroupClassName="form-control"
                 inputProps={{ mask: '11/11' }}
                 name="expiry"
                 placeholder="dd/yy"
                 title="Masked"
               />
               <InputGroup
+                inputGroupClassName="form-control"
                 inputProps={{ mask: '11:11 am' }}
                 name="expiry"
                 placeholder="hh:mm am"
