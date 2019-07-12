@@ -183,15 +183,15 @@ const LayoutPage = class extends React.Component {
               </div>
 
               <div>
-                  <h1>Row</h1>
+                  <h1>Row eogeogn</h1>
                   <Row className="list-group">
-                      <Flex className="list-item centered-container">
+                      <Flex className="list-group-item centered-container">
                           <h2>Flex 1</h2>
                       </Flex>
-                      <Flex value={2} className="list-item centered-container">
+                      <Flex value={2} className="list-group-item centered-container pr-3">
                           <h2>Flex 2</h2>
                       </Flex>
-                      <Flex value={3} className="list-item centered-container">
+                      <Flex value={3} className="list-group-item centered-container">
                           <h2>Flex 3</h2>
                       </Flex>
                   </Row>

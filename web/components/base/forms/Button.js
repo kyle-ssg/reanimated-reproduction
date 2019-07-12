@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 
-window.Button = class extends React.Component {
+export default class extends React.Component {
     static displayName = 'Button';
 
     constructor(props, context) {
@@ -29,4 +29,13 @@ window.Button = class extends React.Component {
             </button>
         );
     }
-};
+}
+
+export const ButtonSecondary = props => (
+    <Button
+      {...props}
+      className={cn(props.className, 'btn btn-secondary')}
+    >
+        {props.children}
+    </Button>
+);

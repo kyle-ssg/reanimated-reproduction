@@ -30,7 +30,7 @@ import '../components/base/grid/Column';
 // Form Components
 import '../components/base/forms/Input';
 import '../components/base/forms/InputGroup';
-import '../components/base/forms/Button';
+import Button, {ButtonSecondary} from '../components/base/forms/Button';
 import '../components/base/forms/Panel';
 import '../components/base/forms/Tabs';
 import { Radio, RadioGroup } from '../components/base/forms/Radio';
@@ -42,6 +42,8 @@ window.RadioGroup = RadioGroup;
 
 
 window.React = React;
+window.Button = Button;
+window.ButtonSecondary = ButtonSecondary;
 // React.PropTypes = propTypes;
 window.propTypes = propTypes;
 window.hot = hot;

@@ -126,9 +126,10 @@ const Froms = class extends React.Component {
 
               </Panel>
               <h2>Inputs</h2>
-              <InputGroup type="email" title="Default" placeholder="Test"/>
+              <InputGroup type="email" title="Default" inputGroupClassName="form-control" placeholder="Test"/>
               <InputGroup
-                onChange={(e) => {
+                  inputGroupClassName="form-control"
+                  onChange={(e) => {
                     this.setState({ val: Utils.safeParseEventValue(e) });
                 }}
                 isValid={this.state.val}
