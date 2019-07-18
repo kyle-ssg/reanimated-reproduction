@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ButtonTertiary } from '../base/forms/Button';
 
 class Examples extends React.Component {
     static displayName = 'Examples';
@@ -46,9 +47,7 @@ class Examples extends React.Component {
                 {
                     children.map((child, i) => (
                         <FormGroup key={i}>
-                            <h3>
-                                {child.type.displayName}
-                            </h3>
+
                             {child}
                         </FormGroup>
                     ))
@@ -70,9 +69,35 @@ class MarkupPage extends Component {
         return (
             <div className="container">
                 <Examples>
+
+                    <FormGroup>
+                        <h4>Typeography</h4>
+                        <h1>Heading H1</h1>
+                        <h2>Heading H2</h2>
+                        <h3>Heading H2</h3>
+                        <h4>Heading H2</h4>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <h4>Buttons</h4>
+                        <ButtonPrimary>Primary</ButtonPrimary>
+                    </FormGroup>
+                    <FormGroup>
+                        <ButtonSecondary>Secondary</ButtonSecondary>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <ButtonTertiary>Tertiary</ButtonTertiary>
+                    </FormGroup>
+
                     <Panel title={<h3>Test</h3>}>
                         body
                     </Panel>
+
+
+
+
+
                     <InputGroup type="email" title="Default" placeholder="Test"/>
                     <Input type="email" title="Default" placeholder="Test"/>
                     <InputGroup

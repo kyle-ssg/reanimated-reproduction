@@ -23,7 +23,7 @@ export default class extends React.Component {
               onMouseUp={this.onMouseUp}
               className={cn({
                   'btn': true,
-              }, (this.props.className || 'btn-primary'))}
+              }, (this.props.className))}
             >
                 {children}
             </button>
@@ -31,10 +31,28 @@ export default class extends React.Component {
     }
 }
 
+export const ButtonPrimary = props => (
+    <Button
+      {...props}
+      className={cn(props.className, 'btn btn-primary')}
+    >
+        {props.children}
+    </Button>
+);
+
 export const ButtonSecondary = props => (
     <Button
       {...props}
       className={cn(props.className, 'btn btn-secondary')}
+    >
+        {props.children}
+    </Button>
+);
+
+export const ButtonTertiary = props => (
+    <Button
+      {...props}
+      className={cn(props.className, 'btn btn-outline-primary')}
     >
         {props.children}
     </Button>
