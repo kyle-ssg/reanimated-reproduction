@@ -17,35 +17,6 @@ const LayoutPage = class extends React.Component {
           home to move into flexbox mode.
               </p>
 
-              <ol>
-                  <li>
-            Open the
-                      <code className="highlighter-rouge">_variables.scss</code>
-                      {' '}
-            file and find the
-                      <code
-                        className="highlighter-rouge"
-                      >
-              $enable-flex
-                      </code>
-                      {' '}
-            variable.
-                  </li>
-                  <li>
-            Change it from
-                      <code className="highlighter-rouge">false</code>
-                      {' '}
-            to
-                      <code
-                        className="highlighter-rouge"
-                      >
-              true
-                      </code>
-            .
-                  </li>
-                  <li>Recompile, and done!</li>
-              </ol>
-
               <h1>
           Row
               </h1>
@@ -183,7 +154,7 @@ const LayoutPage = class extends React.Component {
               </div>
 
               <div>
-                  <h1>Row eogeogn</h1>
+                  <h1>Row</h1>
                   <Row className="list-group">
                       <Flex className="list-group-item centered-container">
                           <h2>Flex 1</h2>

@@ -94,10 +94,6 @@ class MarkupPage extends Component {
                         body
                     </Panel>
 
-
-
-
-
                     <InputGroup type="email" title="Default" placeholder="Test"/>
                     <Input type="email" title="Default" placeholder="Test"/>
                     <InputGroup
