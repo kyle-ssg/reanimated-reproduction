@@ -44,6 +44,11 @@ class App extends Component {
                        Components
                               </Link>
                           </li>
+                          <li className="nav-item">
+                              <Link to="/markup" className="nav-link">
+                                  Markup page
+                              </Link>
+                          </li>
                       </React.Fragment>
                       {/* End of Examples */}
                   </ul>
