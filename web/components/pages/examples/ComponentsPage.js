@@ -4,6 +4,7 @@ import countryData from './country-data';
 import 'rc-slider/assets/index.css';
 import AutoComplete from '../../extras/virtualised/AutoComplete';
 import { ButtonTertiary } from '../../base/forms/Button';
+import React from 'react';
 
 const Froms = class extends React.Component {
   static displayName = 'ComponentsPage';
@@ -117,23 +118,27 @@ const Froms = class extends React.Component {
       return (
           <div className="container">
               <FormGroup className="mt-5">
-                  <h4>Typeography</h4>
+                  <h4 className="mt-5 mb-3">Typeography</h4>
                   <h1>Heading H1</h1>
                   <h2>Heading H2</h2>
                   <h3>Heading H2</h3>
                   <h4>Heading H2</h4>
               </FormGroup>
 
-              <FormGroup className="mt-5">
-                  <h4>Buttons</h4>
-                  <Button>Primary</Button>
+              <FormGroup>
+                  <h4 className="mt-5 mb-3">Buttons</h4>
+                  <ButtonPrimary>Primary</ButtonPrimary>
               </FormGroup>
               <FormGroup>
                   <ButtonSecondary>Secondary</ButtonSecondary>
               </FormGroup>
 
+              <FormGroup>
+                  <ButtonTertiary>Tertiary</ButtonTertiary>
+              </FormGroup>
+
               <FormGroup className="mt-5">
-                  <h4>Forms</h4>
+                  <h4>Tabs</h4>
                   <Tabs value={this.state.tab} onChange={this.selectTab}>
                       <div tablabel="Tab 1">
                           <p>Tab 1 content</p>
@@ -144,56 +149,60 @@ const Froms = class extends React.Component {
                   </Tabs>
               </FormGroup>
 
+              <h4>Forms</h4>
 
-              <h2>
-          Panel
-                  <Tooltip>
-                      {'<Panel title="<h3>test</h3>">content</Panel>'}
-                  </Tooltip>
-              </h2>
-              <Panel title={<h3>Test</h3>}>
-          body
+              <InputGroup
+                  type="email" title="Default" inputGroupClassName="form-control"
+                  placeholder="Test"
+              />
+              <InputGroup
+                  inputGroupClassName="form-control"
+                  onChange={(e) => {
+                      this.setState({ val: Utils.safeParseEventValue(e) });
+                  }}
+                  isValid={this.state.val}
+                  type="text"
+                  title="Required"
+                  placeholder="Required Input"
+              />
+              <InputGroup
+                  inputGroupClassName="form-control"
+                  onChange={(e) => {
+                      this.setState({ email: Utils.safeParseEventValue(e) });
+                  }}
+                  isValid={Utils.isValidEmail(this.state.email)}
+                  type="text"
+                  title="Valid Email"
+                  placeholder="Enter an Email"
+              />
+              <InputGroup
+                  inputGroupClassName="form-control"
+                  inputProps={{ mask: '11/11' }}
+                  name="expiry"
+                  placeholder="dd/yy"
+                  title="Masked"
+              />
+              <InputGroup
+                  inputGroupClassName="form-control"
+                  inputProps={{ mask: '11:11 am' }}
+                  name="expiry"
+                  placeholder="hh:mm am"
+                  title="Masked"
+              />
 
-              </Panel>
-              <h2>Inputs</h2>
-              <InputGroup
-                type="email" title="Default" inputGroupClassName="form-control"
-                placeholder="Test"
-              />
-              <InputGroup
-                inputGroupClassName="form-control"
-                onChange={(e) => {
-                    this.setState({ val: Utils.safeParseEventValue(e) });
-                }}
-                isValid={this.state.val}
-                type="text"
-                title="Required"
-                placeholder="Required Input"
-              />
-              <InputGroup
-                inputGroupClassName="form-control"
-                onChange={(e) => {
-                    this.setState({ email: Utils.safeParseEventValue(e) });
-                }}
-                isValid={Utils.isValidEmail(this.state.email)}
-                type="text"
-                title="Valid Email"
-                placeholder="Enter an Email"
-              />
-              <InputGroup
-                inputGroupClassName="form-control"
-                inputProps={{ mask: '11/11' }}
-                name="expiry"
-                placeholder="dd/yy"
-                title="Masked"
-              />
-              <InputGroup
-                inputGroupClassName="form-control"
-                inputProps={{ mask: '11:11 am' }}
-                name="expiry"
-                placeholder="hh:mm am"
-                title="Masked"
-              />
+              {/*<h2>*/}
+          {/*Panel*/}
+                  {/*<Tooltip>*/}
+                      {/*{'<Panel title="<h3>test</h3>">content</Panel>'}*/}
+                  {/*</Tooltip>*/}
+              {/*</h2>*/}
+              {/*<Panel title={<h3>Test</h3>}>*/}
+          {/*body*/}
+              {/*</Panel>*/}
+
+
+
+
               <FormGroup title="Bla">
                   <label htmlFor="switch" onClick={this.toggleCheck}>Click</label>
                   <div>
@@ -233,18 +242,17 @@ const Froms = class extends React.Component {
                       />
                   </Panel>
               </FormGroup>
-              <FormGroup>
-                  <Panel title={<h3>Tabs</h3>}>
-                      <Tabs value={this.state.tab} onChange={this.selectTab}>
-                          <div tablabel={(<span className="fa fa-phone tab-icon"/>)}>
-                              <h2>Tab 1 content</h2>
-                          </div>
-                          <div tablabel={(<span className="fa fa-phone tab-icon"/>)}>
-                              <h2>Tab 2 content</h2>
-                          </div>
-                      </Tabs>
-                  </Panel>
-              </FormGroup>
+
+              <h4>Datepicker</h4>
+
+              <DatePicker
+                  selected={this.state.startDate}
+                  onChange={this.handleChange}
+                  showTimeSelect
+                  timeFormat="HH:mm"
+                  timeIntervals={15}
+                  dateFormat="MMMM d, yyyy h:mm aa"
+              />
 
           </div>
       );
