@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 
-export default class extends React.Component {
+global.Button = class extends React.Component {
     static displayName = 'Button';
 
     constructor(props, context) {
@@ -31,7 +31,9 @@ export default class extends React.Component {
     }
 }
 
-export const ButtonPrimary = props => (
+export default Button;
+
+export const ButtonPrimary = global.ButtonPrimary = props => (
     <Button
       {...props}
       className={cn(props.className, 'btn btn-primary')}
@@ -40,7 +42,7 @@ export const ButtonPrimary = props => (
     </Button>
 );
 
-export const ButtonSecondary = props => (
+export const ButtonSecondary = global.ButtonSecondary = props => (
     <Button
       {...props}
       className={cn(props.className, 'btn btn-secondary')}
@@ -49,7 +51,7 @@ export const ButtonSecondary = props => (
     </Button>
 );
 
-export const ButtonTertiary = props => (
+export const ButtonTertiary = global.ButtonTertiary = props => (
     <Button
       {...props}
       className={cn(props.className, 'btn btn-outline-primary')}

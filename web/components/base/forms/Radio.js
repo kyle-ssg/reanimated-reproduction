@@ -78,3 +78,6 @@ RadioGroup.propTypes = {
 RadioGroup.childContextTypes = {
     radioGroup: PropTypes.object,
 };
+
+global.Radio = Radio;
+global.RadioGroup = RadioGroup;

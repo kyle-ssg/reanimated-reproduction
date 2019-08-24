@@ -33,5 +33,5 @@ Row.propTypes = {
     style: propTypes.any,
 };
 
-window.Row = Row;
+global.Row = Row;
 export default Row;

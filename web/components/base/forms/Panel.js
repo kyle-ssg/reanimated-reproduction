@@ -31,7 +31,7 @@ const Panel = ({ className, icon, title, action, children }) => (
 );
 
 Panel.displayName = 'Panel';
-window.Panel = Panel;
+global.Panel = Panel;
 Panel.propTypes = {
     className: propTypes.any,
     action: propTypes.node,

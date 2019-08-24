@@ -4,7 +4,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const HighlightKeyword = window.HighlightKeyword = class extends React.Component {
+const HighlightKeyword = global.HighlightKeyword = class extends React.Component {
     static displayName = 'HighlightKeyword';
 
     static state = {};

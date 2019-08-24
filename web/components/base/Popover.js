@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import FocusMonitor from '../extras/virtualised/helpers/FocusMonitor';
+import FocusMonitor from './virtualised/helpers/FocusMonitor';
 
 const Popover = class extends React.Component {
     static displayName = 'Popover';

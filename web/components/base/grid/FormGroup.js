@@ -22,4 +22,4 @@ FormGroup.propTypes = {
     children: propTypes.node,
 };
 
-window.FormGroup = FormGroup;
+global.FormGroup = FormGroup;

@@ -59,7 +59,7 @@ Tabs.propTypes = {
     value: propTypes.number,
 };
 
-window.Tabs = Tabs;
+global.Tabs = Tabs;
 
 // Example Usage
 //   <Tabs value={this.state.tab} onChange={this.selectTab}>

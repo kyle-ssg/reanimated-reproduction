@@ -16,6 +16,7 @@ class InputGroup extends Component {
                 value,
                 inputGroupClassName,
                 className,
+                input,
             },
         } = this;
 
@@ -31,23 +32,26 @@ class InputGroup extends Component {
                 </span>
                 )}
 
-                <Input
-                  ref="input"
-                  {...inputProps}
-                  isValid={isValid}
-                  disabled={disabled}
-                  value={value}
-                  onChange={onChange}
-                  id={id}
-                  placeholder={placeholder}
-                  className={inputGroupClassName}
-                />
+                {input || (
+                    <Input
+                      ref="input"
+                      {...inputProps}
+                      isValid={isValid}
+                      disabled={disabled}
+                      value={value}
+                      onChange={onChange}
+                      id={id}
+                      placeholder={placeholder}
+                      className={inputGroupClassName}
+                    />
+                )}
+
             </div>
         );
     }
 }
 
-window.InputGroup = InputGroup;
+global.InputGroup = InputGroup;
 
 InputGroup.defaultProps = {};
 
@@ -55,6 +59,7 @@ InputGroup.propTypes = {
     className: propTypes.string,
     disabled: propTypes.bool,
     id: propTypes.string,
+    input: propTypes.node,
     inputProps: propTypes.object,
     isValid: propTypes.bool,
     onChange: propTypes.func,
