@@ -1,264 +1,175 @@
-import Switch from 'rc-switch';
-import cn from 'classnames';
-import countryData from './country-data';
-import 'rc-slider/assets/index.css';
-import AutoComplete from '../../extras/virtualised/AutoComplete';
-import { ButtonTertiary } from '../../base/forms/Button';
-import React from 'react';
+import React, { Component } from 'react';
 
-const Froms = class extends React.Component {
-  static displayName = 'ComponentsPage';
+class Examples extends React.Component {
+  static displayName = 'Examples';
 
-  constructor(props, context) {
-      super(props, context);
-      this.state = { tab: 0, slider: 0, isAbsolute: true, data: countryData, multiData: countryData };
+  static propTypes = {
+    children: propTypes.node.isRequired,
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      children: props.children,
+    };
   }
 
-  onSliderChange = (slider) => {
-      this.setState({ slider });
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      ...nextProps,
+    });
+  }
+
+  search = (e) => {
+    const search = Utils.safeParseEventValue(e)
+      .toLowerCase();
+    this.setState({
+      search,
+      children: search ? _.filter(this.props.children, c => c.type.displayName && c.type.displayName.toLowerCase()
+        .indexOf(search) !== -1) : this.props.children,
+    });
   };
-
-  selectTab = (tab) => {
-      this.setState({ tab });
-  };
-
-  // todo: reinforces need for toggle state util
-  toggleCheck = () => {
-      this.setState(state => ({ checked: !state.checked }));
-  };
-
-  onAbsoluteChanged = () => {
-      this.setState(state => ({ isAbsolute: !state.isAbsolute }));
-  };
-
-  onStarChange = (val) => {
-      this.setState({ val });
-  };
-
-  search = (e) => { // simple search
-      const search = Utils.safeParseEventValue(e).toLowerCase();
-      this.setState({
-          search,
-          data: countryData.filter(item => (
-              item.name.toLowerCase().indexOf(search) > -1
-          )),
-      });
-  };
-
-  searchMulti = (e) => { // simple search
-      const search = Utils.safeParseEventValue(e).toLowerCase();
-      this.setState({
-          search,
-          multiData: countryData.filter(item => (
-              item.name.toLowerCase().indexOf(search) > -1
-          )),
-      });
-  };
-
-  onSelectChange = value => this.setState({ value });
-
-  onMultiSelectChange = multiValue => this.setState({ multiValue });
-
-  renderMultiSelectRow = (row, index, selectedRow, highlightRow) => {
-      const isHovered = selectedRow === index;
-      const isActive = this.state.multiValue && this.state.multiValue.indexOf(row) !== -1;
-      return (
-          <div onMouseOver={() => highlightRow(index)}>
-              <Row space>
-                  <Button className={cn({
-                      'btn-link': true,
-                      'btn-link-hover': isHovered,
-                      'btn-link-active': isActive,
-                  })}
-                  >
-                      {isHovered ? row.name : <HighlightKeyword search={this.state.search} value={row.name}/>}
-                  </Button>
-
-                  <div className="flex-column">
-                      {row.code}
-                  </div>
-              </Row>
-          </div>
-      );
-  };
-
-  renderSelectRow = (row, index, selectedRow, highlightRow) => {
-      const isHovered = selectedRow === index;
-      const isActive = this.state.value === row;
-      return (
-          <div onMouseOver={() => highlightRow(index)}>
-              <Row space>
-                  <Button className={cn({
-                      'btn-link': true,
-                      'btn-link-hover': isHovered,
-                      'btn-link-active': isActive,
-                  })}
-                  >
-                      {isHovered ? row.name : <HighlightKeyword search={this.state.search} value={row.name}/>}
-                  </Button>
-                  <div className="flex-column">
-                      {row.code}
-                  </div>
-              </Row>
-          </div>
-      );
-  };
-
-  renderSelectedItem = (value, remove) => (
-      <Row space className="chip">
-          <span>{value.name}</span>
-          {/* eslint-disable-next-line */}
-      <span onClick={remove} className="chip-icon">
-          <span className="ion-ios-close"/>
-      </span>
-      </Row>
-  )
 
   render() {
-      return (
-          <div className="container">
-              <FormGroup className="mt-5">
-                  <h4 className="mt-5 mb-3">Typeography</h4>
-                  <h1>Heading H1</h1>
-                  <h2>Heading H2</h2>
-                  <h3>Heading H2</h3>
-                  <h4>Heading H2</h4>
-              </FormGroup>
-
-              <FormGroup>
-                  <h4 className="mt-5 mb-3">Buttons</h4>
-                  <ButtonPrimary>Primary</ButtonPrimary>
-              </FormGroup>
-              <FormGroup>
-                  <ButtonSecondary>Secondary</ButtonSecondary>
-              </FormGroup>
-
-              <FormGroup>
-                  <ButtonTertiary>Tertiary</ButtonTertiary>
-              </FormGroup>
-
-              <FormGroup className="mt-5">
-                  <h4>Tabs</h4>
-                  <Tabs value={this.state.tab} onChange={this.selectTab}>
-                      <div tablabel="Tab 1">
-                          <p>Tab 1 content</p>
-                      </div>
-                      <div tablabel="Tab 2">
-                          <p>Tab 2 content</p>
-                      </div>
-                  </Tabs>
-              </FormGroup>
-
-              <h4>Forms</h4>
-
-              <InputGroup
-                  type="email" title="Default" inputGroupClassName="form-control"
-                  placeholder="Test"
-              />
-              <InputGroup
-                  inputGroupClassName="form-control"
-                  onChange={(e) => {
-                      this.setState({ val: Utils.safeParseEventValue(e) });
-                  }}
-                  isValid={this.state.val}
-                  type="text"
-                  title="Required"
-                  placeholder="Required Input"
-              />
-              <InputGroup
-                  inputGroupClassName="form-control"
-                  onChange={(e) => {
-                      this.setState({ email: Utils.safeParseEventValue(e) });
-                  }}
-                  isValid={Utils.isValidEmail(this.state.email)}
-                  type="text"
-                  title="Valid Email"
-                  placeholder="Enter an Email"
-              />
-              <InputGroup
-                  inputGroupClassName="form-control"
-                  inputProps={{ mask: '11/11' }}
-                  name="expiry"
-                  placeholder="dd/yy"
-                  title="Masked"
-              />
-              <InputGroup
-                  inputGroupClassName="form-control"
-                  inputProps={{ mask: '11:11 am' }}
-                  name="expiry"
-                  placeholder="hh:mm am"
-                  title="Masked"
-              />
-
-              {/*<h2>*/}
-          {/*Panel*/}
-                  {/*<Tooltip>*/}
-                      {/*{'<Panel title="<h3>test</h3>">content</Panel>'}*/}
-                  {/*</Tooltip>*/}
-              {/*</h2>*/}
-              {/*<Panel title={<h3>Test</h3>}>*/}
-          {/*body*/}
-              {/*</Panel>*/}
-
-
-
-
-              <FormGroup title="Bla">
-                  <label htmlFor="switch" onClick={this.toggleCheck}>Click</label>
-                  <div>
-                      <Switch id="switch" onMouseUp={this.toggleCheck} checked={this.state.checked}/>
-                  </div>
-              </FormGroup>
-              <FormGroup>
-                  <Panel title={<h3>Single Select</h3>}>
-            Show as popover ?
-                      <Switch checked={this.state.isAbsolute} onChange={this.onAbsoluteChanged}/>
-                      <AutoComplete
-                        placeholder="Select some items"
-                        isAbsolute={this.state.isAbsolute}
-                        value={this.state.value}
-                        onSelectChange={this.onSelectChange}
-                        onSearchChange={this.search}
-                        renderSelectedItem={this.renderSelectedItem}
-                        renderRow={this.renderSelectRow}
-                        data={this.state.data}
-                      />
-                  </Panel>
-              </FormGroup>
-              <FormGroup>
-                  <Panel title={<h3>Multi Select</h3>}>
-            Show as popover ?
-                      <Switch checked={this.state.isAbsolute} onChange={this.onAbsoluteChanged}/>
-                      <AutoComplete
-                        multiple
-                        placeholder="Select some items"
-                        isAbsolute={this.state.isAbsolute}
-                        value={this.state.multiValue}
-                        onSelectChange={this.onMultiSelectChange}
-                        onSearchChange={this.searchMulti}
-                        renderSelectedItem={this.renderSelectedItem}
-                        renderRow={this.renderMultiSelectRow}
-                        data={this.state.multiData}
-                      />
-                  </Panel>
-              </FormGroup>
-
-              <h4>Datepicker</h4>
-
-              <DatePicker
-                  selected={this.state.startDate}
-                  onChange={this.handleChange}
-                  showTimeSelect
-                  timeFormat="HH:mm"
-                  timeIntervals={15}
-                  dateFormat="MMMM d, yyyy h:mm aa"
-              />
-
-          </div>
-      );
+    const { state: { children, search } } = this;
+    return (
+      <div>
+        <InputGroup
+          title="search"
+          className="pb-2"
+          placeholder="Search for cards or lists..."
+          onChange={this.search}
+        />
+        {
+          children.map((child, i) => (
+            <FormGroup key={i}>
+              <h3>
+                {child.type.displayName}
+              </h3>
+              {child}
+            </FormGroup>
+          ))
+        }
+      </div>
+    );
   }
-};
+}
 
-Froms.propTypes = {};
+class MarkupPage extends Component {
+  displayName = 'MarkupPage';
 
-export default hot(module)(Froms);
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <Examples>
+
+          <FormGroup>
+            <h4 className="mt-5 mb-5">Typeography</h4>
+            <h1>Heading H1</h1>
+            <h2>Heading H2</h2>
+            <h3>Heading H2</h3>
+            <h4>Heading H2</h4>
+          </FormGroup>
+
+          <FormGroup>
+            <h4 className="mt-5 mb-5">Buttons</h4>
+            <ButtonPrimary>Primary</ButtonPrimary>
+          </FormGroup>
+          <FormGroup>
+            <ButtonSecondary>Secondary</ButtonSecondary>
+          </FormGroup>
+
+          <FormGroup>
+            <ButtonTertiary>Tertiary</ButtonTertiary>
+          </FormGroup>
+
+          <h4 className="mt-5 mb-5">Panel</h4>
+
+          <Panel title={<h3>Test</h3>}>
+            body
+          </Panel>
+
+          <h4 className="mt-5 mb-5">Forms</h4>
+
+          <InputGroup type="email" title="Default" placeholder="Test"/>
+          <Input type="email" title="Default" placeholder="Test"/>
+          <InputGroup
+            onChange={(e) => {
+              this.setState({ val: Utils.safeParseEventValue(e) });
+            }}
+            isValid={this.state.val}
+            type="text"
+            title="Required"
+            placeholder="Required Input"
+          />
+          <InputGroup
+            onChange={(e) => {
+              this.setState({ email: Utils.safeParseEventValue(e) });
+            }}
+            isValid={Utils.isValidEmail(this.state.email)}
+            type="text"
+            title="Valid Email"
+            placeholder="Enter an Email"
+          />
+          <InputGroup
+            inputProps={{ mask: '11/11' }}
+            name="expiry"
+            placeholder="dd/yy"
+            title="Masked"
+          />
+          <InputGroup
+            inputProps={{ mask: '11:11 am' }}
+            name="expiry"
+            placeholder="hh:mm am"
+            title="Masked"
+          />
+          <InputGroup
+            title="Switch"
+            input={(
+              <Switch
+                aria-label="Switch"
+                id="switch"
+                onMouseUp={() => this.setState({ checked: !this.state.checked })}
+                checked={this.state.checked}
+              />
+            )}
+          />
+          <h4 className="mt-5 mb-5">Tabs</h4>
+          <Tabs value={this.state.tab} onChange={tab => this.setState({ tab })}>
+            <div tablabel="Tab 1">
+              <p>Tab 1 content</p>
+            </div>
+            <div tablabel="Tab 2">
+              <p>Tab 2 content</p>
+            </div>
+          </Tabs>
+
+          <InputGroup
+            id="date-picker"
+            inputProps={{ mask: '11:11 am' }}
+            title="Date Picker"
+            input={(
+              <DatePicker
+                id="date-picker"
+                selected={this.state.startDate}
+                onChange={this.handleChange}
+                showTimeSelect
+                timeFormat="HH:mm"
+                timeIntervals={15}
+                dateFormat="MMMM d, yyyy h:mm aa"
+              />
+            )}
+          />
+
+        </Examples>
+      </div>
+    );
+  }
+}
+
+export default hot(module)(MarkupPage);
