@@ -66,10 +66,8 @@ class MarkupPage extends Component {
   render() {
     return (
       <div className="container">
-        <Examples>
-
           <FormGroup>
-            <h4 className="mt-5 mb-5">Typeography</h4>
+            <h4 className="mt-5 mb-3">Typeography</h4>
             <h1>Heading H1</h1>
             <h2>Heading H2</h2>
             <h3>Heading H2</h3>
@@ -77,7 +75,7 @@ class MarkupPage extends Component {
           </FormGroup>
 
           <FormGroup>
-            <h4 className="mt-5 mb-5">Buttons</h4>
+            <h4 className="mt-5 mb-3">Buttons</h4>
             <ButtonPrimary>Primary</ButtonPrimary>
           </FormGroup>
           <FormGroup>
@@ -88,13 +86,13 @@ class MarkupPage extends Component {
             <ButtonTertiary>Tertiary</ButtonTertiary>
           </FormGroup>
 
-          <h4 className="mt-5 mb-5">Panel</h4>
+          <h4 className="mt-5 mb-3">Panel</h4>
 
           <Panel title={<h3>Test</h3>}>
             body
           </Panel>
 
-          <h4 className="mt-5 mb-5">Forms</h4>
+          <h4 className="mt-5 mb-3">Forms</h4>
 
           <InputGroup type="email" title="Default" placeholder="Test"/>
           <Input type="email" title="Default" placeholder="Test"/>
@@ -139,7 +137,7 @@ class MarkupPage extends Component {
               />
             )}
           />
-          <h4 className="mt-5 mb-5">Tabs</h4>
+          <h4 className="mt-5 mb-3">Tabs</h4>
           <Tabs value={this.state.tab} onChange={tab => this.setState({ tab })}>
             <div tablabel="Tab 1">
               <p>Tab 1 content</p>
@@ -166,7 +164,7 @@ class MarkupPage extends Component {
             )}
           />
 
-        </Examples>
+
       </div>
     );
   }
