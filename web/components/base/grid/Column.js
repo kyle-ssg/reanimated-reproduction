@@ -24,4 +24,4 @@ Column.propTypes = {
     style: propTypes.any,
 };
 
-window.Column = Column;
+global.Column = Column;

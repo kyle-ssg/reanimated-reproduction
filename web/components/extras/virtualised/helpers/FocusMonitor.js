@@ -17,7 +17,7 @@ const FocusMonitor = class extends React.Component {
             node.addEventListener('mouseover', () => this.focusChanged(true), false);
             node.addEventListener('mouseleave', () => this.focusChanged(false), false);
         } else {
-            window.addEventListener('mousedown', this._clickDocument, false);
+            global.addEventListener('mousedown', this._clickDocument, false);
         }
     }
 
@@ -27,7 +27,7 @@ const FocusMonitor = class extends React.Component {
             node.removeEventListener('mouseover', () => this.focusChanged(true), false);
             node.removeEventListener('mouseleave', () => this.focusChanged(false), false);
         } else {
-            window.removeEventListener('mousedown', this._clickDocument, false);
+            global.removeEventListener('mousedown', this._clickDocument, false);
         }
     }
 

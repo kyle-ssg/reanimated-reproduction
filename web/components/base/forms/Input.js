@@ -24,7 +24,7 @@ const maskedCharacters = {
     },
 };
 
-const Input = window.Input = class extends React.Component {
+const Input = global.Input = class extends React.Component {
     static displayName = 'Input';
 
     constructor(props, context) {
@@ -75,6 +75,7 @@ const Input = window.Input = class extends React.Component {
 
         const className = cn({
             'input-container': true,
+            'form-control': true,
             'focused': this.state.isFocused,
             'invalid': this.state.shouldValidate && !isValid,
         }, this.props.className);

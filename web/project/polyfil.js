@@ -21,19 +21,7 @@ import '../../common/dispatcher/app-actions';
 import '../../common/dispatcher/action-constants';
 import '../../common/ES6Component';
 
-// Grid Components
-import '../components/base/grid/FormGroup';
-import '../components/base/grid/Row';
-import '../components/base/grid/Flex';
-import '../components/base/grid/Column';
-
-// Form Components
-import '../components/base/forms/Input';
-import '../components/base/forms/InputGroup';
-import '../components/base/forms/Button';
-import '../components/base/forms/Panel';
-import '../components/base/forms/Tabs';
-import { Radio, RadioGroup } from '../components/base/forms/Radio';
+import '../components/base'
 
 import '../components/base/HighlightKeyword';
 
@@ -42,6 +30,10 @@ window.RadioGroup = RadioGroup;
 
 
 window.React = React;
+window.Button = Button;
+window.ButtonPrimary = ButtonPrimary;
+window.ButtonSecondary = ButtonSecondary;
+window.ButtonTertiary = ButtonTertiary;
 // React.PropTypes = propTypes;
 window.propTypes = propTypes;
 window.hot = hot;

@@ -28,4 +28,4 @@ Flex.propTypes = {
     style: propTypes.any,
 };
 
-window.Flex = Flex;
+global.Flex = Flex;

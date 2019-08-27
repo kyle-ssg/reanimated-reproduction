@@ -56,8 +56,8 @@ $switch-height: 20px;
   outline: none;
 }
 .rc-switch-checked {
-  border: 1px solid $btn-primary-light-bg;
-  background-color: $btn-primary-light-bg;
+  border: 1px solid $brand-primary;
+  background-color: $brand-primary;
 }
 .rc-switch-checked .rc-switch-inner {
   left: 6px;
