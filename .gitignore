@@ -17,3 +17,6 @@ mobile/*.app.dSYM.zip
 pacts/*
 coverage/*
 .nyc_output/*
+.next
+out
+dist
