@@ -11,6 +11,36 @@ const nextConfig = {
     // target: 'serverless',
     // next-offline options
     workboxOpts: {
+        runtimeCaching: [
+            // {
+            //     urlPattern:  new RegExp('^*.png'),
+            //     handler: 'CacheFirst',
+            //     options: {
+            //         cacheName: 'cloudcms',
+            //         expiration: {
+            //             maxEntries: 150,
+            //             maxAgeSeconds: 60 * 60, // 1 hour
+            //         },
+            //         cacheableResponse: {
+            //             statuses: [0, 200, 304],
+            //         },
+            //     },
+            // },
+            {
+                urlPattern:  new RegExp('^https*'),
+                handler: 'NetworkFirst',
+                options: {
+                    cacheName: 'offline',
+                    expiration: {
+                        maxEntries: 150,
+                        maxAgeSeconds: 60 * 60, // 1 hour
+                    },
+                    cacheableResponse: {
+                        statuses: [0, 200, 304],
+                    },
+                },
+            },
+        ],
     },
 
     // buildId, dev, isServer, defaultLoaders, webpack
@@ -19,7 +49,6 @@ const nextConfig = {
         if (base.plugins) {
             config.plugins = config.plugins.concat(base.plugins);
         }
-
         return config;
     },
 };
