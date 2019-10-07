@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Image } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
@@ -8,8 +8,10 @@ export default class ScaledImage extends Component {
   static propTypes = {
       source: propTypes.object,
       allowUpscale: propTypes.bool,
+      width: propTypes.number,
+      height: propTypes.number,
       priority: propTypes.string,
-  }
+  };
 
   constructor(props) {
       super(props);

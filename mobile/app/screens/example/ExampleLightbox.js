@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Lightbox from '../../components/base/Lightbox';
 import ViewOverflow from 'react-native-view-overflow';
+import Lightbox from '../../components/base/Lightbox';
 
 const ExampleLightbox = class extends Component {
   static displayName = 'ExampleLightbox';

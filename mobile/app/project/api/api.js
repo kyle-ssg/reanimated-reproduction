@@ -1,10 +1,10 @@
 import BottomSheet from 'react-native-bottomsheet';
 // import firebase from 'react-native-firebase';
 import { AsyncStorage } from 'react-native';
-import { getStoreDangerous } from '../../../common-mobile/store';
 import push from './push-notifications-api';
 import auth from './auth';
 
+// eslint-disable-next-line
 const analytics = typeof firebase === 'undefined' ? undefined : firebase.analytics();
 
 global.API = {
@@ -155,18 +155,6 @@ global.API = {
     push,
     auth,
 
-    getUserName: () => {
-        const state = getStoreDangerous().getState();
-        return selectUserName(state);
-    },
-
-    getAccountButtonText: () => {
-        const state = getStoreDangerous().getState();
-        if (isUserLoggedIn(state)) {
-            return selectUserName(state);
-        }
-        return Strings.logIn;
-    },
 };
 
 if (typeof branch !== 'undefined') {

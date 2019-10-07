@@ -62,7 +62,7 @@ const _data = {
     },
 
     _request(method, url, data, headers = {}) {
-        let prom  = Promise.resolve();
+        const prom  = Promise.resolve();
 
         // Example refresh token logic
         // const parsedData = _data.tokenParsed;
@@ -149,7 +149,7 @@ const _data = {
                     })
                     .catch((e) => {
                         // console.debug(e);
-                        if (e.httpStatus == 401)
+                        if (e.httpStatus === 401)
                         {
                             throw new Error('Network request failed - Unauthorized');
                         }
@@ -159,7 +159,6 @@ const _data = {
                         } else {
                             throw new Error(Constants.simulate.FAKE_API_ERROR ? 'API Error' : 'Network request failed');
                         }
-
                     });
             });
     },

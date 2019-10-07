@@ -7,10 +7,6 @@ module.exports = {
     // Typography
     // --------------------------------------------------
 
-    paragraph: {
-        fontSize: styleVariables.fontSizeParagraph,
-    },
-
     h1: {
         fontSize: styleVariables.fontSizeH1,
     },
@@ -24,15 +20,6 @@ module.exports = {
     },
     h4: {
         fontSize: styleVariables.fontSizeH4,
-    },
-
-    text: {
-        color: pallette.text,
-        fontSize: em(2),
-    },
-
-    textError: {
-        color: colour.errorText,
     },
 
 
@@ -50,10 +37,6 @@ module.exports = {
 
     icon: {
         fontSize: em(2),
-    },
-
-    anchor: {
-
     },
 
     p: {

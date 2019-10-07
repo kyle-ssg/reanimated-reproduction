@@ -1,40 +1,40 @@
 import './utils';
 
-const itemLoading = (state, prefix, action) => {
-    return {
-        ...state,
-        [prefix+"Loading"]: true
-    }
-}
-
-const itemSaved = (state, prefix, action) => {
-    return {
-        ...state,
-        [prefix+"Loading"]: false
-    }
-}
-
-const itemLoaded = (state, prefix, action) => {
-    return {
-        ...state,
-        [prefix]: {...state[prefix], [action.index]:data},
-        [prefix+"Loading"]: false
-    }
-}
-
-const itemsLoaded = (state, prefix, action) => {
-    return {
-        ...state,
-        [prefix]: data}
-}
-
-const itemError = (state, prefix, action) => {
-    return {
-        ...state,
-        [prefix+"Loading"]: false,
-        [prefix+"Error"]: action.error,
-    }
-}
+// const itemLoading = (state, prefix, action) => {
+//     return {
+//         ...state,
+//         [`${prefix}Loading`]: true,
+//     };
+// };
+//
+// const itemSaved = (state, prefix, action) => {
+//     return {
+//         ...state,
+//         [`${prefix}Loading`]: false,
+//     };
+// };
+//
+// const itemLoaded = (state, prefix, action) => {
+//     return {
+//         ...state,
+//         [prefix]: { ...state[prefix], [action.index]:data },
+//         [`${prefix}Loading`]: false,
+//     };
+// };
+//
+// const itemsLoaded = (state, prefix, action) => {
+//     return {
+//         ...state,
+//         [prefix]: data };
+// };
+//
+// const itemError = (state, prefix, action) => {
+//     return {
+//         ...state,
+//         [`${prefix}Loading`]: false,
+//         [`${prefix}Error`]: action.error,
+//     };
+// };
 
 function defaultReducer(
     state = {

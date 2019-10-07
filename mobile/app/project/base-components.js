@@ -9,10 +9,8 @@ import Button, {
     ButtonFlat,
     ButtonDashed,
     ButtonOutlinePrimary,
-    ButtonCommon,
     TabPillButton,
     ButtonGoogle,
-    LinkTextButton,
 } from '../components/base/forms/Button';
 
 // Grid
@@ -54,10 +52,8 @@ global.ButtonTertiary = ButtonTertiary;
 global.ButtonFlat = ButtonFlat;
 global.ButtonDashed = ButtonDashed;
 global.ButtonOutlinePrimary = ButtonOutlinePrimary;
-global.ButtonCommon = ButtonCommon;
 global.TabPillButton = TabPillButton;
 global.ButtonGoogle = ButtonGoogle;
-global.LinkTextButton = LinkTextButton;
 
 global.Checkbox = require('../components/base/forms/Checkbox');
 

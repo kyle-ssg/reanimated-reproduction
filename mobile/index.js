@@ -93,29 +93,20 @@ const initialiseApp = () => {
     }
     Navigation.setDefaultOptions(defaultOptions);
 
-    // Navigation.setRoot({
-    //     root: {
-    //         ...routes.dashboardScreen(),
-    //     },
-    // });
     Navigation.setRoot({
         root: {
-            ...routes.withStack(routes.homeScreen()),
+            ...routes.withStack(screen),
         },
     });
 };
 
-// Navigation.events().registerAppLaunchedListener(() => {
-// Promise.all([loadIcons()]).then(([user]) => {
-//     initialiseApp(null);
-// });
+
 const prom = Promise.all([loadIcons()]);
 Navigation.events().registerAppLaunchedListener(() => {
     prom.then(() => {
         initialiseApp(null);
     });
 });
-// });
 
 // eslint-disable-next-line
 console.disableYellowBox = true;

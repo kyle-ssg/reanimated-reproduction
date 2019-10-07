@@ -37,7 +37,7 @@ export default class Tabs extends PureComponent {
         scrollEnabled={this.props.scrollEnabled}
         labelStyle={[styles.TabText, this.props.labelStyle]}
         getLabelText={({ route: { title } }) => title}
-        style={{...styles.tabPrimary, ...this.props.tabBarStyle}}
+        style={{ ...styles.tabPrimary, ...this.props.tabBarStyle }}
         tabStyle={this.props.tabBarRow ? { ...Styles.row, ...this.props.tabStyle } : this.props.tabStyle}
         indicatorStyle={{ ...styles.indicatorPrimary, ...this.props.indicatorStyle }}
         renderIcon={({ route }) => route.icon || null}

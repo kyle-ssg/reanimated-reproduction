@@ -162,28 +162,28 @@ const ExampleScreen = class extends Component {
       API.log({}.hell.no);
   };
 
-  googleSignIn = async () => {
-      try {
-          await GoogleSignin.hasPlayServices();
-          const googleUserInfo = await GoogleSignin.signIn();
-          this.setState({ googleUserInfo, error: null });
-      } catch (error) {
-          if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-              // sign in was cancelled
-              Alert.alert('cancelled');
-          } else if (error.code === statusCodes.IN_PROGRESS) {
-              // operation in progress already
-              Alert.alert('in progress');
-          } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-              Alert.alert('play services not available or outdated');
-          } else {
-              Alert.alert('Something went wrong', error.toString());
-              this.setState({
-                  error,
-              });
-          }
-      }
-  };
+  // googleSignIn = async () => {
+  //     try {
+  //         await GoogleSignin.hasPlayServices();
+  //         const googleUserInfo = await GoogleSignin.signIn();
+  //         this.setState({ googleUserInfo, error: null });
+  //     } catch (error) {
+  //         if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+  //             // sign in was cancelled
+  //             Alert.alert('cancelled');
+  //         } else if (error.code === statusCodes.IN_PROGRESS) {
+  //             // operation in progress already
+  //             Alert.alert('in progress');
+  //         } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+  //             Alert.alert('play services not available or outdated');
+  //         } else {
+  //             Alert.alert('Something went wrong', error.toString());
+  //             this.setState({
+  //                 error,
+  //             });
+  //         }
+  //     }
+  // };
 
   render() {
       const {
@@ -269,12 +269,12 @@ You picked
                               />
                           </ListItem>
 
-                          {/*<GoogleSigninButton*/}
-                          {/*  style={{ width: 192, height: 48 }}*/}
-                          {/*  size={GoogleSigninButton.Size.Wide}*/}
-                          {/*  color={GoogleSigninButton.Color.Dark}*/}
-                          {/*  onPress={this.googleSignIn}*/}
-                          {/*/>*/}
+                          {/* <GoogleSigninButton */}
+                          {/*  style={{ width: 192, height: 48 }} */}
+                          {/*  size={GoogleSigninButton.Size.Wide} */}
+                          {/*  color={GoogleSigninButton.Color.Dark} */}
+                          {/*  onPress={this.googleSignIn} */}
+                          {/* /> */}
                           {googleUserInfo ? (
                               <Text>
                   You are signed in with Google as
@@ -283,43 +283,43 @@ You picked
                               </Text>
                           ) : null}
 
-                          {/*<FBLogin*/}
-                          {/*  style={{ marginBottom: 10 }}*/}
-                          {/*  ref={(fbLogin) => {*/}
-                          {/*      this.fbLogin = fbLogin;*/}
-                          {/*  }}*/}
-                          {/*  permissions={['email', 'user_friends']}*/}
-                          {/*  loginBehavior={FBLoginManager.LoginBehaviors.Native}*/}
-                          {/*  onLogin={(data) => {*/}
-                          {/*      API.log('Logged in!');*/}
-                          {/*      API.log(data);*/}
-                          {/*      this.setState({ fbUser: data.credentials });*/}
-                          {/*  }}*/}
-                          {/*  onLogout={() => {*/}
-                          {/*      API.log('Logged out.');*/}
-                          {/*      this.setState({ fbUser: null });*/}
-                          {/*  }}*/}
-                          {/*  onLoginFound={(data) => {*/}
-                          {/*      API.log('Existing login found.');*/}
-                          {/*      API.log(data);*/}
-                          {/*      this.setState({ fbUser: data.credentials });*/}
-                          {/*  }}*/}
-                          {/*  onLoginNotFound={() => {*/}
-                          {/*      API.log('No user logged in.');*/}
-                          {/*      this.setState({ fbUser: null });*/}
-                          {/*  }}*/}
-                          {/*  onError={(err) => {*/}
-                          {/*      API.log('ERROR');*/}
-                          {/*      API.log(err);*/}
-                          {/*  }}*/}
-                          {/*  onCancel={() => {*/}
-                          {/*      API.log('User cancelled.');*/}
-                          {/*  }}*/}
-                          {/*  onPermissionsMissing={(data) => {*/}
-                          {/*      API.log('Check permissions!');*/}
-                          {/*      API.log(data);*/}
-                          {/*  }}*/}
-                          {/*/>*/}
+                          {/* <FBLogin */}
+                          {/*  style={{ marginBottom: 10 }} */}
+                          {/*  ref={(fbLogin) => { */}
+                          {/*      this.fbLogin = fbLogin; */}
+                          {/*  }} */}
+                          {/*  permissions={['email', 'user_friends']} */}
+                          {/*  loginBehavior={FBLoginManager.LoginBehaviors.Native} */}
+                          {/*  onLogin={(data) => { */}
+                          {/*      API.log('Logged in!'); */}
+                          {/*      API.log(data); */}
+                          {/*      this.setState({ fbUser: data.credentials }); */}
+                          {/*  }} */}
+                          {/*  onLogout={() => { */}
+                          {/*      API.log('Logged out.'); */}
+                          {/*      this.setState({ fbUser: null }); */}
+                          {/*  }} */}
+                          {/*  onLoginFound={(data) => { */}
+                          {/*      API.log('Existing login found.'); */}
+                          {/*      API.log(data); */}
+                          {/*      this.setState({ fbUser: data.credentials }); */}
+                          {/*  }} */}
+                          {/*  onLoginNotFound={() => { */}
+                          {/*      API.log('No user logged in.'); */}
+                          {/*      this.setState({ fbUser: null }); */}
+                          {/*  }} */}
+                          {/*  onError={(err) => { */}
+                          {/*      API.log('ERROR'); */}
+                          {/*      API.log(err); */}
+                          {/*  }} */}
+                          {/*  onCancel={() => { */}
+                          {/*      API.log('User cancelled.'); */}
+                          {/*  }} */}
+                          {/*  onPermissionsMissing={(data) => { */}
+                          {/*      API.log('Check permissions!'); */}
+                          {/*      API.log(data); */}
+                          {/*  }} */}
+                          {/* /> */}
 
                           <ListItem
                             index={1}

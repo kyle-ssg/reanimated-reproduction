@@ -1,12 +1,12 @@
-import { put, all, call, takeLatest, takeEvery, select, take } from 'redux-saga/effects';
+import { put, all, takeLatest } from 'redux-saga/effects';
 import _data from './utils/_data';
 
-export function* getAction(action,url, prefix) {
+export function* getAction(action, url, prefix) {
     try {
         const data = yield _data.get(url);
-        const params = { type: Actions[`${prefix}_LOADED`], data }
+        const params = { type: Actions[`${prefix}_LOADED`], data };
         if (action.id) {
-            params.index = id;
+            params.index = action.id;
         }
         yield put(params);
         action.onSuccess && action.onSuccess();
@@ -19,9 +19,9 @@ export function* getAction(action,url, prefix) {
 export function* updateAction(action, url, prefix) {
     try {
         const data = yield _data.put(url, action.data);
-        const params = { type: Actions[`${prefix}_LOADED`], data }
+        const params = { type: Actions[`${prefix}_LOADED`], data };
         if (action.id) {
-            params.index = id;
+            params.index = action.id;
         }
         yield put(params);
         action.onSuccess && action.onSuccess();
@@ -34,9 +34,9 @@ export function* updateAction(action, url, prefix) {
 export function* postAction(action, url, prefix) {
     try {
         const data = yield _data.post(url, action.data);
-        const params = { type: Actions[`${prefix}_LOADED`], data }
+        const params = { type: Actions[`${prefix}_LOADED`], data };
         if (action.id) {
-            params.index = id;
+            params.index = action.id;
         }
         yield put(params);
         action.onSuccess && action.onSuccess();
@@ -85,7 +85,7 @@ export function* login(action) {
 }
 
 export function* register(action) {
-    const { } = action.data;
+    // const { } = action.data;
     try {
         action.onSuccess && action.onSuccess();
     } catch (e) {
