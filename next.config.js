@@ -16,7 +16,7 @@ const nextConfig = {
             //     urlPattern:  new RegExp('^*.png'),
             //     handler: 'CacheFirst',
             //     options: {
-            //         cacheName: 'cloudcms',
+            //         cacheName: 'cachefirst',
             //         expiration: {
             //             maxEntries: 150,
             //             maxAgeSeconds: 60 * 60, // 1 hour

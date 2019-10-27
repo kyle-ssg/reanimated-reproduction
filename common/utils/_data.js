@@ -62,7 +62,7 @@ const _data = {
     },
 
     _request(method, url, data, headers = {}) {
-        const prom  = Promise.resolve();
+        let prom  = Promise.resolve();
 
         // Example refresh token logic
         // const parsedData = _data.tokenParsed;
@@ -149,7 +149,7 @@ const _data = {
                     })
                     .catch((e) => {
                         // console.debug(e);
-                        if (e.httpStatus === 401)
+                        if (e.httpStatus == 401)
                         {
                             throw new Error('Network request failed - Unauthorized');
                         }
@@ -165,7 +165,6 @@ const _data = {
 
     setToken(_token) { // set the token for future requests
         _data.token = _token;
-        _data.tokenParsed = _token ? jwt(_token) : null;
     },
 
     setRefreshToken(_refreshToken) { // set the token for future requests

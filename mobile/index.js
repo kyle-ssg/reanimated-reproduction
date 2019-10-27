@@ -2,20 +2,36 @@ import { Navigation } from 'react-native-navigation';
 import './app/project/globals';
 import './app/routes';
 import loadIcons from './load-icons';
+import _store from './common-mobile/store';
 
-// const getUser = () => new Promise((resolve) => {
-//     setTimeout(
-//         () => {
-//             AsyncStorage.getItem('user', (err, user) => {
-//                 // Load the user from async storage
-//                 resolve(user && JSON.parse(user));
-//             });
-//         },
-//         Constants.simulate.NEW_USER ? 500 : 0,
-//     );
-// });
+const store = _store();
 
-const initialiseApp = () => {
+
+const getUser = () => new Promise((resolve) => {
+    API.getStoredToken().then((token) => {
+        if (token) {
+            return API.getCookie('user').then((user) => {
+                const userData = user && JSON.parse(user);
+                return store.dispatch(AppActions.startup(
+                    { token, user: userData },
+                    {
+                        onSuccess: () => {
+                            resolve(userData);
+                        },
+                        onError: () => {
+                            resolve(null);
+                        },
+                    },
+                ));
+            });
+        }
+        resolve(null);
+    }).catch(() => {
+        resolve(null);
+    });
+});
+
+const initialiseApp = (user) => {
     global.modalNavButtons = {
         topBar: {
             leftButtons: [],
@@ -29,8 +45,10 @@ const initialiseApp = () => {
     };
 
     // Determine the initial route\
-    const screen = routes.homeScreen();
-
+    let screen = routes.homeScreen();
+    // if (user && user.emailVerified) {
+    //     screen = routes.dashboardScreen();
+    // }
     const defaultOptions = {
         topBar: {
             elevation: 0,
@@ -92,19 +110,18 @@ const initialiseApp = () => {
         };
     }
     Navigation.setDefaultOptions(defaultOptions);
-
     Navigation.setRoot({
         root: {
-            ...routes.withStack(screen),
+            ...routes.withStack(screen, {}, 'root'),
         },
     });
 };
 
-
-const prom = Promise.all([loadIcons()]);
+const prom = Promise.all([getUser(), Navigation.constants(), loadIcons()]);
 Navigation.events().registerAppLaunchedListener(() => {
-    prom.then(() => {
-        initialiseApp(null);
+    prom.then(([user, constants]) => {
+        Constants.statusBarHeight = constants.statusBarHeight;
+        initialiseApp(user);
     });
 });
 

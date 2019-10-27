@@ -23,6 +23,7 @@ window.styleVariables = Object.assign({
 
     //= = Typography
     fontSizeBase: em(1),
+    fontSizeSmall: em(0.95),
     fontSizeH1: em(2.286), // 32px
     fontSizeH2: em(1.75), // 24px
     fontSizeH3: em(1.25), // 17px
@@ -57,14 +58,14 @@ window.styleVariables = Object.assign({
     // Nav
 
     baseNavHeight: 44,
-    marginBaseVertical: 10,
+    marginBaseVertical: 15,
     marginBaseHorizontal: 10,
-    paddingBase: 10,
-    gutterBase: 5,
+    paddingBase: 15,
+    gutterBase: 10,
     borderWidth: 1,
     borderBottomWidth: 2 / PixelRatio.get(),
     disabledOpacity: 0.2,
-    borderRadiusDefault: 8,
+    borderRadiusDefault: 2,
 
     // ## Notifications
 

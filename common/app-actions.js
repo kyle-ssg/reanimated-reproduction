@@ -14,6 +14,14 @@ const BaseConstants = {
     'REGISTER_LOADED'           : 'REGISTER_LOADED',
     'REGISTER_ERROR'            : 'REGISTER_ERROR',
 
+    'CONFIRM_EMAIL'       : 'CONFIRM_EMAIL',
+    'CONFIRM_EMAIL_ERROR'       : 'CONFIRM_EMAIL_ERROR',
+    'CONFIRM_EMAIL_LOADED'       : 'CONFIRM_EMAIL_LOADED',
+
+    'REFRESH_USER'       : 'REFRESH_USER',
+    'REFRESH_USER_LOADED'       : 'REFRESH_USER_LOADED',
+    'REFRESH_USER_ERROR'       : 'REFRESH_USER_ERROR',
+
     'STARTUP'           : 'STARTUP',
     'STARTUP_LOADED'    : 'STARTUP_LOADED',
     'STARTUP_ERROR'     : 'STARTUP_ERROR',
@@ -24,7 +32,7 @@ const BaseConstants = {
 };
 
 const BaseActions = {
-    connected() { // when the device comes online
+    connected() {
         return {
             type: Actions.CONNECTED,
         };
@@ -35,7 +43,7 @@ const BaseActions = {
             // todo: maybe store last online
         };
     },
-    active() { // when the device comes online
+    active() {
         return {
             type: Actions.ACTIVE,
         };
@@ -44,6 +52,20 @@ const BaseActions = {
         return {
             type: Actions.INACTIVE,
             // todo: maybe store last online
+        };
+    },
+    confirmEmail(data, callbacks = {}) {
+        return {
+            type: Actions.CONFIRM_EMAIL,
+            data,
+            ...callbacks,
+        };
+    },
+    refreshUser(data, callbacks = {}) {
+        return {
+            type: Actions.REFRESH_USER,
+            data,
+            ...callbacks,
         };
     },
     refresh() { // force the app to refresh data
@@ -66,17 +88,12 @@ const BaseActions = {
         return { type: Actions.LOGIN_ERROR, error };
     },
     // STARTUP
-    startup(data) {
+    startup(data, callbacks) {
         return {
             type: Actions.STARTUP,
             data,
+            ...callbacks,
         };
-    },
-    startupLoaded: (user) => {
-        return { type: Actions.STARTUP_LOADED, user };
-    },
-    startupError: (user) => {
-        return { type: Actions.STARTUP_LOADED, user };
     },
     // REGISTER
     register(data, callbacks) {
@@ -92,9 +109,10 @@ const BaseActions = {
     registerError: (error) => {
         return { type: Actions.REGISTER_ERROR, error };
     },
-    logout() {
+    logout(callbacks) {
         return {
             type: Actions.LOGOUT,
+            ...callbacks,
         };
     },
 };

@@ -31,16 +31,17 @@ const TermsScreen = class extends Component {
   }
 
   render() {
+      const { state: { from, activeButton } } = this;
       return (
           <Flex style={[Styles.body]}>
-              <Text>hi</Text>
+                <Text>hi</Text>
           </Flex>
       );
   }
 };
 
-// const styles = StyleSheet.create({
-//
-// });
+const styles = StyleSheet.create({
+
+});
 
 module.exports = TermsScreen;

@@ -8,7 +8,8 @@
     "ios": "npm run watch & react-native run-ios",
     "android:hash:dev": "keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64\n",
     "watch": "sh ./bin/common-watch.sh",
-    "postinstall": "npm run env && cp -r ../common ./common-mobile && rm -rf node_modules/react-native-facebook-login/.git && cd ./ios && pod install"
+    "postinstall": "npm run env && cp -r ../common ./common-mobile && rm -rf node_modules/react-native-facebook-login/.git && cd ./ios && pod install",
+    "android:keystore:generate": "keytool -genkeypair -v -keystore my-release-key.keystore -alias android -keyalg RSA -keysize 2048 -validity 10000"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.6.1",

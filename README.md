@@ -1,6 +1,3 @@
-<img src="http://g.recordit.co/TY8wciTsQH.gif"/>
-
-
 ## Prerequisites
 
 | Location                                                     | Suggested Version       |

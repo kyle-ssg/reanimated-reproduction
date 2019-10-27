@@ -4,17 +4,13 @@ import { withRouter } from 'next/router';
 class ArticlePage extends Component {
   static displayName = 'ArticlePage';
 
-  static propTypes ={
-      router: propTypes.any,
-  };
-
   componentDidMount() {
       API.trackPage('ArticlePage');
   }
 
-  // static async getInitialProps({ Component, ctx }) {
-  // await ctx.store.dispatch(AppActions.getArticle(ctx.query.id)); // Post startup action with token and locale
-  // }
+  static async getInitialProps({ Component, ctx }) {
+      // await ctx.store.dispatch(AppActions.getArticle(ctx.query.id)); // Post startup action with token and locale
+  }
 
   render()
   {

@@ -33,26 +33,24 @@ class Carousel extends React.PureComponent {
         if (uris.length === 1) {
             return this._renderItem({ item: uris[0] });
         }
-        return (
-            <>
-                <SnapCarousel
-                  ref={(c) => { this._carousel = c; }}
-                  data={uris}
-                  renderItem={this._renderItem}
-                  sliderWidth={width}
-                  itemWidth={width}
-                  containerCustomStyle={{ backgroundColor: '#404040', marginBottom: -height }}
-                />
-                <View style={[styles.buttonContainer, { width, height }]} pointerEvents="box-none">
-                    <Button style={[styles.button, { marginLeft: em(0.5) }]} onPress={() => this._carousel.snapToPrev()} >
-                        <ION name="ios-arrow-back" style={[styles.buttonIcon]}/>
-                    </Button>
-                    <Button style={[styles.button, { marginRight: em(0.5) }]} onPress={() => this._carousel.snapToNext()} >
-                        <ION name="ios-arrow-forward" style={[styles.buttonIcon]}/>
-                    </Button>
-                </View>
-            </>
-        );
+        return (<>
+            <SnapCarousel
+              ref={(c) => { this._carousel = c; }}
+              data={uris}
+              renderItem={this._renderItem}
+              sliderWidth={width}
+              itemWidth={width}
+              containerCustomStyle={{ backgroundColor: '#404040', marginBottom: -height }}
+            />
+            <View style={[styles.buttonContainer, { width, height }]} pointerEvents="box-none">
+                <Button style={[styles.button, { marginLeft: em(0.5) }]} onPress={() => this._carousel.snapToPrev()} >
+                    <ION name="ios-arrow-back" style={[styles.buttonIcon]}/>
+                </Button>
+                <Button style={[styles.button, { marginRight: em(0.5) }]} onPress={() => this._carousel.snapToNext()} >
+                    <ION name="ios-arrow-forward" style={[styles.buttonIcon]}/>
+                </Button>
+            </View>
+        </>);
     }
 }
 

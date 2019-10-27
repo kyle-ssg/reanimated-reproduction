@@ -7,6 +7,7 @@ const Constants = global.Constants = {
     simulate: {
         FORCE_LANGUAGE: false, // set to "en" etc to specify a language
     },
+    statusBarHeight: 0, // gets set on launch
     pages: {
         NOT_FOUND: 'Not Found',
         HOME_PAGE: 'Home',

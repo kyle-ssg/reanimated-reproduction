@@ -5,15 +5,6 @@ import _store from '../common-mobile/store';
 
 const store = _store();
 
-let token;
-let refreshToken;
-API.getStoredToken().then((_token) => {
-    token = _token;
-    API.getStoredRefreshToken().then((_refreshToken) => {
-        refreshToken = _refreshToken;
-        store.dispatch(AppActions.startup({ token, refreshToken }));
-    });
-});
 
 const routes = {
 
@@ -49,8 +40,9 @@ const routes = {
     },
 
     // Shorthand for wrapping a screen in a stack
-    withStack: (screen, options) => ({
+    withStack: (screen, options = {}, id) => ({
         stack: {
+            id,
             children: [screen],
             options,
         },
@@ -84,6 +76,9 @@ const routes = {
             ],
             options: {
                 titleDisplayMode: 'alwaysShow',
+                topBar: {
+                    visible: false,
+                },
             },
         },
     }),

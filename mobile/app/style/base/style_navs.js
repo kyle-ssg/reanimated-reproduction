@@ -28,15 +28,13 @@ global.navbarWithTabsStyle = {
     statusBar: {
         style: 'dark',
     },
+    bottomTabs: {
+        backgroundColor: pallette.tabBackground,
+    },
     topBar: {
         elevation: 0,
         noBorder: true,
         drawBehind: true,
-        visible: false,
-        background: {
-            translucent: true,
-            color: 'transparent',
-        },
         title: {
             color: pallette.navBarText,
         },
@@ -61,10 +59,6 @@ global.backHidden = {
 
 global.navbarHidden = {
     topBar: {
-        visible: false,
-    },
-    bottomTabs: {
-        drawBehind: true,
         visible: false,
     },
     backButton: {

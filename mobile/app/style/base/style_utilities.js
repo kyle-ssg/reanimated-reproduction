@@ -2,6 +2,12 @@ module.exports = {
     // Utility classes
     // -------------------------
 
+    divider:{
+        height:1,
+        backgroundColor:'#fff',
+        opacity:0.5,
+    },
+
     noPadding: {
         paddingBottom: 0,
         paddingTop: 0,
@@ -21,6 +27,14 @@ module.exports = {
         textAlign: 'right',
     },
 
+    alignLeft:{
+        alignItems:'flex-start'
+    },
+
+    alignRight:{
+        alignItems:'flex-end'
+    },
+
     backdrop: {
         flex: 1,
         backgroundColor: styleVariables.backdropBackground,
@@ -28,6 +42,19 @@ module.exports = {
 
     padded: {
         padding: styleVariables.paddingBase,
+    },
+
+    clipped:{
+        overflow:'hidden',
+    },
+
+    shadow:{
+        shadowColor: '#333',
+        shadowOffset: {
+            height: 2,
+        },
+        shadowRadius: 3,
+        shadowOpacity: 0.3,
     },
 
 };

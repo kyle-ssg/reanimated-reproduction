@@ -37,11 +37,23 @@ app.prepare().then(() => {
         app.serveStatic(req, res, favicon);
     });
 
+    const articleCache = ssrCache(1000 * 60 * 60);
+    server.get('/article/:id', (req, res) => {
+        const queryParams = { id: req.params.id };
+        const pagePath = '/article/[id]';
+        return articleCache({ req, res, pagePath, queryParams });
+    });
 
     const homeCache = ssrCache(1000 * 60 * 15);
     server.get('/', (req, res) => {
         const queryParams = { id: req.params.id };
         const pagePath = '/';
+        return homeCache({ req, res, pagePath, queryParams });
+    });
+
+    server.get('/news', (req, res) => {
+        const queryParams = { id: req.params.id };
+        const pagePath = '/news';
         return homeCache({ req, res, pagePath, queryParams });
     });
 

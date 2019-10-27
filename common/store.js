@@ -9,6 +9,7 @@ import rootSaga from './saga';
 
 let _store;
 export default function (initialState = {}) {
+    if (_store) return _store;
     const sagaMiddleware = createSagaMiddleware();
 
     const middlewares = [

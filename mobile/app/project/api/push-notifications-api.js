@@ -1,6 +1,5 @@
 // import firebase from 'react-native-firebase';
 
-// eslint-disable-next-line
 if (typeof firebase === 'undefined') {
     module.exports = null;
 } else {

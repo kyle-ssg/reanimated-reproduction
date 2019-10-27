@@ -1,10 +1,24 @@
 module.exports = {
 
+    bodyBackground:{
+        backgroundColor:pallette.bodyBackground,
+    },
+
+    panelDark:{
+        backgroundColor:pallette.panelBlack,
+        color:'#fff',
+    },
+
+    panelWhite:{
+        backgroundColor:pallette.panelWhite,
+    },
+
     hero: {
         overflow: 'hidden',
         paddingTop: styleVariables.marginBaseVertical,
         backgroundColor: 'transparent',
     },
+
     bodyAlt: {
         backgroundColor: pallette.backgroundLight,
     },

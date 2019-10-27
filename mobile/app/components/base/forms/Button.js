@@ -43,9 +43,9 @@ export default class Button extends PureComponent {
         return Platform.OS === 'android' && Platform.Version >= 21 ? (
             <View style={{ opacity: this.props.disabled ? 0.5 : 1 }}>
                 <TouchableNativeFeedback
-                  {...touchableProps}
-                  background={TouchableNativeFeedback.Ripple('rgba(255,255,255,.5)')}
-                  testID={this.props.testID}
+                    {...touchableProps}
+                    background={TouchableNativeFeedback.Ripple('rgba(255,255,255,.5)')}
+                    testID={this.props.testID}
                 >
                     <View style={groupStyle}>
                         {typeof this.props.children === 'string' ? (
@@ -57,9 +57,9 @@ export default class Button extends PureComponent {
         ) : (
             <View style={{ opacity: this.props.disabled ? 0.5 : 1 }}>
                 <TouchableOpacity
-                  {...touchableProps}
-                  style={[groupStyle, this.props.disabled && { backgroundColor: pallette.primaryDarkAlt }]}
-                  testID={this.props.testID}
+                    {...touchableProps}
+                    style={[groupStyle, this.props.disabled && { backgroundColor: pallette.primaryDarkAlt }]}
+                    testID={this.props.testID}
                 >
                     {typeof this.props.children === 'string' ? (
                         <Text pointerEvents="none" style={textStyle}>{this.props.children.toUpperCase()}</Text>
@@ -75,8 +75,8 @@ export const ButtonPrimary = props => <Button {...props} style={[{ backgroundCol
 
 export const ButtonSecondary = props => (
     <Button
-      {...props}
-      style={[{ backgroundColor: pallette.secondary }, props.style]}
+        {...props}
+        style={[{ backgroundColor: pallette.secondary }, props.style]}
     />
 );
 export const ButtonTertiary = props => <Button {...props} style={[{ backgroundColor: 'white', borderColor: pallette.CoolGray, borderWidth: 1 }, props.style]}/>;
@@ -94,10 +94,10 @@ export const ButtonGoogle = props => <Button {...props} style={[{ backgroundColo
 export const TabPillButton = props => (
     <Button {...props} style={[styles.TabButtonPill, props.style]}>
         <Text
-          pointerEvents="none" style={[
-              styles.TabButtonPillText,
-              props.textStyle,
-          ]}
+            pointerEvents="none" style={[
+            styles.TabButtonPillText,
+            props.textStyle,
+        ]}
         >
             {props.children}
         </Text>

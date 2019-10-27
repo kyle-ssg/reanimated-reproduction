@@ -7,7 +7,6 @@ const Fade = class extends Component {
       autostart: propTypes.bool,
       duration: propTypes.number,
       friction: propTypes.number,
-      startValue: propTypes.number,
       tension: propTypes.number,
       animatedProps: propTypes.arrayOf(propTypes.string),
       animation: propTypes.func,
@@ -100,6 +99,8 @@ Fade.defaultProps = {
     duration: 500,
     friction: 5,
     tension: 20,
+    easing: ReactNative.Easing.inOut(ReactNative.Easing.ease),
+    easingOut: ReactNative.Easing.linear(ReactNative.Easing.ease),
     animatedProps: ['value'],
 };
 

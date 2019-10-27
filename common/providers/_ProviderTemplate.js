@@ -9,8 +9,6 @@ const withWidgets = (WrappedComponent) => {
     )(WrappedComponent);
 };
 
-export default (withWidgets);
-
 const mapDispatchToProps = dispatch => bindActionCreators({
     getWidgets: AppActions.getWidgets,
 }, dispatch);
@@ -19,3 +17,5 @@ function mapStateToProps(state) {
     const { widgets, widgetLoading, widgetError } = state;
     return { widgets, widgetLoading, widgetError };
 }
+
+export default (withWidgets);

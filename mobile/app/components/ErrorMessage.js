@@ -13,7 +13,7 @@ export default class ErrorMessage extends PureComponent {
       return (
           <View style={styles.container}>
               <Text style={styles.ErrorMessageText}>
-                  {props.children}
+                  {typeof props.children === 'string' ? props.children : 'Error processing request'}
               </Text>
           </View>
       );

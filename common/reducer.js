@@ -1,40 +1,53 @@
 import './utils';
 
-// const itemLoading = (state, prefix, action) => {
-//     return {
-//         ...state,
-//         [`${prefix}Loading`]: true,
-//     };
-// };
-//
-// const itemSaved = (state, prefix, action) => {
-//     return {
-//         ...state,
-//         [`${prefix}Loading`]: false,
-//     };
-// };
-//
-// const itemLoaded = (state, prefix, action) => {
-//     return {
-//         ...state,
-//         [prefix]: { ...state[prefix], [action.index]:data },
-//         [`${prefix}Loading`]: false,
-//     };
-// };
-//
-// const itemsLoaded = (state, prefix, action) => {
-//     return {
-//         ...state,
-//         [prefix]: data };
-// };
-//
-// const itemError = (state, prefix, action) => {
-//     return {
-//         ...state,
-//         [`${prefix}Loading`]: false,
-//         [`${prefix}Error`]: action.error,
-//     };
-// };
+const itemLoading = (state, prefix, action) => {
+    return {
+        ...state,
+        [`${prefix}Error`]: null,
+        [`${prefix}Loading`]: true,
+    };
+};
+
+const itemSaved = (state, prefix, action) => {
+    if (action.index) {  // Item is part of a collection, add it within the prefix
+        return {
+            ...state,
+            [prefix]: { ...state[prefix], [action.index]:action.data },
+            [`${prefix}Loading`]: false,
+            [`${prefix}Error`]: null,
+        };
+    }
+    return {
+        ...state,
+        [`${prefix}Error`]: null,
+        [prefix]: action.data,
+        [`${prefix}Loading`]: false,
+    };
+};
+
+const itemLoaded = (state, prefix, action) => {
+    if (action.index) { // Item is part of a collection, add it within the prefix
+        return {
+            ...state,
+            [prefix]: { ...state[prefix], [action.index]:action.data },
+            [`${prefix}Error`]: null,
+            [`${prefix}Loading`]: false,
+        };
+    }
+    return {
+        ...state,
+        [`${prefix}Error`]: null,
+        [`${prefix}Loading`]: false,
+        [prefix]: action.data };
+};
+
+const itemError = (state, prefix, action) => {
+    return {
+        ...state,
+        [`${prefix}Loading`]: false,
+        [`${prefix}Error`]: action.error,
+    };
+};
 
 function defaultReducer(
     state = {
@@ -50,13 +63,21 @@ function defaultReducer(
     }
     switch (action.type) {
         case Actions.LOGIN:
-            return { ...state, userLoading: true };
+            return itemLoading(state, 'user', action);
         case Actions.LOGIN_LOADED:
-            return { ...state, userLoading: false };
+        case Actions.REFRESH_USER_LOADED:
+            return itemLoaded(state, 'user', action);
         case Actions.LOGIN_ERROR:
-            return { ...state, userLoading: false, userError: action.error };
+            return itemError(state, 'user', action);
+        case Actions.REGISTER:
+            return itemLoading(state, 'user', action);
+        case Actions.REGISTER_LOADED:
+            return itemLoaded(state, 'user', action);
+        case Actions.REGISTER_ERROR:
+            return itemError(state, 'user', action);
+
         case Actions.CLEAR_USER:
-            return { ...state, articles:{} };
+            return { ...state, user:null };
 
         case Actions.STARTUP_LOADED:
             return { ...state, ...action.data };
@@ -66,10 +87,5 @@ function defaultReducer(
 }
 
 export default (state, action) => {
-    const newState      = defaultReducer(state, action);
-    const finalState    = {
-        ...newState,
-    };
-
-    return finalState;
+    return defaultReducer(state, action);
 };
