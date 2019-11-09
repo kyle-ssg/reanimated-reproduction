@@ -101,5 +101,7 @@
 	<string>9d64.app.link</string>
 	<key>branch_key</key>
 	<string>key_live_ajwnUd3ezHRgbK5wLA0l9mbcEBo55Nso</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+  <false/>
 </dict>
 </plist>
