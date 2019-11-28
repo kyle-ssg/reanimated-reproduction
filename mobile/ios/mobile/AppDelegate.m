@@ -13,11 +13,11 @@
 #import <React/RCTLinkingManager.h>
 
 //FACEBOOK_LOGIN
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
+//#import <FBSDKCoreKit/FBSDKCoreKit.h>
 //GOOGLE_LOGIN
 //#import "RNGoogleSignin.h"
 //REACT_NATIVE_FIREBASE
-//#import <Firebase.h>
+@import Firebase;
 //REACT_NATIVE_NAVIGATION
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
 //REACT_NATIVE_BRANCH
@@ -29,10 +29,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   //REACT_NATIVE_FUREBASE
-//  [FIRApp configure];
+  [FIRApp configure];
 
 //  [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES]; // <-- add this
 
+#if DEBUG
   for (NSString* family in [UIFont familyNames])
   {
     NSLog(@"%@", family);
@@ -41,12 +42,13 @@
       NSLog(@" %@", name);
     }
   }
+#endif
 
   NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
   [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
 
-  [[FBSDKApplicationDelegate sharedInstance] application:application
-                           didFinishLaunchingWithOptions:launchOptions];
+//  [[FBSDKApplicationDelegate sharedInstance] application:application
+//                           didFinishLaunchingWithOptions:launchOptions];
 
   return YES;
 }
@@ -79,20 +81,27 @@
 //  }
 
   // REACT_NATIVE_FACEBOOK_SIGNIN
-  if ([[FBSDKApplicationDelegate sharedInstance] application:application
-                                                     openURL:url
-                                           sourceApplication:sourceApplication
-                                                  annotation:annotation
-       ]) {
-    return YES;
-  }
+//  if ([[FBSDKApplicationDelegate sharedInstance] application:application
+//                                                     openURL:url
+//                                           sourceApplication:sourceApplication
+//                                                  annotation:annotation
+//       ]) {
+//    return YES;
+//  }
 
-  return [RCTLinkingManager application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+  return [RCTLinkingManager application:application openURL:url
+                      sourceApplication:sourceApplication annotation:annotation];
 }
 
 // REACT_NATIVE_BRANCH
 //- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *restorableObjects))restorationHandler {
 //  return [RNBranch continueUserActivity:userActivity];
 //}
-
+- (BOOL)application:(UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity
+ restorationHandler:(nonnull void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler
+{
+  return [RCTLinkingManager application:application
+                   continueUserActivity:userActivity
+                     restorationHandler:restorationHandler];
+}
 @end

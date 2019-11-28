@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
+import { Animated } from 'react-native';
 
 const SlideUp = class extends Component {
-    displayName: 'SlideUp';
+    static displayName = 'SlideUp';
 
     static propTypes = {
         autostart: propTypes.bool,
@@ -16,7 +18,7 @@ const SlideUp = class extends Component {
             propTypes.arrayOf(propTypes.node),
             propTypes.node,
         ]).isRequired,
-        style: propTypes.object,
+        style: propTypes.any,
     };
 
     constructor(props, context) {
@@ -53,7 +55,7 @@ const SlideUp = class extends Component {
         }
     }
 
-    componentWillReceiveProps(newProps) {
+    UNSAFE_componentWillReceiveProps(newProps) {
         _.each(newProps.animatedProps, (key) => {
             const easing = newProps.value ? newProps.easing : newProps.easingOut;
             // eslint-disable-next-line

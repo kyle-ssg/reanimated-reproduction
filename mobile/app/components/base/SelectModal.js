@@ -1,5 +1,6 @@
 import propTypes from 'prop-types';
 import { Navigation } from 'react-native-navigation';
+import { Loader } from './Loader';
 
 // propTypes: uri: RequiredString
 const NativeModal = class extends React.Component {
@@ -63,8 +64,7 @@ const NativeModal = class extends React.Component {
                     onChange={onChange}
                     multiple={multiple}
                     style={{ backgroundColor: 'black' }}
-                    renderRow={(item, isSelected, toggleItem) => renderRow(item, isSelected, toggleItem)
-              }
+                    renderRow={(item, isSelected, toggleItem) => renderRow(item, isSelected, toggleItem)}
                     filterItem={filterItem}
                   />
               </Fade>

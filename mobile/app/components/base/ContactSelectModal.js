@@ -1,3 +1,6 @@
+import propTypes from 'prop-types';
+import { Loader } from './Loader';
+
 const ContactSelectModal = class extends React.Component {
   static displayName = 'ContactSelectModal';
 
@@ -7,7 +10,10 @@ const ContactSelectModal = class extends React.Component {
       multiple: propTypes.bool.isRequired,
   };
 
-  state = {};
+  constructor(props) {
+      super(props);
+      this.state = {};
+  }
 
   componentDidMount() {
       // todo:
@@ -51,7 +57,7 @@ const ContactSelectModal = class extends React.Component {
                         placeholder="Search by name"
                         items={contacts}
                         value={value}
-                        onChange={changeValue => this.setState({ value: changeValue })}
+                        onChange={(changeValue) => this.setState({ value: changeValue })}
                         multiple={multiple}
                         renderRow={(
                             { givenName },
@@ -75,8 +81,7 @@ const ContactSelectModal = class extends React.Component {
                                 />
                             </ListItem>
                         )}
-                        filterItem={(contact, search) => contact.search.indexOf(search) !== -1
-                }
+                        filterItem={(contact, search) => contact.search.indexOf(search) !== -1}
                       />
                   </Fade>
                   )}

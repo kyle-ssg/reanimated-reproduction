@@ -4,7 +4,7 @@ import styleVariables from './app/style/project/style_variables';
 
 const replaceSuffixPattern = /--(active|big|small|very-big)/g;
 const defaultIconProvider = ION;
-
+let initialised = false;
 const icons = {
     // 'ios-menu': [30, styleVariables.navColor],
     // 'ios-add': [30, styleVariables.navColor],
@@ -21,6 +21,11 @@ const icons = {
 global.iconsMap = {};
 module.exports = () => new Promise((resolve) => { // cache all icons as images
     // eslint-disable-next-line
+    if (initialised){
+        return Promise.resolve();
+    }
+    initialised = true;
+    // eslint-disable-next-line new-cap
     new Promise.all(
         Object.keys(icons).map((iconName) => {
             const Provider = icons[iconName][2] || defaultIconProvider; // Ionicons

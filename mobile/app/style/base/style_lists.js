@@ -47,7 +47,7 @@ module.exports = {
     },
 
     listIcon: {
-        fontSize: styleVariables.fontSizeBase * 2.5,
+        fontSize: styleVariables.fontSizeBase * 1.5,
         marginRight: styleVariables.paddingBase,
     },
 

@@ -1,9 +1,12 @@
 // import firebase from 'react-native-firebase';
 
+// eslint-disable-next-line
 if (typeof firebase === 'undefined') {
     module.exports = null;
 } else {
+    // eslint-disable-next-line
     const FCM = firebase.messaging();
+    // eslint-disable-next-line
     const Notifications = firebase.notifications();
     const PushManager = class {
         static token = null;
@@ -18,7 +21,7 @@ if (typeof firebase === 'undefined') {
             return FCM.subscribeToTopic(topic);
         }
 
-        unsubscribe = topic => FCM.unsubscribeFromTopic(topic);
+        unsubscribe = (topic) => FCM.unsubscribeFromTopic(topic);
 
         stop = () => {
             this.token = null;
@@ -42,7 +45,7 @@ if (typeof firebase === 'undefined') {
 
                 if (notification._notificationType === 'will_present_notification') return; // these notifications are duplicate and pointless
 
-                this.onNotification && this.onNotification(Object.assign({}, notification, { fromClick: notification._notificationType === 'notification_response' }));
+                this.onNotification && this.onNotification({ ...notification, fromClick: notification._notificationType === 'notification_response' });
             };
 
             if (this.token) {
@@ -63,7 +66,7 @@ if (typeof firebase === 'undefined') {
                         }
                         // store fcm token in your server
                     });
-                }).catch(e => reject(e));
+                }).catch((e) => reject(e));
 
 
                 this.refreshTokenListener = FCM.onTokenRefresh((token) => {

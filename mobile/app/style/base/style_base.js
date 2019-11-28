@@ -10,10 +10,10 @@ module.exports = {
     },
 
     divider: {
-        height: (1 / PixelRatio.get()) * 2,
+        height: StyleSheet.hairlineWidth,
         alignSelf: 'stretch',
         borderColor: pallette.divider,
-        borderBottomWidth: 1 / PixelRatio.get(),
+        borderBottomWidth: StyleSheet.hairlineWidth,
     },
 
 };

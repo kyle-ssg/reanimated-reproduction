@@ -1,16 +1,6 @@
 module.exports = {
-
     bodyBackground:{
         backgroundColor:pallette.bodyBackground,
-    },
-
-    panelDark:{
-        backgroundColor:pallette.panelBlack,
-        color:'#fff',
-    },
-
-    panelWhite:{
-        backgroundColor:pallette.panelWhite,
     },
 
     hero: {

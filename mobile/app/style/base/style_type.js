@@ -7,37 +7,66 @@ module.exports = {
     // Typography
     // --------------------------------------------------
 
-    paragraph: {
-        fontSize: styleVariables.fontSizeParagraph,
-    },
-
     h1: {
         fontSize: styleVariables.fontSizeH1,
+        lineHeight: styleVariables.fontSizeH1,
+        fontWeight: 'bold',
+        fontFamily: styleVariables.boldFontFamily,
     },
 
     h2: {
         fontSize: styleVariables.fontSizeH2,
+        lineHeight: styleVariables.fontSizeH2,
+        fontWeight: 'bold',
+        fontFamily: styleVariables.boldFontFamily,
     },
 
     h3: {
         fontSize: styleVariables.fontSizeH3,
-    },
-    h4: {
-        fontSize: styleVariables.fontSizeH4,
+        lineHeight: styleVariables.fontSizeH3,
+        fontFamily: styleVariables.boldFontFamily,
+        fontWeight: 'bold',
     },
 
-    text: {
-        color: pallette.text,
-        fontSize: em(2),
+    h4: {
+        fontSize: styleVariables.fontSizeH4,
+        lineHeight: styleVariables.fontSizeH4,
+        fontWeight: '600',
+        fontFamily: styleVariables.semiboldFontFamily,
+    },
+    p: {
+        marginBottom: styleVariables.marginBaseVertical,
+    },
+
+    italic: {
+        fontFamily: styleVariables.italicFontFamily,
+        fontWeight: 'normal',
     },
 
     textError: {
         color: colour.errorText,
     },
 
+    fontWeightLight: {
+        fontWeight: 'normal',
+        fontFamily: styleVariables.normalFontFamily,
+    },
+
 
     textLight: {
         color: colour.textLight,
+    },
+
+    textMid: {
+        color: colour.textMid,
+    },
+
+    textPrimary: {
+        color: pallette.primary,
+    },
+
+    textMidDark: {
+        color: pallette.textMidDark,
     },
 
     textCenter: {
@@ -52,21 +81,17 @@ module.exports = {
         fontSize: em(2),
     },
 
-    anchor: {
-
-    },
-
-    p: {
-        marginBottom: styleVariables.marginBaseVertical,
-    },
-
     bold: {
         fontWeight: 'bold',
+        fontFamily: styleVariables.boldFontFamily,
     },
     text: {
         backgroundColor: 'transparent',
-        color: pallette.primaryLightest,
+        color: pallette.text,
+        fontFamily: styleVariables.semiboldFontFamily,
         fontSize: styleVariables.fontSizeBase,
+        lineHeight: styleVariables.fontSizeBase + 2.5,
+        fontWeight: '600',
     },
 
     onboardingH1: {
@@ -124,11 +149,6 @@ module.exports = {
         color: pallette.textFaint,
     },
 
-
-    textError: {
-        color: colour.errorText,
-    },
-
     errorText: {
         color: pallette.error,
     },
@@ -136,11 +156,12 @@ module.exports = {
     fontSizeHeading: {
         fontSize: styleVariables.fontSizeHeading,
         fontWeight: 'bold',
+        fontFamily: styleVariables.boldFontFamily,
     },
 
     fontSizeSubHeading: {
-        fontSize: styleVariables.fontSizesubheading,
         fontWeight: 'bold',
+        fontFamily: styleVariables.boldFontFamily,
     },
 
     fontSizeSmall: {

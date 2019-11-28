@@ -1,10 +1,13 @@
 // propTypes: value: OptionalNumber
 import React, { PureComponent } from 'react';
+import propTypes from 'prop-types';
 
 export default class Flex extends PureComponent {
     render() {
         return (
             <View
+              accessible={this.props.accessible}
+              accessibilityLabel={this.props.accessibilityLabel}
               style={[
                   this.props.style,
                   { flex: this.props.value },
@@ -23,9 +26,11 @@ Flex.defaultProps = {
 };
 
 Flex.propTypes = {
-    value: OptionalNumber,
-    children: OptionalElement,
+    accessible: propTypes.number,
+    accessibilityLabel: propTypes.string,
+    value: propTypes.number,
+    children: propTypes.node,
     style: propTypes.any,
-    testID: OptionalString,
+    testID: propTypes.string,
     space: propTypes.bool,
 };

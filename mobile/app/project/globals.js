@@ -1,7 +1,7 @@
 import './polyfill';
 import './animations';
 import '../../strings';
-import '../../common-mobile/utils';
+import '../../../common/utils';
 import './api/api';
 import 'react-native-globals'; // Adds <View etc to global scope
 import AsyncStorage from '@react-native-community/async-storage';

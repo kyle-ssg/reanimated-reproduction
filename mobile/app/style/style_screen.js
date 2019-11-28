@@ -4,7 +4,7 @@
 // eslint-disable-next-line
 import merge from 'lodash/merge';
 
-window.Styles = StyleSheet.create(merge({},
+global.Styles = StyleSheet.create(merge({},
     require('./base/'),
     require('./project/style_base'),
     require('./project/style_buttons'),

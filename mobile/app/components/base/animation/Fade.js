@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
+import each from 'lodash/each';
+import { Animated } from 'react-native';
 
 const Fade = class extends Component {
-  displayName: 'Fade';
+  static displayName = 'Fade';
 
   static propTypes = {
       autostart: propTypes.bool,
       duration: propTypes.number,
       friction: propTypes.number,
       tension: propTypes.number,
+      startValue: propTypes.number,
       animatedProps: propTypes.arrayOf(propTypes.string),
       animation: propTypes.func,
       children: propTypes.oneOfType([
           propTypes.arrayOf(propTypes.node),
           propTypes.node,
       ]).isRequired,
-      style: propTypes.object,
+      style: propTypes.any,
   };
 
   constructor(props, context) {
       super(props, context);
       const _props = {};
-      _.each(this.props.animatedProps, (prop) => {
+      each(this.props.animatedProps, (prop) => {
           _props[`animated_${prop}`] = new Animated.Value(props[prop] && !props.autostart ? 1 : props.startValue || 0.00001);
       });
       this.state = _props;
@@ -28,7 +32,7 @@ const Fade = class extends Component {
 
   componentDidMount() {
       if (this.props.autostart) {
-          _.each(this.props.animatedProps, (key) => {
+          each(this.props.animatedProps, (key) => {
               this.props
                   .animation(
                       // Base: spring, decay, timing
@@ -50,8 +54,8 @@ const Fade = class extends Component {
       }
   }
 
-  componentWillReceiveProps(newProps) {
-      _.each(newProps.animatedProps, (key) => {
+  UNSAFE_componentWillReceiveProps(newProps) {
+      each(newProps.animatedProps, (key) => {
           const easing = newProps.value ? newProps.easing : newProps.easingOut;
           // eslint-disable-next-line eqeqeq
           if (newProps[key] != this.props[key]) {
@@ -96,11 +100,9 @@ const Fade = class extends Component {
 
 Fade.defaultProps = {
     animation: Animated.timing,
-    duration: 500,
+    duration: 100,
     friction: 5,
     tension: 20,
-    easing: ReactNative.Easing.inOut(ReactNative.Easing.ease),
-    easingOut: ReactNative.Easing.linear(ReactNative.Easing.ease),
     animatedProps: ['value'],
 };
 

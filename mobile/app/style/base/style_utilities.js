@@ -2,12 +2,6 @@ module.exports = {
     // Utility classes
     // -------------------------
 
-    divider:{
-        height:1,
-        backgroundColor:'#fff',
-        opacity:0.5,
-    },
-
     noPadding: {
         paddingBottom: 0,
         paddingTop: 0,

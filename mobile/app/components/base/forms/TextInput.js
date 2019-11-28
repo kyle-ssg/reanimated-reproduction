@@ -2,10 +2,11 @@
  * Created by kylejohnson on 14/11/2015.
  */
 
+import propTypes from 'prop-types';
 import InputMask from 'inputmask-core';
-
-import ReactNative from 'react-native';
+import ReactNative, { Animated, Easing } from 'react-native';
 import React, { PureComponent } from 'react';
+import Animations from '../../../project/animations';
 
 const textInputPropTypes = {
     onBlur: propTypes.func,
@@ -13,7 +14,7 @@ const textInputPropTypes = {
         propTypes.arrayOf(propTypes.node),
         propTypes.node,
     ]).isRequired,
-    style: propTypes.object,
+    style: propTypes.any,
 };
 
 const TextInput = class extends PureComponent {
@@ -21,7 +22,8 @@ const TextInput = class extends PureComponent {
 
   static propTypes = textInputPropTypes;
 
-  componentWillMount() {
+  constructor(props, context) {
+      super(props, context);
       this.animation = new Animated.Value(0.0001);
   }
 
@@ -176,7 +178,7 @@ const TextInput = class extends PureComponent {
                     style={[Styles.textInput, Styles.textInputAndroid, this.props.style]}
                     value={this.props.value}
                     testID={this.props.testID}
-                    ref={ref => this.inputRef = ref}
+                    ref={(ref) => this.inputRef = ref}
                     blurOnSubmit={Platform.OS === 'ios'}
                   />
               </Animated.View>
@@ -185,7 +187,7 @@ const TextInput = class extends PureComponent {
                     {
                         marginTop: -Math.round((1 / PixelRatio.get()) * 3),
                         transform: [{ scaleX: this.animation }],
-                        backgroundColor: pallette.primary,
+                        backgroundColor: pallette.bookmakerPrimary,
                         height: Math.round((1 / PixelRatio.get()) * 6),
                     },
                 ]}
@@ -198,23 +200,23 @@ const TextInput = class extends PureComponent {
 TextInput.propTypes = {};
 
 TextInput.propTypes = {
-    value: OptionalString,
-    placeholder: OptionalString,
-    editable: OptionalBool,
-    multiline: OptionalBool,
-    maxLines: OptionalNumber,
-    minLines: OptionalNumber,
-    mask: OptionalString,
-    onChangeText: OptionalFunc,
-    height: OptionalNumber,
+    value: propTypes.string,
+    placeholder: propTypes.string,
+    editable: propTypes.bool,
+    multiline: propTypes.bool,
+    maxLines: propTypes.number,
+    minLines: propTypes.number,
+    mask: propTypes.string,
+    onChangeText: propTypes.func,
+    height: propTypes.number,
     style: propTypes.any,
-    secureTextEntry: OptionalBool,
-    disabled: OptionalBool,
-    keyboardType: OptionalString,
-    onSubmit: OptionalFunc,
-    onFocus: OptionalFunc,
-    textStyle: oneOfType([OptionalObject, OptionalNumber]),
-    testID: OptionalString,
+    secureTextEntry: propTypes.bool,
+    disabled: propTypes.bool,
+    keyboardType: propTypes.string,
+    onSubmit: propTypes.func,
+    onFocus: propTypes.func,
+    textStyle: propTypes.any,
+    testID: propTypes.string,
 };
 
 // const styles = StyleSheet.create({
@@ -222,7 +224,7 @@ TextInput.propTypes = {
 // });
 
 export default TextInput;
-export const FlatInput = props => (
+export const FlatInput = (props) => (
     <TextInput {...props} style={[Styles.flatInput, props.style]} />
 );
 FlatInput.propTypes = textInputPropTypes;

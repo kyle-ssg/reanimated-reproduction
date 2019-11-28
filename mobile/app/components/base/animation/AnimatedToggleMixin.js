@@ -2,6 +2,8 @@
  * Created by kylejohnson on 09/01/2016.
  * __deprecated__, copy existing logic to components you wish to animate
  */
+import { Animated, Easing } from 'react-native';
+
 module.exports = {
     getDefaultProps() {
         return {

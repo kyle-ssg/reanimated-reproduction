@@ -17,7 +17,10 @@ import Button, {
 import Flex from '../components/base/grid/Flex';
 import Text from '../components/base/forms/Text';
 
+import H1 from '../components/base/type/H1';
+import H2 from '../components/base/type/H2';
 import H3 from '../components/base/type/H3';
+import H4 from '../components/base/type/H4';
 
 // Animation
 global.Fade = require('../components/base/animation/Fade');
@@ -27,11 +30,11 @@ global.SlideUp = require('../components/base/animation/SlideUp');
 // Typography
 global.Text = Text;
 global.Strong = global.Bold = require('../components/base/type/Bold');
-global.H1 = require('../components/base/type/H1');
-global.H2 = require('../components/base/type/H2');
-global.H4 = require('../components/base/type/H4');
 
+global.H1 = H1;
+global.H2 = H2;
 global.H3 = H3;
+global.H4 = H4;
 
 global.Flex = Flex;
 global.Container = require('../components/base/grid/Container');

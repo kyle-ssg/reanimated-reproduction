@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
-import _store from '../common-mobile/store';
+import _store from '../../common/store';
 
 const store = _store();
 

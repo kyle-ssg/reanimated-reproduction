@@ -1,12 +1,10 @@
 /**
  * Created by kylejohnson on 11/05/2016.
  */
-/**
- * Created by kylejohnson on 04/05/2016.
- */
 import React, { PureComponent } from 'react';
+import propTypes from 'prop-types';
 
-const bold = class extends PureComponent {
+const Bold = class extends PureComponent {
     static displayName = 'Bold';
 
     render() {
@@ -16,9 +14,9 @@ const bold = class extends PureComponent {
     }
 };
 
-bold.propTypes = {
+Bold.propTypes = {
     style: propTypes.any,
-    children: OptionalElement,
+    children: propTypes.node,
 };
 
-module.exports = bold;
+module.exports = Bold;

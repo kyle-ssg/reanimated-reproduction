@@ -5,25 +5,21 @@ import { PixelRatio } from 'react-native';
 
 const em = require('../base/style_pxToEm');
 
-window.pallette = Object.assign({}, {
-
-    bodyBackground: '#fff', // General app  background
+global.pallette = { bodyBackground: '#fff', // General app  background
     primary: '#3896DF',
     secondary: '#D8315B',
     success: '#3CBF88',
     divider: '#d1d1d1',
     textLight: '#a8a8a8',
     text: '#4c4c4c',
-
-}, window.pallette);
+    ...global.pallette };
 
 //= = Other Variables
 
-window.styleVariables = Object.assign({
+global.styleVariables = {
 
     //= = Typography
     fontSizeBase: em(1),
-    fontSizeSmall: em(0.95),
     fontSizeH1: em(2.286), // 32px
     fontSizeH2: em(1.75), // 24px
     fontSizeH3: em(1.25), // 17px
@@ -40,7 +36,7 @@ window.styleVariables = Object.assign({
 
 
     // Buttons
-    buttonHeight: 55,
+    buttonHeight: 44,
 
     // Inputs
     fontSizeInputLarge: em(2),
@@ -51,11 +47,7 @@ window.styleVariables = Object.assign({
 
     button: 44,
     buttonTall: 54,
-
-    //
-    // ## Define common-mobile padding and border radius sizes and more.
-
-    // Nav
+        // Nav
 
     baseNavHeight: 44,
     marginBaseVertical: 15,
@@ -86,9 +78,9 @@ window.styleVariables = Object.assign({
     // Posts
     postWidth: 500,
     postHeight: 500,
-}, window.styleVariables);
+    ...global.styleVariables };
 
-window.colour = Object.assign({}, pallette, {
+global.colour = { ...pallette,
     iosStyle: 0,
     buttonActiveOpacity: 0.8,
     disabledOpacity: 0.8,
@@ -170,5 +162,4 @@ window.colour = Object.assign({}, pallette, {
     facebook: '#3b5998',
     twitter: '#1DA1F3',
     google: '#dd4b39',
-
-}, window.colour);
+    ...global.colour };

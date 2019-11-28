@@ -1,3 +1,6 @@
+import propTypes from 'prop-types';
+import Animations from '../../project/animations';
+
 export default (WrappedComponent) => {
     class Lightbox extends React.Component {
     static displayName = 'Lightbox';
@@ -7,17 +10,20 @@ export default (WrappedComponent) => {
         componentId: propTypes.string,
     };
 
-    state = {
-        slideInFromTop: {
-            easing: Animations.standard,
-            from: { translateY: -DeviceHeight },
-            to: { translateY: 0 },
-        },
-        fadeInBackground: {
-            from: { backgroundColor: 'rgba(0, 0, 0, 0)' },
-            to: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
-        },
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            slideInFromTop: {
+                easing: Animations.standard,
+                from: { translateY: -DeviceHeight },
+                to: { translateY: 0 },
+            },
+            fadeInBackground: {
+                from: { backgroundColor: 'rgba(0, 0, 0, 0)' },
+                to: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
+            },
+        };
+    }
 
     dismiss = () => {
         this.setState({

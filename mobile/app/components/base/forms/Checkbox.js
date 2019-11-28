@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
+import { Animated, Easing } from 'react-native';
 
 const json = require('./checkbox.json');
 
@@ -16,7 +17,7 @@ const TheComponent = class extends Component {
       this.animatedValue = new Animated.Value(this.props.value ? 0.5 : 0);
   }
 
-  componentWillUpdate(newProps) {
+  UNSAFE_componentWillUpdate(newProps) {
       if (newProps.value !== this.props.value) {
           Animated.timing(this.animatedValue, {
               toValue: newProps.value ? 0.5 : 0,

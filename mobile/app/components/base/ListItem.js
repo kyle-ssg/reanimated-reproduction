@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
 import ReactNative, { Platform, TouchableNativeFeedback } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
@@ -6,6 +7,8 @@ const ListItem = class extends Component {
   static displayName = 'ListItem';
 
   static propTypes = {
+      accessible: propTypes.bool,
+      accessibilityLabel: propTypes.string,
       icon: propTypes.node,
       children: propTypes.oneOfType([
           propTypes.arrayOf(propTypes.node),
@@ -15,7 +18,7 @@ const ListItem = class extends Component {
       delay: propTypes.number,
       index: propTypes.number,
       onPress: propTypes.func,
-      style: propTypes.object,
+      style: propTypes.any,
       disabled: propTypes.bool,
   };
 
@@ -53,6 +56,8 @@ const ListItem = class extends Component {
           <TheView style={this.props.style || Styles.listItem} {...animationProps}>
               {Platform.OS === 'android' ? (
                   <TouchableNativeFeedback
+                    accessible={this.props.accessible}
+                    accessibilityLabel={this.props.accessibilityLabel}
                     onPress={this.props.disabled ? null : this.props.onPress}
                     background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
                   >
@@ -60,6 +65,8 @@ const ListItem = class extends Component {
                   </TouchableNativeFeedback>
               ) : (
                   <TouchableOpacity
+                    accessible={this.props.accessible}
+                    accessibilityLabel={this.props.accessibilityLabel}
                     activeOpacity={0.8}
                     onPress={this.props.disabled ? null : this.props.onPress}
                   >

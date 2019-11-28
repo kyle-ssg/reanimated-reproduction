@@ -2,7 +2,7 @@ import { Navigation } from 'react-native-navigation';
 import './app/project/globals';
 import './app/routes';
 import loadIcons from './load-icons';
-import _store from './common-mobile/store';
+import _store from '../common/store';
 
 const store = _store();
 

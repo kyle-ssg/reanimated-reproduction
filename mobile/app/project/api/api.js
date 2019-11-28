@@ -1,11 +1,11 @@
 import BottomSheet from 'react-native-bottomsheet';
 // import firebase from 'react-native-firebase';
+import analytics from '@react-native-firebase/analytics';
+
 import { AsyncStorage } from 'react-native';
-import { getStoreDangerous } from '../../../common-mobile/store';
+import { getStoreDangerous } from '../../../../common/store';
 import push from './push-notifications-api';
 import auth from './auth';
-
-const analytics = typeof firebase === 'undefined' ? undefined : firebase.analytics();
 
 global.API = {
     isMobile: () => true,
@@ -19,25 +19,23 @@ global.API = {
     loggedIn: () => null,
     logout: () => null,
     trackEvent(data) {
-        if (analytics) {
-            const { event, ...rest } = data;
-            if (!data) {
-                // eslint-disable-next-line no-console
-                console.error('Passed null event data');
-            }
+        const { event, ...rest } = data;
+        if (!data) {
             // eslint-disable-next-line no-console
-            console.info('track', data);
-            if (!data || !data.category || !data.event) {
-                // eslint-disable-next-line no-console
-                console.error('Invalid event provided', data);
-            }
-
-            analytics.logEvent(event.toLowerCase().replace(/ /g, '_'), rest);
+            console.error('Passed null event data');
         }
+        // eslint-disable-next-line no-console
+        console.info('track', data);
+        if (!data || !data.category || !data.event) {
+            // eslint-disable-next-line no-console
+            console.error('Invalid event provided', data);
+        }
+
+        analytics().logEvent(event.toLowerCase().replace(/ /g, '_'), rest);
     },
     trackPage(name) {
         if (analytics) {
-            analytics.setCurrentScreen(name, name);
+            analytics().setCurrentScreen(name, name);
         }
     },
     setCookie(id, val) {
