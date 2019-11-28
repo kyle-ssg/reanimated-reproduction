@@ -20,18 +20,13 @@ const ExampleScreen = class extends Component {
 
   static displayName = 'ExampleScreen';
 
-  state = {};
-
-  componentWillMount() {
-      Navigation.events().bindComponent(this);
+  constructor(props, context) {
+      super(props, context);
+      this.state = {};
   }
 
   componentDidMount() {
-      // API.push.getInitialNotification().then((e) => {
-      //     if (e) {
-      //         this.onNotification(Object.assign({}, e, { fromClick: true }));
-      //     }
-      // });
+      Navigation.events().bindComponent(this);
   }
 
   onNavigatorEvent = (event) => {
@@ -61,7 +56,7 @@ const ExampleScreen = class extends Component {
           routes.selectModal('Select a thing', {
               items: ['item 1', 'item 2'],
               filterItem: (contact, search) => contact.indexOf(search) !== -1,
-              onChange: options => this.setState({ options }),
+              onChange: (options) => this.setState({ options }),
               renderRow: (item, isSelected, toggleItem) => (
                   <ListItem onPress={toggleItem}>
                       <Text>{item}</Text>
@@ -164,6 +159,7 @@ const ExampleScreen = class extends Component {
 
   googleSignIn = async () => {
       try {
+          // eslint-disable-next-line no-undef
           await GoogleSignin.hasPlayServices();
           const googleUserInfo = await GoogleSignin.signIn();
           this.setState({ googleUserInfo, error: null });
@@ -200,14 +196,14 @@ const ExampleScreen = class extends Component {
                                   <Container>
                                       <FormGroup>
                                           <TextInput
-                                            onChangeText={val => this.setState({ val })}
+                                            onChangeText={(val) => this.setState({ val })}
                                             value={this.state.val}
                                             placeholder="Example input"
                                           />
                                       </FormGroup>
                                       <FormGroup>
                                           <TextInput
-                                            onChangeText={val2 => this.setState({ val2 })}
+                                            onChangeText={(val2) => this.setState({ val2 })}
                                             value={this.state.val2}
                                             mask="11:11 am"
                                             placeholder="Example input"
@@ -232,7 +228,7 @@ const ExampleScreen = class extends Component {
                           </Button>
                           <DateTimePicker
                             isVisible={this.state.showDatepicker}
-                            onConfirm={date => this.setState({ showDatepicker: false, date })}
+                            onConfirm={(date) => this.setState({ showDatepicker: false, date })}
                             onCancel={() => this.setState({ showDatepicker: false })}
                           />
                           {this.state.date ? (
@@ -269,12 +265,12 @@ You picked
                               />
                           </ListItem>
 
-                          {/*<GoogleSigninButton*/}
-                          {/*  style={{ width: 192, height: 48 }}*/}
-                          {/*  size={GoogleSigninButton.Size.Wide}*/}
-                          {/*  color={GoogleSigninButton.Color.Dark}*/}
-                          {/*  onPress={this.googleSignIn}*/}
-                          {/*/>*/}
+                          {/* <GoogleSigninButton */}
+                          {/*  style={{ width: 192, height: 48 }} */}
+                          {/*  size={GoogleSigninButton.Size.Wide} */}
+                          {/*  color={GoogleSigninButton.Color.Dark} */}
+                          {/*  onPress={this.googleSignIn} */}
+                          {/* /> */}
                           {googleUserInfo ? (
                               <Text>
                   You are signed in with Google as
@@ -283,48 +279,47 @@ You picked
                               </Text>
                           ) : null}
 
-                          {/*<FBLogin*/}
-                          {/*  style={{ marginBottom: 10 }}*/}
-                          {/*  ref={(fbLogin) => {*/}
-                          {/*      this.fbLogin = fbLogin;*/}
-                          {/*  }}*/}
-                          {/*  permissions={['email', 'user_friends']}*/}
-                          {/*  loginBehavior={FBLoginManager.LoginBehaviors.Native}*/}
-                          {/*  onLogin={(data) => {*/}
-                          {/*      API.log('Logged in!');*/}
-                          {/*      API.log(data);*/}
-                          {/*      this.setState({ fbUser: data.credentials });*/}
-                          {/*  }}*/}
-                          {/*  onLogout={() => {*/}
-                          {/*      API.log('Logged out.');*/}
-                          {/*      this.setState({ fbUser: null });*/}
-                          {/*  }}*/}
-                          {/*  onLoginFound={(data) => {*/}
-                          {/*      API.log('Existing login found.');*/}
-                          {/*      API.log(data);*/}
-                          {/*      this.setState({ fbUser: data.credentials });*/}
-                          {/*  }}*/}
-                          {/*  onLoginNotFound={() => {*/}
-                          {/*      API.log('No user logged in.');*/}
-                          {/*      this.setState({ fbUser: null });*/}
-                          {/*  }}*/}
-                          {/*  onError={(err) => {*/}
-                          {/*      API.log('ERROR');*/}
-                          {/*      API.log(err);*/}
-                          {/*  }}*/}
-                          {/*  onCancel={() => {*/}
-                          {/*      API.log('User cancelled.');*/}
-                          {/*  }}*/}
-                          {/*  onPermissionsMissing={(data) => {*/}
-                          {/*      API.log('Check permissions!');*/}
-                          {/*      API.log(data);*/}
-                          {/*  }}*/}
-                          {/*/>*/}
+                          {/* <FBLogin */}
+                          {/*  style={{ marginBottom: 10 }} */}
+                          {/*  ref={(fbLogin) => { */}
+                          {/*      this.fbLogin = fbLogin; */}
+                          {/*  }} */}
+                          {/*  permissions={['email', 'user_friends']} */}
+                          {/*  loginBehavior={FBLoginManager.LoginBehaviors.Native} */}
+                          {/*  onLogin={(data) => { */}
+                          {/*      API.log('Logged in!'); */}
+                          {/*      API.log(data); */}
+                          {/*      this.setState({ fbUser: data.credentials }); */}
+                          {/*  }} */}
+                          {/*  onLogout={() => { */}
+                          {/*      API.log('Logged out.'); */}
+                          {/*      this.setState({ fbUser: null }); */}
+                          {/*  }} */}
+                          {/*  onLoginFound={(data) => { */}
+                          {/*      API.log('Existing login found.'); */}
+                          {/*      API.log(data); */}
+                          {/*      this.setState({ fbUser: data.credentials }); */}
+                          {/*  }} */}
+                          {/*  onLoginNotFound={() => { */}
+                          {/*      API.log('No user logged in.'); */}
+                          {/*      this.setState({ fbUser: null }); */}
+                          {/*  }} */}
+                          {/*  onError={(err) => { */}
+                          {/*      API.log('ERROR'); */}
+                          {/*      API.log(err); */}
+                          {/*  }} */}
+                          {/*  onCancel={() => { */}
+                          {/*      API.log('User cancelled.'); */}
+                          {/*  }} */}
+                          {/*  onPermissionsMissing={(data) => { */}
+                          {/*      API.log('Check permissions!'); */}
+                          {/*      API.log(data); */}
+                          {/*  }} */}
+                          {/* /> */}
 
                           <ListItem
                             index={1}
-                            onPress={() => Navigation.push(componentId, routes.markupScreen())
-                }
+                            onPress={() => Navigation.push(componentId, routes.markupScreen())}
                           >
                               <Text>Markup</Text>
                               <ION name="ios-arrow-forward" style={[Styles.listIconNav]} />
@@ -332,8 +327,7 @@ You picked
 
                           <ListItem
                             index={1}
-                            onPress={() => Navigation.push(componentId, routes.aboutScreen())
-                }
+                            onPress={() => Navigation.push(componentId, routes.aboutScreen())}
                           >
                               <Text>About</Text>
                               <ION name="ios-arrow-forward" style={[Styles.listIconNav]} />
@@ -346,8 +340,7 @@ You picked
 
                           <ListItem
                             index={1}
-                            onPress={() => Navigation.push(componentId, routes.interactiveScreen())
-                }
+                            onPress={() => Navigation.push(componentId, routes.interactiveScreen())}
                           >
                               <Text>Interactive examples</Text>
                               <ION name="ios-arrow-forward" style={[Styles.listIconNav]} />

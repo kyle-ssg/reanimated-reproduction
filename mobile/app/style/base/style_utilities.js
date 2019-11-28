@@ -21,12 +21,12 @@ module.exports = {
         textAlign: 'right',
     },
 
-    alignLeft:{
-        alignItems:'flex-start'
+    alignLeft: {
+        alignItems: 'flex-start',
     },
 
-    alignRight:{
-        alignItems:'flex-end'
+    alignRight: {
+        alignItems: 'flex-end',
     },
 
     backdrop: {
@@ -38,11 +38,11 @@ module.exports = {
         padding: styleVariables.paddingBase,
     },
 
-    clipped:{
-        overflow:'hidden',
+    clipped: {
+        overflow: 'hidden',
     },
 
-    shadow:{
+    shadow: {
         shadowColor: '#333',
         shadowOffset: {
             height: 2,

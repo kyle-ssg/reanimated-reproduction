@@ -68,7 +68,7 @@ const SwipeableRow = class extends Component {
                 style={{ backgroundColor: 'white', height: 64 }}
                 onSnapStart={this.onFilterSnap}
                 boun
-                ref={content => (this.content = content)}
+                ref={(content) => (this.content = content)}
                 horizontalOnly
                 dragWithSpring={{ tension: 2000, damping: 0.5 }}
                 snapPoints={[{ x: 0, tension: 100 }, { tension: 100, x: -64 * 2 }]}
@@ -164,7 +164,7 @@ const InteractiveScreen = class extends Component {
 
                   <Interactable.View
                     onSnapStart={this.onFilterSnap}
-                    ref={content => (this.content = content)}
+                    ref={(content) => (this.content = content)}
                     verticalOnly
                     snapPoints={[{ y: 0 }, { y: -FILTER_HEIGHT }]}
                     boundaries={{ top: -200 }}

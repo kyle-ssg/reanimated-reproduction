@@ -4,6 +4,8 @@ const map = require('lodash/map');
 const { mock, setup } = require('./pact.server');
 const allTests = require('../tests/index.pact');
 
+const fakeLike = v => v;
+
 setup(3001)
     .then(() => {
         map(allTests, (tests) => {
@@ -13,7 +15,7 @@ setup(3001)
                 const { body, requestBody, path: testPath } = test;
                 const path = testPath || testsPath;
                 console.log('Mocking', path, method);
-                mock(path, method, body, requestBody);
+                mock(path, method, body && body(fakeLike), requestBody && requestBody(fakeLike));
             });
         });
     });

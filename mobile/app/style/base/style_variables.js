@@ -47,7 +47,7 @@ global.styleVariables = {
 
     button: 44,
     buttonTall: 54,
-        // Nav
+    // Nav
 
     baseNavHeight: 44,
     marginBaseVertical: 15,

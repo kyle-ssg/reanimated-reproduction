@@ -30,5 +30,5 @@ module.exports = ({
 
         interaction.withRequest.body = requestBody;
     }
-    return pact.addInteraction(interaction);
+    return global.pact.addInteraction(interaction);
 };

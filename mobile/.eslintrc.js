@@ -14,8 +14,7 @@ module.exports = {
   'plugins': [
     'import',
     'prettier',
-    'react',
-    'wdio'
+    'react'
   ],
   'settings': {
     'import/resolver': {

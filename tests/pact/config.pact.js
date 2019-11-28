@@ -1,3 +1,8 @@
-export const namespace = 'theproject-mobile-theproject-api';
-export const consumer = 'theproject-mobile';
-export const provider = 'theproject-api';
+const consumer = 'janus-b2c-ui';
+const provider = 'janus-b2c-api';
+const namespace = `${consumer}-${provider}`;
+module.exports = {
+    namespace,
+    consumer,
+    provider,
+};

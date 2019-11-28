@@ -19,11 +19,7 @@
     "hooks:mac": "cp ./hooks/pre-commit ./.git/hooks/pre-commit && chmod +x ./.git/hooks/pre-commit",
     "postinstall": "npm run hooks",
     "storybook": "start-storybook -p 7007",
-    "test": "jest ./storybook/storybook.test.js",
-    "e2e:android": "wdio ./tests/e2e/config/wdio.android.conf.js",
-    "e2e:ios": "wdio ./tests/e2e/config/wdio.android.conf.js",
-    "e2e:android:bs": "wdio ./tests/e2e/config/browserstack/wdio.android.rdc.conf.js",
-    "e2e:ios:bs": "wdio ./tests/e2e/config/browserstack/wdio.ios.rdc.conf.js"
+    "test": "jest ./storybook/storybook.test.js"
   },
   "rnpm": {
     "assets": [
@@ -59,6 +55,7 @@
     "react-native-globals": "^0.60.3",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-localization": "^2.1.5",
+    "react-native-modal-datetime-picker": "^7.6.0",
     "react-native-navigation": "git+https://github.com/kyle-ssg/react-native-navigation#v3",
     "react-native-permissions": "^1.2.0",
     "react-native-reanimated": "^1.2.0",
@@ -112,7 +109,6 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "eslint-watch": "^6.0.1",
-    "eslint-plugin-wdio": "^5.12.1",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
     "prettier": "^1.15.2",

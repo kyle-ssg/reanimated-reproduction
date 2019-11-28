@@ -31,7 +31,7 @@ const getUser = () => new Promise((resolve) => {
     });
 });
 
-const initialiseApp = (user) => {
+const initialiseApp = () => {
     global.modalNavButtons = {
         topBar: {
             leftButtons: [],
@@ -45,7 +45,7 @@ const initialiseApp = (user) => {
     };
 
     // Determine the initial route\
-    let screen = routes.homeScreen();
+    const screen = routes.homeScreen();
     // if (user && user.emailVerified) {
     //     screen = routes.dashboardScreen();
     // }

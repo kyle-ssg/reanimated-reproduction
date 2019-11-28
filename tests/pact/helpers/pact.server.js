@@ -2,6 +2,7 @@
 const bodyParser = require('body-parser');
 const app = require('express')();
 const cors = require('cors');
+const fetch = require('isomorphic-unfetch');
 
 app.use(cors());
 
@@ -25,7 +26,7 @@ module.exports = {
         if (method !== 'get') {
             options.body = JSON.stringify(requestBody || {});
         }
-        return () => fetch(global.api + url, options).then(res => res.json());
+        return () => fetch(global.api + url, options).then((res) => res.json());
     },
     setup(port) {
         return new Promise((resolve) => {

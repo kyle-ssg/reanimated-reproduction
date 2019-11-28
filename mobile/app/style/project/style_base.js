@@ -1,6 +1,6 @@
 module.exports = {
-    bodyBackground:{
-        backgroundColor:pallette.bodyBackground,
+    bodyBackground: {
+        backgroundColor: pallette.bodyBackground,
     },
 
     hero: {

@@ -1,19 +1,18 @@
 /* eslint no-console: 0 */
-import { namespace } from '../config.pact';
-
 const pact = require('@pact-foundation/pact-node');
 const path = require('path');
+const config = require('../config.pact');
 
 require('dotenv').config();
 
+const dir = path.resolve(__dirname, `../../../pacts/${config.namespace}.json`);
 if (process.env.PACT_BROKER) {
     const opts = {
-        pactFilesOrDirs: [path.resolve(__dirname, `../../../pacts/${namespace}.json`)],
+        pactFilesOrDirs: [dir],
         pactBroker: process.env.PACT_BROKER,
         pactBrokerUsername: process.env.PACT_BROKER_USERNAME,
         pactBrokerPassword: process.env.PACT_BROKER_PASSWORD,
-        tags: ['prod', 'test'],
-        consumerVersion: `${process.env.CI_COMMIT_REF_NAME || 'local'}.${Math.floor(new Date() / 1000)}`,
+        consumerVersion: `${process.env.CI_COMMIT_REF_NAME || 'local'}`,
     };
 
     pact.publishPacts(opts)
