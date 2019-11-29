@@ -14,7 +14,7 @@ const TermsScreen = class extends Component {
       this.state = {};
   }
 
-  componentWillMount() {
+  componenDidMount() {
       Navigation.events().bindComponent(this);
   }
 

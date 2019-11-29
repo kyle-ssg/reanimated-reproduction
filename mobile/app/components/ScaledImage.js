@@ -1,6 +1,7 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Image } from 'react-native';
 import FastImage from 'react-native-fast-image';
+import propTypes from 'prop-types';
 
 export default class ScaledImage extends Component {
   static displayName = 'ScaledImage'
@@ -9,6 +10,8 @@ export default class ScaledImage extends Component {
       source: propTypes.object,
       allowUpscale: propTypes.bool,
       priority: propTypes.string,
+      width: propTypes.number,
+      height: propTypes.number,
   }
 
   constructor(props) {
@@ -16,7 +19,7 @@ export default class ScaledImage extends Component {
       this.state = { source: this.props.source };
   }
 
-  componentWillMount() {
+  componentDidMount() {
       Image.getSize(this.props.source.uri, (width, height) => {
           if (this.props.width && !this.props.height) {
               const sensibleWidth = this.props.allowUpscale ? this.props.width : Math.min(this.props.width, width);

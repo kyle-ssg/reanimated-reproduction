@@ -8,11 +8,11 @@ import { storiesOf } from '@storybook/react-native';
 import { withSmartKnobs } from 'storybook-addon-smart-knobs';
 // eslint-disable-next-line
 import { withKnobs } from '@storybook/addon-knobs';
-import { getStoreDangerous } from '../../common/store';
+import _store from '../../common/store';
 
 
 const StorybookUIRoot = getStorybookUI({});
-const store = getStoreDangerous();
+const store = _store();
 
 // import stories
 export function setup(cb) {

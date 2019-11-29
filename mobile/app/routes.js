@@ -1,4 +1,3 @@
-import React from 'react';
 import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
 import _store from '../../common/store';
@@ -12,6 +11,13 @@ const routes = {
     homeScreen: () => ({
         component: {
             name: '/',
+            options: _.merge({}, global.navbarStyle, { topBar: { title: { text: 'Home' } } }),
+        },
+    }),
+    // The initial screen
+    storybookScreen: () => ({
+        component: {
+            name: 'storybook',
             options: _.merge({}, global.navbarStyle, { topBar: { title: { text: 'Home' } } }),
         },
     }),
@@ -161,7 +167,7 @@ const routes = {
 
 // BASE Routes
 Navigation.registerComponentWithRedux('/', () => require('./screens/example/ExampleScreen'), Provider, store);
-Navigation.registerComponentWithRedux('/markup', () => require('./screens/__MarkupScreen__'), Provider, store);
+Navigation.registerComponentWithRedux('storybook', () => require('./screens/__StorybookScreen__'), Provider, store);
 
 Navigation.registerComponent('/select', () => require('./components/base/SelectModal'));
 Navigation.registerComponent('/webmodal', () => require('./components/base/NativeWebModal'));

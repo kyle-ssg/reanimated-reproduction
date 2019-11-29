@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { Animated, Easing } from 'react-native';
+import Animation from 'lottie-react-native';
 
 const json = require('./checkbox.json');
 
 const TheComponent = class extends Component {
-  displayName: 'TheComponent'
+  static displayName = 'TheComponent'
 
   static propTypes = {
       value: propTypes.number,

@@ -9,9 +9,12 @@ const AboutScreen = class extends Component {
 
   static displayName = 'AboutScreen';
 
-  state = {};
+  constructor(props, context) {
+      super(props, context);
+      this.state = {};
+  }
 
-  componentWillMount() {
+  componentDidMount() {
       Navigation.events().bindComponent(this);
   }
 
@@ -26,16 +29,15 @@ const AboutScreen = class extends Component {
           <Flex style={Styles.body}>
               <ScrollView>
                   <Container>
-                      <H2>About us</H2>
+                      <H2 style={Styles.mt10}>About us</H2>
                       <View style={Styles.noPad}>
-                          {_.range(0, 12).map(i => (
+                          {_.range(0, 12).map((i) => (
                               <ListItem
                                 key={i}
                                 index={i}
                               >
                                   <Text>
-ListItem
-                                      {i}
+                                      ListItem{i}
                                   </Text>
                               </ListItem>
                           ))}

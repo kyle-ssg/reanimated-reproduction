@@ -29,7 +29,7 @@ const ListItem = class extends Component {
 
   render() {
       const content = (
-          <View>
+          <View style={[this.props.style, Styles.ph5]}>
               <Row>
                   {this.props.icon}
                   <View
@@ -53,7 +53,7 @@ const ListItem = class extends Component {
           ? Animatable.View
           : ReactNative.View;
       return this.props.onPress ? (
-          <TheView style={this.props.style || Styles.listItem} {...animationProps}>
+          <TheView style={Styles.listItem} {...animationProps}>
               {Platform.OS === 'android' ? (
                   <TouchableNativeFeedback
                     accessible={this.props.accessible}

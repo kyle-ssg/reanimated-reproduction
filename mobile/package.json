@@ -8,8 +8,8 @@
   },
   "scripts": {
     "start": "react-native start",
-    "android": "cd ./android && ./gradlew installProdDebug",
-    "android:uat": "cd ./android && ./gradlew installUatDebug",
+    "android": "npm start & cd ./android && ./gradlew installProdDebug",
+    "android:uat": "npm start & cd ./android && ./gradlew installUatDebug",
     "android:bundle": "cd ./android && ./gradlew assembleProdRelease",
     "android:bundle:uat": "cd ./android && ./gradlew assembleUatRelease",
     "android:hash:dev": "keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64\n",
@@ -19,7 +19,7 @@
     "hooks:mac": "cp ./hooks/pre-commit ./.git/hooks/pre-commit && chmod +x ./.git/hooks/pre-commit",
     "postinstall": "npm run hooks",
     "storybook": "start-storybook -p 7007",
-    "test": "jest ./storybook/storybook.test.js"
+    "test:ui": "jest ./storybook/storybook.test.js"
   },
   "rnpm": {
     "assets": [

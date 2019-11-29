@@ -1,12 +1,14 @@
 
-
 // import propTypes from 'prop-types';
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
+import propTypes from 'prop-types';
 
-export default class ErrorMessage extends PureComponent {
+export default class ErrorMessage extends Component {
   static displayName = 'ErrorMessage';
 
-  static propTypes = {};
+  static propTypes = {
+      children: propTypes.node,
+  };
 
   render() {
       const { props } = this;

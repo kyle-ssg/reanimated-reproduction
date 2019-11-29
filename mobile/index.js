@@ -45,7 +45,7 @@ const initialiseApp = () => {
     };
 
     // Determine the initial route\
-    const screen = routes.homeScreen();
+    const screen = Constants.STORYBOOK ? routes.storybookScreen() : routes.homeScreen();
     // if (user && user.emailVerified) {
     //     screen = routes.dashboardScreen();
     // }

@@ -1,7 +1,7 @@
 // https://github.com/wix/react-native-navigation/wiki/Styling-the-navigator
 global.navbarStyle = {
     statusBar: {
-        style: 'dark',
+        style: 'light',
     },
     topBar: {
         elevation: 0,

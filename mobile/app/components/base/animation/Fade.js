@@ -100,7 +100,7 @@ const Fade = class extends Component {
 
 Fade.defaultProps = {
     animation: Animated.timing,
-    duration: 100,
+    duration: 250,
     friction: 5,
     tension: 20,
     animatedProps: ['value'],

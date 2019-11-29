@@ -12,7 +12,7 @@ const TheComponent = class extends Component {
       this.state = {};
   }
 
-  componentWillMount() {}
+  componentDidMount() {}
 
   render() {
       // const { props: {  }, state: {  } } = this;

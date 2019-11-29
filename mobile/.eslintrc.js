@@ -14,7 +14,7 @@ module.exports = {
   'plugins': [
     'import',
     'prettier',
-    'react'
+    'react',
   ],
   'settings': {
     'import/resolver': {
@@ -34,7 +34,6 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'no-use-before-define': 0,
     'global-require': 0,
-    'react/static-property-placement': 0,
     'arrow-body-style': 0,
     'jsx-a11y/click-events-have-key-events': 0, // there are valid cases for this e.g. forms
     'jsx-a11y/interactive-supports-focus': 0, // there are valid cases for this e.g. forms

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 import ViewOverflow from 'react-native-view-overflow';
+import propTypes from 'prop-types';
 import Lightbox from '../../components/base/Lightbox';
+import Animation from 'lottie-react-native';
 
 const ExampleLightbox = class extends Component {
   static displayName = 'ExampleLightbox';
@@ -10,7 +12,10 @@ const ExampleLightbox = class extends Component {
       dismiss: propTypes.func,
   };
 
-  state = {};
+  constructor(props, context) {
+      super(props, context);
+      this.state = {};
+  }
 
   componentDidMount() {
       this.animTimer = setTimeout(() => {

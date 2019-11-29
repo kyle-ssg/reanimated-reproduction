@@ -15,8 +15,6 @@ module.exports = {
         alignItems: 'stretch',
         alignSelf: 'stretch',
         borderBottomWidth: 1 / PixelRatio.get(),
-        paddingLeft: styleVariables.paddingBase,
-        paddingRight: styleVariables.paddingBase,
         borderBottomColor: colour.divider,
         backgroundColor: colour.listBackground,
         paddingTop: styleVariables.paddingBase,

@@ -123,6 +123,7 @@ module.exports = {
     p20: { padding: 32 },
 
     ph0: { paddingRight: 0, paddingLeft: 0 },
+
     ph5: { paddingRight: 8, paddingLeft: 8 },
     ph10: { paddingRight: 16, paddingLeft: 16 },
     ph15: { paddingRight: 24, paddingLeft: 24 },

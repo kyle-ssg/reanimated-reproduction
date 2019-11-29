@@ -82,7 +82,6 @@ module.exports = {
         '_': true,
         '__DEV__': true,
         'E2E': true,
-        'AccountStore': true,
         'em': true,
         'Actions': true,
         'API': true,

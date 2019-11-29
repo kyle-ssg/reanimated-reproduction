@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Animated } from 'react-native';
 
 const FILTER_HEIGHT = 120;
 const FILTER_FOOTER_HEIGHT = 40;
@@ -6,7 +7,10 @@ const FILTER_FOOTER_HEIGHT = 40;
 const SwipeableRow = class extends Component {
   static displayName = 'SwipeableRow';
 
-  state = {};
+  constructor(props, context) {
+      super(props, context);
+      this.state = {};
+  }
 
   _deltaX = new Animated.Value(0);
 
@@ -99,7 +103,10 @@ const InteractiveScreen = class extends Component {
   static propTypes = {
   };
 
-  state = {};
+  constructor(props, context) {
+      super(props, context);
+      this.state = {};
+  }
 
   _deltaY = new Animated.Value(0);
 

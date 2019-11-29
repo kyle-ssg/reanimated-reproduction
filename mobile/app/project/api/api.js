@@ -1,11 +1,45 @@
 import BottomSheet from 'react-native-bottomsheet';
-// import firebase from 'react-native-firebase';
 import analytics from '@react-native-firebase/analytics';
 
 import { AsyncStorage } from 'react-native';
-import { getStoreDangerous } from '../../../../common/store';
 import push from './push-notifications-api';
 import auth from './auth';
+
+// eslint-disable-next-line
+var initialLinkCb = null;
+// eslint-disable-next-line
+var link = null;
+// eslint-disable-next-line
+var initialLink = null;
+
+if (typeof branch !== 'undefined') {
+    const linkCb = null;
+    // eslint-disable-next-line
+    let checkedInitialLink = null;
+    // eslint-disable-next-line
+    branch.subscribe(({ error, params }) => {
+        if (error) {
+            // eslint-disable-next-line no-console
+            console.error(`Error from Branch: ${error}`);
+            return;
+        }
+
+        if (params['+clicked_branch_link']) {
+            link = params;
+
+            if (!checkedInitialLink) {
+                initialLink = params;
+                if (initialLinkCb) initialLinkCb(params);
+            }
+
+            if (linkCb) {
+                linkCb(params);
+            }
+        }
+        checkedInitialLink = true;
+    });
+}
+
 
 global.API = {
     isMobile: () => true,
@@ -109,6 +143,7 @@ global.API = {
             if (typeof ImagePicker === 'undefined') {
                 // eslint-disable-next-line
                 alert('You need to link react-native-image-picker to use this function');
+                return;
             }
             // todo : handle multiple
             if (i === 0 || i === 1) {
@@ -120,6 +155,7 @@ global.API = {
                     compressImageQuality,
                 };
 
+                // eslint-disable-next-line no-undef
                 const func = i ? ImagePicker.openPicker : ImagePicker.openCamera;
 
                 return func(options)
@@ -138,6 +174,7 @@ global.API = {
             alert('You need to link react-native-branch to use this function');
             return Promise.reject();
         }
+        // eslint-disable-next-line no-undef
         return branch.createBranchUniversalObject('share', {
             title,
             customMetadata,
@@ -156,48 +193,4 @@ global.API = {
     push,
     auth,
 
-    getUserName: () => {
-        const state = getStoreDangerous().getState();
-        return selectUserName(state);
-    },
-
-    getAccountButtonText: () => {
-        const state = getStoreDangerous().getState();
-        if (isUserLoggedIn(state)) {
-            return selectUserName(state);
-        }
-        return Strings.logIn;
-    },
 };
-
-if (typeof branch !== 'undefined') {
-    const linkCb = null;
-    const initialLinkCb = null;
-    // eslint-disable-next-line
-    var link = null;
-    let checkedInitialLink = null;
-    // eslint-disable-next-line
-    var initialLink = null;
-
-    branch.subscribe(({ error, params }) => {
-        if (error) {
-            // eslint-disable-next-line no-console
-            console.error(`Error from Branch: ${error}`);
-            return;
-        }
-
-        if (params['+clicked_branch_link']) {
-            link = params;
-
-            if (!checkedInitialLink) {
-                initialLink = params;
-                if (initialLinkCb) initialLinkCb(params);
-            }
-
-            if (linkCb) {
-                linkCb(params);
-            }
-        }
-        checkedInitialLink = true;
-    });
-}

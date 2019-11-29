@@ -9,6 +9,7 @@ export default class Tabs extends PureComponent {
   static propTypes = {
       tabBarRow: propTypes.bool,
       navigationState: propTypes.object,
+      tabBarStyle: propTypes.any,
       renderScene: propTypes.func,
       onIndexChange: propTypes.func,
       scrollEnabled: propTypes.bool,
@@ -24,20 +25,20 @@ export default class Tabs extends PureComponent {
       labelStyle: {},
   }
 
-  static _renderPager = props => (
+  static _renderPager = (props) => (
       <PagerPan
         {...props}
         swipeEnabled={false}
       />
   );
 
-  renderTabBar = props => (
+  renderTabBar = (props) => (
       <TabBar
         {...props}
         scrollEnabled={this.props.scrollEnabled}
         labelStyle={[styles.TabText, this.props.labelStyle]}
         getLabelText={({ route: { title } }) => title}
-        style={{...styles.tabPrimary, ...this.props.tabBarStyle}}
+        style={{ ...styles.tabPrimary, ...this.props.tabBarStyle }}
         tabStyle={this.props.tabBarRow ? { ...Styles.row, ...this.props.tabStyle } : this.props.tabStyle}
         indicatorStyle={{ ...styles.indicatorPrimary, ...this.props.indicatorStyle }}
         renderIcon={({ route }) => route.icon || null}
@@ -55,7 +56,7 @@ export default class Tabs extends PureComponent {
             renderPager={Tabs._renderPager}
             renderScene={this.props.renderScene}
             timingConfig={{ duration: 100 }}
-            onIndexChange={index => this.props.onIndexChange(index)}
+            onIndexChange={(index) => this.props.onIndexChange(index)}
             initialLayout={{ width: Dimensions.get('window').width, height: Dimensions.get('window').height }}
           />
       );
