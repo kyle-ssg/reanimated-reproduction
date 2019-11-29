@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-unfetch';
 import jwt from 'jwt-decode';
 import Constants from './constants';
-// import { getStoreDangerous } from '../store';
+// import _store  from '../store';
 // import AppActions from '../app-actions';
 
 const getQueryString = (params) => {

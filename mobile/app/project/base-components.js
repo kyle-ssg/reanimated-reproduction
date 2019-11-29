@@ -24,7 +24,6 @@ import H4 from '../components/base/type/H4';
 
 // Animation
 global.Fade = require('../components/base/animation/Fade');
-global.Carousel = require('../components/base/animation/Carousel');
 global.SlideUp = require('../components/base/animation/SlideUp');
 
 // Typography

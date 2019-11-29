@@ -4,6 +4,7 @@ const Constants = global.Constants = {
         'REGISTER': { 'event': 'User register', 'category': 'User' },
     },
     defaultLocale: 'en',
+    STORYBOOK: true,
     simulate: {
         FORCE_LANGUAGE: false, // set to "en" etc to specify a language
     },

@@ -4,11 +4,18 @@ import 'react-native-globals';
 import '../app/style/style_screen';
 import '../app/project/base-components';
 import ION from 'react-native-vector-icons/Ionicons';
-
 import TheComponent, { getStory, withPaddedContainer, setup } from './setup';
 import ErrorMessage from '../app/components/ErrorMessage';
+import Tabs from '../app/components/Tabs';
 
 setup(() => {
+    getStory('Tabs')
+        .addDecorator(withPaddedContainer)
+        .add('all', () => (
+            <>
+                <ExampleTabs/>
+            </>
+        ));
     getStory('Button')
         .addDecorator(withPaddedContainer)
         .add('all', () => (
@@ -67,7 +74,7 @@ setup(() => {
                     <Bold>Header 4</Bold>
                 </Fade>
             </>
-        ))
+        ));
     getStory('ListItem')
         .addDecorator(withPaddedContainer)
         .add('default', () => (
