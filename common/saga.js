@@ -1,6 +1,11 @@
 import { put, all, takeLatest } from 'redux-saga/effects';
-import _data from './utils/_data';
+import __data from './utils/_data';
 
+let _data = __data;
+
+export function setData(newData) {
+    _data = newData;
+}
 // Util function to post to an api, parse results and dispatch loaded and error functions
 export function* getAction(action, url, prefix, preventSuccess) {
     try {
@@ -9,9 +14,6 @@ export function* getAction(action, url, prefix, preventSuccess) {
         if (data.token) {
             API.setStoredToken(data.token);
             _data.setToken(data.token);
-        }
-        if (data.userType || data.emailVerified) {
-            API.setCookie('user', JSON.stringify(data));
         }
         if (action.id) {
             params.index = action.id;
@@ -58,9 +60,6 @@ export function* postAction(action, url, prefix, preventSuccess) {
             API.setStoredToken(data.token);
             _data.setToken(data.token);
         }
-        if (data.userType || data.emailVerified) {
-            API.setCookie('user', JSON.stringify(data));
-        }
         const params = { type: Actions[`${prefix}_LOADED`], data };
         if (action.id) {
             params.index = action.id;
@@ -83,8 +82,8 @@ export function* startup(action = {}) {
             ...rest
         } = action.data || {};
 
-        const token = action.data.token;
-        const refreshToken = action.data.refreshToken;
+        const token = action.data && action.data.token;
+        const refreshToken = action.data && action.data.refreshToken;
 
         if (token) {
             _data.setToken(token);
@@ -127,11 +126,11 @@ export function* register(action) {
     yield postAction(action, `${Project.api}user/register`, 'REGISTER');
 }
 
-export function* refreshUser() {
-}
-
-export function* confirmEmail() {
-}
+// export function* refreshUser() {
+// }
+//
+// export function* confirmEmail() {
+// }
 
 export function* logout(action) {
     yield put({ type: Actions.CLEAR_USER });
@@ -150,9 +149,9 @@ function* rootSaga() {
         takeLatest(Actions.STARTUP, startup),
         takeLatest(Actions.LOGIN, login),
         takeLatest(Actions.REGISTER, register),
-        takeLatest(Actions.REFRESH_USER, refreshUser),
         takeLatest(Actions.LOGOUT, logout),
-        takeLatest(Actions.CONFIRM_EMAIL, confirmEmail),
+        // takeLatest(Actions.CONFIRM_EMAIL, confirmEmail),
+        // takeLatest(Actions.REFRESH_USER, refreshUser),
     ]);
 }
 
