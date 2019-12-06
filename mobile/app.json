@@ -1,6 +1,6 @@
 {
-  "name": "racing-post-b2c",
-  "displayName": "racing-post-b2c",
+  "name": "boilerplate",
+  "displayName": "boilerplate",
   "packagerOpts": {
     "projectRoots": "",
     "config": "rn-cli.config.js"
