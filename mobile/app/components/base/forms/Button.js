@@ -134,83 +134,6 @@ export const ButtonTertiary = (props) => (
 );
 ButtonTertiary.propTypes = buttonPropTypes;
 
-export const ButtonTertiaryBookmaker = (props) => (
-    <Button
-      {...props}
-      style={[
-          styles.buttonTertiaryBookmaker,
-          props.style,
-      ]}
-      textStyle={[styles.buttonTertiaryBookmakerText, props.textStyle]}
-    />
-);
-ButtonTertiaryBookmaker.propTypes = buttonPropTypes;
-
-export const ButtonAlt = (props) => (
-    <Button
-      {...props}
-      style={[{ backgroundColor: pallette.primaryDark }, props.style]}
-    />
-);
-ButtonAlt.propTypes = buttonPropTypes;
-
-export const ButtonFlat = (props) => (
-    <Button {...props} style={[Styles.buttonWhiteShadow, props.style]} />
-);
-ButtonFlat.propTypes = buttonPropTypes;
-
-export const ButtonDashed = (props) => (
-    <Button {...props} style={[Styles.buttonDashed, props.style]} />
-);
-ButtonDashed.propTypes = buttonPropTypes;
-
-export const ButtonOutlinePrimary = (props) => (
-    <Button {...props} style={[Styles.buttonOutlinePrimary, props.style]} />
-);
-ButtonOutlinePrimary.propTypes = buttonPropTypes;
-
-export const ButtonGoogle = (props) => (
-    <Button
-      {...props}
-      style={[styles.buttonGoogle, props.style]}
-    />
-);
-ButtonGoogle.propTypes = buttonPropTypes;
-
-export const ButtonCommon = (props) => (
-    <Button
-      {...props}
-      style={[styles.buttonCommon, props.style]}
-      textStyle={[{
-          color: pallette.text,
-      }, props.textStyle]}
-    />
-);
-ButtonCommon.propTypes = buttonPropTypes;
-
-export const TabPillButton = (props) => (
-    <Button {...props} style={[styles.TabButtonPill, props.style]}>
-        <Text
-          pointerEvents="none"
-          style={[styles.TabButtonPillText, props.textStyle]}
-        >
-            {props.children}
-        </Text>
-    </Button>
-);
-TabPillButton.propTypes = buttonPropTypes;
-
-export const LinkTextButton = (props) => (
-    <Button {...props} style={[styles.LinkTextButton, props.style]}>
-        <Text
-          pointerEvents="none"
-          style={[styles.LinkTextButtonText, props.textStyle]}
-        >
-            {props.children}
-        </Text>
-    </Button>
-);
-LinkTextButton.propTypes = buttonPropTypes;
 
 const styles = StyleSheet.create({
     TabButtonPill: {
@@ -221,10 +144,6 @@ const styles = StyleSheet.create({
     },
     TabButtonPillText: {
         color: pallette.primaryDark,
-    },
-    LinkTextButton: {
-        backgroundColor: 'transparent',
-        height: 'auto',
     },
     buttonTertiary: {
         backgroundColor: 'white',
@@ -244,10 +163,6 @@ const styles = StyleSheet.create({
     },
     buttonTertiaryBookmakerText: {
         color: pallette.bookmakerPrimaryDark,
-    },
-    buttonGoogle: { backgroundColor: pallette.primaryDanger },
-    LinkTextButtonText: {
-        color: pallette.linkBlue,
     },
     buttonPrimary: { backgroundColor: pallette.primary },
 });
