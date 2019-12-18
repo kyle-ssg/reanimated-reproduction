@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "android": "npm run watch & react-native run-android",
+    "android": "npm run watch & react-native run-android --variant=uatDebug",
     "ios": "npm run watch & react-native run-ios",
     "android:hash:dev": "keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64\n",
     "watch": "sh ./bin/common-watch.sh",
