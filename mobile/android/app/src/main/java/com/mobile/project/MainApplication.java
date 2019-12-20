@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 // import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 // import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage; // <-- Add this line
 // import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage; // <-- Add this line
+import com.microsoft.codepush.react.CodePush;
 import com.facebook.react.PackageList;
 
 
@@ -33,6 +34,11 @@ public class MainApplication extends NavigationApplication {
             @Override
             protected String getJSMainModuleName() {
                 return "index";
+            }
+
+            @Override
+            protected String getJSBundleFile() {
+                return CodePush.getJSBundleFile();
             }
         };
     }

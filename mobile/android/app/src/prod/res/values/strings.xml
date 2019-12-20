@@ -2,4 +2,5 @@
     <string name="app_name">TheApp</string>
     <string name="fb_app_id">892249750833438</string>
     <string name="fb_login_protocol_scheme">fb892249750833438</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">yV-yBHA5oN37VcIbK6beYJpxEP5bwLnfxRFlg</string>
 </resources>

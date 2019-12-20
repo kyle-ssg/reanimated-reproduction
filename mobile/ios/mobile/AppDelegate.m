@@ -22,6 +22,8 @@
 #import <ReactNativeNavigation/ReactNativeNavigation.h>
 //REACT_NATIVE_BRANCH
 //#import <RNBranch/RNBranch.h> // at the top
+//REACT_NATIVE_CODE_PUSH
+#import <CodePush/CodePush.h>
 
 
 @implementation AppDelegate
@@ -44,8 +46,7 @@
   }
 #endif
 
-  NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
-  [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
+  [ReactNativeNavigation bootstrap:[self sourceURLForBridge:nil] launchOptions:launchOptions];
 
 //  [[FBSDKApplicationDelegate sharedInstance] application:application
 //                           didFinishLaunchingWithOptions:launchOptions];
@@ -58,7 +59,7 @@
 #if DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 #else
-  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  return [CodePush bundleURL];
 #endif
 }
 

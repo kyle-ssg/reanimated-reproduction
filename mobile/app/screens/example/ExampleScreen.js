@@ -11,9 +11,17 @@ import Svg, { } from 'react-native-svg';
 // import { FBLogin, FBLoginManager } from 'react-native-facebook-login';
 import moment from 'moment';
 import Path from 'react-native-svg/elements/Path';
+import codePush from "react-native-code-push";
+
 import { ButtonSecondary, ButtonTertiary } from '../../components/base/forms/Button';
 
-const ExampleScreen = class extends Component {
+const codePushOptions = {
+    checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+    installMode: codePush.InstallMode.ON_NEXT_RESUME,
+    updateDialog: true,
+}
+
+const ExampleScreen = codePush(codePushOptions)(class extends Component {
   static propTypes = {
       componentId: propTypes.string,
       navigator: propTypes.object,
@@ -55,6 +63,43 @@ const ExampleScreen = class extends Component {
           this.props.navigator.setDrawerEnabled({ side: 'right', enabled: false });
       }
   };
+
+  codePushStatusDidChange(status) {
+    switch (status) {
+        case codePush.SyncStatus.CHECKING_FOR_UPDATE:
+            console.log("[CodePush] Checking for updates.");
+            break;
+        case codePush.SyncStatus.DOWNLOADING_PACKAGE:
+            Navigation.setStackRoot(this.props.componentId, [
+                {
+                component: {
+                      name: 'loading-interstitial',
+                      passProps: {
+                        text: 'Updating'
+                      },
+                      options: {
+                        animations: {
+                          setStackRoot: {
+                            enabled: true
+                          }
+                        }
+                      }
+                    }
+              }
+            ]);
+            console.log("[CodePush] Downloading package.");
+            break;
+        case codePush.SyncStatus.INSTALLING_UPDATE:
+            console.log("[CodePush] Installing update.");
+            break;
+        case codePush.SyncStatus.UP_TO_DATE:
+            console.log("[CodePush] Up-to-date.");
+            break;
+        case codePush.SyncStatus.UPDATE_INSTALLED:
+            console.log("[CodePush] Update installed.");
+            break;
+    }
+}
 
   getInitialLink = () => {
       API.getInitialLink(this.onLink);
@@ -314,6 +359,6 @@ const ExampleScreen = class extends Component {
           </Flex>
       );
   }
-};
+});
 
 module.exports = ExampleScreen;

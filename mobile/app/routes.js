@@ -173,6 +173,7 @@ Navigation.registerComponentWithRedux('storybook', () => require('./screens/__St
 Navigation.registerComponent('/select', () => require('./components/base/SelectModal'));
 Navigation.registerComponent('/webmodal', () => require('./components/base/NativeWebModal'));
 Navigation.registerComponent('/contact-select', () => require('./components/base/ContactSelectModal'));
+Navigation.registerComponent('loading-interstitial', () => require('./screens/LoadingInterstitial'));
 
 // EXAMPLE Routes
 Navigation.registerComponent('/example/lightbox', () => require('./screens/example/ExampleLightbox'));
