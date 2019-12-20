@@ -15,6 +15,7 @@
 		27023053231BC816007BD235 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27023052231BC816007BD235 /* GoogleService-Info.plist */; };
 		4361AA532BA74FEAED72D0FA /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		6D3E3D82CC9B426D4673E17E /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		A36E00BD23AD251A00BB79D8 /* Info-AppCenter.plist in Resources */ = {isa = PBXBuildFile; fileRef = A36E00BC23AD251A00BB79D8 /* Info-AppCenter.plist */; };
 		B97E621748EA825D2423CF43 /* libPods-appcenter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F33B4B5F97AEC6601BE91EEF /* libPods-appcenter.a */; };
 		E5890BA02327D5AA007AD167 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		E5890BA12327D5AA007AD167 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -55,11 +56,12 @@
 		80B7379431150B18025ED1A0 /* libPods-mobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88CBF6EF889944898519F982 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		8E2ADECE87994C3C8EA351B3 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		A36E00BC23AD251A00BB79D8 /* Info-AppCenter.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-AppCenter.plist"; path = "mobile/Info-AppCenter.plist"; sourceTree = "<group>"; };
 		AAF93199E5ECA5354F9428E1 /* Pods-appcenter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appcenter.release.xcconfig"; path = "Target Support Files/Pods-appcenter/Pods-appcenter.release.xcconfig"; sourceTree = "<group>"; };
 		AB0D9954C78E494BAC69B70E /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		E182512DCA814D4B8BE6C491 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		E5890B9B2327D2EC007AD167 /* mobile copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "mobile copy-Info.plist"; path = "/Users/kylejohnson/test/mobile/ios/mobile copy-Info.plist"; sourceTree = "<absolute>"; };
-		E5890BAF2327D5AA007AD167 /* appcenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appcenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5890BAF2327D5AA007AD167 /* TheApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9B02768094D4D23A2C717A2 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		ED2509E046AA400CBA9B8DAF /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -112,6 +114,7 @@
 		13B07FAE1A68108700A75B9A /* mobile */ = {
 			isa = PBXGroup;
 			children = (
+				A36E00BC23AD251A00BB79D8 /* Info-AppCenter.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				27023052231BC816007BD235 /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -179,7 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* TheApp.app */,
-				E5890BAF2327D5AA007AD167 /* appcenter.app */,
+				E5890BAF2327D5AA007AD167 /* TheApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -251,7 +254,7 @@
 			);
 			name = appcenter;
 			productName = mobile;
-			productReference = E5890BAF2327D5AA007AD167 /* appcenter.app */;
+			productReference = E5890BAF2327D5AA007AD167 /* TheApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -299,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				A36E00BD23AD251A00BB79D8 /* Info-AppCenter.plist in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				27023053231BC816007BD235 /* GoogleService-Info.plist in Resources */,
 			);
@@ -738,7 +742,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = ADNLGFHKSN;
-				INFOPLIST_FILE = "mobile copy2-Info.plist";
+				INFOPLIST_FILE = "mobile/Info-AppCenter.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -746,7 +750,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobile.project;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TheApp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobile-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -764,7 +768,7 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "mobile copy2-Info.plist";
+				INFOPLIST_FILE = "mobile/Info-AppCenter.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -772,7 +776,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobile.project;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TheApp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobile-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
