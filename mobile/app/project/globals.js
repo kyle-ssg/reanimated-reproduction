@@ -28,7 +28,7 @@ global.Navigation = Navigation;
 global.E2E = false;
 
 global.FontAwesome = FontAwesome;
-// global.ION = ION;
+global.ION = ION;
 global.MaterialIcon = MaterialIcon;
 
 global.DeviceInfo = DeviceInfo;

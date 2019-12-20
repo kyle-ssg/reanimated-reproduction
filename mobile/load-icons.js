@@ -6,7 +6,7 @@ const replaceSuffixPattern = /--(active|big|small|very-big)/g;
 const defaultIconProvider = ION;
 let initialised = false;
 const icons = {
-    // 'ios-menu': [30, styleVariables.navColor],
+    'ios-menu': [30, styleVariables.navColor],
     // 'ios-add': [30, styleVariables.navColor],
     // 'ios-chatbubbles': [34, styleVariables.navColor],
     // 'ios-home': [34, styleVariables.navColor],

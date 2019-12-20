@@ -1,7 +1,7 @@
 // import propTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
-import { PagerPan, TabBar, TabView } from 'react-native-tab-view';
+import { TabBar, TabView } from 'react-native-tab-view';
 
 export default class Tabs extends PureComponent {
   static displayName = 'Tabs';
@@ -25,13 +25,6 @@ export default class Tabs extends PureComponent {
       labelStyle: {},
   }
 
-  static _renderPager = (props) => (
-      <PagerPan
-        {...props}
-        swipeEnabled={false}
-      />
-  );
-
   renderTabBar = (props) => (
       <TabBar
         {...props}
@@ -53,7 +46,6 @@ export default class Tabs extends PureComponent {
             lazy={this.props.lazy}
             navigationState={this.props.navigationState}
             renderTabBar={this.renderTabBar}
-            renderPager={Tabs._renderPager}
             renderScene={this.props.renderScene}
             timingConfig={{ duration: 100 }}
             onIndexChange={(index) => this.props.onIndexChange(index)}

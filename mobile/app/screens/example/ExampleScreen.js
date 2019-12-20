@@ -21,6 +21,21 @@ const ExampleScreen = class extends Component {
 
   static displayName = 'ExampleScreen';
 
+  static options(passProps) {
+    return {
+      topBar: {
+        leftButtons: [
+          {
+            id: 'open-drawer',
+            icon: global.iconsMap['ios-menu'],
+            color: 'white',
+          }
+        ],
+        rightButtons: [],
+      }
+    };
+  }
+
   constructor(props, context) {
       super(props, context);
       this.state = {};

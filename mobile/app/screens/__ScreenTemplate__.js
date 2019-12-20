@@ -9,10 +9,7 @@ const TermsScreen = class extends Component {
 
   static displayName = 'TermsScreen';
 
-  constructor(props, context) {
-      super(props, context);
-      this.state = {};
-  }
+  state = {}
 
   componenDidMount() {
       Navigation.events().bindComponent(this);
