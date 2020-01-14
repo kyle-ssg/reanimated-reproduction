@@ -9,9 +9,8 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import Svg, { } from 'react-native-svg';
 // import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 // import { FBLogin, FBLoginManager } from 'react-native-facebook-login';
-import moment from 'moment';
 import Path from 'react-native-svg/elements/Path';
-import codePush from "react-native-code-push";
+import codePush from 'react-native-code-push';
 
 import { ButtonSecondary, ButtonTertiary } from '../../components/base/forms/Button';
 
@@ -19,30 +18,30 @@ const codePushOptions = {
     checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
     installMode: codePush.InstallMode.ON_NEXT_RESUME,
     updateDialog: true,
-}
+};
 
 const ExampleScreen = codePush(codePushOptions)(class extends Component {
+    static options() {
+        return {
+            topBar: {
+                leftButtons: [
+                    {
+                        id: 'open-drawer',
+                        icon: global.iconsMap['ios-menu'],
+                        color: 'white',
+                    },
+                ],
+                rightButtons: [],
+            },
+        };
+    }
+
+  static displayName = 'ExampleScreen';
+
   static propTypes = {
       componentId: propTypes.string,
       navigator: propTypes.object,
   };
-
-  static displayName = 'ExampleScreen';
-
-  static options(passProps) {
-    return {
-      topBar: {
-        leftButtons: [
-          {
-            id: 'open-drawer',
-            icon: global.iconsMap['ios-menu'],
-            color: 'white',
-          }
-        ],
-        rightButtons: [],
-      }
-    };
-  }
 
   constructor(props, context) {
       super(props, context);
@@ -63,43 +62,6 @@ const ExampleScreen = codePush(codePushOptions)(class extends Component {
           this.props.navigator.setDrawerEnabled({ side: 'right', enabled: false });
       }
   };
-
-  codePushStatusDidChange(status) {
-    switch (status) {
-        case codePush.SyncStatus.CHECKING_FOR_UPDATE:
-            console.log("[CodePush] Checking for updates.");
-            break;
-        case codePush.SyncStatus.DOWNLOADING_PACKAGE:
-            Navigation.setStackRoot(this.props.componentId, [
-                {
-                component: {
-                      name: 'loading-interstitial',
-                      passProps: {
-                        text: 'Updating'
-                      },
-                      options: {
-                        animations: {
-                          setStackRoot: {
-                            enabled: true
-                          }
-                        }
-                      }
-                    }
-              }
-            ]);
-            console.log("[CodePush] Downloading package.");
-            break;
-        case codePush.SyncStatus.INSTALLING_UPDATE:
-            console.log("[CodePush] Installing update.");
-            break;
-        case codePush.SyncStatus.UP_TO_DATE:
-            console.log("[CodePush] Up-to-date.");
-            break;
-        case codePush.SyncStatus.UPDATE_INSTALLED:
-            console.log("[CodePush] Update installed.");
-            break;
-    }
-}
 
   getInitialLink = () => {
       API.getInitialLink(this.onLink);
@@ -245,11 +207,47 @@ const ExampleScreen = codePush(codePushOptions)(class extends Component {
       }
   };
 
+
+  codePushStatusDidChange(status) {
+      switch (status) {
+          case codePush.SyncStatus.CHECKING_FOR_UPDATE:
+              // console.log('[CodePush] Checking for updates.');
+              break;
+          case codePush.SyncStatus.DOWNLOADING_PACKAGE:
+              Navigation.setStackRoot(this.props.componentId, [
+                  {
+                      component: {
+                          name: 'loading-interstitial',
+                          passProps: {
+                              text: 'Updating',
+                          },
+                          options: {
+                              animations: {
+                                  setStackRoot: {
+                                      enabled: true,
+                                  },
+                              },
+                          },
+                      },
+                  },
+              ]);
+              // console.log('[CodePush] Downloading package.');
+              break;
+          case codePush.SyncStatus.INSTALLING_UPDATE:
+              // console.log('[CodePush] Installing update.');
+              break;
+          case codePush.SyncStatus.UP_TO_DATE:
+              // console.log('[CodePush] Up-to-date.');
+              break;
+          case codePush.SyncStatus.UPDATE_INSTALLED:
+              // console.log('[CodePush] Update installed.');
+              break;
+          default:
+              break;
+      }
+  }
+
   render() {
-      const {
-          state: { uri, googleUserInfo },
-          props: { componentId },
-      } = this;
       return (
           <Flex testID="example-screen">
               <ScrollView>
@@ -260,7 +258,7 @@ const ExampleScreen = codePush(codePushOptions)(class extends Component {
                   />
                   <TextInput
                     secureTextEntry
-                    onChangeText={(val) => this.setState({ password })}
+                    onChangeText={(password) => this.setState({ password })}
                     value={this.state.password}
                     placeholder="Example password"
                   />

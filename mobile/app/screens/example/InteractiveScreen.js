@@ -10,9 +10,8 @@ const SwipeableRow = class extends Component {
   constructor(props, context) {
       super(props, context);
       this.state = {};
+      this._deltaX = new Animated.Value(0);
   }
-
-  _deltaX = new Animated.Value(0);
 
   render() {
       const transform = this._deltaX.interpolate({
@@ -106,9 +105,8 @@ const InteractiveScreen = class extends Component {
   constructor(props, context) {
       super(props, context);
       this.state = {};
+      this._deltaY = new Animated.Value(0);
   }
-
-  _deltaY = new Animated.Value(0);
 
   onFilterSnap = (event) => {
       const index = event.nativeEvent.index;

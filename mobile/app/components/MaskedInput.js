@@ -3,10 +3,11 @@
  */
 
 import propTypes from 'prop-types';
-import InputMask from 'inputmask-core';
 import ReactNative, { Animated, Easing } from 'react-native';
 import React, { PureComponent } from 'react';
 import Animations from '../project/animations';
+// import InputMask from 'inputmask-core';
+const InputMask = () => Alert.alert('Please install input-mask-core');
 
 const textInputPropTypes = {
     onBlur: propTypes.func,

@@ -4,7 +4,7 @@
 
 import propTypes from 'prop-types';
 import ReactNative, { Animated, Easing } from 'react-native';
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Animations from '../../../project/animations';
 
 const textInputPropTypes = {
@@ -16,94 +16,83 @@ const textInputPropTypes = {
     style: propTypes.any,
 };
 
-const TextInput = class extends PureComponent {
-    static displayName = 'TextInput';
+const TextInput = class extends Component {
+  static displayName = 'TextInput';
 
-    static propTypes = textInputPropTypes;
+  static propTypes = textInputPropTypes;
 
-    constructor(props, context) {
-        super(props, context);
-        this.animation = new Animated.Value(0.0001);
-    }
+  constructor(props, context) {
+      super(props, context);
+      this.animation = new Animated.Value(0.0001);
+  }
 
-    clear = () => {
-        this.inputRef.clear();
-    };
+  clear = () => {
+      this.inputRef.clear();
+  };
 
-    blur = () => {
-        this.inputRef.blur();
-    };
+  blur = () => {
+      this.inputRef.blur();
+  };
 
-    focus = () => {
-        this.inputRef.focus();
-    };
+  focus = () => {
+      this.inputRef.focus();
+  };
 
-    onFocus = () => {
-        Animated.timing(this.animation, {
-            toValue: 1,
-            duration: 150,
-            useNativeDriver: true, // <-- Add this
-            easing: Animations.standard,
-        }).start();
-        if (this.props.onFocus) {
-            this.props.onFocus();
-        }
-    };
+  onFocus = () => {
+      Animated.timing(this.animation, {
+          toValue: 1,
+          duration: 150,
+          useNativeDriver: true, // <-- Add this
+          easing: Animations.standard,
+      }).start();
+      if (this.props.onFocus) {
+          this.props.onFocus();
+      }
+  };
 
-    onBlur = () => {
-        Animated.timing(this.animation, {
-            toValue: 0.0001,
-            duration: 300,
-            useNativeDriver: true, // <-- Add this
-            easing: Easing.cubic,
-        }).start();
-        if (this.props.onBlur) {
-            this.props.onBlur();
-        }
-    };
+  onBlur = () => {
+      Animated.timing(this.animation, {
+          toValue: 0.0001,
+          duration: 300,
+          useNativeDriver: true, // <-- Add this
+          easing: Easing.cubic,
+      }).start();
+      if (this.props.onBlur) {
+          this.props.onBlur();
+      }
+  };
 
-    onChangeText = (text) => {
-        if (!this.props.onChangeText) {
-            return;
-        }
-        this.props.onChangeText(text);
-    };
+  onChangeText = (text) => {
+      if (!this.props.onChangeText) {
+          return;
+      }
+      this.props.onChangeText(text);
+  };
 
-    render() {
-        // If you wanted animated shadows
-        return (
-            <View>
-                {this.props.title && (
-                    <FormGroup>
-                        <Text style={Styles.inputLabel}>{this.props.title}</Text>
-                    </FormGroup>
-                )}
-                <Animated.View>
-                    <ReactNative.TextInput
-                      {...this.props}
-                      onFocus={this.onFocus}
-                      onBlur={this.onBlur}
-                      onChangeText={this.onChangeText}
-                      style={[Styles.textInput, Styles.textInputAndroid, this.props.style]}
-                      value={this.props.value}
-                      testID={this.props.testID}
-                      ref={(ref) => this.inputRef = ref}
-                      blurOnSubmit={Platform.OS === 'ios'}
-                    />
-                </Animated.View>
-                <Animated.View
-                  style={[
-                      {
-                          marginTop: -Math.round((1 / PixelRatio.get()) * 3),
-                          transform: [{ scaleX: this.animation }],
-                          backgroundColor: pallette.bookmakerPrimary,
-                          height: Math.round((1 / PixelRatio.get()) * 6),
-                      },
-                  ]}
-                />
-            </View>
-        );
-    }
+  render() {
+      // If you wanted animated shadows
+      return (
+          <>
+              {this.props.title && (
+              <FormGroup>
+                  <Text style={Styles.inputLabel}>{this.props.title}</Text>
+              </FormGroup>
+              )}
+              <ReactNative.TextInput
+                {...this.props}
+                onFocus={this.onFocus}
+                editable={!this.props.disabled}
+                onBlur={this.onBlur}
+                onChangeText={this.onChangeText}
+                style={[Styles.textInput, Styles.textInputAndroid, this.props.style]}
+                value={this.props.value}
+                testID={this.props.testID}
+                ref={(ref) => this.inputRef = ref}
+                blurOnSubmit={Platform.OS === 'ios' && !this.props.multiline}
+              />
+          </>
+      );
+  }
 };
 
 TextInput.propTypes = {};

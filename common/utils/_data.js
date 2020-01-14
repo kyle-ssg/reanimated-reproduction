@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-unfetch';
-import jwt from 'jwt-decode';
+// import jwt from 'jwt-decode';
 import Constants from './constants';
 // import _store  from '../store';
 // import AppActions from '../app-actions';
@@ -17,6 +17,10 @@ const _data = {
 
     status(response) { // handle ajax requests
         // console.debug(response);
+        if (response.status === 403)  {
+            API.logout();
+            return Promise.reject({ message:'UNAUTHORIZED' });
+        }
         if (response.status >= 200 && response.status < 300) {
             return Promise.resolve(response);
         }
@@ -62,7 +66,7 @@ const _data = {
     },
 
     _request(method, url, data, headers = {}) {
-        let prom  = Promise.resolve();
+        const prom  = Promise.resolve();
 
         // Example refresh token logic
         // const parsedData = _data.tokenParsed;
@@ -97,13 +101,12 @@ const _data = {
                     timeout: 5000,
                     method,
                     headers: {
-                        'Accept': 'application/json',
                         ...headers,
                     },
                 };
                 let qs = '';
 
-                if (method !== 'get') options.headers['Content-Type'] = 'application/json; charset=utf-8';
+                if (method !== 'get' && !options.headers['content-type']) options.headers['content-type'] = 'application/json';
 
                 if (_data.token) { // add auth tokens to headers of all requests
                     options.headers.AUTHORIZATION = `Bearer ${_data.token}`;
@@ -113,8 +116,10 @@ const _data = {
                     if (method === 'get') {
                         qs = getQueryString(data);
                         url += url.indexOf('?') !== -1 ? `&${qs}` : `?${qs}`;
-                    } else {
+                    } else if (options.headers['content-type'] === 'application/json') {
                         options.body = JSON.stringify(data);
+                    } else {
+                        options.body = data;
                     }
                 } else if (method === 'post' || method === 'put') {
                     options.body = '{}';

@@ -8,9 +8,12 @@ import StorybookUIRoot, { getStory, withPaddedContainer, setup } from './setup';
 import ErrorMessage from '../app/components/ErrorMessage';
 import Tabs from '../app/components/Tabs';
 
-
 const ExampleTabs = class extends Component {
    static displayName = 'TheComponent';
+
+   static propTypes = {
+       scrollEnabled: propTypes.bool,
+   }
 
    constructor(props, context) {
        super(props, context);
@@ -59,7 +62,6 @@ const ExampleTabs = class extends Component {
    }
 };
 
-
 setup(() => {
     getStory('Tabs')
         .add('default', () => (
@@ -77,7 +79,7 @@ setup(() => {
         .add('all', () => (
             <>
                 <Button>Button</Button>
-                <ButtonSecondary>Buttondsadas Secondary</ButtonSecondary>
+                <ButtonSecondary>Button Secondary</ButtonSecondary>
                 <ButtonTertiary>Button Secondary</ButtonTertiary>
             </>
         ))
@@ -94,11 +96,12 @@ setup(() => {
         .addDecorator(withPaddedContainer)
         .add('all', () => (
             <>
-                <H1>Header 1</H1>
-                <H2>Header 2</H2>
-                <H3>Header 3</H3>
-                <H4>Header 4</H4>
-                <Bold>Header 4</Bold>
+                <H1 style={Styles.mb5}>Header 1</H1>
+                <H2 style={Styles.mb5}>Header 2</H2>
+                <H3 style={Styles.mb5}>Header 3</H3>
+                <H4 style={Styles.mb5}>Header 4</H4>
+                <Bold style={Styles.mb5}>Header 4</Bold>
+                <ErrorMessage style={Styles.mb5}>Header 4</ErrorMessage>
             </>
         ));
     getStory('Fade')

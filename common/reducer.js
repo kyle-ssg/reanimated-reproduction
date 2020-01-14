@@ -75,10 +75,18 @@ function defaultReducer(
             return itemLoaded(state, 'user', action);
         case Actions.REGISTER_ERROR:
             return itemError(state, 'user', action);
-
+        case Actions.CONFIRM_EMAIL:
+            return itemLoading(state, 'user', action);
+        case Actions.CONFIRM_EMAIL_LOADED:
+            return itemSaved(state, 'user', action);
+        case Actions.CONFIRM_EMAIL_ERROR:
+            return itemError(state, 'user', action);
+        case Actions.UPDATE_USER_LOADED:
+            return itemSaved(state, 'user', action);
+        case Actions.UPDATE_USER_ERROR:
+            return itemError(state, 'user', action);
         case Actions.CLEAR_USER:
             return { ...state, user:null };
-
         case Actions.STARTUP_LOADED:
             return { ...state, ...action.data };
         default:

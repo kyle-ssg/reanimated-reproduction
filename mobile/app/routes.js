@@ -114,43 +114,6 @@ const routes = {
         },
     }),
 
-    exampleLightbox: () => ({
-        component: {
-            name: '/example/lightbox',
-            options: {
-                overlay: {
-                    interceptTouchOutside: true,
-                },
-            },
-        },
-    }),
-
-    aboutScreen: () => ({
-        component: {
-            name: '/example/about',
-            options: _.merge({}, global.navbarStyle, {
-                topBar: {
-                    title: {
-                        text: 'About',
-                    },
-                },
-            }),
-        },
-    }),
-
-    interactiveScreen: () => ({
-        component: {
-            name: '/example/interactive',
-            options: _.merge({}, global.navbarStyle, {
-                topBar: {
-                    title: {
-                        text: 'Interactables',
-                    },
-                },
-            }),
-        },
-    }),
-
     contactSelectModal: (title, onChange) => ({
         component: {
             name: '/contact-select',
@@ -167,21 +130,13 @@ const routes = {
 };
 
 // BASE Routes
-Navigation.registerComponentWithRedux('/', () => require('./screens/example/ExampleScreen'), Provider, store);
+Navigation.registerComponentWithRedux('/', () => require('./screens/HomeScreen'), Provider, store);
 Navigation.registerComponentWithRedux('storybook', () => require('./screens/__StorybookScreen__'), Provider, store);
 
 Navigation.registerComponent('/select', () => require('./components/base/SelectModal'));
 Navigation.registerComponent('/webmodal', () => require('./components/base/NativeWebModal'));
 Navigation.registerComponent('/contact-select', () => require('./components/base/ContactSelectModal'));
 Navigation.registerComponent('loading-interstitial', () => require('./screens/LoadingInterstitial'));
-
-// EXAMPLE Routes
-Navigation.registerComponent('/example/lightbox', () => require('./screens/example/ExampleLightbox'));
-Navigation.registerComponent('/example/about', () => require('./screens/example/AboutScreen'));
-Navigation.registerComponent('/example/interactive', () => require('./screens/example/InteractiveScreen'));
-
-// Example Side Drawer
-Navigation.registerComponent("example-side-drawer", () => RNNDrawer.create(require('./components/SideDrawer')));
 
 Navigation.events().registerNavigationButtonPressedListener(({ buttonId, componentId }) => {
     switch (buttonId) {
@@ -191,21 +146,21 @@ Navigation.events().registerNavigationButtonPressedListener(({ buttonId, compone
         case 'open-drawer':
             RNNDrawer.showDrawer({
                 component: {
-                    name: "example-side-drawer",
+                    name: 'example-side-drawer',
                     passProps: {
                         animationOpenTime: 300,
                         animationCloseTime: 300,
-                        direction: "left",
+                        direction: 'left',
                         dismissWhenTouchOutside: true,
                         fadeOpacity: 0.6,
-                        drawerScreenWidth: "75%" || 445, // Use relative to screen '%' or absolute
-                        drawerScreenHeight: "100%" || 700,
+                        drawerScreenWidth: '75%' || 445, // Use relative to screen '%' or absolute
+                        drawerScreenHeight: '100%' || 700,
                         style: { // Styles the drawer container, supports any react-native style
-                            backgroundColor: "red",
+                            backgroundColor: 'red',
                         },
                         parentComponentId: componentId, // Custom prop, will be available in your custom drawer component props
                     },
-                }
+                },
             });
             break;
         default:

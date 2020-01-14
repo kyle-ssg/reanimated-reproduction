@@ -25,8 +25,14 @@ export default class ErrorMessage extends Component {
 const styles = StyleSheet.create({
     container: {
     },
+    errorIcon: {
+        fontSize: 18,
+        marginBottom: 2,
+        color: pallette.danger,
+    },
+
     ErrorMessageText: {
-        color: pallette.tertiary,
+        color: pallette.danger,
         textAlign: 'center',
     },
     text: {

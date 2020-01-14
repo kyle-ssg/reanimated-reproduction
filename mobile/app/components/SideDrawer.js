@@ -3,15 +3,13 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { RNNDrawer } from 'react-native-navigation-drawer-extension';
 
 const SideDrawer = class extends Component {
+    static displayName = 'SideDrawer';
+
     static propTypes = {
     };
 
-    static displayName = 'SideDrawer';
-
-    state = {};
-
     goHome = () => {
-        Navigation.push("root", routes.homeScreen());
+        Navigation.push('root', routes.homeScreen());
         RNNDrawer.dismissDrawer();
     };
 
@@ -30,7 +28,7 @@ const SideDrawer = class extends Component {
                         </Row>
                     </FormGroup>
                     <ListItem listText="Home" icon={<FontAwesome5 style={Styles.textGrey} size={20} name="home" />}/>
-                    <ListItem listText="Logout" icon={<FontAwesome5 style={Styles.textGrey} size={20} name={'sign-out-alt'} />}/>
+                    <ListItem listText="Logout" icon={<FontAwesome5 style={Styles.textGrey} size={20} name="sign-out-alt" />}/>
                 </Container>
             </View>
         );

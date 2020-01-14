@@ -1,8 +1,8 @@
 import propTypes from 'prop-types';
 import ReactNative from 'react-native';
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 
-export default class Text extends PureComponent {
+export default class Text extends Component {
   static displayName = 'Text';
 
   static propTypes = {

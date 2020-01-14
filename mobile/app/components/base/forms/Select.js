@@ -59,7 +59,6 @@ const Select = class extends Component {
                   <Container>
                       <TextInput
                         style={{
-                            backgorundColor: 'red',
                             shadowOpacity: 0,
                             borderBottomWidth: 0,
                         }}
