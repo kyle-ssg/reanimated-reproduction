@@ -305,8 +305,6 @@ PODS:
     - React
   - ReactNativeNavigation (3.1.0):
     - React
-  - ReactNativePermissions (1.2.0):
-    - React
   - RNCAsyncStorage (1.6.1):
     - React
   - RNDeviceInfo (2.3.2):
@@ -322,11 +320,9 @@ PODS:
   - RNFBApp (6.0.3):
     - Firebase/Core (~> 6.8.1)
     - React
-  - RNGestureHandler (1.5.1):
+  - RNGestureHandler (1.5.2):
     - React
   - RNReanimated (1.2.0):
-    - React
-  - RNSnackbar (2.0.2):
     - React
   - RNSVG (9.7.1):
     - React
@@ -376,7 +372,6 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeLocalization (from `../node_modules/react-native-localization`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
-  - ReactNativePermissions (from `../node_modules/react-native-permissions`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNFastImage (from `../node_modules/react-native-fast-image`)
@@ -384,7 +379,6 @@ DEPENDENCIES:
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
-  - RNSnackbar (from `../node_modules/react-native-snackbar`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -472,8 +466,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-localization"
   ReactNativeNavigation:
     :path: "../node_modules/react-native-navigation"
-  ReactNativePermissions:
-    :path: "../node_modules/react-native-permissions"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
   RNDeviceInfo:
@@ -488,8 +480,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
-  RNSnackbar:
-    :path: "../node_modules/react-native-snackbar"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
@@ -543,15 +533,13 @@ SPEC CHECKSUMS:
   ReactCommon: a6a294e7028ed67b926d29551aa9394fd989c24c
   ReactNativeLocalization: ced64c41959db9af8a52698752791291f20e9db8
   ReactNativeNavigation: 72f831131f0bf145e7c83e786039fec2b778d6b1
-  ReactNativePermissions: f0aec11433d43d45953c678b6982921d83ad94c8
   RNCAsyncStorage: 621bad7a889b5bf1583a52547f2dcd3a4d1ff15e
   RNDeviceInfo: bdc3e922b2ed0f086e9d9ab534e61bc316f08576
   RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
   RNFBAnalytics: d75433ac464f0ac6e5bd1ae7015cb5fb6427e80a
   RNFBApp: 92ae594c85e82e1e68434049b2a37e1f584cf8b9
-  RNGestureHandler: 7add966bb5d90ee8cf38d4341f87814474357972
+  RNGestureHandler: 946a7691e41df61e2c4b1884deab41a4cdc3afff
   RNReanimated: 1b52415c4302f198cb581282a0166690bad62c43
-  RNSnackbar: add960af69e27d16fc354938178740f948dfd842
   RNSVG: aac12785382e8fd4f28d072fe640612e34914631
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   SDWebImage: 609192dcf3898c910a2848032372ead951e66364

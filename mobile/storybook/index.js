@@ -6,65 +6,35 @@ import '../app/project/base-components';
 import ION from 'react-native-vector-icons/Ionicons';
 import StorybookUIRoot, { getStory, withPaddedContainer, setup } from './setup';
 import ErrorMessage from '../app/components/ErrorMessage';
-import Tabs from '../app/components/Tabs';
-
-
-const ExampleTabs = class extends Component {
-   static displayName = 'TheComponent';
-
-   constructor(props, context) {
-       super(props, context);
-       this.state = {};
-   }
-
-    onTabChange = (index) => this.setState({ activeButton: index });
-
-   renderScene = (scene) => {
-       const { i } = scene.route.data;
-       const label = `Tab ${i}`;
-       return (
-           <Flex>
-               <Text>
-                   {label}
-               </Text>
-           </Flex>
-       );
-   }
-
-
-   render() {
-       const { state: { activeButton } } = this;
-       return (
-           <Tabs
-             scrollEnabled={this.props.scrollEnabled}
-             lazy
-             tabBarStyle={{
-                 backgroundColor: pallette.primary,
-             }}
-             labelStyle={{
-                 textAlign: 'center',
-                 color: 'white',
-             }}
-             indicatorStyle={{
-                 backgroundColor: 'white',
-             }}
-             navigationState={{
-                 index: activeButton || 0,
-                 routes: [1, 2, 3].map((i) => ({ title: `Tab ${i}`, key: i, data: { i } })),
-             }}
-             onIndexChange={this.onTabChange}
-             renderScene={this.renderScene}
-           />
-       );
-   }
-};
-
+import ExampleTabs from './examples/ExampleTabs';
+import ExampleDrawer, { ExampleDrawerSwipe } from './examples/ExampleDrawer';
 
 setup(() => {
     getStory('Tabs')
         .add('default', () => (
             <>
                 <ExampleTabs/>
+            </>
+        ))
+        .add('scrolled', () => (
+            <>
+                <ExampleTabs scrollEnabled/>
+            </>
+        ));
+    getStory('Drawer')
+        .add('default', () => (
+            <>
+                <ExampleDrawer/>
+            </>
+        ))
+        .add('right', () => (
+            <>
+                <ExampleDrawer direction="right"/>
+            </>
+        ))
+        .add('swipe', () => (
+            <>
+                <ExampleDrawerSwipe/>
             </>
         ))
         .add('scrolled', () => (
