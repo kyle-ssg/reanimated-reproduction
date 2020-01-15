@@ -1,8 +1,8 @@
 // propTypes: value: OptionalNumber
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
-export default class Flex extends PureComponent {
+export default class Flex extends Component {
     render() {
         return (
             <View

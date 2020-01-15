@@ -4,15 +4,10 @@
 import React, { Component } from 'react';
 
 const TermsScreen = class extends Component {
-  static propTypes = {
-  };
-
   static displayName = 'TermsScreen';
 
-  constructor(props, context) {
-      super(props, context);
-      this.state = {};
-  }
+  static propTypes = {
+  };
 
   componenDidMount() {
       Navigation.events().bindComponent(this);

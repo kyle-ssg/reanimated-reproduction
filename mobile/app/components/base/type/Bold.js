@@ -1,10 +1,7 @@
-/**
- * Created by kylejohnson on 11/05/2016.
- */
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
-const Bold = class extends PureComponent {
+const Bold = class extends Component {
     static displayName = 'Bold';
 
     render() {

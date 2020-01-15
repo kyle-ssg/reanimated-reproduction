@@ -5,11 +5,11 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
 const TermsScreen = class extends Component {
+  static displayName = 'TermsScreen';
+
   static propTypes = {
       componentId: propTypes.string,
   };
-
-  static displayName = 'TermsScreen';
 
   constructor(props, context) {
       super(props, context);

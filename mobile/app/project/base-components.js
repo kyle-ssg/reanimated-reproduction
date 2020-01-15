@@ -2,15 +2,9 @@ import TextInput, { FlatInput } from '../components/base/forms/TextInput';
 
 // Forms
 import Button, {
-    ButtonAlt,
     ButtonPrimary,
     ButtonSecondary,
     ButtonTertiary,
-    ButtonFlat,
-    ButtonDashed,
-    ButtonOutlinePrimary,
-    TabPillButton,
-    ButtonGoogle,
 } from '../components/base/forms/Button';
 
 // Grid
@@ -47,15 +41,9 @@ global.FCol = FCol;
 global.Row = require('../components/base/grid/Row');
 
 global.Button = Button;
-global.ButtonAlt = ButtonAlt;
 global.ButtonPrimary = ButtonPrimary;
 global.ButtonSecondary = ButtonSecondary;
 global.ButtonTertiary = ButtonTertiary;
-global.ButtonFlat = ButtonFlat;
-global.ButtonDashed = ButtonDashed;
-global.ButtonOutlinePrimary = ButtonOutlinePrimary;
-global.TabPillButton = TabPillButton;
-global.ButtonGoogle = ButtonGoogle;
 
 global.Checkbox = require('../components/base/forms/Checkbox');
 

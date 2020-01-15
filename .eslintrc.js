@@ -17,6 +17,7 @@ module.exports = {
         'react',
     ],
     'rules': {
+        'import/prefer-default-export': 0,
         'lines-between-class-members': 0,
         'brace-style': 0,
         'linebreak-style': 0,

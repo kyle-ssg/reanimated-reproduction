@@ -4,10 +4,10 @@
 import React, { Component } from 'react';
 
 const AboutScreen = class extends Component {
+  static displayName = 'AboutScreen';
+
   static propTypes = {
   };
-
-  static displayName = 'AboutScreen';
 
   constructor(props, context) {
       super(props, context);
@@ -37,7 +37,8 @@ const AboutScreen = class extends Component {
                                 index={i}
                               >
                                   <Text>
-                                      ListItem{i}
+                                      ListItem
+                                      {i}
                                   </Text>
                               </ListItem>
                           ))}

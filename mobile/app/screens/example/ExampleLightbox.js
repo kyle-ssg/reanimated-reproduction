@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import ViewOverflow from 'react-native-view-overflow';
 import propTypes from 'prop-types';
-import Lightbox from '../../components/base/Lightbox';
 import Animation from 'lottie-react-native';
+import Lightbox from '../../components/base/Lightbox';
 
 const ExampleLightbox = class extends Component {
   static displayName = 'ExampleLightbox';

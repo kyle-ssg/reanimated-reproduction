@@ -1,15 +1,18 @@
-/**
- * Created by kylejohnson on 11/05/2016.
- */
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
-const h1 = class extends PureComponent {
+const h1 = class extends Component {
     static displayName = 'H1';
 
     render() {
         return (
-            <Text accessible={this.props.accessible} accessibilityLabel={this.props.accessibilityLabel} style={[Styles.h1, this.props.style]}>{this.props.children}</Text>
+            <Text
+              accessible={this.props.accessible}
+              accessibilityLabel={this.props.accessibilityLabel}
+              style={[Styles.h1, this.props.style]}
+            >
+                {this.props.children}
+            </Text>
         );
     }
 };

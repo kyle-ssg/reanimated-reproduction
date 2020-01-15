@@ -27,3 +27,5 @@ export default function (initialState = {}) {
     _store = store;
     return _store;
 }
+
+export const getStoreDangerous = () => _store;

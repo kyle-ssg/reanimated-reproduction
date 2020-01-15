@@ -1,11 +1,6 @@
 import { put, all, takeLatest } from 'redux-saga/effects';
-import __data from './utils/_data';
+import _data from './utils/_data';
 
-let _data = __data;
-
-export function setData(newData) {
-    _data = newData;
-}
 // Util function to post to an api, parse results and dispatch loaded and error functions
 export function* getAction(action, url, prefix, preventSuccess) {
     try {
@@ -126,12 +121,6 @@ export function* register(action) {
     yield postAction(action, `${Project.api}user/register`, 'REGISTER');
 }
 
-// export function* refreshUser() {
-// }
-//
-// export function* confirmEmail() {
-// }
-
 export function* logout(action) {
     yield put({ type: Actions.CLEAR_USER });
     yield API.setStoredToken(null);
@@ -144,14 +133,22 @@ export function* logout(action) {
     // Err state, try catch.
 }
 
+export function* confirmEmail(action) {
+    yield postAction(action, `${Project.api}user/verify/email`, 'CONFIRM_EMAIL');
+}
+
+export function* updateUser(action) {
+    yield updateAction(action, `${Project.api}user/${action.data.id}`, 'UPDATE_USER');
+}
+
 function* rootSaga() {
     yield all([
         takeLatest(Actions.STARTUP, startup),
         takeLatest(Actions.LOGIN, login),
         takeLatest(Actions.REGISTER, register),
         takeLatest(Actions.LOGOUT, logout),
-        // takeLatest(Actions.CONFIRM_EMAIL, confirmEmail),
-        // takeLatest(Actions.REFRESH_USER, refreshUser),
+        takeLatest(Actions.CONFIRM_EMAIL, confirmEmail),
+        takeLatest(Actions.UPDATE_USER, updateUser),
     ]);
 }
 
