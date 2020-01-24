@@ -32,17 +32,23 @@ const Confirm = (props) => {
                 <Button
                   color="primary" onClick={yes}
                 >
-                    Ok
+                    {props.yesText}
                 </Button>
                 {' '}
                 <Button
                   color="secondary" onClick={no}
                 >
-                    Cancel
+                    {props.noText}
                 </Button>
             </ModalFooter>
         </Modal>
     );
+};
+
+Confirm.defaultProps = {
+    noText: 'Cancel',
+    yesText: 'OK',
+
 };
 
 Confirm.propTypes = {
@@ -51,6 +57,8 @@ Confirm.propTypes = {
     isOpen: propTypes.bool,
     onYes: propTypes.func,
     onNo: propTypes.func,
+    noText: propTypes.string,
+    yesText: propTypes.string,
     toggle: propTypes.func,
 };
 

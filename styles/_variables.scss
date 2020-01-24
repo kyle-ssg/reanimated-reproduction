@@ -1,7 +1,29 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/variables";
+
+// Adding fonts
+//@font-face {
+//  font-family: 'Proxima Nova';
+//  src: url('/static/fonts/Proxima-Nova-Regular.woff');
+//  font-display:swap;
+//}
+//@font-face {
+//  font-family: 'Proxima Nova';
+//  src: url('/static/fonts/Proxima-Nova-Semibold.woff');
+//  font-weight:bold;
+//  font-display:swap;
+//}
+//@font-face {
+//  font-family: 'Proxima Nova Bold';
+//  src: url('/static/fonts/Proxima-Nova-Semibold.woff');
+//  font-display:swap;
+//}
+
 // COLORS
-$brand-primary: #3896DF;
+$brand-primary: #0d65df;
 $brand-secondary: #D8315B;
-$link-color: #3896DF;
+$link-color: #05499b;
 
 
 //Input component variables

@@ -16,17 +16,16 @@ let initialRender = false;
 class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {
         let pageProps;
-        if (ctx.pathname === '/_error') {
+        if (!ctx.pathname || ctx.pathname === '/_error') {
             return;
         }
 
-        if (!ctx.pathname) {
-            return;
-        }
-        const locale = Constants.simulate.FORCE_LANGUAGE || API.getStoredLocale(ctx.req); // Retrieve the locale from cookie or headers
-        await ctx.store.dispatch(AppActions.startup({ locale })); // Post startup action with token and locale
-        if (Component.getInitialProps) { // Wait for pages to complete any async getInitialProps
-            pageProps = await Component.getInitialProps({ ctx });
+        if (typeof window === 'undefined') {
+            const locale = Constants.simulate.FORCE_LANGUAGE || API.getStoredLocale(ctx.req); // Retrieve the locale from cookie or headers
+            await ctx.store.dispatch(AppActions.startup({ locale })); // Post startup action with token and locale
+            if (Component.getInitialProps) { // Wait for pages to complete any async getInitialProps
+                pageProps = await Component.getInitialProps({ ctx });
+            }
         }
         return { pageProps };
     }
@@ -34,9 +33,10 @@ class MyApp extends App {
 
     constructor(props) {
         super(props);
-        const token = API.getStoredToken(); // Retrieve token cookie from req.headers
-        const refreshToken = API.getStoredRefreshToken(); // Retrieve token cookie from req.headers
-        this.props.store.dispatch(AppActions.startup({ token, refreshToken, clientLoaded:true })); // Post startup action with token and locale
+        if ((typeof window !== 'undefined') && !this.props.store.getState().clientLoaded) {
+            const token = API.getStoredToken(); // Retrieve token cookie from req.headers
+            this.props.store.dispatch(AppActions.startup({ token, clientLoaded: true })); // Post startup action with token and locale
+        }
     }
 
     render() {
@@ -64,8 +64,14 @@ class MyApp extends App {
                             <link rel="icon" sizes="192x192" href="/static/images/icons-192.png"/>
                             <link rel="manifest" href="/static/manifest.json"/>
                             <link rel="shortcut icon" href="/static/images/favicon.ico"/>
-                            <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png"/>
-                            <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png"/>
+                            <link
+                              rel="icon" type="image/png" sizes="32x32"
+                              href="/static/images/favicon-32x32.png"
+                            />
+                            <link
+                              rel="icon" type="image/png" sizes="16x16"
+                              href="/static/images/favicon-16x16.png"
+                            />
                             <meta property="og:title" content="The Rock" />
                             <meta property="og:type" content="video.movie" />
                             <meta property="og:url" content="http://www.imdb.com/title/tt0117500/" />
@@ -76,7 +82,6 @@ class MyApp extends App {
                         <Component {...pageProps} />
                         <div id="confirm"/>
                         <div id="alert"/>
-                        <div id="bettingSlip"/>
                         {
                             E2E && (
                                 <React.Fragment>

@@ -1,8 +1,9 @@
-const consumer = 'janus-b2c-ui';
-const provider = 'janus-b2c-api';
-const namespace = `${consumer}-${provider}`;
-module.exports = {
-    namespace,
-    consumer,
-    provider,
-};
+module.exports = [
+    {
+        namespace: 'test-ui-test-api',
+        consumer: 'test-ui',
+        provider: 'test-api',
+        port: 4000,
+        data: require('./tests/test.pact'),
+    },
+];

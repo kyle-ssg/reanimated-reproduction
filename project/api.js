@@ -2,38 +2,26 @@
 import Router from 'next/router';
 import cookie from 'cookie';
 import cookies from 'js-cookie';
-
 import Project from '../common/project';
+import './libs';
 
 const API = {
-    isMobile: () => false,
     ajaxHandler(type, e) {
         return { type, error: e.message };
     },
     logout() {
         cookies.remove('token');
-        Router.replace(Project.logoutRedirect || '/');
+        Router.replace('/');
     },
     loggedIn() {
-        Router.replace(Project.loginRedirect || '/');
+        Router.replace('/markup');
     },
     getStoredToken(req) {
         if (req) {
             const parsedCookies = cookie.parse(req.headers.cookie || '');
             return parsedCookies && parsedCookies.token;
         }
-        return cookies.get('token');
-    },
-    getStoredRefreshToken(req) {
-        if (req) {
-            const parsedCookies = cookie.parse(req.headers.cookie || '');
-            return parsedCookies && parsedCookies.refreshToken;
-        }
-        const refreshToken = cookies.get('refreshToken');
-        return refreshToken && JSON.parse(refreshToken);
-    },
-    setStoredRefreshToken(v) {
-        return API.setCookie('refreshToken', v);
+        return cookies.get('t');
     },
     getStoredLocale(req) {
         if (req) {
@@ -67,6 +55,9 @@ const API = {
     setStoredToken(v) {
         return API.setCookie('token', v);
     },
+    setStoredLocale(v) {
+        return API.setCookie('locale', v);
+    },
     setCookie(name, value) {
         if (typeof window === 'undefined') {
             return;
@@ -79,7 +70,7 @@ const API = {
             console.info('track', data);
         }
 
-        if (Project.ga) {
+        if (Project.ga && typeof 'window' !== 'undefined') {
             if (!data) {
                 // eslint-disable-next-line
                 console.error('GA: Passed null event data');
@@ -112,7 +103,7 @@ const API = {
         }
     },
     trackPage(title) {
-        if (Project.ga) {
+        if (Project.ga && typeof window !== 'undefined') {
             ga('send', {
                 hitType: 'pageview',
                 title,
@@ -121,7 +112,7 @@ const API = {
             });
         }
 
-        if (Project.mixpanel) {
+        if (Project.mixpanel && typeof window !== 'undefined') {
             mixpanel.track('Page View', {
                 title,
                 location: document.location.href,
@@ -130,17 +121,17 @@ const API = {
         }
     },
     alias(id) {
-        if (Project.mixpanel) {
+        if (Project.mixpanel && typeof window !== 'undefined') {
             mixpanel.alias(id);
         }
     },
     identify(id) {
-        if (Project.mixpanel) {
+        if (Project.mixpanel && typeof window !== 'undefined') {
             mixpanel.identify(id);
         }
     },
     register(email, firstName, lastName) {
-        if (Project.mixpanel) {
+        if (Project.mixpanel && typeof window !== 'undefined') {
             mixpanel.register({
                 'Email': email,
                 'First Name': firstName,
@@ -154,8 +145,11 @@ const API = {
         }
     },
     log(namespace, ...args) {
+        if (!Project.logs) {
+            return;
+        }
         if (Project.logs[namespace]) {
-            // eslint-disable-next-line no-console
+            // eslint-disable-next-line
             console.log.apply(this, [namespace, ...args]);
         }
     },

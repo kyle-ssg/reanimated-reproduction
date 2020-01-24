@@ -3,7 +3,9 @@ import propTypes from 'prop-types';
 import Switch from 'rc-switch';
 import { ModalHeader, Modal, ModalBody, ModalFooter } from '../components/Modal';
 import DatePicker from '../components/DatePicker';
-
+import Button, { ButtonPrimary, ButtonSecondary, ButtonTertiary } from '../components/base/forms/Button';
+import Panel from '../components/base/forms/Panel';
+import Tabs from '../components/base/forms/Tabs';
 class Examples extends React.Component {
     static displayName = 'Examples';
 
@@ -39,11 +41,11 @@ class Examples extends React.Component {
         return (
             <div>
                 <InputGroup
-                    title="search"
-                    value={search}
-                    className="pb-2"
-                    placeholder="Search for cards or lists..."
-                    onChange={this.search}
+                  title="search"
+                  value={search}
+                  className="pb-2"
+                  placeholder="Search for cards or lists..."
+                  onChange={this.search}
                 />
                 {
                     children.map((child, i) => (
@@ -83,11 +85,10 @@ class MarkupPage extends Component {
                 <Examples>
 
                     <FormGroup>
-                        <h4 className="mt-5 mb-5">Typeography</h4>
                         <h1>Heading H1</h1>
                         <h2>Heading H2</h2>
-                        <h3>Heading H2</h3>
-                        <h4>Heading H2</h4>
+                        <h3>Heading H3</h3>
+                        <h4>Heading H4</h4>
                     </FormGroup>
 
                     <FormGroup>
@@ -105,21 +106,21 @@ class MarkupPage extends Component {
                     <Row>
                         <ButtonTertiary className="mr-2" onClick={this.toggle}>Toggle inline modal</ButtonTertiary>
                         <ButtonTertiary
-                            className="mr-2"
-                            onClick={() => openConfirm(<div>Confirm</div>, <div>Body</div>,
-                                () => {
-                                    alert('Selected Yes');
-                                },
-                                () => {
-                                    alert('Selected No');
-                                })}
+                          className="mr-2"
+                          onClick={() => openConfirm(<div>Confirm</div>, <div>Body</div>,
+                              () => {
+                                  alert('Selected Yes');
+                              },
+                              () => {
+                                  alert('Selected No');
+                              })}
                         >
                             Open confirm
                         </ButtonTertiary>
                         <ButtonTertiary
-                            onClick={() => openAlert(<div>Alert</div>, <div>Body</div>, () => {
-                                alert('Dismissed');
-                            })}
+                          onClick={() => openAlert(<div>Alert</div>, <div>Body</div>, () => {
+                              alert('Dismissed');
+                          })}
                         >
                             Open alert
                         </ButtonTertiary>
@@ -135,48 +136,48 @@ class MarkupPage extends Component {
                     <InputGroup type="email" title="Default" placeholder="Test"/>
                     <Input type="email" title="Default" placeholder="Test"/>
                     <InputGroup
-                        onChange={(e) => {
-                            this.setState({ val: Utils.safeParseEventValue(e) });
-                        }}
-                        isValid={this.state.val}
-                        type="text"
-                        title="Required"
-                        placeholder="Required Input"
+                      onChange={(e) => {
+                          this.setState({ val: Utils.safeParseEventValue(e) });
+                      }}
+                      isValid={this.state.val}
+                      type="text"
+                      title="Required"
+                      placeholder="Required Input"
                     />
                     <InputGroup
-                        onChange={(e) => {
-                            this.setState({ email: Utils.safeParseEventValue(e) });
-                        }}
-                        isValid={Utils.isValidEmail(this.state.email)}
-                        type="text"
-                        title="Valid Email"
-                        placeholder="Enter an Email"
+                      onChange={(e) => {
+                          this.setState({ email: Utils.safeParseEventValue(e) });
+                      }}
+                      isValid={Utils.isValidEmail(this.state.email)}
+                      type="text"
+                      title="Valid Email"
+                      placeholder="Enter an Email"
                     />
                     <Row>
                         <InputGroup
-                            inputProps={{ mask: '11/11' }}
-                            name="expiry"
-                            placeholder="dd/yy"
-                            title="Masked"
+                          inputProps={{ mask: '11/11' }}
+                          name="expiry"
+                          placeholder="dd/yy"
+                          title="Masked"
                         />
                     </Row>
                     <Row>
                         <InputGroup
-                            inputProps={{ mask: '11:11 am' }}
-                            name="expiry"
-                            placeholder="hh:mm am"
-                            title="Masked"
+                          inputProps={{ mask: '11:11 am' }}
+                          name="expiry"
+                          placeholder="hh:mm am"
+                          title="Masked"
                         />
                     </Row>
                     <InputGroup
-                        title="Switch"
-                        input={(
-                            <Switch
-                                aria-label="Switch"
-                                id="switch"
-                                onMouseUp={() => this.setState({ checked: !this.state.checked })}
-                                checked={this.state.checked}
-                            />
+                      title="Switch"
+                      input={(
+                          <Switch
+                            aria-label="Switch"
+                            id="switch"
+                            onMouseUp={() => this.setState({ checked: !this.state.checked })}
+                            checked={this.state.checked}
+                          />
                         )}
                     />
 
@@ -191,19 +192,19 @@ class MarkupPage extends Component {
                     </Tabs>
 
                     <InputGroup
-                        id="date-picker"
-                        inputProps={{ mask: '11:11 am' }}
-                        title="Date Picker"
-                        input={(
-                            <DatePicker
-                                id="date-picker"
-                                selected={this.state.startDate}
-                                onChange={this.handleChange}
-                                showTimeSelect
-                                timeFormat="HH:mm"
-                                timeIntervals={15}
-                                dateFormat="MMMM d, yyyy h:mm aa"
-                            />
+                      id="date-picker"
+                      inputProps={{ mask: '11:11 am' }}
+                      title="Date Picker"
+                      input={(
+                          <DatePicker
+                            id="date-picker"
+                            selected={this.state.startDate}
+                            onChange={this.handleChange}
+                            showTimeSelect
+                            timeFormat="HH:mm"
+                            timeIntervals={15}
+                            dateFormat="MMMM d, yyyy h:mm aa"
+                          />
                         )}
                     />
 

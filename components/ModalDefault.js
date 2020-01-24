@@ -1,9 +1,9 @@
 import propTypes from 'prop-types';
 import React from 'react';
 
-import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
+import { Modal, ModalBody, ModalHeader } from './Modal';
 
-const ModalAlert = (props) => {
+const ModalDefault = (props) => {
     const onDismiss = () => {
         if (props.onDismiss) {
             props.onDismiss();
@@ -22,22 +22,11 @@ const ModalAlert = (props) => {
             <ModalBody>
                 {props.children}
             </ModalBody>
-            <ModalFooter>
-                <Button
-                  color="primary" onClick={onDismiss}
-                >
-                    {props.okText}
-                </Button>
-            </ModalFooter>
         </Modal>
     );
 };
 
-ModalAlert.defaultProps = {
-    okText: 'OK',
-};
-ModalAlert.propTypes = {
-    okText: propTypes.string,
+ModalDefault.propTypes = {
     children: propTypes.node,
     title: propTypes.node,
     isOpen: propTypes.bool,
@@ -45,4 +34,4 @@ ModalAlert.propTypes = {
     toggle: propTypes.func,
 };
 
-export default ModalAlert;
+export default ModalDefault;

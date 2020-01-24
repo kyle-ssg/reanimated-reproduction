@@ -1,21 +1,24 @@
 /* eslint no-console: 0 */
 const bodyParser = require('body-parser');
-const app = require('express')();
-const cors = require('cors');
 const fetch = require('isomorphic-unfetch');
 
-app.use(cors());
-
-app.use(bodyParser.json());
-
+const apps = {};
 module.exports = {
-    mock(url, method, body, requestBody, headers = {}) {
+    mock(port, url, method, query, body, requestBody, headers = {}) {
+        const app = apps[port]
         method = method.toLowerCase();
         app[method.toLowerCase()](url, (req, res) => {
             setTimeout(() => {
                 res.json(body);
             }, 500);
         });
+        if (query) {
+            const params = Object.keys(query).map((key) => {
+                return `${key}=${query[key]}`
+            }).join('&');
+
+            url = `${url}?${params}`;
+        }
         const options = {
             headers: {
                 'Content-Type': 'application/json',
@@ -26,12 +29,25 @@ module.exports = {
         if (method !== 'get') {
             options.body = JSON.stringify(requestBody || {});
         }
-        return () => fetch(global.api + url, options).then((res) => res.json());
+        return () => {
+            console.log(`Testing http://localhost:${port}${url}`)
+            return fetch(`http://localhost:${port}${url}`, options).then((res) => res.json());
+        }
     },
     setup(port) {
+        const serverPort = process.env.MOCK_SERVER ? port : port + 1;
+        const app = require('express')();
+        const cors = require('cors');
+
+        app.use(cors());
+
+        app.use(bodyParser.json());
+
+        apps[port] = app;
+
         return new Promise((resolve) => {
-            app.listen(process.env.MOCK_SERVER ? port : port + 1, () => {
-                console.log('SERVER LISTENING', port);
+            app.listen(serverPort, () => {
+                console.log('SERVER LISTENING', serverPort);
                 resolve();
             });
 
