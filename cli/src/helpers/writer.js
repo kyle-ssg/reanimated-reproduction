@@ -7,12 +7,19 @@ const appActions = path.join(common, './app-actions.js')
 const saga = path.join(common, './saga.js')
 const reducer = path.join(common, './reducer.js')
 const providers = path.join(common, './providers')
+const components = path.join(rootPath, './components')
 
 const actionsPointer = '// END OF APP_ACTIONS'
 const stringsPointer = '// END OF ACTION_STRINGS'
 const yieldPointer = '// END OF YIELDS'
 const takeLatestPointer = '// END OF TAKE_LATEST'
 const reducerPointer = '// END OF REDUCER'
+
+const functionName = function (action, prefix) {
+  const post = prefix.charAt(0).toUpperCase() + prefix.slice(1)
+  const actionParts = action.split('_')
+  return actionParts[0].toLowerCase() + post
+}
 
 module.exports = {
   writeActions: async function (strings, action) {
@@ -38,7 +45,7 @@ module.exports = {
       res = res.replace(yieldPointer, `${yieldString}\n${yieldPointer}`)
     }
     if (res.includes(takeLatest)) {
-      console.log('Take latest string, already exists')
+      console.log('Skipping latest string, already exists')
     } else {
       res = res.replace(takeLatestPointer, `${takeLatest}\n        ${takeLatestPointer}`)
     }
@@ -54,12 +61,21 @@ module.exports = {
     return fs.writeFileSync(reducer, res, 'utf8')
   },
   writeProvider: async function (reducerString, prefix) {
-    const providerPath = path.join(reducer, 'with' + prefix + '.js')
+    const providerPath = path.join(providers, functionName('WITH', prefix) + '.js')
     let res = fs.existsSync(providerPath)
     if (res) {
-      console.log('Provider already exists at ' + path + '. skipping')
+      console.log('Skipping provider, already exists')
     } else {
-      return fs.writeFileSync(reducerString, res, 'utf8')
+      return fs.writeFileSync(providerPath, reducerString, 'utf8')
+    }
+  },
+  writeWebPostExample: async function (string, prefix) {
+    const webPath = path.join(components, 'Edit' + functionName('', prefix) + '.js')
+    let res = fs.existsSync(webPath)
+    if (res) {
+      console.log('Skipping web example, already exists')
+    } else {
+      return fs.writeFileSync(webPath, string, 'utf8')
     }
   },
 }

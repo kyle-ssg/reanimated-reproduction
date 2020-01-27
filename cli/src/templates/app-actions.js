@@ -135,7 +135,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import '../app-actions';
 
-const with${prefix} = (WrappedComponent) => {
+const ${functionName('WITH', prefix)} = (WrappedComponent) => {
     return connect(
         mapStateToProps,
         mapDispatchToProps,
@@ -153,7 +153,7 @@ function mapStateToProps(state, props) {
     return { ${prefix}: ${prefix} && ${prefix}[props.id], ${prefix}Loading, ${prefix}Error };
 }
 
-export default (with${prefix});    
+export default ${functionName('WITH', prefix)};
 `
   },
   providerCollection: function (action, prefix) {
@@ -162,7 +162,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import '../app-actions';
 
-const with${prefix} = (WrappedComponent) => {
+const ${functionName('WITH', prefix)} = (WrappedComponent) => {
     return connect(
         mapStateToProps,
         mapDispatchToProps,
@@ -173,12 +173,125 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     ${functionName('GET', prefix)}: AppActions.${functionName('GET', prefix)},
 }, dispatch);
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
     const { ${prefix}, ${prefix}Loading, ${prefix}Error } = state;
-    return { ${prefix}: ${prefix}, ${prefix}Loading, ${prefix}Error };
+    return { ${prefix}, ${prefix}Loading, ${prefix}Error };
 }
 
-export default (with${prefix});    
+export default ${functionName('WITH', prefix)};
+`
+  },
+  webPost: function (action, prefix) {
+    const prefixCamel = functionName('', prefix)
+    return `
+import React, { Component } from 'react';
+import cloneDeep from 'lodash/cloneDeep';
+import propTypes from 'prop-types';
+import { withRouter } from 'next/router';
+import with${prefixCamel} from '../common/providers/${functionName('WITH', prefix)}';
+import ErrorMessage from './ErrorMessage';
+import SuccessMessage from './SuccessMessage';
+
+class Edit${prefixCamel} extends Component {
+    static displayName = 'Edit${prefixCamel}';
+
+    static propTypes = {
+        id: propTypes.string,
+        ${prefix}Loading: propTypes.bool,
+        ${prefix}Error: propTypes.any,
+        create${prefixCamel}: propTypes.func,
+        get${prefixCamel}: propTypes.func,
+        update${prefixCamel}: propTypes.func,
+    };
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            ${prefix}Edit: props.id ? null : {},
+        };
+    }
+
+    componentDidMount() {
+        if (this.props.id) {
+            this.props.${functionName('GET', prefix)}(this.props.id, {
+                onSuccess: this.onRetrieved${prefixCamel},
+            });
+        }
+    }
+
+    componentWillReceiveProps(newProps) {
+        if (newProps.id !== this.props.id && newProps.id) {
+            this.props.get${prefixCamel}(this.props.id, {
+                onSuccess: this.onRetrieved${prefixCamel},
+            });
+        }
+    }
+
+    onRetrieved${prefixCamel} = (${prefix}) => {
+        this.setState({ ${prefix}Edit: cloneDeep(${prefix}) });
+    }
+
+    update${prefixCamel} = (index, v) => {
+        this.setState({
+            ${prefix}Edit: {
+                ...this.state.${prefix}Edit,
+                [index]: Utils.safeParseEventValue(v),
+            },
+        });
+    }
+
+    submit = (e) => {
+        Utils.preventDefault(e);
+        this.setState({ ${prefix}Success: false });
+        if (this.props.id) {
+            this.props.update${prefixCamel}(this.state.${prefix}Edit, {
+                onSuccess: () => {
+                    this.setState({ ${prefix}Success: true })
+                },
+            });
+        } else {
+            this.props.create${prefixCamel}(this.state.${prefix}Edit, {
+                onSuccess: (data) => {
+                    // Can redirect to edit page here this.props.router.replace('/x/data.id')
+                    this.setState({ ${prefix}Success: true })
+                },
+            });
+        }
+    }
+
+    render() {
+        const { props: { ${prefix}Loading, ${prefix}Error }, state: { ${prefix}Success, ${prefix}Edit = {} } } = this;
+        const { name } = ${prefix}Edit || {};
+        const update = this.update${prefixCamel};
+        return <>
+            {!${prefix}Edit && ${prefix}Loading && <Loader/>}
+            {${prefix}Edit && (
+                <form onSubmit={this.submit}>
+                    <InputGroup
+                      className="mb-2"
+                      title="Name"
+                      placeholder=""
+                      value={name}
+                      onChange={v => update('name', v)}
+                    />
+                    {${prefix}Error && (
+                        <ErrorMessage>{${prefix}Error}</ErrorMessage>
+                    )}
+                    {${prefix}Success && !${prefix}Error && (
+                        <SuccessMessage>Saved</SuccessMessage>
+                    )}
+                    <div className="text-right pb-2">
+                        <ButtonPrimary disabled={${prefix}Loading} type="submit">
+                            Save
+                        </ButtonPrimary>
+                    </div>
+                </form>
+            )}
+        </>;
+    }
+}
+
+export default withRouter(with${prefixCamel}(Edit${prefixCamel}));
 `
   },
 

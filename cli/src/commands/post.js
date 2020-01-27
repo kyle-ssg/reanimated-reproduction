@@ -5,13 +5,13 @@ const controller = require('../controller').writePost
 
 class TheCommand extends Command {
   async run() {
-    const action = await cli.prompt('Define action to create the item', {default: 'CREATE_USER'})
+    const action = await cli.prompt('Define action to create the item', {default: 'CREATE_THING'})
     const prefix = await cli.prompt('Where does it get stored in the reducer?', {default: getPrefix(action)})
     const api = await cli.prompt('What\'s the api path?', {default: '/' + getPrefix(action)})
-    const createProvider = await cli.confirm('Do you want to create a provider?')
-    const createExample = createProvider ? await cli.confirm('Do you want to create a web example using it?') : false
-    const createExampleReactNative = createProvider ? await cli.confirm('Do you want to create an example component using it?') : false
-    await controller(action, prefix, api, createExample, createExampleReactNative)
+    const createProvider = await cli.prompt('Do you want to create a provider?', {default: 'yes'})
+    const createExample = createProvider ? await cli.prompt('Do you want to create a web example using it?', {default: 'yes'}) : false
+    const createExampleReactNative = createProvider ? await cli.prompt('Do you want to create an example component using it?', {default: 'yes'}) : false
+    await controller(action, prefix, api, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes')
   }
 }
 

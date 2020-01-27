@@ -1,5 +1,6 @@
 const templates = require('./templates/app-actions')
 const writer = require('./helpers/writer')
+const {exec} = require('child_process')
 
 module.exports = {
   writeCollection: async function (action, prefix, api, createProvider, webExample, reactNativeExample) {
@@ -13,11 +14,15 @@ module.exports = {
     // const webExample = templates.webCollection(action, prefix, api)
     // const reactNativeExample = templates.reactNativeCollection(action, prefix, api)
     await writer.writeActions(actionStrings, appAction)
+    console.log('Wrote actions')
     await writer.writeSaga(yieldString, takeLatest)
-    await writer.writeReducer(reducer, reducer)
+    console.log('Wrote saga')
+    await writer.writeReducer(reducer)
+    console.log('Wrote reducer')
     if (createProvider) {
-      await writer.writeProvider(provider)
+      await writer.writeProvider(provider, prefix)
     }
+    exec('cd ../ && git add .')
   },
   writeGet: async function (action, prefix, api, createProvider, webExample, reactNativeExample) {
     const actionStrings = templates.action(action, prefix)
@@ -31,10 +36,11 @@ module.exports = {
     // const reactNativeExample = templates.reactNativeGet(action, prefix, api)
     await writer.writeActions(actionStrings, appAction)
     await writer.writeSaga(yieldString, takeLatest)
-    await writer.writeReducer(reducer, reducer)
+    await writer.writeReducer(reducer)
     if (createProvider) {
       await writer.writeProvider(provider, prefix)
     }
+    exec('cd ../ && git add .')
   },
   writePost: async function (action, prefix, api, createProvider, webExample, reactNativeExample) {
     const actionStrings = templates.action(action, prefix)
@@ -43,15 +49,19 @@ module.exports = {
     const takeLatest = templates.takeLatest(action, prefix, api)
     const reducer = templates.reducerPost(action, prefix, api)
     const provider = templates.providerItem(action, prefix, api)
-    // const webExample = templates.webPost(action, prefix, api)
+    const webExampleString = templates.webPost(action, prefix, api)
     // const reactNativeExample = templates.reactNativeGPost(action, prefix, api)
     console.log('Writing post', action, prefix, api)
     await writer.writeActions(actionStrings, appAction)
     await writer.writeSaga(yieldString, takeLatest)
-    await writer.writeReducer(reducer, reducer)
+    await writer.writeReducer(reducer)
     if (createProvider) {
       await writer.writeProvider(provider, prefix)
     }
+    if (webExample) {
+      await writer.writeWebPostExample(webExampleString, prefix)
+    }
+    exec('cd ../ && git add .')
   },
   writeUpdate: async function (action, prefix, api, createProvider, webExample, reactNativeExample) {
     const actionStrings = templates.action(action, prefix)
@@ -60,14 +70,18 @@ module.exports = {
     const takeLatest = templates.takeLatest(action, prefix, api)
     const reducer = templates.reducerUpdate(action, prefix, api)
     const provider = templates.providerItem(action, prefix, api)
-    // const webExample = templates.webUpdate(action, prefix, api)
+    const webExampleString = templates.webPost(action, prefix, api)
     // const reactNativeExample = templates.webUpdate(action, prefix, api)
     console.log('Writing update', action, prefix, api)
     await writer.writeActions(actionStrings, appAction)
     await writer.writeSaga(yieldString, takeLatest)
-    await writer.writeReducer(reducer, reducer)
+    await writer.writeReducer(reducer)
     if (createProvider) {
       await writer.writeProvider(provider, prefix)
     }
+    if (webExample) {
+      await writer.writeWebPostExample(webExampleString, prefix)
+    }
+    exec('cd ../ && git add .')
   },
 }
