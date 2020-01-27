@@ -88,9 +88,9 @@ function defaultReducer(
             return { ...state, user:null };
         case Actions.STARTUP_LOADED:
             return { ...state, ...action.data };
+        // END OF REDUCER
         default:
             return state;
-        // END OF REDUCER
     }
 }
 
