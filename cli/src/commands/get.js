@@ -8,8 +8,10 @@ class TheCommand extends Command {
     const action = await cli.prompt('Define action to retrieve the item', {default: 'GET_USER'})
     const prefix = await cli.prompt('Where does it get stored in the reducer?', {default: getPrefix(action)})
     const api = await cli.prompt('What\'s the api path? ', {default: '/' + getPrefix(action) + '/:id'})
-    await controller(action, prefix, api)
-    console.log('done')
+    const createProvider = await cli.confirm('Do you want to create a provider?')
+    const createExample = createProvider ? await cli.confirm('Do you want to create a web example using it?') : false
+    const createExampleReactNative = createProvider ? await cli.confirm('Do you want to create a react native example using it?') : false
+    await controller(action, prefix, api, createExample, createExampleReactNative)
   }
 }
 

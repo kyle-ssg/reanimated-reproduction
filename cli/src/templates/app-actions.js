@@ -128,5 +128,58 @@ export function* ${functionName(action, prefix)}(action) {
     yield updateAction(action, \`\${Project.api}${apiName(api, true)}\`, '${action}');
 }`
   },
+  //  provider
+  providerItem: function (action, prefix) {
+    return `
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import '../app-actions';
+
+const with${prefix} = (WrappedComponent) => {
+    return connect(
+        mapStateToProps,
+        mapDispatchToProps,
+    )(WrappedComponent);
+};
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    ${functionName('GET', prefix)}: AppActions.${functionName('GET', prefix)},
+    ${functionName('CREATE', prefix)}: AppActions.${functionName('CREATE', prefix)},
+    ${functionName('UPDATE', prefix)}: AppActions.${functionName('UPDATE', prefix)},
+}, dispatch);
+
+function mapStateToProps(state, props) {
+    const { ${prefix}, ${prefix}Loading, ${prefix}Error } = state;
+    return { ${prefix}: ${prefix} && ${prefix}[props.id], ${prefix}Loading, ${prefix}Error };
+}
+
+export default (with${prefix});    
+`
+  },
+  providerCollection: function (action, prefix) {
+    return `
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import '../app-actions';
+
+const with${prefix} = (WrappedComponent) => {
+    return connect(
+        mapStateToProps,
+        mapDispatchToProps,
+    )(WrappedComponent);
+};
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    ${functionName('GET', prefix)}: AppActions.${functionName('GET', prefix)},
+}, dispatch);
+
+function mapStateToProps(state, props) {
+    const { ${prefix}, ${prefix}Loading, ${prefix}Error } = state;
+    return { ${prefix}: ${prefix}, ${prefix}Loading, ${prefix}Error };
+}
+
+export default (with${prefix});    
+`
+  },
 
 }

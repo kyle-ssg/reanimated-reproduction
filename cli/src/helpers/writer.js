@@ -6,6 +6,7 @@ const common = path.join(rootPath, './common')
 const appActions = path.join(common, './app-actions.js')
 const saga = path.join(common, './saga.js')
 const reducer = path.join(common, './reducer.js')
+const providers = path.join(common, './providers')
 
 const actionsPointer = '// END OF APP_ACTIONS'
 const stringsPointer = '// END OF ACTION_STRINGS'
@@ -16,20 +17,49 @@ const reducerPointer = '// END OF REDUCER'
 module.exports = {
   writeActions: async function (strings, action) {
     let res = fs.readFileSync(appActions, 'utf8')
-    res = res.replace(stringsPointer, `${strings}\n${stringsPointer}`)
-    res = res.replace(actionsPointer, `${action}\n${actionsPointer}`)
+
+    if (res.includes(strings)) {
+      console.log('Skipping action strings, already exists')
+    } else {
+      res = res.replace(stringsPointer, `${strings}\n${stringsPointer}`)
+    }
+    if (res.includes(action)) {
+      console.log('Skipping actions, already exists')
+    } else {
+      res = res.replace(actionsPointer, `${action}\n${actionsPointer}`)
+    }
     return fs.writeFileSync(appActions, res, 'utf8')
   },
   writeSaga: async function (yieldString, takeLatest) {
     let res = fs.readFileSync(saga, 'utf8')
-    res = res.replace(yieldPointer, `${yieldString}\n${yieldPointer}`)
-    res = res.replace(takeLatestPointer, `${takeLatest}\n        ${takeLatestPointer}`)
+    if (res.includes(yieldString)) {
+      console.log('Skipping yield string, already exists')
+    } else {
+      res = res.replace(yieldPointer, `${yieldString}\n${yieldPointer}`)
+    }
+    if (res.includes(takeLatest)) {
+      console.log('Take latest string, already exists')
+    } else {
+      res = res.replace(takeLatestPointer, `${takeLatest}\n        ${takeLatestPointer}`)
+    }
     return fs.writeFileSync(saga, res, 'utf8')
   },
   writeReducer: async function (reducerString) {
     let res = fs.readFileSync(reducer, 'utf8')
-    console.log(reducerPointer)
-    res = res.replace(reducerPointer, `${reducerString}\n        ${reducerPointer}`)
+    if (res.includes(reducerString)) {
+      console.log('Reducer string, already exists')
+    } else {
+      res = res.replace(reducerPointer, `${reducerString}\n        ${reducerPointer}`)
+    }
     return fs.writeFileSync(reducer, res, 'utf8')
+  },
+  writeProvider: async function (reducerString, prefix) {
+    const providerPath = path.join(reducer, 'with' + prefix + '.js')
+    let res = fs.existsSync(providerPath)
+    if (res) {
+      console.log('Provider already exists at ' + path + '. skipping')
+    } else {
+      return fs.writeFileSync(reducerString, res, 'utf8')
+    }
   },
 }
