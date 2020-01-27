@@ -90,6 +90,7 @@ function defaultReducer(
             return { ...state, ...action.data };
         default:
             return state;
+        // END OF REDUCER
     }
 }
 
