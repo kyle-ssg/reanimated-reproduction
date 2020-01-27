@@ -1,11 +1,17 @@
-const functionName = function (prefix) {
-  return prefix.charAt(0).toUpperCase() + prefix.slice(1)
+const functionName = function (action, prefix) {
+  const post = prefix.charAt(0).toUpperCase() + prefix.slice(1)
+  const actionParts = action.split('_')
+  return actionParts[0].toLowerCase() + post
 }
-const apiName = function (api) {
+
+const apiName = function (api, isUpdate) {
+  // eslint-disable-next-line no-template-curly-in-string
+  const replace = isUpdate ? '${action.data.id}' : '${action.id}'
   if (api.charAt(0) === '/') {
-    return api.slice(1)
+    return api.slice(1).replace(':id', replace)
   }
-  return api
+  // eslint-disable-next-line no-template-curly-in-string
+  return api.replace(':id', replace)
 }
 
 module.exports = {
@@ -15,9 +21,13 @@ module.exports = {
     '${action}_ERROR': '${action}_ERROR',
 `
   },
+  takeLatest: function (action, prefix) {
+    return `takeLatest(Actions.${action}, ${functionName(action, prefix)}),`
+  },
+  // appactions
   getCollection: function (action, prefix) {
     return `
-    get${functionName(prefix)}(data, callbacks = {}) {
+    ${functionName(action, prefix)}(data, callbacks = {}) {
         return {
             type: Actions.${action},
             data,
@@ -26,9 +36,9 @@ module.exports = {
     },
 `
   },
-  getSingle: function (action, prefix) {
+  get: function (action, prefix) {
     return `
-    get${functionName(prefix)}(id, callbacks = {}) {
+    ${functionName(action, prefix)}(id, callbacks = {}) {
         return {
             type: Actions.${action},
             id,
@@ -37,15 +47,89 @@ module.exports = {
     },
 `
   },
+  post: function (action, prefix) {
+    return `
+    ${functionName(action, prefix)}(data, callbacks = {}) {
+        return {
+            type: Actions.${action},
+            data,
+            ...callbacks,
+        };
+    },
+`
+  },
+  update: function (action, prefix) {
+    return `
+    ${functionName(action, prefix)}(data, callbacks = {}) {
+        return {
+            type: Actions.${action},
+            data,
+            ...callbacks,
+        };
+    },
+`
+  },
+  // reducer
+  reducerCollection: function (action, prefix) {
+    return `case Actions.${action}:
+            return itemLoading(state, '${prefix}', action);
+        case Actions.${action}_LOADED:
+            return itemLoaded(state, '${prefix}', action);
+        case Actions.${action}_ERROR:
+            return itemError(state, '${prefix}', action);`
+  },
+  reducerGet: function (action, prefix) {
+    return `case Actions.${action}:
+            return itemLoading(state, '${prefix}', action);
+        case Actions.${action}_LOADED:
+            return itemLoaded(state, '${prefix}', action);
+        case Actions.${action}_ERROR:
+            return itemError(state, '${prefix}', action);`
+  },
+  reducerPost: function (action, prefix) {
+    return `case Actions.${action}:
+            return itemLoading(state, '${prefix}', action);
+        case Actions.${action}_LOADED:
+            return itemSaved(state, '${prefix}', action);
+        case Actions.${action}_ERROR:
+            return itemError(state, '${prefix}', action);`
+  },
+  reducerUpdate: function (action, prefix) {
+    return `case Actions.${action}:
+            return itemLoading(state, '${prefix}', action);
+        case Actions.${action}_LOADED:
+            return itemSaved(state, '${prefix}', action);
+        case Actions.${action}_ERROR:
+            return itemError(state, '${prefix}', action);`
+  },
+  // yield
   yieldCollection: function (action, prefix, api) {
     return `
-export function* get${functionName(prefix)}(action) {
+export function* ${functionName(action, prefix)}(action) {
     yield getAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
 }
 `
   },
-  takeLatest: function (action, prefix) {
-    return `takeLatest(Actions.${action}, get${functionName(prefix)}),`
+  yieldGet: function (action, prefix, api) {
+    return `
+export function* ${functionName(action, prefix)}(action) {
+    yield getAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
+}
+`
+  },
+  yieldPost: function (action, prefix, api) {
+    return `
+export function* ${functionName(action, prefix)}(action) {
+    yield postAction(action, \`\${Project.api}${apiName(api, true)}\`, '${action}');
+}
+`
+  },
+  yieldUpdate: function (action, prefix, api) {
+    return `
+export function* ${functionName(action, prefix)}(action) {
+    yield updateAction(action, \`\${Project.api}${apiName(api, true)}\`, '${action}');
+}
+`
   },
 
 }
