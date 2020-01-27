@@ -114,22 +114,19 @@ export function* ${functionName(action, prefix)}(action) {
     return `
 export function* ${functionName(action, prefix)}(action) {
     yield getAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
-}
-`
+}`
   },
   yieldPost: function (action, prefix, api) {
     return `
 export function* ${functionName(action, prefix)}(action) {
     yield postAction(action, \`\${Project.api}${apiName(api, true)}\`, '${action}');
-}
-`
+}`
   },
   yieldUpdate: function (action, prefix, api) {
     return `
 export function* ${functionName(action, prefix)}(action) {
     yield updateAction(action, \`\${Project.api}${apiName(api, true)}\`, '${action}');
-}
-`
+}`
   },
 
 }
