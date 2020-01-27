@@ -1,38 +1,36 @@
 const BaseConstants = {
-    'ACTIVE'    : 'ACTIVE',
-    'INACTIVE'  : 'INACTIVE',
+    'ACTIVE': 'ACTIVE',
+    'INACTIVE': 'INACTIVE',
 
-    'CONNECTED'     : 'CONNECTED',
-    'DISCONNECTED'  : 'DISCONNECTED',
+    'CONNECTED': 'CONNECTED',
+    'DISCONNECTED': 'DISCONNECTED',
 
-    'LOGIN'         : 'LOGIN',
-    'LOGIN_LOADED'  : 'LOGIN_LOADED',
-    'LOGIN_ERROR'   : 'LOGIN_ERROR',
-    'REFRESH_TOKENS'   : 'REFRESH_TOKENS',
+    'LOGIN': 'LOGIN',
+    'LOGIN_LOADED': 'LOGIN_LOADED',
+    'LOGIN_ERROR': 'LOGIN_ERROR',
+    'REFRESH_TOKENS': 'REFRESH_TOKENS',
 
-    'REGISTER'                  : 'REGISTER',
-    'REGISTER_LOADED'           : 'REGISTER_LOADED',
-    'REGISTER_ERROR'            : 'REGISTER_ERROR',
+    'REGISTER': 'REGISTER',
+    'REGISTER_LOADED': 'REGISTER_LOADED',
+    'REGISTER_ERROR': 'REGISTER_ERROR',
 
-    'CONFIRM_EMAIL'       : 'CONFIRM_EMAIL',
-    'CONFIRM_EMAIL_ERROR'       : 'CONFIRM_EMAIL_ERROR',
-    'CONFIRM_EMAIL_LOADED'       : 'CONFIRM_EMAIL_LOADED',
+    'STARTUP': 'STARTUP',
+    'STARTUP_LOADED': 'STARTUP_LOADED',
+    'STARTUP_ERROR': 'STARTUP_ERROR',
 
-    'UPDATE_USER'       : 'UPDATE_USER',
-    'UPDATE_USER_LOADED'       : 'UPDATE_USER_LOADED',
-    'UPDATE_USER_ERROR'       : 'UPDATE_USER_ERROR',
+    'LOGOUT': 'LOGOUT',
+    'CLEAR_USER': 'CLEAR_USER',
+    'REFRESH': 'REFRESH',
 
-    'REFRESH_USER'       : 'REFRESH_USER',
-    'REFRESH_USER_LOADED'       : 'REFRESH_USER_LOADED',
-    'REFRESH_USER_ERROR'       : 'REFRESH_USER_ERROR',
+    'CONFIRM_EMAIL': 'CONFIRM_EMAIL',
+    'CONFIRM_EMAIL_ERROR': 'CONFIRM_EMAIL_ERROR',
+    'CONFIRM_EMAIL_LOADED': 'CONFIRM_EMAIL_LOADED',
 
-    'STARTUP'           : 'STARTUP',
-    'STARTUP_LOADED'    : 'STARTUP_LOADED',
-    'STARTUP_ERROR'     : 'STARTUP_ERROR',
 
-    'LOGOUT'        : 'LOGOUT',
-    'CLEAR_USER'    : 'CLEAR_USER',
-    'REFRESH'       : 'REFRESH',
+    'UPDATE_USER': 'UPDATE_USER',
+    'UPDATE_USER_ERROR': 'UPDATE_USER_ERROR',
+    'UPDATE_USER_LOADED': 'UPDATE_USER_LOADED',
+
 };
 
 const BaseActions = {
@@ -56,20 +54,6 @@ const BaseActions = {
         return {
             type: Actions.INACTIVE,
             // todo: maybe store last online
-        };
-    },
-    confirmEmail(data, callbacks = {}) {
-        return {
-            type: Actions.CONFIRM_EMAIL,
-            data,
-            ...callbacks,
-        };
-    },
-    refreshUser(data, callbacks = {}) {
-        return {
-            type: Actions.REFRESH_USER,
-            data,
-            ...callbacks,
         };
     },
     refresh() { // force the app to refresh data
@@ -107,6 +91,20 @@ const BaseActions = {
             ...callbacks,
         };
     },
+    updateUser(data, callbacks = {}) {
+        return {
+            type: Actions.UPDATE_USER,
+            data,
+            ...callbacks,
+        };
+    },
+    confirmEmail(data, callbacks = {}) {
+        return {
+            type: Actions.CONFIRM_EMAIL,
+            data,
+            ...callbacks,
+        };
+    },
     registerLoaded: (user) => {
         return { type: Actions.REGISTER_LOADED, user };
     },
@@ -123,7 +121,10 @@ const BaseActions = {
 
 global.Actions = Object.assign({}, BaseConstants, {
 
+// END OF ACTION_STRINGS
 });
 
 global.AppActions = Object.assign({}, BaseActions, {
+
+// END OF APP_ACTIONS
 });

@@ -2,26 +2,49 @@
 import Router from 'next/router';
 import cookie from 'cookie';
 import cookies from 'js-cookie';
+
 import Project from '../common/project';
-import './libs';
 
 const API = {
+    isMobile: () => false,
     ajaxHandler(type, e) {
-        return { type, error: e.message };
+        try {
+            return { type, error: JSON.parse(e.message).errorMessage };
+        } catch (_) {
+            return { type, error: e.message };
+        }
     },
     logout() {
         cookies.remove('token');
-        Router.replace('/');
+        Router.replace(Project.logoutRedirect || '/');
     },
     loggedIn() {
-        Router.replace('/markup');
+        Router.replace(Project.loginRedirect || '/');
     },
     getStoredToken(req) {
         if (req) {
             const parsedCookies = cookie.parse(req.headers.cookie || '');
             return parsedCookies && parsedCookies.token;
         }
-        return cookies.get('t');
+        return cookies.get('token');
+    },
+    getStoredUser(req) {
+        if (req) {
+            const parsedCookies = cookie.parse(req.headers.cookie || '');
+            return parsedCookies && parsedCookies.user;
+        }
+        return cookies.get('user') && JSON.parse(cookies.get('user'));
+    },
+    getStoredRefreshToken(req) {
+        if (req) {
+            const parsedCookies = cookie.parse(req.headers.cookie || '');
+            return parsedCookies && parsedCookies.refreshToken;
+        }
+        const refreshToken = cookies.get('refreshToken');
+        return refreshToken && JSON.parse(refreshToken);
+    },
+    setStoredRefreshToken(v) {
+        return API.setCookie('refreshToken', v);
     },
     getStoredLocale(req) {
         if (req) {
@@ -55,9 +78,6 @@ const API = {
     setStoredToken(v) {
         return API.setCookie('token', v);
     },
-    setStoredLocale(v) {
-        return API.setCookie('locale', v);
-    },
     setCookie(name, value) {
         if (typeof window === 'undefined') {
             return;
@@ -70,7 +90,7 @@ const API = {
             console.info('track', data);
         }
 
-        if (Project.ga && typeof 'window' !== 'undefined') {
+        if (Project.ga) {
             if (!data) {
                 // eslint-disable-next-line
                 console.error('GA: Passed null event data');
@@ -103,7 +123,7 @@ const API = {
         }
     },
     trackPage(title) {
-        if (Project.ga && typeof window !== 'undefined') {
+        if (Project.ga) {
             ga('send', {
                 hitType: 'pageview',
                 title,
@@ -112,7 +132,7 @@ const API = {
             });
         }
 
-        if (Project.mixpanel && typeof window !== 'undefined') {
+        if (Project.mixpanel) {
             mixpanel.track('Page View', {
                 title,
                 location: document.location.href,
@@ -121,17 +141,17 @@ const API = {
         }
     },
     alias(id) {
-        if (Project.mixpanel && typeof window !== 'undefined') {
+        if (Project.mixpanel) {
             mixpanel.alias(id);
         }
     },
     identify(id) {
-        if (Project.mixpanel && typeof window !== 'undefined') {
+        if (Project.mixpanel) {
             mixpanel.identify(id);
         }
     },
     register(email, firstName, lastName) {
-        if (Project.mixpanel && typeof window !== 'undefined') {
+        if (Project.mixpanel) {
             mixpanel.register({
                 'Email': email,
                 'First Name': firstName,
@@ -145,11 +165,8 @@ const API = {
         }
     },
     log(namespace, ...args) {
-        if (!Project.logs) {
-            return;
-        }
         if (Project.logs[namespace]) {
-            // eslint-disable-next-line
+            // eslint-disable-next-line no-console
             console.log.apply(this, [namespace, ...args]);
         }
     },

@@ -1,19 +1,23 @@
-export default (WrappedComponent) => {
+import React from 'react';
+
+import withAuth from '../common/providers/withAuth';
+
+const withUserRedirect = (WrappedComponent) => {
     class HOC extends React.Component {
         static displayName = 'withFoo';
 
         constructor(props) {
             super(props);
             this.state = {};
-        }
-
-        componentWillMount() {
-            if (!this.props.user) {
-                debugger;
+            if (!props.user && typeof window !== 'undefined') {
+                props.router.replace(`/login?redirect=${document.location.pathname}`);
             }
         }
 
         render() {
+            if (!this.props.user) {
+                return <div/>
+            }
             return (
                 <WrappedComponent
                   ref="wrappedComponent"
@@ -24,5 +28,7 @@ export default (WrappedComponent) => {
         }
     }
 
-    return HOC;
+    return withAuth(HOC);
 };
+
+export default withUserRedirect;

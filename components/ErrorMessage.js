@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import './error-message.scss';
 
 const ErrorMessage = class extends Component {
     static displayName = 'ErrorMessage';
@@ -16,13 +15,11 @@ const ErrorMessage = class extends Component {
     }
 
     render() {
-        const { props: { children } } = this;
         return (
-            <div className={`alert alert-danger ${this.props.className || ''}`}>
-                {children}
+            <div className={`alert mt-1 mb-1 alert-danger ${this.props.className || ''}`}>
+                {typeof this.props.children === 'string' ? this.props.children.replace(/\n/g, '') : 'Error processing request'}
             </div>
         );
     }
 };
-
 export default ErrorMessage;

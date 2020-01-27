@@ -1,13 +1,10 @@
 import App, { Container } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
-
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
-
 import '../project/polyfill';
-
 import createStore from '../common/store';
 import Header from '../components/Header';
 
@@ -16,26 +13,32 @@ let initialRender = false;
 class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {
         let pageProps;
-        if (!ctx.pathname || ctx.pathname === '/_error') {
+        if (ctx.pathname === '/_error') {
             return;
         }
 
-        if (typeof window === 'undefined') {
-            const locale = Constants.simulate.FORCE_LANGUAGE || API.getStoredLocale(ctx.req); // Retrieve the locale from cookie or headers
-            await ctx.store.dispatch(AppActions.startup({ locale })); // Post startup action with token and locale
-            if (Component.getInitialProps) { // Wait for pages to complete any async getInitialProps
-                pageProps = await Component.getInitialProps({ ctx });
-            }
+        if (!ctx.pathname) {
+            return;
+        }
+        const locale = Constants.simulate.FORCE_LANGUAGE || API.getStoredLocale(ctx.req); // Retrieve the locale from cookie or headers
+        await ctx.store.dispatch(AppActions.startup({ locale })); // Post startup action with token and locale
+        if (Component.getInitialProps) { // Wait for pages to complete any async getInitialProps
+            pageProps = await Component.getInitialProps({ ctx });
         }
         return { pageProps };
     }
-
 
     constructor(props) {
         super(props);
         if ((typeof window !== 'undefined') && !this.props.store.getState().clientLoaded) {
             const token = API.getStoredToken(); // Retrieve token cookie from req.headers
-            this.props.store.dispatch(AppActions.startup({ token, clientLoaded: true })); // Post startup action with token and locale
+            const user = API.getStoredUser(); // Retrieve token cookie from req.headers
+            const refreshToken = API.getStoredRefreshToken(); // Retrieve token cookie from req.headers
+            this.props.store.dispatch(AppActions.startup({ token, user, refreshToken, clientLoaded: true }, {
+                onSuccess: () => {
+
+                },
+            })); // Post startup action with token and locale
         }
     }
 

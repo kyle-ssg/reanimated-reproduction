@@ -1,10 +1,13 @@
 import { put, all, takeLatest } from 'redux-saga/effects';
 import _data from './utils/_data';
-
+import './app-actions';
 // Util function to post to an api, parse results and dispatch loaded and error functions
-export function* getAction(action, url, prefix, preventSuccess) {
+export function* getAction(action, url, prefix, preventSuccess, dto) {
     try {
-        const data = yield _data.get(url);
+        let data = yield _data.get(url);
+        if (dto) {
+            data = dto(data);
+        }
         const params = { type: Actions[`${prefix}_LOADED`], data };
         if (data.token) {
             API.setStoredToken(data.token);
@@ -21,10 +24,12 @@ export function* getAction(action, url, prefix, preventSuccess) {
     }
 }
 
-// Util function to put to an api, parse results and dispatch loaded and error functions
-export function* updateAction(action, url, prefix, preventSuccess) {
+export function* updateAction(action, url, prefix, preventSuccess, dto, requestDto) {
     try {
-        const data = yield _data.put(url, action.data);
+        let data = yield _data.put(url, requestDto ? requestDto(action.data) : action.data);
+        if (dto) {
+            data = dto(data);
+        }
         if (data.token) {
             API.setStoredToken(data.token);
             _data.setToken(data.token);
@@ -47,10 +52,12 @@ export function* updateAction(action, url, prefix, preventSuccess) {
     }
 }
 
-// Util function to get from an api, parse results and dispatch loaded and error functions
-export function* postAction(action, url, prefix, preventSuccess) {
+export function* postAction(action, url, prefix, preventSuccess, dto, requestDto, appendId = true) {
     try {
-        const data = yield _data.post(url, action.data);
+        let data = yield _data.post(url, requestDto ? requestDto(action.data) : action.data);
+        if (dto) {
+            data = dto(data);
+        }
         if (data.token) {
             API.setStoredToken(data.token);
             _data.setToken(data.token);
@@ -58,15 +65,15 @@ export function* postAction(action, url, prefix, preventSuccess) {
         const params = { type: Actions[`${prefix}_LOADED`], data };
         if (action.id) {
             params.index = action.id;
+        } else if (appendId) {
+            params.index = data.id;
         }
         yield put(params);
         action.onSuccess && !preventSuccess && action.onSuccess(data);
+        return data;
     } catch (e) {
         yield put(API.ajaxHandler(Actions[`${prefix}_ERROR`], e));
         action.onError && action.onError();
-        if (preventSuccess) {
-            throw e;
-        }
     }
 }
 
@@ -141,6 +148,8 @@ export function* updateUser(action) {
     yield updateAction(action, `${Project.api}user/${action.data.id}`, 'UPDATE_USER');
 }
 
+// END OF YIELDS
+
 function* rootSaga() {
     yield all([
         takeLatest(Actions.STARTUP, startup),
@@ -149,6 +158,7 @@ function* rootSaga() {
         takeLatest(Actions.LOGOUT, logout),
         takeLatest(Actions.CONFIRM_EMAIL, confirmEmail),
         takeLatest(Actions.UPDATE_USER, updateUser),
+        // END OF TAKE_LATEST
     ]);
 }
 

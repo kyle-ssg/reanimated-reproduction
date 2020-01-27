@@ -9,10 +9,10 @@ const itemLoading = (state, prefix, action) => {
 };
 
 const itemSaved = (state, prefix, action) => {
-    if (action.index) {  // Item is part of a collection, add it within the prefix
+    if (action.index) { // Item is part of a collection, add it within the prefix
         return {
             ...state,
-            [prefix]: { ...state[prefix], [action.index]:action.data },
+            [prefix]: { ...state[prefix], [action.index]: action.data },
             [`${prefix}Loading`]: false,
             [`${prefix}Error`]: null,
         };
@@ -29,7 +29,7 @@ const itemLoaded = (state, prefix, action) => {
     if (action.index) { // Item is part of a collection, add it within the prefix
         return {
             ...state,
-            [prefix]: { ...state[prefix], [action.index]:action.data },
+            [prefix]: { ...state[prefix], [action.index]: action.data },
             [`${prefix}Error`]: null,
             [`${prefix}Loading`]: false,
         };
@@ -54,8 +54,7 @@ function defaultReducer(
         isConnected: true,
     },
     action,
-)
-{
+) {
     if (typeof window === 'undefined') {
         // API.log('SERVER', action.type);
     } else {
