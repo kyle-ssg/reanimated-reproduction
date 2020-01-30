@@ -69,6 +69,10 @@ module.exports = {
     }
     exec('cd ../ && git add .')
   },
+  writeComponent: async function (name) {
+    const componentString = templates.component(name)
+    await writer.writeComponent(componentString, name)
+  },
   writeUpdate: async function (action, prefix, api, createProvider, webExample, reactNativeExample) {
     const actionStrings = templates.action(action, prefix)
     const appAction = templates.update(action, prefix)

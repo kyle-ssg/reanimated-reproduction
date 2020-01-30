@@ -69,6 +69,15 @@ module.exports = {
       return fs.writeFileSync(providerPath, reducerString, 'utf8')
     }
   },
+  writeComponent: async function (reducerString, prefix) {
+    const providerPath = path.join(providers, functionName('WITH', prefix) + '.js')
+    let res = fs.existsSync(providerPath)
+    if (res) {
+      console.log('Skipping provider, already exists')
+    } else {
+      return fs.writeFileSync(providerPath, reducerString, 'utf8')
+    }
+  },
   writeWebPostExample: async function (string, prefix) {
     const webPath = path.join(components, 'Edit' + functionName('', prefix) + '.js')
     let res = fs.existsSync(webPath)

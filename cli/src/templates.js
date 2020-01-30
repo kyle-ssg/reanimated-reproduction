@@ -378,5 +378,28 @@ class Edit${prefixCamel} extends Component {
 export default withRouter(with${prefixCamel}(Edit${prefixCamel}));
 `
   },
+  component: function (name) {
+    return `import React, { Component } from 'react';
+import propTypes from 'prop-types';
 
+const ${name} = class extends Component {
+    static displayName = '${name}';
+
+    static propTypes = {};
+
+    constructor(props, context) {
+        super(props, context);
+        this.state = {};
+    }
+
+    render() {
+        return (
+            <div>Hi</div>
+        );
+    }
+};
+
+export default ${name};
+`
+  },
 }
