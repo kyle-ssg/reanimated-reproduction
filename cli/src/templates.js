@@ -214,6 +214,8 @@ class ${prefixCamel} extends Component {
     render() {
         const { props: { ${prefix}, ${prefix}Loading, ${prefix}Error } } = this;
         return <>
+            <h2>${prefix}</h2>
+            {!${prefix} && ${prefix}Loading && <Loader/>}
             { JSON.stringify(${prefix}) }
             {${prefix}Error && (
                 <ErrorMessage>{${prefix}Error}</ErrorMessage>
@@ -250,6 +252,7 @@ class ${prefixCamel} extends Component {
         const { props: { ${prefix}, ${prefix}Loading, ${prefix}Error } } = this;
         return <>
             <h2>${prefix}</h2>
+            {!${prefix} && ${prefix}Loading && <Loader/>}
             {
                 ${prefix} && ${prefix}.map((item, i)=>(
                     <div key={item.id || i}>{JSON.stringify(item)}</div>

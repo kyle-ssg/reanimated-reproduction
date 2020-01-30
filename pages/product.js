@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'next/router';
-import Foos from '../components/Foos';
-import Foo from '../components/Foo';
-import EditFoo from '../components/EditFoo';
+import Products from '../components/Products';
+import Product from '../components/Product';
+import EditProduct from '../components/EditProduct';
 
 class HomePage extends Component {
     static displayName = 'HomePage';
@@ -18,10 +18,10 @@ class HomePage extends Component {
     render() {
         return (
             <div className="container">
-                <Foos/>
-                <Foo id={1}/>
-                <EditFoo id={1}/>
-                <EditFoo/>
+                <Products/>
+                <Product id={1}/>
+                <EditProduct id={1}/>
+                <EditProduct/>
             </div>
         );
     }

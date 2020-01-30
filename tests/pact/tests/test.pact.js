@@ -5,47 +5,53 @@ const res = {
         const body = get(res, `${name}.body`);
         return body && body(v => v);
     },
-    foos: {
-        path: '/foos',
+    products: {
+        path: '/products',
         get: {
             state: 'Bar exists',
-            description: '/foo',
+            description: '/product',
             body: like => ([
                 {
                     id: 1,
-                    foo: like('bar'),
+                    title: like('bar'),
+                },
+                {
+                    id: 2,
+                    title: like('bar'),
                 },
             ]),
         },
     },
     createFoo: {
-        path: '/foo',
+        path: '/product',
         post: {
             state: 'Bar exists',
-            description: '/foo',
+            description: '/product',
             body: like => ({
                 id: 1,
-                foo: like('bar'),
+                title: like('bar'),
             }),
             requestBody: (like) => ({
-                foo: like('bar'),
+                title: like('bar'),
             }),
         },
     },
-    foo: {
-        path: '/foo/1',
+    product: {
+        path: '/product/1',
         get: {
             state: 'Bar exists',
-            description: '/foo/1',
+            description: '/product/1',
             body: like => ({
                 id: 1,
+                title: like('bar'),
             }),
         },
         put: {
             state: 'Bar exists',
-            description: '/foo/1',
+            description: '/product/1',
             body: like => ({
                 id: 1,
+                title: like('bar'),
             }),
         },
     },
