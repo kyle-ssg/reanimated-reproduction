@@ -20,7 +20,7 @@ class TheCommand extends Command {
             await getController('GET_' + prefix.toUpperCase(), prefix, item.path, true, true, true)
           }
         }
-        if (item.update) {
+        if (item.put) {
           await updateController('UPDATE_' + prefix.toUpperCase(), prefix, item.path, true, true, true)
         }
         if (item.post) {
