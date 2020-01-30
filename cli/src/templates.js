@@ -249,6 +249,7 @@ class ${prefixCamel} extends Component {
     render() {
         const { props: { ${prefix}, ${prefix}Loading, ${prefix}Error } } = this;
         return <>
+            <h2>${prefix}</h2>
             {
                 ${prefix} && ${prefix}.map((item, i)=>(
                     <div key={item.id || i}>{JSON.stringify(item)}</div>
@@ -346,7 +347,9 @@ class Edit${prefixCamel} extends Component {
         const { props: { ${prefix}Loading, ${prefix}Error }, state: { ${prefix}Success, ${prefix}Edit = {} } } = this;
         const { name } = ${prefix}Edit || {};
         const update = this.update${prefixCamel};
+        const isEdit = !!this.props.id;
         return <>
+            {isEdit ? <h2>Edit ${prefix}</h2> : <h2>Create ${prefix}</h2> }
             {!${prefix}Edit && ${prefix}Loading && <Loader/>}
             {${prefix}Edit && (
                 <form onSubmit={this.submit}>
