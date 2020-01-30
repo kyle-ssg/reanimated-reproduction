@@ -5,16 +5,17 @@ const fetch = require('isomorphic-unfetch');
 const apps = {};
 module.exports = {
     mock(port, url, method, query, body, requestBody, headers = {}) {
-        const app = apps[port]
+        const app = apps[port];
         method = method.toLowerCase();
         app[method.toLowerCase()](url, (req, res) => {
+            console.log(req.body);
             setTimeout(() => {
-                res.json(body);
+                res.json(body || req.body);
             }, 500);
         });
         if (query) {
             const params = Object.keys(query).map((key) => {
-                return `${key}=${query[key]}`
+                return `${key}=${query[key]}`;
             }).join('&');
 
             url = `${url}?${params}`;
@@ -30,9 +31,9 @@ module.exports = {
             options.body = JSON.stringify(requestBody || {});
         }
         return () => {
-            console.log(`Testing http://localhost:${port}${url}`)
-            return fetch(`http://localhost:${port}${url}`, options).then((res) => res.json());
-        }
+            console.log(`Testing http://localhost:${port}${url}`);
+            return fetch(`http://localhost:${port}${url}`, options).then(res => res.json());
+        };
     },
     setup(port) {
         const serverPort = process.env.MOCK_SERVER ? port : port + 1;
