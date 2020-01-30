@@ -1,4 +1,4 @@
-const templates = require('./templates/app-actions')
+const templates = require('./templates')
 const writer = require('./helpers/writer')
 const {exec} = require('child_process')
 
@@ -11,7 +11,7 @@ module.exports = {
     const reducer = templates.reducerCollection(action, prefix, api)
     console.log('Writing collection', action, prefix, api)
     const provider = templates.providerCollection(action, prefix, api)
-    // const webExample = templates.webCollection(action, prefix, api)
+    const webExampleString = templates.webCollection(action, prefix, api)
     // const reactNativeExample = templates.reactNativeCollection(action, prefix, api)
     await writer.writeActions(actionStrings, appAction)
     console.log('Wrote actions')
@@ -22,6 +22,9 @@ module.exports = {
     if (createProvider) {
       await writer.writeProvider(provider, prefix)
     }
+    if (webExample) {
+      await writer.writeWebGetExample(webExampleString, prefix)
+    }
     exec('cd ../ && git add .')
   },
   writeGet: async function (action, prefix, api, createProvider, webExample, reactNativeExample) {
@@ -30,7 +33,7 @@ module.exports = {
     const yieldString = templates.yieldGet(action, prefix, api)
     const takeLatest = templates.takeLatest(action, prefix, api)
     const reducer = templates.reducerGet(action, prefix, api)
-    console.log('Writing get', action, prefix, api)
+    const webExampleString = templates.webGet(action, prefix, api)
     const provider = templates.providerItem(action, prefix, api)
     // const webExample = templates.webGet(action, prefix, api)
     // const reactNativeExample = templates.reactNativeGet(action, prefix, api)
@@ -39,6 +42,9 @@ module.exports = {
     await writer.writeReducer(reducer)
     if (createProvider) {
       await writer.writeProvider(provider, prefix)
+    }
+    if (webExample) {
+      await writer.writeWebGetExample(webExampleString, prefix)
     }
     exec('cd ../ && git add .')
   },

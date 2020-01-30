@@ -181,6 +181,89 @@ function mapStateToProps(state) {
 export default ${functionName('WITH', prefix)};
 `
   },
+  webGet: function (action, prefix) {
+    const prefixCamel = functionName('', prefix)
+    return `
+import React, { Component } from 'react';
+import propTypes from 'prop-types';
+import with${prefixCamel} from '../common/providers/${functionName('WITH', prefix)}';
+import ErrorMessage from './ErrorMessage';
+
+class ${prefixCamel} extends Component {
+    static displayName = '${prefixCamel}';
+
+    static propTypes = {
+        id: propTypes.string,
+        ${prefix}Loading: propTypes.bool,
+        ${prefix}Error: propTypes.any,
+        get${prefixCamel}: propTypes.func,
+    };
+
+    componentDidMount() {
+        if (this.props.id) { // Retrieve the item to edit
+            this.props.${functionName('GET', prefix)}(this.props.id);
+        }
+    }
+
+    componentWillReceiveProps(newProps) {
+        if (newProps.id !== this.props.id && newProps.id) { // If the id has changed, fetch the new item
+            newProps.get${prefixCamel}(newProps.id);
+        }
+    }
+
+    render() {
+        const { props: { ${prefix}, ${prefix}Loading, ${prefix}Error } } = this;
+        return <>
+            { JSON.stringify(${prefix}) }
+            {${prefix}Error && (
+                <ErrorMessage>{${prefix}Error}</ErrorMessage>
+            )}
+        </>;
+    }
+}
+
+export default with${prefixCamel}(${prefixCamel});
+`
+  },
+  webCollection: function (action, prefix) {
+    const prefixCamel = functionName('', prefix)
+    return `
+import React, { Component } from 'react';
+import propTypes from 'prop-types';
+import with${prefixCamel} from '../common/providers/${functionName('WITH', prefix)}';
+import ErrorMessage from './ErrorMessage';
+
+class ${prefixCamel} extends Component {
+    static displayName = '${prefixCamel}';
+
+    static propTypes = {
+        ${prefix}Loading: propTypes.bool,
+        ${prefix}Error: propTypes.any,
+        get${prefixCamel}: propTypes.func,
+    };
+
+    componentDidMount() {
+        this.props.${functionName('GET', prefix)}();
+    }
+
+    render() {
+        const { props: { ${prefix}, ${prefix}Loading, ${prefix}Error } } = this;
+        return <>
+            {
+                ${prefix} && ${prefix}.map((item, i)=>(
+                    <div key={item.id || i}>{JSON.stringify(item)}</div>
+                ))
+            }
+            {${prefix}Error && (
+                <ErrorMessage>{${prefix}Error}</ErrorMessage>
+            )}
+        </>;
+    }
+}
+
+export default with${prefixCamel}(${prefixCamel});
+`
+  },
   webPost: function (action, prefix) {
     const prefixCamel = functionName('', prefix)
     return `
@@ -207,12 +290,12 @@ class Edit${prefixCamel} extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ${prefix}Edit: props.id ? null : {},
+            ${prefix}Edit: props.id ? null : {}, // The object to be sent up to the API
         };
     }
 
     componentDidMount() {
-        if (this.props.id) {
+        if (this.props.id) { // Retrieve the item to edit
             this.props.${functionName('GET', prefix)}(this.props.id, {
                 onSuccess: this.onRetrieved${prefixCamel},
             });
@@ -220,18 +303,18 @@ class Edit${prefixCamel} extends Component {
     }
 
     componentWillReceiveProps(newProps) {
-        if (newProps.id !== this.props.id && newProps.id) {
-            this.props.get${prefixCamel}(this.props.id, {
+        if (newProps.id !== this.props.id && newProps.id) { // If the id has changed, fetch the new item
+            this.props.get${prefixCamel}(newProps.id, {
                 onSuccess: this.onRetrieved${prefixCamel},
             });
         }
     }
 
-    onRetrieved${prefixCamel} = (${prefix}) => {
+    onRetrieved${prefixCamel} = (${prefix}) => { // Create a copy of the item once retrieved for edit
         this.setState({ ${prefix}Edit: cloneDeep(${prefix}) });
     }
 
-    update${prefixCamel} = (index, v) => {
+    update${prefixCamel} = (index, v) => { // Update a
         this.setState({
             ${prefix}Edit: {
                 ...this.state.${prefix}Edit,
@@ -246,14 +329,14 @@ class Edit${prefixCamel} extends Component {
         if (this.props.id) {
             this.props.update${prefixCamel}(this.state.${prefix}Edit, {
                 onSuccess: () => {
-                    this.setState({ ${prefix}Success: true })
+                    this.setState({ ${prefix}Success: true });
                 },
             });
         } else {
             this.props.create${prefixCamel}(this.state.${prefix}Edit, {
-                onSuccess: (data) => {
+                onSuccess: () => {
                     // Can redirect to edit page here this.props.router.replace('/x/data.id')
-                    this.setState({ ${prefix}Success: true })
+                    this.setState({ ${prefix}Success: true });
                 },
             });
         }
@@ -280,6 +363,7 @@ class Edit${prefixCamel} extends Component {
                     {${prefix}Success && !${prefix}Error && (
                         <SuccessMessage>Saved</SuccessMessage>
                     )}
+                    { JSON.stringify(${prefix}Edit) }
                     <div className="text-right pb-2">
                         <ButtonPrimary disabled={${prefix}Loading} type="submit">
                             Save

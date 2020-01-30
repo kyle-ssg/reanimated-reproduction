@@ -40,5 +40,5 @@ const Loader = class extends Component {
         );
     }
 };
-
+global.Loader = Loader;
 export default Loader;

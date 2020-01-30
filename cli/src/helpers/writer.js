@@ -78,4 +78,13 @@ module.exports = {
       return fs.writeFileSync(webPath, string, 'utf8')
     }
   },
+  writeWebGetExample: async function (string, prefix) {
+    const webPath = path.join(components, functionName('', prefix) + '.js')
+    let res = fs.existsSync(webPath)
+    if (res) {
+      console.log('Skipping web example, already exists')
+    } else {
+      return fs.writeFileSync(webPath, string, 'utf8')
+    }
+  },
 }

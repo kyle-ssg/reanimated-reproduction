@@ -5,7 +5,11 @@ const controller = require('../controller').writeGet
 
 class TheCommand extends Command {
   async run() {
-    const action = await cli.prompt('Define action to retrieve the item', {default: 'GET_THING'})
+    const {args} = this.parse(TheCommand)
+    const action = args.prefix ? 'GET_' + args.prefix.toUpperCase()  : await cli.prompt('Define action to retrieve the item', {default: 'GET_THING'})
+    if (args.prefix) {
+      console.log('GET_' + args.prefix.toUpperCase())
+    }
     const prefix = await cli.prompt('Where does it get stored in the reducer?', {default: getPrefix(action)})
     const api = await cli.prompt('What\'s the api path? ', {default: '/' + getPrefix(action) + '/:id'})
     const createProvider = await cli.prompt('Do you want to create a provider?', {default: 'yes'})
@@ -14,6 +18,9 @@ class TheCommand extends Command {
     await controller(action, prefix, api, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes')
   }
 }
+TheCommand.args = [
+  {name: 'prefix'},
+]
 
 TheCommand.description = `Writes the app actions, saga
 ...

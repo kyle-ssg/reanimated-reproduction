@@ -5,21 +5,22 @@ const controller = require('../controller').writeUpdate
 
 class TheCommand extends Command {
   async run() {
-    const action = await cli.prompt('Define action to update the item', {default: 'UPDATE_THING'})
+    const {args} = this.parse(TheCommand)
+    const action = args.prefix ? 'UPDATE_' + args.prefix.toUpperCase()  : await cli.prompt('Define action to create the item', {default: 'UPDATE_THING'})
+    if (args.prefix) {
+      console.log('UPDATE_' + args.prefix.toUpperCase())
+    }
     const prefix = await cli.prompt('Where does it get stored in the reducer?', {default: getPrefix(action)})
-    const api = await cli.prompt('What\'s the api path?', {default: '/' + getPrefix(action) + '/:id'})
+    const api = await cli.prompt('What\'s the api path? ', {default: '/' + getPrefix(action) + '/:id'})
     const createProvider = await cli.prompt('Do you want to create a provider?', {default: 'yes'})
     const createExample = createProvider ? await cli.prompt('Do you want to create a web example using it?', {default: 'yes'}) : false
     const createExampleReactNative = createProvider ? await cli.prompt('Do you want to create an example component using it?', {default: 'yes'}) : false
     await controller(action, prefix, api, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes')
   }
 }
-
-TheCommand.description = `Writes the app actions, saga
-...
-Extra documentation goes here
-`
-
+TheCommand.args = [
+  {name: 'prefix'},
+]
 TheCommand.flags = {
   name: flags.string({char: 'n', description: 'name to print'}),
 }
