@@ -14,7 +14,7 @@ class TheCommand extends Command {
       if (item.path) {
         const prefix = item.prefix || item.path.split('/')[1]
         if (item.get) {
-          if (Array.isArray(item.get.body((r)=>r))) {
+          if (Array.isArray(item.get.body(r => r))) {
             await collectionController('GET_' + prefix.toUpperCase(), prefix, item.path, true, true, true)
           } else {
             await getController('GET_' + prefix.toUpperCase(), prefix, item.path, true, true, true)
