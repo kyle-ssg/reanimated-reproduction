@@ -12,14 +12,16 @@ class TheCommand extends Command {
     if (args.prefix) {
       console.log('CRUD: ' + args.prefix.toUpperCase())
     }
-    const prefix = await cli.prompt('Where does it get stored in the reducer?', {default: getPrefix(action)})
-    const api = await cli.prompt('What\'s the api path? ', {default: '/' + getPrefix(action) + '/:id'})
-    const apiPost = await cli.prompt('What\'s the api path to post? ', {default: '/' + getPrefix(action)})
+    console.log(getPrefix(action))
+    const prefix = await cli.prompt('Where does it get stored in the reducer?', {default: getPrefix('CREATE_' + action)})
+    const api = await cli.prompt('What\'s the api path? ', {default: '/' + getPrefix('A_' + action) + '/:id'})
+    const apiPost = await cli.prompt('What\'s the api path to post? ', {default: '/' + getPrefix('A_' + action)})
     const createProvider = await cli.prompt('Do you want to create a provider?', {default: 'yes'})
     const createExample = createProvider ? await cli.prompt('Do you want to create a web example using it?', {default: 'yes'}) : false
     const createExampleReactNative = createProvider ? await cli.prompt('Do you want to create an example component using it?', {default: 'yes'}) : false
-    await controller(action, prefix, api, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes')
-    await controllerRead(action, prefix, api, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes')
+    await controller('CREATE_' + action, prefix, apiPost, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes')
+    await controllerRead('GET_' + action, prefix, api, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes')
+    await controllerUpdate('UPDATE_' + action, prefix, api, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes')
   }
 }
 TheCommand.args = [
