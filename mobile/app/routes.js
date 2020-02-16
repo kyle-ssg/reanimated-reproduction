@@ -2,7 +2,7 @@ import { Navigation } from 'react-native-navigation';
 import { RNNDrawer } from 'react-native-navigation-drawer-extension';
 import { Provider } from 'react-redux';
 import _store from '../../common/store';
-
+import merge from 'lodash/merge';
 const store = _store();
 
 
@@ -12,14 +12,14 @@ const routes = {
     homeScreen: () => ({
         component: {
             name: '/',
-            options: _.merge({}, global.navbarStyle, { topBar: { title: { text: 'Home' } } }),
+            options: merge({}, global.navbarStyle, { topBar: { title: { text: 'Home' } } }),
         },
     }),
     // The initial screen
     storybookScreen: () => ({
         component: {
             name: 'storybook',
-            options: _.merge({}, global.navbarStyle, { topBar: { title: { text: 'Home' } } }),
+            options: merge({}, global.navbarStyle, { topBar: { title: { text: 'Home' } } }),
         },
     }),
 
@@ -34,7 +34,7 @@ const routes = {
         component: {
             name: '/webmodal',
             passProps: { uri },
-            options: _.merge({}, global.navbarStyle, global.modalNavButtons, {
+            options: merge({}, global.navbarStyle, global.modalNavButtons, {
                 topBar: { title: { text: title || '' } },
             }),
         },
@@ -94,7 +94,7 @@ const routes = {
     selectModal: (title, { items, renderRow, onChange, multiple, filterItem, autoclose }) => routes.withStack({
         component: { name: '/select',
             passProps: { items, renderRow, onChange, multiple, filterItem, autoclose },
-            options: _.merge({}, global.navbarStyle, global.modalNavButtons, {
+            options: merge({}, global.navbarStyle, global.modalNavButtons, {
                 topBar: {
                     drawBehind: false,
                     background: {
@@ -118,7 +118,7 @@ const routes = {
         component: {
             name: '/contact-select',
             passProps: { onChange },
-            options: _.merge({}, global.navbarStyle, global.modalNavButtons, {
+            options: merge({}, global.navbarStyle, global.modalNavButtons, {
                 topBar: {
                     title: {
                         text: title || '',
