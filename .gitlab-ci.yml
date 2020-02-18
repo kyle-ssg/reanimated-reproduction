@@ -30,12 +30,18 @@ deploy-mobile:
         - master
         - staging
 
+deploy-web-default:
+  before_script:
+    - npm i -g now
+    - rm package-lock.json
+    - npm i --unsafe-perm
+  only:
+      changes:
+        - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+
 deploy-web-production:
     image: mhart/alpine-node:10
     stage: deploy
-    before_script:
-        - npm i -g now
-        - npm i --unsafe-perm
     script:
         - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --prod
     only:
@@ -47,9 +53,6 @@ deploy-web-production:
 deploy-web-staging:
     image: mhart/alpine-node:10
     stage: deploy
-    before_script:
-        - npm i -g now
-        - npm i --unsafe-perm
     script:
         - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.staging.json --prod
     only:
@@ -61,9 +64,6 @@ deploy-web-staging:
 deploy-web-feature:
     image: mhart/alpine-node:10
     stage: deploy
-    before_script:
-        - npm i -g now
-        - npm i --unsafe-perm
     script:
         - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json
     except:
