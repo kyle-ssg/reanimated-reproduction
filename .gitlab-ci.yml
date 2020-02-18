@@ -1,6 +1,6 @@
 stages:
   - setup_env
-    # - deploy
+  - deploy
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
@@ -75,7 +75,7 @@ deploy-web:
         - npm i -g now
         - npm i
     script:
-        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config ../now.json --prod
+        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --prod
     only:
       refs:
         - master
