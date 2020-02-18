@@ -9,31 +9,27 @@ cache:
 
 setup-env-production:
   stage: setup_env
-  script:
-      - export ENV=prod
-      - export CODE_PUSH_ENV=Production
+  variables:
+    ENV: prod
+    CODE_PUSH_ENV: Production
   only:
     refs:
       - master
 
-setup-env-production:
+setup-env-staging:
   stage: setup_env
-  script:
-      - export ENV=staging
-      - export CODE_PUSH_ENV=Staging
+  variables:
+    ENV: staging
+    CODE_PUSH_ENV: Staging
   only:
     refs:
       - staging
 
-setup-env-mobile:
+setup-env-web-feature:
   stage: setup_env
-  script:
-      - export CODE_PUSH_APP_NAME_ANDROID=Solid-State-Group/Frontend-Boilerplate-Android
-      - export CODE_PUSH_APP_NAME_IOS=Solid-State-Group/Frontend-Boilerplate-iOS
-  only:
-    changes:
-      - common/**
-      - mobile/**
+  variables:
+    ENV: dev
+  except:
     refs:
       - master
       - staging
@@ -41,6 +37,9 @@ setup-env-mobile:
 deploy-mobile:
     image: ssgluke/gitlab-ci-codepush:v1.5
     stage: deploy
+    variables:
+        CODE_PUSH_APP_NAME_ANDROID: Solid-State-Group/Frontend-Boilerplate-Android
+        CODE_PUSH_APP_NAME_IOS: Solid-State-Group/Frontend-Boilerplate-iOS
     before_script:
         - appcenter login --token $APPCENTER_ACCESS_TOKEN
         - cd mobile
@@ -61,12 +60,11 @@ deploy-mobile:
 
 setup-env-web:
   stage: setup_env
-  script:
-      - export NOW_TEAM_NAME=solidstategroup
+  variables:
+      NOW_TEAM_NAME: solidstategroup
   only:
-    refs:
-      - master
-      - staging
+      changes:
+        - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
 
 deploy-web-production:
     image: mhart/alpine-node:10
