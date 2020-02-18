@@ -1,10 +1,10 @@
 {
-  "name": "janus-b2c",
+  "name": "ssg-mobile-boilerplate",
   "version": "0.0.1",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "ssh://git@gitlab.com:racing-post/janus/janus-frontend-common.git"
+    "url": "https://git.solidstategroup.com/solidstategroup/ssg-frontend-boilerplate"
   },
   "scripts": {
     "start": "react-native start",

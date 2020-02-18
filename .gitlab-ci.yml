@@ -1,0 +1,84 @@
+stages:
+  - setup_env
+    # - deploy
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+setup-env-production:
+  stage: setup_env
+  script:
+      - export ENV=prod
+      - export CODE_PUSH_ENV=Production
+  only:
+    refs:
+      - master
+
+setup-env-production:
+  stage: setup_env
+  script:
+      - export ENV=staging
+      - export CODE_PUSH_ENV=Staging
+  only:
+    refs:
+      - staging
+
+setup-env-mobile:
+  stage: setup_env
+  script:
+      - export CODE_PUSH_APP_NAME_ANDROID=Solid-State-Group/Frontend-Boilerplate-Android
+      - export CODE_PUSH_APP_NAME_IOS=Solid-State-Group/Frontend-Boilerplate-iOS
+  only:
+    changes:
+      - common/**
+      - mobile/**
+    refs:
+      - master
+      - staging
+
+deploy-mobile:
+    image: ssgluke/gitlab-ci-codepush:v1.5
+    stage: deploy
+    before_script:
+        - appcenter login --token $APPCENTER_ACCESS_TOKEN
+        - cd mobile
+        - npm i
+    script:
+        # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
+        # - ANDROID_APP_VERSION=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
+        # - appcenter codepush release -a $CODE_PUSH_APP_NAME_ANDROID --target-binary-version $ANDROID_APP_VERSION -d $CODE_PUSH_ENV --disable-duplicate-release-error
+        - appcenter codepush release -a $CODE_PUSH_APP_NAME_ANDROID -d $CODE_PUSH_ENV --disable-duplicate-release-error
+        - appcenter codepush release -a $CODE_PUSH_APP_NAME_IOS -d $CODE_PUSH_ENV --disable-duplicate-release-error
+    only:
+      changes:
+        - common/**
+        - mobile/**
+      refs:
+        - master
+        - staging
+
+setup-env-web:
+  stage: setup_env
+  script:
+      - export NOW_TEAM_NAME=solidstategroup
+  only:
+    refs:
+      - master
+      - staging
+
+deploy-web:
+    image: mhart/alpine-node:10
+    stage: deploy
+    before_script:
+        - npm i -g now
+        - npm i
+    script:
+        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config ../now.json --prod
+    only:
+      refs:
+        - master
+        - staging
+      changes:
+        - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"

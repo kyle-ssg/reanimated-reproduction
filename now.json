@@ -1,4 +1,5 @@
 {
+  "name": "ssg-frontend-boilerplate",
   "version": 2,
   "routes": [
     {

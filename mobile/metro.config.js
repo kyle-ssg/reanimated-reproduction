@@ -1,6 +1,6 @@
 /**
  * Metro configuration for React Native
- * Overrides original to have local access to janus-frontend-common
+ * Overrides original to have local access to common
  * https://github.com/facebook/react-native
  *
  * @format
