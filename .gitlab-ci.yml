@@ -36,6 +36,7 @@ deploy-web-production:
     variables:
       ENV: prod
     script:
+        - npm i -g now
         - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --prod --build-env ENV=$ENV
     only:
       refs:
@@ -49,6 +50,7 @@ deploy-web-staging:
     variables:
       ENV: staging
     script:
+        - npm i -g now
         - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.staging.json --prod --build-env ENV=$ENV
     only:
       refs:
@@ -62,6 +64,7 @@ deploy-web-develop:
     variables:
       ENV: dev
     script:
+        - npm i -g now
         - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.develop.json --prod --build-env ENV=$ENV
     only:
       refs:
@@ -75,6 +78,7 @@ deploy-web-feature:
     variables:
       ENV: dev
     script:
+        - npm i -g now
         - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV
     except:
       refs:
