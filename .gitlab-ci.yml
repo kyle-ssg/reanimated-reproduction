@@ -51,7 +51,7 @@ deploy-web-staging:
       ENV: staging
     script:
         - npm i -g now
-        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.staging.json --prod --build-env ENV=$ENV
+        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.staging.json --build-env ENV=$ENV
     only:
       refs:
         - staging
@@ -65,7 +65,7 @@ deploy-web-develop:
       ENV: dev
     script:
         - npm i -g now
-        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.develop.json --prod --build-env ENV=$ENV
+        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.develop.json --build-env ENV=$ENV
     only:
       refs:
         - develop
