@@ -30,21 +30,18 @@ deploy-mobile:
         - master
         - staging
 
-deploy-web-default:
-    image: mhart/alpine-node:10
-    stage: deploy
-    before_script:
-        - npm i -g now
-        - rm package-lock.json
-        - npm i --unsafe-perm
-    only:
-      changes:
-        - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+.web_before_script: &web_before_script  # Hidden key that defines an anchor named 'job_definition'
+  before_script:
+    - npm i -g now
+    - rm package-lock.json
+    - npm i --unsafe-perm
 
 deploy-web-production:
     image: mhart/alpine-node:10
     stage: deploy
+    <<: *web_before_script
     script:
+        
         - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --prod
     only:
       refs:
@@ -55,6 +52,7 @@ deploy-web-production:
 deploy-web-staging:
     image: mhart/alpine-node:10
     stage: deploy
+    <<: *web_before_script
     script:
         - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.staging.json --prod
     only:
@@ -66,6 +64,7 @@ deploy-web-staging:
 deploy-web-feature:
     image: mhart/alpine-node:10
     stage: deploy
+    <<: *web_before_script
     script:
         - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json
     except:
