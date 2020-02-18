@@ -30,19 +30,13 @@ deploy-mobile:
         - master
         - staging
 
-.web_before_script: &web_before_script  # Hidden key that defines an anchor named 'job_definition'
-  before_script:
-    - npm i -g now
-    - rm package-lock.json
-    - npm i --unsafe-perm
-
 deploy-web-production:
     image: mhart/alpine-node:10
     stage: deploy
-    <<: *web_before_script
+    variables:
+      ENV: prod
     script:
-        
-        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --prod
+        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --prod --build-env ENV=$ENV
     only:
       refs:
         - master
@@ -52,21 +46,36 @@ deploy-web-production:
 deploy-web-staging:
     image: mhart/alpine-node:10
     stage: deploy
-    <<: *web_before_script
+    variables:
+      ENV: staging
     script:
-        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.staging.json --prod
+        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.staging.json --prod --build-env ENV=$ENV
     only:
       refs:
         - staging
       changes:
         - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
 
+deploy-web-develop:
+    image: mhart/alpine-node:10
+    stage: deploy
+    variables:
+      ENV: dev
+    script:
+        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.develop.json --prod --build-env ENV=$ENV
+    only:
+      refs:
+        - develop
+      changes:
+        - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+
 deploy-web-feature:
     image: mhart/alpine-node:10
     stage: deploy
-    <<: *web_before_script
+    variables:
+      ENV: dev
     script:
-        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json
+        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV
     except:
       refs:
         - master
