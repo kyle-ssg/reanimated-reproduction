@@ -1,38 +1,10 @@
 stages:
-  - setup_env
   - deploy
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules/
-
-setup-env-production:
-  stage: setup_env
-  variables:
-    ENV: prod
-    CODE_PUSH_ENV: Production
-  only:
-    refs:
-      - master
-
-setup-env-staging:
-  stage: setup_env
-  variables:
-    ENV: staging
-    CODE_PUSH_ENV: Staging
-  only:
-    refs:
-      - staging
-
-setup-env-web-feature:
-  stage: setup_env
-  variables:
-    ENV: dev
-  except:
-    refs:
-      - master
-      - staging
 
 deploy-mobile:
     image: ssgluke/gitlab-ci-codepush:v1.5
@@ -57,14 +29,6 @@ deploy-mobile:
       refs:
         - master
         - staging
-
-setup-env-web:
-  stage: setup_env
-  variables:
-      NOW_TEAM_NAME: solidstategroup
-  only:
-      changes:
-        - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
 
 deploy-web-production:
     image: mhart/alpine-node:10
