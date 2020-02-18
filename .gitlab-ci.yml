@@ -34,12 +34,12 @@ deploy-web-default:
     image: mhart/alpine-node:10
     stage: deploy
     before_script:
-      - npm i -g now
-      - rm package-lock.json
-      - npm i --unsafe-perm
+        - npm i -g now
+        - rm package-lock.json
+        - npm i --unsafe-perm
     only:
-        changes:
-          - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+      changes:
+        - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
 
 deploy-web-production:
     image: mhart/alpine-node:10
