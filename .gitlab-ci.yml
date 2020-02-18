@@ -68,17 +68,30 @@ setup-env-web:
       - master
       - staging
 
-deploy-web:
+deploy-web-production:
     image: mhart/alpine-node:10
     stage: deploy
     before_script:
         - npm i -g now
-        - npm i
+        - npm i --unsafe-perm
     script:
         - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --prod
     only:
       refs:
         - master
+      changes:
+        - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+
+deploy-web-staging:
+    image: mhart/alpine-node:10
+    stage: deploy
+    before_script:
+        - npm i -g now
+        - npm i --unsafe-perm
+    script:
+        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.staging.json --prod
+    only:
+      refs:
         - staging
       changes:
         - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
@@ -88,7 +101,7 @@ deploy-web-feature:
     stage: deploy
     before_script:
         - npm i -g now
-        - npm i
+        - npm i --unsafe-perm
     script:
         - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json
     except:
