@@ -6,7 +6,7 @@ cache:
   paths:
     - node_modules/
 
-.mobile_deploy_common_script: &mobile_deploy_common_script
+.mobile_deploy_common_before_script: &mobile_deploy_common_before_script
   before_script:
     - appcenter login --token $APPCENTER_ACCESS_TOKEN
     - cd mobile
@@ -25,7 +25,7 @@ deploy-mobile-android-production:
     stage: deploy
     variables:
       ENV: prod
-    <<: *mobile_deploy_common_script
+    <<: *mobile_deploy_common_before_script
     script:
         # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
         # - ANDROID_APP_VERSION=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
@@ -44,7 +44,7 @@ deploy-mobile-android-staging:
     stage: deploy
     variables:
       ENV: staging
-    <<: *mobile_deploy_common_script
+    <<: *mobile_deploy_common_before_script
     script:
         # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
         # - ANDROID_APP_VERSION=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
@@ -63,7 +63,7 @@ deploy-mobile-ios-production:
     stage: deploy
     variables:
       ENV: prod
-    <<: *mobile_deploy_common_script
+    <<: *mobile_deploy_common_before_script
     script:
         - appcenter codepush release -a $CODE_PUSH_APP_NAME_IOS -d Production --disable-duplicate-release-error
     only:
@@ -79,7 +79,7 @@ deploy-mobile-ios-staging:
     stage: deploy
     variables:
       ENV: staging
-    <<: *mobile_deploy_common_script
+    <<: *mobile_deploy_common_before_script
     script:
         - appcenter codepush release -a $CODE_PUSH_APP_NAME_IOS -d Staging --disable-duplicate-release-error
     only:
