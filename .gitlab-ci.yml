@@ -8,14 +8,14 @@ cache:
 
 .mobile_deploy_common_before_script: &mobile_deploy_common_before_script
   before_script:
-    - appcenter login --token $APPCENTER_ACCESS_TOKEN
+    - appcenter login --token ${APPCENTER_ACCESS_TOKEN}
     - cd mobile
     - npm i
 
 .mobile_deploy_common_required_changes: &mobile_deploy_common_required_changes
   changes:
-    - common/**
-    - mobile/**
+    - common/**/*
+    - mobile/**/*
 
 deploy-mobile-android-production:
     image: ssgluke/gitlab-ci-codepush:v1.5
