@@ -19,7 +19,7 @@
     "android:hash:dev": "keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64\n",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "postinstall": "npm run hooks && cd ./ios && pod install && cd ..",
+    "postinstall": "cd ./ios && pod install && cd ..",
     "storybook": "start-storybook -p 7007",
     "test:ui": "jest ./storybook/storybook.test.js"
   },
