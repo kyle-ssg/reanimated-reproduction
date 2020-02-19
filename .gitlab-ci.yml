@@ -50,9 +50,6 @@ deploy-mobile-android-staging:
         - mobile/**
       refs:
         - staging
-      variables:
-        - $APPCENTER_ACCESS_TOKEN
-        - $CODE_PUSH_APP_NAME_ANDROID
 
 deploy-mobile-ios-production:
     image: ssgluke/gitlab-ci-codepush:v1.5
