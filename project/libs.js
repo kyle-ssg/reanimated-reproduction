@@ -1,5 +1,8 @@
 /* eslint-disable */
 import propTypes from 'prop-types';
+import _ from './lodash';
+
+global._ = _;
 global.propTypes = propTypes;
 
 // Analytics
