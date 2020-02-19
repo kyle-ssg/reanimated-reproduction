@@ -8,7 +8,6 @@ cache:
 
 .mobile_deploy_common_before_script: &mobile_deploy_common_before_script
   before_script:
-    - appcenter login
     - cd mobile
     - npm i
 
