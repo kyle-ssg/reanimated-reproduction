@@ -17,7 +17,8 @@ class MyApp extends App {
             return;
         }
 
-        if (!ctx.pathname) {  //
+        var x = "" + 1
+        if (!ctx.pathname) {
             return;
         }
         const locale = Constants.simulate.FORCE_LANGUAGE || API.getStoredLocale(ctx.req); // Retrieve the locale from cookie or headers
