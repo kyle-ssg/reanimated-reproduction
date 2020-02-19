@@ -12,8 +12,7 @@ class ArticlePage extends Component {
       // await ctx.store.dispatch(AppActions.getArticle(ctx.query.id)); // Post startup action with token and locale
   }
 
-  render()
-  {
+  render() {
       const { props: { router: { query: { id } } } } = this;
       return (
           <div className="container">

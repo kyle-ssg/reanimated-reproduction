@@ -1,32 +1,32 @@
 const functionName = function (action, prefix) {
-  const post = prefix.charAt(0).toUpperCase() + prefix.slice(1)
-  const actionParts = action.split('_')
-  return actionParts[0].toLowerCase() + post
-}
+    const post = prefix.charAt(0).toUpperCase() + prefix.slice(1);
+    const actionParts = action.split('_');
+    return actionParts[0].toLowerCase() + post;
+};
 
 const apiName = function (api, isUpdate) {
-  // eslint-disable-next-line no-template-curly-in-string
-  const replace = isUpdate ? '${action.data.id}' : '${action.id}'
-  if (api.charAt(0) === '/') {
-    return api.slice(1).replace(':id', replace)
-  }
-  // eslint-disable-next-line no-template-curly-in-string
-  return api.replace(':id', replace)
-}
+    // eslint-disable-next-line no-template-curly-in-string
+    const replace = isUpdate ? '${action.data.id}' : '${action.id}';
+    if (api.charAt(0) === '/') {
+        return api.slice(1).replace(':id', replace);
+    }
+    // eslint-disable-next-line no-template-curly-in-string
+    return api.replace(':id', replace);
+};
 
 module.exports = {
-  action: function (action) {
-    return `    '${action}': '${action}',
+    action(action) {
+        return `    '${action}': '${action}',
     '${action}_LOADED': '${action}_LOADED',
     '${action}_ERROR': '${action}_ERROR',
-`
-  },
-  takeLatest: function (action, prefix) {
-    return `takeLatest(Actions.${action}, ${functionName(action, prefix)}),`
-  },
-  // appactions
-  getCollection: function (action, prefix) {
-    return `
+`;
+    },
+    takeLatest(action, prefix) {
+        return `takeLatest(Actions.${action}, ${functionName(action, prefix)}),`;
+    },
+    // appactions
+    getCollection(action, prefix) {
+        return `
     ${functionName(action, prefix)}(data, callbacks = {}) {
         return {
             type: Actions.${action},
@@ -34,10 +34,10 @@ module.exports = {
             ...callbacks,
         };
     },
-`
-  },
-  get: function (action, prefix) {
-    return `
+`;
+    },
+    get(action, prefix) {
+        return `
     ${functionName(action, prefix)}(id, callbacks = {}) {
         return {
             type: Actions.${action},
@@ -45,10 +45,10 @@ module.exports = {
             ...callbacks,
         };
     },
-`
-  },
-  post: function (action, prefix) {
-    return `
+`;
+    },
+    post(action, prefix) {
+        return `
     ${functionName(action, prefix)}(data, callbacks = {}) {
         return {
             type: Actions.${action},
@@ -56,10 +56,10 @@ module.exports = {
             ...callbacks,
         };
     },
-`
-  },
-  update: function (action, prefix) {
-    return `
+`;
+    },
+    update(action, prefix) {
+        return `
     ${functionName(action, prefix)}(data, callbacks = {}) {
         return {
             type: Actions.${action},
@@ -67,70 +67,70 @@ module.exports = {
             ...callbacks,
         };
     },
-`
-  },
-  // reducer
-  reducerCollection: function (action, prefix) {
-    return `case Actions.${action}:
+`;
+    },
+    // reducer
+    reducerCollection(action, prefix) {
+        return `case Actions.${action}:
             return itemLoading(state, '${prefix}', action);
         case Actions.${action}_LOADED:
             return itemLoaded(state, '${prefix}', action);
         case Actions.${action}_ERROR:
-            return itemError(state, '${prefix}', action);`
-  },
-  reducerGet: function (action, prefix) {
-    return `case Actions.${action}:
+            return itemError(state, '${prefix}', action);`;
+    },
+    reducerGet(action, prefix) {
+        return `case Actions.${action}:
             return itemLoading(state, '${prefix}', action);
         case Actions.${action}_LOADED:
             return itemLoaded(state, '${prefix}', action);
         case Actions.${action}_ERROR:
-            return itemError(state, '${prefix}', action);`
-  },
-  reducerPost: function (action, prefix) {
-    return `case Actions.${action}:
+            return itemError(state, '${prefix}', action);`;
+    },
+    reducerPost(action, prefix) {
+        return `case Actions.${action}:
             return itemLoading(state, '${prefix}', action);
         case Actions.${action}_LOADED:
             return itemSaved(state, '${prefix}', action);
         case Actions.${action}_ERROR:
-            return itemError(state, '${prefix}', action);`
-  },
-  reducerUpdate: function (action, prefix) {
-    return `case Actions.${action}:
+            return itemError(state, '${prefix}', action);`;
+    },
+    reducerUpdate(action, prefix) {
+        return `case Actions.${action}:
             return itemLoading(state, '${prefix}', action);
         case Actions.${action}_LOADED:
             return itemSaved(state, '${prefix}', action);
         case Actions.${action}_ERROR:
-            return itemError(state, '${prefix}', action);`
-  },
-  // yield
-  yieldCollection: function (action, prefix, api) {
-    return `
+            return itemError(state, '${prefix}', action);`;
+    },
+    // yield
+    yieldCollection(action, prefix, api) {
+        return `
 export function* ${functionName(action, prefix)}(action) {
     yield getAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
 }
-`
-  },
-  yieldGet: function (action, prefix, api) {
-    return `
+`;
+    },
+    yieldGet(action, prefix, api) {
+        return `
 export function* ${functionName(action, prefix)}(action) {
     yield getAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
-}`
-  },
-  yieldPost: function (action, prefix, api) {
-    return `
+}`;
+    },
+    yieldPost(action, prefix, api) {
+        return `
 export function* ${functionName(action, prefix)}(action) {
     yield postAction(action, \`\${Project.api}${apiName(api, true)}\`, '${action}');
-}`
-  },
-  yieldUpdate: function (action, prefix, api) {
-    return `
+}`;
+    },
+    yieldUpdate(action, prefix, api) {
+        return `
 export function* ${functionName(action, prefix)}(action) {
     yield updateAction(action, \`\${Project.api}${apiName(api, true)}\`, '${action}');
-}`
-  },
-  //  provider
-  providerItem: function (action, prefix) {
-    return `
+}`;
+    },
+    //  provider
+    providerItem(action, prefix) {
+        return `
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import '../app-actions';
@@ -154,10 +154,10 @@ function mapStateToProps(state, props) {
 }
 
 export default ${functionName('WITH', prefix)};
-`
-  },
-  providerCollection: function (action, prefix) {
-    return `
+`;
+    },
+    providerCollection(action, prefix) {
+        return `
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import '../app-actions';
@@ -179,11 +179,11 @@ function mapStateToProps(state) {
 }
 
 export default ${functionName('WITH', prefix)};
-`
-  },
-  webGet: function (action, prefix) {
-    const prefixCamel = functionName('', prefix)
-    return `
+`;
+    },
+    webGet(action, prefix) {
+        const prefixCamel = functionName('', prefix);
+        return `
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import with${prefixCamel} from '../common/providers/${functionName('WITH', prefix)}';
@@ -225,11 +225,11 @@ class ${prefixCamel} extends Component {
 }
 
 export default with${prefixCamel}(${prefixCamel});
-`
-  },
-  webCollection: function (action, prefix) {
-    const prefixCamel = functionName('', prefix)
-    return `
+`;
+    },
+    webCollection(action, prefix) {
+        const prefixCamel = functionName('', prefix);
+        return `
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import with${prefixCamel} from '../common/providers/${functionName('WITH', prefix)}';
@@ -266,11 +266,11 @@ class ${prefixCamel} extends Component {
 }
 
 export default with${prefixCamel}(${prefixCamel});
-`
-  },
-  webPost: function (action, prefix) {
-    const prefixCamel = functionName('', prefix)
-    return `
+`;
+    },
+    webPost(action, prefix) {
+        const prefixCamel = functionName('', prefix);
+        return `
 import React, { Component } from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import propTypes from 'prop-types';
@@ -382,10 +382,10 @@ class Edit${prefixCamel} extends Component {
 }
 
 export default withRouter(with${prefixCamel}(Edit${prefixCamel}));
-`
-  },
-  component: function (name) {
-    return `import React, { Component } from 'react';
+`;
+    },
+    component(name) {
+        return `import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
 const ${name} = class extends Component {
@@ -406,6 +406,6 @@ const ${name} = class extends Component {
 };
 
 export default ${name};
-`
-  },
-}
+`;
+    },
+};

@@ -85,7 +85,7 @@ function defaultReducer(
         case Actions.UPDATE_USER_ERROR:
             return itemError(state, 'user', action);
         case Actions.CLEAR_USER:
-            return { ...state, user:null };
+            return { ...state, user: null };
         case Actions.STARTUP_LOADED:
             return { ...state, ...action.data };
         // END OF REDUCER

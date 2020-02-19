@@ -6,7 +6,7 @@ const configs = require('../config.pact');
 const { mock, setup } = require('./pact.server');
 
 
-const fakeLike = (v) => v;
+const fakeLike = v => v;
 
 map(configs, (config) => {
     return setup(config.port)
@@ -18,8 +18,8 @@ map(configs, (config) => {
                     const { body, requestBody, path: testPath } = test;
                     const path = testPath || testsPath;
                     console.log('Mocking', path, method, ' on ', config.port);
-                    mock(config.port, path, method, null,body && body(fakeLike), requestBody && requestBody(fakeLike));
+                    mock(config.port, path, method, null, body && body(fakeLike), requestBody && requestBody(fakeLike));
                 });
             });
         });
-})
+});
