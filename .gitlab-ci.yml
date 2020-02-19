@@ -56,7 +56,7 @@ deploy-web-staging:
     <<: *web_deploy_common_script
     script:
         - url=$(now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV)
-        - now alias $url ssg-boilerplate-staging
+        - now alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url ssg-boilerplate-staging
     only:
       refs:
         - staging
@@ -71,7 +71,7 @@ deploy-web-develop:
     <<: *web_deploy_common_script
     script:
         - url=$(now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV)
-        - now alias $url ssg-boilerplate-develop
+        - now alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url ssg-boilerplate-develop
     only:
       refs:
         - develop
