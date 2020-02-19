@@ -25,7 +25,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npx run eslint fix ."
+      "pre-commit": "npm run lint:fix"
     }
   },
   "keywords": [],
