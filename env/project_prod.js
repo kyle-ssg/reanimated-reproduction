@@ -1,6 +1,6 @@
 export default global.Project = {
     debug: false,
-    api:'',
+    api: '',
     ga: '',
     logs: {
         DATA: true,

@@ -17,9 +17,9 @@ const _data = {
 
     status(response) { // handle ajax requests
         // console.debug(response);
-        if (response.status === 403)  {
+        if (response.status === 403) {
             API.logout();
-            return Promise.reject({ message:'UNAUTHORIZED' });
+            return Promise.reject({ message: 'UNAUTHORIZED' });
         }
         if (response.status >= 200 && response.status < 300) {
             return Promise.resolve(response);
@@ -66,7 +66,7 @@ const _data = {
     },
 
     _request(method, url, data, headers = {}) {
-        const prom  = Promise.resolve();
+        const prom = Promise.resolve();
 
         // Example refresh token logic
         // const parsedData = _data.tokenParsed;
@@ -154,8 +154,7 @@ const _data = {
                     })
                     .catch((e) => {
                         // console.debug(e);
-                        if (e.httpStatus == 401)
-                        {
+                        if (e.httpStatus == 401) {
                             throw new Error('Network request failed - Unauthorized');
                         }
 

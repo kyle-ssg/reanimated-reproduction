@@ -1,6 +1,6 @@
 export default global.Project = {
     debug: false,
-    api:'http://localhost:4000/',
+    api: 'http://localhost:4000/',
     ga: '',
     logs: {
         DATA: true,

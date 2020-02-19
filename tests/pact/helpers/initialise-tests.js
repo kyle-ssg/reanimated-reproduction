@@ -5,10 +5,10 @@ const { mock } = require('./pact.server');
 const addInteraction = require('./interaction-helper');
 
 const pactLike = Matchers.like;
-const fakeLike = (v) => v;
+const fakeLike = v => v;
 
 const pactDate = Matchers.iso8601Date;
-const fakeDate = (v) => v;
+const fakeDate = v => v;
 
 module.exports = (allTests, port, pact) => new Promise((resolve) => {
     // Execute all the tests
@@ -32,12 +32,12 @@ module.exports = (allTests, port, pact) => new Promise((resolve) => {
 
                     return addInteraction({
                         state,
-                        requestBody:requestBody && requestBody(pactLike),
+                        requestBody: requestBody && requestBody(pactLike),
                         uponReceiving: description,
                         body: body && body(pactLike),
                         method,
                         path,
-                        query:query && query(pactDate),
+                        query: query && query(pactDate),
                     }, pact);
                 });
 
