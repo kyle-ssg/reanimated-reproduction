@@ -13,7 +13,6 @@
     "storybook": "start-storybook",
     "start": "cross-env NODE_ENV=production npm run build && cross-env NODE_ENV=production node server.js",
     "lint": "eslint .",
-    "hooks": "git config core.hooksPath ./hooks",
     "test:e2e": "cross-env E2E=true next build && cross-env NODE_ENV=production E2E=true nightwatch ./tests/e2e/index.e2e.js -c ./tests/e2e/nightwatch.conf.js",
     "test:unit": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --opts ./tests/mocha.opts",
     "test:unit:debug": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --debug-brk --opts ./tests/mocha.opts",
