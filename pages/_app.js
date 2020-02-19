@@ -17,7 +17,7 @@ class MyApp extends App {
             return;
         }
 
-        const x = `${1}`;
+        const x = "" + 1;
         if (!ctx.pathname) {
             return;
         }
