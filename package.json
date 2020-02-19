@@ -22,6 +22,11 @@
     "test:pact:server": "cross-env MOCK_SERVER=true node_modules/.bin/nodemon --watch tests --exec node ./tests/pact/helpers/pact.mock-server.js",
     "test:pact:publish": "node tests/pact/helpers/pact.publish.js"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "eslint fix ."
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -106,7 +111,7 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "enzyme-adapter-react-16": "^1.15.2",
-    "nodemon": "^1.19.1",
+    "husky": "^4.2.3",
     "storybook-addon-smart-knobs": "^5.0.0"
   }
 }
