@@ -30,13 +30,17 @@ deploy-mobile:
         - master
         - staging
 
+.web_deploy_common_script: &web_deploy_common_script
+  before_script:
+    - npm i -g now
+
 deploy-web-production:
     image: mhart/alpine-node:10
     stage: deploy
     variables:
       ENV: prod
+    <<: *web_deploy_common_script
     script:
-        - npm i -g now
         - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --prod --build-env ENV=$ENV
     only:
       refs:
@@ -49,9 +53,10 @@ deploy-web-staging:
     stage: deploy
     variables:
       ENV: staging
+    <<: *web_deploy_common_script
     script:
-        - npm i -g now
-        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.staging.json --build-env ENV=$ENV
+        - url=$(now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV)
+        - now alias $url ssg-boilerplate-staging
     only:
       refs:
         - staging
@@ -63,9 +68,10 @@ deploy-web-develop:
     stage: deploy
     variables:
       ENV: dev
+    <<: *web_deploy_common_script
     script:
-        - npm i -g now
-        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.develop.json --build-env ENV=$ENV
+        - url=$(now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV)
+        - now alias $url ssg-boilerplate-develop
     only:
       refs:
         - develop
@@ -77,13 +83,14 @@ deploy-web-feature:
     stage: deploy
     variables:
       ENV: dev
+    <<: *web_deploy_common_script
     script:
-        - npm i -g now
         - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV
     except:
       refs:
         - master
         - staging
+        - develop
     only:
       changes:
         - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
