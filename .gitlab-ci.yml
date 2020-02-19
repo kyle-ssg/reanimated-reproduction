@@ -12,11 +12,6 @@ cache:
     - cd mobile
     - npm i
 
-.mobile_deploy_common_required_changes: &mobile_deploy_common_required_changes
-  changes:
-    - common/**
-    - mobile/**
-
 deploy-mobile-android-production:
     image: ssgluke/gitlab-ci-codepush:v1.5
     stage: deploy
@@ -29,7 +24,9 @@ deploy-mobile-android-production:
         # - appcenter codepush release -a $CODE_PUSH_APP_NAME_ANDROID --target-binary-version $ANDROID_APP_VERSION -d Production --disable-duplicate-release-error
         - appcenter codepush release -a $CODE_PUSH_APP_NAME_ANDROID -d Production --disable-duplicate-release-error
     only:
-      <<: *mobile_deploy_common_required_changes
+      changes:
+        - common/**
+        - mobile/**
       refs:
         - master
       variables:
@@ -48,7 +45,9 @@ deploy-mobile-android-staging:
         # - appcenter codepush release -a $CODE_PUSH_APP_NAME_ANDROID --target-binary-version $ANDROID_APP_VERSION -d Staging --disable-duplicate-release-error
         - appcenter codepush release -a $CODE_PUSH_APP_NAME_IOS -d Staging --disable-duplicate-release-error
     only:
-      <<: *mobile_deploy_common_required_changes
+      changes:
+        - common/**
+        - mobile/**
       refs:
         - staging
       variables:
@@ -64,7 +63,9 @@ deploy-mobile-ios-production:
     script:
         - appcenter codepush release -a $CODE_PUSH_APP_NAME_IOS -d Production --disable-duplicate-release-error
     only:
-      <<: *mobile_deploy_common_required_changes
+      changes:
+        - common/**
+        - mobile/**
       refs:
         - master
       variables:
@@ -80,7 +81,9 @@ deploy-mobile-ios-staging:
     script:
         - appcenter codepush release -a $CODE_PUSH_APP_NAME_IOS -d Staging --disable-duplicate-release-error
     only:
-      <<: *mobile_deploy_common_required_changes
+      changes:
+        - common/**
+        - mobile/**
       refs:
         - staging
       variables:
