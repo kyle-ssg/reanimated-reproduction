@@ -100,6 +100,7 @@ const TermsScreen = class extends Component {
     render() {
         return (
             <Flex style={[Styles.body]}>
+                <Text>SSG Frontend Boilerplate</Text>
                 <Button onPress={this.refreshData}>Refresh</Button>
                 {this.state.ready && (
                     <FlatList
