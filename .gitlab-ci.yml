@@ -104,6 +104,9 @@ deploy-web-production:
         - master
       changes:
         - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+      variables:
+        - $NOW_TOKEN
+        - $NOW_TEAM_NAME
 
 deploy-web-staging:
     image: mhart/alpine-node:10
@@ -119,6 +122,9 @@ deploy-web-staging:
         - staging
       changes:
         - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+      variables:
+        - $NOW_TOKEN
+        - $NOW_TEAM_NAME
 
 deploy-web-develop:
     image: mhart/alpine-node:10
@@ -134,6 +140,9 @@ deploy-web-develop:
         - develop
       changes:
         - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+      variables:
+        - $NOW_TOKEN
+        - $NOW_TEAM_NAME
 
 deploy-web-feature:
     image: mhart/alpine-node:10
@@ -151,3 +160,6 @@ deploy-web-feature:
     only:
       changes:
         - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+      variables:
+        - $NOW_TOKEN
+        - $NOW_TEAM_NAME
