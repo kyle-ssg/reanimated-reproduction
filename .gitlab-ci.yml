@@ -41,7 +41,7 @@ deploy-web-production:
       ENV: prod
     <<: *web_deploy_common_script
     script:
-        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --prod --build-env ENV=$ENV
+        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --prod --build-env ENV=$ENV --name=$CI_PROJECT_NAME
     only:
       refs:
         - master
@@ -55,8 +55,8 @@ deploy-web-staging:
       ENV: staging
     <<: *web_deploy_common_script
     script:
-        - url=$(now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV)
-        - now alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url ssg-boilerplate-staging
+        - url=$(now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV --name=$CI_PROJECT_NAME)
+        - now alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url ${CI_PROJECT_NAME}-staging
     only:
       refs:
         - staging
@@ -70,8 +70,8 @@ deploy-web-develop:
       ENV: dev
     <<: *web_deploy_common_script
     script:
-        - url=$(now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV)
-        - now alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url ssg-boilerplate-develop
+        - url=$(now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV --name=$CI_PROJECT_NAME)
+        - now alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url ${CI_PROJECT_NAME}-develop
     only:
       refs:
         - develop
@@ -85,7 +85,7 @@ deploy-web-feature:
       ENV: dev
     <<: *web_deploy_common_script
     script:
-        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV
+        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV --name=$CI_PROJECT_NAME
     except:
       refs:
         - master
