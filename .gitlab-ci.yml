@@ -12,8 +12,8 @@ cache:
     - cd mobile
     - npm i
 
-.mobile_deploy_common_required_variables: &mobile_deploy_common_required_variables
-  - $APPCENTER_ACCESS_TOKEN
+# .mobile_deploy_common_required_variables: &mobile_deploy_common_required_variables
+#   - $APPCENTER_ACCESS_TOKEN
 
 .mobile_deploy_common_required_changes: &mobile_deploy_common_required_changes
   changes:
@@ -36,7 +36,7 @@ deploy-mobile-android-production:
       refs:
         - master
       variables:
-        - *mobile_deploy_common_required_variables
+        - $APPCENTER_ACCESS_TOKEN
         - $CODE_PUSH_APP_NAME_ANDROID
 
 deploy-mobile-android-staging:
@@ -55,7 +55,7 @@ deploy-mobile-android-staging:
       refs:
         - staging
       variables:
-        - *mobile_deploy_common_required_variables
+        - $APPCENTER_ACCESS_TOKEN
         - $CODE_PUSH_APP_NAME_ANDROID
 
 deploy-mobile-ios-production:
@@ -71,7 +71,7 @@ deploy-mobile-ios-production:
       refs:
         - master
       variables:
-        - *mobile_deploy_common_required_variables
+        - $APPCENTER_ACCESS_TOKEN
         - $CODE_PUSH_APP_NAME_IOS
 
 deploy-mobile-ios-staging:
@@ -87,7 +87,7 @@ deploy-mobile-ios-staging:
       refs:
         - staging
       variables:
-        - *mobile_deploy_common_required_variables
+        - $APPCENTER_ACCESS_TOKEN
         - $CODE_PUSH_APP_NAME_IOS
 
 .web_deploy_common_script: &web_deploy_common_script
