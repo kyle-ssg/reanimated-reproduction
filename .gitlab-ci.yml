@@ -24,6 +24,8 @@ cache:
 deploy-mobile-android-production:
     image: ssgluke/gitlab-ci-codepush:v1.5
     stage: deploy
+    variables:
+      ENV: prod
     <<: *mobile_deploy_common_script
     script:
         # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
@@ -41,6 +43,8 @@ deploy-mobile-android-production:
 deploy-mobile-android-staging:
     image: ssgluke/gitlab-ci-codepush:v1.5
     stage: deploy
+    variables:
+      ENV: staging
     <<: *mobile_deploy_common_script
     script:
         # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
@@ -58,6 +62,8 @@ deploy-mobile-android-staging:
 deploy-mobile-ios-production:
     image: ssgluke/gitlab-ci-codepush:v1.5
     stage: deploy
+    variables:
+      ENV: prod
     <<: *mobile_deploy_common_script
     script:
         - appcenter codepush release -a $CODE_PUSH_APP_NAME_IOS -d Production --disable-duplicate-release-error
@@ -72,6 +78,8 @@ deploy-mobile-ios-production:
 deploy-mobile-ios-staging:
     image: ssgluke/gitlab-ci-codepush:v1.5
     stage: deploy
+    variables:
+      ENV: staging
     <<: *mobile_deploy_common_script
     script:
         - appcenter codepush release -a $CODE_PUSH_APP_NAME_IOS -d Staging --disable-duplicate-release-error
