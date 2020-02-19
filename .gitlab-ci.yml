@@ -12,9 +12,6 @@ cache:
     - cd mobile
     - npm i
 
-# .mobile_deploy_common_required_variables: &mobile_deploy_common_required_variables
-#   - $APPCENTER_ACCESS_TOKEN
-
 .mobile_deploy_common_required_changes: &mobile_deploy_common_required_changes
   changes:
     - common/**
