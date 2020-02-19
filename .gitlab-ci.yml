@@ -25,8 +25,8 @@ deploy-mobile-android-production:
     script:
         # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
         # - ANDROID_APP_VERSION=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
-        # - appcenter codepush release -a $CODE_PUSH_APP_NAME_ANDROID --target-binary-version $ANDROID_APP_VERSION -d Production --disable-duplicate-release-error
-        - appcenter codepush release -a $CODE_PUSH_APP_NAME_ANDROID -d Production --disable-duplicate-release-error
+        # - appcenter codepush release-react -a $CODE_PUSH_APP_NAME_ANDROID --target-binary-version $ANDROID_APP_VERSION -d Production --disable-duplicate-release-error
+        - appcenter codepush release-react -a $CODE_PUSH_APP_NAME_ANDROID -d Production --disable-duplicate-release-error
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -44,8 +44,8 @@ deploy-mobile-android-staging:
     script:
         # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
         # - ANDROID_APP_VERSION=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
-        # - appcenter codepush release -a $CODE_PUSH_APP_NAME_ANDROID --target-binary-version $ANDROID_APP_VERSION -d Staging --disable-duplicate-release-error
-        - appcenter codepush release -a $CODE_PUSH_APP_NAME_IOS -d Staging --disable-duplicate-release-error
+        # - appcenter codepush release-react -a $CODE_PUSH_APP_NAME_ANDROID --target-binary-version $ANDROID_APP_VERSION -d Staging --disable-duplicate-release-error
+        - appcenter codepush release-react -a $CODE_PUSH_APP_NAME_IOS -d Staging --disable-duplicate-release-error
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -61,7 +61,7 @@ deploy-mobile-ios-production:
       ENV: prod
     <<: *mobile_deploy_common_before_script
     script:
-        - appcenter codepush release -a $CODE_PUSH_APP_NAME_IOS -d Production --disable-duplicate-release-error
+        - appcenter codepush release-react -a $CODE_PUSH_APP_NAME_IOS -d Production --disable-duplicate-release-error
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -77,7 +77,7 @@ deploy-mobile-ios-staging:
       ENV: staging
     <<: *mobile_deploy_common_before_script
     script:
-        - appcenter codepush release -a $CODE_PUSH_APP_NAME_IOS -d Staging --disable-duplicate-release-error
+        - appcenter codepush release-react -a $CODE_PUSH_APP_NAME_IOS -d Staging --disable-duplicate-release-error
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
