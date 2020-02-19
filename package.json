@@ -23,11 +23,6 @@
     "test:pact:server": "cross-env MOCK_SERVER=true node_modules/.bin/nodemon --watch tests --exec node ./tests/pact/helpers/pact.mock-server.js",
     "test:pact:publish": "node tests/pact/helpers/pact.publish.js"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint:fix"
-    }
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
