@@ -45,3 +45,7 @@ end
 target 'appcenter' do
     shared_pods
 end
+
+target 'appcenter-staging' do
+    shared_pods
+end
