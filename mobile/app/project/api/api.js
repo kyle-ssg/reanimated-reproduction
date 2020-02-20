@@ -4,6 +4,7 @@ import analytics from '@react-native-firebase/analytics';
 import AsyncStorage  from '@react-native-community/async-storage';
 import push from './push-notifications-api';
 import auth from './auth';
+import storage from './async-storage-api';
 
 // eslint-disable-next-line
 var initialLinkCb = null;
@@ -192,5 +193,5 @@ global.API = {
     },
     push,
     auth,
-
+    storage,
 };
