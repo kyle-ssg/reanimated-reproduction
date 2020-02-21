@@ -82,9 +82,15 @@ module.exports = {
         'react/no-unescaped-entities': 0, // there are valid cases for this where a key can not be determined
         'react/require-default-props': 0,
     },
+    "settings": {
+        "import/resolver": {
+            "babel-module": {}
+        }
+    },
     'globals': {
         '_': true,
         '__DEV__': true,
+        'Actions': true,
         'API': true,
         'E2E': true,
         'Utils': true,

@@ -8,6 +8,7 @@ import './grid/Column';
 import './forms/Input';
 import './forms/InputGroup';
 import './forms/Button';
+import './forms/Select';
 // import './forms/Panel';
 // import './forms/Tabs';
 import './Gif';
