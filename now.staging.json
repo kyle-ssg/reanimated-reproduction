@@ -1,5 +1,6 @@
 {
   "name": "ssg-boilerplate",
+  "alias": "ssg-boilerplate-staging",
   "version": 2,
   "routes": [
     {

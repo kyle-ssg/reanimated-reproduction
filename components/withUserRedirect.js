@@ -16,7 +16,7 @@ const withUserRedirect = (WrappedComponent) => {
 
         render() {
             if (!this.props.user) {
-                return <div/>
+                return <div/>;
             }
             return (
                 <WrappedComponent

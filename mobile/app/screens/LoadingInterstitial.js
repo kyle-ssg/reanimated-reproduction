@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Animation from 'lottie-react-native';
 import { BackHandler } from 'react-native';
 import propTypes from 'prop-types';
-import loader from '../assets/lottie/interstitial-loader.json';
+import loader from 'assets/lottie/interstitial-loader.json';
 
 class LoadingInterstitial extends Component {
     static propTypes = {
