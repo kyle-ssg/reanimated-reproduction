@@ -6,6 +6,6 @@ then
 else
     if [[ -n "$APPCENTER_XCODE_PROJECT" ]]
     then
-        cd ./ios && rm Podfile.lock && pod install --repo-update && cd ..
+        cd ./ios && pod install && cd ..
     fi
 fi
