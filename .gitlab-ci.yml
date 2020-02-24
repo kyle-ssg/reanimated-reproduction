@@ -24,10 +24,7 @@ deploy-mobile-android-production:
       ENV: prod
     <<: *mobile_deploy_common_before_script
     script:
-        # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
-        # - ANDROID_APP_VERSION=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
-        # - appcenter codepush release-react -a $CODE_PUSH_APP_NAME_ANDROID --target-binary-version $ANDROID_APP_VERSION -d Production --disable-duplicate-release-error
-        - appcenter codepush release-react -a $CODE_PUSH_APP_NAME_ANDROID -d Production --disable-duplicate-release-error
+        - ./../bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_ANDROID Production master android
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -43,10 +40,7 @@ deploy-mobile-android-staging:
       ENV: staging
     <<: *mobile_deploy_common_before_script
     script:
-        # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
-        # - ANDROID_APP_VERSION=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
-        # - appcenter codepush release-react -a $CODE_PUSH_APP_NAME_ANDROID --target-binary-version $ANDROID_APP_VERSION -d Staging --disable-duplicate-release-error
-        - appcenter codepush release-react -a $CODE_PUSH_APP_NAME_ANDROID -d Staging --disable-duplicate-release-error
+        - ./../bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_ANDROID Staging staging android
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -62,7 +56,7 @@ deploy-mobile-ios-production:
       ENV: prod
     <<: *mobile_deploy_common_before_script
     script:
-        - appcenter codepush release-react -a $CODE_PUSH_APP_NAME_IOS -d Production --disable-duplicate-release-error --plist-file ./ios/mobile/Info.plist
+        - ./../bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_IOS Production master ios
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -78,7 +72,7 @@ deploy-mobile-ios-staging:
       ENV: staging
     <<: *mobile_deploy_common_before_script
     script:
-        - appcenter codepush release-react -a $CODE_PUSH_APP_NAME_IOS -d Staging --disable-duplicate-release-error --plist-file ./ios/mobile/Info.plist
+        - ./../bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_IOS Staging staging ios
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
