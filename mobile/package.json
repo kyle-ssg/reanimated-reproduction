@@ -120,7 +120,7 @@
     "react-test-renderer": "16.9.0"
   },
   "resolutions": {
-    "@react-native-community/cli-platform-android": "~3.0.0"
+    "@react-native-community/cli-platform-android": "3.0.2"
   },
   "jest": {
     "testPathIgnorePatterns": [
