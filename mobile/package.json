@@ -119,6 +119,9 @@
     "react-dom": "16.8.6",
     "react-test-renderer": "16.9.0"
   },
+  "resolutions": {
+    "@react-native-community/cli-platform-android": "~3.0.0"
+  },
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/",
