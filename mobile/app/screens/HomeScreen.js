@@ -101,7 +101,7 @@ const HomeScreen = class extends Component {
     render() {
         return (
             <Flex style={[Styles.body]}>
-                <Text>SSG Frontend Boilerplate</Text>
+                <Text>SSG Boilerplate</Text>
                 <Button onPress={() => Navigation.push(this.props.componentId, routes.formScreen())}>Form Example</Button>
                 <Button onPress={this.refreshData}>Refresh</Button>
                 {this.state.ready && (
