@@ -31,6 +31,7 @@
   "dependencies": {
     "@react-native-community/async-storage": "^1.6.1",
     "@react-native-community/netinfo": "^4.1.5",
+    "@react-native-community/cli-platform-android": "3.0.2",
     "@react-native-firebase/analytics": "^6.0.3",
     "@react-native-firebase/app": "^6.0.3",
     "formik": "^2.1.4",
@@ -118,9 +119,6 @@
     "prettier": "^1.15.2",
     "react-dom": "16.8.6",
     "react-test-renderer": "16.9.0"
-  },
-  "resolutions": {
-    "@react-native-community/cli-platform-android": "3.0.2"
   },
   "jest": {
     "testPathIgnorePatterns": [
