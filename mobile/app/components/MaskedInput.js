@@ -52,7 +52,7 @@ const TextInput = class extends PureComponent {
       }
   };
 
-  onBlur = () => {
+  onBlur = (e) => {
       Animated.timing(this.animation, {
           toValue: 0.0001,
           duration: 300,
@@ -60,7 +60,7 @@ const TextInput = class extends PureComponent {
           easing: Easing.cubic,
       }).start();
       if (this.props.onBlur) {
-          this.props.onBlur();
+          this.props.onBlur(e);
       }
   };
 

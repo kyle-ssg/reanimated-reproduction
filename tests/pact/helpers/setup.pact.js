@@ -2,15 +2,15 @@
 import fetch from 'isomorphic-unfetch';
 import { Pact } from '@pact-foundation/pact';
 import path from 'path';
-import map from 'lodash/map'
+import map from 'lodash/map';
 import configs from '../config.pact';
 import executeTests from './initialise-tests';
 
 const mocha = require('mocha');
 
-const before    = mocha.before;
+const before = mocha.before;
 const afterEach = mocha.afterEach;
-const after     = mocha.after;
+const after = mocha.after;
 
 
 global.fetch = fetch;
@@ -39,7 +39,7 @@ before((done) => {
         return Promise.all([
             configs[i].pact.setup(),
             mockServer(configs[i].port),
-        ])
+        ]);
     })).then(() => done());
 });
 //
@@ -56,7 +56,7 @@ after((done) => {
     // eslint-disable-next-line no-console
     console.log('pact complete');
     Promise.all([
-        map(configs,({ pact }) => {
+        map(configs, ({ pact }) => {
             return pact.finalize();
         }),
     ]).then(() => {

@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-unfetch';
 // import jwt from 'jwt-decode';
-import Constants from './constants';
+// import Constants from './constants';
 // import _store  from '../store';
 // import AppActions from '../app-actions';
 
@@ -17,9 +17,9 @@ const _data = {
 
     status(response) { // handle ajax requests
         // console.debug(response);
-        if (response.status === 403)  {
+        if (response.status === 403) {
             API.logout();
-            return Promise.reject({ message:'UNAUTHORIZED' });
+            return Promise.reject({ message: 'UNAUTHORIZED' });
         }
         if (response.status >= 200 && response.status < 300) {
             return Promise.resolve(response);
@@ -66,7 +66,7 @@ const _data = {
     },
 
     _request(method, url, data, headers = {}) {
-        const prom  = Promise.resolve();
+        const prom = Promise.resolve();
 
         // Example refresh token logic
         // const parsedData = _data.tokenParsed;
@@ -151,19 +151,6 @@ const _data = {
                     .then((response) => {
                         API.log('API', 'RESPONSE', method, url, 'Response body', response, 'Original request', options);
                         return response;
-                    })
-                    .catch((e) => {
-                        // console.debug(e);
-                        if (e.httpStatus == 401)
-                        {
-                            throw new Error('Network request failed - Unauthorized');
-                        }
-
-                        if (e._bodyText) {
-                            throw new Error(e._bodyText);
-                        } else {
-                            throw new Error(Constants.simulate.FAKE_API_ERROR ? 'API Error' : 'Network request failed');
-                        }
                     });
             });
     },

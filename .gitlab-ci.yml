@@ -8,14 +8,14 @@ cache:
 
 .mobile_deploy_common_before_script: &mobile_deploy_common_before_script
   before_script:
-    - appcenter login --token $APPCENTER_ACCESS_TOKEN
+    - echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p # - used to increase file watchers limit on Linux
     - cd mobile
     - npm i
 
 .mobile_deploy_common_required_changes: &mobile_deploy_common_required_changes
   changes:
-    - common/**
-    - mobile/**
+    - common/**/*
+    - mobile/**/*
 
 deploy-mobile-android-production:
     image: ssgluke/gitlab-ci-codepush:v1.5
@@ -24,10 +24,7 @@ deploy-mobile-android-production:
       ENV: prod
     <<: *mobile_deploy_common_before_script
     script:
-        # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
-        # - ANDROID_APP_VERSION=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
-        # - appcenter codepush release -a $CODE_PUSH_APP_NAME_ANDROID --target-binary-version $ANDROID_APP_VERSION -d Production --disable-duplicate-release-error
-        - appcenter codepush release -a $CODE_PUSH_APP_NAME_ANDROID -d Production --disable-duplicate-release-error
+        - ./../bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_ANDROID Production master android
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -43,10 +40,7 @@ deploy-mobile-android-staging:
       ENV: staging
     <<: *mobile_deploy_common_before_script
     script:
-        # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
-        # - ANDROID_APP_VERSION=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
-        # - appcenter codepush release -a $CODE_PUSH_APP_NAME_ANDROID --target-binary-version $ANDROID_APP_VERSION -d Staging --disable-duplicate-release-error
-        - appcenter codepush release -a $CODE_PUSH_APP_NAME_IOS -d Staging --disable-duplicate-release-error
+        - ./../bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_ANDROID Staging staging android
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -62,7 +56,7 @@ deploy-mobile-ios-production:
       ENV: prod
     <<: *mobile_deploy_common_before_script
     script:
-        - appcenter codepush release -a $CODE_PUSH_APP_NAME_IOS -d Production --disable-duplicate-release-error
+        - ./../bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_IOS Production master ios
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -78,7 +72,7 @@ deploy-mobile-ios-staging:
       ENV: staging
     <<: *mobile_deploy_common_before_script
     script:
-        - appcenter codepush release -a $CODE_PUSH_APP_NAME_IOS -d Staging --disable-duplicate-release-error
+        - ./../bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_IOS Staging staging ios
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -104,6 +98,9 @@ deploy-web-production:
         - master
       changes:
         - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+      variables:
+        - $NOW_TOKEN
+        - $NOW_TEAM_NAME
 
 deploy-web-staging:
     image: mhart/alpine-node:10
@@ -119,6 +116,9 @@ deploy-web-staging:
         - staging
       changes:
         - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+      variables:
+        - $NOW_TOKEN
+        - $NOW_TEAM_NAME
 
 deploy-web-develop:
     image: mhart/alpine-node:10
@@ -134,6 +134,9 @@ deploy-web-develop:
         - develop
       changes:
         - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+      variables:
+        - $NOW_TOKEN
+        - $NOW_TEAM_NAME
 
 deploy-web-feature:
     image: mhart/alpine-node:10
@@ -151,3 +154,6 @@ deploy-web-feature:
     only:
       changes:
         - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+      variables:
+        - $NOW_TOKEN
+        - $NOW_TEAM_NAME
