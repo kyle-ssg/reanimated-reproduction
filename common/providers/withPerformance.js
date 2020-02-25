@@ -43,8 +43,8 @@ export default (WrappedComponent, _id, remote) => {
             if (remote) {
                 fetch(remote, {
                     method: 'POST',
-                    headers:{
-                        "Content-Type":"application/json"
+                    headers: {
+                        'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ value: actualDuration }),
                 });

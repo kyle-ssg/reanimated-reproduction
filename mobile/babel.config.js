@@ -5,6 +5,7 @@ module.exports = {
             alias: {
                 components: './app/components/',
                 common: '../common/',
+                assets: './app/assets/',
             },
         },
     ]],

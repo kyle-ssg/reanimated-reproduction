@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'next/router';
-import withAuth from '../common/providers/withAuth';
-import { ButtonPrimary } from '../components/base/forms/Button';
-import Header from '../components/Header';
-import ErrorMessage from '../components/ErrorMessage';
+import ErrorMessage from 'components/ErrorMessage';
+import withAuth from 'common/providers/withAuth';
+import { ButtonPrimary } from 'components/base/forms/Button';
 
 class LoginPage extends Component {
     static displayName = 'LoginPage';
