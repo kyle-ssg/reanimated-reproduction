@@ -316,7 +316,7 @@ class Edit${prefixCamel} extends Component {
         create${prefixCamel}: propTypes.func,
         get${prefixCamel}: propTypes.func,
         update${prefixCamel}: propTypes.func,
-        delete${prefixCamel}: propTypes.func,
+        // delete${prefixCamel}: propTypes.func,
     };
 
     constructor(props) {
@@ -417,9 +417,9 @@ class Edit${prefixCamel} extends Component {
                     </div>
                 </form>
             ) : (
-            productError && (
+                productError && (
                     <ErrorMessage>{productError}</ErrorMessage>
-            )           
+                )
             )}
         </>;
     }
