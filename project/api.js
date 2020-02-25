@@ -3,16 +3,13 @@ import Router from 'next/router';
 import cookie from 'cookie';
 import cookies from 'js-cookie';
 
+import errorHandler from 'common/utils/errorHandler';
 import Project from '../common/project';
 
 const API = {
     isMobile: () => false,
     ajaxHandler(type, e) {
-        try {
-            return { type, error: JSON.parse(e.message).errorMessage };
-        } catch (_) {
-            return { type, error: e.message };
-        }
+        return { type, error: errorHandler(e) };
     },
     logout() {
         cookies.remove('token');

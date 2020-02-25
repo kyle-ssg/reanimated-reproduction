@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-unfetch';
 // import jwt from 'jwt-decode';
-import Constants from './constants';
+// import Constants from './constants';
 // import _store  from '../store';
 // import AppActions from '../app-actions';
 
@@ -151,18 +151,6 @@ const _data = {
                     .then((response) => {
                         API.log('API', 'RESPONSE', method, url, 'Response body', response, 'Original request', options);
                         return response;
-                    })
-                    .catch((e) => {
-                        // console.debug(e);
-                        if (e.httpStatus == 401) {
-                            throw new Error('Network request failed - Unauthorized');
-                        }
-
-                        if (e._bodyText) {
-                            throw new Error(e._bodyText);
-                        } else {
-                            throw new Error(Constants.simulate.FAKE_API_ERROR ? 'API Error' : 'Network request failed');
-                        }
                     });
             });
     },

@@ -15,6 +15,7 @@ import H1 from '../components/base/type/H1';
 import H2 from '../components/base/type/H2';
 import H3 from '../components/base/type/H3';
 import H4 from '../components/base/type/H4';
+import '../components/base/forms/SelectBox';
 
 // Animation
 global.Fade = require('../components/base/animation/Fade');
