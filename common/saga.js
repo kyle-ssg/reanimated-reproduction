@@ -15,7 +15,7 @@ export function* errorHandler(action, prefix, preventSuccess, e) {
 
 // Success handler for a CRUD redux action
 export function* handleResponse(action, prefix, apiResult, preventSuccess, dto) {
-    const data = dto ? dto(_data) : apiResult;
+    const data = dto ? dto(apiResult) : apiResult;
     const params = { type: Actions[`${prefix}_LOADED`], data };
     if (data.token) {
         API.setStoredToken(data.token);
