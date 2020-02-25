@@ -47,6 +47,17 @@ module.exports = {
     },
 `;
     },
+    delete(action, prefix) {
+        return `
+    ${functionName(action, prefix)}(id, callbacks = {}) {
+        return {
+            type: Actions.${action},
+            id,
+            ...callbacks,
+        };
+    },
+`;
+    },
     post(action, prefix) {
         return `
     ${functionName(action, prefix)}(data, callbacks = {}) {
@@ -102,6 +113,14 @@ module.exports = {
         case Actions.${action}_ERROR:
             return itemError(state, '${prefix}', action);`;
     },
+    reducerDelete(action, prefix) {
+        return `case Actions.${action}:
+            return itemLoading(state, '${prefix}', action);
+        case Actions.${action}_LOADED:
+            return itemSaved(state, '${prefix}', action);
+        case Actions.${action}_ERROR:
+            return itemError(state, '${prefix}', action);`;
+    },
     // yield
     yieldCollection(action, prefix, api) {
         return `
@@ -114,6 +133,12 @@ export function* ${functionName(action, prefix)}(action) {
         return `
 export function* ${functionName(action, prefix)}(action) {
     yield getAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
+}`;
+    },
+    yieldDelete(action, prefix, api) {
+        return `
+export function* ${functionName(action, prefix)}(action) {
+    yield deleteAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
 }`;
     },
     yieldPost(action, prefix, api) {
@@ -146,6 +171,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     ${functionName('GET', prefix)}: AppActions.${functionName('GET', prefix)},
     ${functionName('CREATE', prefix)}: AppActions.${functionName('CREATE', prefix)},
     ${functionName('UPDATE', prefix)}: AppActions.${functionName('UPDATE', prefix)},
+    ${functionName('DELETE', prefix)}: AppActions.${functionName('DELETE', prefix)},
 }, dispatch);
 
 function mapStateToProps(state, props) {
@@ -278,6 +304,7 @@ import { withRouter } from 'next/router';
 import with${prefixCamel} from '../common/providers/${functionName('WITH', prefix)}';
 import ErrorMessage from './ErrorMessage';
 import SuccessMessage from './SuccessMessage';
+// import './Modal';
 
 class Edit${prefixCamel} extends Component {
     static displayName = 'Edit${prefixCamel}';
@@ -289,6 +316,7 @@ class Edit${prefixCamel} extends Component {
         create${prefixCamel}: propTypes.func,
         get${prefixCamel}: propTypes.func,
         update${prefixCamel}: propTypes.func,
+        delete${prefixCamel}: propTypes.func,
     };
 
     constructor(props) {
@@ -327,6 +355,17 @@ class Edit${prefixCamel} extends Component {
         });
     }
 
+    // delete = () => {
+    //     openConfirm('Are you sure?', 'This will remove the ${prefix}', () => {
+    //         this.props.deleteProduct(this.props.id, {
+    //             onSuccess: () => {
+    //                 // Can redirect to edit page here this.props.router.replace('/x/data.id')
+    //                 this.setState({ productSuccess: true });
+    //             },
+    //         });
+    //     });
+    // }
+
     submit = (e) => {
         Utils.preventDefault(e);
         this.setState({ ${prefix}Success: false });
@@ -354,7 +393,7 @@ class Edit${prefixCamel} extends Component {
         return <>
             {isEdit ? <h2>Edit ${prefix}</h2> : <h2>Create ${prefix}</h2> }
             {!${prefix}Edit && ${prefix}Loading && <Loader/>}
-            {${prefix}Edit && (
+            {${prefix}Edit ? (
                 <form onSubmit={this.submit}>
                     <InputGroup
                       className="mb-2"
@@ -370,12 +409,17 @@ class Edit${prefixCamel} extends Component {
                         <SuccessMessage>Saved</SuccessMessage>
                     )}
                     { JSON.stringify(${prefix}Edit) }
+                    {isEdit && <ButtonPrimary disabled={${prefix}Loading} onClick={this.delete}>Delete</ButtonPrimary>}
                     <div className="text-right pb-2">
                         <ButtonPrimary disabled={${prefix}Loading} type="submit">
                             Save
                         </ButtonPrimary>
                     </div>
                 </form>
+            ) : (
+            productError && (
+                    <ErrorMessage>{productError}</ErrorMessage>
+            )           
             )}
         </>;
     }

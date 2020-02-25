@@ -4,6 +4,7 @@ const getPrefix = require('../helpers/getPrefix');
 const controller = require('../controller').writePost;
 const controllerRead = require('../controller').writeGet;
 const controllerUpdate = require('../controller').writeUpdate;
+const controllerDelete = require('../controller').writeDelete;
 
 class TheCommand extends Command {
     async run() {
@@ -22,6 +23,7 @@ class TheCommand extends Command {
         await controller(`CREATE_${action}`, prefix, apiPost, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes');
         await controllerRead(`GET_${action}`, prefix, api, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes');
         await controllerUpdate(`UPDATE_${action}`, prefix, api, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes');
+        await controllerDelete(`DELETE_${action}`, prefix, api, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes');
     }
 }
 TheCommand.args = [

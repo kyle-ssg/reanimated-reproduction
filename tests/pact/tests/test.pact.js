@@ -37,8 +37,17 @@ const res = {
         },
     },
     product: {
-        path: '/product/1',
+        path: '/product/:id',
         get: {
+            prefix: 'product',
+            state: 'Bar exists',
+            description: '/product/1',
+            body: like => ({
+                id: 1,
+                title: like('bar'),
+            }),
+        },
+        delete: {
             prefix: 'product',
             state: 'Bar exists',
             description: '/product/1',

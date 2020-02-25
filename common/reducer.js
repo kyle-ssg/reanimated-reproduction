@@ -27,6 +27,21 @@ const itemLoaded = (state, prefix, action) => {
         [`${prefix}Loading`]: false,
         [prefix]: action.data };
 };
+const itemSaved = (state, prefix, action) => {
+    if (action.index) { // Item is part of a collection, add it within the prefix
+        return {
+            ...state,
+            [prefix]: { ...state[prefix], [action.index]: action.data },
+            [`${prefix}Error`]: null,
+            [`${prefix}Loading`]: false,
+        };
+    }
+    return {
+        ...state,
+        [`${prefix}Error`]: null,
+        [`${prefix}Loading`]: false,
+        [prefix]: action.data };
+};
 
 // Adds an item to the reducer collection, if one exists with the same ID it will be updated
 const appendItem = (state, prefix, action) => {
