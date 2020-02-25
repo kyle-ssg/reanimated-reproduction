@@ -6,25 +6,30 @@ const StorageManager = class {
             global.SecuredStorage = SecuredStorage;
             await SecuredStorage.init(password);
         } else {
-            console.warn('There is no need to initialise the StorageManager when using regular AsyncStorage.')
+            console.warn('There is no need to initialise the StorageManager when using regular AsyncStorage.');
         }
     }
+
     get = async () => {
-        if (Project.mobile.useSecuredStorage) return await SecuredStorage.get();
+        if (Project.mobile.useSecuredStorage) return SecuredStorage.get();
         // no-op for regular AsyncStorage
     }
+
     clear = async () => {
-        return Project.mobile.useSecuredStorage ? await SecuredStorage.clear() : await AsyncStorage.clear();
+        return Project.mobile.useSecuredStorage ? SecuredStorage.clear() : AsyncStorage.clear();
     }
+
     setItem = async (key, val, string) => {
-        return Project.mobile.useSecuredStorage ? await SecuredStorage.setItem(key, val, string) : await AsyncStorage.setItem(key, string || JSON.stringify(val));
+        return Project.mobile.useSecuredStorage ? SecuredStorage.setItem(key, val, string) : AsyncStorage.setItem(key, string || JSON.stringify(val));
     }
+
     removeItem = async (key) => {
-        return Project.mobile.useSecuredStorage ? await SecuredStorage.removeItem(key) : await AsyncStorage.removeItem(key);
+        return Project.mobile.useSecuredStorage ? SecuredStorage.removeItem(key) : AsyncStorage.removeItem(key);
     }
+
     getItem = async (key) => {
-        return Project.mobile.useSecuredStorage ? SecuredStorage.storage[key] : await AsyncStorage.getItem(key);
+        return Project.mobile.useSecuredStorage ? SecuredStorage.storage[key] : AsyncStorage.getItem(key);
     }
-}
+};
 
 module.exports = new StorageManager();
