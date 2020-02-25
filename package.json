@@ -10,6 +10,8 @@
     "dev:debug": "node server.js --inspect",
     "env": "node ./bin/env.js",
     "build": "next build ",
+    "static": "npm run build && npm run export",
+    "export": "next export ",
     "storybook": "start-storybook",
     "start": "cross-env NODE_ENV=production npm run build && cross-env NODE_ENV=production node server.js",
     "lint": "eslint .",
