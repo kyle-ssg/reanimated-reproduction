@@ -12,16 +12,4 @@ module.exports = {
         rules: require('./loaders')
             .concat([]),
     },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-            maxInitialRequests: Infinity,
-            minSize: 60000,
-            cacheGroups: {
-                polyfill: {
-                    test: /[\\/]project[\\/]polyfill/,
-                },
-            },
-        },
-    },
 };

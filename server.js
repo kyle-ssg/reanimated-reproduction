@@ -12,8 +12,11 @@ const handle = app.getRequestHandler();
 
 const IS_SSR_CACHE_ENABLED = !dev; // TODO move to config
 
-// TODO: move to config
-// Default 1 hour ttl
+/**
+ * Creates a request helper function to make a request cacheable for x TTL
+ * @param ttl - how long to persist
+ * @returns function({req?: *, res?: *, [p: string]: *}): *}
+ */
 const ssrCache = (ttl) => {
     return cacheableResponse({
         ttl, // 1hour

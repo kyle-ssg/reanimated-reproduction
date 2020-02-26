@@ -2,7 +2,7 @@
 module.exports = [
     {
         test: /.*\/common\/.*\.js$/,
-        exclude: /.*\/diffusion.js$/,
+        // exclude: /.*\/somelib.js$/,
         use: [
             {
                 loader: 'babel-loader',
