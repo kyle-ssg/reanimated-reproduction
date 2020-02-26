@@ -1,11 +1,15 @@
 import { Navigation } from 'react-native-navigation';
+import Constants from '../common/utils/constants';
+import API from './app/project/api/api';
 import './app/project/globals';
 import './app/routes';
 import loadIcons from './load-icons';
+import ReactNative from 'react-native';
 import _store from '../common/store';
 
-const store = _store();
+const DeviceWidth = ReactNative.Dimensions.get('window').width;
 
+const store = _store();
 
 const getUser = () => new Promise((resolve) => {
     API.getStoredToken().then((token) => {

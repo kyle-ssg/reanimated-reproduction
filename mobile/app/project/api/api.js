@@ -1,7 +1,7 @@
 import BottomSheet from 'react-native-bottomsheet';
 import analytics from '@react-native-firebase/analytics';
 
-import AsyncStorage  from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
 import push from './push-notifications-api';
 import auth from './auth';
 
@@ -194,3 +194,5 @@ global.API = {
     auth,
 
 };
+
+export default global.API;

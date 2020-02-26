@@ -60,6 +60,7 @@
     "react-native-modal-datetime-picker": "^7.6.0",
     "react-native-navigation": "git+https://github.com/kyle-ssg/react-native-navigation#v3",
     "react-native-navigation-drawer-extension": "^2.0.2",
+    "react-native-performance-monitor": "^1.0.13",
     "react-native-reanimated": "^1.2.0",
     "react-native-render-html": "^4.1.2",
     "react-native-svg": "9.7.1",

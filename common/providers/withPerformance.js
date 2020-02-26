@@ -2,31 +2,12 @@ import React, { Component } from 'react';
 
 const Profiler = React.Profiler;
 
-export default (WrappedComponent, _id, remote) => {
+export default (WrappedComponent, _id, remote, events = ['mount', 'update']) => {
     class HOC extends Component {
         static displayName = 'withPerformance';
 
         constructor(props) {
             super(props);
-            this.trace = null;
-            this.traceStarted = false;
-            this.initialMount = null;
-            this.initialUpdates = null;
-        }
-
-        async componentDidMount() {
-            // this.trace = firebase.perf().newTrace('cache_trace');
-            // await this.trace.start();
-            // this.traceStarted = true;
-            // // put cached values after trace started
-            // await this.trace.putAttribute('mount_time', this.initialMount);
-            // if (this.initialUpdates) await this.trace.incrementMetric('updates', this.initialUpdates);
-        }
-
-        async componentWillUnmount() {
-            if (this.trace) {
-                await this.trace.stop();
-            }
         }
 
         // id, // the "id" prop of the Profiler tree that has just committed
@@ -39,31 +20,22 @@ export default (WrappedComponent, _id, remote) => {
 
         logMeasurement = async (id, phase, actualDuration, baseDuration) => {
             // see output during DEV
-            if (__DEV__) console.log(id, actualDuration);
+            if (!events.includes(phase)) {
+                return;
+            }
+            if (actualDuration < 1) {
+                return;
+            }
+
             if (remote) {
                 fetch(remote, {
                     method: 'POST',
-                    headers:{
-                        "Content-Type":"application/json"
+                    headers: {
+                        'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ value: actualDuration }),
                 });
             }
-            // if (phase === 'mount') {
-            //     if (this.traceStarted) {
-            //         await this.trace.putAttribute('mount_time', actualDuration);
-            //     } else {
-            //         // cache mount time before trace.start()
-            //         this.initialMount = actualDuration;
-            //     }
-            // } else if (phase === 'update') {
-            //     if (this.traceStarted) {
-            //         await this.trace.incrementMetric('updates', 1);
-            //     } else {
-            //         // cache updates before trace.start()
-            //         this.initialUpdates = this.initialUpdates + 1;
-            //     }
-            // }
         }
 
         render() {

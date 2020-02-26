@@ -1,10 +1,10 @@
 /**
  * Created by kylejohnson on 28/01/2017.
  */
-import React, { Component, PureComponent } from 'react';
+import React, { Component } from 'react';
 import propTypes from 'prop-types';
+import { View } from 'react-native';
 import withPerformance from '../../../common/providers/withPerformance';
-
 // Automatically sets relevant head tags for seo, see _app for the remainder tags
 const Item = class extends Component {
     static displayName = 'Item';
@@ -121,8 +121,4 @@ const TermsScreen = class extends Component {
     }
 };
 
-// const styles = StyleSheet.create({
-//
-// });
-
-module.exports = withPerformance(TermsScreen, 'Terms Screen', 'http://localhost:3000/value');
+module.exports = withPerformance(TermsScreen, 'Terms Screen', 'http://127.0.0.1:8125/value');

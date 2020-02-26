@@ -130,7 +130,9 @@ const routes = {
 };
 
 // BASE Routes
-Navigation.registerComponentWithRedux('/', () => require('./screens/HomeScreen'), Provider, store);
+Navigation.registerComponent('/', () => require('./screens/HomeScreen'));
+
+// Navigation.registerComponentWithRedux('/', () => require('./screens/HomeScreen'), Provider, store);
 Navigation.registerComponentWithRedux('storybook', () => require('./screens/__StorybookScreen__'), Provider, store);
 
 Navigation.registerComponent('/select', () => require('./components/base/SelectModal'));
