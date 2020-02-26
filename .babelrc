@@ -1,13 +1,23 @@
 {
+    "presets": [
+        ["next/babel", {
+            "preset-env": {
+                "targets": "last 2 versions"
+            }
+        }]
+    ],
     "env": {
-        "development": {
-            "presets": ["next/babel"]
-        },
         "production": {
-            "presets": ["next/babel"]
-        },
-        "test": {
-            "presets": [["next/babel", { "preset-env": { "modules": "commonjs" } }]]
+            "plugins": [
+            ]
         }
-    }
+    },
+    "plugins": [
+        ["module-resolver", {
+            "alias": {
+                "components": "./components/",
+                "common": "./common/"
+            }
+        }]
+    ]
 }

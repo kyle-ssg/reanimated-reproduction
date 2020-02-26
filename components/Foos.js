@@ -22,7 +22,7 @@ class Foos extends Component {
         return <>
             <h2>foos</h2>
             {
-                foos && foos.map((item, i)=>(
+                foos && foos.map((item, i) => (
                     <div key={item.id || i}>{JSON.stringify(item)}</div>
                 ))
             }

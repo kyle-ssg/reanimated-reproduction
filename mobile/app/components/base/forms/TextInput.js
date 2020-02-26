@@ -50,7 +50,7 @@ const TextInput = class extends Component {
       }
   };
 
-  onBlur = () => {
+  onBlur = (e) => {
       Animated.timing(this.animation, {
           toValue: 0.0001,
           duration: 300,
@@ -58,7 +58,7 @@ const TextInput = class extends Component {
           easing: Easing.cubic,
       }).start();
       if (this.props.onBlur) {
-          this.props.onBlur();
+          this.props.onBlur(e);
       }
   };
 

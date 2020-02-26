@@ -12,8 +12,7 @@ class HomePage extends Component {
   // static async getInitialProps({ Component, ctx }) {
   // }
 
-  render()
-  {
+  render() {
       return (
           <div className="container">
             Home Page

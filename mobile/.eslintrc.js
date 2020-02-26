@@ -1,4 +1,5 @@
 module.exports = {
+  "root": true,
   'parser': 'babel-eslint',
   'env': {
     'browser': true,
@@ -18,9 +19,7 @@ module.exports = {
   ],
   'settings': {
     'import/resolver': {
-      'node': {
-        'extensions': ['.js', '.jsx', '.json', '.native.js', '.ios.js', '.android.js']
-      }
+      "babel-module": {},
     }
   },
   'rules': {
@@ -149,6 +148,7 @@ module.exports = {
     'Platform': true,
     'DeviceInfo': true,
     'oneOfType': true,
+    'SecuredStorage': true,
     'statusCodes': true,
     'TouchableNativeFeedback': true,
   }

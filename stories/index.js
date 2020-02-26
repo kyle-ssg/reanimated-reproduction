@@ -10,6 +10,7 @@ import { Modal, ModalBody, ModalFooter, ModalHeader } from '../components/Modal'
 import Confirm from '../components/ModalConfirm';
 import ModalAlert from '../components/ModalAlert';
 import Switch from 'rc-switch';
+
 getStory('Buttons')
     .addDecorator(withPaddedContainer)
     .add('all', () => (
@@ -65,7 +66,7 @@ getStory('Switch')
     .addDecorator(withPaddedContainer)
     .add('default', () => (
         <Switch/>
-    ))
+    ));
 
 getStory('Modals')
     .addDecorator(withPaddedContainer)

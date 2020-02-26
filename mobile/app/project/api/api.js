@@ -1,9 +1,10 @@
 import BottomSheet from 'react-native-bottomsheet';
 import analytics from '@react-native-firebase/analytics';
 
-import AsyncStorage from '@react-native-community/async-storage';
+import errorHandler from 'common/utils/errorHandler';
 import push from './push-notifications-api';
 import auth from './auth';
+import storage from './async-storage-api';
 
 // eslint-disable-next-line
 var initialLinkCb = null;
@@ -44,7 +45,7 @@ if (typeof branch !== 'undefined') {
 global.API = {
     isMobile: () => true,
     ajaxHandler(type, e) {
-        return { type, error: e.message };
+        return { type, error: errorHandler(e) };
     },
     log(...args) {
         // eslint-disable-next-line no-console
@@ -74,43 +75,43 @@ global.API = {
     },
     setCookie(id, val) {
         if (!val) {
-            return AsyncStorage.removeItem(id);
+            return API.storage.removeItem(id);
         }
-        return AsyncStorage.setItem(id, val);
+        return API.storage.setItem(id, val);
     },
 
     setStoredToken(val) {
         if (!val) {
-            return AsyncStorage.removeItem('token');
+            return API.storage.removeItem('token');
         }
-        AsyncStorage.setItem('token', val);
+        API.storage.setItem('token', val);
     },
 
     setStoredRefreshToken(val) {
         if (!val) {
-            return AsyncStorage.removeItem('refreshToken');
+            return API.storage.removeItem('refreshToken');
         }
-        AsyncStorage.setItem('refreshToken', val);
+        API.storage.setItem('refreshToken', val);
     },
 
     getStoredToken: () => {
-        return AsyncStorage.getItem('token');
+        return API.storage.getItem('token');
     },
 
     getStoredRefreshToken: () => {
-        return AsyncStorage.getItem('refreshToken').then((res) => {
+        return API.storage.getItem('refreshToken').then((res) => {
             return res && JSON.parse(res);
         });
     },
 
     getCookie: async (id) => {
-        const res = await AsyncStorage.getItem(id);
+        const res = await API.storage.getItem(id);
         return res;
     },
     share: (uri, message, title, subject, excludedActivityTypes) => {
         ReactNative.Share.share({ message, title, url: uri }, { subject, excludedActivityTypes });
     },
-    showOptions: (title, options, cancelButton = true, dark = false, destructiveOption) => new Promise((resolve) => {
+    showOptions: (title, options, cancelButton = true, dark = false, destructiveOption, resolveCancel) => new Promise((resolve) => {
         cancelButton && options.push('Cancel');
         BottomSheet.showBottomSheetWithOptions({
             options,
@@ -119,7 +120,10 @@ global.API = {
             destructiveButtonIndex: destructiveOption && cancelButton ? options.length - 2 : options.length - 1,
             cancelButtonIndex: cancelButton && options.length - 1,
         }, (value) => {
-            if (cancelButton && value === options.length - 1) return;
+            if (cancelButton && value === options.length - 1) {
+                if (resolveCancel) resolve(null);
+                return;
+            }
             resolve(value);
         });
     }),
@@ -192,7 +196,7 @@ global.API = {
     },
     push,
     auth,
-
+    storage,
 };
 
 export default global.API;

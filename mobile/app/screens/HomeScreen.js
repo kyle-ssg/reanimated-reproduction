@@ -3,15 +3,15 @@
  */
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import { View } from 'react-native';
-import withPerformance from '../../../common/providers/withPerformance';
+import withPerformance from 'common/providers/withPerformance';
+
 // Automatically sets relevant head tags for seo, see _app for the remainder tags
 const Item = class extends Component {
     static displayName = 'Item';
 
 
     constructor(props) {
-        super(props)
+        super(props);
         console.log(this.props.index);
     }
 
@@ -40,11 +40,12 @@ const Item = class extends Component {
     }
 };
 
-const TermsScreen = class extends Component {
-  static displayName = 'TermsScreen';
+const HomeScreen = class extends Component {
+  static displayName = 'HomeScreen';
 
   static propTypes = {
       componentId: propTypes.string,
+      navigator: propTypes.object,
   };
 
   constructor(props, context) {
@@ -100,6 +101,8 @@ const TermsScreen = class extends Component {
     render() {
         return (
             <Flex style={[Styles.body]}>
+                <Text>SSG Boilerplate</Text>
+                <Button onPress={() => Navigation.push(this.props.componentId, routes.formScreen())}>Form Example</Button>
                 <Button onPress={this.refreshData}>Refresh</Button>
                 {this.state.ready && (
                     <FlatList

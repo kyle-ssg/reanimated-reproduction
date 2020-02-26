@@ -1,21 +1,26 @@
 import { Navigation } from 'react-native-navigation';
 import { RNNDrawer } from 'react-native-navigation-drawer-extension';
 import { Provider } from 'react-redux';
-import _store from '../../common/store';
 import merge from 'lodash/merge';
+
+import _store from 'common/store';
+
 const store = _store();
 
 
 const routes = {
-
-    // The initial screen
     homeScreen: () => ({
         component: {
             name: '/',
             options: merge({}, global.navbarStyle, { topBar: { title: { text: 'Home' } } }),
         },
     }),
-    // The initial screen
+    formScreen: () => ({
+        component: {
+            name: 'form',
+            options: merge({}, global.navbarStyle, { topBar: { title: { text: 'Form' } } }),
+        },
+    }),
     storybookScreen: () => ({
         component: {
             name: 'storybook',
@@ -130,9 +135,8 @@ const routes = {
 };
 
 // BASE Routes
-Navigation.registerComponent('/', () => require('./screens/HomeScreen'));
-
-// Navigation.registerComponentWithRedux('/', () => require('./screens/HomeScreen'), Provider, store);
+Navigation.registerComponentWithRedux('/', () => require('./screens/HomeScreen'), Provider, store);
+Navigation.registerComponentWithRedux('form', () => require('./screens/FormScreen'), Provider, store);
 Navigation.registerComponentWithRedux('storybook', () => require('./screens/__StorybookScreen__'), Provider, store);
 
 Navigation.registerComponent('/select', () => require('./components/base/SelectModal'));

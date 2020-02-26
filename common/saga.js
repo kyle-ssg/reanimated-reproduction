@@ -2,78 +2,69 @@ import { put, all, takeLatest } from 'redux-saga/effects';
 import _data from './utils/_data';
 import './app-actions';
 // Util function to post to an api, parse results and dispatch loaded and error functions
+
+// Error handler for a CRUD redux action
+export function* errorHandler(action, prefix, preventSuccess, e) {
+    const error = API.ajaxHandler(Actions[`${prefix}_ERROR`], e);
+    yield put(error);
+    action.onError && action.onError(error.error);
+    if (preventSuccess) {
+        throw e;
+    }
+}
+
+// Success handler for a CRUD redux action
+export function* handleResponse(action, prefix, apiResult, preventSuccess, dto) {
+    const data = dto ? dto(apiResult) : apiResult;
+    const params = { type: Actions[`${prefix}_LOADED`], data };
+    if (data.token) {
+        API.setStoredToken(data.token);
+        _data.setToken(data.token);
+    }
+    if (action.id) {
+        params.index = action.id;
+    }
+    yield put(params);
+    action.onSuccess && !preventSuccess && action.onSuccess(data);
+    return data;
+}
+
+// GET request with standard response and error handler
 export function* getAction(action, url, prefix, preventSuccess, dto) {
     try {
-        let data = yield _data.get(url);
-        if (dto) {
-            data = dto(data);
-        }
-        const params = { type: Actions[`${prefix}_LOADED`], data };
-        if (data.token) {
-            API.setStoredToken(data.token);
-            _data.setToken(data.token);
-        }
-        if (action.id) {
-            params.index = action.id;
-        }
-        yield put(params);
-        action.onSuccess && !preventSuccess && action.onSuccess(data);
+        const data = yield _data.get(url);
+        yield handleResponse(action, prefix, data, preventSuccess, dto);
     } catch (e) {
-        yield put(API.ajaxHandler(Actions[`${prefix}_ERROR`], e));
-        action.onError && action.onError();
+        yield errorHandler(action, prefix, preventSuccess, e);
     }
 }
 
-export function* updateAction(action, url, prefix, preventSuccess, dto, requestDto) {
+// PUT request with standard response and error handler
+export function* updateAction(action, url, prefix, preventSuccess, dto, requestDto, append = true) {
     try {
-        let data = yield _data.put(url, requestDto ? requestDto(action.data) : action.data);
-        if (dto) {
-            data = dto(data);
-        }
-        if (data.token) {
-            API.setStoredToken(data.token);
-            _data.setToken(data.token);
-        }
-        if (data.userType || data.emailVerified) {
-            API.setCookie('user', JSON.stringify(data));
-        }
-        const params = { type: Actions[`${prefix}_LOADED`], data };
-        if (action.id) {
-            params.index = action.id;
-        }
-        yield put(params);
-        action.onSuccess && !preventSuccess && action.onSuccess(data);
+        const data = yield _data.put(url, requestDto ? requestDto(action.data) : action.data);
+        yield handleResponse(action, prefix, data, preventSuccess, dto, append);
     } catch (e) {
-        yield put(API.ajaxHandler(Actions[`${prefix}_ERROR`], e));
-        action.onError && action.onError();
-        if (preventSuccess) {
-            throw e;
-        }
+        yield errorHandler(action, prefix, preventSuccess, e);
     }
 }
 
-export function* postAction(action, url, prefix, preventSuccess, dto, requestDto, appendId = true) {
+// POST request with standard response and error handler
+export function* postAction(action, url, prefix, preventSuccess, dto, requestDto, append = true) {
     try {
-        let data = yield _data.post(url, requestDto ? requestDto(action.data) : action.data);
-        if (dto) {
-            data = dto(data);
-        }
-        if (data.token) {
-            API.setStoredToken(data.token);
-            _data.setToken(data.token);
-        }
-        const params = { type: Actions[`${prefix}_LOADED`], data };
-        if (action.id) {
-            params.index = action.id;
-        } else if (appendId) {
-            params.index = data.id;
-        }
-        yield put(params);
-        action.onSuccess && !preventSuccess && action.onSuccess(data);
-        return data;
+        const data = yield _data.post(url, requestDto ? requestDto(action.data) : action.data);
+        yield handleResponse(action, prefix, data, preventSuccess, dto, append);
     } catch (e) {
-        yield put(API.ajaxHandler(Actions[`${prefix}_ERROR`], e));
-        action.onError && action.onError();
+        yield errorHandler(action, prefix, preventSuccess, e);
+    }
+}
+
+export function* deleteAction(action, url, prefix, preventSuccess) {
+    try {
+        const data = yield _data.delete(url, {});
+        yield handleResponse(action, prefix, data, preventSuccess);
+    } catch (e) {
+        yield errorHandler(action, prefix, preventSuccess, e);
     }
 }
 
@@ -137,7 +128,6 @@ export function* logout(action) {
     _data.setRefreshToken(null);
     API.logout();
     action.onSuccess && action.onSuccess();
-    // Err state, try catch.
 }
 
 export function* confirmEmail(action) {
