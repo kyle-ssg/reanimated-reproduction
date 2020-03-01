@@ -30,11 +30,9 @@ const ssrCache = (ttl) => {
     });
 };
 
-const startup = new Date().valueOf();
 Promise.all([
     app.prepare(),
 ]).then(() => {
-    console.log("Next startup " + (new Date().valueOf() - startup) + "ms")
     const server = express();
     const sw = join(__dirname, '.next/service-worker.js');
     const favicon = join(__dirname, '/static/images/favicon.ico');

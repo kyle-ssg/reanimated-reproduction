@@ -19,7 +19,7 @@ export function* handleResponse(action, prefix, apiResult, preventSuccess, dto) 
     const data = dto ? dto(apiResult) : apiResult;
     const params = {type: Actions[`${prefix}_LOADED`], data};
     if (data.token) {
-        API.setStoredToken(data.token);
+        // API.setStoredToken(data.token);
         _data.setToken(data.token);
     }
     if (action.id) {
@@ -34,7 +34,7 @@ export function* handleResponse(action, prefix, apiResult, preventSuccess, dto) 
 export function* getAction(action, url, prefix, preventSuccess, dto) {
     try {
         const data = yield _data.get(url);
-        yield handleResponse(action, prefix, data, preventSuccess, dto);
+        return yield handleResponse(action, prefix, data, preventSuccess, dto);
     } catch (e) {
         yield errorHandler(action, prefix, preventSuccess, e);
     }
@@ -44,7 +44,7 @@ export function* getAction(action, url, prefix, preventSuccess, dto) {
 export function* updateAction(action, url, prefix, preventSuccess, dto, requestDto, append = true) {
     try {
         const data = yield _data.put(url, requestDto ? requestDto(action.data) : action.data);
-        yield handleResponse(action, prefix, data, preventSuccess, dto, append);
+        return yield handleResponse(action, prefix, data, preventSuccess, dto, append);
     } catch (e) {
         yield errorHandler(action, prefix, preventSuccess, e);
     }
@@ -54,7 +54,7 @@ export function* updateAction(action, url, prefix, preventSuccess, dto, requestD
 export function* postAction(action, url, prefix, preventSuccess, dto, requestDto, append = true) {
     try {
         const data = yield _data.post(url, requestDto ? requestDto(action.data) : action.data);
-        yield handleResponse(action, prefix, data, preventSuccess, dto, append);
+        return yield handleResponse(action, prefix, data, preventSuccess, dto, append);
     } catch (e) {
         yield errorHandler(action, prefix, preventSuccess, e);
     }
@@ -63,7 +63,7 @@ export function* postAction(action, url, prefix, preventSuccess, dto, requestDto
 export function* deleteAction(action, url, prefix, preventSuccess) {
     try {
         const data = yield _data.delete(url, {});
-        yield handleResponse(action, prefix, data, preventSuccess);
+        return yield handleResponse(action, prefix, data, preventSuccess);
     } catch (e) {
         yield errorHandler(action, prefix, preventSuccess, e);
     }
@@ -76,7 +76,7 @@ export function* startup(action = {}) {
             ...rest
         } = action.data || {};
 
-        const token = action.data && action.data.token;
+        const token = _.get(action, 'data.user.token');
         const refreshToken = action.data && action.data.refreshToken;
 
         if (token) {
@@ -92,6 +92,7 @@ export function* startup(action = {}) {
         if (token && action.data.user) {
             // console.log('startup userData', userData);
             yield put({type: Actions.LOGIN_LOADED, data: action.data.user});
+            API.loggedIn();
         }
         if (action.onSuccess) {
             action.onSuccess();

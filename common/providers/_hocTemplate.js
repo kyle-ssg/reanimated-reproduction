@@ -1,4 +1,4 @@
-§import React, {Component} from 'react';
+import React, {Component} from 'react';
 
 export default (WrappedComponent) => {
     class HOC extends Component {
