@@ -13,6 +13,7 @@ import './project-components';
 
 import React from 'react';
 import Link from 'next/link';
+import 'ionicons/dist/css/ionicons.css';
 
 global.AppState = AppState;
 global.NetInfo = NetInfo;
