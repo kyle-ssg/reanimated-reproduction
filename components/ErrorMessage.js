@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import propTypes from 'prop-types';
 
 const ErrorMessage = class extends Component {
@@ -22,4 +22,5 @@ const ErrorMessage = class extends Component {
         );
     }
 };
+global.ErrorMessage = ErrorMessage;
 export default ErrorMessage;

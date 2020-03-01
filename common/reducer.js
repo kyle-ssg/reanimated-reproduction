@@ -1,8 +1,9 @@
 import './utils';
+import {Actions} from './app-actions';
 import filter from 'lodash/filter';
 
 // Sets item in reducer as loading, clears error for that item
-const itemLoading = (state, prefix, action) => {
+const itemLoading = (state, prefix) => {
     return {
         ...state,
         [`${prefix}Error`]: null,
@@ -16,7 +17,7 @@ const itemLoaded = (state, prefix, action) => {
     if (action.index) { // Item is part of a collection, add it within the prefix
         return {
             ...state,
-            [prefix]: { ...state[prefix], [action.index]: action.data },
+            [prefix]: {...state[prefix], [action.index]: action.data},
             [`${prefix}Error`]: null,
             [`${prefix}Loading`]: false,
         };
@@ -25,13 +26,14 @@ const itemLoaded = (state, prefix, action) => {
         ...state,
         [`${prefix}Error`]: null,
         [`${prefix}Loading`]: false,
-        [prefix]: action.data };
+        [prefix]: action.data};
 };
+// eslint-disable-next-line no-unused-vars
 const itemSaved = (state, prefix, action) => {
     if (action.index) { // Item is part of a collection, add it within the prefix
         return {
             ...state,
-            [prefix]: { ...state[prefix], [action.index]: action.data },
+            [prefix]: {...state[prefix], [action.index]: action.data},
             [`${prefix}Error`]: null,
             [`${prefix}Loading`]: false,
         };
@@ -40,10 +42,11 @@ const itemSaved = (state, prefix, action) => {
         ...state,
         [`${prefix}Error`]: null,
         [`${prefix}Loading`]: false,
-        [prefix]: action.data };
+        [prefix]: action.data};
 };
 
 // Adds an item to the reducer collection, if one exists with the same ID it will be updated
+// eslint-disable-next-line no-unused-vars
 const appendItem = (state, prefix, action) => {
     return {
         ...state,
@@ -52,6 +55,7 @@ const appendItem = (state, prefix, action) => {
 };
 
 // Removes an item from a collection based on an ID
+// eslint-disable-next-line no-unused-vars
 const deleteItem = (state, prefix, action) => {
     return {
         ...state,
@@ -95,9 +99,9 @@ function defaultReducer(
         case Actions.LOGIN:
             return itemLoading(state, 'user', action);
         case Actions.CLEAR_USER:
-            return { ...state, user: null };
+            return {...state, user: null};
         case Actions.STARTUP_LOADED:
-            return { ...state, ...action.data };
+            return {...state, ...action.data};
         // END OF REDUCER
         // KEEP THE ABOVE LINE IN, IT IS USED BY OUR CLI
         default:

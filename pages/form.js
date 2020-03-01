@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { withRouter } from 'next/router';
-import { withFormik } from 'formik';
-import { formikPropTypes } from 'common/utils/formik';
+import React, {Component} from 'react';
+import {withRouter} from 'next/router';
+import {withFormik} from 'formik';
+import {formikPropTypes} from 'common/utils/formik';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -96,7 +96,7 @@ class FormPage extends Component {
                   <label htmlFor="name" className="mr-2">Alias</label>
                   <Input
                     type="text"
-                    onChange={e => setFieldValue('alias', { value: Utils.safeParseEventValue(e) })}
+                    onChange={e => setFieldValue('alias', {value: Utils.safeParseEventValue(e)})}
                     onBlur={handleBlur}
                     value={_.get(values, 'alias.value') || ''}
                     name="alias"
@@ -114,7 +114,7 @@ export default withRouter(withFormik({
     mapPropsToValues: () => ({
         name: '',
         dog: '',
-        alias: { value: '' },
+        alias: {value: ''},
         occupation: '',
     }),
     validationSchema: schema,

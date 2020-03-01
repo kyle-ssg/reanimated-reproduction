@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import React from 'react';
-
-import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
+import Button from './base/forms/Button';
+import {Modal, ModalBody, ModalFooter, ModalHeader} from './Modal';
 
 const ModalAlert = (props) => {
     const onDismiss = () => {

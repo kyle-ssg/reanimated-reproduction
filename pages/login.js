@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { withRouter } from 'next/router';
-import ErrorMessage from 'components/ErrorMessage';
+import React, {Component} from 'react';
+import {withRouter} from 'next/router';
+import ErrorMessage from 'components/Messages';
 import withAuth from 'common/providers/withAuth';
-import { ButtonPrimary } from 'components/base/forms/Button';
+import {ButtonPrimary} from 'components/base/forms/Button';
 
 class LoginPage extends Component {
     static displayName = 'LoginPage';
@@ -21,7 +21,7 @@ class LoginPage extends Component {
 
     login = (e) => {
         Utils.preventDefault(e);
-        const { state: { index, isRegister, ...rest } } = this;
+        const {state: {index, isRegister, ...rest}} = this;
         this.props.login(rest, {
             onSuccess: (user) => {
                 const redir = Utils.fromParam().redirect;
@@ -31,7 +31,7 @@ class LoginPage extends Component {
     }
 
     render() {
-        const { state: { email, password }, props: { userLoading, userError } } = this;
+        const {state: {email, password}, props: {userLoading, userError}} = this;
 
         return (
             <div>
@@ -43,14 +43,14 @@ class LoginPage extends Component {
                                 <Input
                                   className="mb-2 full-width"
                                   placeholder="Username" value={email}
-                                  onChange={email => this.setState({ email: Utils.safeParseEventValue(email) })}
+                                  onChange={email => this.setState({email: Utils.safeParseEventValue(email)})}
                                 />
                             </div>
                             <div>
                                 <Input
                                   className="mb-2 full-width"
                                   placeholder="Password" value={password} type="password"
-                                  onChange={password => this.setState({ password: Utils.safeParseEventValue(password) })}
+                                  onChange={password => this.setState({password: Utils.safeParseEventValue(password)})}
                                 />
                             </div>
                             {userError && (

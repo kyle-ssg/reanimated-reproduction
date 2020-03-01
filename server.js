@@ -1,13 +1,13 @@
 require('@babel/polyfill');
 
-const { join } = require('path');
+const {join} = require('path');
 const cacheableResponse = require('cacheable-response');
 const express = require('express');
 const next = require('next');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev });
+const app = next({dev});
 const handle = app.getRequestHandler();
 
 const IS_SSR_CACHE_ENABLED = !dev; // TODO move to config
@@ -20,19 +20,21 @@ const IS_SSR_CACHE_ENABLED = !dev; // TODO move to config
 const ssrCache = (ttl) => {
     return cacheableResponse({
         ttl, // 1hour
-        get: async ({ req, res, pagePath, queryParams }) => {
+        get: async ({req, res, pagePath, queryParams}) => {
             console.log('Caching', req.url); // eslint-disable-line no-console
             return ({
                 data: await app.renderToHTML(req, res, pagePath, queryParams),
             });
         },
-        send: ({ data, res }) => res.send(data),
+        send: ({data, res}) => res.send(data),
     });
 };
 
+const startup = new Date().valueOf();
 Promise.all([
     app.prepare(),
 ]).then(() => {
+    console.log("Next startup " + (new Date().valueOf() - startup) + "ms")
     const server = express();
     const sw = join(__dirname, '.next/service-worker.js');
     const favicon = join(__dirname, '/static/images/favicon.ico');
@@ -65,9 +67,9 @@ Promise.all([
     if (IS_SSR_CACHE_ENABLED) {
         const homeCache = ssrCache(1000 * 60 * 60);
         server.get('/', (req, res) => {
-            const queryParams = { id: req.params.id };
+            const queryParams = {id: req.params.id};
             const pagePath = '/';
-            return homeCache({ req, res, pagePath, queryParams });
+            return homeCache({req, res, pagePath, queryParams});
         });
     }
 

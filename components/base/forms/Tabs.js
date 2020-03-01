@@ -1,20 +1,21 @@
 /**
  * Created by kylejohnson on 30/07/2016.
  */
+import React, {Component} from 'react';
 import propTypes from 'prop-types';
 import Button from './Button';
 
-const Tabs = class extends React.Component {
+export class Tabs extends Component {
     static displayName = 'Tabs'
 
     static propTypes = {
         value: propTypes.any,
-        onChange: propTypes.func.isRequired,
+        onChange: propTypes.func,
         children: propTypes.node,
         className: propTypes.string,
         uncontrolled: propTypes.bool,
         tabLabels: propTypes.array.isRequired,
-    }
+    };
 
     constructor(props) {
         super(props);
@@ -30,7 +31,7 @@ const Tabs = class extends React.Component {
                 <div className="tabs-nav">
                     {this.props.children.map((child, i) => {
                         const isSelected = value === i;
-                        const tabLabel = _.get(this.props.tabLabels, i);
+                        const tabLabel = this.props.tabLabels[i];
                         return (
                             <Button
                               data-test={child.props['data-test']}
@@ -38,7 +39,7 @@ const Tabs = class extends React.Component {
                               key={`button${i}`}
                               onClick={(e) => {
                                   if (this.props.uncontrolled) {
-                                      this.setState({ value: i });
+                                      this.setState({value: i});
                                   }
                                   e.stopPropagation();
                                   e.preventDefault();
@@ -70,14 +71,13 @@ const Tabs = class extends React.Component {
             </div>
         );
     }
-};
+}
 
 Tabs.defaultProps = {
     className: '',
     value: 0,
 };
 
-Tabs.propTypes = {};
 global.Tabs = Tabs;
 export default Tabs;
 

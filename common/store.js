@@ -1,8 +1,8 @@
 
-import { createStore, applyMiddleware } from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import promiseMiddleware from 'redux-promise-middleware';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import {composeWithDevTools} from 'redux-devtools-extension';
 
 import './app-actions';
 import rootSaga from './saga';

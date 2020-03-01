@@ -1,14 +1,16 @@
 /**
  * Created by kylejohnson on 30/07/2016.
  */
+import React, {PureComponent} from 'react';
+
 import cn from 'classnames';
 
-const Input = class extends React.Component {
+const Input = class extends PureComponent {
     static displayName = 'Input'
 
     constructor(props, context) {
         super(props, context);
-        this.state = { shouldValidate: false };
+        this.state = {shouldValidate: false};
     }
 
     onFocus = (e) => {
@@ -47,7 +49,7 @@ const Input = class extends React.Component {
     }
 
     render() {
-        const { isValid, onSearchChange, placeholderChar, ...rest } = this.props;
+        const {isValid, onSearchChange, placeholderChar, ...rest} = this.props;
 
         const className = cn({
             'input-container': true,

@@ -1,7 +1,7 @@
-import App, { Container } from 'next/app';
+import App, {Container} from 'next/app';
 import Head from 'next/head';
 import React from 'react';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
 import '../project/polyfill';
@@ -11,22 +11,21 @@ import Header from '../components/Header';
 let initialRender = false;
 
 class MyApp extends App {
-    static async getInitialProps({ Component, ctx }) {
+    static async getInitialProps({Component, ctx}) {
         let pageProps;
         if (ctx.pathname === '/_error') {
             return;
         }
-
-        const x = `${1}`;
+        //
         if (!ctx.pathname) {
             return;
         }
         const locale = Constants.simulate.FORCE_LANGUAGE || API.getStoredLocale(ctx.req); // Retrieve the locale from cookie or headers
-        await ctx.store.dispatch(AppActions.startup({ locale })); // Post startup action with token and locale
+        await ctx.store.dispatch(AppActions.startup({locale})); // Post startup action with token and locale
         if (Component.getInitialProps) { // Wait for pages to complete any async getInitialProps
-            pageProps = await Component.getInitialProps({ ctx });
+            pageProps = await Component.getInitialProps({ctx});
         }
-        return { pageProps };
+        return {pageProps};
     }
 
     constructor(props) {
@@ -35,7 +34,7 @@ class MyApp extends App {
             const token = API.getStoredToken(); // Retrieve token cookie from req.headers
             const user = API.getStoredUser(); // Retrieve token cookie from req.headers
             const refreshToken = API.getStoredRefreshToken(); // Retrieve token cookie from req.headers
-            this.props.store.dispatch(AppActions.startup({ token, user, refreshToken, clientLoaded: true }, {
+            this.props.store.dispatch(AppActions.startup({token, user, refreshToken, clientLoaded: true}, {
                 onSuccess: () => {
 
                 },
@@ -44,7 +43,7 @@ class MyApp extends App {
     }
 
     render() {
-        const { Component, pageProps, store } = this.props;
+        const {Component, pageProps, store} = this.props;
 
         if (!initialRender) { // Ensure we set the locale before rendering anything
             initialRender = true;

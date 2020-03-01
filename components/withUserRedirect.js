@@ -1,26 +1,29 @@
-import React from 'react';
-
+import React, {Component} from 'react';
+import {withRouter} from 'next/router';
 import withAuth from '../common/providers/withAuth';
 
 const withUserRedirect = (WrappedComponent) => {
-    class HOC extends React.Component {
-        static displayName = 'withFoo';
+    class HOC extends Component {
+        static displayName = 'withUserRedirect';
 
         constructor(props) {
             super(props);
             this.state = {};
-            if (!props.user && typeof window !== 'undefined') {
-                props.router.replace(`/login?redirect=${document.location.pathname}`);
+            const user = this.props.user;
+            if (!user && typeof window !== 'undefined') {
+                const redirect = encodeURIComponent(this.props.router.route);
+                const as = encodeURIComponent(this.props.router.asPath);
+                let path = `/login?redirect=${redirect}`;
+                if (redirect !== as) {
+                    path += `&as=${as}`;
+                }
+                this.props.router.replace(path);
             }
         }
 
         render() {
-            if (!this.props.user) {
-                return <div/>;
-            }
             return (
                 <WrappedComponent
-                  ref="wrappedComponent"
                   {...this.props}
                   {...this.state}
                 />
@@ -28,7 +31,7 @@ const withUserRedirect = (WrappedComponent) => {
         }
     }
 
-    return withAuth(HOC);
+    return withRouter(withAuth(HOC));
 };
 
 export default withUserRedirect;

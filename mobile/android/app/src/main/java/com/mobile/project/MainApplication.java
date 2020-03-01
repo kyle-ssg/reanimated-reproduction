@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.Nullable;
+import com.facebook.react.BuildConfig;
 
 // import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 // import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage; // <-- Add this line

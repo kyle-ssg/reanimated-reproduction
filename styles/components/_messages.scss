@@ -1,0 +1,32 @@
+// Alerts
+$alert-danger-border: #D8315B;
+$alert-danger-background: white;
+$alert-danger-color: #D8315B;
+
+$alert-success-border: #5dd870;
+$alert-success-background: white;
+$alert-success-color: #5dd870;
+
+$alert-border: #47a7d8;
+$alert-background: white;
+$alert-color: #47a7d8;
+
+.alert {
+  background: $alert-background;
+  color: $alert-color;
+  border-color: $alert-border;
+  font-weight: bold;
+  &-danger {
+    background: $alert-danger-background;
+    color: $alert-danger-color;
+    border-color: $alert-danger-border;
+    font-weight: bold;
+  }
+  &-success {
+    background: $alert-success-background;
+    color: $alert-success-color;
+    border-color: $alert-success-border;
+    font-weight: bold;
+  }
+}
+

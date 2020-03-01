@@ -1,4 +1,4 @@
-export default global.Project = {
+const Project = global.Project = {
     debug: false,
     api: 'http://localhost:4000/',
     ga: '',
@@ -13,5 +13,6 @@ export default global.Project = {
         useSecuredStorage: false,
     },
 };
+export default Project;
 // if (typeof ENV_NAME !== 'undefined' && typeof ENV_TYPE !== 'undefined') {
 // }

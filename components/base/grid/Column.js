@@ -1,27 +1,29 @@
-import React from 'react';
-import cn from 'classnames';
+import React, {PureComponent} from 'react';
 import propTypes from 'prop-types';
+import cn from 'classnames';
 
-const Column = ({ className, children, ...rest }) => (
-    <div
-      {...rest}
-      className={cn({
-          'flex-column': true,
-      }, className)}
-    >
-        {children}
-    </div>
-);
-
-Column.displayName = 'Column';
-
-Column.defaultProps = {};
-
-Column.propTypes = {
-    className: propTypes.string,
-    value: propTypes.number,
+const _propTypes = {
+    /** The element's children */
     children: propTypes.node,
-    style: propTypes.any,
+    /** The element's class name */
+    className: propTypes.string,
 };
 
+/**
+ * Div with standard horizontal padding
+ */
+export class Column extends PureComponent {
+    static displayName = 'Column';
+
+    static propTypes = _propTypes;
+
+    render() {
+        const {props: {className, ...rest}} = this;
+        return (
+            <div {...rest} className={cn(className, 'flex-column')}/>
+        );
+    }
+}
+
 global.Column = Column;
+export default Column;

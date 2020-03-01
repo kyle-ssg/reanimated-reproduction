@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import React from 'react';
 
-import { Modal, ModalBody, ModalHeader } from './Modal';
+import {Modal, ModalBody, ModalHeader} from './Modal';
 
 const ModalDefault = (props) => {
     const onDismiss = () => {

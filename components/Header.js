@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import React from 'react';
 
 function Header() {
     return (
@@ -11,7 +12,7 @@ function Header() {
                 </li>
                 <li className="nav-item">
                     <Link prefetch={false} href="/markup">
-                        <a className="nav-link">Markup</a>
+                        <a target="_blank" className="nav-link">Markup</a>
                     </Link>
                 </li>
             </ul>

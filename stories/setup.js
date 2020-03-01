@@ -1,8 +1,8 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { withInfo } from '@storybook/addon-info/dist/index'; // eslint-disable-line import/no-extraneous-dependencies
-import { storiesOf } from '@storybook/react'; // eslint-disable-line import/no-extraneous-dependencies
-import { withKnobs } from '@storybook/addon-knobs'; // eslint-disable-line import/no-extraneous-dependencies
+import {Provider} from 'react-redux';
+import {withInfo} from '@storybook/addon-info/dist/index';
+import {storiesOf} from '@storybook/react';
+import {withKnobs} from '@storybook/addon-knobs';
 import '../styles/styles.scss';
 import '../project/polyfill';
 import _store from '../common/store';
@@ -18,19 +18,19 @@ export const withProvider = story => (
 );
 
 export const withPaddedContainer = story => (
-    <div style={{ paddingTop: 50 }} className="container">
+    <div style={{paddingTop: 50}} className="container">
         { story() }
         <div id="confirm"/>
         <div id="alert"/>
     </div>
 );
 
-export const getStory = (name) => {
+export const getStory = (name, options = {}) => {
     let res = storiesOf(name, module);
 
     if (!isTest) {
         // jest can't parse this module so we only add it when needed
-        res = res.addDecorator(require('storybook-addon-smart-knobs').withSmartKnobs); // eslint-disable-line import/no-extraneous-dependencies
+        res = res.addDecorator(require('storybook-addon-smart-knobs').withSmartKnobs({ignoreProps: options.ignoreProps}));
     }
 
     return res

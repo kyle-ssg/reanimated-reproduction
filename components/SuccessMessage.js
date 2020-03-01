@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import propTypes from 'prop-types';
 
 const SuccessMessage = class extends Component {
@@ -15,7 +15,7 @@ const SuccessMessage = class extends Component {
     }
 
     render() {
-        const { props: { children } } = this;
+        const {props: {children}} = this;
         return (
             <div className={`alert mt-1 mb-1 alert-success ${this.props.className || ''}`}>
                 {typeof this.props.children === 'string' ? this.props.children.replace(/\n/g, '') : 'Success processing request'}

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import propTypes from 'prop-types';
 
-class Toggle extends React.PureComponent {
+class Toggle extends PureComponent {
     static displayName = 'Toggle'
 
     static propTypes = {
@@ -21,7 +21,7 @@ class Toggle extends React.PureComponent {
     }
 
     handleClick = () => {
-        this.setState({ toggled: !this.state.toggled });
+        this.setState({toggled: !this.state.toggled});
         this.props.onChange && this.props.onChange(!this.state.toggled);
     }
 

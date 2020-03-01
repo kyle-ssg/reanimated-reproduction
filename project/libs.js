@@ -1,8 +1,7 @@
 /* eslint-disable */
 import propTypes from 'prop-types';
-import _ from './lodash';
-
-global._ = _;
+import '../common/lodash';
+import 'ionicons/dist/css/ionicons.css';
 global.propTypes = propTypes;
 
 // Analytics

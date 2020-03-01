@@ -1,5 +1,7 @@
+§import React, {Component} from 'react';
+
 export default (WrappedComponent) => {
-    class HOC extends React.Component {
+    class HOC extends Component {
         static displayName = 'withFoo';
 
         constructor(props) {
@@ -7,16 +9,9 @@ export default (WrappedComponent) => {
             this.state = {};
         }
 
-        componentWillMount() {
-            if (!this.props.user) {
-                debugger;
-            }
-        }
-
         render() {
             return (
                 <WrappedComponent
-                  ref="wrappedComponent"
                   {...this.props}
                   {...this.state}
                 />

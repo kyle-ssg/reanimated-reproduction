@@ -1,6 +1,7 @@
-import { put, all, takeLatest } from 'redux-saga/effects';
+import {put, all, takeLatest} from 'redux-saga/effects';
 import _data from './utils/_data';
-import './app-actions';
+import {Actions} from './app-actions';
+import Project from './project';
 // Util function to post to an api, parse results and dispatch loaded and error functions
 
 // Error handler for a CRUD redux action
@@ -16,7 +17,7 @@ export function* errorHandler(action, prefix, preventSuccess, e) {
 // Success handler for a CRUD redux action
 export function* handleResponse(action, prefix, apiResult, preventSuccess, dto) {
     const data = dto ? dto(apiResult) : apiResult;
-    const params = { type: Actions[`${prefix}_LOADED`], data };
+    const params = {type: Actions[`${prefix}_LOADED`], data};
     if (data.token) {
         API.setStoredToken(data.token);
         _data.setToken(data.token);
@@ -86,11 +87,11 @@ export function* startup(action = {}) {
         }
 
         const isOnline = typeof navigator === 'undefined' ? true : navigator.onLine;
-        yield put({ type: Actions.STARTUP_LOADED, data: { ready: true, isOnline, ...rest } });
+        yield put({type: Actions.STARTUP_LOADED, data: {ready: true, isOnline, ...rest}});
 
         if (token && action.data.user) {
             // console.log('startup userData', userData);
-            yield put({ type: Actions.LOGIN_LOADED, data: action.data.user });
+            yield put({type: Actions.LOGIN_LOADED, data: action.data.user});
         }
         if (action.onSuccess) {
             action.onSuccess();
@@ -120,7 +121,7 @@ export function* register(action) {
 }
 
 export function* logout(action) {
-    yield put({ type: Actions.CLEAR_USER });
+    yield put({type: Actions.CLEAR_USER});
     yield API.setStoredToken(null);
     yield API.setCookie('user', null);
     yield API.setStoredRefreshToken(null);

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {Component} from 'react';
 
-export class Radio extends React.Component {
+export class Radio extends Component {
     render() {
-        const { name, selectedValue, onChange } = this.context.radioGroup;
+        const {name, selectedValue, onChange} = this.context.radioGroup;
         const optional = {};
         if (selectedValue !== undefined) {
             optional.checked = (this.props.value === selectedValue);
@@ -41,7 +41,7 @@ Radio.contextTypes = {
 
 export class RadioGroup extends React.Component {
     getChildContext() {
-        const { name, selectedValue, onChange } = this.props;
+        const {name, selectedValue, onChange} = this.props;
         return {
             radioGroup: {
                 name, selectedValue, onChange,
@@ -50,7 +50,7 @@ export class RadioGroup extends React.Component {
     }
 
     render() {
-        const { Component, name, selectedValue, onChange, children, ...rest } = this.props;
+        const {Component, name, selectedValue, onChange, children, ...rest} = this.props;
         return <Component role="radiogroup" {...rest}>{children}</Component>;
     }
 }

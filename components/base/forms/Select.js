@@ -1,4 +1,5 @@
-import { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
+import propTypes from 'prop-types';
 
 const Select = class extends PureComponent {
     static displayName = 'Select';
@@ -9,7 +10,7 @@ const Select = class extends PureComponent {
     }
 
     render() {
-        const { title, children } = this.props;
+        const {title, children} = this.props;
         return (
             <div className="select">
                 <span className="select__text">{title}</span>

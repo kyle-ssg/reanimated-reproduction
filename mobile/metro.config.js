@@ -10,15 +10,16 @@ const path = require('path');
 module.exports = {
     projectRoot: path.resolve(__dirname, '.'),
     // watchFolders: [path.resolve(__dirname, './node_modules')],
-    watchFolders: [
-        path.resolve(__dirname, '../common'),
-    ],
+    watchFolders: [path.resolve(__dirname, '../common')],
 
     resolver: {
-        // https://github.com/facebook/metro/issues/1#issuecomment-453450709
-        extraNodeModules: new Proxy({}, {
-            get: (target, name) => path.join(process.cwd(), `node_modules/${name}`),
-        }),
+    // https://github.com/facebook/metro/issues/1#issuecomment-453450709
+        extraNodeModules: new Proxy(
+            {},
+            {
+                get: (target, name) => path.join(process.cwd(), `node_modules/${name}`),
+            },
+        ),
     },
 
     transformer: {

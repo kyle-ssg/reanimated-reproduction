@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import '../app-actions';
 
 const withWidgets = (WrappedComponent) => {
@@ -14,8 +14,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 function mapStateToProps(state) {
-    const { widgets, widgetLoading, widgetError } = state;
-    return { widgets, widgetLoading, widgetError };
+    const {widgets, widgetLoading, widgetError} = state;
+    return {widgets, widgetLoading, widgetError};
 }
 
 export default (withWidgets);

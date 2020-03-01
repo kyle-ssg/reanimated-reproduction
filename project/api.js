@@ -1,4 +1,5 @@
 /* istanbul ignore next */
+import Constants from '../common/utils/constants';
 import Router from 'next/router';
 import cookie from 'cookie';
 import cookies from 'js-cookie';
@@ -9,7 +10,7 @@ import Project from '../common/project';
 const API = {
     isMobile: () => false,
     ajaxHandler(type, e) {
-        return { type, error: errorHandler(e) };
+        return {type, error: errorHandler(e)};
     },
     logout() {
         cookies.remove('token');

@@ -32,7 +32,6 @@ const BaseConstants = {
     'UPDATE_USER_LOADED': 'UPDATE_USER_LOADED',
 
 };
-
 const BaseActions = {
     connected() {
         return {
@@ -70,10 +69,10 @@ const BaseActions = {
     },
     // LOGIN
     loginLoaded: (user) => {
-        return { type: Actions.LOGIN_LOADED, user };
+        return {type: Actions.LOGIN_LOADED, user};
     },
     loginError: (error) => {
-        return { type: Actions.LOGIN_ERROR, error };
+        return {type: Actions.LOGIN_ERROR, error};
     },
     // STARTUP
     startup(data, callbacks) {
@@ -106,10 +105,10 @@ const BaseActions = {
         };
     },
     registerLoaded: (user) => {
-        return { type: Actions.REGISTER_LOADED, user };
+        return {type: Actions.REGISTER_LOADED, user};
     },
     registerError: (error) => {
-        return { type: Actions.REGISTER_ERROR, error };
+        return {type: Actions.REGISTER_ERROR, error};
     },
     logout(callbacks) {
         return {
@@ -119,12 +118,12 @@ const BaseActions = {
     },
 };
 
-global.Actions = Object.assign({}, BaseConstants, {
+export const Actions = global.Actions = Object.assign({}, BaseConstants, {
 
 // END OF ACTION_STRINGS
 });
 
-global.AppActions = Object.assign({}, BaseActions, {
+export const AppActions = global.AppActions = Object.assign({}, BaseActions, {
 
 // END OF APP_ACTIONS
 });

@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import { withRouter } from 'next/router';
+import React, {Component} from 'react';
+import {withRouter} from 'next/router';
+import Button from '../components/base/forms/Button';
 
 class HomePage extends Component {
   static displayName = 'HomePage';
@@ -15,7 +16,10 @@ class HomePage extends Component {
   render() {
       return (
           <div className="container">
-            Home Page
+              Home Page
+              <Button>
+                  Hi
+              </Button>
           </div>
       );
   }

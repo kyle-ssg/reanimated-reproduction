@@ -1,15 +1,17 @@
 import React from 'react';
-import propTypes from 'prop-types';
-import { getStory, withPaddedContainer } from './setup';
-import Button, { ButtonTertiary, ButtonPrimary, ButtonSecondary } from '../components/base/forms/Button';
-import { ButtonExamples, TextExamples } from './examples.storybook';
+import {getStory, withPaddedContainer} from './setup';
+import Button, {ButtonTertiary, ButtonPrimary, ButtonSecondary} from '../components/base/forms/Button';
+import {ButtonExamples, MessagesExamples, TextExamples} from './examples.storybook';
 import Panel from '../components/base/forms/Panel';
 import Tabs from '../components/base/forms/Tabs';
 import 'ionicons/dist/css/ionicons.css';
-import { Modal, ModalBody, ModalFooter, ModalHeader } from '../components/Modal';
+import {Modal, ModalBody, ModalFooter, ModalHeader} from '../components/Modal';
 import Confirm from '../components/ModalConfirm';
 import ModalAlert from '../components/ModalAlert';
-import Switch from 'rc-switch';
+import Message, {ErrorMessage, SuccessMessage} from '../components/Messages';
+import Header from '../components/Header';
+import DatePicker from '../components/DatePicker';
+import moment from 'moment/min/moment.min';
 
 getStory('Buttons')
     .addDecorator(withPaddedContainer)
@@ -21,6 +23,16 @@ getStory('Buttons')
     .add('secondary', () => <ButtonSecondary>A Button</ButtonSecondary>)
     .add('tertiary', () => <ButtonTertiary>A Button</ButtonTertiary>);
 
+getStory('Messages')
+    .addDecorator(withPaddedContainer)
+    .add('all', () => <MessagesExamples/>)
+    .add('default', () => <Message>A Message</Message>)
+    .add('error', () => <ErrorMessage>An Error Message</ErrorMessage>)
+    .add('success', () => <SuccessMessage>An Error Message</SuccessMessage>);
+
+getStory('Navbar')
+    .addDecorator(withPaddedContainer)
+    .add('all', () => <Header/>);
 
 getStory('Type')
     .addDecorator(withPaddedContainer)
@@ -48,24 +60,78 @@ getStory('Panel')
     ));
 
 
-getStory('Tabs')
+getStory('Tabs', {ignoreProps: ['children']})
     .addDecorator(withPaddedContainer)
     .add('uncontrolled', () => (
-        <Tabs uncontrolled>
-            <div tabLabel="Tab 1">
+        <Tabs tabLabels={['Tab 1', 'Tab 2']} uncontrolled>
+            <div>
                 Tab 1
             </div>
-            <div tabLabel="Tab 2">
+            <div>
                 Tab 2
             </div>
         </Tabs>
     ));
 
-
-getStory('Switch')
+getStory('Date Picker')
     .addDecorator(withPaddedContainer)
     .add('default', () => (
-        <Switch/>
+        <DatePicker
+          dateFormat="do MMM yyyy"
+          selected={new Date()}
+        />
+    ))
+    .add('highlight/exclude date', () => (
+        <DatePicker
+          selected={new Date()}
+          excludeDates={[
+              moment().add('days', 1).toISOString(),
+              moment().add('days', 2).toISOString(),
+          ]}
+          highlightDates={[
+              moment().add('days', 3).toISOString(),
+              moment().add('days', 4).toISOString(),
+          ]}
+        />
+    ))
+    .add('minmax', () => (
+        <DatePicker
+          minDate={new Date().toISOString()}
+          maxDate={moment().add('days', 5).toISOString()}
+        />
+    ))
+    .add('time', () => (
+        <DatePicker showTimeSelect/>
+    ))
+    .add('time only', () => (
+        <DatePicker
+          dateFormat="HH:mma"
+          showTimeSelect
+        />
+    ))
+    .add('time format', () => (
+        <DatePicker
+          selected={new Date()}
+          timeFormat="HH:mm"
+          showTimeSelect
+        />
+    ))
+
+    .add('time interval', () => (
+        <DatePicker
+          selected={new Date()}
+          timeIntervals={20}
+          showTimeSelect
+        />
+    ))
+    .add('time only', () => (
+        <DatePicker
+          selected={new Date()}
+          timeIntervals={20}
+          dateFormat="HH:mma"
+          showTimeSelectOnly
+          showTimeSelect
+        />
     ));
 
 getStory('Modals')
@@ -105,7 +171,7 @@ getStory('Modals')
                       alert('Selected No');
                   })}
             >
-            Open confirm
+                Open confirm
             </ButtonTertiary>
             <ButtonTertiary
               onClick={() => openAlert(<div>Alert</div>, <div>Body</div>, () => {

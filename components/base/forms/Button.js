@@ -1,23 +1,29 @@
-import React from 'react';
-import cn from 'classnames';
+import React, {PureComponent} from 'react';
 import propTypes from 'prop-types';
 
+import cn from 'classnames';
+
 const _propTypes = {
+    /** What class to add to the button */
     className: propTypes.string,
+    /** The element's children */
     children: propTypes.node,
+    /** What to do on click */
     onClick: propTypes.func,
 };
 
-const Button = global.Button = class extends React.PureComponent {
+/**
+ * Default Button without any styles
+ */
+export class Button extends PureComponent {
     static displayName = 'Button';
 
-    static propTypes = _propTypes;
+    static propTypes = _propTypes
 
     render() {
-        const { children, ...rest } = this.props;
+        const {children, ...rest} = this.props;
         return (
             <button
-              ref="button"
               type="button"
               {...rest}
               onMouseUp={this.onMouseUp}
@@ -29,17 +35,18 @@ const Button = global.Button = class extends React.PureComponent {
             </button>
         );
     }
-};
-
+}
+global.Button = Button;
 export default Button;
 
-export const ButtonPrimary = global.ButtonPrimary = class extends React.PureComponent {
+/** Default button added btn-primary * */
+export class ButtonPrimary extends React.PureComponent {
     static displayName = 'ButtonPrimary';
 
     static propTypes = _propTypes;
 
     render() {
-        const { props } = this;
+        const {props} = this;
         return (
             <Button
               {...props}
@@ -47,32 +54,17 @@ export const ButtonPrimary = global.ButtonPrimary = class extends React.PureComp
             />
         );
     }
-};
+}
+global.ButtonPrimary = ButtonPrimary;
 
-export const ButtonTertiary = global.ButtonTertiary = class extends React.PureComponent {
-    static displayName = 'ButtonButtonTertiary';
-
-    static propTypes = _propTypes;
-
-    render() {
-        const { props } = this;
-        return (
-            <Button
-              {...props}
-              className={cn(props.className, 'btn btn-outline-primary')}
-            />
-        );
-    }
-};
-
-
-export const ButtonSecondary = global.ButtonTertiary = class extends React.PureComponent {
+/** Default button added btn-secondary * */
+export class ButtonSecondary extends React.PureComponent {
     static displayName = 'ButtonSecondary';
 
     static propTypes = _propTypes;
 
     render() {
-        const { props } = this;
+        const {props} = this;
         return (
             <Button
               {...props}
@@ -80,4 +72,24 @@ export const ButtonSecondary = global.ButtonTertiary = class extends React.PureC
             />
         );
     }
-};
+}
+global.ButtonSecondary = ButtonSecondary;
+
+/** Default button added btn-outline-primary * */
+export class ButtonTertiary extends React.PureComponent {
+    static displayName = 'ButtonButtonTertiary';
+
+    static propTypes = _propTypes;
+
+    render() {
+        const {props} = this;
+        return (
+            <Button
+              {...props}
+              className={cn(props.className, 'btn btn-outline-primary')}
+            />
+        );
+    }
+}
+
+global.ButtonTertiary = ButtonTertiary;

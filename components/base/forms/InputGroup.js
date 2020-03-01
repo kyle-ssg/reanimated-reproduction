@@ -1,7 +1,8 @@
 /**
  * Created by kylejohnson on 25/07/2016.
  */
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import Input from './Input';
 
 const InputGroup = class extends Component {
     static displayName = 'InputGroup'
@@ -20,9 +21,9 @@ const InputGroup = class extends Component {
     };
 
     render() {
-        const { props } = this;
+        const {props} = this;
         const id = props.inputProps.id || props.inputProps.name || Utils.GUID();
-        const { inputProps } = this.props;
+        const {inputProps} = this.props;
         return (
             <div className={`form-group ${this.props.className}` || ''}>
                 <label htmlFor={id} className="cols-sm-2 control-label">{props.title}</label>

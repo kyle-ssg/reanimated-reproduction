@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Flex from './grid/Flex';
+import Flex from '../base/grid/Flex';
+
 const Gif = class extends Component {
     static displayName = 'Gif'
 

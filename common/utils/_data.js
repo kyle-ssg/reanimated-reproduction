@@ -19,7 +19,7 @@ const _data = {
         // console.debug(response);
         if (response.status === 403) {
             API.logout();
-            return Promise.reject({ message: 'UNAUTHORIZED' });
+            return Promise.reject({message: 'UNAUTHORIZED'});
         }
         if (response.status >= 200 && response.status < 300) {
             return Promise.resolve(response);

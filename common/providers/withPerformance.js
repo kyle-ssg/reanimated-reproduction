@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 const Profiler = React.Profiler;
 
@@ -33,7 +33,7 @@ export default (WrappedComponent, _id, remote, events = ['mount', 'update']) => 
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ value: actualDuration }),
+                    body: JSON.stringify({value: actualDuration}),
                 });
             }
         }
