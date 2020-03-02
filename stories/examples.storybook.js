@@ -1,9 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import Button, {ButtonPrimary, ButtonSecondary, ButtonTertiary} from '../components/base/forms/Button';
-import Message, {SuccessMessage, ErrorMessage} from '../components/Messages';
+import Button, { ButtonPrimary, ButtonSecondary, ButtonTertiary } from '../components/base/forms/Button';
+import Message, { SuccessMessage, ErrorMessage } from '../components/Messages';
 
-export const TextExamples = ({text}) => (
+export const TextExamples = ({ text }) => (
     <>
         <h1>{text}</h1>
         <h2>{text}</h2>
@@ -19,7 +19,7 @@ export const TextExamples = ({text}) => (
         </div>
     </>
 );
-export const MessagesExamples = ({text}) => (
+export const MessagesExamples = ({ text }) => (
     <>
         <Message>
             {text}
@@ -33,7 +33,7 @@ export const MessagesExamples = ({text}) => (
     </>
 );
 
-export const ButtonExamples = ({text}) => (
+export const ButtonExamples = ({ text }) => (
     <>
         <Button>{text}</Button>
         <ButtonPrimary>{text}</ButtonPrimary>

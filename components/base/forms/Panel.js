@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 
 import Row from '../grid/Row';
 
-const Panel = ({className, icon, title, action, children}) => (
+const Panel = ({ className, icon, title, action, children }) => (
     <div
       className={cn({
           'panel': true,
@@ -16,7 +16,7 @@ const Panel = ({className, icon, title, action, children}) => (
                 <Row className="flex-1">
                     {icon && (
                         <span className="panel-icon">
-                            <ion className={cn({icon: true}, icon)}/>
+                            <ion className={cn({ icon: true }, icon)}/>
                         </span>
                     )}
                     {title}

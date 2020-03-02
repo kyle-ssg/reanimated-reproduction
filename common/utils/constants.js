@@ -1,7 +1,7 @@
 const Constants = global.Constants = {
     events: {
-        'LOGIN': {'event': 'User login', 'category': 'User'},
-        'REGISTER': {'event': 'User register', 'category': 'User'},
+        'LOGIN': { 'event': 'User login', 'category': 'User' },
+        'REGISTER': { 'event': 'User register', 'category': 'User' },
     },
     defaultLocale: 'en',
     STORYBOOK: false,

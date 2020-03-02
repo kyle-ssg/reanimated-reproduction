@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 import cn from 'classnames';
 
@@ -12,18 +12,18 @@ const _propTypes = {
 /**
  * Div with standard vertical padding
  */
-export class Column extends PureComponent {
-    static displayName = 'Column';
+export class FormGroup extends PureComponent {
+    static displayName = 'FormGroup';
 
     static propTypes = _propTypes;
 
     render() {
-        const {props: {className, ...rest}} = this;
+        const { props: { className, ...rest } } = this;
         return (
             <div {...rest} className={cn(className, 'form-group')}/>
         );
     }
 }
 
-global.Column = Column;
-export default Column;
+global.FormGroup = FormGroup;
+export default FormGroup;

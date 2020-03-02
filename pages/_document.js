@@ -3,14 +3,14 @@
 
 // ./pages/_document.js
 import React from 'react';
-import Document, {Head, Main, NextScript} from 'next/document';
+import Document, { Head, Main, NextScript } from 'next/document';
 import '../project/api';
 
 class MyDocument extends Document {
     static async getInitialProps(ctx) {
         const initialProps = await Document.getInitialProps(ctx);
         const locale = API.getStoredLocale(ctx.req);
-        return {...initialProps, locale};
+        return { ...initialProps, locale };
     }
 
 

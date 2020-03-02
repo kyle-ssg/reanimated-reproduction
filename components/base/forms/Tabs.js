@@ -1,7 +1,7 @@
 /**
  * Created by kylejohnson on 30/07/2016.
  */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import Button from './Button';
 
@@ -39,7 +39,7 @@ export class Tabs extends Component {
                               key={`button${i}`}
                               onClick={(e) => {
                                   if (this.props.uncontrolled) {
-                                      this.setState({value: i});
+                                      this.setState({ value: i });
                                   }
                                   e.stopPropagation();
                                   e.preventDefault();

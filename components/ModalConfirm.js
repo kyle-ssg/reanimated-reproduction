@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import React from 'react';
 
-import {Modal, ModalBody, ModalFooter, ModalHeader} from './Modal';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
 
 const Confirm = (props) => {
     const no = () => {

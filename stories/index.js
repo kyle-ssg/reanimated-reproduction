@@ -1,14 +1,14 @@
 import React from 'react';
-import {getStory, withPaddedContainer} from './setup';
-import Button, {ButtonTertiary, ButtonPrimary, ButtonSecondary} from '../components/base/forms/Button';
-import {ButtonExamples, MessagesExamples, TextExamples} from './examples.storybook';
+import { getStory, withPaddedContainer } from './setup';
+import Button, { ButtonTertiary, ButtonPrimary, ButtonSecondary } from '../components/base/forms/Button';
+import { ButtonExamples, MessagesExamples, TextExamples } from './examples.storybook';
 import Panel from '../components/base/forms/Panel';
 import Tabs from '../components/base/forms/Tabs';
 import 'ionicons/dist/css/ionicons.css';
-import {Modal, ModalBody, ModalFooter, ModalHeader} from '../components/Modal';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from '../components/Modal';
 import Confirm from '../components/ModalConfirm';
 import ModalAlert from '../components/ModalAlert';
-import Message, {ErrorMessage, SuccessMessage} from '../components/Messages';
+import Message, { ErrorMessage, SuccessMessage } from '../components/Messages';
 import Header from '../components/Header';
 import DatePicker from '../components/DatePicker';
 import moment from 'moment/min/moment.min';
@@ -60,7 +60,7 @@ getStory('Panel')
     ));
 
 
-getStory('Tabs', {ignoreProps: ['children']})
+getStory('Tabs', { ignoreProps: ['children'] })
     .addDecorator(withPaddedContainer)
     .add('uncontrolled', () => (
         <Tabs tabLabels={['Tab 1', 'Tab 2']} uncontrolled>

@@ -10,7 +10,7 @@ import Project from '../common/project';
 const API = {
     isMobile: () => false,
     ajaxHandler(type, e) {
-        return {type, error: errorHandler(e)};
+        return { type, error: errorHandler(e) };
     },
     logout() {
         cookies.remove('token');

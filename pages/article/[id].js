@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {withRouter} from 'next/router';
+import React, { Component } from 'react';
+import { withRouter } from 'next/router';
 
 class ArticlePage extends Component {
   static displayName = 'ArticlePage';
@@ -8,12 +8,12 @@ class ArticlePage extends Component {
       API.trackPage('ArticlePage');
   }
 
-  static async getInitialProps({Component, ctx}) {
+  static async getInitialProps({ Component, ctx }) {
       // await ctx.store.dispatch(AppActions.getArticle(ctx.query.id)); // Post startup action with token and locale
   }
 
   render() {
-      const {props: {router: {query: {id}}}} = this;
+      const { props: { router: { query: { id } } } } = this;
       return (
           <div className="container">
               Article

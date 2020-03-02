@@ -38,6 +38,7 @@ module.exports = {
     'no-new-wrappers': 'error',
     'no-shadow': 'error',
     'no-var': 'error',
+    'object-curly-spacing': ['error', 'always'],
     'radix': 'error',
   },
   'settings': {

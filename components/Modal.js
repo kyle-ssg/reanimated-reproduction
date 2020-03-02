@@ -28,7 +28,7 @@ const withModal = (WrappedComponent) => {
         }
 
         toggle = () => {
-            this.setState({isOpen: false});
+            this.setState({ isOpen: false });
         }
 
         render() {

@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {withRouter} from 'next/router';
+import React, { Component } from 'react';
+import { withRouter } from 'next/router';
 import Button from '../components/base/forms/Button';
 
 class HomePage extends Component {

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Flex from '../base/grid/Flex';
 
 const Gif = class extends Component {
@@ -14,7 +14,7 @@ const Gif = class extends Component {
     render() {
         return (
             <Flex
-              onClick={() => this.setState({paused: !this.state.paused})}
+              onClick={() => this.setState({ paused: !this.state.paused })}
               className={`centered-container gif ${this.state.paused ? 'paused' : 'playing'}`}
             >
                 <img

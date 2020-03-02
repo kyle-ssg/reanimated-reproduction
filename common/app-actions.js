@@ -69,10 +69,10 @@ const BaseActions = {
     },
     // LOGIN
     loginLoaded: (user) => {
-        return {type: Actions.LOGIN_LOADED, user};
+        return { type: Actions.LOGIN_LOADED, user };
     },
     loginError: (error) => {
-        return {type: Actions.LOGIN_ERROR, error};
+        return { type: Actions.LOGIN_ERROR, error };
     },
     // STARTUP
     startup(data, callbacks) {
@@ -105,10 +105,10 @@ const BaseActions = {
         };
     },
     registerLoaded: (user) => {
-        return {type: Actions.REGISTER_LOADED, user};
+        return { type: Actions.REGISTER_LOADED, user };
     },
     registerError: (error) => {
-        return {type: Actions.REGISTER_ERROR, error};
+        return { type: Actions.REGISTER_ERROR, error };
     },
     logout(callbacks) {
         return {

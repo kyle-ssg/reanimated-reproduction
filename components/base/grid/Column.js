@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 import cn from 'classnames';
 
@@ -18,7 +18,7 @@ export class Column extends PureComponent {
     static propTypes = _propTypes;
 
     render() {
-        const {props: {className, ...rest}} = this;
+        const { props: { className, ...rest } } = this;
         return (
             <div {...rest} className={cn(className, 'flex-column')}/>
         );

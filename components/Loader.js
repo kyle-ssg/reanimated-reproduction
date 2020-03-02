@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 const Loader = class extends Component {
     static displayName = 'Loader';
@@ -20,7 +20,7 @@ const Loader = class extends Component {
               width="40px"
               height="40px"
               viewBox="0 0 50 50"
-              style={{enableBackground: '0 0 50 50'}}
+              style={{ enableBackground: '0 0 50 50' }}
             >
                 <path
                   fill="#4f98a3"

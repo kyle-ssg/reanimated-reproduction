@@ -1,7 +1,7 @@
 /**
  * Created by kylejohnson on 30/07/2016.
  */
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 
 import cn from 'classnames';
 
@@ -10,7 +10,7 @@ const Input = class extends PureComponent {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {shouldValidate: false};
+        this.state = { shouldValidate: false };
     }
 
     onFocus = (e) => {
@@ -49,7 +49,7 @@ const Input = class extends PureComponent {
     }
 
     render() {
-        const {isValid, onSearchChange, placeholderChar, ...rest} = this.props;
+        const { isValid, onSearchChange, placeholderChar, inputClassName, ...rest } = this.props;
 
         const className = cn({
             'input-container': true,
@@ -57,7 +57,7 @@ const Input = class extends PureComponent {
             'invalid': this.state.shouldValidate && !isValid,
         }, this.props.className);
 
-        const inputClassName = cn({
+        const combinedInputClassName = cn({
             input: true,
         }, this.props.inputClassName);
 
@@ -71,7 +71,7 @@ const Input = class extends PureComponent {
                   onKeyDown={this.onKeyDown}
                   onBlur={this.onBlur}
                   value={this.props.value}
-                  className={inputClassName}
+                  className={combinedInputClassName}
                 />
             </div>
         );

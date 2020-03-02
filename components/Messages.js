@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 import cn from 'classnames';
 
@@ -36,7 +36,7 @@ export class ErrorMessage extends React.PureComponent {
     static propTypes = _propTypes;
 
     render() {
-        const {props} = this;
+        const { props } = this;
         return (
             <Message
               {...props}
@@ -52,7 +52,7 @@ export class SuccessMessage extends React.PureComponent {
     static propTypes = _propTypes;
 
     render() {
-        const {props} = this;
+        const { props } = this;
         return (
             <Message
               {...props}

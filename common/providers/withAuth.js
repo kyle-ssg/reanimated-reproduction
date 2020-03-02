@@ -1,5 +1,5 @@
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import '../app-actions';
 
 const withAuth = (WrappedComponent) => {
@@ -20,8 +20,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 function mapStateToProps(state) {
-    const {user, userLoading, addressError, addressLoading, userError} = state;
-    return {user, userLoading, userError, addressError, addressLoading};
+    const { user, userLoading, addressError, addressLoading, userError } = state;
+    return { user, userLoading, userError, addressError, addressLoading };
 }
 
 export default (withAuth);

@@ -10,7 +10,7 @@ export class MaskedInput extends React.Component {
 
     constructor(props, context) {
         super(props, context);
-        this.state = {shouldValidate: false};
+        this.state = { shouldValidate: false };
     }
 
     onFocus = (e) => {
@@ -147,7 +147,7 @@ export class MaskedInput extends React.Component {
     }
 
     render() {
-        const {isValid, disableInputContainerClass, ...rest} = this.props;
+        const { isValid, disableInputContainerClass, placeholderChar, inputClassName, ...rest } = this.props;
 
         const className = cn({
             'input-container': !disableInputContainerClass,
@@ -155,7 +155,7 @@ export class MaskedInput extends React.Component {
             'invalid': this.state.shouldValidate && !isValid,
         }, this.props.className);
 
-        const inputClassName = cn({
+        const combinedInputClassName = cn({
             input: true,
         }, this.props.inputClassName);
 
@@ -170,7 +170,7 @@ export class MaskedInput extends React.Component {
                   onBlur={this.onBlur}
                   onChange={this.onChange}
                   value={this.props.value}
-                  className={inputClassName}
+                  className={combinedInputClassName}
                 />
             </div>
         );

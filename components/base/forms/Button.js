@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 
 import cn from 'classnames';
@@ -21,7 +21,7 @@ export class Button extends PureComponent {
     static propTypes = _propTypes
 
     render() {
-        const {children, ...rest} = this.props;
+        const { children, ...rest } = this.props;
         return (
             <button
               type="button"
@@ -46,7 +46,7 @@ export class ButtonPrimary extends React.PureComponent {
     static propTypes = _propTypes;
 
     render() {
-        const {props} = this;
+        const { props } = this;
         return (
             <Button
               {...props}
@@ -64,7 +64,7 @@ export class ButtonSecondary extends React.PureComponent {
     static propTypes = _propTypes;
 
     render() {
-        const {props} = this;
+        const { props } = this;
         return (
             <Button
               {...props}
@@ -82,7 +82,7 @@ export class ButtonTertiary extends React.PureComponent {
     static propTypes = _propTypes;
 
     render() {
-        const {props} = this;
+        const { props } = this;
         return (
             <Button
               {...props}

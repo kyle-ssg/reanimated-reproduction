@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 
 class SegmentControl extends PureComponent {
@@ -21,7 +21,7 @@ class SegmentControl extends PureComponent {
     }
 
     handleClick(key) {
-        const {options} = this.state;
+        const { options } = this.state;
         this.setState({
             options: options.map(option => ({
                 ...option,

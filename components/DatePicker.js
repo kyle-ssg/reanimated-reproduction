@@ -1,6 +1,6 @@
 import _DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 
 const _propTypes = {
@@ -58,7 +58,7 @@ export class DatePicker extends PureComponent {
 
 
     render() {
-        const {props: {minDate, maxDate, selected, highlightDates, excludeDates, ...rest}} = this;
+        const { props: { minDate, maxDate, selected, highlightDates, excludeDates, ...rest } } = this;
         return (
             <_DatePicker
               minDate={this.getDate(minDate)}

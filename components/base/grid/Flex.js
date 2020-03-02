@@ -1,5 +1,5 @@
 // propTypes: value: OptionalNumber
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 
 const cn = require('classnames');
@@ -22,7 +22,7 @@ export class Flex extends PureComponent {
     static propTypes = _propTypes;
 
     render() {
-        const {props: {className, children, value, ...rest}} = this;
+        const { props: { className, children, value, ...rest } } = this;
         return (
             <div
               {...rest}
