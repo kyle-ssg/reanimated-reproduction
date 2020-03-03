@@ -16,8 +16,10 @@ const API = {
         cookies.remove('token');
         Router.replace(Project.logoutRedirect || '/');
     },
-    loggedIn() {
-        Router.replace(Project.loginRedirect || '/');
+    loginRedirect() {
+        const params = Utils.fromParam();
+        params.redirect = params.redirect || Project.loginRedirect;
+        Router.replace(params.redirect, params.as || params.redirect, { shallow: true });
     },
     getStoredToken(req) {
         if (req) {

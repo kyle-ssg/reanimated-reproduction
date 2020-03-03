@@ -92,7 +92,6 @@ export function* startup(action = {}) {
         if (token && action.data.user) {
             // console.log('startup userData', userData);
             yield put({ type: Actions.LOGIN_LOADED, data: action.data.user });
-            API.loggedIn();
         }
         if (action.onSuccess) {
             action.onSuccess();
