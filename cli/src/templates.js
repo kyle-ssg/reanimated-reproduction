@@ -213,7 +213,7 @@ export default ${functionName('WITH', prefix)};
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import with${prefixCamel} from '../common/providers/${functionName('WITH', prefix)}';
-import ErrorMessage from './ErrorMessage';
+import { ErrorMessage } from '../Messages';
 
 class ${prefixCamel} extends Component {
     static displayName = '${prefixCamel}';
@@ -259,7 +259,7 @@ export default with${prefixCamel}(${prefixCamel});
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import with${prefixCamel} from '../common/providers/${functionName('WITH', prefix)}';
-import ErrorMessage from './ErrorMessage';
+import { ErrorMessage } from '../Messages';
 
 class ${prefixCamel} extends Component {
     static displayName = '${prefixCamel}';
@@ -302,7 +302,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import propTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import with${prefixCamel} from '../common/providers/${functionName('WITH', prefix)}';
-import ErrorMessage from './ErrorMessage';
+import { ErrorMessage } from '../Messages';
 import SuccessMessage from './SuccessMessage';
 // import './Modal';
 
