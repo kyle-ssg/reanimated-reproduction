@@ -19,7 +19,7 @@ module.exports = {
     'rules': {
         'prettier/prettier': ['error'],
         'react/jsx-no-undef': [
-          "error",
+            "error",
             {"allowGlobals":true}
         ],
         'default-case': 'error',
@@ -64,10 +64,11 @@ module.exports = {
         Constants:true,
         E2E: true,
         ErrorMessage:true,
-        Format:true,
         FormGroup:true,
+        Format:true,
         Input:true,
         InputGroup:true,
+        Link:true,
         Loader:true,
         MaskedInput:true,
         Project:true,
@@ -87,4 +88,4 @@ module.exports = {
         process: true,
         require: true,
     }
-    };
+};
