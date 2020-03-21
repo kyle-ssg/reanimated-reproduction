@@ -16,8 +16,8 @@ const _propTypes = {
 /**
  * Div with flex
  */
-export class Flex extends PureComponent {
-    static displayName = 'Flex';
+export class Row extends PureComponent {
+    static displayName = 'Row';
 
     static propTypes = _propTypes;
 
@@ -25,11 +25,11 @@ export class Flex extends PureComponent {
         const { props: { className, space, children, ...rest } } = this;
         return (
             <div
-              {...rest}
-              className={cn({
-                  'flex-row': true,
-                  space,
-              }, className)}
+                {...rest}
+                className={cn({
+                    'flex-row': true,
+                    space,
+                }, className)}
             >
                 {children}
             </div>
@@ -37,5 +37,5 @@ export class Flex extends PureComponent {
     }
 }
 
-global.Flex = Flex;
-export default Flex;
+global.Row = Row;
+export default Row;
