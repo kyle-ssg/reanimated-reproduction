@@ -21,6 +21,10 @@ export class Flex extends PureComponent {
 
     static propTypes = _propTypes;
 
+    static defaultProps = {
+        value: 1
+    }
+
     render() {
         const { props: { className, children, value, ...rest } } = this;
         return (
