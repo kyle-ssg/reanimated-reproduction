@@ -17,7 +17,7 @@ const API = {
         Router.replace(Project.logoutRedirect || '/');
     },
     loginRedirect() {
-        const params = Utils.fromParam();
+        const params = Router.query;
         params.redirect = params.redirect || Project.loginRedirect;
         Router.replace(params.redirect, params.as || params.redirect, { shallow: true });
     },
@@ -108,7 +108,7 @@ const API = {
             });
         }
 
-        if (Project.mixpanel) {
+        if (Project.mixpanel && typeof mixpanel !== 'undefined') {
             if (!data) {
                 // eslint-disable-next-line
                 console.error("MIXPANEL: Passed null event data")
@@ -123,7 +123,7 @@ const API = {
         }
     },
     trackPage(title) {
-        if (Project.ga) {
+        if (Project.ga && typeof ga !== 'undefined') {
             ga('send', {
                 hitType: 'pageview',
                 title,
@@ -132,7 +132,7 @@ const API = {
             });
         }
 
-        if (Project.mixpanel) {
+        if (Project.mixpanel && typeof mixpanel !== 'undefined') {
             mixpanel.track('Page View', {
                 title,
                 location: document.location.href,
@@ -141,17 +141,17 @@ const API = {
         }
     },
     alias(id) {
-        if (Project.mixpanel) {
+        if (Project.mixpanel && typeof mixpanel !== 'undefined') {
             mixpanel.alias(id);
         }
     },
     identify(id) {
-        if (Project.mixpanel) {
+        if (Project.mixpanel && typeof mixpanel !== 'undefined') {
             mixpanel.identify(id);
         }
     },
     register(email, firstName, lastName) {
-        if (Project.mixpanel) {
+        if (Project.mixpanel && typeof mixpanel !== 'undefined') {
             mixpanel.register({
                 'Email': email,
                 'First Name': firstName,
@@ -160,7 +160,7 @@ const API = {
         }
     },
     reset() {
-        if (Project.mixpanel) {
+        if (Project.mixpanel && typeof mixpanel !== 'undefined') {
             mixpanel.reset();
         }
     },
