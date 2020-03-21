@@ -85,6 +85,7 @@ class MyApp extends App {
                         <Component {...pageProps} />
                         <div id="confirm"/>
                         <div id="alert"/>
+                        <div id="modal"/>
                         {
                             E2E && (
                                 <React.Fragment>
