@@ -9,6 +9,7 @@ import createStore from '../common/store';
 import Header from '../components/Header';
 import ReactDOM from 'react-dom';
 import Toast from '../components/toast';
+import _data from '../common/utils/_data';
 
 let initialRender = false;
 
@@ -44,6 +45,8 @@ class MyApp extends App {
             //
             //     },
             // })); // Post startup action with token and locale
+            //    otherwise just set the token
+            _data.setToken(this.props.store.getState().token)
         }
     }
 
