@@ -78,7 +78,10 @@ function defaultReducer(
     action,
 ) {
     if (typeof window === 'undefined') {
-        // API.log('SERVER', action.type);
+        API.log('SERVER', action.type);
+        if (action.type.includes("ERROR")) {
+            API.log('SERVER', action)
+        }
     } else {
         // API.log('DISPATCHER', action.type);
     }
