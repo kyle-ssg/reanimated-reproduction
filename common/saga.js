@@ -69,30 +69,28 @@ export function* deleteAction(action, url, prefix, preventSuccess) {
     }
 }
 
-// Called when the application starts up
+// Called when the application starts up, if using SSR this is done in the server
 export function* startup(action = {}) {
     try {
         const {
             ...rest
         } = action.data || {};
 
-        const token = _.get(action, 'data.user.token');
-        const refreshToken = action.data && action.data.refreshToken;
+        const token = _.get(action, 'data.token');
+        const refreshToken = _.get(action, 'data.refreshToken');
 
-        if (token) {
-            _data.setToken(token);
-        }
         if (refreshToken) {
             _data.setRefreshToken(refreshToken);
         }
 
-        const isOnline = typeof navigator === 'undefined' ? true : navigator.onLine;
-        yield put({ type: Actions.STARTUP_LOADED, data: { ready: true, isOnline, ...rest } });
-
-        if (token && action.data.user) {
-            // console.log('startup userData', userData);
-            yield put({ type: Actions.LOGIN_LOADED, data: action.data.user });
+        if (token) {
+            _data.setToken(token);
+            yield onToken(action)
         }
+
+        const isOnline = typeof navigator === 'undefined' ? true : navigator.onLine;
+
+        yield put({ type: Actions.STARTUP_LOADED, data: { ready: true, isOnline, ...rest } });
         if (action.onSuccess) {
             action.onSuccess();
         }
@@ -102,14 +100,19 @@ export function* startup(action = {}) {
     }
 }
 
+export function* onToken(action) {
+    //  Do a get here for your user data etc, data.token is already set
+    yield handleResponse(action, "LOGIN", { user:{} }, false);
+}
+
 export function* login(action) {
     try {
-        const data = yield _data.post(`${Project.api}user/login`, action.data);
-        if (data.token || data.userType) {
-            API.setStoredToken(data.token);
-            _data.setToken(data.token);
-        }
-        yield getAction(action, `${Project.api}user/my-account`, 'LOGIN');
+        const res = yield _data.post(`${Project.api}auth/login/`, action.data);
+        API.trackEvent(Constants.events.LOGIN);
+        API.identify(action.data.email);
+        _data.setToken(res.token);
+        API.setStoredToken(res.token);
+        yield onToken(action);
     } catch (e) {
         yield put(API.ajaxHandler(Actions.LOGIN_ERROR, e));
         action.onError && action.onError();
