@@ -66,6 +66,7 @@ module.exports = {
         ErrorMessage:true,
         FormGroup:true,
         Format:true,
+        Flex:true,
         Input:true,
         InputGroup:true,
         Link:true,
