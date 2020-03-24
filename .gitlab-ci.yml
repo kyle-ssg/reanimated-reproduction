@@ -17,6 +17,16 @@ cache:
     - common/**/*
     - mobile/**/*
 
+.web_deploy_common_required_changes: &web_deploy_common_required_changes
+  changes:
+    - *
+    - common/**/*
+    - components/**/*
+    - pages/**/*
+    - project/**/*
+    - static/**/*
+    - styles/**/*
+
 deploy-mobile-android-production:
     image: ssgluke/gitlab-ci-codepush:v1.5
     stage: deploy
@@ -97,13 +107,7 @@ deploy-web-production:
       refs:
         - master
       changes:
-        - "*"
-        - "common/**/*"
-        - "components/**/*"
-        - "pages/**/*"
-        - "project/**/*"
-        - "static/**/*"
-        - "styles/**/*"
+        <<: *web_deploy_common_required_changes
       variables:
         - $NOW_TOKEN
         - $NOW_TEAM_NAME
@@ -121,13 +125,7 @@ deploy-web-staging:
       refs:
         - staging
       changes:
-        - "*"
-        - "common/**/*"
-        - "components/**/*"
-        - "pages/**/*"
-        - "project/**/*"
-        - "static/**/*"
-        - "styles/**/*"
+        <<: *web_deploy_common_required_changes
       variables:
         - $NOW_TOKEN
         - $NOW_TEAM_NAME
@@ -145,13 +143,7 @@ deploy-web-develop:
       refs:
         - develop
       changes:
-        - "*"
-        - "common/**/*"
-        - "components/**/*"
-        - "pages/**/*"
-        - "project/**/*"
-        - "static/**/*"
-        - "styles/**/*"
+        <<: *web_deploy_common_required_changes
       variables:
         - $NOW_TOKEN
         - $NOW_TEAM_NAME
@@ -171,13 +163,7 @@ deploy-web-feature:
         - develop
     only:
       changes:
-        - "*"
-        - "common/**/*"
-        - "components/**/*"
-        - "pages/**/*"
-        - "project/**/*"
-        - "static/**/*"
-        - "styles/**/*"
+        <<: *web_deploy_common_required_changes
       variables:
         - $NOW_TOKEN
         - $NOW_TEAM_NAME
