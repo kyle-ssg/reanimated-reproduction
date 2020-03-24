@@ -97,7 +97,13 @@ deploy-web-production:
       refs:
         - master
       changes:
-        - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+        - "*"
+        - "common/**/*"
+        - "components/**/*"
+        - "pages/**/*"
+        - "project/**/*"
+        - "static/**/*"
+        - "styles/**/*"
       variables:
         - $NOW_TOKEN
         - $NOW_TEAM_NAME
@@ -115,7 +121,13 @@ deploy-web-staging:
       refs:
         - staging
       changes:
-        - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+        - "*"
+        - "common/**/*"
+        - "components/**/*"
+        - "pages/**/*"
+        - "project/**/*"
+        - "static/**/*"
+        - "styles/**/*"
       variables:
         - $NOW_TOKEN
         - $NOW_TEAM_NAME
@@ -133,7 +145,13 @@ deploy-web-develop:
       refs:
         - develop
       changes:
-        - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+        - "*"
+        - "common/**/*"
+        - "components/**/*"
+        - "pages/**/*"
+        - "project/**/*"
+        - "static/**/*"
+        - "styles/**/*"
       variables:
         - $NOW_TOKEN
         - $NOW_TEAM_NAME
@@ -153,7 +171,13 @@ deploy-web-feature:
         - develop
     only:
       changes:
-        - "{*, !(mobile)/**, !(bin)/**, !(cli)/**, !(tests)/**}"
+        - "*"
+        - "common/**/*"
+        - "components/**/*"
+        - "pages/**/*"
+        - "project/**/*"
+        - "static/**/*"
+        - "styles/**/*"
       variables:
         - $NOW_TOKEN
         - $NOW_TEAM_NAME
