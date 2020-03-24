@@ -19,7 +19,7 @@ cache:
 
 .web_deploy_common_required_changes: &web_deploy_common_required_changes
   changes:
-    - *
+    - "*"
     - common/**/*
     - components/**/*
     - pages/**/*
