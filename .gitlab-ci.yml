@@ -106,8 +106,7 @@ deploy-web-production:
     only:
       refs:
         - master
-      changes:
-        <<: *web_deploy_common_required_changes
+      <<: *web_deploy_common_required_changes
       variables:
         - $NOW_TOKEN
         - $NOW_TEAM_NAME
@@ -124,8 +123,7 @@ deploy-web-staging:
     only:
       refs:
         - staging
-      changes:
-        <<: *web_deploy_common_required_changes
+      <<: *web_deploy_common_required_changes
       variables:
         - $NOW_TOKEN
         - $NOW_TEAM_NAME
@@ -142,8 +140,7 @@ deploy-web-develop:
     only:
       refs:
         - develop
-      changes:
-        <<: *web_deploy_common_required_changes
+      <<: *web_deploy_common_required_changes
       variables:
         - $NOW_TOKEN
         - $NOW_TEAM_NAME
@@ -162,8 +159,7 @@ deploy-web-feature:
         - staging
         - develop
     only:
-      changes:
-        <<: *web_deploy_common_required_changes
+      <<: *web_deploy_common_required_changes
       variables:
         - $NOW_TOKEN
         - $NOW_TEAM_NAME
