@@ -11,6 +11,7 @@ cache:
     - echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p # - used to increase file watchers limit on Linux
     - cd mobile
     - npm i
+    - npm run env
 
 .mobile_deploy_common_required_changes: &mobile_deploy_common_required_changes
   changes:
@@ -94,6 +95,7 @@ deploy-mobile-ios-staging:
 .web_deploy_common_script: &web_deploy_common_script
   before_script:
     - npm i -g now
+    - npm run env
 
 deploy-web-production:
     image: mhart/alpine-node:10
@@ -119,27 +121,10 @@ deploy-web-staging:
     <<: *web_deploy_common_script
     script:
         - url=$(now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV --name=$CI_PROJECT_NAME)
-        - now alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url ${CI_PROJECT_NAME}-staging
+        - now alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url ${CI_PROJECT_NAME}-$CI_COMMIT_REF_SLUG
     only:
       refs:
         - staging
-      <<: *web_deploy_common_required_changes
-      variables:
-        - $NOW_TOKEN
-        - $NOW_TEAM_NAME
-
-deploy-web-develop:
-    image: mhart/alpine-node:10
-    stage: deploy
-    variables:
-      ENV: dev
-    <<: *web_deploy_common_script
-    script:
-        - url=$(now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV --name=$CI_PROJECT_NAME)
-        - now alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url ${CI_PROJECT_NAME}-develop
-    only:
-      refs:
-        - develop
       <<: *web_deploy_common_required_changes
       variables:
         - $NOW_TOKEN
@@ -152,12 +137,12 @@ deploy-web-feature:
       ENV: dev
     <<: *web_deploy_common_script
     script:
-        - now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV --name=$CI_PROJECT_NAME
+      - url=$(now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV --name=$CI_PROJECT_NAME)
+      - now alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url ${CI_PROJECT_NAME}-$CI_COMMIT_REF_SLUG
     except:
       refs:
         - master
         - staging
-        - develop
     only:
       <<: *web_deploy_common_required_changes
       variables:
