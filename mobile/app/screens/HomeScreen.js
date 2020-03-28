@@ -21,6 +21,11 @@ const HomeScreen = class extends Component {
           <ReactNative.SafeAreaView style={[Styles.body, Styles.centeredContainer]}>
               <H1>SSG Boilerplate</H1>
               <Text>To see the markup page, toggle Constants.STORYBOOK {Constants.STORYBOOK}</Text>
+              <TouchableOpacity onPress={()=>Navigation.push("root", routes.homeScreen())}>
+                  <Text>
+                      Push to screen
+                  </Text>
+              </TouchableOpacity>
           </ReactNative.SafeAreaView>
       );
   }
