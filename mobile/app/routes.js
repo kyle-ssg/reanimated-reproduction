@@ -89,7 +89,9 @@ const routes = {
             options: {
                 titleDisplayMode: 'alwaysShow',
                 topBar: {
-                    visible: false,
+                    backButton: {
+                        visible:false
+                    }
                 },
             },
         },
