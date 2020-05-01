@@ -9,7 +9,10 @@ import rootSaga from './saga';
 
 let _store;
 export default function (initialState = {}) {
-    if (_store) return _store;
+    // It's very important to only return the cached store on the client, otherwise SSR will return the previous request state
+    if (_store && typeof window !== 'undefined') {
+        return _store;
+    }
     const sagaMiddleware = createSagaMiddleware();
 
     const middlewares = [
@@ -27,5 +30,3 @@ export default function (initialState = {}) {
     _store = store;
     return _store;
 }
-
-export const getStoreDangerous = () => _store;

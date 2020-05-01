@@ -17,11 +17,15 @@ const withUserRedirect = (WrappedComponent) => {
                 if (redirect !== as) {
                     path += `&as=${as}`;
                 }
-                this.props.router.replace(path);
+                Router.replace(path);
+                this.preventRender = true;
             }
         }
 
         render() {
+            if (this.preventRender) {
+                return null
+            }
             return (
                 <WrappedComponent
                   {...this.props}

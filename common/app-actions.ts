@@ -1,9 +1,4 @@
 const BaseConstants = {
-    'ACTIVE': 'ACTIVE',
-    'INACTIVE': 'INACTIVE',
-
-    'CONNECTED': 'CONNECTED',
-    'DISCONNECTED': 'DISCONNECTED',
 
     'LOGIN': 'LOGIN',
     'LOGIN_LOADED': 'LOGIN_LOADED',
@@ -32,50 +27,21 @@ const BaseConstants = {
     'UPDATE_USER_LOADED': 'UPDATE_USER_LOADED',
 
 };
+interface Callbacks {
+    onSuccess?:(data:any)=>void;
+    onError?:(data:any)=>void;
+}
+
 const BaseActions = {
-    connected() {
-        return {
-            type: Actions.CONNECTED,
-        };
-    },
-    disconnected() { // when the device goes offline
-        return {
-            type: Actions.DISCONNECTED,
-            // todo: maybe store last online
-        };
-    },
-    active() {
-        return {
-            type: Actions.ACTIVE,
-        };
-    },
-    inactive() { // when the app goes out of focus
-        return {
-            type: Actions.INACTIVE,
-            // todo: maybe store last online
-        };
-    },
-    refresh() { // force the app to refresh data
-        return {
-            type: Actions.REFRESH,
-        };
-    },
-    login(data, callbacks) {
+    login(data:Record<string, any>, callbacks:Callbacks={}):Record<string, any> {
         return {
             type: Actions.LOGIN,
             data,
             ...callbacks,
         };
     },
-    // LOGIN
-    loginLoaded: (user) => {
-        return { type: Actions.LOGIN_LOADED, user };
-    },
-    loginError: (error) => {
-        return { type: Actions.LOGIN_ERROR, error };
-    },
     // STARTUP
-    startup(data, callbacks) {
+    startup(data:Record<string, any>, callbacks:Callbacks={}):Record<string, any> {
         return {
             type: Actions.STARTUP,
             data,
@@ -83,34 +49,28 @@ const BaseActions = {
         };
     },
     // REGISTER
-    register(data, callbacks) {
+    register(data:Record<string, any>, callbacks:Callbacks={}):Record<string, any> {
         return {
             type: Actions.REGISTER,
             data,
             ...callbacks,
         };
     },
-    updateUser(data, callbacks = {}) {
+    updateUser(data:Record<string, any>, callbacks:Callbacks = {}):Record<string, any> {
         return {
             type: Actions.UPDATE_USER,
             data,
             ...callbacks,
         };
     },
-    confirmEmail(data, callbacks = {}) {
+    confirmEmail(data:Record<string, any>, callbacks:Callbacks={}):Record<string, any> {
         return {
             type: Actions.CONFIRM_EMAIL,
             data,
             ...callbacks,
         };
     },
-    registerLoaded: (user) => {
-        return { type: Actions.REGISTER_LOADED, user };
-    },
-    registerError: (error) => {
-        return { type: Actions.REGISTER_ERROR, error };
-    },
-    logout(callbacks) {
+    logout(callbacks: Callbacks = {}):Record<string, any> {
         return {
             type: Actions.LOGOUT,
             ...callbacks,

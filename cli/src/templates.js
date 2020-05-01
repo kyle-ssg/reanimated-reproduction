@@ -27,7 +27,7 @@ module.exports = {
     // appactions
     getCollection(action, prefix) {
         return `
-    ${functionName(action, prefix)}(data, callbacks = {}) {
+    ${functionName(action, prefix)}(data:Record<string, any>, callbacks:Callbacks={}):Record<string, any> {
         return {
             type: Actions.${action},
             data,
@@ -38,7 +38,7 @@ module.exports = {
     },
     get(action, prefix) {
         return `
-    ${functionName(action, prefix)}(id, callbacks = {}) {
+    ${functionName(action, prefix)}(id:string, callbacks:Callbacks={}):Record<string, any> {
         return {
             type: Actions.${action},
             id,
@@ -49,7 +49,7 @@ module.exports = {
     },
     delete(action, prefix) {
         return `
-    ${functionName(action, prefix)}(id, callbacks = {}) {
+    ${functionName(action, prefix)}(id:string, callbacks:Callbacks={}):Record<string, any> {
         return {
             type: Actions.${action},
             id,
@@ -60,7 +60,7 @@ module.exports = {
     },
     post(action, prefix) {
         return `
-    ${functionName(action, prefix)}(data, callbacks = {}) {
+    ${functionName(action, prefix)}(data:Record<string, any>, callbacks:Callbacks={}):Record<string, any> {
         return {
             type: Actions.${action},
             data,
@@ -99,7 +99,7 @@ module.exports = {
     },
     reducerPost(action, prefix) {
         return `case Actions.${action}:
-            return itemLoading(state, '${prefix}', action);
+            return itemSaving(state, '${prefix}', action);
         case Actions.${action}_LOADED:
             return itemSaved(state, '${prefix}', action);
         case Actions.${action}_ERROR:
@@ -107,7 +107,7 @@ module.exports = {
     },
     reducerUpdate(action, prefix) {
         return `case Actions.${action}:
-            return itemLoading(state, '${prefix}', action);
+            return itemSaving(state, '${prefix}', action);
         case Actions.${action}_LOADED:
             return itemSaved(state, '${prefix}', action);
         case Actions.${action}_ERROR:
@@ -115,7 +115,7 @@ module.exports = {
     },
     reducerDelete(action, prefix) {
         return `case Actions.${action}:
-            return itemLoading(state, '${prefix}', action);
+            return itemSaving(state, '${prefix}', action);
         case Actions.${action}_LOADED:
             return itemSaved(state, '${prefix}', action);
         case Actions.${action}_ERROR:
@@ -175,8 +175,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 function mapStateToProps(state, props) {
-    const { ${prefix}, ${prefix}Loading, ${prefix}Error } = state;
-    return { ${prefix}: ${prefix} && ${prefix}[props.id], ${prefix}Loading, ${prefix}Error };
+    const { ${prefix}, ${prefix}Loading, ${prefix}Saving, ${prefix}Error } = state;
+    return { ${prefix}: ${prefix} && ${prefix}[props.id], ${prefix}Loading, ${prefix}Saving, ${prefix}Error };
 }
 
 export default ${functionName('WITH', prefix)};
@@ -200,8 +200,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 function mapStateToProps(state) {
-    const { ${prefix}, ${prefix}Loading, ${prefix}Error } = state;
-    return { ${prefix}, ${prefix}Loading, ${prefix}Error };
+    const { ${prefix}, ${prefix}Loading, ${prefix}Saving, ${prefix}Error } = state;
+    return { ${prefix}, ${prefix}Loading, ${prefix}Saving, ${prefix}Error };
 }
 
 export default ${functionName('WITH', prefix)};
@@ -213,7 +213,7 @@ export default ${functionName('WITH', prefix)};
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import with${prefixCamel} from '../common/providers/${functionName('WITH', prefix)}';
-import { ErrorMessage } from '../Messages';
+import { ErrorMessage } from './Messages';
 
 class ${prefixCamel} extends Component {
     static displayName = '${prefixCamel}';
@@ -259,7 +259,7 @@ export default with${prefixCamel}(${prefixCamel});
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import with${prefixCamel} from '../common/providers/${functionName('WITH', prefix)}';
-import { ErrorMessage } from '../Messages';
+import { ErrorMessage } from './Messages';
 
 class ${prefixCamel} extends Component {
     static displayName = '${prefixCamel}';
@@ -302,7 +302,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import propTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import with${prefixCamel} from '../common/providers/${functionName('WITH', prefix)}';
-import { ErrorMessage } from '../Messages';
+import { ErrorMessage } from './Messages';
 import SuccessMessage from './SuccessMessage';
 // import './Modal';
 
@@ -312,6 +312,7 @@ class Edit${prefixCamel} extends Component {
     static propTypes = {
         id: propTypes.string,
         ${prefix}Loading: propTypes.bool,
+        ${prefix}Saving: propTypes.bool,
         ${prefix}Error: propTypes.any,
         create${prefixCamel}: propTypes.func,
         get${prefixCamel}: propTypes.func,
@@ -386,7 +387,7 @@ class Edit${prefixCamel} extends Component {
     }
 
     render() {
-        const { props: { ${prefix}Loading, ${prefix}Error }, state: { ${prefix}Success, ${prefix}Edit = {} } } = this;
+        const { props: { ${prefix}Loading, ${prefix}Saving, ${prefix}Error }, state: { ${prefix}Success, ${prefix}Edit = {} } } = this;
         const { name } = ${prefix}Edit || {};
         const update = this.update${prefixCamel};
         const isEdit = !!this.props.id;
@@ -409,16 +410,16 @@ class Edit${prefixCamel} extends Component {
                         <SuccessMessage>Saved</SuccessMessage>
                     )}
                     { JSON.stringify(${prefix}Edit) }
-                    {isEdit && <ButtonPrimary disabled={${prefix}Loading} onClick={this.delete}>Delete</ButtonPrimary>}
+                    {isEdit && <ButtonPrimary disabled={${prefix}Saving} onClick={this.delete}>Delete</ButtonPrimary>}
                     <div className="text-right pb-2">
-                        <ButtonPrimary disabled={${prefix}Loading} type="submit">
+                        <ButtonPrimary disabled={${prefix}Saving} type="submit">
                             Save
                         </ButtonPrimary>
                     </div>
                 </form>
             ) : (
-                productError && (
-                    <ErrorMessage>{productError}</ErrorMessage>
+                ${prefix}Error && (
+                    <ErrorMessage>{${prefix}Error}</ErrorMessage>
                 )
             )}
         </>;

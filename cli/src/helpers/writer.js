@@ -3,7 +3,7 @@ const path = require('path');
 
 const rootPath = path.join(__dirname, '../../../');
 const common = path.join(rootPath, './common');
-const appActions = path.join(common, './app-actions.js');
+const appActions = path.join(common, './app-actions');
 const saga = path.join(common, './saga.js');
 const reducer = path.join(common, './reducer.js');
 const providers = path.join(common, './providers');

@@ -1,6 +1,6 @@
 import propTypes from 'prop-types';
 import React from 'react';
-import Button from './base/forms/Button';
+
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
 
 const ModalAlert = (props) => {

@@ -18,13 +18,16 @@ const API = {
     },
     loginRedirect() {
         const params = Router.query;
-        params.redirect = params.redirect || Project.loginRedirect;
+        params.redirect = params.redirect || Project.loginRedirect || "/";
         Router.replace(params.redirect, params.as || params.redirect, { shallow: true });
     },
     getStoredToken(req) {
         if (req) {
             const parsedCookies = cookie.parse(req.headers.cookie || '');
             return parsedCookies && parsedCookies.token;
+        }
+        if (typeof window === 'undefined') {
+            return ""
         }
         return cookies.get('token');
     },

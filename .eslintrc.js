@@ -11,6 +11,12 @@ module.exports = {
         'prettier/react',
     ],
     'parser': 'babel-eslint',
+    parserOptions: {
+        ecmaFeatures: {
+            legacyDecorators: true
+        },
+        parser: 'babel-eslint'
+    },
     'plugins': [
         'prettier',
         'react',
@@ -29,7 +35,7 @@ module.exports = {
             "error", 4,
             {
                 SwitchCase: 1,
-                ignoredNodes: ['JSXElement', 'JSXElement > *', 'JSXAttribute', 'JSXIdentifier', 'JSXNamespacedName', 'JSXMemberExpression', 'JSXSpreadAttribute', 'JSXExpressionContainer', 'JSXOpeningElement', 'JSXClosingElement', 'JSXText', 'JSXEmptyExpression', 'JSXSpreadChild'],
+                ignoredNodes: ['TemplateLiteral', 'JSXElement', 'JSXElement > *', 'JSXAttribute', 'JSXIdentifier', 'JSXNamespacedName', 'JSXMemberExpression', 'JSXSpreadAttribute', 'JSXExpressionContainer', 'JSXOpeningElement', 'JSXClosingElement', 'JSXText', 'JSXEmptyExpression', 'JSXSpreadChild'],
             },
         ],
         'no-bitwise': 'error',
@@ -86,6 +92,7 @@ module.exports = {
         module: true,
         openAlert: true,
         openConfirm: true,
+        openModal: true,
         process: true,
         require: true,
     }
