@@ -3,8 +3,8 @@ import BottomSheet from 'react-native-bottomsheet';
 import errorHandler from 'common/utils/errorHandler';
 
 import AsyncStorage from '@react-native-community/async-storage';
-import ImagePicker from 'react-native-image-crop-picker';
-import branch from 'react-native-branch';
+// import ImagePicker from 'react-native-image-crop-picker';
+// import branch from 'react-native-branch';
 import ReactNative from 'react-native';
 import { getStoreDangerous } from '../../../common-mobile/store';
 import storage from './async-storage-api';
