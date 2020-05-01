@@ -1,26 +1,26 @@
 const Format = {
 
     enumeration: {
-        get(value) { // MY_CONSTANT > My constant
+        get(value:string):string { // MY_CONSTANT > My constant
             if (!value) {
                 return '';
             }
             return Format.camelCase(value.replace(/_/g, ' '));
         },
-        set(value) { // My Constant > MY_CONSTANT
+        set(value:string):string { // My Constant > MY_CONSTANT
             return value ? value.replace(/ /g, '_').toUpperCase() : '';
         },
     },
 
-    camelCase(val) { // hello world > Hello world
+    camelCase(val:string):string { // hello world > Hello world
         return val && (typeof val === 'string') ? val.charAt(0).toUpperCase() + val.slice(1).toLowerCase() : '';
     },
 
-    cssImage(value) { // lol.jpg  > url('lol.jpg')
+    cssImage(value:string):string { // lol.jpg  > url('lol.jpg')
         return value ? `url("${value}")` : 'none';
     },
 
-    ordinal(value) {
+    ordinal(value:number):string {
         if (!value) {
             return '0';
         }
@@ -29,11 +29,11 @@ const Format = {
         return value ? value + (s[(v - 20) % 10] || s[v] || s[0]) : '';
     },
 
-    prefixQuantity(value, singular, multiple) {
+    prefixQuantity(value:number, singular:any, multiple:any):any {
         return value === 1 ? singular : multiple;
     },
 
-    truncateText(text, numberOfChars) { // lol,1 > l...
+    truncateText(text:string, numberOfChars:number):string { // lol,1 > l...
         if (text) {
             if (text.length > numberOfChars) {
                 return `${text.substring(0, numberOfChars)}...`;
@@ -42,7 +42,7 @@ const Format = {
         return text;
     },
 
-    removeAccents(str) { // Sergio Agüero > Sergio Aguero
+    removeAccents(str:string):string { // Sergio Agüero > Sergio Aguero
         if (!str) {
             return '';
         }

@@ -10,6 +10,8 @@ import Header from '../components/Header';
 import ReactDOM from 'react-dom';
 import Toast from '../components/toast';
 import _data from '../common/utils/_data';
+import 'ionicons/dist/css/ionicons.css';
+import '../styles/styles.scss'
 
 let initialRender = false;
 
@@ -51,7 +53,9 @@ class MyApp extends App {
     }
 
     componentDidMount()  {
-        ReactDOM.render(<Toast />, document.getElementById('toast'));
+        if (document.getElementById('toast')) {
+            ReactDOM.render(<Toast />, document.getElementById('toast'));
+        }
     }
 
     onFirstRender = ()=> {
@@ -82,17 +86,17 @@ class MyApp extends App {
                         <meta name="description" content="The project description"/>
                         <meta name="theme-color" content="#317EFB"/>
                         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-                        <link rel="apple-touch-icon" href="/static/images/icons-192.png"/>
-                        <link rel="icon" sizes="192x192" href="/static/images/icons-192.png"/>
-                        <link rel="manifest" href="/static/manifest.json"/>
-                        <link rel="shortcut icon" href="/static/images/favicon.ico"/>
+                        <link rel="apple-touch-icon" href="/images/icons-192.png"/>
+                        <link rel="icon" sizes="192x192" href="/images/icons-192.png"/>
+                        <link rel="manifest" href="/manifest.json"/>
+                        <link rel="shortcut icon" href="/images/favicon.ico"/>
                         <link
                           rel="icon" type="image/png" sizes="32x32"
-                          href="/static/images/favicon-32x32.png"
+                          href="/images/favicon-32x32.png"
                         />
                         <link
                           rel="icon" type="image/png" sizes="16x16"
-                          href="/static/images/favicon-16x16.png"
+                          href="/images/favicon-16x16.png"
                         />
                         <meta property="og:title" content="The Rock" />
                         <meta property="og:type" content="video.movie" />

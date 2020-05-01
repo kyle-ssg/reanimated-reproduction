@@ -49,7 +49,7 @@ const Input = class extends PureComponent {
     }
 
     render() {
-        const { isValid, onSearchChange, placeholderChar, inputClassName, ...rest } = this.props;
+        const { children,textarea, isValid, onSearchChange, placeholderChar, inputClassName, ...rest } = this.props;
 
         const className = cn({
             'input-container': true,
@@ -65,14 +65,29 @@ const Input = class extends PureComponent {
             <div
               className={className}
             >
-                <input
-                  ref={c => this.input = c}
-                  {...rest} onFocus={this.onFocus}
-                  onKeyDown={this.onKeyDown}
-                  onBlur={this.onBlur}
-                  value={this.props.value}
-                  className={combinedInputClassName}
-                />
+                {textarea ? (
+                    <textarea
+                      ref={c => this.input = c}
+                      {...rest}
+                      onFocus={this.onFocus}
+                      onKeyDown={this.onKeyDown}
+                      onBlur={this.onBlur}
+                      value={this.props.value}
+                      className={combinedInputClassName}
+                    />
+                ) : (
+                    <input
+                      ref={c => this.input = c}
+                      {...rest}
+                      onFocus={this.onFocus}
+                      onKeyDown={this.onKeyDown}
+                      onBlur={this.onBlur}
+                      value={this.props.value}
+                      className={combinedInputClassName}
+                    />
+                )}
+
+                {children && children}
             </div>
         );
     }

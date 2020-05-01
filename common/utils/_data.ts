@@ -1,22 +1,35 @@
-import fetch from 'isomorphic-unfetch';
 // import jwt from 'jwt-decode';
 // import Constants from './constants';
 // import _store  from '../store';
 // import AppActions from '../app-actions';
 
-const getQueryString = (params) => {
+const getQueryString = (params:any):string => {
     const esc = encodeURIComponent;
     return Object.keys(params)
         .map(k => `${esc(k)}=${esc(params[k])}`)
         .join('&');
 };
 
+export enum RequestMethod {
+  get = 'get',
+  put = 'put',
+  delete = 'delete',
+  post = 'post',
+}
+
+interface RequestOptions {
+  timeout: number,
+  method: RequestMethod,
+  headers: any,
+  body?: string
+}
 const _data = {
     token: '',
+    refreshToken:'',
     type: '',
 
-    status(response) { // handle ajax requests
-        // console.debug(response);
+    status(response:any):Promise<any> { // handle ajax requests
+    // console.debug(response);
         if (response.status === 403) {
             API.logout();
             return Promise.reject({ message: 'UNAUTHORIZED' });
@@ -25,7 +38,7 @@ const _data = {
             return Promise.resolve(response);
         }
         return response.clone().text() // cloned so response body can be used downstream
-            .then((err) => {
+            .then((err:string) => {
                 if (E2E && document.getElementById('e2e-error')) {
                     const error = {
                         url: response.url,
@@ -37,67 +50,32 @@ const _data = {
                 API.log(response.url, response.status, err);
 
                 // eslint-disable-next-line
-                return Promise.reject({ ...response, _bodyText: err, httpStatus: response.status});
+        return Promise.reject({ ...response, _bodyText: err, httpStatus: response.status});
             });
     },
 
-    get(url, data, headers) {
-        return _data._request('get', url, data || null, headers);
+    get(url:string, data?:any, headers?:any):Promise<any> {
+        return _data._request(RequestMethod.get, url, data || null, headers);
     },
 
-    dummy(data) {
-        return () => {
-            return new Promise(((resolve) => {
-                resolve(data);
-            }));
-        };
+    put(url:string, data:any, headers?:any):Promise<any> {
+        return _data._request(RequestMethod.put, url, data, headers);
     },
 
-    put(url, data, headers) {
-        return _data._request('put', url, data, headers);
+    post(url:string, data:any, headers?:any):Promise<any> {
+        return _data._request(RequestMethod.post, url, data, headers);
     },
 
-    post(url, data, headers) {
-        return _data._request('post', url, data, headers);
+    delete(url:string, data?:any, headers?:any):Promise<any> {
+        return _data._request(RequestMethod.delete, url, data, headers);
     },
 
-    delete(url, data, headers) {
-        return _data._request('delete', url, data, headers);
-    },
-
-    _request(method, url, data, headers = {}) {
+    _request(method:RequestMethod, url:string, data:any, headers:any = {}):Promise<any> {
         const prom = Promise.resolve();
-
-        // Example refresh token logic
-        // const parsedData = _data.tokenParsed;
-        // const refreshToken = _data.refreshToken;
-        // if (!parsedData) { // no token, nothing to refresh
-        //     prom = Promise.resolve(null);
-        // } else {
-        //     const expiry = new Date(parsedData.exp * 1000);
-        //     const hasExpired = new Date().valueOf() > expiry.valueOf();
-        //     const username = parsedData['cognito:username'];
-        //     if (hasExpired) {
-        //         prom = API.USER.refreshSession(refreshToken, username)
-        //             .then(({ sessionData }) => {
-        //                 const store = getStoreDangerous();
-        //                 _data.setToken(sessionData.idToken);
-        //                 _data.setRefreshToken(sessionData.refreshToken);
-        //                 store.dispatch({
-        //                     type: 'REFRESH_TOKENS',
-        //                     data: sessionData,
-        //                 });
-        //                 return sessionData.idToken;
-        //             });
-        //     } else {
-        //         prom = Promise.resolve(_data.token);
-        //     }
-        // }
-
 
         return prom
             .then(() => {
-                const options = {
+                const options: RequestOptions = {
                     timeout: 5000,
                     method,
                     headers: {
@@ -106,22 +84,20 @@ const _data = {
                 };
                 let qs = '';
 
-                if (method !== 'get' && !options.headers['content-type']) options.headers['content-type'] = 'application/json';
+                if (method !== RequestMethod.get && !options.headers['content-type']) options.headers['content-type'] = 'application/json';
 
                 if (_data.token) { // add auth tokens to headers of all requests
-                    options.headers.AUTHORIZATION = `Bearer ${_data.token}`;
+                    options.headers.AUTHORIZATION = `Token ${_data.token}`;
                 }
 
                 if (data) {
-                    if (method === 'get') {
+                    if (method === RequestMethod.get) {
                         qs = getQueryString(data);
                         url += url.indexOf('?') !== -1 ? `&${qs}` : `?${qs}`;
                     } else if (options.headers['content-type'] === 'application/json') {
                         options.body = JSON.stringify(data);
-                    } else {
-                        options.body = data;
                     }
-                } else if (method === 'post' || method === 'put') {
+                } else if (method === RequestMethod.post || method === RequestMethod.put) {
                     options.body = '{}';
                 }
 
@@ -155,13 +131,12 @@ const _data = {
             });
     },
 
-    setToken(_token) { // set the token for future requests
+    setToken:(_token?:string):void => { // set the token for future requests
         _data.token = _token;
     },
 
-    setRefreshToken(_refreshToken) { // set the token for future requests
-        _data.refreshToken = _refreshToken || {};
-        _data.refreshToken.getToken = () => _data.refreshToken.token;
+    setRefreshToken(_refreshToken?:string):void { // set the token for future requests
+        _data.refreshToken = _refreshToken;
     },
 };
 global._data = _data;

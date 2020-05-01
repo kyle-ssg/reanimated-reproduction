@@ -1,3 +1,6 @@
+import fetch from 'isomorphic-unfetch'; // we do this here instead of _data.js as it intereferes with react-native
+global.fetch = fetch;
+
 import {
     AsyncStorage, AppState, NetInfo, Clipboard,
 } from 'polyfill-react-native';
@@ -8,12 +11,10 @@ import './libs';
 
 import '../components/base';
 import './localization';
-import '../styles/styles.scss';
 import './project-components';
 
 import React from 'react';
 import Link from 'next/link';
-import 'ionicons/dist/css/ionicons.css';
 
 global.AppState = AppState;
 global.NetInfo = NetInfo;

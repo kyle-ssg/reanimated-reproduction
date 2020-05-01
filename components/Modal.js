@@ -8,6 +8,8 @@ import ReactDOM from 'react-dom';
 import Confirm from './ModalConfirm';
 import ModalDefault from './ModalDefault';
 import Alert from './ModalAlert';
+import store from '../common/store';
+import Provider from 'react-redux/lib/components/Provider';
 
 export const ModalHeader = _ModalHeader;
 export const ModalFooter = _ModalFooter;
@@ -33,11 +35,13 @@ const withModal = (WrappedComponent) => {
 
         render() {
             return (
-                <WrappedComponent
-                  toggle={this.toggle}
-                  {...this.props}
-                  {...this.state}
-                />
+                <Provider store={store()}>
+                    <WrappedComponent
+                      toggle={this.toggle}
+                      {...this.props}
+                      {...this.state}
+                    />
+                </Provider>
             );
         }
     }
