@@ -87,8 +87,16 @@ export class ExampleDrawerSwipe extends Component {
                       },
                   },
               })}
+              left={() => RNNDrawer.showDrawer({
+                  component: {
+                      name: 'CustomDrawer',
+                      passProps: {
+                          direction: 'left',
+                      },
+                  },
+              })}
             >
-                <Text>Swipe from the left</Text>
+                <Text>Swipe from the right or left</Text>
             </SideMenuView>
         );
     }

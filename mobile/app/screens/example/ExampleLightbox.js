@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import ViewOverflow from 'react-native-view-overflow';
 import propTypes from 'prop-types';
 import Animation from 'lottie-react-native';
 import Lightbox from '../../components/base/Lightbox';
@@ -33,8 +32,8 @@ const ExampleLightbox = class extends Component {
   render() {
       const { dismiss } = this.props;
       return (
-          <ViewOverflow style={Styles.lightbox}>
-              <ViewOverflow style={{ alignSelf: 'center', width: 80, height: 80 }}>
+          <View style={Styles.lightbox}>
+              <View style={{ alignSelf: 'center', width: 80, height: 80 }}>
                   <View style={Styles.roundedAnimationContainer}>
                       <View style={Styles.roundedAnimationInner}>
                           <Animation
@@ -47,7 +46,7 @@ const ExampleLightbox = class extends Component {
                           />
                       </View>
                   </View>
-              </ViewOverflow>
+              </View>
               <View style={[Styles.padded, { alignSelf: 'center', marginTop: -40 }]}>
                   <H1 style={Styles.textCenter}>Congratulations</H1>
                   {this.state.loaded && (
@@ -69,7 +68,7 @@ const ExampleLightbox = class extends Component {
             Ok
                   </Button>
               </FormGroup>
-          </ViewOverflow>
+          </View>
       );
   }
 };
