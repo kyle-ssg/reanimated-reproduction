@@ -228,3 +228,5 @@ if (typeof branch !== 'undefined') {
         checkedInitialLink = true;
     });
 }
+
+export default API;
