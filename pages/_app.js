@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
 import '../project/polyfill';
+import '../project/project-components';
 import createStore from '../common/store';
 import Header from '../components/Header';
 import ReactDOM from 'react-dom';
@@ -102,6 +103,8 @@ class MyApp extends App {
                         <meta property="og:type" content="video.movie" />
                         <meta property="og:url" content="http://www.imdb.com/title/tt0117500/" />
                         <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
+                        {/*See https://www.google.com/recaptcha/admin*/}
+                        <script src='https://www.google.com/recaptcha/api.js'/>
                         <title>The Project</title>
                     </Head>
                     <Header/>

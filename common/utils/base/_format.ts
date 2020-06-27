@@ -1,7 +1,7 @@
 const Format = {
 
     enumeration: {
-        get(value:string):string { // MY_CONSTANT > My constant
+        get(value:string|null|undefined):string { // MY_CONSTANT > My constant
             if (!value) {
                 return '';
             }
@@ -12,15 +12,15 @@ const Format = {
         },
     },
 
-    camelCase(val:string):string { // hello world > Hello world
+    camelCase(val:string|null|undefined):string { // hello world > Hello world
         return val && (typeof val === 'string') ? val.charAt(0).toUpperCase() + val.slice(1).toLowerCase() : '';
     },
 
-    cssImage(value:string):string { // lol.jpg  > url('lol.jpg')
+    cssImage(value:string|null|undefined):string { // lol.jpg  > url('lol.jpg')
         return value ? `url("${value}")` : 'none';
     },
 
-    ordinal(value:number):string {
+    ordinal(value:number|null|undefined):string {
         if (!value) {
             return '0';
         }
@@ -33,7 +33,7 @@ const Format = {
         return value === 1 ? singular : multiple;
     },
 
-    truncateText(text:string, numberOfChars:number):string { // lol,1 > l...
+    truncateText(text:string|null|undefined, numberOfChars:number):string { // lol,1 > l...
         if (text) {
             if (text.length > numberOfChars) {
                 return `${text.substring(0, numberOfChars)}...`;
@@ -42,7 +42,7 @@ const Format = {
         return text;
     },
 
-    removeAccents(str:string):string { // Sergio Agüero > Sergio Aguero
+    removeAccents(str:string|null|undefined):string { // Sergio Agüero > Sergio Aguero
         if (!str) {
             return '';
         }

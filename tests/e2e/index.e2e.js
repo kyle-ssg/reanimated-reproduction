@@ -24,6 +24,7 @@ module.exports = Object.assign(
             server = fork('./server');
             server.on('message', () => {
                 // cleardown any test data etc
+              console.log("Ready")
                 done();
             });
         },

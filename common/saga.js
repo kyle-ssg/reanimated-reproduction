@@ -2,72 +2,8 @@ import { put, all, takeLatest } from 'redux-saga/effects';
 import _data from './utils/_data';
 import { Actions } from './app-actions';
 import Project from './project';
-// Util function to post to an api, parse results and dispatch loaded and error functions
-
-// Error handler for a CRUD redux action
-export function* errorHandler(action, prefix, preventSuccess, e) {
-    const error = API.ajaxHandler(Actions[`${prefix}_ERROR`], e);
-    yield put(error);
-    action.onError && action.onError(error.error);
-    if (preventSuccess) {
-        throw e;
-    }
-}
-
-// Success handler for a CRUD redux action
-export function* handleResponse(action, prefix, apiResult, preventSuccess, dto) {
-    const data = yield dto ? dto(apiResult) : apiResult;
-    const params = { type: Actions[`${prefix}_LOADED`], data };
-    if (data.token) {
-        // API.setStoredToken(data.token);
-        _data.setToken(data.token);
-    }
-    if (action.id) {
-        params.index = action.id;
-    }
-    yield put(params);
-    action.onSuccess && !preventSuccess && action.onSuccess(data);
-    return data;
-}
-
-// GET request with standard response and error handler
-export function* getAction(action, url, prefix, preventSuccess, dto) {
-    try {
-        const data = yield _data.get(url);
-        return yield handleResponse(action, prefix, data, preventSuccess, dto);
-    } catch (e) {
-        yield errorHandler(action, prefix, preventSuccess, e);
-    }
-}
-
-// PUT request with standard response and error handler
-export function* updateAction(action, url, prefix, preventSuccess, dto, requestDto, append = true) {
-    try {
-        const data = yield _data.put(url, requestDto ? requestDto(action.data) : action.data);
-        return yield handleResponse(action, prefix, data, preventSuccess, dto, append);
-    } catch (e) {
-        yield errorHandler(action, prefix, preventSuccess, e);
-    }
-}
-
-// POST request with standard response and error handler
-export function* postAction(action, url, prefix, preventSuccess, dto, requestDto, append = true) {
-    try {
-        const data = yield _data.post(url, requestDto ? requestDto(action.data) : action.data);
-        return yield handleResponse(action, prefix, data, preventSuccess, dto, append);
-    } catch (e) {
-        yield errorHandler(action, prefix, preventSuccess, e);
-    }
-}
-
-export function* deleteAction(action, url, prefix, preventSuccess) {
-    try {
-        const data = yield _data.delete(url, {});
-        return yield handleResponse(action, prefix, data, preventSuccess);
-    } catch (e) {
-        yield errorHandler(action, prefix, preventSuccess, e);
-    }
-}
+// eslint-disable-next-line no-unused-vars
+import { handleResponse, updateAction, deleteAction, errorHandler, getAction, postAction } from './utils/saga-helpers';
 
 // Called when the application starts up, if using SSR this is done in the server
 export function* startup(action = {}) {
@@ -85,7 +21,7 @@ export function* startup(action = {}) {
 
         if (token) {
             _data.setToken(token);
-            yield onToken(action)
+            yield onToken(action, { user:{} })
         }
 
         const isOnline = typeof navigator === 'undefined' ? true : navigator.onLine;
@@ -100,9 +36,9 @@ export function* startup(action = {}) {
     }
 }
 
-export function* onToken(action) {
-    //  Do a get here for your user data etc, data.token is already set
-    yield handleResponse(action, "LOGIN", { user:{} }, false);
+export function* onToken(action, result) {
+    //  If you need to refresh a user profile, do it here
+    yield handleResponse(action, "LOGIN", result, false);
 }
 
 export function* login(action) {
@@ -112,7 +48,7 @@ export function* login(action) {
         API.identify(action.data.email);
         _data.setToken(res.token);
         API.setStoredToken(res.token);
-        yield onToken(action);
+        yield onToken(action, res);
     } catch (e) {
         yield put(API.ajaxHandler(Actions.LOGIN_ERROR, e));
         action.onError && action.onError();
@@ -153,6 +89,7 @@ function* rootSaga() {
         takeLatest(Actions.CONFIRM_EMAIL, confirmEmail),
         takeLatest(Actions.UPDATE_USER, updateUser),
         // END OF TAKE_LATEST
+        // KEEP THE ABOVE LINE IN, IT IS USED BY OUR CLI
     ]);
 }
 

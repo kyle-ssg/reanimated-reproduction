@@ -29,16 +29,6 @@ module.exports = (allTests, port, pact) => new Promise((resolve) => {
                 // eslint-disable-next-line no-undef
                 beforeEach(() => {
                     req = mock(port, path, method, query && query(fakeDate), body && body(fakeLike), requestBody && requestBody(fakeLike));
-
-                    return addInteraction({
-                        state,
-                        requestBody: requestBody && requestBody(pactLike),
-                        uponReceiving: description,
-                        body: body && body(pactLike),
-                        method,
-                        path,
-                        query: query && query(pactDate),
-                    }, pact);
                 });
 
                 // add expectations

@@ -18,7 +18,7 @@ export default (WrappedComponent, _id, remote, events = ['mount', 'update']) => 
         // commitTime, // when React committed this update
         // interactions // the Set of interactions belonging to this update
 
-        logMeasurement = async (id, phase, actualDuration, baseDuration) => {
+        logMeasurement = async (id, phase, actualDuration) => {
             // see output during DEV
             if (!events.includes(phase)) {
                 return;

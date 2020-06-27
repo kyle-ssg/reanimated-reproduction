@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'next/router';
 import withAuth from '../common/providers/withAuth';
+import Router from 'next/router';
 
 const withUserRedirect = (WrappedComponent) => {
     class HOC extends Component {
@@ -17,7 +18,7 @@ const withUserRedirect = (WrappedComponent) => {
                 if (redirect !== as) {
                     path += `&as=${as}`;
                 }
-                Router.replace(path);
+                this.props.router.replace(path);
                 this.preventRender = true;
             }
         }

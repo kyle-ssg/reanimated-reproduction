@@ -26,7 +26,7 @@ module.exports = async ({ config, mode }) => {
             },
         ],
     });
-    config.module.rules = config.module.rules.concat(require('../webpack/loaders.js'));
+    config.module.rules = config.module.rules.concat(require('../.webpack/loaders.js'));
     config.resolve.extensions.push('.ts', '.tsx');
 
     // Return the altered config
