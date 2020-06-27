@@ -46,7 +46,7 @@ const nextConfig = {
     },
     // buildId, dev, isServer, defaultLoaders, webpack
     webpack: (config, { dev }) => {
-        const base = dev ? require('./webpack/webpack.config.dev') : require('./webpack/webpack.config.prod');
+        const base = dev ? require('./.webpack/webpack.config.dev') : require('./.webpack/webpack.config.prod');
         if (base.plugins) {
             config.plugins = config.plugins.concat(base.plugins);
         }

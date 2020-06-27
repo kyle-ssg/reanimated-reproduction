@@ -1,3 +1,5 @@
+import { AnyAction } from 'redux';
+
 const BaseConstants = {
 
     'LOGIN': 'LOGIN',
@@ -33,7 +35,7 @@ interface Callbacks {
 }
 
 const BaseActions = {
-    login(data:Record<string, any>, callbacks:Callbacks={}):Record<string, any> {
+    login(data:Record<string, any>, callbacks:Callbacks={}):AnyAction {
         return {
             type: Actions.LOGIN,
             data,
@@ -41,7 +43,7 @@ const BaseActions = {
         };
     },
     // STARTUP
-    startup(data:Record<string, any>, callbacks:Callbacks={}):Record<string, any> {
+    startup(data:Record<string, any>, callbacks:Callbacks={}):AnyAction {
         return {
             type: Actions.STARTUP,
             data,
@@ -49,28 +51,28 @@ const BaseActions = {
         };
     },
     // REGISTER
-    register(data:Record<string, any>, callbacks:Callbacks={}):Record<string, any> {
+    register(data:Record<string, any>, callbacks:Callbacks={}):AnyAction {
         return {
             type: Actions.REGISTER,
             data,
             ...callbacks,
         };
     },
-    updateUser(data:Record<string, any>, callbacks:Callbacks = {}):Record<string, any> {
+    updateUser(data:Record<string, any>, callbacks:Callbacks = {}):AnyAction {
         return {
             type: Actions.UPDATE_USER,
             data,
             ...callbacks,
         };
     },
-    confirmEmail(data:Record<string, any>, callbacks:Callbacks={}):Record<string, any> {
+    confirmEmail(data:Record<string, any>, callbacks:Callbacks={}):AnyAction {
         return {
             type: Actions.CONFIRM_EMAIL,
             data,
             ...callbacks,
         };
     },
-    logout(callbacks: Callbacks = {}):Record<string, any> {
+    logout(callbacks: Callbacks = {}):AnyAction {
         return {
             type: Actions.LOGOUT,
             ...callbacks,

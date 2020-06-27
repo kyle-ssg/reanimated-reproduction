@@ -1,17 +1,20 @@
 import fetch from 'isomorphic-unfetch'; // we do this here instead of _data.js as it intereferes with react-native
 global.fetch = fetch;
 
+if (typeof projectOverrides !== 'undefined') {
+    global.Project = {
+        ...global.Project,
+        ...projectOverrides, // environment.js (also app.yaml if using app engine)
+    };
+}
+
 import {
     AsyncStorage, AppState, NetInfo, Clipboard,
 } from 'polyfill-react-native';
-
+import './localization'
 import '../common/utils';
 import './api';
 import './libs';
-
-import '../components/base';
-import './localization';
-import './project-components';
 
 import React from 'react';
 import Link from 'next/link';

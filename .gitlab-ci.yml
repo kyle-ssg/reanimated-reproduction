@@ -35,7 +35,7 @@ deploy-mobile-android-production:
       ENV: prod
     <<: *mobile_deploy_common_before_script
     script:
-        - ./../bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_ANDROID Production master android
+        - ./../.bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_ANDROID Production master android
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -51,7 +51,7 @@ deploy-mobile-android-staging:
       ENV: staging
     <<: *mobile_deploy_common_before_script
     script:
-        - ./../bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_ANDROID Staging staging android
+        - ./../.bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_ANDROID Staging staging android
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -67,7 +67,7 @@ deploy-mobile-ios-production:
       ENV: prod
     <<: *mobile_deploy_common_before_script
     script:
-        - ./../bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_IOS Production master ios
+        - ./../.bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_IOS Production master ios
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -83,7 +83,7 @@ deploy-mobile-ios-staging:
       ENV: staging
     <<: *mobile_deploy_common_before_script
     script:
-        - ./../bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_IOS Staging staging ios
+        - ./../.bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_IOS Staging staging ios
     only:
       <<: *mobile_deploy_common_required_changes
       refs:

@@ -76,5 +76,9 @@ Promise.all([
     server.listen(port, (err) => {
         if (err) throw err;
         console.log(`> Ready on http://localhost:${port}`); // eslint-disable-line no-console
+        if (process.send){
+            process.send({ done: true });
+        }
+
     });
 });
