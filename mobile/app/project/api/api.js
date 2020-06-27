@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 // import ImagePicker from 'react-native-image-crop-picker';
 // import branch from 'react-native-branch';
 import ReactNative from 'react-native';
-import { getStoreDangerous } from '../../../common-mobile/store';
+import getStoreDangerous  from '../../../../common/store';
 import storage from './async-storage-api';
 
 import push from './push-notifications-api';
