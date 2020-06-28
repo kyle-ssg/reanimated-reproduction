@@ -2,9 +2,6 @@ import BottomSheet from 'react-native-bottomsheet';
 // import firebase from 'react-native-firebase';
 import errorHandler from 'common/utils/errorHandler';
 
-import AsyncStorage from '@react-native-community/async-storage';
-// import ImagePicker from 'react-native-image-crop-picker';
-// import branch from 'react-native-branch';
 import ReactNative from 'react-native';
 import getStoreDangerous  from '../../../../common/store';
 import storage from './async-storage-api';
@@ -68,41 +65,29 @@ global.API = {
             analytics().setCurrentScreen(name, name);
         }
     },
-    setCookie(id, val) {
-        if (!val) {
-            return API.storage.removeItem(id);
-        }
-        return API.storage.setItem(id, val);
-    },
 
     setStoredToken(val) {
         if (!val) {
             return API.storage.removeItem('token');
         }
-        API.storage.setItem('token', val);
+        API.storage.setString('token', val);
     },
 
     setStoredRefreshToken(val) {
         if (!val) {
             return API.storage.removeItem('refreshToken');
         }
-        API.storage.setItem('refreshToken', val);
+        API.storage.setString('refreshToken', val);
     },
 
     getStoredToken: () => {
-        return API.storage.getItem('token');
+        return API.storage.getString('token');
     },
 
     getStoredRefreshToken: () => {
-        return API.storage.getItem('refreshToken').then((res) => {
-            return res && JSON.parse(res);
-        });
+        return API.storage.getString('refreshToken')
     },
 
-    getCookie: async (id) => {
-        const res = await API.storage.getItem(id);
-        return res;
-    },
     share: (uri, message, title, subject, excludedActivityTypes) => {
         ReactNative.Share.share({ message, title, url: uri }, { subject, excludedActivityTypes });
     },

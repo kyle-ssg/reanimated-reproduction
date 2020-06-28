@@ -62,7 +62,7 @@ export function* register(action) {
 export function* logout(action) {
     yield put({ type: Actions.CLEAR_USER });
     yield API.setStoredToken(null);
-    yield API.setCookie('user', null);
+    yield API.storage.removeItem('user');
     yield API.setStoredRefreshToken(null);
     _data.setToken(null);
     _data.setRefreshToken(null);

@@ -17,11 +17,14 @@ if (typeof firebase === 'undefined') {
         getInitialNotification = () => Notifications.getInitialNotification();
 
         subscribe = (topic) => {
-            API.log(`Subscribed to${topic}`);
+            API.log("PUSH_NOTIFICATIONS", `Subscribed to ${topic}`);
             return FCM.subscribeToTopic(topic);
         }
 
-        unsubscribe = (topic) => FCM.unsubscribeFromTopic(topic);
+        unsubscribe = (topic) => {
+            API.log("PUSH_NOTIFICATIONS", `Unsubscribed from ${topic}`);
+            FCM.unsubscribeFromTopic(topic);
+        }
 
         stop = () => {
             this.token = null;

@@ -148,6 +148,9 @@ PODS:
   - lottie-react-native (3.1.0):
     - lottie-ios (~> 3.0.3)
     - React
+  - MMKV (1.1.1):
+    - MMKVCore (~> 1.1.1)
+  - MMKVCore (1.1.1)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
@@ -321,6 +324,9 @@ PODS:
   - React-jsinspector (0.62.2)
   - react-native-background-timer (2.1.1):
     - React
+  - react-native-mmkv-storage (0.3.2):
+    - MMKV (= 1.1.1)
+    - React
   - react-native-netinfo (4.1.5):
     - React
   - react-native-webview (8.2.1):
@@ -390,8 +396,6 @@ PODS:
     - React
     - React-RCTImage
     - React-RCTText
-  - RNCAsyncStorage (1.6.1):
-    - React
   - RNDeviceInfo (5.6.1):
     - React
   - RNFastImage (7.0.2):
@@ -465,6 +469,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-background-timer (from `../node_modules/react-native-background-timer`)
+  - react-native-mmkv-storage (from `../node_modules/react-native-mmkv-storage`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -480,7 +485,6 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeLocalization (from `../node_modules/react-native-localization`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
-  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
@@ -516,6 +520,8 @@ SPEC REPOS:
     - GoogleUtilities
     - JWT
     - libwebp
+    - MMKV
+    - MMKVCore
     - nanopb
     - OpenSSL-Universal
     - SDWebImage
@@ -562,6 +568,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-background-timer:
     :path: "../node_modules/react-native-background-timer"
+  react-native-mmkv-storage:
+    :path: "../node_modules/react-native-mmkv-storage"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-webview:
@@ -590,8 +598,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-localization"
   ReactNativeNavigation:
     :path: "../node_modules/react-native-navigation"
-  RNCAsyncStorage:
-    :path: "../node_modules/@react-native-community/async-storage"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
   RNFastImage:
@@ -644,6 +650,8 @@ SPEC CHECKSUMS:
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   lottie-ios: 6037add6441183d4ffd100d2ac78724aa8d919d4
   lottie-react-native: 86aeee2caa9250e4c8027ac75711a59c6679e532
+  MMKV: 5eb44526fcf38152328ebfeff5ec585972ace00d
+  MMKVCore: 2748bf702287a814a6c514d054033e41e07f5c0f
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
   RCTRequired: cec6a34b3ac8a9915c37e7e4ad3aa74726ce4035
@@ -656,6 +664,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 1540d1c01bb493ae3124ed83351b1b6a155db7da
   React-jsinspector: 512e560d0e985d0e8c479a54a4e5c147a9c83493
   react-native-background-timer: 0d34748e53a972507c66963490c775321a88f6f2
+  react-native-mmkv-storage: 49389227471de5258b4e5bae7857bfe0ad02c8f7
   react-native-netinfo: 8d8db463bcc5db66a8ac5c48a7d86beb3b92f61a
   react-native-webview: d3cf75764f98fd433f1222f5a7ca8e355ada2a15
   React-RCTActionSheet: f41ea8a811aac770e0cc6e0ad6b270c644ea8b7c
@@ -670,7 +679,6 @@ SPEC CHECKSUMS:
   ReactCommon: ed4e11d27609d571e7eee8b65548efc191116eb3
   ReactNativeLocalization: ced64c41959db9af8a52698752791291f20e9db8
   ReactNativeNavigation: a40889261e04413ea621ef1fa4a76d62bfd33030
-  RNCAsyncStorage: 621bad7a889b5bf1583a52547f2dcd3a4d1ff15e
   RNDeviceInfo: ab2ab4ca9e7f2bc4f35d62ab6ce2b66f2cbf1e7a
   RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
   RNFBAnalytics: d75433ac464f0ac6e5bd1ae7015cb5fb6427e80a

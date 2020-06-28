@@ -6,7 +6,7 @@ import './app/routes';
 import loadIcons from './load-icons';
 import ReactNative from 'react-native';
 import _store from '../common/store';
-
+import storageTest from './storage-test'
 const DeviceWidth = ReactNative.Dimensions.get('window').width;
 
 const store = _store();
@@ -14,7 +14,7 @@ const store = _store();
 const getUser = () => new Promise((resolve) => {
     API.getStoredToken().then((token) => {
         if (token) {
-            return API.getCookie('user').then((user) => {
+            return API.storage.getMap('user').then((user) => {
                 const userData = user && JSON.parse(user);
                 return store.dispatch(AppActions.startup(
                     { token, user: userData },
@@ -121,12 +121,16 @@ const initialiseApp = () => {
     });
 };
 
-const prom = Promise.all([getUser(), Navigation.constants(), loadIcons()]);
+const prom = Promise.all([getUser(), Navigation.constants(), loadIcons(), API.storage.init()]);
 Navigation.events().registerAppLaunchedListener(() => {
     prom.then(([user, constants]) => {
+        storageTest();
         Constants.statusBarHeight = constants.statusBarHeight;
         initialiseApp(user);
-    });
+    })
+        .catch((err)=>{
+            console.error("Error initialising app", err)
+        })
 });
 
 // eslint-disable-next-line

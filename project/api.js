@@ -6,9 +6,10 @@ import cookies from 'js-cookie';
 
 import errorHandler from 'common/utils/errorHandler';
 import Project from '../common/project';
-
+import storage from './async-storage-api'
 const API = {
     isMobile: () => false,
+    storage,
     ajaxHandler(type, e) {
         return { type, error: errorHandler(e) };
     },
@@ -22,32 +23,17 @@ const API = {
         Router.replace(params.redirect, params.as || params.redirect, { shallow: true });
     },
     getStoredToken(req) {
-        if (req) {
-            const parsedCookies = cookie.parse(req.headers.cookie || '');
-            return parsedCookies && parsedCookies.token;
-        }
-        if (typeof window === 'undefined') {
-            return ""
-        }
-        return cookies.get('token');
+        return API.storage.getString("token", req);
     },
     getStoredUser(req) {
-        if (req) {
-            const parsedCookies = cookie.parse(req.headers.cookie || '');
-            return parsedCookies && parsedCookies.user;
-        }
-        return cookies.get('user') && JSON.parse(cookies.get('user'));
+        return API.storage.getObject("user", req);
+
     },
     getStoredRefreshToken(req) {
-        if (req) {
-            const parsedCookies = cookie.parse(req.headers.cookie || '');
-            return parsedCookies && parsedCookies.refreshToken;
-        }
-        const refreshToken = cookies.get('refreshToken');
-        return refreshToken && JSON.parse(refreshToken);
+        return API.storage.getString("refreshToken", req);
     },
     setStoredRefreshToken(v) {
-        return API.setCookie('refreshToken', v);
+        return API.storage.setString('refreshToken', v);
     },
     getStoredLocale(req) {
         if (req) {
@@ -67,25 +53,8 @@ const API = {
 
         return Constants.defaultLocale;
     },
-    getCookie(name, req) {
-        if (req) {
-            const parsedCookies = cookie.parse(req.headers.cookie || '');
-            return parsedCookies && parsedCookies[name];
-        }
-        if (typeof window === 'undefined') {
-            console.log('Error, attempted to get a cookie without a request');
-            return;
-        }
-        return cookies.get(name);
-    },
     setStoredToken(v) {
-        return API.setCookie('token', v);
-    },
-    setCookie(name, value) {
-        if (typeof window === 'undefined') {
-            return;
-        }
-        return cookies.set(name, value);
+        return API.storage.setString('token', v);
     },
     trackEvent(data) {
         if (__DEV__) {
