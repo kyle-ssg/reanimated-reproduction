@@ -5,7 +5,11 @@ let MMKV;
 const StorageManager = class {
     init = async () => {
         API.log("STORAGE", "INIT");
-        MMKV = new MMKVStorage.Loader().initialize();
+        MMKV = new MMKVStorage.Loader()
+            // uncommenting this breaks the app
+            // .withEncryption()
+            .initialize();
+
         API.log("STORAGE", "INIT DONE");
     }
 

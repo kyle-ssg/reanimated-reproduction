@@ -124,7 +124,6 @@ const initialiseApp = () => {
 const prom = Promise.all([getUser(), Navigation.constants(), loadIcons(), API.storage.init()]);
 Navigation.events().registerAppLaunchedListener(() => {
     prom.then(([user, constants]) => {
-        storageTest();
         Constants.statusBarHeight = constants.statusBarHeight;
         initialiseApp(user);
     })

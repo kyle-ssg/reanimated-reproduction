@@ -8,12 +8,16 @@ import StorybookUIRoot, { getStory, withPaddedContainer, setup } from './setup';
 import ErrorMessage from '../app/components/ErrorMessage';
 import ExampleTabs from './examples/ExampleTabs';
 import ExampleDrawer, { ExampleDrawerSwipe } from './examples/ExampleDrawer';
-
+import storageTest from '../storage-test'
 setup(() => {
     getStory('Tabs')
         .add('default', () => (
             <>
-                <ExampleTabs/>
+                <TouchableOpacity onPress={storageTest}>
+                  <Text>
+                    Hi
+                  </Text>
+                </TouchableOpacity>
             </>
         ))
         .add('scrolled', () => (

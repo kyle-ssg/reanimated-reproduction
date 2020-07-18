@@ -14,8 +14,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		27023051231BC07A007BD235 /* SwiftFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27023050231BC07A007BD235 /* SwiftFile.swift */; };
 		27023053231BC816007BD235 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27023052231BC816007BD235 /* GoogleService-Info.plist */; };
-		4361AA532BA74FEAED72D0FA /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
-		6D3E3D82CC9B426D4673E17E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		4361AA532BA74FEAED72D0FA /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		6D3E3D82CC9B426D4673E17E /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A32171CE23FC1FE6000677B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		A32171CF23FC1FE6000677B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		A32171D023FC1FE6000677B0 /* SwiftFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27023050231BC07A007BD235 /* SwiftFile.swift */; };
@@ -23,7 +23,7 @@
 		A32171D523FC1FE6000677B0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		A32171D623FC1FE6000677B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27023052231BC816007BD235 /* GoogleService-Info.plist */; };
 		A32171E023FC20CA000677B0 /* GoogleService-Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = A32171DF23FC20CA000677B0 /* GoogleService-Info-Staging.plist */; };
-		B97E621748EA825D2423CF43 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		B97E621748EA825D2423CF43 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		E5890BA02327D5AA007AD167 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		E5890BA12327D5AA007AD167 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		E5890BA22327D5AA007AD167 /* SwiftFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27023050231BC07A007BD235 /* SwiftFile.swift */; };
@@ -35,7 +35,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* mobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mobileTests.m; sourceTree = "<group>"; };
 		11873168E3BE1044B787B0E2 /* libPods-mobile-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,8 +88,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4361AA532BA74FEAED72D0FA /* BuildFile in Frameworks */,
-				6D3E3D82CC9B426D4673E17E /* BuildFile in Frameworks */,
+				4361AA532BA74FEAED72D0FA /* (null) in Frameworks */,
+				6D3E3D82CC9B426D4673E17E /* (null) in Frameworks */,
 				E5E4B4F6ACEEF40794B94086 /* libPods-mobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B97E621748EA825D2423CF43 /* BuildFile in Frameworks */,
+				B97E621748EA825D2423CF43 /* (null) in Frameworks */,
 				EBBEAA98985C0C5C41DAE72D /* libPods-appcenter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				A32171DF23FC20CA000677B0 /* GoogleService-Info-Staging.plist */,
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				27023052231BC816007BD235 /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -423,6 +421,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -442,6 +441,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -536,6 +536,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -555,6 +556,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -735,6 +737,7 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -754,6 +757,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -842,12 +846,13 @@
 					"$(inherited)",
 					"-DFB_SONARKIT_ENABLED=1",
 				);
+				"OTHER_CPLUSPLUSFLAGS[arch=*]" = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobile.project;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobile.project2;
 				PRODUCT_NAME = TheApp;
 				SWIFT_OBJC_BRIDGING_HEADER = "mobile-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -868,14 +873,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CFLAGS = (
 					"$(inherited)",
-					"-DFB_SONARKIT_ENABLED=1",
+					"-DFB_SONARKIT_ENABLED=0",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobile.project;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobile.project2;
 				PRODUCT_NAME = TheApp;
 				SWIFT_OBJC_BRIDGING_HEADER = "mobile-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;

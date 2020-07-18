@@ -10,7 +10,26 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-#import <React/RCTLinkingManager.h>
+
+// Disabling for now due to issue in RN
+//#ifdef FB_SONARKIT_ENABLED
+//#import <FlipperKit/FlipperClient.h>
+//#import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
+//#import <FlipperKitUserDefaultsPlugin/FKUserDefaultsPlugin.h>
+//#import <FlipperKitNetworkPlugin/FlipperKitNetworkPlugin.h>
+//#import <SKIOSNetworkPlugin/SKIOSNetworkAdapter.h>
+//#import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
+//
+//static void InitializeFlipper(UIApplication *application) {
+//  FlipperClient *client = [FlipperClient sharedClient];
+//  SKDescriptorMapper *layoutDescriptorMapper = [[SKDescriptorMapper alloc] initWithDefaults];
+//  [client addPlugin:[[FlipperKitLayoutPlugin alloc] initWithRootNode:application withDescriptorMapper:layoutDescriptorMapper]];
+//  [client addPlugin:[[FKUserDefaultsPlugin alloc] initWithSuiteName:nil]];
+//  [client addPlugin:[FlipperKitReactPlugin new]];
+//  [client addPlugin:[[FlipperKitNetworkPlugin alloc] initWithNetworkAdapter:[SKIOSNetworkAdapter new]]];
+//  [client start];
+//}
+//#endif
 
 //FACEBOOK_LOGIN
 //#import <FBSDKCoreKit/FBSDKCoreKit.h>
@@ -23,40 +42,23 @@
 //REACT_NATIVE_BRANCH
 //#import <RNBranch/RNBranch.h> // at the top
 //REACT_NATIVE_CODE_PUSH
-#import <CodePush/CodePush.h>
+//#import <CodePush/CodePush.h>
 
-#if DEBUG
-#import <FlipperKit/FlipperClient.h>
-#import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
-#import <FlipperKitUserDefaultsPlugin/FKUserDefaultsPlugin.h>
-#import <FlipperKitNetworkPlugin/FlipperKitNetworkPlugin.h>
-#import <SKIOSNetworkPlugin/SKIOSNetworkAdapter.h>
-#import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
-
-static void InitializeFlipper(UIApplication *application) {
-  FlipperClient *client = [FlipperClient sharedClient];
-  SKDescriptorMapper *layoutDescriptorMapper = [[SKDescriptorMapper alloc] initWithDefaults];
-  [client addPlugin:[[FlipperKitLayoutPlugin alloc] initWithRootNode:application withDescriptorMapper:layoutDescriptorMapper]];
-  [client addPlugin:[[FKUserDefaultsPlugin alloc] initWithSuiteName:nil]];
-  [client addPlugin:[FlipperKitReactPlugin new]];
-  [client addPlugin:[[FlipperKitNetworkPlugin alloc] initWithNetworkAdapter:[SKIOSNetworkAdapter new]]];
-  [client start];
-}
-#endif
+#import <React/RCTLinkingManager.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  #if DEBUG
-    InitializeFlipper(application);
-  #endif
+//  #if FB_SONARKIT_ENABLED
+//    InitializeFlipper(application);
+//  #endif
   //REACT_NATIVE_FUREBASE
   [FIRApp configure];
 
 //  [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES]; // <-- add this
 
-#if DEBUG
+#if FB_SONARKIT_ENABLED
   for (NSString* family in [UIFont familyNames])
   {
     NSLog(@"%@", family);
@@ -80,7 +82,8 @@ static void InitializeFlipper(UIApplication *application) {
 #if DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 #else
-  return [CodePush bundleURL];
+  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+//  return [CodePush bundleURL];
 #endif
 }
 

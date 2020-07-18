@@ -1,5 +1,5 @@
 import { AsyncStorage } from "react-native";
-
+import MMKVStorage from 'react-native-mmkv-storage';
 const testObj = {
     data: [
         {
@@ -907,33 +907,37 @@ const testObj = {
 }
 
 
-const getItem = (key)=>{
-    return AsyncStorage.getItem(key)
-    // return API.storage.getObject(key)
+const getItem = (key, MMKV)=>{
+    return MMKV? API.storage.getObject(key) : MMKVStorage.getMapAsync(key)
 }
-const setItem = (key)=>{
-    return AsyncStorage.setItem(key,JSON.stringify(testObj))
-    // return API.storage.setObject(key,testObj)
+
+const setItem = (key, MMKV)=>{
+    return MMKV? MMKVStorage.setMapAsync(key, testObj)
+        : AsyncStorage.setItem(key,JSON.stringify(testObj))
 }
 
 
+const run = async (MMKV)=> {
+    await setItem("1",MMKV)
+    await setItem("2",MMKV)
+    await setItem("3",MMKV)
+    const a = await getItem("1",MMKV)
+    const b = await getItem("2",MMKV)
+    const c = await getItem("3",MMKV)
+}
 
 const test = async ()  => {
-    const start = new Date().valueOf();
 
     try {
-        await setItem("1")
-        await setItem("2")
-        await setItem("3")
-        const a = await getItem("1")
-        const b = await getItem("2")
-        const c = await getItem("3")
-        Alert.alert("TEST", new Date().valueOf()-start + "")
+        const start = new Date().valueOf();
+        await run(true)
+        const start2 = new Date().valueOf();
+        await run(false)
+        Alert.alert("TEST", (new Date().valueOf()-start) + ", " + (new Date().valueOf()-start2) + "")
+
     } catch (e) {
         console.log("STORAGE ERROR", e)
     }
-
-
 }
 
 export default test;
