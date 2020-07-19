@@ -164,5 +164,8 @@ const Utils = {
         return append ? `${uuid}-${append}` : uuid;
     },
 
+    reactChildIsString(children): boolean {
+        return typeof children === 'string' || (children && children.length === 1 && typeof children[0] === 'string')
+    }
 };
 export default Utils;
