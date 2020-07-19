@@ -6,4 +6,4 @@
 # $4 - iOS/Android
 _ENV=${ENV:-dev}
 echo "Using project_$_ENV.js"
-cp ../../.env/project_$_ENV.js ../../common/project.js
+cp ../.env/project_$_ENV.js ../common/project.js

@@ -1,6 +1,3 @@
-MMKV uses AES_CFB for encryption. The encryption keys are stored in Keychain on iOS and Android Keystore.
-
-
 Manual changes from a vanilla react-native setup
 
 - disabled flipper for now since it doesnt compile in prod mode 
@@ -46,7 +43,6 @@ google-services.json and keys are contained within here
 
 **Android appname**
     MainActivity.java and settings.gradle resolve the name to boilerplate to match app.json
-    implementation 'androidx.multidex:multidex:$multidex_version'
 
 **Storybook**
  - adds "core-js": "^3.0.1" for smartknobs
@@ -83,8 +79,5 @@ Fastlane allows you to automatically set icons according to AppIcon.png in ios, 
 
 **Extras** 
 Disabled optional functionality
-
 - Branch.io (AndroidManifest, MainApplication) (info.plist, production_appcenter.plist and AppDelegate) 
-
-
-// todo: Look at using branch.json
+- api.js uses some libraries that may or may not be installed, you'll generally get an alert if something is missing
