@@ -10,7 +10,7 @@ module.exports = {
         'prettier',
         'prettier/react',
     ],
-    'parser': 'babel-eslint',
+    'parser': '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
             legacyDecorators: true
