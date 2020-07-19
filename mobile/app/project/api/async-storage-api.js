@@ -4,6 +4,9 @@ let MMKV;
 
 const StorageManager = class {
     init = async () => {
+        if (MMKV) {
+            return MMKV;
+        }
         API.log("STORAGE", "INIT");
         MMKV = new MMKVStorage.Loader()
             // uncommenting this breaks the app
@@ -11,6 +14,7 @@ const StorageManager = class {
             .initialize();
 
         API.log("STORAGE", "INIT DONE");
+        return MMKV;
     }
 
     clear = async () => {
@@ -30,7 +34,7 @@ const StorageManager = class {
 
     setObject = async (key, val) => {
         API.log("STORAGE", "SET OBJECT", key, val);
-        return MMKV.setMapAsync(key, val);
+        return MMKV.setStringAsync(key, JSON.stringify(val));
     }
 
     setBool = async (key, val) => {
@@ -50,7 +54,7 @@ const StorageManager = class {
 
     getObject = async (key) => {
         API.log("STORAGE", "GET OBJECT", key);
-        return MMKV.getMapAsync(key);
+        return MMKV.getMapAsync(key).then((res)=>res && JSON.parse(res));
     }
 
     getBool = async (key) => {

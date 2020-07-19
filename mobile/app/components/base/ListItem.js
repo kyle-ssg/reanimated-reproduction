@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import ReactNative, { Platform, TouchableNativeFeedback } from 'react-native';
-import * as Animatable from 'react-native-animatable';
 
 const ListItem = class extends Component {
   static displayName = 'ListItem';
@@ -14,7 +13,6 @@ const ListItem = class extends Component {
           propTypes.arrayOf(propTypes.node),
           propTypes.node,
       ]).isRequired,
-      animationProps: propTypes.object,
       delay: propTypes.number,
       index: propTypes.number,
       onPress: propTypes.func,
@@ -44,16 +42,9 @@ const ListItem = class extends Component {
               </Row>
           </View>
       );
-      const animationProps = this.props.animationProps
-          ? Object.assign(this.props.animationProps, {
-              delay: this.props.delay + 10 + Number(this.props.index || 0) * 50,
-          })
-          : {};
-      const TheView = this.props.animationProps
-          ? Animatable.View
-          : ReactNative.View;
+
       return this.props.onPress ? (
-          <TheView style={this.props.style || Styles.listItem} {...animationProps}>
+          <View style={this.props.style || Styles.listItem}>
               {Platform.OS === 'android' ? (
                   <TouchableNativeFeedback
                     accessible={this.props.accessible}
@@ -73,21 +64,19 @@ const ListItem = class extends Component {
                       {content}
                   </TouchableOpacity>
               )}
-          </TheView>
+          </View>
       ) : (
-          <Animatable.View
-            {...this.props.animationProps}
+          <View
             style={[this.props.style || Styles.listItem]}
           >
               {content}
-          </Animatable.View>
+          </View>
       );
   }
 };
 ListItem.defaultProps = {
     onPress: null,
     delay: 0,
-    animationProps: null,
 };
 
 module.exports = ListItem;

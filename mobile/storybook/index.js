@@ -1,44 +1,18 @@
 import React, { Component } from 'react';
 import 'react-native-globals';
-
 import '../app/style/style_screen';
-import '../app/project/base-components';
+import '../app/components/base';
 import ION from 'react-native-vector-icons/Ionicons';
 import StorybookUIRoot, { getStory, withPaddedContainer, setup } from './setup';
+
 import ErrorMessage from '../app/components/ErrorMessage';
 import ExampleTabs from './examples/ExampleTabs';
-import ExampleDrawer, { ExampleDrawerSwipe } from './examples/ExampleDrawer';
-import storageTest from '../storage-test'
+import Button from "../app/components/base/forms/Button";
 setup(() => {
     getStory('Tabs')
         .add('default', () => (
             <>
-                <TouchableOpacity onPress={storageTest}>
-                  <Text>
-                    Hi
-                  </Text>
-                </TouchableOpacity>
-            </>
-        ))
-        .add('scrolled', () => (
-            <>
-                <ExampleTabs scrollEnabled/>
-            </>
-        ));
-    getStory('Drawer')
-        .add('default', () => (
-            <>
-                <ExampleDrawer/>
-            </>
-        ))
-        .add('right', () => (
-            <>
-                <ExampleDrawer direction="right"/>
-            </>
-        ))
-        .add('swipe', () => (
-            <>
-                <ExampleDrawerSwipe/>
+                <ExampleTabs/>
             </>
         ))
         .add('scrolled', () => (
@@ -48,6 +22,9 @@ setup(() => {
         ));
     getStory('Button')
         .addDecorator(withPaddedContainer)
+        .add('test',()=>(
+            <Button>Test</Button>
+        ))
         .add('all', () => (
             <>
                 <Button>Button</Button>
@@ -109,23 +86,25 @@ setup(() => {
     getStory('ListItem')
         .addDecorator(withPaddedContainer)
         .add('default', () => (
-            <ListItem>
-                <View>
+            <>
+                <ListItem>
                     <Text style={Styles.listItemTitle}>
-                        Button
+                        Settings
                     </Text>
-                    <Text style={Styles.listItemText}>
-                        Text
-                    </Text>
-                </View>
-                <ION style={Styles.listIcon} name="ios-arrow-forward"/>
-            </ListItem>
+                    <Row>
+                        <Text style={Styles.listItemText}>
+                            Text
+                        </Text>
+                        <ION style={Styles.listIconNav} name="ios-chevron-forward"/>
+                    </Row>
+                </ListItem>
+            </>
         ));
     getStory('ErrorMessage')
         .addDecorator(withPaddedContainer)
         .add('default', () => (
             <ErrorMessage>
-               This is an error message
+                This is an error message
             </ErrorMessage>
         ));
     getStory('Loader')

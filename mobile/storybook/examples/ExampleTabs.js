@@ -31,7 +31,7 @@ export default class extends Component {
               scrollEnabled={this.props.scrollEnabled}
               lazy
               tabBarStyle={{
-                  backgroundColor: pallette.primary,
+                  backgroundColor: palette.primary,
               }}
               labelStyle={{
                   textAlign: 'center',

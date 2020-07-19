@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native';
 module.exports = {
 
     listContainer: {
@@ -14,7 +15,7 @@ module.exports = {
         minHeight: 44,
         alignItems: 'stretch',
         alignSelf: 'stretch',
-        borderBottomWidth: 1 / PixelRatio.get(),
+        borderBottomWidth: StyleSheet.hairlineWidth,
         borderBottomColor: colour.divider,
         backgroundColor: colour.listBackground,
         paddingTop: styleVariables.paddingBase,
@@ -33,6 +34,7 @@ module.exports = {
     listItemLast: {
         borderBottomWidth: 0,
     },
+
     liContent: {
         flex: 1,
         flexDirection: 'row',
@@ -41,18 +43,19 @@ module.exports = {
     },
 
     listItemText: {
-        color: pallette.textLight,
+        color: palette.textLight,
+        fontWeight: styleVariables.normalFontWeight
     },
 
     listIcon: {
-        fontSize: styleVariables.fontSizeBase * 1.5,
-        marginRight: styleVariables.paddingBase,
+        marginLeft: styleVariables.marginBaseHorizontal,
+        fontSize: styleVariables.fontSizeBase * 1.2,
     },
 
     listIconNav: {
-        fontSize: styleVariables.fontSizeBase * 1.5,
-        marginRight: styleVariables.paddingBase,
-        color: pallette.textFaintLight,
+        marginLeft: styleVariables.marginBaseHorizontal,
+        fontSize: styleVariables.fontSizeBase * 1.2,
+        color: palette.iconFaint,
     },
 
     listItemTitle: {
@@ -65,17 +68,6 @@ module.exports = {
     indentListItem: {
         paddingLeft: 30,
     },
-    ListRowHeaderContainer: {
-        paddingBottom: styleVariables.gutterBase,
-    },
-    ListRowText: {
-        color: pallette.primaryDark,
-        fontSize: 14,
-    },
-    ListRowHeaderText: {
-        fontSize: 11,
-        color: pallette.primaryDarkAlt,
-        marginBottom: 0,
-    },
+
 
 };

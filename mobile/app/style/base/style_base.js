@@ -1,18 +1,18 @@
+import { StyleSheet } from 'react-native';
 module.exports = {
-
     //
     // Base styles
     // --------------------------------------------------
 
     body: {
         flex: 1,
-        backgroundColor: pallette.bodyBackground,
+        backgroundColor: palette.bodyBackground,
     },
 
     divider: {
         height: StyleSheet.hairlineWidth,
         alignSelf: 'stretch',
-        borderColor: pallette.divider,
+        borderColor: palette.divider,
         borderBottomWidth: StyleSheet.hairlineWidth,
     },
 

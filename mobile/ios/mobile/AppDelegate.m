@@ -1,17 +1,10 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 #import "AppDelegate.h"
 
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <React/RCTLinkingManager.h>
 
-// Disabling for now due to issue in RN
 //#ifdef FB_SONARKIT_ENABLED
 //#import <FlipperKit/FlipperClient.h>
 //#import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
@@ -29,51 +22,48 @@
 //  [client addPlugin:[[FlipperKitNetworkPlugin alloc] initWithNetworkAdapter:[SKIOSNetworkAdapter new]]];
 //  [client start];
 //}
+
 //#endif
 
-//FACEBOOK_LOGIN
-//#import <FBSDKCoreKit/FBSDKCoreKit.h>
-//GOOGLE_LOGIN
-//#import "RNGoogleSignin.h"
-//REACT_NATIVE_FIREBASE
-@import Firebase;
-//REACT_NATIVE_NAVIGATION
-#import <ReactNativeNavigation/ReactNativeNavigation.h>
-//REACT_NATIVE_BRANCH
-//#import <RNBranch/RNBranch.h> // at the top
-//REACT_NATIVE_CODE_PUSH
-//#import <CodePush/CodePush.h>
-
-#import <React/RCTLinkingManager.h>
+#import <Firebase.h> // REACT_NATIVE_FIREBASE
+#import <CodePush/CodePush.h> // REACT_NATIVE_CODEPUSH
+//#import <RNBranch/RNBranch.h> REACT_NATIVE_BRANCH
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//  #if FB_SONARKIT_ENABLED
-//    InitializeFlipper(application);
-//  #endif
-  //REACT_NATIVE_FUREBASE
-  [FIRApp configure];
-
-//  [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES]; // <-- add this
-
-#if FB_SONARKIT_ENABLED
-  for (NSString* family in [UIFont familyNames])
-  {
-    NSLog(@"%@", family);
-    for (NSString* name in [UIFont fontNamesForFamilyName: family])
+// #ifdef FB_SONARKIT_ENABLED
+//   InitializeFlipper(application);
+// #endif
+  
+  #if DEBUG
+    for (NSString* family in [UIFont familyNames])
     {
-      NSLog(@" %@", name);
+      NSLog(@"%@", family);
+      for (NSString* name in [UIFont fontNamesForFamilyName: family])
+      {
+        NSLog(@" %@", name);
+      }
     }
-  }
-#endif
+  #endif
+  
+  [FIRApp configure]; // REACT_NATIVE_FIREBASE
+//  [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES]; // <-- REACT_NATIVE_BRANCH
 
-  [ReactNativeNavigation bootstrap:[self sourceURLForBridge:nil] launchOptions:launchOptions];
+  RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
+  RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
+                                                   moduleName:@"boilerplate"
+                                            initialProperties:nil];
 
-//  [[FBSDKApplicationDelegate sharedInstance] application:application
-//                           didFinishLaunchingWithOptions:launchOptions];
+  // Set the app background colour
+  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  UIViewController *rootViewController = [UIViewController new];
+  rootViewController.view = rootView;
+  self.window.rootViewController = rootViewController;
+  [self.window makeKeyAndVisible];
   return YES;
 }
 
@@ -82,11 +72,10 @@
 #if DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 #else
-  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
-//  return [CodePush bundleURL];
+  return [CodePush bundleURL]; // REACT_NATIVE_CODEPUSH
+//  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
 }
-
 
 // Facebook/Google/Branch.io URL handling
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -100,7 +89,7 @@
 //    return YES;
 //  }
 
-  //
+// REACT_NATIVE_BRANCH
 //  if ([RNBranch.branch application:application openURL:url sourceApplication:sourceApplication annotation:annotation]) {
 //    return YES;
 //  }
@@ -114,19 +103,12 @@
 //    return YES;
 //  }
 
-  return [RCTLinkingManager application:application openURL:url
-                      sourceApplication:sourceApplication annotation:annotation];
+  return [RCTLinkingManager application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 
 // REACT_NATIVE_BRANCH
 //- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *restorableObjects))restorationHandler {
-//  return [RNBranch continueUserActivity:userActivity];
+//    return [RNBranch continueUserActivity:userActivity];
 //}
-- (BOOL)application:(UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity
- restorationHandler:(nonnull void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler
-{
-  return [RCTLinkingManager application:application
-                   continueUserActivity:userActivity
-                     restorationHandler:restorationHandler];
-}
+
 @end

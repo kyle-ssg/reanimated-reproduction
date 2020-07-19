@@ -1,3 +1,5 @@
+import { StyleSheet } from 'react-native';
+
 module.exports = {
     //
     // Forms
@@ -45,7 +47,7 @@ module.exports = {
         alignItems: 'center',
         justifyContent: 'center',
         marginRight: 5,
-        borderWidth: 1 / PixelRatio.get(),
+        borderWidth: StyleSheet.hairlineWidth,
     },
 
 
@@ -54,19 +56,19 @@ module.exports = {
     textInput: {
         height: styleVariables.inputHeight,
         fontSize: styleVariables.inputFontSizeBase,
-        backgroundColor: pallette.inputBackground,
+        backgroundColor: palette.inputBackground,
         paddingLeft: styleVariables.gutterBase,
-        borderBottomColor: pallette.divider,
+        borderBottomColor: palette.divider,
         borderBottomWidth: StyleSheet.hairlineWidth,
     },
 
     inputLabel: {
-        color: pallette.primary,
+        color: palette.primary,
         fontSize: 16,
     },
 
     inputLabelFlat: {
-        color: pallette.primary,
+        color: palette.primary,
         fontSize: 12,
     },
 

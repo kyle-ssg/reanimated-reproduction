@@ -8,18 +8,18 @@ global.navbarStyle = {
         noBorder: false,
         background: {
             translucent: false,
-            color: pallette.navBarBackground,
+            color: palette.navBarBackground,
         },
         title: {
-            color: pallette.navBarText,
+            color: palette.navBarText,
         },
         subtitle: {
             fontSize: 10,
-            color: pallette.navBarSubtitle,
+            color: palette.navBarSubtitle,
         },
         backButton: Platform.OS === 'ios' ? {
             title: 'Back',
-            color: pallette.navBarIcon,
+            color: palette.navBarIcon,
         } : {},
     },
 };
@@ -38,15 +38,15 @@ global.navbarWithTabsStyle = {
             color: 'transparent',
         },
         title: {
-            color: pallette.navBarText,
+            color: palette.navBarText,
         },
         subtitle: {
             fontSize: 10,
-            color: pallette.navBarSubtitle,
+            color: palette.navBarSubtitle,
         },
         backButton: {
             title: 'Back',
-            color: pallette.navBarIcon,
+            color: palette.navBarIcon,
         },
     },
 };
@@ -69,7 +69,7 @@ global.navbarHidden = {
     },
     backButton: {
         title: '',
-        color: pallette.navBarIcon,
+        color: palette.navBarIcon,
     },
 };
 
@@ -80,7 +80,7 @@ global.tabsHidden = {
     },
     backButton: {
         // title: 'Back',
-        color: pallette.navBarIcon,
+        color: palette.navBarIcon,
     },
 };
 

@@ -1,8 +1,4 @@
 {
   "name": "boilerplate",
-  "displayName": "boilerplate",
-  "packagerOpts": {
-    "projectRoots": "",
-    "config": "rn-cli.config.js"
-  }
+  "displayName": "boilerplate"
 }

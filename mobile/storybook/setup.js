@@ -10,8 +10,11 @@ import { withSmartKnobs } from 'storybook-addon-smart-knobs';
 import { withKnobs } from '@storybook/addon-knobs';
 import _store from '../../common/store';
 
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
-const StorybookUIRoot = getStorybookUI({});
+const StorybookUIRoot = getStorybookUI({
+    asyncStorage: require('@react-native-community/async-storage').default
+});
 const store = _store();
 
 // import stories
@@ -27,9 +30,11 @@ export const withProvider = (story) => (
     </Provider>
 );
 export const withSafeArea = (story) => (
-    <ReactNative.SafeAreaView style={{ flex: 1, marginBottom: 80 }}>
-        { story() }
-    </ReactNative.SafeAreaView>
+    <SafeAreaProvider>
+        <SafeAreaView style={{ flex: 1, marginBottom: 80 }}>
+            { story() }
+        </SafeAreaView>
+    </SafeAreaProvider>
 );
 
 export const withPaddedContainer = (story) => (

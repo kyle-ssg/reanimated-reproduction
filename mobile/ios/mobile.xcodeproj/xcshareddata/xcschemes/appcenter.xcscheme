@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
+   LastUpgradeVersion = "1160"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E5890B9C2327D5AA007AD167"
+               BlueprintIdentifier = "2765AE5F24C474F500373166"
                BuildableName = "TheApp.app"
                BlueprintName = "appcenter"
                ReferencedContainer = "container:mobile.xcodeproj">
@@ -27,22 +27,13 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E5890B9C2327D5AA007AD167"
-            BuildableName = "TheApp.app"
-            BlueprintName = "appcenter"
-            ReferencedContainer = "container:mobile.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      buildConfiguration = "Release"
+      selectedDebuggerIdentifier = ""
+      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -53,7 +44,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E5890B9C2327D5AA007AD167"
+            BlueprintIdentifier = "2765AE5F24C474F500373166"
             BuildableName = "TheApp.app"
             BlueprintName = "appcenter"
             ReferencedContainer = "container:mobile.xcodeproj">
@@ -70,7 +61,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E5890B9C2327D5AA007AD167"
+            BlueprintIdentifier = "2765AE5F24C474F500373166"
             BuildableName = "TheApp.app"
             BlueprintName = "appcenter"
             ReferencedContainer = "container:mobile.xcodeproj">

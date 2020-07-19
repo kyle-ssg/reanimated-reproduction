@@ -48,7 +48,7 @@ export default class Button extends PureComponent {
       // compute styles e.g. buttonGroupLeft, big, bigRight, buttonGroupText, bigText, but
       const groupStyle = [Styles.buttonGroup, this.props.style];
 
-      const baseTextStyle = { color: 'white', letterSpacing: 2, fontSize: 14 };
+      const baseTextStyle = Styles.buttonText;
       const additionalTextStyles = this.props.textStyle && this.props.textStyle.length ? this.props.textStyle : [this.props.textStyle];
 
       const textStyle = [
@@ -66,8 +66,10 @@ export default class Button extends PureComponent {
                 accessibilityLabel={this.props.accessibilityLabel}
               >
                   <View style={groupStyle}>
-                      {typeof this.props.children === 'string' ? (
-                          <Text style={textStyle}>{this.props.children.toUpperCase()}</Text>
+                      {Utils.reactChildIsString(this.props.children) ? (
+                          <Text pointerEvents="none" style={textStyle}>
+                              {this.props.children.length === 1 ? this.props.children[0] : this.props.children}
+                          </Text>
                       ) : (
                           this.props.children
                       )}
@@ -80,15 +82,14 @@ export default class Button extends PureComponent {
                 {...touchableProps}
                 style={[
                     groupStyle,
-                    this.props.disabled && { backgroundColor: pallette.primaryDarkAlt },
                 ]}
                 accessible={this.props.accessible}
                 accessibilityLabel={this.props.accessibilityLabel}
                 testID={this.props.testID}
               >
-                  {typeof this.props.children === 'string' ? (
+                  {Utils.reactChildIsString(this.props.children) ? (
                       <Text pointerEvents="none" style={textStyle}>
-                          {this.props.children}
+                          {this.props.children.length === 1 ? this.props.children[0] : this.props.children}
                       </Text>
                   ) : (
                       this.props.children
@@ -110,7 +111,7 @@ ButtonPrimary.propTypes = buttonPropTypes;
 export const ButtonPrimaryBookmaker = (props) => (
     <Button
       {...props}
-      style={[{ backgroundColor: pallette.bookmakerPrimary }, props.style]}
+      style={[{ backgroundColor: palette.bookmakerPrimary }, props.style]}
     />
 );
 ButtonPrimaryBookmaker.propTypes = buttonPropTypes;
@@ -118,7 +119,7 @@ ButtonPrimaryBookmaker.propTypes = buttonPropTypes;
 export const ButtonSecondary = (props) => (
     <Button
       {...props}
-      style={[{ backgroundColor: pallette.secondary }, props.style]}
+      style={[{ backgroundColor: palette.secondary }, props.style]}
     />
 );
 ButtonSecondary.propTypes = buttonPropTypes;
@@ -143,26 +144,26 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     TabButtonPillText: {
-        color: pallette.primaryDark,
+        color: palette.primaryDark,
     },
     buttonTertiary: {
         backgroundColor: 'white',
-        borderColor: pallette.primary,
+        borderColor: palette.primary,
         borderWidth: 1,
     },
     buttonTertiaryText: {
-        color: pallette.primary,
+        color: palette.primary,
     },
     buttonTertiaryBookmaker: {
         backgroundColor: 'white',
-        borderColor: pallette.bookmakerPrimaryDark,
+        borderColor: palette.bookmakerPrimaryDark,
         borderWidth: 1,
     },
     buttonCommon: {
-        backgroundColor: pallette.racingPostLightGray,
+        backgroundColor: palette.racingPostLightGray,
     },
     buttonTertiaryBookmakerText: {
-        color: pallette.bookmakerPrimaryDark,
+        color: palette.bookmakerPrimaryDark,
     },
-    buttonPrimary: { backgroundColor: pallette.primary },
+    buttonPrimary: { backgroundColor: palette.primary },
 });

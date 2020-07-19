@@ -1,3 +1,4 @@
+import { Dimensions } from 'react-native';
 module.exports = {
     //
     // Overlays
@@ -9,11 +10,11 @@ module.exports = {
         alignItems: 'center',
         paddingBottom: 40,
         paddingTop: 40,
-        height: DeviceHeight,
+        height: Dimensions.get("window").height,
     },
 
     lightbox: {
-        width: DeviceWidth - 40,
+        width: Dimensions.get("window").width - 40,
         borderRadius: 5,
         backgroundColor: 'white',
     },

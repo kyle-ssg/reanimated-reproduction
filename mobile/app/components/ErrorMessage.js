@@ -1,5 +1,3 @@
-
-// import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
@@ -28,11 +26,11 @@ const styles = StyleSheet.create({
     errorIcon: {
         fontSize: 18,
         marginBottom: 2,
-        color: pallette.danger,
+        color: palette.danger,
     },
 
     ErrorMessageText: {
-        color: pallette.danger,
+        color: palette.danger,
         textAlign: 'center',
     },
     text: {

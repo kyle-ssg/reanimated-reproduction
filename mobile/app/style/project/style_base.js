@@ -1,6 +1,6 @@
 module.exports = {
     bodyBackground: {
-        backgroundColor: pallette.bodyBackground,
+        backgroundColor: palette.bodyBackground,
     },
 
     hero: {
@@ -10,11 +10,11 @@ module.exports = {
     },
 
     bodyAlt: {
-        backgroundColor: pallette.backgroundLight,
+        backgroundColor: palette.backgroundLight,
     },
 
     bodyWithTabs: {
-        backgroundColor: pallette.bodyBackground,
+        backgroundColor: palette.bodyBackground,
     },
 
     shadow: {

@@ -1,5 +1,5 @@
 // HTML like select input
-
+import propTypes from 'prop-types'
 import { PureComponent } from 'react';
 
 const SelectBox = class extends PureComponent {

@@ -10,6 +10,8 @@ module.exports = {
     },
 
     buttonText: {
+        fontWeight: styleVariables.buttonFontWeight,
+        fontFamily: styleVariables.buttonFontFamily,
         backgroundColor: 'transparent',
         color: 'white',
     },
@@ -28,7 +30,7 @@ module.exports = {
     buttonGroup: {
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: pallette.primary,
+        backgroundColor: palette.primary,
         height: styleVariables.buttonHeight,
     },
 
