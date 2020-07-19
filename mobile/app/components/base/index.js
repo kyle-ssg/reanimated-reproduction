@@ -4,6 +4,7 @@ import TextInput, { FlatInput } from './forms/TextInput';
 import Button, {
     ButtonPrimary,
     ButtonSecondary,
+    ButtonNav,
     ButtonTertiary,
 } from './forms/Button';
 
@@ -45,6 +46,7 @@ global.Button = Button;
 global.ButtonPrimary = ButtonPrimary;
 global.ButtonSecondary = ButtonSecondary;
 global.ButtonTertiary = ButtonTertiary;
+global.ButtonNav = ButtonNav;
 
 global.Checkbox = require('./forms/Checkbox');
 

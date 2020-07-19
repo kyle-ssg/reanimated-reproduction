@@ -57,10 +57,10 @@ export default class Button extends PureComponent {
       ];
 
       return Platform.OS === 'android' && Platform.Version >= 21 ? (
-          <View style={{ opacity: this.props.disabled ? 0.5 : 1 }}>
+          <View style={[{ opacity: this.props.disabled ? 0.5 : 1 }, this.props.androidContainerStyle]}>
               <TouchableNativeFeedback
                 {...touchableProps}
-                background={TouchableNativeFeedback.Ripple('rgba(255,255,255,.5)')}
+                background={this.props.androidBackground || TouchableNativeFeedback.Ripple('rgba(255,255,255,.5)')}
                 testID={this.props.testID}
                 accessible={this.props.accessible}
                 accessibilityLabel={this.props.accessibilityLabel}
@@ -136,6 +136,27 @@ export const ButtonTertiary = (props) => (
 ButtonTertiary.propTypes = buttonPropTypes;
 
 
+export const ButtonNav = (props) => Platform.select({
+android: (
+    <Button
+        {...props}
+        androidBackground={TouchableNativeFeedback.Ripple('rgba(0,0,0,.15)')}
+        androidContainerStyle={styles.buttonNav}
+        style={{ backgroundColor:'transparent' }}
+        textStyle={[styles.buttonTertiaryText, props.textStyle]}
+    />
+),
+    ios : (
+        <Button
+            {...props}
+            style={styles.buttonNav}
+            textStyle={[styles.buttonTertiaryText, props.textStyle]}
+        />
+    )
+});
+ButtonNav.propTypes = buttonPropTypes;
+
+
 const styles = StyleSheet.create({
     TabButtonPill: {
         height: 34,
@@ -145,6 +166,13 @@ const styles = StyleSheet.create({
     },
     TabButtonPillText: {
         color: palette.primaryDark,
+    },
+    buttonNav: {
+        backgroundColor: 'white',
+        width: 44,
+        height:44,
+        borderRadius:22,
+        overflow:"hidden"
     },
     buttonTertiary: {
         backgroundColor: 'white',

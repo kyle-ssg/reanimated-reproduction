@@ -127,6 +127,7 @@ const routes: Record<RouteName, IRoute> = {
         options: {
             title: 'Modal',
             stackPresentation: "fullScreenModal",
+            headerShown: false,
         },
     }
 }
@@ -134,15 +135,17 @@ const routes: Record<RouteName, IRoute> = {
 const withModalOptions = (base:Partial<NativeStackNavigationOptions>, navigation) => (
   {
       ...base,
+      hideBackButton:true,
+      headerHideBackButton: true,
       headerRight: props => {
-    return <TouchableOpacity onPress={navigation.pop}>
+    return <ButtonNav onPress={()=>navigation.pop()}>
         <ION
           style={{
             color: props.tintColor,
             fontSize: styleVariables.fontSizeH1
         }} name="ios-close"
         />
-    </TouchableOpacity>
+    </ButtonNav>
 }
   }
 )
