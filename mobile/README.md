@@ -81,3 +81,5 @@ Fastlane allows you to automatically set icons according to AppIcon.png in ios, 
 Disabled optional functionality
 - Branch.io (AndroidManifest, MainApplication) (info.plist, production_appcenter.plist and AppDelegate) 
 - api.js uses some libraries that may or may not be installed, you'll generally get an alert if something is missing
+
+

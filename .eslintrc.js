@@ -12,8 +12,11 @@ module.exports = {
     ],
     'parser': '@typescript-eslint/parser',
     parserOptions: {
+        "ecmaVersion": 6,
+        "sourceType": "module",
         ecmaFeatures: {
-            legacyDecorators: true
+            legacyDecorators: true,
+            modules: true,
         },
         parser: 'babel-eslint'
     },
@@ -79,6 +82,9 @@ module.exports = {
         InputGroup:true,
         it:true,
         Link:true,
+        View:true,
+        Text:true,
+        TouchableOpacity:true,
         Loader:true,
         MaskedInput:true,
         Project:true,

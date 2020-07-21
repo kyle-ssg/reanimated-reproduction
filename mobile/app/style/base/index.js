@@ -11,7 +11,6 @@ module.exports = {
     ...require('./style_buttons'),
     ...require('./style_forms'),
     ...require('./style_grid'),
-    ...require('./style_navs'),
     ...require('./style_type'),
     ...require('./style_lists'),
     ...require('./style_overlays'),
