@@ -39,7 +39,7 @@ const defaultNavigationOptions:NativeStackNavigationOptions = {
         // fontFamil?: string;
         // fontSize?: number;
     },
-    headerTopInsetEnabled: true,
+    headerTopInsetEnabled: false,
     gestureEnabled: true,
     stackPresentation: "push",
     stackAnimation: "default"

@@ -19,7 +19,6 @@ const FormScreen = class extends Component {
   static displayName = 'FormScreen';
 
   static propTypes = {
-      componentId: propTypes.string,
       ...formikPropTypes,
   };
 

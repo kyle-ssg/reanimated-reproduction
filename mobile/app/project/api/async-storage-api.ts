@@ -1,7 +1,6 @@
 // import SecuredStorage from 'react-native-secured-storage';
 import MMKVStorage from "react-native-mmkv-storage";
 let MMKV;
-
 const StorageManager = class {
     init = async () => {
         if (MMKV) {
@@ -69,4 +68,4 @@ const StorageManager = class {
 
 };
 
-module.exports = new StorageManager();
+export default new StorageManager();

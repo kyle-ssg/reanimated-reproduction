@@ -10,6 +10,11 @@
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
+    "baseUrl": "../",
+    "paths": {
+      "components/": ["./components/*"],
+      "common/": ["./common/*"]
+    },
     "target": "esnext"
   },
   "include": [],

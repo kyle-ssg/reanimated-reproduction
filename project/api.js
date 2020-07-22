@@ -1,11 +1,12 @@
 /* istanbul ignore next */
-import Constants from '../common/utils/constants';
 import Router from 'next/router';
 import cookie from 'cookie';
 import cookies from 'js-cookie';
 
+import Constants from 'common/utils/constants';
 import errorHandler from 'common/utils/errorHandler';
-import Project from '../common/project';
+import Project from 'common/project';
+
 import storage from './async-storage-api'
 const API = {
     isMobile: () => false,

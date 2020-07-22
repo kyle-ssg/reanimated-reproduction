@@ -8,7 +8,7 @@ import { storiesOf } from '@storybook/react-native';
 import { withSmartKnobs } from 'storybook-addon-smart-knobs';
 // eslint-disable-next-line
 import { withKnobs } from '@storybook/addon-knobs';
-import _store from '../../common/store';
+import _store from 'common/store';
 
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
