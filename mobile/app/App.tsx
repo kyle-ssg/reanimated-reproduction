@@ -33,7 +33,7 @@ class App extends Component {
                               name={routes.home.name}
                               options={routes.home.options}
                               component={routes.home.component}
-                        />
+                            />
                             <Stack.Screen
                               name={routes.about.name}
                               options={routes.about.options}
@@ -44,6 +44,11 @@ class App extends Component {
                               options={routes.modal.options}
                               component={routes.modal.component}
                         />
+                            <Stack.Screen
+                              name={routes.tabs.name}
+                              options={routes.tabs.options}
+                              component={routes.tabs.component}
+                            />
                         </Navigator>
                     </NavigationContainer>
                 </Provider>

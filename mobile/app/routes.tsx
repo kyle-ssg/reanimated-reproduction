@@ -5,6 +5,8 @@ import AboutScreen from './screens/AboutScreen';
 import HomeScreen from './screens/HomeScreen';
 import GenericModal from './screens/GenericModal';
 import { RouteUrls } from './route-urls';
+import TabLayout from './screens/tabs/TabLayout';
+import TabScreen from './screens/tabs/TabScreen';
 
 interface IRoute {
   name: RouteUrls,
@@ -26,6 +28,21 @@ export const routes: Record<string, IRoute> = {
             title: 'About',
         },
         component: AboutScreen,
+    },
+    tabs: {
+        name: RouteUrls.tabs,
+        options: {
+            title: 'Tabs',
+            headerShown: false,
+        },
+        component: TabLayout,
+    },
+    tab: {
+        name: RouteUrls.tab,
+        options: {
+            title: 'Tab',
+        },
+        component: TabScreen,
     },
     modal: {
         name: RouteUrls.modal,

@@ -32,12 +32,23 @@ class HomeScreen extends Component<ComponentType> {
       })
   }
 
+  goTabs = ()=> {
+      this.props.push(RouteUrls.tabs, {
+          screenOptions: {}
+      })
+  }
+
   render() {
       return (
           <>
               <Flex style={Styles.body}>
                   <Text>Home</Text>
                   <TouchableOpacity onPress={this.goAbout}>
+                      <Text>
+                          Go About
+                      </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={this.goTabs}>
                       <Text>
                           Go About
                       </Text>
