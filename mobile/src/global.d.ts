@@ -4,6 +4,9 @@ declare let TouchableOpacity: React.ComponentType<ReactNative.TouchableOpacityPr
 declare let Text: React.ComponentType<ReactNative.TouchableOpacityProps>;
 declare let StyleSheet: ReactNative.StyleSheetProperties;
 declare let SafeAreaView: React.ComponentType<ReactNative.ViewProps>;
-declare let ION: ReactNative.TextProps & {name:string};
+declare let ION: React.ComponentType<ReactNative.TextProps & {name:string}>;
+declare let Platform: ReactNative.PlatformIOSStatic;
 declare let Styles;
 declare let styleVariables;
+declare let routes;
+declare let palette;
