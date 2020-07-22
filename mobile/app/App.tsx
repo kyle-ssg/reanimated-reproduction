@@ -15,6 +15,9 @@ import defaultNavigationOptions from './style/style_navs';
 import { routes } from './routes'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { RouteUrls } from './route-urls';
+const linking = {
+    prefixes: ['mobile://'],
+};
 
 class App extends Component {
     static displayName = 'TheComponent';
@@ -28,27 +31,22 @@ class App extends Component {
         return (
             <>
                 <Provider store={store()}>
-                    <NavigationContainer>
-                        <Navigator screenOptions={defaultNavigationOptions} initialRouteName={routes.home.name}>
+                    <NavigationContainer linking={linking}>
+                        <Navigator screenOptions={defaultNavigationOptions} initialRouteName={RouteUrls.home}>
                             <Stack.Screen
                               name={RouteUrls.home}
-                              options={routes.home.options}
-                              component={routes.home.component}
+                              options={routes[RouteUrls.home].options}
+                              component={routes[RouteUrls.home].component}
                             />
                             <Stack.Screen
-                              name={RouteUrls.about}
-                              options={routes.about.options}
-                              component={routes.about.component}
-                        />
-                            <Stack.Screen
-                              name={RouteUrls.modal}
-                              options={routes.modal.options}
-                              component={routes.modal.component}
-                        />
+                              name={RouteUrls.generic}
+                              options={routes[RouteUrls.generic].options}
+                              component={routes[RouteUrls.generic].component}
+                            />
                             <Stack.Screen
                               name={RouteUrls.tabs}
-                              options={routes.tabs.options}
-                              component={routes.tabs.component}
+                              options={routes[RouteUrls.tabs].options}
+                              component={routes[RouteUrls.tabs].component}
                             />
                         </Navigator>
                     </NavigationContainer>

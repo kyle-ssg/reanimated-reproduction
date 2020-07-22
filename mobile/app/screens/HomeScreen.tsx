@@ -18,8 +18,9 @@ class HomeScreen extends Component<ComponentType> {
               headerTintColor: "white"
           })
       }
-      this.props.push(RouteUrls.about, {
+      this.props.push(RouteUrls.generic, {
           fakeNavBackground: navBackground,
+          text:"Some text",
           screenOptions: {
               title: "Dynamic title",
               headerTintColor: "white",
@@ -35,7 +36,7 @@ class HomeScreen extends Component<ComponentType> {
   }
 
   goTabs = ()=> {
-      this.props.push(RouteUrls.tabs, {
+      this.props.replace(RouteUrls.tabs, {
           screenOptions: {}
       })
   }
@@ -44,17 +45,16 @@ class HomeScreen extends Component<ComponentType> {
       return (
           <>
               <Flex style={Styles.body}>
-                  <Text>Home</Text>
-                  <Link to={RouteUrls.about}>
+                  <TouchableOpacity onPress={this.goAbout}>
                       <Text>
                           Go About
                       </Text>
-                  </Link>
-                  <Link to={RouteUrls.tabs}>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={this.goTabs}>
                       <Text>
                           Go Tabs
                       </Text>
-                  </Link>
+                  </TouchableOpacity>
               </Flex>
           </>
       )

@@ -97,6 +97,7 @@ module.exports = {
         Row:true,
         Select:true,
         Strings: true,
+        ScrollView: true,
         Platform: true,
         SuccessMessage:true,
         Utils: true,
