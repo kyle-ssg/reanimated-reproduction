@@ -14,6 +14,7 @@ import defaultNavigationOptions from './style/style_navs';
 
 import { routes } from './routes'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { RouteUrls } from './route-urls';
 
 class App extends Component {
     static displayName = 'TheComponent';
@@ -30,22 +31,22 @@ class App extends Component {
                     <NavigationContainer>
                         <Navigator screenOptions={defaultNavigationOptions} initialRouteName={routes.home.name}>
                             <Stack.Screen
-                              name={routes.home.name}
+                              name={RouteUrls.home}
                               options={routes.home.options}
                               component={routes.home.component}
                             />
                             <Stack.Screen
-                              name={routes.about.name}
+                              name={RouteUrls.about}
                               options={routes.about.options}
                               component={routes.about.component}
                         />
                             <Stack.Screen
-                              name={routes.modal.name}
+                              name={RouteUrls.modal}
                               options={routes.modal.options}
                               component={routes.modal.component}
                         />
                             <Stack.Screen
-                              name={routes.tabs.name}
+                              name={RouteUrls.tabs}
                               options={routes.tabs.options}
                               component={routes.tabs.component}
                             />

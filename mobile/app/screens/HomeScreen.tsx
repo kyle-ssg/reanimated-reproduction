@@ -2,6 +2,8 @@ import React from 'react';
 import { Component } from 'react';
 import withScreen, { Screen } from './withScreen';
 import { RouteUrls } from '../route-urls';
+import { TouchableOpacity } from 'react-native';
+import { Link } from '@react-navigation/native';
 
 
 type ComponentType = Screen & {}
@@ -43,16 +45,16 @@ class HomeScreen extends Component<ComponentType> {
           <>
               <Flex style={Styles.body}>
                   <Text>Home</Text>
-                  <TouchableOpacity onPress={this.goAbout}>
+                  <Link to={RouteUrls.about}>
                       <Text>
                           Go About
                       </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={this.goTabs}>
+                  </Link>
+                  <Link to={RouteUrls.tabs}>
                       <Text>
-                          Go About
+                          Go Tabs
                       </Text>
-                  </TouchableOpacity>
+                  </Link>
               </Flex>
           </>
       )
