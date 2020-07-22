@@ -1,5 +1,4 @@
 import React from 'react';
-import { RouteUrls } from '../routes';
 import { NativeStackNavigationOptions } from 'react-native-screens/native-stack';
 export interface IRouteParams {
   [extraProps: string]: any; // Means that extra props are fine
