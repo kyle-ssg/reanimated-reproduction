@@ -5,9 +5,11 @@ type ComponentType = {
 
 }
 
-export class Clock extends Component<{}, ComponentType> {
+class TheComponent extends Component<ComponentType> {
   state = {}
   render() {
       return <View />;
   }
 }
+
+export default TheComponent
