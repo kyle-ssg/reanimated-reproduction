@@ -4,7 +4,7 @@ import defaultNavigationOptions from '../style/style_navs';
 import { routes } from '../routes';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { ScrollViewProps, TouchableOpacity } from 'react-native';
-import { RouteUrls } from '../route-urls';
+import { RouteUrls } from '../../../common/types/route-urls';
 import { initialWindowMetrics } from 'react-native-safe-area-context';
 
 type ComponentType = {}
@@ -22,7 +22,7 @@ class TabLayout extends Component<ComponentType> {
 
   goTab = (index) => {
       const scrollView: ReactNative.ScrollView = this.scrollView;
-      scrollView.scrollTo({ x: Dimensions.get('window').width * (index - 1), animated: true });
+      scrollView.scrollTo({ x: Dimensions.get('window').width * (index - 1), animated: false });
       this.setState({ activeIndex: index - 1 });
   };
 
@@ -41,7 +41,7 @@ class TabLayout extends Component<ComponentType> {
       const { state: { activeIndex } } = this;
       return (
           <View style={StyleSheet.absoluteFill}>
-              <ScrollView automaticallyAdjustContentInsets={false} ref={this.onRef} bounces={false}
+              <ScrollView scrollEnabled={false} automaticallyAdjustContentInsets={false} ref={this.onRef} bounces={false}
                 pagingEnabled
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -97,6 +97,7 @@ class TabLayout extends Component<ComponentType> {
       );
   }
 }
+
 
 const styles = {
     screen: {

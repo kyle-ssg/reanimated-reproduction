@@ -56,5 +56,5 @@ global.Loader = require('./Loader');
 global.Select = require('./forms/Select');
 
 // Navs
-global.Delay = require('./Delay');
+global.Delay = require('../utility-components/Delay');
 global.ListItem = require('./ListItem');

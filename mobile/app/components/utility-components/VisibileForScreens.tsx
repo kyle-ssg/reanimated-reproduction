@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react'
 import { connect } from 'react-redux';
 // eslint-disable-next-line no-unused-vars
 import { AppState } from 'common/state-type';
-import { RouteUrls } from '../route-urls';
+import { RouteUrls } from '../../../../common/types/route-urls';
 
 type ComponentType = {
     activeScreen: AppState["activeScreen"];
@@ -13,6 +13,7 @@ type ComponentType = {
 }
 
 //Use this to make an absolute view persist across multiple native screens
+//You can put this within a NavigationContainer component to appear above the navbar
 const VisibleForScreens: FunctionComponent<ComponentType> = ({ children,activeScreen, style, target, navigator="root" }) => {
     const [isActive, setIsActive] = useState<boolean>(false)
     useEffect(()=> {

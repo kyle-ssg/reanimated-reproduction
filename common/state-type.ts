@@ -1,5 +1,5 @@
 // Optional but if used means within our providers we can
-import { RouteUrls } from '../mobile/app/route-urls';
+import { RouteUrls } from './types/route-urls';
 
 export interface AppState {
   [extraProps: string]: any; // Means that extra props are fine

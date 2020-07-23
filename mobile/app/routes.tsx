@@ -3,12 +3,12 @@ import { NativeStackNavigationOptions } from 'react-native-screens/native-stack'
 import { ButtonNav } from './components/base/forms/Button'
 import GenericScreen from './screens/GenericScreen';
 import HomeScreen from './screens/HomeScreen';
-import { RouteUrls } from './route-urls';
+import { RouteUrls } from '../../common/types/route-urls';
 import TabLayout from './screens/TabLayout';
 
 interface IRoute {
   options?: Partial<NativeStackNavigationOptions>,
-  component: React.ComponentType,
+  component: React.ComponentType<any>,
   params?: Record<string, any>
 }
 export const routes: Record<RouteUrls, IRoute> = {

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { SafeAreaInsetsContext, SafeAreaProvider } from 'react-native-safe-area-context';
 
-
+//This component, for iOS, lets you draw a custom view where the navbar is, use with a backgroundColor:"transparent"
 type ComponentType = {
   style?:ReactNative.ViewStyle
   navbarStyle?:ReactNative.ViewStyle
 }
 
-class FakeNavbar extends Component<ComponentType> {
+class NavBackgroundHelper extends Component<ComponentType> {
   state = {};
 
   renderComponent = (insets) => {
@@ -29,4 +29,4 @@ class FakeNavbar extends Component<ComponentType> {
   }
 }
 
-export default FakeNavbar;
+export default NavBackgroundHelper;

@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { enableScreens } from 'react-native-screens';
 import { Provider } from 'react-redux';
-import { StyleSheet } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
 import store from 'common/store';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import defaultNavigationOptions from './style/style_navs';
-
 import { routes } from './routes';
-import { RouteUrls } from './route-urls';
-import VisibleForScreens from './components/VisibileForScreens';
+import { RouteUrls } from '../../common/types/route-urls';
 import { initialWindowMetrics } from 'react-native-safe-area-context';
 
 
@@ -32,6 +30,7 @@ class App extends Component {
         return (
             <>
                 <Provider store={store()}>
+                    <StatusBar translucent barStyle="light-content"/>
                     <>
                         <NavigationContainer linking={linking}>
                             <Navigator screenOptions={defaultNavigationOptions} initialRouteName={RouteUrls.home}>
@@ -51,9 +50,6 @@ class App extends Component {
                                   component={routes[RouteUrls.tabs].component}
                             />
                             </Navigator>
-                            <VisibleForScreens style={styles.widgetContainer} target={[RouteUrls.generic]}>
-                                <Text>Widget</Text>
-                            </VisibleForScreens>
                         </NavigationContainer>
                     </>
                 </Provider>

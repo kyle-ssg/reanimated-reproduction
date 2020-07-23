@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import withScreen, { Screen } from './withScreen';
-import { RouteUrls } from '../route-urls';
+import { RouteUrls } from '../../../common/types/route-urls';
 import { TouchableOpacity } from 'react-native';
 
 type ComponentType = Screen & {}
