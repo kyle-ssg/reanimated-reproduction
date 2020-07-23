@@ -30,7 +30,7 @@ class App extends Component {
         return (
             <>
                 <Provider store={store()}>
-                    <StatusBar translucent barStyle="light-content"/>
+                    <StatusBar backgroundColor="#333" barStyle="light-content"/>
                     <>
                         <NavigationContainer linking={linking}>
                             <Navigator screenOptions={defaultNavigationOptions} initialRouteName={RouteUrls.home}>

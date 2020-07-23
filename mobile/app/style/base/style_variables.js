@@ -2,8 +2,13 @@
  * Created by kylejohnson on 18/04/2016.
  */
 import { StyleSheet } from 'react-native';
+import { initialWindowMetrics } from 'react-native-safe-area-context';
 
 const em = require('../base/style_pxToEm');
+let deviceH = Dimensions.get('screen').height;
+// the value returned does not include the bottom navigation bar, I am not sure why yours does.
+let windowH = Dimensions.get('window').height;
+let bottomNavBarH = deviceH - windowH;
 
 global.palette = { bodyBackground: '#fff', // General app  background
     primary: 'rgb(10,132,255)',
@@ -18,6 +23,14 @@ global.palette = { bodyBackground: '#fff', // General app  background
 //= = Other Variables
 
 global.styleVariables = {
+    insets: {
+        ...initialWindowMetrics.insets,
+        bottom: Platform.select({
+            android: initialWindowMetrics.insets.bottom  - bottomNavBarH,
+            ios: initialWindowMetrics.insets.bottom,
+
+        })
+    },
 
     //= = Typography
     fontSizeBase: em(1), //16px

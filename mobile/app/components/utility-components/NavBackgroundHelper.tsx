@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { SafeAreaInsetsContext, SafeAreaProvider } from 'react-native-safe-area-context';
+import React, { Component, FunctionComponent } from 'react';
+import { initialWindowMetrics } from 'react-native-safe-area-context';
 
 //This component, for iOS, lets you draw a custom view where the navbar is, use with a backgroundColor:"transparent"
 type ComponentType = {
@@ -7,26 +7,18 @@ type ComponentType = {
   navbarStyle?:ReactNative.ViewStyle
 }
 
-class NavBackgroundHelper extends Component<ComponentType> {
-  state = {};
 
-  renderComponent = (insets) => {
-      const navbarHeight = insets.top;
-      return (
-          <Flex>
-              <View style={[{ minHeight:navbarHeight }, this.props.navbarStyle]}/>
-              {this.props.children}
-          </Flex>
-      )
-  }
+const NavBackgroundHelper: FunctionComponent<ComponentType> = ({}) => {
+    return (
+        <Flex>
+            <View style={[styles.navbar, this.props.navbarStyle]}/>
+            {this.props.children}
+        </Flex>
+    );
+};
 
-  render() {
-      return (
-          <SafeAreaProvider>
-              <SafeAreaInsetsContext.Consumer>{this.renderComponent}</SafeAreaInsetsContext.Consumer>
-          </SafeAreaProvider>
-      )
-  }
-}
+const styles = StyleSheet.create({
+    navbar: { minHeight:initialWindowMetrics.insets.top+44 }
+})
 
 export default NavBackgroundHelper;

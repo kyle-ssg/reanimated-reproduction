@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import defaultNavigationOptions from '../style/style_navs';
 import { routes } from '../routes';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
-import { ScrollViewProps, TouchableOpacity } from 'react-native';
+import { Platform, ScrollViewProps, TouchableOpacity } from 'react-native';
 import { RouteUrls } from '../../../common/types/route-urls';
 import { initialWindowMetrics } from 'react-native-safe-area-context';
 
@@ -11,7 +11,6 @@ type ComponentType = {}
 
 const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;
-const TAB_HEIGHT = 64;
 
 
 class TabLayout extends Component<ComponentType> {
@@ -41,7 +40,8 @@ class TabLayout extends Component<ComponentType> {
       const { state: { activeIndex } } = this;
       return (
           <View style={StyleSheet.absoluteFill}>
-              <ScrollView scrollEnabled={false} automaticallyAdjustContentInsets={false} ref={this.onRef} bounces={false}
+              <ScrollView scrollEnabled={false} automaticallyAdjustContentInsets={false} ref={this.onRef}
+                bounces={false}
                 pagingEnabled
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -98,28 +98,27 @@ class TabLayout extends Component<ComponentType> {
   }
 }
 
-
+const tabBarHeight = 64 + styleVariables.insets.bottom;
 const styles = {
     screen: {
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
-    },
-    tab: {
-        height: TAB_HEIGHT,
-        alignItems: 'center',
-        paddingLeft: styleVariables.paddingBase,
-        paddingRight: styleVariables.paddingBase,
-        justifyContent: 'center',
+        height: Dimensions.get('window').height - tabBarHeight,
     },
     activeTabText: {
         fontWeight: styleVariables.boldFontWeight,
     },
+    tab: {
+        height:64,
+        justifyContent: "center",
+        paddingLeft: styleVariables.paddingBase,
+        paddingRight: styleVariables.paddingBase,
+    },
     tabContainer: {
-        height: TAB_HEIGHT +initialWindowMetrics.insets.bottom,
-        lineHeight: TAB_HEIGHT + initialWindowMetrics.insets.bottom,
         backgroundColor: '#f1f1f1',
         alignItems: 'center',
         justifyContent: 'center',
+        height:tabBarHeight,
+        paddingBottom: styleVariables.insets.bottom,
     },
 };
 

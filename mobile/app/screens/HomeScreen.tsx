@@ -34,7 +34,7 @@ class HomeScreen extends Component<ComponentType> {
   }
 
   goTabs = ()=> {
-      this.props.push(RouteUrls.tabs, {
+      this.props.replace(RouteUrls.tabs, {
           screenOptions: {}
       })
   }

@@ -10,7 +10,7 @@ const Delay: FunctionComponent<ComponentType> = ({ children, delay=500 }) => {
     setTimeout(()=>{
         setIsReady(true)
     },delay)
-    return <>{isReady? children:null}</>
+    return <>{isReady? children:null}a</>
 };
 
 export default Delay;
