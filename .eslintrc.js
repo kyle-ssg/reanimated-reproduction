@@ -99,6 +99,7 @@ module.exports = {
         Text:true,
         TouchableOpacity:true,
         Utils: true,
+        styleVariables: true,
         View:true,
         _:true,
         __DEV__: true,

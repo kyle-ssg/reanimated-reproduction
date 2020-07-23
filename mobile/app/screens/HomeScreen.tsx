@@ -3,39 +3,28 @@ import { Component } from 'react';
 import withScreen, { Screen } from './withScreen';
 import { RouteUrls } from '../../../common/types/route-urls';
 import { TouchableOpacity } from 'react-native';
+import CustomNavbar from '../components/CustomNavbar';
 
 type ComponentType = Screen & {}
 
 class HomeScreen extends Component<ComponentType> {
   state = {}
 
+  constructor(props) {
+      super(props);
+  }
+
   goAbout = ()=> {
-      const navBackground = "#333";
-      if (!this.props.canGoBack()) {
-          this.props.setOptions({
-              headerTintColor: "white"
-          })
-      }
       this.props.push(RouteUrls.generic, {
-          fakeNavBackground: navBackground,
           text:"Some text",
           screenOptions: {
-              title: "Dynamic title",
-              headerTintColor: "white",
-              headerTitleStyle: {
-                  color: "white"
-              },
-              headerTranslucent: true,
-              headerStyle: {
-                  backgroundColor: Platform.select({ ios:"transparent", android:navBackground })
-              }
+              headerShown: false
           }
       })
   }
 
   goTabs = ()=> {
       this.props.replace(RouteUrls.tabs, {
-          screenOptions: {}
       })
   }
 

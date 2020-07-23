@@ -16,12 +16,12 @@ const defaultNavigationOptions:NativeStackNavigationOptions = {
     headerHideBackButton: false,
     headerHideShadow: false,
     headerLargeTitleHideShadow: false,
-    headerStyle: {
-        backgroundColor: "white",
-    },
-    headerLargeStyle: {
-        backgroundColor: "white",
-    },
+    // headerStyle: {
+    //     backgroundColor: "white",
+    // },
+    // headerLargeStyle: {
+    //     backgroundColor: "white",
+    // },
     headerTitleStyle: {
         // fontFamily: "System",
         // // fontSize: number
@@ -39,7 +39,7 @@ const defaultNavigationOptions:NativeStackNavigationOptions = {
         // fontFamil?: string;
         // fontSize?: number;
     },
-    headerTopInsetEnabled: false,
+    headerTopInsetEnabled: true,
     gestureEnabled: true,
     stackPresentation: "push",
     stackAnimation: "default"

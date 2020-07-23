@@ -30,7 +30,7 @@ class App extends Component {
         return (
             <>
                 <Provider store={store()}>
-                    <StatusBar backgroundColor="#333" barStyle="light-content"/>
+                    <StatusBar backgroundColor="transparent" translucent barStyle="dark-content"/>
                     <>
                         <NavigationContainer linking={linking}>
                             <Navigator screenOptions={defaultNavigationOptions} initialRouteName={RouteUrls.home}>
@@ -57,14 +57,6 @@ class App extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    widgetContainer: {
-        position:"absolute",
-        right:(20 + initialWindowMetrics.insets.bottom)/2,
-        bottom:20 + initialWindowMetrics.insets.bottom,
-    }
-})
 
 
 export default App;

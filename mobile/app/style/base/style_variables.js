@@ -28,7 +28,11 @@ global.styleVariables = {
         bottom: Platform.select({
             android: initialWindowMetrics.insets.bottom  - bottomNavBarH,
             ios: initialWindowMetrics.insets.bottom,
-
+        }),
+        top: Platform.select({
+            // android: initialWindowMetrics.insets.top  - StatusBar.currentHeight, // if you don't use a transparent status bar the height gets included
+            android: initialWindowMetrics.insets.top,
+            ios: initialWindowMetrics.insets.top,
         })
     },
 
