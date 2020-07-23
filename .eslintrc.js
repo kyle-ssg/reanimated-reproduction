@@ -51,6 +51,7 @@ module.exports = {
         'no-var': 'error',
         'object-curly-spacing': ['error', 'always'],
         'radix': 0,
+        "react/prop-types": "off",
         'react/jsx-indent': ["error", 4],
         'react/jsx-indent-props': ["error", 2],
         'react/jsx-max-props-per-line': [1,

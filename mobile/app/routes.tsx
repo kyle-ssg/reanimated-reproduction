@@ -15,6 +15,12 @@ export const routes: Record<RouteUrls, IRoute> = {
     [RouteUrls.home]: {
         options: {
             title: 'Home',
+            headerTitleStyle: {
+                color:"white"
+            },
+            headerStyle: {
+                backgroundColor:"#333"
+            }
         },
         component: HomeScreen
     },

@@ -42,6 +42,9 @@ const defaultReducer =produce(
                     state[k] = action.data[k];
                 });
                 break;
+            case Actions.SET_ACTIVE_SCREEN:
+                itemLoaded(state, 'activeScreen', action, true)
+                break;
                 // END OF REDUCER
                 // KEEP THE ABOVE LINE IN, IT IS USED BY OUR CLI
             default:

@@ -5,6 +5,7 @@ import { routes } from '../routes';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { ScrollViewProps, TouchableOpacity } from 'react-native';
 import { RouteUrls } from '../route-urls';
+import { initialWindowMetrics } from 'react-native-safe-area-context';
 
 type ComponentType = {}
 
@@ -39,8 +40,8 @@ class TabLayout extends Component<ComponentType> {
   render() {
       const { state: { activeIndex } } = this;
       return (
-          <>
-              <ScrollView scrollEnabled={false} ref={this.onRef} bounces={false}
+          <View style={StyleSheet.absoluteFill}>
+              <ScrollView automaticallyAdjustContentInsets={false} ref={this.onRef} bounces={false}
                 pagingEnabled
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -92,7 +93,7 @@ class TabLayout extends Component<ComponentType> {
                       </Text>
                   </TouchableOpacity>
               </Row>
-          </>
+          </View>
       );
   }
 }
@@ -100,7 +101,7 @@ class TabLayout extends Component<ComponentType> {
 const styles = {
     screen: {
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height - TAB_HEIGHT,
+        height: Dimensions.get('window').height,
     },
     tab: {
         height: TAB_HEIGHT,
@@ -113,8 +114,8 @@ const styles = {
         fontWeight: styleVariables.boldFontWeight,
     },
     tabContainer: {
-        height: TAB_HEIGHT,
-        lineHeight: TAB_HEIGHT,
+        height: TAB_HEIGHT +initialWindowMetrics.insets.bottom,
+        lineHeight: TAB_HEIGHT + initialWindowMetrics.insets.bottom,
         backgroundColor: '#f1f1f1',
         alignItems: 'center',
         justifyContent: 'center',

@@ -3,8 +3,6 @@ import { Component } from 'react';
 import withScreen, { Screen } from './withScreen';
 import { RouteUrls } from '../route-urls';
 import { TouchableOpacity } from 'react-native';
-import { Link } from '@react-navigation/native';
-
 
 type ComponentType = Screen & {}
 
@@ -36,7 +34,7 @@ class HomeScreen extends Component<ComponentType> {
   }
 
   goTabs = ()=> {
-      this.props.replace(RouteUrls.tabs, {
+      this.props.push(RouteUrls.tabs, {
           screenOptions: {}
       })
   }
@@ -63,3 +61,4 @@ class HomeScreen extends Component<ComponentType> {
 
 export default withScreen(HomeScreen)
 
+console.disableYellowBox = true

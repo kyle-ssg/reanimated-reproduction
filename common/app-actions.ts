@@ -28,6 +28,7 @@ const BaseConstants = {
     'UPDATE_USER_ERROR': 'UPDATE_USER_ERROR',
     'UPDATE_USER_LOADED': 'UPDATE_USER_LOADED',
 
+    'SET_ACTIVE_SCREEN': 'SET_ACTIVE_SCREEN',
 };
 interface Callbacks {
     onSuccess?:(data:any)=>void;
@@ -76,6 +77,13 @@ const BaseActions = {
         return {
             type: Actions.LOGOUT,
             ...callbacks,
+        };
+    },
+    setActiveScreen(name:string, navigator:string="root"):AnyAction {
+        return {
+            type: Actions.SET_ACTIVE_SCREEN,
+            index: navigator,
+            data: name
         };
     },
 };

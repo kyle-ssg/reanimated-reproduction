@@ -1,5 +1,7 @@
-import React from 'react';
-import { NativeStackNavigationOptions } from 'react-native-screens/native-stack';
+import React, { useLayoutEffect, useCallback } from 'react';
+import { NativeStackNavigationOptions, NativeStackNavigationProp } from 'react-native-screens/native-stack';
+import { useDispatch } from 'react-redux'
+import { AppActions } from '../../../common/app-actions';
 export interface IRouteParams {
   [extraProps: string]: any; // Means that extra props are fine
   screenOptions: Partial<NativeStackNavigationOptions>
@@ -11,25 +13,49 @@ export type Screen = {
   replace: (name:string, routeParams:IRouteParams)=>void
   setOptions:(options:Partial<NativeStackNavigationOptions>)=>void
 }
+export type ScreenProps = {
+  navigation: NativeStackNavigationProp & { replace: (name:string, params:any)=>void }
+  route: {
+    params?: any
+    name :string;
+  }
+}
+
 const withScreen = (Component: React.ComponentType) => {
-    return (props: any) => {
-        React.useLayoutEffect(() => {
+    return (props: ScreenProps) => {
+        const dispatch = useDispatch();
+        React.useEffect(
+            () => {
+                const unsubscribe = props.navigation.addListener('focus', e => {
+                    dispatch(AppActions.setActiveScreen(props.route.name))
+                });
+                return unsubscribe;
+            },
+            [props.navigation]
+        );
+
+        useLayoutEffect(() => {
             if (props.route?.params?.screenOptions) {
                 props.navigation.setOptions(props.route.params.screenOptions)
             }
         }, [props.navigation, props.route]);
-        const push = (name, params)=>{
+
+        const push = useCallback((name,params)=>{
             props.navigation.push(name, params)
-        }
-        const replace = (name, params)=>{
+        }, props.navigation)
+
+        const replace = useCallback((name,params)=>{
             props.navigation.replace(name, params)
-        }
-        const pop = ()=>{
+        }, props.navigation)
+
+        const pop = useCallback(()=>{
             props.navigation.pop()
-        }
-        const setOptions = (options)=>{
+        }, props.navigation)
+
+        const setOptions = useCallback((options)=>{
             props.navigation.setOptions(options)
-        }
+        }, props.navigation)
+
         return <Component
           push={push}
           pop={pop}
