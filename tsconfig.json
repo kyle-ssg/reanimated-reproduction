@@ -30,7 +30,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "global.d.ts",
-    "mobile/src/global.d.ts"
+    "types/global.d.ts",
+    "mobile/global.d.ts"
   ]
 }

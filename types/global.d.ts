@@ -13,7 +13,6 @@ declare namespace NodeJS {
     ErrorMessage: any;
     FormGroup: any;
     Format: any;
-    Flex: any;
     Input: any;
     InputGroup: any;
     Link: any;
@@ -50,7 +49,6 @@ declare let E2E: any;
 declare let ErrorMessage: any;
 declare let FormGroup: any;
 declare let Format: any;
-declare let Flex: any;
 declare let Input: any;
 declare let InputGroup: any;
 declare let Link: any;
