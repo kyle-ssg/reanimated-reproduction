@@ -4,7 +4,7 @@ import defaultNavigationOptions from '../style/style_navs';
 import { routes } from '../routes';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { Platform, ScrollViewProps, TouchableOpacity } from 'react-native';
-import { RouteUrls } from '../../../common/types/route-urls';
+import { RouteUrls } from '../route-urls';
 import { initialWindowMetrics } from 'react-native-safe-area-context';
 
 type ComponentType = {}
@@ -40,7 +40,7 @@ class TabLayout extends Component<ComponentType> {
       const { state: { activeIndex } } = this;
       return (
           <View style={StyleSheet.absoluteFill}>
-              <ScrollView scrollEnabled={false} automaticallyAdjustContentInsets={false} ref={this.onRef}
+              <ScrollView scrollEnabled={false} ref={this.onRef}
                 bounces={false}
                 pagingEnabled
                 horizontal

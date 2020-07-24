@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react'
 import { connect } from 'react-redux';
 // eslint-disable-next-line no-unused-vars
 import { AppState } from 'common/state-type';
-import { RouteUrls } from '../../../../common/types/route-urls';
+import { RouteUrls } from '../../route-urls';
 
 type ComponentType = {
     activeScreen: AppState["activeScreen"];

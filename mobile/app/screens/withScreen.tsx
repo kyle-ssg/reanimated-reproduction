@@ -7,10 +7,10 @@ export interface IRouteParams {
   screenOptions: Partial<NativeStackNavigationOptions>
 }
 export type Screen = {
-  push: (name:string, routeParams:IRouteParams)=>void
+  push: (name:string, routeParams:Partial<IRouteParams>)=>void
   pop: ()=>void
   canGoBack: ()=>boolean
-  replace: (name:string, routeParams:IRouteParams)=>void
+  replace: (name:string, routeParams:Partial<IRouteParams>)=>void
   setOptions:(options:Partial<NativeStackNavigationOptions>)=>void
 }
 export type ScreenProps = {

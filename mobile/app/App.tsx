@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { enableScreens } from 'react-native-screens';
 import { Provider } from 'react-redux';
-import { StatusBar, StyleSheet } from 'react-native';
+import { StatusBar } from 'react-native';
 import store from 'common/store';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import defaultNavigationOptions from './style/style_navs';
 import { routes } from './routes';
-import { RouteUrls } from '../../common/types/route-urls';
-import { initialWindowMetrics } from 'react-native-safe-area-context';
+import { RouteUrls } from './route-urls';
 
 
 enableScreens();
@@ -49,6 +48,11 @@ class App extends Component {
                                   options={routes[RouteUrls.tabs].options}
                                   component={routes[RouteUrls.tabs].component}
                             />
+                                <Stack.Screen
+                                  name={RouteUrls.stack}
+                                  options={routes[RouteUrls.stack].options}
+                                  component={routes[RouteUrls.stack].component}
+                                />
                             </Navigator>
                         </NavigationContainer>
                     </>
