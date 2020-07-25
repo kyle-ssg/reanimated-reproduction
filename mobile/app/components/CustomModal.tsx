@@ -23,11 +23,12 @@ const fadeOutConfig = {
 type ComponentType = {
   dark?:boolean;
   visible:boolean;
+  fadeContent?:boolean;
   style: ReactNative.ViewStyle;
   onDismissPress?:()=>void;
 }
 
-const CustomModal: FunctionComponent<ComponentType> = ({ dark, style, onDismissPress, visible, children }) => {
+const CustomModal: FunctionComponent<ComponentType> = ({ dark, style, onDismissPress, visible, children, fadeContent }) => {
     const [animatedValue, _] = useState(new Animated.Value(0));
     const [modalVisible, setModalVisible] = useState(visible);
     const prevVisible = usePreviousState(visible)
@@ -62,8 +63,13 @@ const CustomModal: FunctionComponent<ComponentType> = ({ dark, style, onDismissP
               ]}
       >
                 <TouchableOpacity onPress={onDismissPress} activeOpacity={1} style={ReactNative.StyleSheet.absoluteFill}/>
-                {children}
+                {fadeContent && children}
             </Animated.View>
+            {!fadeContent && (
+            <View style={styles.childrenContainer}>
+                {children}
+            </View>
+            )}
         </Modal>
     );
 };
@@ -84,6 +90,11 @@ export const styles = ReactNative.StyleSheet.create({
     darkBackdrop: {
         position: "absolute",
         backgroundColor:"rgba(0,0,0,.5)",
+        height: Dimensions.get("screen").height,
+        width: Dimensions.get("screen").width
+    },
+    childrenContainer: {
+        position: "absolute",
         height: Dimensions.get("screen").height,
         width: Dimensions.get("screen").width
     }
