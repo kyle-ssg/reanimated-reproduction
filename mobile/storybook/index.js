@@ -7,7 +7,7 @@ import StorybookUIRoot, { getStory, withPaddedContainer, setup } from './setup';
 
 import ErrorMessage from '../app/components/ErrorMessage';
 // import ExampleTabs from './examples/ExampleTabs';
-import Button from "../app/components/base/forms/Button";
+import Button, { ButtonNav } from '../app/components/base/forms/Button';
 setup(() => {
     getStory('Type')
         .addDecorator(withPaddedContainer)
@@ -28,6 +28,15 @@ setup(() => {
                 <Button>Button</Button>
                 <ButtonSecondary>Button Secondary</ButtonSecondary>
                 <ButtonTertiary>Button Secondary</ButtonTertiary>
+                <ButtonNav>
+                    <ION
+                      style={{
+                          color: palette.primary,
+                          fontSize: styleVariables.fontSizeH1
+                      }}
+                      name="ios-close"
+                    />
+                </ButtonNav>
             </>
         ))
         .add('default', () => (

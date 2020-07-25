@@ -20,22 +20,19 @@ export default class App extends Component {
   };
 
   onPressNavigate = () => {
-      this.setState({ modalVisible:true, isInProgress: true, });
-      setTimeout(()=>{
-          this.setState({ isScene2Visible: true })
-          Animated.timing(this.state.progress, {
-              toValue: 1,
-              duration: 250,
-              useNativeDriver: true,
-              easing:easing,
-          }).start(() =>{
-              this.setState({
-                  isInProgress: false,
-                  isScene1Visible: false,
-                  isBack:true
-              })
-          });
-      } ,100)
+      this.setState({ modalVisible:true, isInProgress: true, isScene2Visible: true  });
+      Animated.timing(this.state.progress, {
+          toValue: 1,
+          duration: 250,
+          useNativeDriver: true,
+          easing:easing,
+      }).start(() =>{
+          this.setState({
+              isInProgress: false,
+              isScene1Visible: false,
+              isBack:true
+          })
+      });
 
   };
 
@@ -99,6 +96,7 @@ export default class App extends Component {
                 </View>
                 )}
                 <CustomModal fadeContent={false} dark visible={this.state.modalVisible}>
+                  {this.state.isScene2Visible && (
                     <View collapsable={false} ref={this.onSetScene2Ref} style={[{  }]}>
                         <SharedElement onNode={this.onSetScene2Node}>
                             {Platform.select({
@@ -111,6 +109,7 @@ export default class App extends Component {
                             })}
                         </SharedElement>
                     </View>
+                  )}
                     {state.isInProgress && (
                     <SharedElementTransition
                       start={this.state.isBack ? scene2 : scene1}

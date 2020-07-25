@@ -7,8 +7,7 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-import React, { FunctionComponent, useEffect, useMemo } from 'react'; // we need this to make JSX compile
-
+import React, { FunctionComponent, useEffect, useMemo } from 'react';
 type ComponentType = ReactNative.PressableProps & {
     children: string
     textStyle: ReactNative.TextStyle | ReactNative.TextStyle[],
@@ -19,11 +18,15 @@ const standardAndroidRipple:ReactNative.PressableAndroidRippleConfig = {
     color: 'rgba(255,255,255,.25)',
     borderless: false,
 }
+const circleButtonRipple:ReactNative.PressableAndroidRippleConfig = {
+    color: 'rgba(0,0,0,.15)',
+    borderless: true,
+    borderRadius:5
+}
 const darkAndroidRipple:ReactNative.PressableAndroidRippleConfig = {
     color: 'rgba(0,0,0,.15)',
     borderless: false,
 }
-
 
 const Button: FunctionComponent<ComponentType> = ({
     disabled,
@@ -92,24 +95,14 @@ export const ButtonTertiary = (props) => (
     />
 );
 
-export const ButtonNav = (props) => Platform.select({
-    android: (
-        <Button
-          {...props}
-          andro={TouchableNativeFeedback.Ripple('rgba(0,0,0,.15)')}
-          androidContainerStyle={styles.buttonNav}
-          style={{ backgroundColor:'transparent' }}
-          textStyle={[styles.buttonTertiaryText, props.textStyle]}
-    />
-    ),
-    ios : (
-        <Button
-          {...props}
-          style={styles.buttonNav}
-          textStyle={[styles.buttonTertiaryText, props.textStyle]}
-        />
-    )
-});
+export const ButtonNav = (props) => (
+    <Button
+      {...props}
+      android_ripple={circleButtonRipple}
+      style={{ backgroundColor:'transparent', width:34, height:34 }}
+      textStyle={[styles.buttonTertiaryText, props.textStyle]}
+  />
+)
 
 const styles = ReactNative.StyleSheet.create({
     TabButtonPill: {
