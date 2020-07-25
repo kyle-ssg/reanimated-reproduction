@@ -5,6 +5,7 @@ import { RouteUrls } from '../route-urls';
 import { TouchableOpacity } from 'react-native';
 import CustomNavbar from '../components/CustomNavbar';
 import { CustomModal, Modal } from '../components/CustomModal';
+import SharedElementExample from './examples/SharedElementExample';
 
 type ComponentType = Screen & {}
 
@@ -131,6 +132,7 @@ class HomeScreen extends Component<ComponentType, {modalVisible:boolean}> {
                           Custom modal
                       </Text>
                   </TouchableOpacity>
+                  <SharedElementExample/>
                   <CustomModal style={Styles.centeredContainer} onDismissPress={this.toggleModal} visible={this.state.modalVisible}>
                       <View style={{ width:100,height:100,justifyContent:'center',alignItems:'center', borderRadius: 50, backgroundColor:'#f1f1f1' }}>
                           <Text>

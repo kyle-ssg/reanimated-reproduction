@@ -50,6 +50,7 @@
     "react-native-render-html": "^4.2.1",
     "react-native-safe-area-context": "^3.1.1",
     "react-native-screens": "^2.9.0",
+    "react-native-shared-element": "^0.7.0",
     "react-native-static-safe-area-insets": "^2.1.1",
     "react-native-svg": "^12.1.0",
     "react-native-tab-view": "^2.15.0",
