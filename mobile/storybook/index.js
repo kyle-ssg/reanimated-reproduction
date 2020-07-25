@@ -4,7 +4,7 @@ import '../app/style/style_screen';
 import '../app/components/base';
 import ION from 'react-native-vector-icons/Ionicons';
 import StorybookUIRoot, { getStory, withPaddedContainer, setup } from './setup';
-
+import SharedElementExample from '../app/screens/examples/SharedElementExample';
 import ErrorMessage from '../app/components/ErrorMessage';
 // import ExampleTabs from './examples/ExampleTabs';
 import Button, { ButtonNav } from '../app/components/base/forms/Button';
@@ -19,6 +19,17 @@ setup(() => {
                 <H4 style={Styles.mb5}>Header 4</H4>
                 <Bold style={Styles.mb5}>Header 4</Bold>
                 <ErrorMessage style={Styles.mb5}>Header 4</ErrorMessage>
+            </>
+        ));
+    getStory('SharedElement')
+        .add('all', () => (
+            <>
+            <SharedElementExample/>
+            <SharedElementExample/>
+            <SharedElementExample/>
+            <SharedElementExample/>
+            <SharedElementExample/>
+            <SharedElementExample/>
             </>
         ));
     getStory('Button')
