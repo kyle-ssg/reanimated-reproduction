@@ -18,6 +18,5 @@ global.styleVariables = {
     boldFontFamily: Platform.select({ ios: 'System', android: 'System' }),
     buttonFontFamily: Platform.select({ ios: 'System', android: 'System' }),
 
-
-    // eslint-disable-next-line import/no-unresolved
-    ...require('./style_platform_variables') };
+    ...require('./style_platform_variables')
+};

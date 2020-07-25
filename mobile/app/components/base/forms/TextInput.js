@@ -102,7 +102,7 @@ TextInput.propTypes = {
     testID: propTypes.string,
 };
 
-// const styles = StyleSheet.create({
+// const styles = ReactNative.StyleSheet.create({
 //
 // });
 

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { enableScreens } from 'react-native-screens';
 import { Provider } from 'react-redux';
-import { StatusBar } from 'react-native';
+import { StatusBar,Animated } from 'react-native';
 import store from 'common/store';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import defaultNavigationOptions from './style/style_navs';
 import { routes } from './routes';
 import { RouteUrls } from './route-urls';
-
+import { LightBackdrop,DarkBackdrop } from './components/utility-components/BackdropContext';
 
 enableScreens();
 const Stack = createNativeStackNavigator();
@@ -37,30 +37,31 @@ class App extends Component {
                                   name={RouteUrls.home}
                                   options={routes[RouteUrls.home].options}
                                   component={routes[RouteUrls.home].component}
-                            />
+                                    />
                                 <Stack.Screen
                                   name={RouteUrls.generic}
                                   options={routes[RouteUrls.generic].options}
                                   component={routes[RouteUrls.generic].component}
-                            />
+                                    />
                                 <Stack.Screen
                                   name={RouteUrls.tabs}
                                   options={routes[RouteUrls.tabs].options}
                                   component={routes[RouteUrls.tabs].component}
-                            />
+                                    />
                                 <Stack.Screen
                                   name={RouteUrls.stack}
                                   options={routes[RouteUrls.stack].options}
                                   component={routes[RouteUrls.stack].component}
-                                />
+                                    />
                             </Navigator>
                         </NavigationContainer>
+                        {/*<LightBackdrop/>*/}
+                        {/*<DarkBackdrop/>*/}
                     </>
                 </Provider>
             </>
         );
     }
 }
-
 
 export default App;

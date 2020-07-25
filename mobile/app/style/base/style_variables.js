@@ -4,7 +4,7 @@
 import { StyleSheet } from 'react-native';
 import { initialWindowMetrics } from 'react-native-safe-area-context';
 
-const em = require('../base/style_pxToEm');
+const em = require('./style_pxToEm');
 let deviceH = Dimensions.get('screen').height;
 // the value returned does not include the bottom navigation bar, I am not sure why yours does.
 let windowH = Dimensions.get('window').height;

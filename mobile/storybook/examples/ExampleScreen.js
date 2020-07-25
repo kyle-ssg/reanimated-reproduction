@@ -284,7 +284,7 @@ const ExampleScreen = codePush(codePushOptions)(class extends Component {
                     index={0}
                     icon={(
                         <ION
-                          name="ios-notifications"
+                          name="ad"
                           style={[Styles.listIcon, { color: palette.secondary }]}
                         />
                       )}

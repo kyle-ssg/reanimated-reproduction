@@ -19,7 +19,7 @@ const NavBackgroundHelper: FunctionComponent<ComponentType> = ({}) => {
     );
 };
 
-const styles = StyleSheet.create({
+const styles = ReactNative.StyleSheet.create({
     navbar: { minHeight:initialWindowMetrics.insets.top+44 }
 })
 

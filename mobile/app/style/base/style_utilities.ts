@@ -1,4 +1,6 @@
-module.exports = {
+import { StyleSheet } from 'react-native';
+
+const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
     // Utility classes
     // -------------------------
 
@@ -45,6 +47,7 @@ module.exports = {
     shadow: {
         shadowColor: '#333',
         shadowOffset: {
+            width:0,
             height: 2,
         },
         shadowRadius: 3,
@@ -52,3 +55,5 @@ module.exports = {
     },
 
 };
+
+module.exports = style;

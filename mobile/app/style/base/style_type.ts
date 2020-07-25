@@ -1,6 +1,8 @@
+import { StyleSheet } from 'react-native';
+
 require('./style_pxToEm');
 
-module.exports = {
+const styles:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
 
 
     //
@@ -143,3 +145,5 @@ module.exports = {
     },
 
 };
+
+module.exports = styles

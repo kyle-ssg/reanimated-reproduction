@@ -1,7 +1,7 @@
 /**
  * Created by kylejohnson on 07/11/2016.
  */
-require('./style_pxToEm');
+import './style_pxToEm';
 require('../project/style_variables');
 require('./style_variables');
 

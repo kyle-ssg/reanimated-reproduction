@@ -55,7 +55,7 @@ export default class Tabs extends PureComponent {
   }
 }
 
-const styles = StyleSheet.create({
+const styles = ReactNative.StyleSheet.create({
     tabPrimary: {
         backgroundColor: 'white',
         borderTopWidth: 0,

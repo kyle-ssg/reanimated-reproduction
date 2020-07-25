@@ -20,7 +20,7 @@ export default class ErrorMessage extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+const styles = ReactNative.StyleSheet.create({
     container: {
     },
     errorIcon: {

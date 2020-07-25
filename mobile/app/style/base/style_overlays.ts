@@ -1,5 +1,6 @@
 import { Dimensions } from 'react-native';
-module.exports = {
+
+const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
     //
     // Overlays
     // --------------------------------------------------
@@ -20,3 +21,5 @@ module.exports = {
     },
 
 };
+
+module.exports = style;

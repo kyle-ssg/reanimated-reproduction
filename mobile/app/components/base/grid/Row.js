@@ -24,7 +24,7 @@ Row.propTypes = {
     style: propTypes.any,
 };
 
-const styles = StyleSheet.create({
+const styles = ReactNative.StyleSheet.create({
     row: {
         alignSelf: 'stretch',
         flexWrap: 'wrap',

@@ -97,7 +97,7 @@ const FormScreen = class extends Component {
   }
 };
 
-// const styles = StyleSheet.create({
+// const styles = ReactNative.StyleSheet.create({
 //
 // });
 

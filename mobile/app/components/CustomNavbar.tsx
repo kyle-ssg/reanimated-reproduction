@@ -33,7 +33,7 @@ const CustomNavbar: FunctionComponent<ComponentType> = ({ style,title, titleStyl
 };
 
 const navHeight = styleVariables.insets.top + 44;
-const styles = StyleSheet.create({
+const styles = ReactNative.StyleSheet.create({
     titleContainer: {
         height:44,
         justifyContent: 'center'

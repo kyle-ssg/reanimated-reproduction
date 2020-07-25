@@ -1,4 +1,5 @@
-module.exports = {
+import em from './style_pxToEm';
+const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
 
     button: {
         height: styleVariables.buttonHeight,
@@ -44,3 +45,5 @@ module.exports = {
         borderBottomLeftRadius: 0,
     },
 };
+
+module.exports = style;

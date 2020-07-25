@@ -157,7 +157,7 @@ android: (
 ButtonNav.propTypes = buttonPropTypes;
 
 
-const styles = StyleSheet.create({
+const styles = ReactNative.StyleSheet.create({
     TabButtonPill: {
         height: 34,
         flexWrap: 'wrap',

@@ -1,4 +1,6 @@
-module.exports = {
+import { StyleSheet } from 'react-native';
+
+const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
     //
     // Grid system / Rows
     // --------------------------------------------------
@@ -147,3 +149,5 @@ module.exports = {
     mv15: { paddingTop: 24, paddingBottom: 24 },
     mv20: { paddingTop: 32, paddingBottom: 32 },
 };
+
+module.exports = style;
