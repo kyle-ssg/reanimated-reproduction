@@ -4,13 +4,13 @@ import defaultNavigationOptions from '../style/style_navs';
 import { routes } from '../routes';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { RouteUrls } from '../route-urls';
-import withScreen from './withScreen';
+import withScreen, { Screen } from './withScreen';
 
-type ComponentType = {}
+type ComponentType = Screen & {}
 const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;
 
-const StackScreen: FunctionComponent<ComponentType> = ({style}) => {
+const StackScreen: FunctionComponent<ComponentType> = ({ style }) => {
     return (
         <View style={style}>
             <NavigationContainer independent>

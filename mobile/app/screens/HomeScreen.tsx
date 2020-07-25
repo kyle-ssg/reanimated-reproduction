@@ -4,7 +4,7 @@ import withScreen, { Screen } from './withScreen';
 import { RouteUrls } from '../route-urls';
 import { TouchableOpacity } from 'react-native';
 import CustomNavbar from '../components/CustomNavbar';
-import { CustomModal, Modal } from '../components/CustomModal';
+import { CustomModal } from '../components/CustomModal';
 import SharedElementExample from './examples/SharedElementExample';
 
 type ComponentType = Screen & {}
@@ -46,28 +46,6 @@ class HomeScreen extends Component<ComponentType, {modalVisible:boolean}> {
           }
       })
   }
-  goTransparentModal = ()=> {
-      this.props.push(RouteUrls.stack, {
-          text:"Some text",
-          style: {
-              position:"absolute",
-              top:200,
-              left:20,
-              right:20,
-              borderRadius:50,
-              backgroundColor: "#f1f1f1",
-              padding:50,
-              bottom:100,
-          },
-          screenOptions: {
-              stackPresentation: "containedTransparentModal",
-              contentStyle: {
-                  backgroundColor: "transparent"
-              },
-              headerShown: false
-          }
-      })
-  }
 
   goTabs = ()=> {
       this.props.replace(RouteUrls.tabs,{
@@ -79,7 +57,7 @@ class HomeScreen extends Component<ComponentType, {modalVisible:boolean}> {
 
   goStackModal = ()=> {
       this.props.push(RouteUrls.stack, {
-          style:StyleSheet.absoluteFill,
+          style:ReactNative.StyleSheet.absoluteFill,
           screenOptions: {
               stackPresentation: "modal",
           }
@@ -120,11 +98,6 @@ class HomeScreen extends Component<ComponentType, {modalVisible:boolean}> {
                   <TouchableOpacity onPress={this.goStackModal}>
                       <Text>
                           Go Stack Modal
-                      </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={this.goTransparentModal}>
-                      <Text>
-                          Transparent modal
                       </Text>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={this.toggleModal}>

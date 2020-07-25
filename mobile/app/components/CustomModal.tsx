@@ -28,7 +28,7 @@ type ComponentType = {
   onDismissPress?:()=>void;
 }
 
-const CustomModal: FunctionComponent<ComponentType> = ({ dark, style, onDismissPress, visible, children, fadeContent }) => {
+const CustomModal: FunctionComponent<ComponentType> = ({ dark, style, onDismissPress, visible, children, fadeContent=true }) => {
     const [animatedValue, _] = useState(new Animated.Value(0));
     const [modalVisible, setModalVisible] = useState(visible);
     const prevVisible = usePreviousState(visible)
@@ -62,11 +62,14 @@ const CustomModal: FunctionComponent<ComponentType> = ({ dark, style, onDismissP
                   },
               ]}
       >
-                <TouchableOpacity onPress={onDismissPress} activeOpacity={1} style={ReactNative.StyleSheet.absoluteFill}/>
-                {fadeContent && children}
+                {fadeContent && <>
+                    <TouchableOpacity onPress={onDismissPress} activeOpacity={1} style={ReactNative.StyleSheet.absoluteFill}/>
+                    {children}
+                </>}
             </Animated.View>
             {!fadeContent && (
-            <View style={styles.childrenContainer}>
+            <View style={[styles.childrenContainer, style]}>
+                <TouchableOpacity onPress={onDismissPress} activeOpacity={1} style={ReactNative.StyleSheet.absoluteFill}/>
                 {children}
             </View>
             )}

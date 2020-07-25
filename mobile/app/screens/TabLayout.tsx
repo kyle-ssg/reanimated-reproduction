@@ -39,7 +39,7 @@ class TabLayout extends Component<ComponentType> {
   render() {
       const { state: { activeIndex } } = this;
       return (
-          <View style={StyleSheet.absoluteFill}>
+          <View style={ReactNative.StyleSheet.absoluteFill}>
               <ScrollView scrollEnabled={false} ref={this.onRef}
                 bounces={false}
                 pagingEnabled
@@ -106,6 +106,9 @@ const styles = {
     },
     activeTabText: {
         fontWeight: styleVariables.boldFontWeight,
+    },
+    activeTab: {
+
     },
     tab: {
         height:64,

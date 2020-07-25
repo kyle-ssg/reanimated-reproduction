@@ -27,7 +27,7 @@ export default class App extends Component {
               toValue: 1,
               duration: 250,
               useNativeDriver: true,
-              // easing:easeInOut,
+              easing:easing,
           }).start(() =>{
               this.setState({
                   isInProgress: false,

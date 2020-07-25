@@ -12,6 +12,7 @@ interface IRoute {
   component: React.ComponentType<any>,
   params?: Record<string, any>
 }
+// Contains default route config and components
 export const routes: Record<RouteUrls, IRoute> = {
     [RouteUrls.home]: {
         options: {
@@ -50,11 +51,10 @@ export const withModalOptions = (base:Partial<NativeStackNavigationOptions>, nav
                   style={{
                       color: props.tintColor,
                       fontSize: styleVariables.fontSizeH1
-                  }} name="ios-close"
+                  }}
+                  name="ios-close"
               />
             </ButtonNav>
         }
     }
 )
-
-global.routes = routes;

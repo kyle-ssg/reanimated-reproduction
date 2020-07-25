@@ -12,9 +12,11 @@ export type Screen = {
   canGoBack: ()=>boolean
   replace: (name:string, routeParams:Partial<IRouteParams>)=>void
   setOptions:(options:Partial<NativeStackNavigationOptions>)=>void
+  style: ReactNative.ViewStyle;
+  children: React.ReactNode;
 }
 export type ScreenProps = {
-  navigation: NativeStackNavigationProp & { replace: (name:string, params:any)=>void }
+  navigation: NativeStackNavigationProp<any> & { replace: (name:string, params:any)=>void }
   route: {
     params?: any
     name :string;
@@ -22,7 +24,7 @@ export type ScreenProps = {
 }
 
 const withScreen = (Component: React.ComponentType) => {
-    return (props: ScreenProps) => {
+    return function withScreen (props: ScreenProps):React.ReactNode {
         const dispatch = useDispatch();
         React.useEffect(
             () => {
@@ -42,19 +44,19 @@ const withScreen = (Component: React.ComponentType) => {
 
         const push = useCallback((name,params)=>{
             props.navigation.push(name, params)
-        }, props.navigation)
+        }, [props.navigation])
 
         const replace = useCallback((name,params)=>{
             props.navigation.replace(name, params)
-        }, props.navigation)
+        }, [props.navigation])
 
         const pop = useCallback(()=>{
             props.navigation.pop()
-        }, props.navigation)
+        }, [props.navigation])
 
         const setOptions = useCallback((options)=>{
             props.navigation.setOptions(options)
-        }, props.navigation)
+        }, [props.navigation])
 
         return <Component
           push={push}
