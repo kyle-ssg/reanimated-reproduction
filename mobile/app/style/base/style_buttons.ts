@@ -28,6 +28,14 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
         marginRight: 0,
     },
 
+    buttonGroupPressed: {
+        backgroundColor: palette.primaryPressed,
+    },
+
+    buttonGroupSecondaryPressed: {
+        backgroundColor: palette.secondaryPressed,
+    },
+
     buttonGroup: {
         alignItems: 'center',
         justifyContent: 'center',

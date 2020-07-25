@@ -13,7 +13,7 @@ import _store from 'common/store';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 const StorybookUIRoot = getStorybookUI({
-    asyncStorage: require('@react-native-community/async-storage').default
+    asyncStorage: ReactNative.AsyncStorage
 });
 const store = _store();
 

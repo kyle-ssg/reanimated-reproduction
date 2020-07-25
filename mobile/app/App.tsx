@@ -31,7 +31,9 @@ class App extends Component {
                     <StatusBar backgroundColor="transparent" translucent barStyle="dark-content"/>
                     <>
                         <NavigationContainer linking={linking}>
-                            <Navigator screenOptions={defaultNavigationOptions} initialRouteName={RouteUrls.home}>
+                            <Navigator screenOptions={defaultNavigationOptions} initialRouteName={
+                                Constants.STORYBOOK? RouteUrls.storybook : RouteUrls.home
+                            }>
                                 <Stack.Screen
                                   name={RouteUrls.home}
                                   options={routes[RouteUrls.home].options}
@@ -51,6 +53,11 @@ class App extends Component {
                                   name={RouteUrls.stack}
                                   options={routes[RouteUrls.stack].options}
                                   component={routes[RouteUrls.stack].component}
+                                    />
+                                <Stack.Screen
+                                  name={RouteUrls.storybook}
+                                  options={routes[RouteUrls.storybook].options}
+                                  component={routes[RouteUrls.storybook].component}
                                     />
                             </Navigator>
 

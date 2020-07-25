@@ -382,8 +382,35 @@ PODS:
     - RNFBApp
   - RNGestureHandler (1.6.1):
     - React
-  - RNReanimated (1.9.0):
+  - RNReanimated (2.0.0-alpha.4):
+    - DoubleConversion
+    - FBLazyVector
+    - FBReactNativeSpec
+    - Folly
+    - glog
+    - RCTRequired
+    - RCTTypeSafety
     - React
+    - React-callinvoker
+    - React-Core
+    - React-Core/DevSupport
+    - React-Core/RCTWebSocket
+    - React-CoreModules
+    - React-cxxreact
+    - React-jsi
+    - React-jsiexecutor
+    - React-jsinspector
+    - React-RCTActionSheet
+    - React-RCTAnimation
+    - React-RCTBlob
+    - React-RCTImage
+    - React-RCTLinking
+    - React-RCTNetwork
+    - React-RCTSettings
+    - React-RCTText
+    - React-RCTVibration
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNScreens (2.9.0):
     - React
   - RNSharedElement (0.7.0):
@@ -635,7 +662,7 @@ SPEC CHECKSUMS:
   RNFBApp: 6fd8a7e757135d4168bf033a8812c241af7363a0
   RNFBMessaging: d884c58a92ce90687ae8b5a5772cf5d3d5223dfb
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
-  RNReanimated: b5ccb50650ba06f6e749c7c329a1bc3ae0c88b43
+  RNReanimated: 5f34111865ab2207dc0dddae854634973ca092ee
   RNScreens: c526239bbe0e957b988dacc8d75ac94ec9cb19da
   RNSharedElement: 591b3be4f03678cee37697acc62702984ea43de4
   RNStaticSafeAreaInsets: 6103cf09647fa427186d30f67b0f5163c1ae8252

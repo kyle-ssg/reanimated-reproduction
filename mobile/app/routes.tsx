@@ -6,6 +6,7 @@ import HomeScreen from './screens/HomeScreen';
 import { RouteUrls } from './route-urls';
 import TabLayout from './screens/TabLayout';
 import StackScreen from './screens/StackScreen';
+import StorybookUIRoot from '../storybook/index';
 
 type functionComponent = (props: any) => React.ReactNode;
 interface IRoute {
@@ -38,6 +39,12 @@ export const routes: Record<RouteUrls, IRoute> = {
             headerShown: false,
         },
         component: StackScreen,
+    },
+    [RouteUrls.storybook]: {
+        options: {
+            headerShown: false,
+        },
+        component: StorybookUIRoot,
     },
 };
 

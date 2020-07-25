@@ -12,7 +12,9 @@ let bottomNavBarH = deviceH - windowH;
 
 global.palette = { bodyBackground: '#fff', // General app  background
     primary: 'rgb(10,132,255)',
+    primaryPressed: 'rgb(0,109,217)',
     secondary: 'rgb(255,55,95)',
+    secondaryPressed: 'rgb(236,50,86)',
     success: 'rgb(48,209,88)',
     divider: 'rgb(229,229,234)',
     textLight: 'rgb(174,174,178)',
@@ -22,7 +24,7 @@ global.palette = { bodyBackground: '#fff', // General app  background
 
 //= = Other Variables
 
-global.styleVariables = {
+export const styleVariables =  global.styleVariables = {
     insets: {
         ...initialWindowMetrics.insets||{},
         bottom: Platform.select({
@@ -125,3 +127,4 @@ global.colour = { ...palette,
     twitter: '#1DA1F3',
     google: '#dd4b39',
     ...global.colour };
+
