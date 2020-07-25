@@ -23,9 +23,6 @@ setup(() => {
         ));
     getStory('Button')
         .addDecorator(withPaddedContainer)
-        .add('test',()=>(
-            <Button>Test</Button>
-        ))
         .add('all', () => (
             <>
                 <Button>Button</Button>

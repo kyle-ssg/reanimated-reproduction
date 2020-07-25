@@ -1,12 +1,11 @@
 import {
+    Platform,
     Pressable,
     RippleBackgroundPropType,
     StyleSheet,
     TouchableNativeFeedback,
     TouchableOpacity,
 } from 'react-native';
-
-
 
 import React, { FunctionComponent, useEffect, useMemo } from 'react'; // we need this to make JSX compile
 
@@ -17,14 +16,12 @@ type ComponentType = ReactNative.PressableProps & {
 };
 
 const standardAndroidRipple:ReactNative.PressableAndroidRippleConfig = {
-    color: 'rgba(255,255,255,.5)',
-    borderless: true,
-    radius: 5,
+    color: 'rgba(255,255,255,.25)',
+    borderless: false,
 }
 const darkAndroidRipple:ReactNative.PressableAndroidRippleConfig = {
     color: 'rgba(0,0,0,.15)',
-    borderless: true,
-    radius: 5,
+    borderless: false,
 }
 
 
@@ -40,9 +37,11 @@ const Button: FunctionComponent<ComponentType> = ({
     const groupStyles = useMemo(()=>(
         style?[Styles.buttonGroup, style]:Styles.buttonGroup
     ), [style])
+
     const pressedStyles = useMemo(()=>(
         [Styles.buttonGroup, Styles.buttonGroupPressed, style, pressedStyle]
     ), [pressedStyle,style])
+
     const textStyles = useMemo(()=>{
         const additionalTextStyles = textStyle && textStyle.length ? textStyle : [textStyle];
         return textStyle?  [
@@ -50,20 +49,23 @@ const Button: FunctionComponent<ComponentType> = ({
             ...additionalTextStyles,
         ] : Styles.buttonText;
     }, [textStyle])
-    return (
-        <Pressable
-          {...rest}
-          style={({ pressed })=> pressed? pressedStyles: groupStyles}
-          disabled={disabled}
-          android_ripple={android_ripple || standardAndroidRipple}>
-            {Utils.reactChildIsString(children) ? (
-                <Text style={textStyles}>
-                    {children.length === 1 ? children[0] : children}
-                </Text>
-            ) : (children)}
-        </Pressable>
 
-    );
+    return (
+        <View style={{ overflow: 'hidden' }}>
+            <Pressable
+              {...rest}
+              style={({ pressed })=> pressed? pressedStyles: groupStyles}
+              disabled={disabled}
+              android_ripple={android_ripple || darkAndroidRipple}
+          >
+                {Utils.reactChildIsString(children) ? (
+                    <Text style={textStyles}>
+                        {children.length === 1 ? children[0] : children}
+                    </Text>
+                ) : (children)}
+            </Pressable>
+        </View>
+    )
 };
 
 export const ButtonPrimary = (props) => (
