@@ -8,12 +8,8 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "components/": [
-        "./components/*"
-      ],
-      "common/": [
-        "./common/*"
-      ]
+      "components/": ["./components/*"],
+      "common/": ["./common/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -25,16 +21,16 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "react-native"
   },
   "exclude": [
-    "node_modules",
-    "mobile/**/*"
+    "node_modules"
   ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "./types/global.d.ts"
+    "types/global.d.ts",
+    "./mobile/src/global.d.ts"
   ]
 }

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "../",
+    "baseUrl": "./",
     "declaration": true,
     "esModuleInterop": true,
     "isolatedModules": true,
@@ -19,7 +19,7 @@
   },
   "include": [],
   "exclude": [
-    "./src/global.d.ts",
+    "./src/rn.d.ts",
     "babel.config.js",
     "metro.config.js",
     "jest.config.js"
