@@ -1,5 +1,5 @@
 import propTypes from 'prop-types';
-import Animations from '../../project/animations';
+import { easeIn, easeInOut } from '../../project/animations';
 
 export default (WrappedComponent) => {
     class Lightbox extends React.Component {
@@ -14,7 +14,7 @@ export default (WrappedComponent) => {
         super(props);
         this.state = {
             slideInFromTop: {
-                easing: Animations.standard,
+                easing: easeIn,
                 from: { translateY: -DeviceHeight },
                 to: { translateY: 0 },
             },
@@ -28,7 +28,7 @@ export default (WrappedComponent) => {
     dismiss = () => {
         this.setState({
             slideInFromTop: {
-                easing: Animations.acceleration,
+                easing: easeInOut,
                 from: { translateY: 0 },
                 to: { translateY: -DeviceHeight },
             },

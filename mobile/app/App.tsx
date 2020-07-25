@@ -8,7 +8,6 @@ import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import defaultNavigationOptions from './style/style_navs';
 import { routes } from './routes';
 import { RouteUrls } from './route-urls';
-import { LightBackdrop,DarkBackdrop } from './components/utility-components/BackdropContext';
 
 enableScreens();
 const Stack = createNativeStackNavigator();
@@ -54,9 +53,8 @@ class App extends Component {
                                   component={routes[RouteUrls.stack].component}
                                     />
                             </Navigator>
+
                         </NavigationContainer>
-                        {/*<LightBackdrop/>*/}
-                        {/*<DarkBackdrop/>*/}
                     </>
                 </Provider>
             </>

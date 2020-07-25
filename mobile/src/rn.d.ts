@@ -8,6 +8,7 @@ declare global {
   const Animated: typeof ReactNative.Animated;
   declare let View: React.ComponentType<ReactNative.ViewProps>;
   declare let Animated: ReactNative.Animated;
+  declare let Easing: ReactNative.Easing;
   declare let Flex: React.ComponentType<ReactNative.ViewProps & {value?:number}>;
   declare let ListItem: React.ComponentType<ReactNative.TouchableOpacityProps>;
   declare let Row: React.ComponentType<ReactNative.ViewProps & {space?:boolean}>;

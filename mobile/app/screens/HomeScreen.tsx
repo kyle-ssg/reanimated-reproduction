@@ -4,11 +4,14 @@ import withScreen, { Screen } from './withScreen';
 import { RouteUrls } from '../route-urls';
 import { TouchableOpacity } from 'react-native';
 import CustomNavbar from '../components/CustomNavbar';
+import { CustomModal, Modal } from '../components/CustomModal';
 
 type ComponentType = Screen & {}
 
-class HomeScreen extends Component<ComponentType> {
-  state = {}
+class HomeScreen extends Component<ComponentType, {modalVisible:boolean}> {
+  state = {
+      modalVisible: false
+  }
 
   constructor(props) {
       super(props);
@@ -87,6 +90,8 @@ class HomeScreen extends Component<ComponentType> {
       })
   }
 
+  toggleModal = ()=> this.setState({ modalVisible:!this.state.modalVisible })
+
   render() {
       return (
           <>
@@ -121,6 +126,18 @@ class HomeScreen extends Component<ComponentType> {
                           Transparent modal
                       </Text>
                   </TouchableOpacity>
+                  <TouchableOpacity onPress={this.toggleModal}>
+                      <Text>
+                          Custom modal
+                      </Text>
+                  </TouchableOpacity>
+                  <CustomModal style={Styles.centeredContainer} onDismissPress={this.toggleModal} visible={this.state.modalVisible}>
+                      <View style={{ width:100,height:100,justifyContent:'center',alignItems:'center', borderRadius: 50, backgroundColor:'#f1f1f1' }}>
+                          <Text>
+                              Hi
+                          </Text>
+                      </View>
+                  </CustomModal>
               </Flex>
           </>
       )
