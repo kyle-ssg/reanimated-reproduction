@@ -7,9 +7,10 @@ import { RouteUrls } from './route-urls';
 import TabLayout from './screens/TabLayout';
 import StackScreen from './screens/StackScreen';
 
+type functionComponent = (props: any) => React.ReactNode;
 interface IRoute {
   options?: Partial<NativeStackNavigationOptions>,
-  component: React.ComponentType<any>,
+  component: React.ComponentType<any>| functionComponent,
   params?: Record<string, any>
 }
 // Contains default route config and components

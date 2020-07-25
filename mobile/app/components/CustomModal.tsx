@@ -1,19 +1,20 @@
 import React from 'react';
-import { FunctionComponent, Component,useState, useEffect } from 'react';
+import { FunctionComponent, useState, useEffect } from 'react';
 import {
-    Modal
-} from 'react-native'
+    AnimationConfig,
+    Modal,
+} from 'react-native';
 import { ease } from '../project/animations'
 import { usePreviousState } from './utility-components/usePreviousState';
 
-const fadeInConfig = {
+const fadeInConfig:ReactNative.Animated.TimingAnimationConfig = {
     duration: 350,
     useNativeDriver:true,
     easing: ease,
     toValue:1
 }
 
-const fadeOutConfig = {
+const fadeOutConfig:ReactNative.Animated.TimingAnimationConfig = {
     duration: 350,
     useNativeDriver:true,
     easing: ease,
@@ -82,24 +83,18 @@ export { CustomModal };
 
 export const styles = ReactNative.StyleSheet.create({
     parentContainer: {
-        position:"absolute",
+        ...ReactNative.StyleSheet.absoluteFillObject,
     },
     lightBackdrop: {
-        position: "absolute",
+        ...ReactNative.StyleSheet.absoluteFillObject,
         backgroundColor:"rgba(255,255,255,.5)",
-        height: Dimensions.get("screen").height,
-        width: Dimensions.get("screen").width
     },
     darkBackdrop: {
-        position: "absolute",
+        ...ReactNative.StyleSheet.absoluteFillObject,
         backgroundColor:"rgba(0,0,0,.5)",
-        height: Dimensions.get("screen").height,
-        width: Dimensions.get("screen").width
     },
     childrenContainer: {
-        position: "absolute",
-        height: Dimensions.get("screen").height,
-        width: Dimensions.get("screen").width
+        ...ReactNative.StyleSheet.absoluteFillObject,
     }
 });
 
