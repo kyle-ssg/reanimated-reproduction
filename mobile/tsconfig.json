@@ -10,7 +10,7 @@
     "lib": ["es6"],
     "moduleResolution": "node",
     "noEmit": true,
-    "strict": true,
+    "strict": false,
     "paths": {
       "components/": ["./components/*"],
       "common/": ["./common/*"]

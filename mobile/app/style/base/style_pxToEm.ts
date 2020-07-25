@@ -14,6 +14,6 @@ const unit = baseUnit * ratioX;
 const em =  (value) => {
     return unit * value;
 };
-export default em;
+module.exports = em;
 // @ts-ignore
 global.em = em;
