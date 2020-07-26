@@ -1,11 +1,11 @@
 import { SharedElement, SharedElementTransition, nodeFromRef, } from 'react-native-shared-element';
 import React, { Component } from 'react';
-import { CustomModal } from '../../components/CustomModal';
+import { CustomModal } from 'components//CustomModal';
 import { easeInOut, ease } from '../../project/animations'
-import Delay from '../../components/utility-components/Delay';
+import Delay from 'components//utility-components/Delay';
 import { initialWindowMetrics } from 'react-native-safe-area-context';
 import { Dimensions } from 'react-native';
-import { ButtonSecondary } from '../../components/base/forms/Button';
+import { ButtonSecondary } from 'components//base/forms/Button';
 
 type ComponentType = {}
 

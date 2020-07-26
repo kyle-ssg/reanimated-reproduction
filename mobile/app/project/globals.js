@@ -4,6 +4,6 @@ import './polyfill';
 import './api/api'
 import '../../strings';
 import 'common/utils';
-import '../components/base';
+import 'components/base';
 
 global.DeviceInfo = DeviceInfo;

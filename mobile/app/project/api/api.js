@@ -4,9 +4,9 @@
 import BottomSheet from 'react-native-bottomsheet';
 import _analytics from '@react-native-firebase/analytics';
 import errorHandler from 'common/utils/errorHandler';
+import getStoreDangerous  from 'common/store';
 
 import ReactNative from 'react-native';
-import getStoreDangerous  from '../../../../common/store';
 import storage from './async-storage-api';
 
 import push from './push-notifications-api';

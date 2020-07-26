@@ -1,11 +1,11 @@
 import React from 'react';
 import { NativeStackNavigationOptions } from 'react-native-screens/native-stack';
-import { ButtonNav } from './components/base/forms/Button'
-import GenericScreen from './screens/GenericScreen';
-import HomeScreen from './screens/HomeScreen';
+import { ButtonNav } from 'components/base/forms/Button'
+import GenericScreen from 'screens/GenericScreen';
+import HomeScreen from 'screens/HomeScreen';
 import { RouteUrls } from './route-urls';
-import TabLayout from './screens/TabLayout';
-import StackScreen from './screens/StackScreen';
+import TabLayout from 'screens/TabLayout';
+import StackScreen from 'screens/StackScreen';
 import StorybookUIRoot from '../storybook/index';
 
 type functionComponent = (props: any) => React.ReactNode;

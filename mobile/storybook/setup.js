@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import React from 'react';
 // eslint-disable-next-line
 import { storiesOf } from '@storybook/react-native';
-import { withSmartKnobs } from 'storybook-addon-smart-knobs';
 // eslint-disable-next-line
 import { withKnobs } from '@storybook/addon-knobs';
 import _store from 'common/store';
@@ -80,7 +79,6 @@ export const withNavbarWrapper = (story) => (
     </Provider>
 );
 export const getStory = (name) => storiesOf(name, module)
-    .addDecorator(withSmartKnobs)
     .addDecorator(withKnobs)
     .addDecorator(withSafeArea)
     .addDecorator(withProvider);

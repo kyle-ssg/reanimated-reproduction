@@ -3,6 +3,7 @@
 import * as ReactNative from 'react-native';
 import { View, Animated } from 'react-native'
 import Button from '../app/components/base/forms/Button';
+import Constants from 'common/utils';
 import { projectPalette, projectStyles } from '../app/style/project/style_variables'
 declare global {
   const ReactNative: typeof ReactNative;
@@ -25,6 +26,7 @@ declare global {
   declare let styleVariables = projectStyles;
   declare let Button = Button;
   declare let routes;
+  declare let Constants;
   declare let palette = projectPalette;
   declare let colour;
   declare let em: (value:number)=>number;

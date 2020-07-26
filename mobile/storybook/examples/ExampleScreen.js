@@ -12,7 +12,7 @@ import Svg, { } from 'react-native-svg';
 import { Path } from 'react-native-svg'
 import codePush from 'react-native-code-push';
 
-import { ButtonSecondary, ButtonTertiary } from '../../components/base/forms/Button';
+import { ButtonSecondary, ButtonTertiary } from 'components//base/forms/Button';
 
 const codePushOptions = {
     checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,

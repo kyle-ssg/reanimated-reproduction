@@ -1,5 +1,5 @@
 // Any commonly used project specific components can go here
-import ErrorMessage from '../components/ErrorMessage';
+import ErrorMessage from 'components/ErrorMessage';
 global.ErrorMessage = ErrorMessage;
 
 // const LinearGradient = require('react-native-linear-gradient')

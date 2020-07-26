@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useCallback } from 'react';
 import { NativeStackNavigationOptions, NativeStackNavigationProp } from 'react-native-screens/native-stack';
 import { useDispatch } from 'react-redux'
-import { AppActions } from '../../../common/app-actions';
+import { AppActions } from 'common/app-actions';
 export interface IRouteParams {
   [extraProps: string]: any; // Means that extra props are fine
   screenOptions: Partial<NativeStackNavigationOptions>
