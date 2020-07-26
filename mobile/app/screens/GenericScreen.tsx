@@ -1,8 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
 import withScreen, { Screen } from './withScreen';
-import NavBackgroundHelper from '../components/utility-components/NavBackgroundHelper';
-import CustomNavbar from '../components/CustomNavbar';
 
 type ComponentType = Screen & {
   text: string;

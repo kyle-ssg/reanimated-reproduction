@@ -8,6 +8,7 @@ import SharedElementExample from '../app/screens/examples/SharedElementExample';
 import ErrorMessage from '../app/components/ErrorMessage';
 // import ExampleTabs from './examples/ExampleTabs';
 import Button, { ButtonNav } from '../app/components/base/forms/Button';
+import StackExample from './examples/StackExample';
 setup(() => {
     getStory('Type')
         .addDecorator(withPaddedContainer)
@@ -21,15 +22,19 @@ setup(() => {
                 <ErrorMessage style={Styles.mb5}>Header 4</ErrorMessage>
             </>
         ));
+    getStory('Routes')
+        .add('all', () => (
+            <StackExample/>
+        ))
     getStory('SharedElement')
         .add('all', () => (
             <>
-            <SharedElementExample/>
-            <SharedElementExample/>
-            <SharedElementExample/>
-            <SharedElementExample/>
-            <SharedElementExample/>
-            <SharedElementExample/>
+                <SharedElementExample/>
+                <SharedElementExample/>
+                <SharedElementExample/>
+                <SharedElementExample/>
+                <SharedElementExample/>
+                <SharedElementExample/>
             </>
         ));
     getStory('Button')

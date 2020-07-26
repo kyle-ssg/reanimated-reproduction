@@ -5,6 +5,7 @@ import { easeInOut, ease } from '../../project/animations'
 import Delay from '../../components/utility-components/Delay';
 import { initialWindowMetrics } from 'react-native-safe-area-context';
 import { Dimensions } from 'react-native';
+import { ButtonSecondary } from '../../components/base/forms/Button';
 
 type ComponentType = {}
 
@@ -65,18 +66,18 @@ class TheComponent extends Component<ComponentType> {
   onSetScene2Node = node => this.setState({ scene2Node: node })
 
   renderScene2 = ()=>(
-      <View style={{ width: 150, backgroundColor:'#ddd', padding: 20 }}>
-          <TouchableOpacity style={{ width: 150 }} onPress={this.onPressBack}>
-              <Text>Press me</Text>
-          </TouchableOpacity>
+      <View>
+          <ButtonSecondary style={{ width: 150, }} onPress={this.onPressBack}>
+              Press me
+          </ButtonSecondary>
       </View>
   )
 
   renderScene1 = ()=> (
-      <View style={{ width: 150, backgroundColor:'#ddd', padding: 20 }}>
-          <TouchableOpacity style={{ width: 150, }} onPress={this.onPressNavigate}>
-              <Text>Press me</Text>
-          </TouchableOpacity>
+      <View>
+          <Button style={{ width: 150, }} onPress={this.onPressNavigate}>
+              Press me
+          </Button>
       </View>
   )
 
@@ -105,7 +106,8 @@ class TheComponent extends Component<ComponentType> {
                   </View>
               </View>
 
-              <CustomModal fadeContent={false} dark visible={this.state.modalVisible}>
+              <CustomModal style={{ justifyContent:'center', alignItems:'center' }} fadeContent={false} dark
+                visible={this.state.modalVisible}>
                   {this.state.isScene2Visible && (
                   <View collapsable={false} ref={this.onSetScene2Ref} style={[{  }]}>
                       <SharedElement onNode={this.onSetScene2Node}>
