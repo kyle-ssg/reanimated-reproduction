@@ -28,6 +28,7 @@ class TabLayout extends Component<ComponentType> {
   goTab1 = () => {
       this.goTab(1);
   };
+
   goTab2 = () => {
       this.goTab(2);
   };
@@ -39,7 +40,7 @@ class TabLayout extends Component<ComponentType> {
   render() {
       const { state: { activeIndex } } = this;
       return (
-          <View style={ReactNative.StyleSheet.absoluteFill}>
+          <View style={ReactNative.StyleSheet.absoluteFillObject}>
               <ScrollView scrollEnabled={false} ref={this.onRef}
                 bounces={false}
                 pagingEnabled

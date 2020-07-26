@@ -11,7 +11,6 @@ import withScreen, { Screen } from '../../app/screens/withScreen';
 import { ButtonSecondary } from '../../app/components/base/forms/Button';
 import { routes } from '../../app/routes';
 
-enableScreens();
 const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;
 

@@ -11,6 +11,13 @@ import { withKnobs } from '@storybook/addon-knobs';
 import _store from 'common/store';
 
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import defaultNavigationOptions from '../app/style/style_navs';
+import { RouteUrls } from '../app/route-urls';
+import { routes } from '../app/routes';
+import GenericScreen from '../app/screens/GenericScreen';
+import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 
 const StorybookUIRoot = getStorybookUI({
     asyncStorage: ReactNative.AsyncStorage
@@ -48,6 +55,29 @@ export const withScrollView = (story) => (
             { story() }
         </ScrollView>
     </Flex>
+);
+
+const Stack = createNativeStackNavigator();
+const Navigator = Stack.Navigator;
+
+
+export const withNavbarWrapper = (story) => (
+    <Provider store={store}>
+        <StatusBar backgroundColor="transparent" translucent barStyle="dark-content"/>
+        <>
+            <NavigationContainer independent>
+                <Navigator screenOptions={defaultNavigationOptions} initialRouteName="1">
+                    <Stack.Screen
+                      name={"1"}
+                      options={{title:"A generic page"}}
+                      initialParams={{ children: story() }}
+                      component={GenericScreen}
+                    />
+                </Navigator>
+
+            </NavigationContainer>
+        </>
+    </Provider>
 );
 export const getStory = (name) => storiesOf(name, module)
     .addDecorator(withSmartKnobs)

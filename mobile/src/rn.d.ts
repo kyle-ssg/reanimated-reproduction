@@ -2,7 +2,8 @@
 
 import * as ReactNative from 'react-native';
 import { View, Animated } from 'react-native'
-import { styleVariables as _styleVariables } from '../app/style/base/style_variables'
+import Button from '../app/components/base/forms/Button';
+import { projectPalette, projectStyles } from '../app/style/project/style_variables'
 declare global {
   const ReactNative: typeof ReactNative;
   const Animated: typeof ReactNative.Animated;
@@ -21,9 +22,10 @@ declare global {
   declare let Platform: ReactNative.PlatformIOSStatic;
   declare let Dimensions: ReactNative.Dimensions;
   declare let Styles;
-  declare let styleVariables = _styleVariables;
+  declare let styleVariables = projectStyles;
+  declare let Button = Button;
   declare let routes;
-  declare let palette;
+  declare let palette = projectPalette;
   declare let colour;
   declare let em: (value:number)=>number;
 }

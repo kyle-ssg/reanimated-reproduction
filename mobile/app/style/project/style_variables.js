@@ -1,12 +1,12 @@
 require('../base/style_pxToEm');
 
 
-global.palette = {
+export const projectPalette =  global.palette = {
     bodyBackground: '#fff', // General app  background (overriding palette in base/stylevariables)
     danger: '#fe4948',
 };
 
-global.styleVariables = {
+export const projectStyles = global.styleVariables = {
 
     // font weights and family (overriding base/styleVariables)
     normalFontWeight: 'normal',
@@ -20,3 +20,4 @@ global.styleVariables = {
 
     ...require('./style_platform_variables')
 };
+

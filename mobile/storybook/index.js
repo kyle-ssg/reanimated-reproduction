@@ -3,7 +3,7 @@ import 'react-native-globals';
 import '../app/style/style_screen';
 import '../app/components/base';
 import ION from 'react-native-vector-icons/Ionicons';
-import StorybookUIRoot, { getStory, withPaddedContainer, setup } from './setup';
+import StorybookUIRoot, { getStory, withPaddedContainer, withNavbarWrapper, setup } from './setup';
 import SharedElementExample from '../app/screens/examples/SharedElementExample';
 import ErrorMessage from '../app/components/ErrorMessage';
 // import ExampleTabs from './examples/ExampleTabs';
@@ -12,6 +12,7 @@ import StackExample from './examples/StackExample';
 setup(() => {
     getStory('Type')
         .addDecorator(withPaddedContainer)
+        .addDecorator(withNavbarWrapper)
         .add('all', () => (
             <>
                 <H1 style={Styles.mb5}>Header 1</H1>
@@ -27,6 +28,7 @@ setup(() => {
             <StackExample/>
         ))
     getStory('SharedElement')
+        .addDecorator(withNavbarWrapper)
         .add('all', () => (
             <>
                 <SharedElementExample/>
@@ -39,6 +41,7 @@ setup(() => {
         ));
     getStory('Button')
         .addDecorator(withPaddedContainer)
+        .addDecorator(withNavbarWrapper)
         .add('all', () => (
             <>
                 <Button>Button</Button>
