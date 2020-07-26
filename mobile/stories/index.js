@@ -11,20 +11,61 @@ import Button, { ButtonNav } from '../app/components/base/forms/Button';
 import StackExample from './examples/StackExample';
 import SegmentedControl from 'components/SegmentedControl';
 import ExampleTabs from './examples/ExampleTabs';
+import WithSetValue from '../../common/providers/WithSetValue';
+
+class TheComponent extends React.Component {
+    state = {};
+
+    render() {
+        return <View/>;
+    }
+}
+
+
 setup(() => {
     getStory('SegmentedControl')
-        .addDecorator(withPaddedContainer)
-        .addDecorator(withNavbarWrapper)
-        .add('all',()=>(
-            <SegmentedControl
-              itemWidth={100}
-              selectedIndex={1}
-              items={[
-                  { label:"1",value:1 },
-                  { label:"2",value:2 },
-              ]}
-            />
-        ))
+        .add('all',()=>{
+            const items = [
+                { label:"First", value:1 },
+                { label:"Second", value:2 },
+                { label:"Third", value:3 },
+            ]
+            return (
+                <Flex style={{ backgroundColor:'white', padding: 20 }}>
+                    <WithSetValue defaultValue={items[1]}>
+                        {({ value,setValue })=>(
+                            <SegmentedControl
+                              onChange={setValue}
+                              value={value}
+                              items={items}
+                            />
+                        )}
+                    </WithSetValue>
+                    <View style={{ marginTop:10, marginBottom:20 }}>
+                        <WithSetValue defaultValue={items[1]}>
+                            {({ value,setValue })=>(
+                                <SegmentedControl
+                                  paddingX={20}
+                                  trackStyle={{ paddingHorizontal:20, backgroundColor:"#222", height:64, paddingVertical:10 }}
+                                  textStyle={{ color:"#ccc" }}
+                                  textPressedStyle={{ color:"white" }}
+                                  textActiveStyle={{ color:"white" }}
+                                  barStyle={{ backgroundColor:"#333", }}
+                                  onChange={setValue}
+                                  value={value}
+                                  items={items}
+                                />
+                            )}
+                        </WithSetValue>
+                    </View>
+
+                    <SegmentedControl
+                      disabled
+                      items={items}
+                    />
+                </Flex>
+            )
+        })
     getStory('Tabs')
         .add('default', () => (
             <>

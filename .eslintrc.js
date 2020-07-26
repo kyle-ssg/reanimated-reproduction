@@ -50,6 +50,7 @@ module.exports = {
         'no-shadow': 0,
         'no-empty-pattern': 0,
         'no-var': 'error',
+        "@typescript-eslint/no-empty-function": 0,
         'object-curly-spacing': ['error', 'always'],
         'radix': 0,
         "react/prop-types": "off",
