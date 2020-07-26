@@ -19,3 +19,6 @@ rm next-env.d.ts
 rm now.json
 rm package.json
 rm README.md
+rm selenium-server.log
+rm server.js
+rm tsconfig.json
