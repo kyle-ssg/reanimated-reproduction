@@ -11,6 +11,8 @@ Manual changes from a vanilla react-native setup
 - added eslintrc/eslintignore
 - added postinstall step to auto pod install
 - added pre-build/post-build step sh files for appcenter 
+- added react-native-reanimated and turbo module support, see babel.config 
+- using hermes engine, mainly due to react-native-reanimated
 
 ** iOS Changes **
 - added Swift Bridging Header

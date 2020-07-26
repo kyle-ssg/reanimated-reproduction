@@ -7,6 +7,8 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
+import Utils from 'common/utils/base/_utils';
+
 import React, { FunctionComponent, useEffect, useMemo } from 'react';
 type ComponentType = ReactNative.PressableProps & {
     children: string
@@ -71,38 +73,48 @@ const Button: FunctionComponent<ComponentType> = ({
     )
 };
 
-export const ButtonPrimary = (props) => (
-    <Button
-      {...props}
-      style={[styles.buttonPrimary, props.style]}
-    />
-);
 
-export const ButtonSecondary = (props) => (
-    <Button
-      {...props}
-      pressedStyle={[Styles.buttonGroupSecondaryPressed, props.pressedStyle]}
-      style={[{ backgroundColor: palette.secondary }, props.style]}
-    />
-);
+export const ButtonPrimary: FunctionComponent<ComponentType> = (props) => {
+    return (
+      <Button
+        {...props}
+        style={[styles.buttonPrimary, props.style]}
+      />
+    );
+};
 
-export const ButtonTertiary = (props) => (
-    <Button
-      {...props}
-      style={[styles.buttonTertiary, props.style,]}
-      pressedStyle={[styles.buttonTertiaryPressed, props.pressedStyle]}
-      textStyle={[styles.buttonTertiaryText, props.textStyle]}
-    />
-);
+export const ButtonSecondary: FunctionComponent<ComponentType> = (props) => {
+    return (
+      <Button
+        {...props}
+        pressedStyle={[Styles.buttonGroupSecondaryPressed, props.pressedStyle]}
+        style={[{ backgroundColor: palette.secondary }, props.style]}
+      />
+    );
+};
 
-export const ButtonNav = (props) => (
-    <Button
-      {...props}
-      android_ripple={circleButtonRipple}
-      style={{ backgroundColor:'transparent', width:34, height:34 }}
-      textStyle={[styles.buttonTertiaryText, props.textStyle]}
-  />
-)
+export const ButtonTertiary: FunctionComponent<ComponentType> = (props) => {
+    return (
+      <Button
+        {...props}
+        style={[styles.buttonTertiary, props.style,]}
+        pressedStyle={[styles.buttonTertiaryPressed, props.pressedStyle]}
+        textStyle={[styles.buttonTertiaryText, props.textStyle]}
+      />
+    );
+};
+
+export const ButtonNav: FunctionComponent<ComponentType> = (props) => {
+    return (
+      <Button
+        {...props}
+        android_ripple={circleButtonRipple}
+        style={{ backgroundColor:'transparent', width:34, height:34 }}
+        textStyle={[styles.buttonTertiaryText, props.textStyle]}
+      />
+    );
+};
+
 
 const styles = ReactNative.StyleSheet.create({
     TabButtonPill: {

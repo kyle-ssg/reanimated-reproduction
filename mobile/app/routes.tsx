@@ -6,10 +6,10 @@ import HomeScreen from 'screens/HomeScreen';
 import { RouteUrls } from './route-urls';
 import TabLayout from 'screens/TabLayout';
 import StackScreen from 'screens/StackScreen';
-import StorybookUIRoot from '../storybook/index';
+import StorybookUIRoot from '../stories/index';
 
 type functionComponent = (props: any) => React.ReactNode;
-interface IRoute {
+export interface IRoute {
   options?: Partial<NativeStackNavigationOptions>,
   component: React.ComponentType<any>| functionComponent,
   params?: Record<string, any>

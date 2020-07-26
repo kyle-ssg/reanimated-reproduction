@@ -2,7 +2,7 @@
 
 import * as ReactNative from 'react-native';
 import { View, Animated } from 'react-native'
-import Button from '../app/components/base/forms/Button';
+import Button, { ButtonPrimary, ButtonSecondary, ButtonTertiary } from '../app/components/base/forms/Button';
 import Constants from 'common/utils';
 import { projectPalette, projectStyles } from '../app/style/project/style_variables'
 declare global {
@@ -17,6 +17,10 @@ declare global {
   declare let Row: React.ComponentType<ReactNative.ViewProps & {space?:boolean}>;
   declare let TouchableOpacity: React.ComponentType<ReactNative.TouchableOpacityProps>;
   declare let Text: React.ComponentType<ReactNative.TextProps>;
+  declare let H1: React.ComponentType<ReactNative.TextProps>;
+  declare let H2: React.ComponentType<ReactNative.TextProps>;
+  declare let H3: React.ComponentType<ReactNative.TextProps>;
+  declare let H4: React.ComponentType<ReactNative.TextProps>;
   declare let Fade: React.ComponentType<ReactNative.ViewProps& {value:boolean; children: ReactNode}>;
   declare let ScrollView: React.ComponentType<ReactNative.ScrollViewProps>;
   declare let SafeAreaView: React.ComponentType<ReactNative.ViewProps>;
@@ -25,6 +29,8 @@ declare global {
   declare let Styles;
   declare let styleVariables = projectStyles;
   declare let Button = Button;
+  declare let ButtonSecondary = ButtonSecondary;
+  declare let ButtonTertiary = ButtonTertiary;
   declare let routes;
   declare let Constants;
   declare let palette = projectPalette;

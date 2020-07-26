@@ -36,17 +36,19 @@ class _GenericScreen extends Component<ComponentType> {
   }
   render() {
       return this.props.children || <Flex style={Styles.body}>
-          <FlatList style={{ padding:20, flex:1 }} data={Object.values(RouteUrls)} renderItem={({ item })=> item !== "/storybook" && (
-              <View key={item}>
-                  <H3>{item}</H3>
-                  <Button onPress={()=>this.goScreen(item)}>
-                      Push
-                  </Button>
-                  <ButtonSecondary onPress={()=>this.goModal(item)}>
-                      Modal
-                  </ButtonSecondary>
-              </View>
-          )}/>
+          <FlatList
+            keyExtractor={(item)=>item}
+            style={{ padding:20, flex:1 }} data={Object.values(RouteUrls)} renderItem={({ item })=> item !== "/storybook" && (
+            <View key={item}>
+                <H3>{item}</H3>
+                <Button onPress={()=>this.goScreen(item)}>
+                    Push
+                </Button>
+                <ButtonSecondary onPress={()=>this.goModal(item)}>
+                    Modal
+                </ButtonSecondary>
+            </View>
+            )}/>
 
       </Flex>
   }

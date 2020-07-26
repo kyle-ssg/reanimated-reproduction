@@ -1,6 +1,8 @@
 import './utils';
 import { Actions } from './app-actions';
-import produce from "immer"
+import produce,{ enableES5 } from "immer"
+enableES5()
+
 // eslint-disable-next-line no-unused-vars
 import { appendItem, deleteItem, itemError, itemLoaded, itemLoading, itemSaved, itemSaving } from './utils/reducer-helpers';
 import { AppState } from './state-type';

@@ -1,25 +1,22 @@
-// eslint-disable-next-line
-import { getStorybookUI, configure } from '@storybook/react-native';
-import './rn-addons';
-import { Provider } from 'react-redux';
+import '@storybook/addon-ondevice-knobs/register';
+import GenericScreen from 'screens/GenericScreen';
 import React from 'react';
-// eslint-disable-next-line
-import { storiesOf } from '@storybook/react-native';
-// eslint-disable-next-line
-import { withKnobs } from '@storybook/addon-knobs';
-import _store from 'common/store';
-
+import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import defaultNavigationOptions from '../app/style/style_navs';
-import { RouteUrls } from '../app/route-urls';
-import { routes } from '../app/routes';
-import GenericScreen from '../app/screens/GenericScreen';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
+import { getStorybookUI, configure } from '@storybook/react-native';
+import { storiesOf } from '@storybook/react-native';
+import { withKnobs } from '@storybook/addon-knobs';
+
+
+import _store from 'common/store';
+import defaultNavigationOptions from '../app/style/style_navs';
+
 
 const StorybookUIRoot = getStorybookUI({
-    asyncStorage: ReactNative.AsyncStorage
+    asyncStorage: null
 });
 const store = _store();
 
@@ -68,7 +65,7 @@ export const withNavbarWrapper = (story) => (
                 <Navigator screenOptions={defaultNavigationOptions} initialRouteName="1">
                     <Stack.Screen
                       name={"1"}
-                      options={{title:"A generic page"}}
+                      options={{ title:"A generic page" }}
                       initialParams={{ children: story() }}
                       component={GenericScreen}
                     />

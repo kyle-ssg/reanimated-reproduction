@@ -9,7 +9,14 @@ import ErrorMessage from '../app/components/ErrorMessage';
 // import ExampleTabs from './examples/ExampleTabs';
 import Button, { ButtonNav } from '../app/components/base/forms/Button';
 import StackExample from './examples/StackExample';
+import SegmentedControl from 'components/SegmentedControl';
 setup(() => {
+    getStory('SegmentedControl')
+        .addDecorator(withPaddedContainer)
+        .addDecorator(withNavbarWrapper)
+        .add('all',()=>(
+            <SegmentedControl/>
+        ))
     getStory('Type')
         .addDecorator(withPaddedContainer)
         .addDecorator(withNavbarWrapper)
