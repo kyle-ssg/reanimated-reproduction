@@ -12,8 +12,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 //REACT_NATIVE_REANIMATED
-import com.facebook.react.bridge.JSIModulePackage; // <- add
-import com.swmansion.reanimated.ReanimatedJSIModulePackage; // <- add
+// import com.facebook.react.bridge.JSIModulePackage; // <- add
+// import com.swmansion.reanimated.ReanimatedJSIModulePackage; // <- add
 
 
 // import io.branch.referral.Branch; //REACT_NATIVE_BRANCH
@@ -48,10 +48,11 @@ public class MainApplication extends Application implements ReactApplication {
           return "index";
         }
 
-        @Override
-          protected JSIModulePackage getJSIModulePackage() {
-          return new ReanimatedJSIModulePackage(); // <- add
-        }
+        // REACT_NATIVE_REANIMATED
+//         @Override
+//           protected JSIModulePackage getJSIModulePackage() {
+//           return new ReanimatedJSIModulePackage(); // <- add
+//         }
       };
 
   @Override

@@ -10,13 +10,32 @@ import ErrorMessage from '../app/components/ErrorMessage';
 import Button, { ButtonNav } from '../app/components/base/forms/Button';
 import StackExample from './examples/StackExample';
 import SegmentedControl from 'components/SegmentedControl';
+import ExampleTabs from './examples/ExampleTabs';
 setup(() => {
     getStory('SegmentedControl')
         .addDecorator(withPaddedContainer)
         .addDecorator(withNavbarWrapper)
         .add('all',()=>(
-            <SegmentedControl/>
+            <SegmentedControl
+              itemWidth={100}
+              selectedIndex={1}
+              items={[
+                  { label:"1",value:1 },
+                  { label:"2",value:2 },
+              ]}
+            />
         ))
+    getStory('Tabs')
+        .add('default', () => (
+            <>
+                <ExampleTabs/>
+            </>
+        ))
+        .add('scrolled', () => (
+            <>
+                <ExampleTabs scrollEnabled/>
+            </>
+        ));
     getStory('Type')
         .addDecorator(withPaddedContainer)
         .addDecorator(withNavbarWrapper)

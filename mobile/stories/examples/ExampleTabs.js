@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import Tabs from '../../app/components/Tabs';
 
 export default class extends Component {

@@ -23,7 +23,7 @@ module.exports = {
                 },
             },
         ],
-        'react-native-reanimated/plugin', //REACT_NATIVE_REANIMATED !!HAS TO BE LAST
+        // 'react-native-reanimated/plugin', //REACT_NATIVE_REANIMATED !!HAS TO BE LAST
     ],
     env: {
         production: {
