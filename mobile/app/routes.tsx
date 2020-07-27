@@ -9,9 +9,10 @@ import StackScreen from 'screens/StackScreen';
 import StorybookUIRoot from '../stories/index';
 
 type functionComponent = (props: any) => React.ReactNode;
+
 export interface IRoute {
   options?: Partial<NativeStackNavigationOptions>,
-  component: React.ComponentType<any>,
+  component: any,
   params?: Record<string, any>
 }
 // Contains default route config and components
