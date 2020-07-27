@@ -11,7 +11,7 @@ import StorybookUIRoot from '../stories/index';
 type functionComponent = (props: any) => React.ReactNode;
 export interface IRoute {
   options?: Partial<NativeStackNavigationOptions>,
-  component: React.ComponentType<any>| functionComponent,
+  component: React.ComponentType<any>,
   params?: Record<string, any>
 }
 // Contains default route config and components
