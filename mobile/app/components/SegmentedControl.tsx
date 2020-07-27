@@ -30,10 +30,7 @@ const animationConfig:Animated.TimingAnimationConfig = {
 };
 
 class TheComponent extends Component<ComponentType> {
-  state = {
-      width:0,
-      itemWidth:0
-  };
+
   getSelectedIndex:()=>number = ()=> {
       const index = this.props.items?.indexOf(this.props.value) || 0
       if (index !== -1) {
@@ -42,23 +39,43 @@ class TheComponent extends Component<ComponentType> {
       return 0;
   }
 
+  state = {
+      width:0,
+      itemWidth:0,
+  };
+
+  clampedValue = 0;
+  selectedIndex= this.getSelectedIndex();
   animatedValue = new ReactNative.Animated.Value(this.getSelectedIndex())
 
   animateTo = (index)=>
       Animated.timing(this.animatedValue, { ...animationConfig, toValue:index }).start()
 
-
-  onDragStart = ()=> {
-
-  }
   panResponder = null;
   createPanResponder = ()=> this.panResponder = ReactNative.PanResponder.create({
       onStartShouldSetPanResponder: () => !this.props.disabled,
       onPanResponderGrant: this.onDragStart,
-      onPanResponderMove: Animated.event([
-          null,
-          { dx: this.animatedValue },
-      ]),
+      onPanResponderMove: (evt, gestureState)=>{
+          const current = gestureState.dx + this.clampedValue;
+          const sensitivity = this.state.itemWidth/2;
+          const selectedIndex = this.selectedIndex;
+          const shouldGoBack = this.selectedIndex >0 &&  current <0  && (current < -sensitivity);
+          const shouldGoForward = this.selectedIndex < this.props.items.length-1 &&  current >0  && (current > sensitivity);
+
+          if (shouldGoBack) {
+              this.selectedIndex --;
+              this.clampedValue = -gestureState.dx;
+              this.props.onChange(this.props.items[selectedIndex-1])
+          }
+          if (shouldGoForward) {
+              this.clampedValue = -gestureState.dx
+              this.selectedIndex ++;
+              this.props.onChange(this.props.items[selectedIndex+1])
+          }
+      },
+      onPanResponderRelease: ()=> {
+          this.clampedValue =0;
+      }
   })
 
   getAnimatedValue = (itemWidth,selectedIndex)=> {
@@ -80,6 +97,7 @@ class TheComponent extends Component<ComponentType> {
 
   componentDidUpdate(prevProps: Readonly<ComponentType>, prevState: Readonly<{}>, snapshot?: any) {
       if (prevProps.value !== this.props.value) {
+          this.selectedIndex = this.getSelectedIndex(); // we catch the current value as to not interrupt animation
           this.animateTo(this.getAnimatedValue(this.state.itemWidth, this.getSelectedIndex()))
       }
   }
@@ -98,7 +116,6 @@ class TheComponent extends Component<ComponentType> {
           transform:[{ translateX:this.animatedValue }]
       }
 
-      // {...this.panResponder?.panHandlers} todo pan
 
       return <View
         onLayout={this.onLayout}
@@ -109,6 +126,7 @@ class TheComponent extends Component<ComponentType> {
         ]}>
           <Row style={styles.barContainer}>
               <Animated.View
+                {...this.panResponder?.panHandlers} todo pan
                 style={[styles.bar, barStyle, positionStyle]}>
                   <Flex/>
               </Animated.View>
@@ -116,7 +134,10 @@ class TheComponent extends Component<ComponentType> {
                   <Pressable
                     pointerEvents={this.props.value === item?"none":"auto"}
                     disabled={disabled}
-                    onPress={()=>this.props.onChange(item)}
+                    onPress={()=>{
+                        this.selectedIndex = i;
+                        this.props.onChange(item)
+                    }}
                     style={styles.labelContainer}
                     key={i}
                       >
