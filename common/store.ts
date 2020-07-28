@@ -28,7 +28,6 @@ export default function (initialState: AppState = {}, forceNewStore?: boolean) {
     );
     // @ts-ignore
     store.sagaTask = sagaMiddleware.run(rootSaga);
-    sagaMiddleware.run(rootSaga);
     _store = store;
     return _store;
 }
