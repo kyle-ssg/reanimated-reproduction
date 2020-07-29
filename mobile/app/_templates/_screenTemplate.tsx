@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import withScreen, { Screen } from './withScreen';
+import withScreen, { Screen } from '../screens/withScreen';
 
 type ComponentType = Screen & {
   text: string
