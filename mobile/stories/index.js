@@ -13,15 +13,6 @@ import SegmentedControl from 'components/SegmentedControl';
 import ExampleTabs from './examples/ExampleTabs';
 import WithSetValue from '../../common/providers/WithSetValue';
 
-class TheComponent extends React.Component {
-    state = {};
-
-    render() {
-        return <View/>;
-    }
-}
-
-
 setup(() => {
     getStory('SegmentedControl')
         .add('all',()=>{
@@ -38,34 +29,47 @@ setup(() => {
                               onChange={setValue}
                               value={value}
                               items={items}
+                              trackStyle={Styles.mb10}
                             />
                         )}
                     </WithSetValue>
-                    <View style={{ marginTop:10, marginBottom:20 }}>
-                        <WithSetValue defaultValue={items[1]}>
-                            {({ value,setValue })=>(
-                                <SegmentedControl
-                                  paddingX={20}
-                                  trackStyle={{ paddingHorizontal:20, backgroundColor:"#222", height:64, paddingVertical:10 }}
-                                  textStyle={{ color:"#ccc" }}
-                                  textPressedStyle={{ color:"white" }}
-                                  textActiveStyle={{ color:"white" }}
-                                  barStyle={{ backgroundColor:"#333", }}
-                                  onChange={setValue}
-                                  value={value}
-                                  items={items}
-                                />
-                            )}
-                        </WithSetValue>
-                    </View>
-
-                    <SegmentedControl
-                      disabled
-                      items={items}
-                    />
+                    <WithSetValue defaultValue={items[2]}>
+                        {({ value,setValue })=>(
+                            <SegmentedControl
+                              onChange={setValue}
+                              value={value}
+                              items={items}
+                              textActiveStyle={{ color:"#fff" }}
+                              textStyle={{ color:"#ccc" }}
+                              paddingX={10}
+                              paddingY={10}
+                              barStyle={{ backgroundColor:"#333" }}
+                              trackStyle={[{ backgroundColor:"#222", height:80 }, Styles.mb10]}
+                            />
+                        )}
+                    </WithSetValue>
+                    <WithSetValue defaultValue={items[1]}>
+                        {({ value,setValue })=>(
+                            <SegmentedControl
+                              onChange={setValue}
+                              value={value}
+                              items={items}
+                              textActiveStyle={{ color:"#fff" }}
+                              textStyle={{ color:"#ccc" }}
+                              paddingX={0}
+                              paddingY={0}
+                              barStyle={{ backgroundColor:"#333" }}
+                              trackStyle={[{ backgroundColor:"#222" }, Styles.mb10]}
+                            />
+                        )}
+                    </WithSetValue>
                 </Flex>
             )
         })
+    getStory('Routes')
+        .add('all', () => (
+            <StackExample/>
+        ))
     getStory('Tabs')
         .add('default', () => (
             <>
