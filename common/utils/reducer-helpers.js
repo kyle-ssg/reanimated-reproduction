@@ -14,30 +14,36 @@ export const itemSaving = (state, prefix) => {
 
 // todo: perhaps we need loading/errors to be based on particular ids i.e. dont show user 2 as saving if it's just user 1
 // Sets item in reducer as loaded, clears error for that item
-export const itemLoaded = (state, prefix, action) => {
+export const itemLoaded = (state, prefix, action, skipLoadingLoaded = false) => {
     if (action.index) { // Item is part of a collection, add it within the prefix
         if (!state[prefix]) {
             state[prefix] = {}
         }
         state[prefix][action.index] = action.data;
-        state[`${prefix}Error`] = null;
-        state[`${prefix}Loading`] = false;
+        if (!skipLoadingLoaded) {
+            state[`${prefix}Error`] = null;
+            state[`${prefix}Loading`] = false;
+        }
     } else {
         state[prefix] = action.data;
-        state[`${prefix}Loading`] = false;
-        state[`${prefix}Error`] = null;
+        if(!skipLoadingLoaded) {
+            state[`${prefix}Loading`] = false;
+            state[`${prefix}Error`] = null;
+        }
     }
 };
 
-export const itemSaved = (state, prefix, action) => {
+export const itemSaved = (state, prefix, action, skipSavingSaved= false) => {
     if (action.index) { // Item is part of a collection, add it within the prefix
         if (!state[prefix]) {
             state[prefix] = {}
         }
         state[prefix][action.index] = action.data;
-        state[`${prefix}Error`] = null;
-        state[`${prefix}Saving`] = false;
-    } else {
+        if (!skipSavingSaved) {
+            state[`${prefix}Error`] = null;
+            state[`${prefix}Saving`] = false;
+        }
+    } else if (!skipSavingSaved) {
         state[prefix] = action.data;
         state[`${prefix}Saving`] = false;
         state[`${prefix}Error`] = null;

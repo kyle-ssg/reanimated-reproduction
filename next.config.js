@@ -10,6 +10,10 @@ const withSourceMaps = require('@zeit/next-source-maps');
 
 const nextConfig = {
     // next-offline options
+    typescript: {
+        ignoreDevErrors: true,
+        ignoreBuildErrors: true,
+    },
     workboxOpts: {
         swDest: 'static/service-worker.js',
         runtimeCaching: [
@@ -50,6 +54,7 @@ const nextConfig = {
         if (base.plugins) {
             config.plugins = config.plugins.concat(base.plugins);
         }
+
 
         config.module.rules.push({
             test: /\.md$/,

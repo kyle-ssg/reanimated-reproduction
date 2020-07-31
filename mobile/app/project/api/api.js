@@ -1,19 +1,19 @@
-import BottomSheet from 'react-native-bottomsheet';
-// import firebase from 'react-native-firebase';
-import errorHandler from 'common/utils/errorHandler';
+//Anything that provides functionality that would benefit from being accessed by common
 
-import AsyncStorage from '@react-native-community/async-storage';
-// import ImagePicker from 'react-native-image-crop-picker';
-// import branch from 'react-native-branch';
+// import Contacts from 'react-native-contacts';
+import BottomSheet from 'react-native-bottomsheet';
+import _analytics from '@react-native-firebase/analytics';
+import errorHandler from 'common/utils/errorHandler';
+import getStoreDangerous  from 'common/store';
+
 import ReactNative from 'react-native';
-import getStoreDangerous  from '../../../../common/store';
 import storage from './async-storage-api';
 
 import push from './push-notifications-api';
 import auth from './auth';
 
 
-const analytics = typeof firebase === 'undefined' ? undefined : firebase.analytics();
+const analytics = typeof _analytics === 'undefined' ? undefined : _analytics();
 
 global.API = {
     isMobile: () => true,
@@ -68,41 +68,6 @@ global.API = {
             analytics().setCurrentScreen(name, name);
         }
     },
-    setCookie(id, val) {
-        if (!val) {
-            return API.storage.removeItem(id);
-        }
-        return API.storage.setItem(id, val);
-    },
-
-    setStoredToken(val) {
-        if (!val) {
-            return API.storage.removeItem('token');
-        }
-        API.storage.setItem('token', val);
-    },
-
-    setStoredRefreshToken(val) {
-        if (!val) {
-            return API.storage.removeItem('refreshToken');
-        }
-        API.storage.setItem('refreshToken', val);
-    },
-
-    getStoredToken: () => {
-        return API.storage.getItem('token');
-    },
-
-    getStoredRefreshToken: () => {
-        return API.storage.getItem('refreshToken').then((res) => {
-            return res && JSON.parse(res);
-        });
-    },
-
-    getCookie: async (id) => {
-        const res = await API.storage.getItem(id);
-        return res;
-    },
     share: (uri, message, title, subject, excludedActivityTypes) => {
         ReactNative.Share.share({ message, title, url: uri }, { subject, excludedActivityTypes });
     },
@@ -122,20 +87,19 @@ global.API = {
             resolve(value);
         });
     }),
-    getContacts: () => {
+    getContacts: (includePhotos) => {
         if (typeof Contacts === 'undefined') {
             return Promise.reject(new Error('You need to link react-native-contacts to use this function'));
         }
-        return Promise.resolve([]);
-        // includePhotos
-        //     ? new Promise(resolve => Contacts.getAll((error, contacts) => resolve({
-        //         error,
-        //         contacts: contacts && contacts.map(parseContact),
-        //     })))
-        //     : new Promise(resolve => Contacts.getAllWithoutPhotos((error, contacts) => resolve({
-        //         error,
-        //         contacts: contacts && contacts.map(parseContact),
-        //     })));
+        return  includePhotos ?
+            new Promise((resolve) => Contacts.getAll((error, contacts) => resolve({
+                error,
+                contacts: contacts
+            })))
+            : new Promise((resolve) => Contacts.getAllWithoutPhotos((error, contacts) => resolve({
+                error,
+                contacts: contacts
+            })))
     },
     showUpload: (title, multiple, width, height, compressImageQuality = 0.8, onStart) => new Promise((resolve) => {
         API.showOptions(title, ['Camera', 'Upload a Photo']).then((i) => {
@@ -166,7 +130,6 @@ global.API = {
             }
         });
     }),
-
     generateLink: (title, customMetadata) => {
         if (typeof branch === 'undefined') {
             // eslint-disable-next-line
@@ -191,6 +154,21 @@ global.API = {
         // eslint-disable-next-line
         return initialLink ? cb(link) : null;
     },
+
+    setStoredToken(val) {
+        if (!val) {
+            return API.storage.removeItem('token');
+        }
+        API.storage.setString('token', val);
+    },
+
+    setStoredRefreshToken(val) {
+        if (!val) {
+            return API.storage.removeItem('refreshToken');
+        }
+        API.storage.setString('refreshToken', val);
+    },
+
     push,
     auth,
     storage,

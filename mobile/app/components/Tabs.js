@@ -55,34 +55,33 @@ export default class Tabs extends PureComponent {
   }
 }
 
-const styles = StyleSheet.create({
+const styles = ReactNative.StyleSheet.create({
     tabPrimary: {
         backgroundColor: 'white',
         borderTopWidth: 0,
         borderBottomWidth: 0,
-        borderColor: pallette.CoolGray,
+        borderColor: palette.CoolGray,
         elevation: 0,
     },
     tabSecondary: {
-        backgroundColor: pallette.defaultLight,
+        backgroundColor: palette.defaultLight,
         borderBottomWidth: 1,
-        borderColor: pallette.CoolGray,
+        borderColor: palette.CoolGray,
         elevation: 0,
     },
     TabText: {
-        color: pallette.text,
+        color: palette.text,
         fontWeight: 'bold',
         fontSize: em(1),
     },
 
     indicatorPrimary: {
-        backgroundColor: pallette.primary,
+        backgroundColor: palette.primary,
     },
 
     TabTextLight: {
         fontSize: 11,
-        fontFamily: 'F37Ginger-Regular',
-        color: pallette.primaryDark,
+        color: palette.primaryDark,
     },
     bar: {
         backgroundColor: 'white',
@@ -91,8 +90,8 @@ const styles = StyleSheet.create({
         borderRightWidth: StyleSheet.hairlineWidth,
         borderTopWidth: StyleSheet.hairlineWidth,
         borderBottomWidth: StyleSheet.hairlineWidth,
-        borderColor: pallette.divider,
-        borderRightColor: pallette.dividerLight,
+        borderColor: palette.divider,
+        borderRightColor: palette.dividerLight,
         elevation: 0,
     },
 });

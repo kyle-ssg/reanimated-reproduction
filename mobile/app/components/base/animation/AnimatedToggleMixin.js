@@ -47,7 +47,7 @@ module.exports = {
             });
         }
     },
-    componentWillReceiveProps(newProps) {
+    UNSAFE_componentWillReceiveProps(newProps) {
         _.each(newProps.animatedProps, (key) => {
             const easing = newProps.value ? newProps.easing : newProps.easingOut;
             // eslint-disable-next-line eqeqeq

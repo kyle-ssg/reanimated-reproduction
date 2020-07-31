@@ -1,5 +1,3 @@
-
-// import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
@@ -22,17 +20,17 @@ export default class ErrorMessage extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+const styles = ReactNative.StyleSheet.create({
     container: {
     },
     errorIcon: {
         fontSize: 18,
         marginBottom: 2,
-        color: pallette.danger,
+        color: palette.danger,
     },
 
     ErrorMessageText: {
-        color: pallette.danger,
+        color: palette.danger,
         textAlign: 'center',
     },
     text: {

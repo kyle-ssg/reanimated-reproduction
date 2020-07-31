@@ -1,6 +1,8 @@
 import './utils';
 import { Actions } from './app-actions';
-import produce from "immer"
+import produce,{ enableES5 } from "immer"
+enableES5() // required for react native hermes
+
 // eslint-disable-next-line no-unused-vars
 import { appendItem, deleteItem, itemError, itemLoaded, itemLoading, itemSaved, itemSaving } from './utils/reducer-helpers';
 import { AppState } from './state-type';
@@ -41,6 +43,9 @@ const defaultReducer =produce(
                 Object.keys(action.data).map((k)=>{
                     state[k] = action.data[k];
                 });
+                break;
+            case Actions.SET_ACTIVE_SCREEN:
+                itemLoaded(state, 'activeScreen', action, true)
                 break;
                 // END OF REDUCER
                 // KEEP THE ABOVE LINE IN, IT IS USED BY OUR CLI

@@ -41,7 +41,7 @@ const TheComponent = class extends Component {
 };
 
 TheComponent.propTypes = {};
-const styles = StyleSheet.create({
+const styles = ReactNative.StyleSheet.create({
     checkbox: { width: 54, height: 54 },
 });
 module.exports = TheComponent;

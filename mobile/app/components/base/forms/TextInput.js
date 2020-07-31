@@ -5,7 +5,6 @@
 import propTypes from 'prop-types';
 import ReactNative, { Animated, Easing } from 'react-native';
 import React, { Component } from 'react';
-import Animations from '../../../project/animations';
 
 const textInputPropTypes = {
     onBlur: propTypes.func,
@@ -23,7 +22,6 @@ const TextInput = class extends Component {
 
   constructor(props, context) {
       super(props, context);
-      this.animation = new Animated.Value(0.0001);
   }
 
   clear = () => {
@@ -39,24 +37,12 @@ const TextInput = class extends Component {
   };
 
   onFocus = () => {
-      Animated.timing(this.animation, {
-          toValue: 1,
-          duration: 150,
-          useNativeDriver: true, // <-- Add this
-          easing: Animations.standard,
-      }).start();
       if (this.props.onFocus) {
           this.props.onFocus();
       }
   };
 
   onBlur = (e) => {
-      Animated.timing(this.animation, {
-          toValue: 0.0001,
-          duration: 300,
-          useNativeDriver: true, // <-- Add this
-          easing: Easing.cubic,
-      }).start();
       if (this.props.onBlur) {
           this.props.onBlur(e);
       }
@@ -116,7 +102,7 @@ TextInput.propTypes = {
     testID: propTypes.string,
 };
 
-// const styles = StyleSheet.create({
+// const styles = ReactNative.StyleSheet.create({
 //
 // });
 

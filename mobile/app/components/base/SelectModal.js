@@ -72,7 +72,7 @@ const NativeModal = class extends React.Component {
               <FormGroup>
                   <Column>
                       <ButtonPrimary style={Styles.mb5} onPress={this.onDone}>
-              Done
+                          Done
                       </ButtonPrimary>
                   </Column>
               </FormGroup>

@@ -1,10 +1,3 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 #import "AppDelegate.h"
 
 #import <React/RCTBridge.h>
@@ -12,66 +5,65 @@
 #import <React/RCTRootView.h>
 #import <React/RCTLinkingManager.h>
 
-//FACEBOOK_LOGIN
-//#import <FBSDKCoreKit/FBSDKCoreKit.h>
-//GOOGLE_LOGIN
-//#import "RNGoogleSignin.h"
-//REACT_NATIVE_FIREBASE
-@import Firebase;
-//REACT_NATIVE_NAVIGATION
-#import <ReactNativeNavigation/ReactNativeNavigation.h>
-//REACT_NATIVE_BRANCH
-//#import <RNBranch/RNBranch.h> // at the top
-//REACT_NATIVE_CODE_PUSH
-#import <CodePush/CodePush.h>
+//#ifdef FB_SONARKIT_ENABLED
+//#import <FlipperKit/FlipperClient.h>
+//#import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
+//#import <FlipperKitUserDefaultsPlugin/FKUserDefaultsPlugin.h>
+//#import <FlipperKitNetworkPlugin/FlipperKitNetworkPlugin.h>
+//#import <SKIOSNetworkPlugin/SKIOSNetworkAdapter.h>
+//#import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
+//
+//static void InitializeFlipper(UIApplication *application) {
+//  FlipperClient *client = [FlipperClient sharedClient];
+//  SKDescriptorMapper *layoutDescriptorMapper = [[SKDescriptorMapper alloc] initWithDefaults];
+//  [client addPlugin:[[FlipperKitLayoutPlugin alloc] initWithRootNode:application withDescriptorMapper:layoutDescriptorMapper]];
+//  [client addPlugin:[[FKUserDefaultsPlugin alloc] initWithSuiteName:nil]];
+//  [client addPlugin:[FlipperKitReactPlugin new]];
+//  [client addPlugin:[[FlipperKitNetworkPlugin alloc] initWithNetworkAdapter:[SKIOSNetworkAdapter new]]];
+//  [client start];
+//}
 
-#if DEBUG
-#import <FlipperKit/FlipperClient.h>
-#import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
-#import <FlipperKitUserDefaultsPlugin/FKUserDefaultsPlugin.h>
-#import <FlipperKitNetworkPlugin/FlipperKitNetworkPlugin.h>
-#import <SKIOSNetworkPlugin/SKIOSNetworkAdapter.h>
-#import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
+//#endif
 
-static void InitializeFlipper(UIApplication *application) {
-  FlipperClient *client = [FlipperClient sharedClient];
-  SKDescriptorMapper *layoutDescriptorMapper = [[SKDescriptorMapper alloc] initWithDefaults];
-  [client addPlugin:[[FlipperKitLayoutPlugin alloc] initWithRootNode:application withDescriptorMapper:layoutDescriptorMapper]];
-  [client addPlugin:[[FKUserDefaultsPlugin alloc] initWithSuiteName:nil]];
-  [client addPlugin:[FlipperKitReactPlugin new]];
-  [client addPlugin:[[FlipperKitNetworkPlugin alloc] initWithNetworkAdapter:[SKIOSNetworkAdapter new]]];
-  [client start];
-}
-#endif
+#import <Firebase.h> // REACT_NATIVE_FIREBASE
+#import <CodePush/CodePush.h> // REACT_NATIVE_CODEPUSH
+//#import <RNBranch/RNBranch.h> REACT_NATIVE_BRANCH
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+// #ifdef FB_SONARKIT_ENABLED
+//   InitializeFlipper(application);
+// #endif
+
   #if DEBUG
-    InitializeFlipper(application);
-  #endif
-  //REACT_NATIVE_FUREBASE
-  [FIRApp configure];
-
-//  [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES]; // <-- add this
-
-#if DEBUG
-  for (NSString* family in [UIFont familyNames])
-  {
-    NSLog(@"%@", family);
-    for (NSString* name in [UIFont fontNamesForFamilyName: family])
+    for (NSString* family in [UIFont familyNames])
     {
-      NSLog(@" %@", name);
+      NSLog(@"%@", family);
+      for (NSString* name in [UIFont fontNamesForFamilyName: family])
+      {
+        NSLog(@" %@", name);
+      }
     }
-  }
-#endif
+  #endif
 
-  [ReactNativeNavigation bootstrap:[self sourceURLForBridge:nil] launchOptions:launchOptions];
+  [FIRApp configure]; // REACT_NATIVE_FIREBASE
+//  [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES]; // <-- REACT_NATIVE_BRANCH
 
-//  [[FBSDKApplicationDelegate sharedInstance] application:application
-//                           didFinishLaunchingWithOptions:launchOptions];
+  RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
+  RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
+                                                   moduleName:@"boilerplate"
+                                            initialProperties:nil];
 
+  // Set the app background colour
+  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
+
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  UIViewController *rootViewController = [UIViewController new];
+  rootViewController.view = rootView;
+  self.window.rootViewController = rootViewController;
+  [self.window makeKeyAndVisible];
   return YES;
 }
 
@@ -80,10 +72,10 @@ static void InitializeFlipper(UIApplication *application) {
 #if DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 #else
-  return [CodePush bundleURL];
+  return [CodePush bundleURL]; // REACT_NATIVE_CODEPUSH
+//  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
 }
-
 
 // Facebook/Google/Branch.io URL handling
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -97,7 +89,7 @@ static void InitializeFlipper(UIApplication *application) {
 //    return YES;
 //  }
 
-  //
+// REACT_NATIVE_BRANCH
 //  if ([RNBranch.branch application:application openURL:url sourceApplication:sourceApplication annotation:annotation]) {
 //    return YES;
 //  }
@@ -111,19 +103,12 @@ static void InitializeFlipper(UIApplication *application) {
 //    return YES;
 //  }
 
-  return [RCTLinkingManager application:application openURL:url
-                      sourceApplication:sourceApplication annotation:annotation];
+  return [RCTLinkingManager application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 
 // REACT_NATIVE_BRANCH
 //- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *restorableObjects))restorationHandler {
-//  return [RNBranch continueUserActivity:userActivity];
+//    return [RNBranch continueUserActivity:userActivity];
 //}
-- (BOOL)application:(UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity
- restorationHandler:(nonnull void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler
-{
-  return [RCTLinkingManager application:application
-                   continueUserActivity:userActivity
-                     restorationHandler:restorationHandler];
-}
+
 @end
