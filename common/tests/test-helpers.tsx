@@ -1,4 +1,5 @@
-import React from 'react';
+import
+  React from 'react';
 import { ExpectApi, expectSaga } from 'redux-saga-test-plan';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';

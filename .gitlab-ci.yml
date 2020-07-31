@@ -11,7 +11,7 @@ cache:
     - echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p # - used to increase file watchers limit on Linux
     - cd mobile
     - npm i
-    - npm run env
+    - npm run env_script
 
 .mobile_deploy_common_required_changes: &mobile_deploy_common_required_changes
   changes:
@@ -95,7 +95,7 @@ deploy-mobile-ios-staging:
 .web_deploy_common_script: &web_deploy_common_script
   before_script:
     - npm i -g now
-    - npm run env
+    - npm run env_script
 
 deploy-web-production:
     image: mhart/alpine-node:10

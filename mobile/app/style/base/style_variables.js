@@ -1,39 +1,49 @@
 /**
  * Created by kylejohnson on 18/04/2016.
  */
-import { PixelRatio } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { initialWindowMetrics } from 'react-native-safe-area-context';
 
-const em = require('../base/style_pxToEm');
+const em = require('./style_pxToEm');
+let deviceH = Dimensions.get('screen').height;
+// the value returned does not include the bottom navigation bar, I am not sure why yours does.
+let windowH = Dimensions.get('window').height;
+let bottomNavBarH = deviceH - windowH;
 
-global.pallette = { bodyBackground: '#fff', // General app  background
-    primary: '#3896DF',
-    secondary: '#D8315B',
-    success: '#3CBF88',
-    divider: '#d1d1d1',
-    textLight: '#a8a8a8',
-    text: '#4c4c4c',
-    ...global.pallette };
+global.palette = { bodyBackground: '#fff', // General app  background
+    primary: 'rgb(10,132,255)',
+    primaryPressed: 'rgb(0,109,217)',
+    secondary: 'rgb(255,55,95)',
+    secondaryPressed: 'rgb(236,50,86)',
+    success: 'rgb(48,209,88)',
+    divider: 'rgb(229,229,234)',
+    textLight: 'rgb(174,174,178)',
+    iconFaint: 'rgb(229,229,234)',
+    text: 'rgb(28,28,30)',
+    ...global.palette };
 
 //= = Other Variables
 
-global.styleVariables = {
+export const styleVariables =  global.styleVariables = {
+    insets: {
+        ...initialWindowMetrics.insets||{},
+        bottom: Platform.select({
+            android: initialWindowMetrics?.insets.bottom  - bottomNavBarH,
+            ios: initialWindowMetrics?.insets.bottom,
+        }),
+        top: Platform.select({
+            // android: initialWindowMetrics.insets.top  - StatusBar.currentHeight, // if you don't use a transparent status bar the height gets included
+            android: initialWindowMetrics?.insets.top,
+            ios: initialWindowMetrics?.insets.top,
+        })
+    },
 
     //= = Typography
-    fontSizeBase: em(1),
-    fontSizeH1: em(2.286), // 32px
-    fontSizeH2: em(1.75), // 24px
-    fontSizeH3: em(1.25), // 17px
-    fontSizeH4: em(1), // 14px
-    fontSizeParagraph: em(1.2), // 16px
-
-    fontSizeAlert: em(1.1),
-    fontSizeIcon: em(2),
-
-    fontSizeAnchor: em(1.1),
-    fontSizeAnchorIcon: em(2),
-    fontSizeAnchorLarge: em(2),
-    fontSizeAnchorIconLarge: em(2.6),
-
+    fontSizeBase: em(1), //16px
+    fontSizeH1: em(2), // 32px
+    fontSizeH2: em(1.5), // 24px
+    fontSizeH3: em(1.25), // 20px
+    fontSizeH4: em(1), // 16px
 
     // Buttons
     buttonHeight: 44,
@@ -41,46 +51,29 @@ global.styleVariables = {
     // Inputs
     fontSizeInputLarge: em(2),
 
-    // Lists
-    fontSizelistitem: em(1), // 10px
-    fontSizelistTitle: em(0.857), // 12px
-
-    button: 44,
-    buttonTall: 54,
-    // Nav
-
-    baseNavHeight: 44,
+    // Grid
     marginBaseVertical: 15,
     marginBaseHorizontal: 10,
     paddingBase: 15,
     gutterBase: 10,
     borderWidth: 1,
-    borderBottomWidth: 2 / PixelRatio.get(),
+    borderBottomWidth: StyleSheet.hairlineWidth*2,
     disabledOpacity: 0.2,
     borderRadiusDefault: 2,
 
-    // ## Notifications
+    // font weights and family
+    normalFontWeight: 'normal',
+    boldFontWeight: 'bold',
+    buttonFontWeight: 'bold',
 
-    notificationWidth: 18,
-    notificationHeight: 18,
-    notificationBorderRadius: 12,
-    notificationFontSize: 9,
+    normalFontFamily: Platform.select({ ios: 'System', android: 'System' }),
+    italicFontFamily: Platform.select({ ios: 'System', android: 'System' }),
+    boldFontFamily: Platform.select({ ios: 'System', android: 'System' }),
+    buttonFontFamily: Platform.select({ ios: 'System', android: 'System' }),
 
-    // Avatars
-    avatarWidth: 64,
-    avatarHeight: 64,
-    avatarRadius: 32,
-
-    avatarSmallWidth: 32,
-    avatarSmallHeight: 32,
-    avatarSmallRadius: 16,
-
-    // Posts
-    postWidth: 500,
-    postHeight: 500,
     ...global.styleVariables };
 
-global.colour = { ...pallette,
+global.colour = { ...palette,
     iosStyle: 0,
     buttonActiveOpacity: 0.8,
     disabledOpacity: 0.8,
@@ -88,71 +81,42 @@ global.colour = { ...pallette,
     backdropBackground: 'rgba(0,0,0,0.2)',
 
     // text
-    text: pallette.text, // General app text colour
-    anchor: pallette.anchor, // General app text colour
-    textLight: pallette.textLight, // General app text colour
-    label: pallette.textLightest, // text color for labels
+    text: palette.text, // General app text colour
+    anchor: palette.anchor, // General app text colour
+    textLight: palette.textLight, // General app text colour
+    label: palette.textLightest, // text color for labels
 
     // input
-    input: pallette.text,
+    input: palette.text,
     inputBackground: '#fff',
-    inputBorder: pallette.divider,
-    placeholderTextColor: pallette.textLight,
-    disabledText: pallette.textLight,
-
-    // radio
-    radio: '#ffffff',
-    radioBorder: pallette.toggle,
-    radioText: pallette.text,
-    radioTextActive: pallette.text, // text color for labels
-    radioActive: pallette.toggleActive,
-    radioActiveBorder: pallette.toggleActive,
-
-    // tabs
-    tabIcon: pallette.primaryDark,
-    tabBackground: 'white',
-    tabActive: pallette.primary,
-    tabText: pallette.text,
-
-    // notifications
-    notification: pallette.primary,
-    notificationText: '#fff',
-
-    // switch
-
-    switchActive: pallette.toggleActive, // text color for labels
-    switchActiveBackground: pallette.toggleActiveAlt, // text color for labels
-
-    // Menu.js
-    menuDivider: pallette.divider,
-    menu: pallette.secondary,
-    menuItemText: pallette.text,
+    inputBorder: palette.divider,
+    placeholderTextColor: palette.textLight,
+    disabledText: palette.textLight,
 
     // list items
     listBackground: 'white',
     listBackgroundAlt: '#f9f9fa',
-    listItem: 'transparent',
     listItemNav: '#d9d9d9',
-    listItemDivider: pallette.divider,
+    listItemDivider: palette.divider,
 
-    dividerAlt: pallette.secondary,
+    dividerAlt: palette.secondary,
 
     // Loader.js
-    loader: pallette.text,
+    loader: palette.text,
 
     // BUTTON / SELECT COLOURS
 
-    buttonDefault: pallette.primary,
-    btnAlt: pallette.primary,
+    buttonDefault: palette.primary,
+    btnAlt: palette.primary,
 
     modalBackground: 'white',
 
     panel: '#f1f1f1',
 
     // nav
-    navBar: pallette.primary,
+    navBar: palette.primary,
     navBarIcon: 'white',
-    // navBarSubtitle: pallette.secondary,
+    // navBarSubtitle: palette.secondary,
     navBarButtonText: 'white',
     navBarBorder: 'transparent',
     navBarText: 'black',
@@ -163,3 +127,4 @@ global.colour = { ...pallette,
     twitter: '#1DA1F3',
     google: '#dd4b39',
     ...global.colour };
+

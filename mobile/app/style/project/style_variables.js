@@ -1,27 +1,23 @@
 require('../base/style_pxToEm');
 
 
-global.pallette = {
-    bodyBackground: '#fff', // General app  background
-    // tabs
-    navBarText: 'black',
-    navBarIcon: 'black',
-
-    tabIcon: '#666666',
-    tabText: 'white',
-    tabIconActive: 'white',
-    tabTextActive: 'white',
-    tabBackground: '#2d2d2d',
-    tabActive: 'white',
+export const projectPalette =  global.palette = {
+    bodyBackground: '#fff', // General app  background (overriding palette in base/stylevariables)
     danger: '#fe4948',
 };
 
-global.styleVariables = {
+export const projectStyles = global.styleVariables = {
 
-    // normalFontFamily: Platform.select({ ios: 'Helvetica', android: 'ProximaNovaA-Regular' }),
-    // italicFontFamily: Platform.select({ ios: 'ProximaNovaA-RegularIt', android: 'ProximaNovaA-RegularIt' }),
-    // semiboldFontFamily: Platform.select({ ios: 'Proxima Nova Alt', android: 'ProximaNovaA-Semibold' }),
-    // boldFontFamily: Platform.select({ ios: 'Proxima Nova Alt', android: 'ProximaNovaA-Bold' }),
+    // font weights and family (overriding base/styleVariables)
+    normalFontWeight: 'normal',
+    boldFontWeight: 'bold',
+    buttonFontWeight: '500',
 
-    // eslint-disable-next-line import/no-unresolved
-    ...require('./style_platform_variables') };
+    normalFontFamily: Platform.select({ ios: 'System', android: 'System' }),
+    italicFontFamily: Platform.select({ ios: 'System', android: 'System' }),
+    boldFontFamily: Platform.select({ ios: 'System', android: 'System' }),
+    buttonFontFamily: Platform.select({ ios: 'System', android: 'System' }),
+
+    ...require('./style_platform_variables')
+};
+

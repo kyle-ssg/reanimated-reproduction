@@ -1,0 +1,13 @@
+diff --git a/node_modules/@types/react-native/index.d.ts b/node_modules/@types/react-native/index.d.ts
+index d272ac7..2c4e92b 100644
+--- a/node_modules/@types/react-native/index.d.ts
++++ b/node_modules/@types/react-native/index.d.ts
+@@ -64,6 +64,8 @@
+ /// <reference path="LaunchScreen.d.ts" />
+ 
+ import * as React from 'react';
++// tslint:disable-next-line:export-just-namespace
++export as namespace ReactNative;
+ 
+ type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+ 

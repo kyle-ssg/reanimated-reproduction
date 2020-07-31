@@ -84,7 +84,7 @@ const Select = class extends Component {
                   renderNoResults()
               ) : (
                   <Text style={Styles.textCenter}>
-            No Results Found for:
+                      No Results Found for:
                       <Bold>{search}</Bold>
                   </Text>
               )}

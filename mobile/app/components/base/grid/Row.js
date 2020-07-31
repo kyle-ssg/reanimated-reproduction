@@ -7,7 +7,6 @@ const Row = (props) => (
       style={[
           styles.row,
           props.space && { justifyContent: 'space-between' },
-          props.noWrap && { flexWrap: 'nowrap' },
           props.style,
       ]}
     >
@@ -24,10 +23,9 @@ Row.propTypes = {
     style: propTypes.any,
 };
 
-const styles = StyleSheet.create({
+const styles = ReactNative.StyleSheet.create({
     row: {
         alignSelf: 'stretch',
-        flexWrap: 'wrap',
         flexDirection: 'row',
         alignItems: 'center',
     },

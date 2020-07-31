@@ -26,7 +26,7 @@
     "/.bin",
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json",
-    "/src"
+    "/mobile/src"
   ],
   "keywords": [
     "oclif"
