@@ -10,6 +10,7 @@ import { RouteUrls } from '../../app/route-urls';
 import withScreen, { Screen } from '../../app/screens/withScreen';
 import { ButtonSecondary } from '../../app/components/base/forms/Button';
 import { routes } from '../../app/routes';
+import { FocusAwareStatusBar } from 'components/utility-components/FocusAwareStatusBar';
 
 const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;
@@ -30,12 +31,16 @@ class _GenericScreen extends Component<ComponentType> {
       })
   }
   goModal = (url:RouteUrls)=> {
-      this.props.push(url,{ screenOptions:{
-          stackPresentation:"modal"
-      } })
+      this.props.push(url,{
+          statusBar: { backgroundColor: "red", barStyle:"light-content", animated:true },
+          screenOptions:{
+              stackPresentation:"modal"
+          }
+      })
   }
   render() {
       return this.props.children || <Flex style={Styles.body}>
+          <FocusAwareStatusBar barStyle="dark-content" animated={true}/>
           <FlatList
             keyExtractor={(item)=>item}
             style={{ padding:20, flex:1 }} data={Object.values(RouteUrls)} renderItem={({ item })=> item !== "/storybook" && (
@@ -68,7 +73,6 @@ class StackExample extends Component {
       return (
           <>
               <Provider store={store()}>
-                  <StatusBar backgroundColor="transparent" translucent barStyle="dark-content"/>
                   <>
                       <NavigationContainer independent>
                           <Navigator screenOptions={defaultNavigationOptions} initialRouteName="1">

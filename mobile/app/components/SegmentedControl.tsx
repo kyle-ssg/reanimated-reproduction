@@ -1,172 +1,122 @@
-import React from 'react';
-import { Component } from 'react';
-import { Animated, Pressable, TextStyle, ViewStyle } from 'react-native';
-import { ease, easeIn } from '../project/animations';
-import { PanGestureHandler } from 'react-native-gesture-handler'
-
-type ComponentType = {
-  value: any
-  items: { value:any; label:string }[],
-  onChange: (item:any)=>void,
-  disabled?: boolean,
-  trackStyle?: ViewStyle,
-  barStyle?: ViewStyle,
-  textStyle?: TextStyle,
-  textActiveStyle?: TextStyle,
-  textPressedStyle?: TextStyle,
-  paddingX?: number,
+import React, { FunctionComponent, useEffect, useState } from 'react'; // we need this to make JSX compile
+import { useMeasure } from 'components/utility-components/useMeasure';
+import { Pressable, TextStyle, ViewStyle } from 'react-native';
+import {
+    PanGestureHandler,
+    PanGestureHandlerGestureEvent
+} from 'react-native-gesture-handler';
+import Animated, { Easing } from 'react-native-reanimated';
+import { timing } from 'react-native-redash';
+function clamp(num: number, min: number, max: number): number {
+    return Math.min(Math.max(num, min), max);
 }
-
 const CONTAINER_PADDING_Y = 6;
 const CONTAINER_PADDING_X = 6;
 const CONTAINER_HEIGHT = 44;
 const CONTAINER_RADIUS = 8;
 
-const animationConfig:Animated.TimingAnimationConfig = {
-    duration: 250,
-    easing: ease,
-    useNativeDriver: true,
-    toValue:1,
-};
+const SegmentedControl: FunctionComponent<SegmentControlType> = ({
+    items,
+    disabled,
+    textStyle,
+    textPressedStyle,
+    textActiveStyle,
+    barStyle,
+    trackStyle,
+    paddingX = CONTAINER_PADDING_X,
+    paddingY = CONTAINER_PADDING_Y,
+    value,
+    onChange,
+}) => {
+    const [initialised, setInitialised] = useState(false);
+    const [sliderPosition, setSliderPosition] = useState(
+        new Animated.Value<number>(0),
+    );
+    const [size, onLayout] = useMeasure((initialSize)=>{
+        const initialWidth = initialSize.width;
+        const initialSliderWidth = (initialWidth - paddingX * 2) * (1 / items.length)
+        const index = items.indexOf(value) || 0;
+        setSliderPosition(new Animated.Value(initialSliderWidth * index));
+        setInitialised(true)
+    });
+    const sliderWidth = size && (size.width - paddingX * 2) * (1 / items.length)
+    // This hook is used to animate the slider position
+    Animated.useCode(() => {
+        if (initialised) {
+            const index = items.indexOf(value);
+            if (index!== -1) {
+                return Animated.set(
+                    sliderPosition,
+                    timing({
+                        from: sliderPosition,
+                        to: sliderWidth*index,
+                        easing: Easing.bezier(0.25, 0.1, 0.25, 1),
+                        duration: 250,
+                    }),
+                );
+            }
+        }
+    }, [value,initialised,items]);
 
-class TheComponent extends Component<ComponentType> {
+    const handleGestureEvent = (event: PanGestureHandlerGestureEvent): void => {
+        if (disabled) return;
 
-  getSelectedIndex:()=>number = ()=> {
-      const index = this.props.items?.indexOf(this.props.value) || 0
-      if (index !== -1) {
-          return index
-      }
-      return 0;
-  }
+        const { x } = event.nativeEvent;
 
-  state = {
-      width:0,
-      itemWidth:0,
-  };
+        const calculatedIndex = Math.floor((x / size.width) * items.length);
+        const index = clamp(calculatedIndex, 0, items.length - 1);
+        const item = items[index];
+        if (item !==value) {
+            onChange(item);
+        }
+    };
 
-  clampedValue = 0;
-  selectedIndex= this.getSelectedIndex();
-  animatedValue = new ReactNative.Animated.Value(this.getSelectedIndex())
+    return (
+        <View style={[styles.track, trackStyle, { paddingHorizontal:paddingX, paddingVertical:paddingY }]} onLayout={onLayout}>
+            {!!sliderWidth && (
 
-  animateTo = (index)=>
-      Animated.timing(this.animatedValue, { ...animationConfig, toValue:index }).start()
-
-  panResponder = null;
-  createPanResponder = ()=> this.panResponder = ReactNative.PanResponder.create({
-      onStartShouldSetPanResponder: () => !this.props.disabled,
-      onPanResponderGrant: this.onDragStart,
-      onPanResponderMove: (evt, gestureState)=>{
-          const current = gestureState.dx + this.clampedValue;
-          const sensitivity = this.state.itemWidth/2;
-          const selectedIndex = this.selectedIndex;
-          const shouldGoBack = this.selectedIndex >0 &&  current <0  && (current < -sensitivity);
-          const shouldGoForward = this.selectedIndex < this.props.items.length-1 &&  current >0  && (current > sensitivity);
-
-          if (shouldGoBack) {
-              this.selectedIndex --;
-              this.clampedValue = -gestureState.dx;
-              this.props.onChange(this.props.items[selectedIndex-1])
-          }
-          if (shouldGoForward) {
-              this.clampedValue = -gestureState.dx
-              this.selectedIndex ++;
-              this.props.onChange(this.props.items[selectedIndex+1])
-          }
-      },
-      onPanResponderRelease: ()=> {
-          this.clampedValue =0;
-      }
-  })
-
-  getAnimatedValue = (itemWidth,selectedIndex)=> {
-      return itemWidth* selectedIndex;
-  }
-
-  onLayout = (e)=> {
-      e.currentTarget.measure((x, y, width, height, pageX, pageY)=>{
-          if (this.state.width !== width) {
-              const itemWidth = ((width-(
-                  this.props.paddingX || CONTAINER_PADDING_X
-              )*2)/this.props.items?.length);
-              this.animatedValue = new Animated.Value(this.getAnimatedValue(itemWidth, this.getSelectedIndex()))
-              this.createPanResponder();
-              this.setState({ width: width, itemWidth })
-          }
-      })
-  }
-
-  componentDidUpdate(prevProps: Readonly<ComponentType>, prevState: Readonly<{}>, snapshot?: any) {
-      if (prevProps.value !== this.props.value) {
-          this.selectedIndex = this.getSelectedIndex(); // we catch the current value as to not interrupt animation
-          this.animateTo(this.getAnimatedValue(this.state.itemWidth, this.getSelectedIndex()))
-      }
-  }
-
-  _onPanGestureEvent =  Animated.event([{ nativeEvent: { x: this.animatedValue } }], {
-      useNativeDriver: true,
-  });
-
-  render() {
-      const { props:{ items, onChange, disabled, trackStyle, barStyle, textStyle, textPressedStyle, textActiveStyle }, state:{ width } }=this
-      if(!items) {return}
-      const itemWidth = this.state.itemWidth;
-
-      const positionStyle = !!this.animatedValue && {
-          width: itemWidth,
-          transform:[{ translateX:this.animatedValue }]
-      }
-
-
-      return <View
-        onLayout={this.onLayout}
-        style={[
-            styles.track,
-            disabled && styles.disabled,
-            trackStyle
-        ]}>
-          <Row style={styles.barContainer}>
-              <Animated.View
-                {...this.panResponder?.panHandlers} todo pan
-                style={[styles.bar, barStyle, positionStyle]}>
-                  <Flex/>
-              </Animated.View>
-              {items.map((item, i)=>(
-                  <Pressable
-                    pointerEvents={this.props.value === item?"none":"auto"}
-                    disabled={disabled}
-                    onPress={()=>{
-                        this.selectedIndex = i;
-                        this.props.onChange(item)
-                    }}
-                    style={styles.labelContainer}
-                    key={i}
+            <PanGestureHandler onGestureEvent={handleGestureEvent}>
+                <View style={styles.barContainer}>
+                    <>
+                        <Animated.View style={[styles.bar, barStyle, { width: sliderWidth, transform: [{ translateX: sliderPosition, }], }]}/>
+                        {items.map((item, i) => (
+                            <Pressable
+                              key={i}
+                              pointerEvents={value === item ? 'none' : 'auto'}
+                              disabled={disabled}
+                              onPress={() => {
+                                  onChange(item);
+                              }}
+                              style={styles.labelContainer}
                       >
-                      {({ pressed })=>(
-                          <Text style={[
-                              styles.label,
-                              textStyle,
-                              pressed && styles.labelPressed,
-                              pressed && textPressedStyle,
-                              this.props.value === item && styles.labelActive,
-                              this.props.value === item && textActiveStyle,
-                          ]}>
-                              {item.label}
-                          </Text>
-                      )}
-                  </Pressable>
-              ))}
-          </Row>
-      </View>
-      ;
-  }
-}
+                                {({ pressed }) => (
+                                    <Text style={[
+                                        styles.label,
+                                        textStyle,
+                                        pressed && styles.labelPressed,
+                                        pressed && textPressedStyle,
+                                        value === item && styles.labelActive,
+                                        value === item && textActiveStyle,
+                                    ]}
+                            >
+                                        {item.label}
+                                    </Text>
+                                )}
+                            </Pressable>
+                        ))}
+                    </>
+                </View>
+            </PanGestureHandler>
+            )}
+        </View>
+    );
+};
 
 const styles = ReactNative.StyleSheet.create({
     track: {
         height:CONTAINER_HEIGHT,
         borderRadius: 8,
-        paddingHorizontal: CONTAINER_PADDING_X,
-        paddingVertical: CONTAINER_PADDING_Y,
+        justifyContent:'center',
         backgroundColor:'#ededef',
         position:'relative',
     },
@@ -198,6 +148,23 @@ const styles = ReactNative.StyleSheet.create({
     labelPressed: {
         color:"#333"
     }
-})
+});
 
-export default TheComponent;
+export default SegmentedControl;
+
+type SegmentOption = { value: any; label: string }
+
+type BaseType = {
+  value: any
+  onChange: (item: any) => void,
+  disabled?: boolean,
+  trackStyle?: ViewStyle,
+  barStyle?: ViewStyle,
+  textStyle?: TextStyle,
+  textActiveStyle?: TextStyle,
+  textPressedStyle?: TextStyle,
+  paddingX?: number,
+  paddingY?: number,
+}
+type SegmentLabelType = BaseType & { item: SegmentOption }
+type SegmentControlType = BaseType & { items: SegmentOption[] }
