@@ -13,6 +13,7 @@
     "android:apk": "cd ./android && ./gradlew assembleProdRelease && open ./app/build/outputs/apk/prod/release && cd ..",
     "android:apk:uat": "cd ./android && ./gradlew assembleUatRelease && open ./app/build/outputs/apk/uat/release && cd ..",
     "android:hash:dev": "keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64\n",
+    "android:keystore": "keytool -genkeypair -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000",
     "env_script": "sh .bin/env.sh",
     "lint": "eslint . || exit 0",
     "lint:fix": "eslint . --fix || exit 0",
