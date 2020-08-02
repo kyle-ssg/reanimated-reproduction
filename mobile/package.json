@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "android": "react-native run-android --variant=uatDebug",
+    "android": "react-native run-android --variant=uatDebug --appIdSuffix 'uat'",
     "android:prod": "react-native run-android --variant=prodDebug",
     "android:release": "react-native run-android --variant=prodRelease",
-    "android:release:uat": "react-native run-android --variant=uatRelease",
+    "android:release:uat": "react-native run-android --variant=uatRelease --appIdSuffix 'uat'",
     "android:bundle": "cd ./android && ./gradlew bundleProdRelease && open ./app/build/outputs/bundle/prodRelease && cd ..",
     "android:bundle:uat": "cd ./android && ./gradlew bundleUatRelease && open ./app/build/outputs/bundle/uatRelease && cd ..",
     "android:apk": "cd ./android && ./gradlew assembleProdRelease && open ./app/build/outputs/apk/prod/release && cd ..",
