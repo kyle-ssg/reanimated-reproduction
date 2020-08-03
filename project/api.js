@@ -20,18 +20,18 @@ const API = {
     },
     loginRedirect() {
         const params = Router.query;
-        params.redirect = params.redirect || Project.loginRedirect || "/";
+        params.redirect = params.redirect || Project.loginRedirect || '/';
         Router.replace(params.redirect, params.as || params.redirect, { shallow: true });
     },
     getStoredToken(req) {
-        return API.storage.getString("token", req);
+        return API.storage.getString('token', req);
     },
     getStoredUser(req) {
-        return API.storage.getObject("user", req);
+        return API.storage.getObject('user', req);
 
     },
     getStoredRefreshToken(req) {
-        return API.storage.getString("refreshToken", req);
+        return API.storage.getString('refreshToken', req);
     },
     setStoredRefreshToken(v) {
         return API.storage.setString('refreshToken', v);

@@ -50,7 +50,7 @@ class FormPage extends Component {
           setFieldValue,
       } = this.props;
       const hasErrors = !!Object.keys(errors).length || !this.props.grecaptcher;
-      const url = "https://post.formlyapp.com/"+Project.formly+"?redirect=/?submitted=1";
+      const url = 'https://post.formlyapp.com/'+Project.formly+'?redirect=/?submitted=1';
       return (
           <form method="POST" onSubmit={hasErrors ? Utils.preventDefault:undefined}
             action={url}

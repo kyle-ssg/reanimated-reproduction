@@ -3,14 +3,14 @@ import cookie from 'cookie';
 import jsCookie from 'js-cookie';
 
 const getItem = function(key, req) {
-    API.log("STORAGE", "GET", key, req);
+    API.log('STORAGE', 'GET', key, req);
 
     if (req) {
         const parsedCookies = cookie.parse(req.headers.cookie || '');
         return parsedCookies && parsedCookies.token;
     }
     if (typeof window === 'undefined') {
-        return ""
+        return ''
     }
     return jsCookie.get('token');
 }
@@ -23,7 +23,7 @@ const setItem = function(key, value, req) {
 }
 
 const removeItem = function(key, req) {
-    API.log("STORAGE", "REMOVE", key, req);
+    API.log('STORAGE', 'REMOVE', key, req);
 
     if (typeof window === 'undefined') {
         //todo: should be able to set this in nodejs
@@ -37,7 +37,7 @@ const StorageManager = class {
   }
 
   clear = async () => {
-      console.error("Web does not support clear cookies")
+      console.error('Web does not support clear cookies')
   }
 
   setNumber = async (key, val, req) => {

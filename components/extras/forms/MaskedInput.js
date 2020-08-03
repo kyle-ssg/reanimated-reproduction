@@ -175,7 +175,7 @@ export class MaskedInput extends React.Component {
             </div>
         );
     }
-};
+}
 
 MaskedInput.defaultProps = {
     className: '',

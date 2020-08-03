@@ -38,7 +38,7 @@ export function* startup(action = {}) {
 
 export function* onToken(action, result) {
     //  If you need to refresh a user profile, do it here
-    yield handleResponse(action, "LOGIN", result, false);
+    yield handleResponse(action, 'LOGIN', result, false);
 }
 
 export function* login(action) {

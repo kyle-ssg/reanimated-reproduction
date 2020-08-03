@@ -12,7 +12,7 @@ export default (WrappedComponent) => {
     componentDidMount() {
         if (Project.grecaptcher) {
             if (typeof grecaptcha === 'undefined') {
-                alert("Grecaptcha not found, add https://www.google.com/recaptcha/api.js to _app.js")
+                alert('Grecaptcha not found, add https://www.google.com/recaptcha/api.js to _app.js')
             }
             this.interval = setInterval(()=>{
             // See https://www.google.com/recaptcha/admin
@@ -33,7 +33,7 @@ export default (WrappedComponent) => {
 
             }, 100)
         } else {
-            alert("grecaptcha key not found in project.js")
+            alert('grecaptcha key not found in project.js')
         }
     }
 

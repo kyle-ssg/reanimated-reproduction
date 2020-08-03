@@ -1,6 +1,6 @@
 import './utils';
 import { Actions } from './app-actions';
-import produce,{ enableES5 } from "immer"
+import produce,{ enableES5 } from 'immer'
 enableES5() // required for react native hermes
 
 // eslint-disable-next-line no-unused-vars
@@ -11,7 +11,7 @@ const defaultReducer =produce(
     (state: AppState, action): AppState | void => {
         if (typeof window === 'undefined') {
             API.log('SERVER', action.type);
-            if (action.type.includes("ERROR")) {
+            if (action.type.includes('ERROR')) {
                 API.log('SERVER', action)
             }
         } else {

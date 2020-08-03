@@ -8,8 +8,8 @@ const Project = global.Project = {
         DISPATCHER: true,
         SERVER: true,
     },
-    grecaptcher: "6Lc1mf4UAAAAAC6uZ0HaGJ3ufgwCXY4GFoNhMeBD",
-    formly:"boilerplate",
+    grecaptcher: '6Lc1mf4UAAAAAC6uZ0HaGJ3ufgwCXY4GFoNhMeBD',
+    formly:'boilerplate',
     mobile: {
         // Enabling secured storage for mobile requires installation of https://www.npmjs.com/package/react-native-secured-storage. See README for further instructions on installation
         useSecuredStorage: false,

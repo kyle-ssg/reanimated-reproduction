@@ -79,7 +79,7 @@ const BaseActions = {
             ...callbacks,
         };
     },
-    setActiveScreen(name:string, navigator:string="root"):AnyAction {
+    setActiveScreen(name:string, navigator='root'):AnyAction {
         return {
             type: Actions.SET_ACTIVE_SCREEN,
             index: navigator,
