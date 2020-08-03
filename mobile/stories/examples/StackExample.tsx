@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { enableScreens } from 'react-native-screens';
 import { Provider } from 'react-redux';
-import { StatusBar, Animated, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 import store from 'common/store';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import defaultNavigationOptions from '../../app/style/style_navs';
 import { RouteUrls } from '../../app/route-urls';
-import withScreen, { Screen } from '../../app/screens/withScreen';
-import { ButtonSecondary } from '../../app/components/base/forms/Button';
+import withScreen, { Screen } from 'screens/withScreen';
+import { ButtonSecondary } from 'components/base/forms/Button';
 import { routes } from '../../app/routes';
 import { FocusAwareStatusBar } from 'components/utility-components/FocusAwareStatusBar';
 

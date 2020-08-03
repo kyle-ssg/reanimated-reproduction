@@ -1,4 +1,4 @@
-import em from './style_pxToEm';
+require('./style_pxToEm');
 const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
 
     button: {

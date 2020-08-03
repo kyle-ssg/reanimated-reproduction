@@ -1,12 +1,10 @@
 import React, { useRef } from 'react';
-import { FunctionComponent, useState, useEffect } from 'react';
-import { usePreviousState } from './utility-components/usePreviousState';
-import Animated, { Easing } from 'react-native-reanimated';
+import { FunctionComponent } from 'react';
+import Animated  from 'react-native-reanimated';
 import { timing } from 'react-native-redash';
 import { Modal } from 'react-native';
 import { easingConfigModal } from '../project/reanimations';
 
-const x = '';
 export type ModalType = {
     animatedValue?: Animated.Value<number>;
     dark?: boolean;

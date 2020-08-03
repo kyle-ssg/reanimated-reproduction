@@ -3,7 +3,7 @@ import { Actions } from './app-actions';
 import produce,{ enableES5 } from 'immer'
 enableES5() // required for react native hermes
 
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
 import { appendItem, deleteItem, itemError, itemLoaded, itemLoading, itemSaved, itemSaving } from './utils/reducer-helpers';
 import { AppState } from './state-type';
 

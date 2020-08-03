@@ -14,7 +14,7 @@ const getItem = function(key, req) {
     }
     return jsCookie.get('token');
 }
-const setItem = function(key, value, req) {
+const setItem = function(key, value) {
     if (typeof window === 'undefined') {
         //todo: should be able to set this in nodejs
         return;

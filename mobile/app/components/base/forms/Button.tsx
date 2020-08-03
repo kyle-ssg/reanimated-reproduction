@@ -4,7 +4,7 @@ import {
 
 import Utils from 'common/utils/base/_utils';
 
-import React, { FunctionComponent, useEffect, useMemo } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 type ComponentType = ReactNative.PressableProps & {
     children: string
     style?: ReactNative.ViewStyle,
@@ -12,10 +12,6 @@ type ComponentType = ReactNative.PressableProps & {
     pressedStyle?: ReactNative.ViewStyle | ReactNative.ViewStyle[],
 };
 
-const standardAndroidRipple:ReactNative.PressableAndroidRippleConfig = {
-    color: 'rgba(255,255,255,.25)',
-    borderless: false,
-}
 const circleButtonRipple:ReactNative.PressableAndroidRippleConfig = {
     color: 'rgba(0,0,0,.15)',
     borderless: true,

@@ -49,6 +49,7 @@ const Input = class extends PureComponent {
     }
 
     render() {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { children,textarea, isValid, onSearchChange, placeholderChar, inputClassName, ...rest } = this.props;
 
         const className = cn({

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import 'react-native-globals';
 import '../app/style/style_screen';
 import '../app/components/base';
@@ -15,23 +15,9 @@ import WithSetValue from '../../common/providers/WithSetValue';
 import BottomDrawer from 'components/BottomDrawer';
 import { CustomModal } from 'components/CustomModal';
 
-class TheComponent extends React.Component {
-    state = {};
-
-    render() {
-        return <View/>;
-    }
-}
-
-
 setup(() => {
     getStory('Bottom Drawer')
         .add('all',()=>{
-            const items = [
-                { label:'First', value:1 },
-                { label:'Second', value:2 },
-                { label:'Third', value:3 },
-            ]
             return (
                 <WithSetValue defaultValue={false}>
                     {({ value,setValue })=>(

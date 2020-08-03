@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { StyleSheet } from 'react-native';
 
 require('./style_pxToEm');

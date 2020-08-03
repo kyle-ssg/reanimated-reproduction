@@ -30,11 +30,12 @@ const withScreen = (Component: React.ComponentType) => {
         const dispatch = useDispatch();
         React.useEffect(
             () => {
-                const previousStyle = ReactNative.StatusBar?._currentValues?.value || 'dark-content'
-                const unsubscribe = props.navigation.addListener('focus', e => {
+                // @ts-ignore
+              const previousStyle = ReactNative.StatusBar?._currentValues?.value || 'dark-content'
+                const unsubscribe = props.navigation.addListener('focus', () => {
                     dispatch(AppActions.setActiveScreen(props.route.name))
                 });
-                const unsubscribe2 = props.navigation.addListener('beforeRemove', e => {
+                const unsubscribe2 = props.navigation.addListener('beforeRemove', () => {
                     if (Platform.OS === 'ios') {
                         ReactNative.StatusBar.setBarStyle(previousStyle, true)
                     }

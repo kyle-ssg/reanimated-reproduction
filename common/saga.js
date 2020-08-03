@@ -2,7 +2,7 @@ import { put, all, takeLatest } from 'redux-saga/effects';
 import _data from './utils/_data';
 import { Actions } from './app-actions';
 import Project from './project';
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
 import { handleResponse, updateAction, deleteAction, errorHandler, getAction, postAction } from './utils/saga-helpers';
 
 // Called when the application starts up, if using SSR this is done in the server
@@ -11,7 +11,7 @@ export function* startup(action = {}) {
         const {
             ...rest
         } = action.data || {};
-
+        // todo: deprecate _.get for action.data?.token
         const token = _.get(action, 'data.token');
         const refreshToken = _.get(action, 'data.refreshToken');
 

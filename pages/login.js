@@ -21,9 +21,11 @@ class LoginPage extends Component {
 
     login = (e) => {
         Utils.preventDefault(e);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { state: { index, isRegister, ...rest } } = this;
         this.props.login(rest, {
             onSuccess: (user) => {
+                console.log(user)
                 const redir = Utils.fromParam().redirect;
                 this.props.router.replace(redir || '/');
             },

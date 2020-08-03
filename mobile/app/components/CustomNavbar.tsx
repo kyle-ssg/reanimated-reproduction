@@ -1,5 +1,4 @@
-import React, { Component, FunctionComponent, useCallback } from 'react';
-import { StyleSheet } from 'react-native'
+import React, { FunctionComponent, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 type ComponentType = {
@@ -8,7 +7,7 @@ type ComponentType = {
   title: string
 }
 
-const CustomNavbar: FunctionComponent<ComponentType> = ({ style,title, titleStyle, navbarStyle }) => {
+const CustomNavbar: FunctionComponent<ComponentType> = ({ style,title, titleStyle }) => {
     const navigation = useNavigation();
     const pop = useCallback(()=>{
         navigation.pop();

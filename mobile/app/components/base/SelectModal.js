@@ -1,9 +1,10 @@
+import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { Navigation } from 'react-native-navigation';
 import { Loader } from './Loader';
 
 // propTypes: uri: RequiredString
-const NativeModal = class extends React.Component {
+const NativeModal = class extends Component {
   static displayName = 'SelectModal';
 
   static propTypes = {
@@ -29,7 +30,7 @@ const NativeModal = class extends React.Component {
   }
 
   onDone = () => {
-      Navigation.dismissModal(this.props.componentId);
+      //todo: dismiss
       this.props.onChange(this.state.value);
   };
 
@@ -71,9 +72,9 @@ const NativeModal = class extends React.Component {
               )}
               <FormGroup>
                   <Column>
-                      <ButtonPrimary style={Styles.mb5} onPress={this.onDone}>
+                      <Button style={Styles.mb5} onPress={this.onDone}>
                           Done
-                      </ButtonPrimary>
+                      </Button>
                   </Column>
               </FormGroup>
           </Flex>

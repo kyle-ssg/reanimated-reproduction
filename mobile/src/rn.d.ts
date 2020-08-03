@@ -29,6 +29,7 @@ declare global {
   declare let Styles;
   declare let styleVariables = projectStyles;
   declare let Button = Button;
+  declare let ButtonPrimary = ButtonPrimary;
   declare let ButtonSecondary = ButtonSecondary;
   declare let ButtonTertiary = ButtonTertiary;
   declare let routes;

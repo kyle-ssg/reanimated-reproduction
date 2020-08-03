@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { enableScreens } from 'react-native-screens';
 import { Provider } from 'react-redux';
-import { StatusBar,Animated } from 'react-native';
+import { StatusBar } from 'react-native';
 import store from 'common/store';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';

@@ -50,6 +50,7 @@ export class RadioGroup extends React.Component {
     }
 
     render() {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { Component, name, selectedValue, onChange, children, ...rest } = this.props;
         return <Component role="radiogroup" {...rest}>{children}</Component>;
     }

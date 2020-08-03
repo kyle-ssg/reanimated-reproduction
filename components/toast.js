@@ -1,7 +1,6 @@
 import cn from 'classnames';
 import React from 'react';
 import propTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 
 const Message = class extends React.Component {
   static displayName = 'Message'

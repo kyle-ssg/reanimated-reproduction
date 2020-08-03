@@ -1,11 +1,9 @@
-import React, { Component, ReactNode } from 'react';
+import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import defaultNavigationOptions from '../style/style_navs';
 import { routes } from '../routes';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
-import { Platform, ScrollViewProps, TouchableOpacity } from 'react-native';
 import { RouteUrls } from '../route-urls';
-import { initialWindowMetrics } from 'react-native-safe-area-context';
 
 type ComponentType = {}
 
@@ -100,7 +98,7 @@ class TabLayout extends Component<ComponentType> {
 }
 
 const tabBarHeight = 64 + styleVariables.insets.bottom;
-const styles = {
+const styles = ReactNative.StyleSheet.create({
     screen: {
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height - tabBarHeight,
@@ -124,6 +122,6 @@ const styles = {
         height:tabBarHeight,
         paddingBottom: styleVariables.insets.bottom,
     },
-};
+});
 
 export default TabLayout;

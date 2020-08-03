@@ -1,4 +1,4 @@
-import React, { Component, FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import { initialWindowMetrics } from 'react-native-safe-area-context';
 
 //This component, for iOS, lets you draw a custom view where the navbar is, use with a backgroundColor:"transparent"

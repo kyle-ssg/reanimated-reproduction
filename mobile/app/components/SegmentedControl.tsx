@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'; // we need this to make JSX compile
+import React, { FunctionComponent, useState } from 'react'; // we need this to make JSX compile
 import { useMeasure } from 'components/utility-components/useMeasure';
 import { Pressable, TextStyle, ViewStyle } from 'react-native';
 import {

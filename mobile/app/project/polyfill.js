@@ -1,5 +1,4 @@
 // Anything that web has that's common, import here
-import PropTypes from 'prop-types';
 import moment from 'moment';
 
 // Lodash
@@ -17,4 +16,3 @@ import keyBy from 'lodash/keyBy';
 
 global.moment = moment;
 global._ = { each, filter, uniqBy, find, partial, findIndex, merge, range, map, cloneDeep, keyBy };
-global.propTypes = propTypes;

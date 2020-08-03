@@ -147,7 +147,7 @@ export class MaskedInput extends React.Component {
     }
 
     render() {
-        const { isValid, disableInputContainerClass, placeholderChar, inputClassName, ...rest } = this.props;
+        const { isValid, disableInputContainerClass, ...rest } = this.props;
 
         const className = cn({
             'input-container': !disableInputContainerClass,

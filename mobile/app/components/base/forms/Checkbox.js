@@ -32,7 +32,6 @@ const TheComponent = class extends Component {
       return (
           <Animation
             progress={this.animatedValue}
-            ref="animation"
             style={styles.checkbox}
             source={json}
           />

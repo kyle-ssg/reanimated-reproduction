@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'next/router';
 import withAuth from '../common/providers/withAuth';
-import Router from 'next/router';
 
 const withUserRedirect = (WrappedComponent) => {
     class HOC extends Component {

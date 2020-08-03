@@ -33,7 +33,8 @@ global.API = {
         if (getStoreDangerous().getState().user) {
             getStoreDangerous().dispatch(AppActions.logout({
                 onSuccess: () => {
-                    routes.logout();
+                    // todo: add for react-navigation
+                    // routes.logout();
                     Alert.alert('Logged out', 'You have been logged out');
                 },
             }));
@@ -92,10 +93,12 @@ global.API = {
             return Promise.reject(new Error('You need to link react-native-contacts to use this function'));
         }
         return  includePhotos ?
+          // eslint-disable-next-line no-undef
             new Promise((resolve) => Contacts.getAll((error, contacts) => resolve({
                 error,
                 contacts: contacts
             })))
+          // eslint-disable-next-line no-undef
             : new Promise((resolve) => Contacts.getAllWithoutPhotos((error, contacts) => resolve({
                 error,
                 contacts: contacts
@@ -186,6 +189,7 @@ if (typeof branch !== 'undefined') {
     var initialLink = null;
 
     API.onLink = cb => linkCb = cb;
+    // eslint-disable-next-line no-undef
     branch.subscribe(({ error, params }) => {
         if (error) {
             // eslint-disable-next-line no-console

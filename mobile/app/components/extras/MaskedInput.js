@@ -186,10 +186,10 @@ const TextInput = class extends PureComponent {
               <Animated.View
                 style={[
                     {
-                        marginTop: -Math.round((1 / PixelRatio.get()) * 3),
+                        marginTop: ReactNative.StyleSheet.hairlineWidth*3,
                         transform: [{ scaleX: this.animation }],
                         backgroundColor: palette.bookmakerPrimary,
-                        height: Math.round((1 / PixelRatio.get()) * 6),
+                        height: ReactNative.StyleSheet.hairlineWidth*6,
                     },
                 ]}
               />

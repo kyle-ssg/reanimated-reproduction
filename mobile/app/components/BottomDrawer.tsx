@@ -1,12 +1,10 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { Modal, StyleSheet } from 'react-native'; // we need this to make JSX compile
 import Animated, {
     add,
     cond,
     eq,
     interpolate,
     set,
-    Easing,
     useCode,
     and
 } from 'react-native-reanimated';
@@ -17,11 +15,9 @@ import {
     useValue,
     timing,
     snapPoint,
-    onGestureEvent,
     usePanGestureHandler
 } from 'react-native-redash';
 import { CustomModal, ModalType } from 'components/CustomModal';
-import { usePreviousState } from 'components/utility-components/usePreviousState';
 import { easingConfigDrawer } from '../project/reanimations';
 
 type ComponentType = ModalType & {
@@ -30,8 +26,6 @@ type ComponentType = ModalType & {
   animatedValue?: Animated.Value<number>;
   visible;
 };
-
-const x = '';
 
 const BottomDrawer: FunctionComponent<ComponentType> = ({
     visible,
@@ -116,7 +110,6 @@ const BottomDrawer: FunctionComponent<ComponentType> = ({
         </CustomModal>
     );
 };
-
 const styles = ReactNative.StyleSheet.create({
     container: {
         flex: 1,

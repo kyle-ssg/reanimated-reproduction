@@ -50,7 +50,7 @@ const SelectBox = class extends PureComponent {
                         </Flex>
                         {!hideIcon && (
                             <Column>
-                                <FontAwesome style={[Styles.selectBoxIcon, iconStyle || {}]} name="chevron-down"/>
+                                <ION style={[Styles.selectBoxIcon, iconStyle || {}]} name="ios-chevron-down"/>
                             </Column>
                         )}
                     </Row>

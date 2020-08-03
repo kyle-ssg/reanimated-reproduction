@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import ReactNative, { Platform, TouchableNativeFeedback } from 'react-native';
+import { Platform, TouchableNativeFeedback } from 'react-native';
 
 const ListItem = class extends Component {
   static displayName = 'ListItem';

@@ -16,15 +16,11 @@ json.assets[0].layers[0].shapes[0].it[1].c.k = [
 export const Loader = class extends PureComponent {
   static displayName = 'LOADER';
 
-  componentDidMount() {
-      this.refs.animation.play();
-  }
-
   render() {
       return (
           <View style={{ opacity: 0.75 }}>
               <Animation
-                ref="animation"
+                autoPlay
                 style={{
                     width: 40 * 1.25,
                     height: 30 * 1.25,

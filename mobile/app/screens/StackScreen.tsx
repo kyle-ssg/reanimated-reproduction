@@ -10,7 +10,7 @@ type ComponentType = Screen & {}
 const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;
 
-const StackScreen: FunctionComponent<ComponentType> = ({ style }) => {
+const StackScreen: FunctionComponent<ComponentType> = () => {
     return (
         <NavigationContainer independent>
             <Navigator screenOptions={defaultNavigationOptions} initialRouteName={RouteUrls.home}>

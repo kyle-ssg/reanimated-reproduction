@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // eslint-disable-next-line no-unused-vars
-import { AppActions } from '../app-actions';
+import '../app-actions';
 import { AppState } from '../state-type';
 
 const withWidgets = (WrappedComponent) => {

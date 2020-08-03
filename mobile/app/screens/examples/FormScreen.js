@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { withFormik } from 'formik';
 import { formikPropTypes } from 'common/utils/formik';
 import * as yup from 'yup';
+import SelectBox from 'components/base/forms/SelectBox';
 
 const schema = yup.object().shape({
     name: yup.string().required('You really need to enter a name'),
@@ -25,10 +26,6 @@ const FormScreen = class extends Component {
   constructor() {
       super();
       this.state = {};
-  }
-
-  componentDidMount() {
-      Navigation.events().bindComponent(this);
   }
 
   onNameChanged = (text) => {
