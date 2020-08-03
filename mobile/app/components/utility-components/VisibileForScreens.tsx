@@ -5,7 +5,7 @@ import { AppState } from 'common/state-type';
 import { RouteUrls } from '../../route-urls';
 
 type ComponentType = {
-    activeScreen: AppState["activeScreen"];
+    activeScreen: AppState['activeScreen'];
     target: RouteUrls[];
     navigator?:string;
     style: ReactNative.ViewStyle,
@@ -14,7 +14,7 @@ type ComponentType = {
 
 //Use this to make an absolute view persist across multiple native screens
 //You can put this within a NavigationContainer component to appear above the navbar
-const VisibleForScreens: FunctionComponent<ComponentType> = ({ children,activeScreen, style, target, navigator="root" }) => {
+const VisibleForScreens: FunctionComponent<ComponentType> = ({ children,activeScreen, style, target, navigator='root' }) => {
     const [isActive, setIsActive] = useState<boolean>(false)
     useEffect(()=> {
         if (activeScreen) {

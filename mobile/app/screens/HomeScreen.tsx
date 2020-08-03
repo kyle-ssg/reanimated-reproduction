@@ -32,4 +32,3 @@ class HomeScreen extends Component<ComponentType, {modalVisible:boolean}> {
 
 export default withScreen(HomeScreen)
 
-console.disableYellowBox = true

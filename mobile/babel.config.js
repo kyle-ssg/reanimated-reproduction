@@ -3,7 +3,7 @@ module.exports = {
     plugins: [
         [
             'module-resolver', {
-                root: ["."],
+                root: ['.'],
                 extensions: [
                     '.ios.ts',
                     '.android.ts',

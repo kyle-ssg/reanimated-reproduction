@@ -12,6 +12,8 @@ import StackExample from './examples/StackExample';
 import SegmentedControl from 'components/SegmentedControl';
 import ExampleTabs from './examples/ExampleTabs';
 import WithSetValue from '../../common/providers/WithSetValue';
+import BottomDrawer from 'components/BottomDrawer';
+import { CustomModal } from 'components/CustomModal';
 
 class TheComponent extends React.Component {
     state = {};
@@ -23,12 +25,43 @@ class TheComponent extends React.Component {
 
 
 setup(() => {
+    getStory('Bottom Drawer')
+        .add('all',()=>{
+            const items = [
+                { label:'First', value:1 },
+                { label:'Second', value:2 },
+                { label:'Third', value:3 },
+            ]
+            return (
+                <WithSetValue defaultValue={false}>
+                    {({ value,setValue })=>(
+                        <>
+                            <BottomDrawer visible={value}>
+                                <Text style={[Styles.mt10, Styles.ml10]}>Content</Text>
+                            </BottomDrawer>
+                            <Button style={{ zIndex:1000 }} onPress={()=>setValue(true)}>Toggle Modal</Button>
+                        </>
+                    )}
+                </WithSetValue>
+            );
+        })
+    getStory('Modal')
+        .add('all',()=>(
+            <WithSetValue defaultValue={true}>
+                {({ value,setValue })=>(
+                    <>
+                        <CustomModal dark onDismissPress={()=>setValue(false)} visible={value} />
+                        <Button onPress={()=>setValue(true)}>Toggle Modal</Button>
+                    </>
+                )}
+            </WithSetValue>
+        ))
     getStory('SegmentedControl')
         .add('all',()=>{
             const items = [
-                { label:"First", value:1 },
-                { label:"Second", value:2 },
-                { label:"Third", value:3 },
+                { label:'First', value:1 },
+                { label:'Second', value:2 },
+                { label:'Third', value:3 },
             ]
             return (
                 <Flex style={{ backgroundColor:'white', padding: 20 }}>
@@ -48,12 +81,12 @@ setup(() => {
                               onChange={setValue}
                               value={value}
                               items={items}
-                              textActiveStyle={{ color:"#fff" }}
-                              textStyle={{ color:"#ccc" }}
+                              textActiveStyle={{ color:'#fff' }}
+                              textStyle={{ color:'#ccc' }}
                               paddingX={10}
                               paddingY={10}
-                              barStyle={{ backgroundColor:"#333" }}
-                              trackStyle={[{ backgroundColor:"#222", height:80 }, Styles.mb10]}
+                              barStyle={{ backgroundColor:'#333' }}
+                              trackStyle={[{ backgroundColor:'#222', height:80 }, Styles.mb10]}
                             />
                         )}
                     </WithSetValue>
@@ -63,12 +96,12 @@ setup(() => {
                               onChange={setValue}
                               value={value}
                               items={items}
-                              textActiveStyle={{ color:"#fff" }}
-                              textStyle={{ color:"#ccc" }}
+                              textActiveStyle={{ color:'#fff' }}
+                              textStyle={{ color:'#ccc' }}
                               paddingX={0}
                               paddingY={0}
-                              barStyle={{ backgroundColor:"#333" }}
-                              trackStyle={[{ backgroundColor:"#222" }, Styles.mb10]}
+                              barStyle={{ backgroundColor:'#333' }}
+                              trackStyle={[{ backgroundColor:'#222' }, Styles.mb10]}
                             />
                         )}
                     </WithSetValue>

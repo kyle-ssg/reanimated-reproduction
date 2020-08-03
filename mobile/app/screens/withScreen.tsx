@@ -30,7 +30,7 @@ const withScreen = (Component: React.ComponentType) => {
         const dispatch = useDispatch();
         React.useEffect(
             () => {
-                const previousStyle = ReactNative.StatusBar?._currentValues?.value || "dark-content"
+                const previousStyle = ReactNative.StatusBar?._currentValues?.value || 'dark-content'
                 const unsubscribe = props.navigation.addListener('focus', e => {
                     dispatch(AppActions.setActiveScreen(props.route.name))
                 });
@@ -41,7 +41,7 @@ const withScreen = (Component: React.ComponentType) => {
                 });
 
                 if (Platform.OS === 'ios') {
-                    const style = props.route?.params?.statusBar?.barStyle || "default"
+                    const style = props.route?.params?.statusBar?.barStyle || 'default'
                     ReactNative.StatusBar.setBarStyle(style, true)
                 }
                 return ()=>{
@@ -76,7 +76,7 @@ const withScreen = (Component: React.ComponentType) => {
         }, [props.navigation])
 
         return <>
-            {Platform.OS !== "ios" && (
+            {Platform.OS !== 'ios' && (
             <FocusAwareStatusBar {...(props.route.params?.statusBar)} animated={true}/>
             )}
             <Component

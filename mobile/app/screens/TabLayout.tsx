@@ -113,7 +113,7 @@ const styles = {
     },
     tab: {
         height:64,
-        justifyContent: "center",
+        justifyContent: 'center',
         paddingLeft: styleVariables.paddingBase,
         paddingRight: styleVariables.paddingBase,
     },

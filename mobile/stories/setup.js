@@ -64,8 +64,8 @@ export const withNavbarWrapper = (story) => (
             <NavigationContainer independent>
                 <Navigator screenOptions={defaultNavigationOptions} initialRouteName="1">
                     <Stack.Screen
-                      name={"1"}
-                      options={{ title:"A generic page" }}
+                      name={'1'}
+                      options={{ title:'A generic page' }}
                       initialParams={{ children: story() }}
                       component={GenericScreen}
                     />

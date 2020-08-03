@@ -19,7 +19,7 @@ const linking = {
 class App extends Component {
     static displayName = 'TheComponent';
     state = {
-        name: new Date().valueOf() + ""
+        name: new Date().valueOf() + ''
     }
     static propTypes = {};
 
@@ -60,7 +60,6 @@ class App extends Component {
                                   component={routes[RouteUrls.storybook].component}
                                     />
                             </Navigator>
-
                         </NavigationContainer>
                     </>
                 </Provider>

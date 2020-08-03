@@ -127,7 +127,7 @@ const styles = ReactNative.StyleSheet.create({
         width: 44,
         height:44,
         borderRadius:22,
-        overflow:"hidden"
+        overflow:'hidden'
     },
     buttonTertiary: {
         backgroundColor: 'white',

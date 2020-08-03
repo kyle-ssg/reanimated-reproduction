@@ -121,7 +121,7 @@ const styles = ReactNative.StyleSheet.create({
         position:'relative',
     },
     barContainer: {
-        flexDirection:"row",
+        flexDirection:'row',
         alignItems:'center',
         flex:1,
     },
@@ -131,22 +131,22 @@ const styles = ReactNative.StyleSheet.create({
     },
     bar : {
         backgroundColor:'white',
-        position:"absolute",
+        position:'absolute',
         borderRadius: CONTAINER_RADIUS,
-        height:"100%",
+        height:'100%',
     },
     label: {
         fontSize: 14,
-        color:"#666"
+        color:'#666'
     },
     labelActive: {
-        color:"#333"
+        color:'#333'
     },
     disabled: {
         opacity:0.5
     },
     labelPressed: {
-        color:"#333"
+        color:'#333'
     }
 });
 

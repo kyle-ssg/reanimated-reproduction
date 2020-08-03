@@ -11,6 +11,8 @@ let windowH = Dimensions.get('window').height;
 let bottomNavBarH = deviceH - windowH;
 
 global.palette = { bodyBackground: '#fff', // General app  background
+    lightBackdrop: 'rgba(255,255,255,.5)',
+    darkBackdrop: 'rgba(0,0,0,.5)',
     primary: 'rgb(10,132,255)',
     primaryPressed: 'rgb(0,109,217)',
     secondary: 'rgb(255,55,95)',

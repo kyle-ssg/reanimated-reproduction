@@ -40,7 +40,7 @@ const styles = ReactNative.StyleSheet.create({
     },
     title: {
         fontSize: 17,
-        fontWeight: "600",
+        fontWeight: '600',
     },
     buttonContainer: {
         width:34,
@@ -50,7 +50,7 @@ const styles = ReactNative.StyleSheet.create({
     },
     leftContainer: {
         justifyContent:'center',
-        position: "absolute",
+        position: 'absolute',
         left:20,
         top:styleVariables.insets.top,
         bottom: 0
@@ -59,12 +59,12 @@ const styles = ReactNative.StyleSheet.create({
         fontSize: 24,
     },
     navbar: {
-        position:"relative",
+        position:'relative',
         paddingTop:styleVariables.insets.top,
         justifyContent:'center',
         alignItems:'flex-end',
         height: navHeight,
-        backgroundColor:"transparent"
+        backgroundColor:'transparent'
     }
 })
 

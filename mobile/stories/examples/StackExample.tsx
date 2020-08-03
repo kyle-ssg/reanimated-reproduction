@@ -32,9 +32,9 @@ class _GenericScreen extends Component<ComponentType> {
   }
   goModal = (url:RouteUrls)=> {
       this.props.push(url,{
-          statusBar: { backgroundColor: "red", barStyle:"light-content", animated:true },
+          statusBar: { backgroundColor: 'red', barStyle:'light-content', animated:true },
           screenOptions:{
-              stackPresentation:"modal"
+              stackPresentation:'modal'
           }
       })
   }
@@ -43,7 +43,7 @@ class _GenericScreen extends Component<ComponentType> {
           <FocusAwareStatusBar barStyle="dark-content" animated={true}/>
           <FlatList
             keyExtractor={(item)=>item}
-            style={{ padding:20, flex:1 }} data={Object.values(RouteUrls)} renderItem={({ item })=> item !== "/storybook" && (
+            style={{ padding:20, flex:1 }} data={Object.values(RouteUrls)} renderItem={({ item })=> item !== '/storybook' && (
             <View key={item}>
                 <H3>{item}</H3>
                 <Button onPress={()=>this.goScreen(item)}>
@@ -64,7 +64,7 @@ const GenericScreen = withScreen(_GenericScreen)
 class StackExample extends Component {
   static displayName = 'TheComponent';
   state = {
-      name: new Date().valueOf() + ""
+      name: new Date().valueOf() + ''
   }
   static propTypes = {};
 
@@ -77,7 +77,7 @@ class StackExample extends Component {
                       <NavigationContainer independent>
                           <Navigator screenOptions={defaultNavigationOptions} initialRouteName="1">
                               <Stack.Screen
-                                name={"1"}
+                                name={'1'}
                                 options={{  }}
                                 component={GenericScreen}
                               />

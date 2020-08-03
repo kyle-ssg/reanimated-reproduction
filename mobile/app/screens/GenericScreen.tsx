@@ -10,7 +10,7 @@ type ComponentType = Screen & {
 class GenericScreen extends Component<ComponentType> {
   state = {}
   render() {
-    return this.props.children || <Flex style={Styles.body}><Text>I am a generic screen</Text></Flex>
+      return this.props.children || <Flex style={Styles.body}><Text>I am a generic screen</Text></Flex>
   }
 }
 

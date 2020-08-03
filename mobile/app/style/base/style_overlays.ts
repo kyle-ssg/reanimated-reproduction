@@ -11,11 +11,11 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
         alignItems: 'center',
         paddingBottom: 40,
         paddingTop: 40,
-        height: Dimensions.get("window").height,
+        height: Dimensions.get('window').height,
     },
 
     lightbox: {
-        width: Dimensions.get("window").width - 40,
+        width: Dimensions.get('window').width - 40,
         borderRadius: 5,
         backgroundColor: 'white',
     },
