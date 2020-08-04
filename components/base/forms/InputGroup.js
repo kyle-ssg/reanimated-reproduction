@@ -48,7 +48,7 @@ const InputGroup = class extends Component {
             <div>
               {this.props.textarea ? (
                 <textarea
-                  ref={(c) => (this.input = c)}
+                  ref={c => (this.input = c)}
                   {...props.inputProps}
                   isValid={props.isValid}
                   disabled={props.disabled}
@@ -62,7 +62,7 @@ const InputGroup = class extends Component {
                 />
               ) : (
                 <Input
-                  ref={(c) => (this.input = c)}
+                  ref={c => (this.input = c)}
                   {...props.inputProps}
                   isValid={props.isValid}
                   disabled={props.disabled}

@@ -18,7 +18,7 @@ module.exports = {
   },
   getInitialState() {
     const props = {};
-    _.each(this.props.animatedProps, (prop) => {
+    _.each(this.props.animatedProps, prop => {
       props[`animated_${prop}`] = new Animated.Value(
         this.props[prop] && !this.props.autostart ? 1 : 0,
       );
@@ -27,7 +27,7 @@ module.exports = {
   },
   componentDidMount() {
     if (this.props.autostart) {
-      _.each(this.props.animatedProps, (key) => {
+      _.each(this.props.animatedProps, key => {
         this.props
           .animation(
             // Base: spring, decay, timing
@@ -48,7 +48,7 @@ module.exports = {
     }
   },
   UNSAFE_componentWillReceiveProps(newProps) {
-    _.each(newProps.animatedProps, (key) => {
+    _.each(newProps.animatedProps, key => {
       const easing = newProps.value ? newProps.easing : newProps.easingOut;
       // eslint-disable-next-line eqeqeq
       if (newProps[key] != this.props[key]) {

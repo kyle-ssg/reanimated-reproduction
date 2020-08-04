@@ -29,11 +29,11 @@ class FormPage extends Component {
     API.trackPage('FormPage');
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.props.handleChange(e);
   };
 
-  onDogChanged = (e) => {
+  onDogChanged = e => {
     const dog = Utils.safeParseEventValue(e);
     this.props.setFieldValue('dog', dog);
     this.props.setFieldValue('alias', `mega${dog}`);
@@ -110,7 +110,7 @@ class FormPage extends Component {
           </label>
           <Input
             type="text"
-            onChange={(e) =>
+            onChange={e =>
               setFieldValue('alias', {
                 value: Utils.safeParseEventValue(e),
               })
@@ -149,7 +149,7 @@ export default withGrecaptcher(
       }),
       validateOnMount: true,
       validationSchema: schema,
-      handleSubmit: (values) => {
+      handleSubmit: values => {
         // Call your action with form values
         console.log('handleSubmit', values);
       },

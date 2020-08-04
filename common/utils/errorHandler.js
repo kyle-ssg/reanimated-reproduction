@@ -1,9 +1,9 @@
-const parseErrorFromAPI = (error) => {
+const parseErrorFromAPI = error => {
   // Write code for handling errors from API here.
   return _.get(error, 'message') || Strings.defaultErrorMessage;
 };
 
-export default (e) => {
+export default e => {
   const defaultErrorMessage = Strings.defaultErrorMessage;
 
   if (!e) return defaultErrorMessage;

@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Modal, ModalBody, ModalHeader } from './Modal';
 
-const ModalDefault = (props) => {
+const ModalDefault = props => {
   const onDismiss = () => {
     if (props.onDismiss) {
       props.onDismiss();

@@ -11,7 +11,7 @@ export default class WithSetValue extends Component {
     };
   }
 
-  setValue = (value) => this.setState({ value });
+  setValue = value => this.setState({ value });
 
   render() {
     return this.props.children({

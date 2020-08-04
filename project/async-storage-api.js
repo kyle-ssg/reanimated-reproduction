@@ -2,7 +2,7 @@
 import cookie from 'cookie';
 import jsCookie from 'js-cookie';
 
-const getItem = function (key, req) {
+const getItem = function(key, req) {
   API.log('STORAGE', 'GET', key, req);
 
   if (req) {
@@ -14,7 +14,7 @@ const getItem = function (key, req) {
   }
   return jsCookie.get('token');
 };
-const setItem = function (key, value) {
+const setItem = function(key, value) {
   if (typeof window === 'undefined') {
     //todo: should be able to set this in nodejs
     return;
@@ -22,7 +22,7 @@ const setItem = function (key, value) {
   return jsCookie.set(name, value);
 };
 
-const removeItem = function (key, req) {
+const removeItem = function(key, req) {
   API.log('STORAGE', 'REMOVE', key, req);
 
   if (typeof window === 'undefined') {

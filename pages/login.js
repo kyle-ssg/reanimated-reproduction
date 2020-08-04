@@ -19,14 +19,14 @@ class LoginPage extends Component {
     }
   }
 
-  login = (e) => {
+  login = e => {
     Utils.preventDefault(e);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const {
       state: { index, isRegister, ...rest },
     } = this;
     this.props.login(rest, {
-      onSuccess: (user) => {
+      onSuccess: user => {
         console.log(user);
         const redir = Utils.fromParam().redirect;
         this.props.router.replace(redir || '/');
@@ -51,7 +51,7 @@ class LoginPage extends Component {
                   className="mb-2 full-width"
                   placeholder="Username"
                   value={email}
-                  onChange={(email) =>
+                  onChange={email =>
                     this.setState({
                       email: Utils.safeParseEventValue(email),
                     })
@@ -64,7 +64,7 @@ class LoginPage extends Component {
                   placeholder="Password"
                   value={password}
                   type="password"
-                  onChange={(password) =>
+                  onChange={password =>
                     this.setState({
                       password: Utils.safeParseEventValue(password),
                     })

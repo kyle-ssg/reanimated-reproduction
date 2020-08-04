@@ -9,9 +9,9 @@ export default class extends Component {
     this.state = {};
   }
 
-  onTabChange = (index) => this.setState({ activeButton: index });
+  onTabChange = index => this.setState({ activeButton: index });
 
-  renderScene = (scene) => {
+  renderScene = scene => {
     const { i } = scene.route.data;
     const label = `Tab ${i}`;
     return (
@@ -41,7 +41,7 @@ export default class extends Component {
         }}
         navigationState={{
           index: activeButton || 0,
-          routes: [1, 2, 3].map((i) => ({
+          routes: [1, 2, 3].map(i => ({
             title: `Tab ${i}`,
             key: i,
             data: { i },

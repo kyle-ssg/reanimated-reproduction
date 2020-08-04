@@ -13,7 +13,7 @@ const Input = class extends PureComponent {
     this.state = { shouldValidate: false };
   }
 
-  onFocus = (e) => {
+  onFocus = e => {
     this.setState({
       isFocused: true,
     });
@@ -25,7 +25,7 @@ const Input = class extends PureComponent {
     this.input.focus();
   };
 
-  onKeyDown = (e) => {
+  onKeyDown = e => {
     if (Utils.keys.isEscape(e)) {
       this.input.blur();
     }
@@ -39,7 +39,7 @@ const Input = class extends PureComponent {
     });
   };
 
-  onBlur = (e) => {
+  onBlur = e => {
     this.setState({
       shouldValidate: true,
       isFocused: false,
@@ -80,7 +80,7 @@ const Input = class extends PureComponent {
       <div className={className}>
         {textarea ? (
           <textarea
-            ref={(c) => (this.input = c)}
+            ref={c => (this.input = c)}
             {...rest}
             onFocus={this.onFocus}
             onKeyDown={this.onKeyDown}
@@ -90,7 +90,7 @@ const Input = class extends PureComponent {
           />
         ) : (
           <input
-            ref={(c) => (this.input = c)}
+            ref={c => (this.input = c)}
             {...rest}
             onFocus={this.onFocus}
             onKeyDown={this.onKeyDown}

@@ -13,7 +13,7 @@ export class MaskedInput extends React.Component {
     this.state = { shouldValidate: false };
   }
 
-  onFocus = (e) => {
+  onFocus = e => {
     this.setState({
       isFocused: true,
     });
@@ -25,7 +25,7 @@ export class MaskedInput extends React.Component {
     this.input.focus();
   };
 
-  onKeyDown = (e) => {
+  onKeyDown = e => {
     if (Utils.keys.isEscape(e)) {
       this.input.blur();
     }
@@ -39,7 +39,7 @@ export class MaskedInput extends React.Component {
     });
   };
 
-  onBlur = (e) => {
+  onBlur = e => {
     this.setState({
       shouldValidate: true,
       isFocused: false,
@@ -48,7 +48,7 @@ export class MaskedInput extends React.Component {
     this.props.onBlur && this.props.onBlur(e);
   };
 
-  onChange = (e) => {
+  onChange = e => {
     if (!this.props.onChange) {
       return;
     }
@@ -168,7 +168,7 @@ export class MaskedInput extends React.Component {
     return (
       <div className={className}>
         <input
-          ref={(c) => (this.input = c)}
+          ref={c => (this.input = c)}
           {...rest}
           onFocus={this.onFocus}
           onKeyDown={this.onKeyDown}

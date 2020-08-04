@@ -25,7 +25,7 @@ class SegmentControl extends PureComponent {
   handleClick(key) {
     const { options } = this.state;
     this.setState({
-      options: options.map((option) => ({
+      options: options.map(option => ({
         ...option,
         selected: option.key === key,
       })),
@@ -37,7 +37,7 @@ class SegmentControl extends PureComponent {
     const options = this.state.options;
     return (
       <div className="segment-control">
-        {options.map((option) => (
+        {options.map(option => (
           <button
             className={`btn ${
               option.selected ? 'segment-control__selected' : ''

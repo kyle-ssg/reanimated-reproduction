@@ -28,11 +28,11 @@ const FormScreen = class extends Component {
     this.state = {};
   }
 
-  onNameChanged = (text) => {
+  onNameChanged = text => {
     this.props.handleChange('name')(text);
   };
 
-  onAliasChanged = (text) => this.props.setFieldValue('alias', { value: text });
+  onAliasChanged = text => this.props.setFieldValue('alias', { value: text });
 
   onSubmit = () => {
     // Do anything here that needs doing before form validation and submission
@@ -116,7 +116,7 @@ module.exports = withFormik({
     occupation: '',
   }),
   validationSchema: schema,
-  handleSubmit: (values) => {
+  handleSubmit: values => {
     // Call your action with form values
     console.log('handleSubmit', values);
   },

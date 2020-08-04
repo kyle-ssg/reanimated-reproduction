@@ -42,13 +42,13 @@ const TextInput = class extends Component {
     }
   };
 
-  onBlur = (e) => {
+  onBlur = e => {
     if (this.props.onBlur) {
       this.props.onBlur(e);
     }
   };
 
-  onChangeText = (text) => {
+  onChangeText = text => {
     if (!this.props.onChangeText) {
       return;
     }
@@ -73,7 +73,7 @@ const TextInput = class extends Component {
           style={[Styles.textInput, Styles.textInputAndroid, this.props.style]}
           value={this.props.value}
           testID={this.props.testID}
-          ref={(ref) => (this.inputRef = ref)}
+          ref={ref => (this.inputRef = ref)}
           blurOnSubmit={Platform.OS === 'ios' && !this.props.multiline}
         />
       </>
@@ -107,7 +107,7 @@ TextInput.propTypes = {
 // });
 
 export default TextInput;
-export const FlatInput = (props) => (
+export const FlatInput = props => (
   <TextInput {...props} style={[Styles.flatInput, props.style]} />
 );
 FlatInput.propTypes = textInputPropTypes;

@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
 
-const ModalAlert = (props) => {
+const ModalAlert = props => {
   const onDismiss = () => {
     if (props.onDismiss) {
       props.onDismiss();

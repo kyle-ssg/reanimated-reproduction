@@ -21,7 +21,7 @@ const SelectBox = class extends PureComponent {
 
   onPress = () => {
     const { options, title, onChange, onBlur } = this.props;
-    API.showOptions(title, options, true, false, null, true).then((i) => {
+    API.showOptions(title, options, true, false, null, true).then(i => {
       if (onBlur) onBlur();
       if (onChange && i != null)
         onChange(i < options.length ? options[i] : null);

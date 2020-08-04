@@ -25,7 +25,7 @@ export default class Tabs extends PureComponent {
     labelStyle: {},
   };
 
-  renderTabBar = (props) => (
+  renderTabBar = props => (
     <TabBar
       {...props}
       scrollEnabled={this.props.scrollEnabled}
@@ -55,7 +55,7 @@ export default class Tabs extends PureComponent {
         renderTabBar={this.renderTabBar}
         renderScene={this.props.renderScene}
         timingConfig={{ duration: 100 }}
-        onIndexChange={(index) => this.props.onIndexChange(index)}
+        onIndexChange={index => this.props.onIndexChange(index)}
         initialLayout={{
           width: Dimensions.get('window').width,
           height: Dimensions.get('window').height,

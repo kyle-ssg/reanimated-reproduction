@@ -42,14 +42,14 @@ export class DatePicker extends PureComponent {
 
   static propTypes = _propTypes;
 
-  getDate = (d) => {
+  getDate = d => {
     if (typeof d === 'string') {
       return new Date(d);
     }
     return d;
   };
 
-  getDates = (dates) => {
+  getDates = dates => {
     if (!dates) {
       return dates;
     }

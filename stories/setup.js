@@ -11,11 +11,11 @@ const isTest = process.env.TEST;
 
 export const store = _store();
 
-export const withProvider = (story) => (
+export const withProvider = story => (
   <Provider store={store}>{story()}</Provider>
 );
 
-export const withPaddedContainer = (story) => (
+export const withPaddedContainer = story => (
   <div style={{ paddingTop: 50 }} className="container">
     {story()}
     <div id="confirm" />

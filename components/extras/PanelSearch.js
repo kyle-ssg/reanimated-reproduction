@@ -27,7 +27,7 @@ const PanelSearch = class extends Component {
     const { search } = this.state;
     const { items, filterRow } = this.props;
     if (filterRow && search) {
-      return _.filter(items, (i) => filterRow(i, search.toLowerCase()));
+      return _.filter(items, i => filterRow(i, search.toLowerCase()));
     }
     return items;
   }
@@ -56,8 +56,8 @@ const PanelSearch = class extends Component {
           this.props.filterRow ? (
             <Row onClick={() => this.input.focus()}>
               <input
-                ref={(c) => (this.input = c)}
-                onChange={(e) =>
+                ref={c => (this.input = c)}
+                onChange={e =>
                   this.props.onChange
                     ? this.props.onChange(e)
                     : this.setState({

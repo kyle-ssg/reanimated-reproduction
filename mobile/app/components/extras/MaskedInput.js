@@ -52,7 +52,7 @@ const TextInput = class extends PureComponent {
     }
   };
 
-  onBlur = (e) => {
+  onBlur = e => {
     Animated.timing(this.animation, {
       toValue: 0.0001,
       duration: 300,
@@ -64,7 +64,7 @@ const TextInput = class extends PureComponent {
     }
   };
 
-  onChangeText = (text) => {
+  onChangeText = text => {
     if (!this.props.onChangeText) {
       return;
     }
@@ -183,7 +183,7 @@ const TextInput = class extends PureComponent {
             ]}
             value={this.props.value}
             testID={this.props.testID}
-            ref={(ref) => (this.inputRef = ref)}
+            ref={ref => (this.inputRef = ref)}
             blurOnSubmit={Platform.OS === 'ios'}
           />
         </Animated.View>
@@ -229,7 +229,7 @@ TextInput.propTypes = {
 // });
 
 export default TextInput;
-export const FlatInput = (props) => (
+export const FlatInput = props => (
   <TextInput {...props} style={[Styles.flatInput, props.style]} />
 );
 FlatInput.propTypes = textInputPropTypes;

@@ -84,19 +84,29 @@ getStory('Date Picker')
     <DatePicker
       selected={new Date()}
       excludeDates={[
-        moment().add('days', 1).toISOString(),
-        moment().add('days', 2).toISOString(),
+        moment()
+          .add('days', 1)
+          .toISOString(),
+        moment()
+          .add('days', 2)
+          .toISOString(),
       ]}
       highlightDates={[
-        moment().add('days', 3).toISOString(),
-        moment().add('days', 4).toISOString(),
+        moment()
+          .add('days', 3)
+          .toISOString(),
+        moment()
+          .add('days', 4)
+          .toISOString(),
       ]}
     />
   ))
   .add('minmax', () => (
     <DatePicker
       minDate={new Date().toISOString()}
-      maxDate={moment().add('days', 5).toISOString()}
+      maxDate={moment()
+        .add('days', 5)
+        .toISOString()}
     />
   ))
   .add('time', () => <DatePicker showTimeSelect />)

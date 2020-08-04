@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { View } from 'react-native';
 
-const Row = (props) => (
+const Row = props => (
   <View
     style={[
       styles.row,

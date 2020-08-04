@@ -37,7 +37,7 @@ export class Tabs extends Component {
                 data-test={child.props['data-test']}
                 id={child.props.id}
                 key={`button${i}`}
-                onClick={(e) => {
+                onClick={e => {
                   if (this.props.uncontrolled) {
                     this.setState({ value: i });
                   }

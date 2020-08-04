@@ -25,19 +25,19 @@ export function setup(cb) {
   }, module);
 }
 
-export const withProvider = (story) => (
+export const withProvider = story => (
   <Provider store={store}>{story()}</Provider>
 );
-export const withSafeArea = (story) => (
+export const withSafeArea = story => (
   <SafeAreaProvider>
     <SafeAreaView style={{ flex: 1, marginBottom: 80 }}>{story()}</SafeAreaView>
   </SafeAreaProvider>
 );
 
-export const withPaddedContainer = (story) => (
+export const withPaddedContainer = story => (
   <Flex style={Styles.p5}>{story()}</Flex>
 );
-export const withScrollView = (story) => (
+export const withScrollView = story => (
   <Flex style={[Styles.pt10]}>
     <ScrollView style={{ overflow: 'visible' }}>{story()}</ScrollView>
   </Flex>
@@ -46,7 +46,7 @@ export const withScrollView = (story) => (
 const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;
 
-export const withNavbarWrapper = (story) => (
+export const withNavbarWrapper = story => (
   <Provider store={store}>
     <StatusBar
       backgroundColor="transparent"
@@ -70,7 +70,7 @@ export const withNavbarWrapper = (story) => (
     </>
   </Provider>
 );
-export const getStory = (name) =>
+export const getStory = name =>
   storiesOf(name, module)
     .addDecorator(withKnobs)
     .addDecorator(withSafeArea)

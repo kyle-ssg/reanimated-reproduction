@@ -27,17 +27,17 @@ class FormPage extends Component {
     API.trackPage('FormPage');
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.props.handleChange(e);
   };
 
-  onDogChanged = (e) => {
+  onDogChanged = e => {
     const dog = Utils.safeParseEventValue(e);
     this.props.setFieldValue('dog', dog);
     this.props.setFieldValue('alias', `mega${dog}`);
   };
 
-  onSubmit = (e) => {
+  onSubmit = e => {
     Utils.preventDefault(e);
 
     // Do anything here that needs doing before form validation and submission
@@ -107,7 +107,7 @@ class FormPage extends Component {
           </label>
           <Input
             type="text"
-            onChange={(e) =>
+            onChange={e =>
               setFieldValue('alias', {
                 value: Utils.safeParseEventValue(e),
               })
@@ -138,7 +138,7 @@ export default withRouter(
     }),
     validationSchema: schema,
     validateOnMount: true,
-    handleSubmit: (values) => {
+    handleSubmit: values => {
       // Call your action with form values
       console.log('handleSubmit', values);
     },

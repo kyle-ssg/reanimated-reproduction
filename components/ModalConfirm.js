@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
 
-const Confirm = (props) => {
+const Confirm = props => {
   const no = () => {
     if (props.onNo) {
       props.onNo();

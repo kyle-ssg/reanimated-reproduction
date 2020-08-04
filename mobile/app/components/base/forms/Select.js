@@ -16,7 +16,7 @@ const Select = class extends Component {
     this.state = {};
   }
 
-  isSelected = (i) => {
+  isSelected = i => {
     const { multiple } = this.props;
     const value = this.props.value || [];
     return multiple ? value.indexOf(i) !== -1 : value === i;
@@ -49,7 +49,7 @@ const Select = class extends Component {
     } = this.props;
     const { search } = this.state;
     const data = filterItem
-      ? _.filter(this.props.items, (i) => !search || filterItem(i, search))
+      ? _.filter(this.props.items, i => !search || filterItem(i, search))
       : this.props.items;
 
     return (
@@ -63,7 +63,7 @@ const Select = class extends Component {
                   borderBottomWidth: 0,
                 }}
                 placeholder={placeholder}
-                onChangeText={(searchNew) =>
+                onChangeText={searchNew =>
                   this.setState({
                     search: searchNew.toLowerCase(),
                   })

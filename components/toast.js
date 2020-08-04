@@ -59,7 +59,7 @@ const Toast = class extends React.Component {
     }
   };
 
-  remove = (id) => {
+  remove = id => {
     const index = _.findIndex(this.state.messages, { id });
     const messages = this.state.messages;
 
@@ -78,7 +78,7 @@ const Toast = class extends React.Component {
   render() {
     return (
       <div className="toast-messages">
-        {this.state.messages.map((message) => (
+        {this.state.messages.map(message => (
           <Message
             key={message.id}
             isRemoving={message.isRemoving}

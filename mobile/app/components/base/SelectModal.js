@@ -34,7 +34,7 @@ const NativeModal = class extends Component {
     this.props.onChange(this.state.value);
   };
 
-  onChange = (value) => {
+  onChange = value => {
     this.setState({ value }, this.props.autoclose && this.onDone);
   };
 
