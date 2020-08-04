@@ -1,4 +1,3 @@
-
 declare namespace NodeJS {
   interface Global {
     global: any;
@@ -35,7 +34,8 @@ declare namespace NodeJS {
     openAlert: any;
     openConfirm: any;
     process: any;
-    require: any;}
+    require: any;
+  }
 }
 
 declare let global: any;

@@ -11,30 +11,32 @@ const isTest = process.env.TEST;
 
 export const store = _store();
 
-export const withProvider = story => (
-    <Provider store={store}>
-        { story() }
-    </Provider>
+export const withProvider = (story) => (
+  <Provider store={store}>{story()}</Provider>
 );
 
-export const withPaddedContainer = story => (
-    <div style={{ paddingTop: 50 }} className="container">
-        { story() }
-        <div id="confirm"/>
-        <div id="alert"/>
-    </div>
+export const withPaddedContainer = (story) => (
+  <div style={{ paddingTop: 50 }} className="container">
+    {story()}
+    <div id="confirm" />
+    <div id="alert" />
+  </div>
 );
 
 export const getStory = (name, options = {}) => {
-    let res = storiesOf(name, module);
+  let res = storiesOf(name, module);
 
-    if (!isTest) {
-        // jest can't parse this module so we only add it when needed
-        res = res.addDecorator(require('storybook-addon-smart-knobs').withSmartKnobs({ ignoreProps: options.ignoreProps }));
-    }
+  if (!isTest) {
+    // jest can't parse this module so we only add it when needed
+    res = res.addDecorator(
+      require('storybook-addon-smart-knobs').withSmartKnobs({
+        ignoreProps: options.ignoreProps,
+      }),
+    );
+  }
 
-    return res
-        .addDecorator(withKnobs)
-        .addDecorator(withInfo)
-        .addDecorator(withProvider);
+  return res
+    .addDecorator(withKnobs)
+    .addDecorator(withInfo)
+    .addDecorator(withProvider);
 };

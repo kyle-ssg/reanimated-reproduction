@@ -3,148 +3,146 @@ import { StyleSheet } from 'react-native';
 
 require('./style_pxToEm');
 
-const styles:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
+const styles: Record<
+  string,
+  ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+> = {
+  //
+  // Typography
+  // --------------------------------------------------
 
+  h1: {
+    fontSize: styleVariables.fontSizeH1,
+    lineHeight: styleVariables.fontSizeH1,
+    fontWeight: styleVariables.boldFontWeight,
+    fontFamily: styleVariables.boldFontFamily,
+  },
 
-    //
-    // Typography
-    // --------------------------------------------------
+  h2: {
+    fontSize: styleVariables.fontSizeH2,
+    lineHeight: styleVariables.fontSizeH2,
+    fontWeight: styleVariables.boldFontWeight,
+    fontFamily: styleVariables.boldFontFamily,
+  },
 
-    h1: {
-        fontSize: styleVariables.fontSizeH1,
-        lineHeight: styleVariables.fontSizeH1,
-        fontWeight: styleVariables.boldFontWeight,
-        fontFamily: styleVariables.boldFontFamily,
-    },
+  h3: {
+    fontSize: styleVariables.fontSizeH3,
+    lineHeight: styleVariables.fontSizeH3,
+    fontFamily: styleVariables.boldFontFamily,
+    fontWeight: styleVariables.boldFontWeight,
+  },
 
-    h2: {
-        fontSize: styleVariables.fontSizeH2,
-        lineHeight: styleVariables.fontSizeH2,
-        fontWeight: styleVariables.boldFontWeight,
-        fontFamily: styleVariables.boldFontFamily,
-    },
+  h4: {
+    fontSize: styleVariables.fontSizeH4,
+    lineHeight: styleVariables.fontSizeH4,
+    fontWeight: styleVariables.boldFontWeight,
+    fontFamily: styleVariables.boldFontFamily,
+  },
 
-    h3: {
-        fontSize: styleVariables.fontSizeH3,
-        lineHeight: styleVariables.fontSizeH3,
-        fontFamily: styleVariables.boldFontFamily,
-        fontWeight: styleVariables.boldFontWeight,
-    },
+  p: {
+    marginBottom: styleVariables.marginBaseVertical,
+  },
 
-    h4: {
-        fontSize: styleVariables.fontSizeH4,
-        lineHeight: styleVariables.fontSizeH4,
-        fontWeight: styleVariables.boldFontWeight,
-        fontFamily: styleVariables.boldFontFamily,
-    },
+  italic: {
+    fontFamily: styleVariables.italicFontFamily,
+    fontWeight: styleVariables.normalFontWeight,
+  },
 
-    p: {
-        marginBottom: styleVariables.marginBaseVertical,
-    },
+  textError: {
+    color: colour.errorText,
+  },
 
-    italic: {
-        fontFamily: styleVariables.italicFontFamily,
-        fontWeight: styleVariables.normalFontWeight,
-    },
+  fontWeightLight: {
+    fontWeight: styleVariables.normalFontWeight,
+    fontFamily: styleVariables.normalFontFamily,
+  },
 
-    textError: {
-        color: colour.errorText,
-    },
+  textLight: {
+    color: colour.textLight,
+  },
 
-    fontWeightLight: {
-        fontWeight: styleVariables.normalFontWeight,
-        fontFamily: styleVariables.normalFontFamily,
-    },
+  textMid: {
+    color: colour.textMid,
+  },
 
+  textPrimary: {
+    color: palette.primary,
+  },
 
-    textLight: {
-        color: colour.textLight,
-    },
+  textMidDark: {
+    color: palette.textMidDark,
+  },
 
-    textMid: {
-        color: colour.textMid,
-    },
+  textCenter: {
+    textAlign: 'center',
+  },
 
-    textPrimary: {
-        color: palette.primary,
-    },
+  textBottom: {
+    textAlignVertical: 'bottom',
+  },
 
-    textMidDark: {
-        color: palette.textMidDark,
-    },
+  icon: {
+    fontSize: em(2),
+  },
 
-    textCenter: {
-        textAlign: 'center',
-    },
+  bold: {
+    fontWeight: styleVariables.boldFontWeight,
+    fontFamily: styleVariables.boldFontFamily,
+  },
 
-    textBottom: {
-        textAlignVertical: 'bottom',
-    },
+  text: {
+    backgroundColor: 'transparent',
+    color: palette.text,
+    fontFamily: styleVariables.normalFontFamily,
+    fontSize: styleVariables.fontSizeBase,
+    fontWeight: styleVariables.normalFontWeight,
+  },
 
-    icon: {
-        fontSize: em(2),
-    },
+  paragraph: {
+    marginBottom: styleVariables.marginBaseVertical,
+    fontFamily: styleVariables.paragraphText,
+    color: palette.primaryDark,
+    // letterSpacing: 0.9
+  },
 
-    bold: {
-        fontWeight: styleVariables.boldFontWeight,
-        fontFamily: styleVariables.boldFontFamily,
-    },
+  textSmall: {
+    fontSize: styleVariables.fontSizeSmall,
+  },
 
-    text: {
-        backgroundColor: 'transparent',
-        color: palette.text,
-        fontFamily: styleVariables.normalFontFamily,
-        fontSize: styleVariables.fontSizeBase,
-        fontWeight: styleVariables.normalFontWeight,
-    },
+  textFaint: {
+    color: palette.textFaint,
+  },
 
+  errorText: {
+    color: palette.error,
+  },
 
-    paragraph: {
-        marginBottom: styleVariables.marginBaseVertical,
-        fontFamily: styleVariables.paragraphText,
-        color: palette.primaryDark,
-        // letterSpacing: 0.9
-    },
+  fontSizeHeading: {
+    fontSize: styleVariables.fontSizeHeading,
+    fontWeight: styleVariables.boldFontWeight,
+    fontFamily: styleVariables.boldFontFamily,
+  },
 
-    textSmall: {
-        fontSize: styleVariables.fontSizeSmall,
-    },
+  fontSizeSubHeading: {
+    fontWeight: styleVariables.boldFontWeight,
+    fontFamily: styleVariables.boldFontFamily,
+  },
 
-    textFaint: {
-        color: palette.textFaint,
-    },
+  fontSizeSmall: {
+    fontSize: styleVariables.fontSizeSmall,
+  },
 
-    errorText: {
-        color: palette.error,
-    },
+  sup: {
+    fontSize: em(0.65),
+  },
 
-    fontSizeHeading: {
-        fontSize: styleVariables.fontSizeHeading,
-        fontWeight: styleVariables.boldFontWeight,
-        fontFamily: styleVariables.boldFontFamily,
-    },
-
-    fontSizeSubHeading: {
-        fontWeight: styleVariables.boldFontWeight,
-        fontFamily: styleVariables.boldFontFamily,
-    },
-
-    fontSizeSmall: {
-        fontSize: styleVariables.fontSizeSmall,
-    },
-
-    sup: {
-        fontSize: em(0.65),
-    },
-
-    anchor: {
-        color: palette.primaryDark,
-        fontFamily: styleVariables.headerText,
-        textDecorationLine: 'underline',
-        letterSpacing: em(0.06),
-        fontSize: em(0.86),
-    },
-
+  anchor: {
+    color: palette.primaryDark,
+    fontFamily: styleVariables.headerText,
+    textDecorationLine: 'underline',
+    letterSpacing: em(0.06),
+    fontSize: em(0.86),
+  },
 };
 
-module.exports = styles
+module.exports = styles;

@@ -9,15 +9,15 @@ class HomePage extends Component {
   static displayName = 'HomePage';
 
   static propTypes = {
-      user: propTypes.object,
-  }
+    user: propTypes.object,
+  };
 
   componentDidMount() {
-      API.trackPage('HomePage');
+    API.trackPage('HomePage');
 
-      if (this.props.user) {
-          API.loginRedirect();
-      }
+    if (this.props.user) {
+      API.loginRedirect();
+    }
   }
 
   // Do server rendered actions such as fetching data here
@@ -25,14 +25,12 @@ class HomePage extends Component {
   // }
 
   render() {
-      return (
-          <div className="container">
-              Home Page
-              <Button>
-                  Hi
-              </Button>
-          </div>
-      );
+    return (
+      <div className="container">
+        Home Page
+        <Button>Hi</Button>
+      </div>
+    );
   }
 }
 

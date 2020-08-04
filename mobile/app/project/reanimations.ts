@@ -1,16 +1,21 @@
 import Animated, { Easing } from 'react-native-reanimated';
 
 export type AnimationConfigType = {
-    duration:number,
-    easing: Animated.EasingFunction
-}
+  duration: number;
+  easing: Animated.EasingFunction;
+};
 
-export const easingConfigDrawer:AnimationConfigType = {
-    duration:350,
-    easing: Easing.bezier(.17,.67,.46,.9),
-}
+export const easingConfigDrawerIn: AnimationConfigType = {
+  duration: 250,
+  easing: Easing.ease,
+};
 
-export const easingConfigModal:AnimationConfigType = {
-    duration: 250,
-    easing: Easing.ease,
-}
+export const easingConfigDrawerOut: AnimationConfigType = {
+  duration: 250,
+  easing: Easing.out(Easing.ease),
+};
+
+export const easingConfigModal: AnimationConfigType = {
+  duration: 300,
+  easing: Easing.ease,
+};

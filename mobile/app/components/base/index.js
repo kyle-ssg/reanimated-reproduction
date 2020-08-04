@@ -2,10 +2,10 @@ import TextInput, { FlatInput } from './forms/TextInput';
 
 // Forms
 import Button, {
-    ButtonPrimary,
-    ButtonSecondary,
-    ButtonNav,
-    ButtonTertiary,
+  ButtonPrimary,
+  ButtonSecondary,
+  ButtonNav,
+  ButtonTertiary,
 } from './forms/Button';
 
 // Grid

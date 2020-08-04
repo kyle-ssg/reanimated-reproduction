@@ -18,67 +18,64 @@ const IS_SSR_CACHE_ENABLED = !dev; // TODO move to config
  * @returns function({req?: *, res?: *, [p: string]: *}): *}
  */
 const ssrCache = (ttl) => {
-    return cacheableResponse({
-        ttl, // 1hour
-        get: async ({ req, res, pagePath, queryParams }) => {
-            console.log('Caching', req.url); // eslint-disable-line no-console
-            return ({
-                data: await app.renderToHTML(req, res, pagePath, queryParams),
-            });
-        },
-        send: ({ data, res }) => res.send(data),
-    });
+  return cacheableResponse({
+    ttl, // 1hour
+    get: async ({ req, res, pagePath, queryParams }) => {
+      console.log('Caching', req.url); // eslint-disable-line no-console
+      return {
+        data: await app.renderToHTML(req, res, pagePath, queryParams),
+      };
+    },
+    send: ({ data, res }) => res.send(data),
+  });
 };
 
-Promise.all([
-    app.prepare(),
-]).then(() => {
-    const server = express();
-    const sw = join(__dirname, '.next/service-worker.js');
-    const favicon = join(__dirname, '/static/images/favicon.ico');
-    const sitemap = join(__dirname, '/static/sitemap.xml');
-    const robots = join(__dirname, '/static/robots.txt');
-    const apple = join(__dirname, '/static/apple-app-site-association');
+Promise.all([app.prepare()]).then(() => {
+  const server = express();
+  const sw = join(__dirname, '.next/service-worker.js');
+  const favicon = join(__dirname, '/static/images/favicon.ico');
+  const sitemap = join(__dirname, '/static/sitemap.xml');
+  const robots = join(__dirname, '/static/robots.txt');
+  const apple = join(__dirname, '/static/apple-app-site-association');
 
-    server.get('/sitemap.xml', (req, res) => {
-        app.serveStatic(req, res, sitemap);
+  server.get('/sitemap.xml', (req, res) => {
+    app.serveStatic(req, res, sitemap);
+  });
+
+  server.get('/robots.txt', (req, res) => {
+    app.serveStatic(req, res, robots);
+  });
+
+  server.get('/favicon.ico', (req, res) => {
+    app.serveStatic(req, res, favicon);
+  });
+
+  server.get('/service-worker.js', (req, res) => {
+    app.serveStatic(req, res, sw);
+  });
+
+  server.get('/apple-app-site-association', (req, res) => {
+    // req.setHeader('Content-Type', 'application/json');
+    res.setHeader('Content-Type', 'application/json');
+    app.serveStatic(req, res, apple);
+  });
+
+  if (IS_SSR_CACHE_ENABLED) {
+    const homeCache = ssrCache(1000 * 60 * 60);
+    server.get('/', (req, res) => {
+      const queryParams = { id: req.params.id };
+      const pagePath = '/';
+      return homeCache({ req, res, pagePath, queryParams });
     });
+  }
 
-    server.get('/robots.txt', (req, res) => {
-        app.serveStatic(req, res, robots);
-    });
+  server.get('*', (req, res) => handle(req, res));
 
-    server.get('/favicon.ico', (req, res) => {
-        app.serveStatic(req, res, favicon);
-    });
-
-    server.get('/service-worker.js', (req, res) => {
-        app.serveStatic(req, res, sw);
-    });
-
-    server.get('/apple-app-site-association', (req, res) => {
-        // req.setHeader('Content-Type', 'application/json');
-        res.setHeader('Content-Type', 'application/json');
-        app.serveStatic(req, res, apple);
-    });
-
-    if (IS_SSR_CACHE_ENABLED) {
-        const homeCache = ssrCache(1000 * 60 * 60);
-        server.get('/', (req, res) => {
-            const queryParams = { id: req.params.id };
-            const pagePath = '/';
-            return homeCache({ req, res, pagePath, queryParams });
-        });
+  server.listen(port, (err) => {
+    if (err) throw err;
+    console.log(`> Ready on http://localhost:${port}`); // eslint-disable-line no-console
+    if (process.send) {
+      process.send({ done: true });
     }
-
-    server.get('*', (req, res) => handle(req, res));
-
-    server.listen(port, (err) => {
-        if (err) throw err;
-        console.log(`> Ready on http://localhost:${port}`); // eslint-disable-line no-console
-        if (process.send){
-            process.send({ done: true });
-        }
-
-    });
+  });
 });

@@ -5,7 +5,7 @@ class ArticlePage extends Component {
   static displayName = 'ArticlePage';
 
   componentDidMount() {
-      API.trackPage('ArticlePage');
+    API.trackPage('ArticlePage');
   }
 
   // static async getInitialProps({ Component, ctx }) {
@@ -13,14 +13,14 @@ class ArticlePage extends Component {
   // }
 
   render() {
-      const { props: { router: { query: { id } } } } = this;
-      return (
-          <div className="container">
-              Article
-              {' '}
-              {id}
-          </div>
-      );
+    const {
+      props: {
+        router: {
+          query: { id },
+        },
+      },
+    } = this;
+    return <div className="container">Article {id}</div>;
   }
 }
 

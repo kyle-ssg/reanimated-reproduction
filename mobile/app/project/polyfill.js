@@ -15,4 +15,16 @@ import range from 'lodash/range';
 import keyBy from 'lodash/keyBy';
 
 global.moment = moment;
-global._ = { each, filter, uniqBy, find, partial, findIndex, merge, range, map, cloneDeep, keyBy };
+global._ = {
+  each,
+  filter,
+  uniqBy,
+  find,
+  partial,
+  findIndex,
+  merge,
+  range,
+  map,
+  cloneDeep,
+  keyBy,
+};

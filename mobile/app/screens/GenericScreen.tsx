@@ -4,14 +4,20 @@ import withScreen, { Screen } from './withScreen';
 
 type ComponentType = Screen & {
   text: string;
-  style: ReactNative.ViewStyle,
-}
+  style: ReactNative.ViewStyle;
+};
 
 class GenericScreen extends Component<ComponentType> {
-  state = {}
+  state = {};
   render() {
-      return this.props.children || <Flex style={Styles.body}><Text>I am a generic screen</Text></Flex>
+    return (
+      this.props.children || (
+        <Flex style={Styles.body}>
+          <Text>I am a generic screen</Text>
+        </Flex>
+      )
+    );
   }
 }
 
-export default withScreen(GenericScreen)
+export default withScreen(GenericScreen);
