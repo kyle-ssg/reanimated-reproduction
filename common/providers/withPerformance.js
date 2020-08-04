@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 const Profiler = React.Profiler;
 
 export default (WrappedComponent, _id, remote, events = ['mount', 'update']) => {
-    class HOC extends Component {
+  class HOC extends Component {
         static displayName = 'withPerformance';
 
         constructor(props) {
-            super(props);
+          super(props);
         }
 
         // id, // the "id" prop of the Profiler tree that has just committed
@@ -19,37 +19,37 @@ export default (WrappedComponent, _id, remote, events = ['mount', 'update']) => 
         // interactions // the Set of interactions belonging to this update
 
         logMeasurement = async (id, phase, actualDuration) => {
-            // see output during DEV
-            if (!events.includes(phase)) {
-                return;
-            }
-            if (actualDuration < 1) {
-                return;
-            }
+          // see output during DEV
+          if (!events.includes(phase)) {
+            return;
+          }
+          if (actualDuration < 1) {
+            return;
+          }
 
-            if (remote) {
-                fetch(remote, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ value: actualDuration }),
-                });
-            }
+          if (remote) {
+            fetch(remote, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ value: actualDuration }),
+            });
+          }
         }
 
         render() {
-            return (
-                <Profiler id={_id} onRender={this.logMeasurement}>
-                    <WrappedComponent
-                      {...this.props}
-                      {...this.state}
+          return (
+              <Profiler id={_id} onRender={this.logMeasurement}>
+                  <WrappedComponent
+                    {...this.props}
+                    {...this.state}
                     />
-                </Profiler>
+              </Profiler>
 
-            );
+          );
         }
-    }
+  }
 
-    return HOC;
+  return HOC;
 };

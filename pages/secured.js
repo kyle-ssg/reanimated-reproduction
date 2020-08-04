@@ -7,14 +7,14 @@ class SecuredPage extends Component {
     static displayName = 'SecuredPage';
 
     render() {
-        return (
-            <div className="container-fluid">
-                Secret page
-            </div>
-        );
+      return (
+          <div className="container-fluid">
+              Secret page
+          </div>
+      );
     }
 }
 
 export default withRouter(
-    withAuth(withUserRedirect(SecuredPage)),
+  withAuth(withUserRedirect(SecuredPage)),
 );

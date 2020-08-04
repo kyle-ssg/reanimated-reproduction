@@ -4,10 +4,10 @@ export default class WithSetValue extends Component {
     static displayName = 'withFoo';
 
     constructor(props) {
-        super(props);
-        this.state = {
-            value: props.defaultValue
-        };
+      super(props);
+      this.state = {
+        value: props.defaultValue
+      };
     }
 
 
@@ -15,10 +15,10 @@ export default class WithSetValue extends Component {
 
 
     render() {
-        return this.props.children({
-            ...this.props,
-            ...this.state,
-            setValue:this.setValue
-        })
+      return this.props.children({
+        ...this.props,
+        ...this.state,
+        setValue:this.setValue
+      })
     }
 }

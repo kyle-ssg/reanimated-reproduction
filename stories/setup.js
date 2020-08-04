@@ -26,15 +26,15 @@ export const withPaddedContainer = story => (
 );
 
 export const getStory = (name, options = {}) => {
-    let res = storiesOf(name, module);
+  let res = storiesOf(name, module);
 
-    if (!isTest) {
-        // jest can't parse this module so we only add it when needed
-        res = res.addDecorator(require('storybook-addon-smart-knobs').withSmartKnobs({ ignoreProps: options.ignoreProps }));
-    }
+  if (!isTest) {
+    // jest can't parse this module so we only add it when needed
+    res = res.addDecorator(require('storybook-addon-smart-knobs').withSmartKnobs({ ignoreProps: options.ignoreProps }));
+  }
 
-    return res
-        .addDecorator(withKnobs)
-        .addDecorator(withInfo)
-        .addDecorator(withProvider);
+  return res
+    .addDecorator(withKnobs)
+    .addDecorator(withInfo)
+    .addDecorator(withProvider);
 };

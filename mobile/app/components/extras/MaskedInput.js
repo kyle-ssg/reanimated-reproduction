@@ -10,12 +10,12 @@ import Animations from '../project/animations';
 const InputMask = () => Alert.alert('Please install input-mask-core');
 
 const textInputPropTypes = {
-    onBlur: propTypes.func,
-    title: propTypes.oneOfType([
-        propTypes.arrayOf(propTypes.node),
-        propTypes.node,
-    ]).isRequired,
-    style: propTypes.any,
+  onBlur: propTypes.func,
+  title: propTypes.oneOfType([
+    propTypes.arrayOf(propTypes.node),
+    propTypes.node,
+  ]).isRequired,
+  style: propTypes.any,
 };
 
 const TextInput = class extends PureComponent {
@@ -24,200 +24,200 @@ const TextInput = class extends PureComponent {
   static propTypes = textInputPropTypes;
 
   constructor(props, context) {
-      super(props, context);
-      this.animation = new Animated.Value(0.0001);
+    super(props, context);
+    this.animation = new Animated.Value(0.0001);
   }
 
   clear = () => {
-      this.inputRef.clear();
+    this.inputRef.clear();
   };
 
   blur = () => {
-      this.inputRef.blur();
+    this.inputRef.blur();
   };
 
   focus = () => {
-      this.inputRef.focus();
+    this.inputRef.focus();
   };
 
   onFocus = () => {
-      Animated.timing(this.animation, {
-          toValue: 1,
-          duration: 150,
-          useNativeDriver: true, // <-- Add this
-          easing: Animations.standard,
-      }).start();
-      if (this.props.onFocus) {
-          this.props.onFocus();
-      }
+    Animated.timing(this.animation, {
+      toValue: 1,
+      duration: 150,
+      useNativeDriver: true, // <-- Add this
+      easing: Animations.standard,
+    }).start();
+    if (this.props.onFocus) {
+      this.props.onFocus();
+    }
   };
 
   onBlur = (e) => {
-      Animated.timing(this.animation, {
-          toValue: 0.0001,
-          duration: 300,
-          useNativeDriver: true, // <-- Add this
-          easing: Easing.cubic,
-      }).start();
-      if (this.props.onBlur) {
-          this.props.onBlur(e);
-      }
+    Animated.timing(this.animation, {
+      toValue: 0.0001,
+      duration: 300,
+      useNativeDriver: true, // <-- Add this
+      easing: Easing.cubic,
+    }).start();
+    if (this.props.onBlur) {
+      this.props.onBlur(e);
+    }
   };
 
   onChangeText = (text) => {
-      if (!this.props.onChangeText) {
-          return;
-      }
-      if (this.props.mask) {
+    if (!this.props.onChangeText) {
+      return;
+    }
+    if (this.props.mask) {
       // Masking
-          if (!this.mask) {
-              // Create new mask
-              this.mask = new InputMask({
-                  pattern: this.props.mask,
-                  formatCharacters: {
-                      a: {
-                          validate(char) {
-                              return /[ap]/.test(char);
-                          },
-                      },
-                      m: {
-                          validate(char) {
-                              return /\w/.test(char);
-                          },
-                          transform() {
-                              return 'm';
-                          },
-                      },
-                  },
-              });
-          }
-
-          if (text.length > this.mask.selection.start) {
-              // Character(s) were typed, ignore if text exceeds length of mask
-              if (this.mask.selection.start === this.props.mask.length) {
-                  return;
-              }
-
-              // It does not, extract the character(s) that were added
-              text = text.slice(this.mask.selection.start);
-
-              // Add it to the input mask
-              if (text.length > 1) {
-                  this.mask.paste(text);
-              } else {
-                  // Perform additional inputs to skip non-pattern characters. Input will be converted
-                  // to the non-pattern character.
-                  while (
-                      !this.isMaskPatternChar(
-                          this.props.mask[this.mask.selection.start],
-                      )
-            && this.mask.selection.start !== this.props.mask.length
-                  ) {
-                      // On failure abort loop as cursor position will not change
-                      if (!this.mask.input(text)) {
-                          break;
-                      }
-                  }
-
-                  this.mask.input(text);
-              }
-          } else if (text.length < this.mask.selection.start) {
-              // Character(s) were deleted, delete up to current length
-              while (this.mask.selection.start !== text.length) {
-                  this.mask.backspace();
-              }
-
-              // Check whether more backspaces are required until we reach a pattern char or nothing is left
-              while (
-                  this.mask.selection.start
-          && !this.isMaskPatternChar(
-              this.props.mask[this.mask.selection.start - 1],
-          )
-              ) {
-                  this.mask.backspace();
-              }
-          }
-
-          const value = this.mask.getValue().slice(0, this.mask.selection.start);
-          // Update text
-          this.props.onChangeText(value);
-      } else {
-      // No masking, just update text
-          this.props.onChangeText(text);
+      if (!this.mask) {
+        // Create new mask
+        this.mask = new InputMask({
+          pattern: this.props.mask,
+          formatCharacters: {
+            a: {
+              validate(char) {
+                return /[ap]/.test(char);
+              },
+            },
+            m: {
+              validate(char) {
+                return /\w/.test(char);
+              },
+              transform() {
+                return 'm';
+              },
+            },
+          },
+        });
       }
+
+      if (text.length > this.mask.selection.start) {
+        // Character(s) were typed, ignore if text exceeds length of mask
+        if (this.mask.selection.start === this.props.mask.length) {
+          return;
+        }
+
+        // It does not, extract the character(s) that were added
+        text = text.slice(this.mask.selection.start);
+
+        // Add it to the input mask
+        if (text.length > 1) {
+          this.mask.paste(text);
+        } else {
+          // Perform additional inputs to skip non-pattern characters. Input will be converted
+          // to the non-pattern character.
+          while (
+            !this.isMaskPatternChar(
+              this.props.mask[this.mask.selection.start],
+            )
+            && this.mask.selection.start !== this.props.mask.length
+          ) {
+            // On failure abort loop as cursor position will not change
+            if (!this.mask.input(text)) {
+              break;
+            }
+          }
+
+          this.mask.input(text);
+        }
+      } else if (text.length < this.mask.selection.start) {
+        // Character(s) were deleted, delete up to current length
+        while (this.mask.selection.start !== text.length) {
+          this.mask.backspace();
+        }
+
+        // Check whether more backspaces are required until we reach a pattern char or nothing is left
+        while (
+          this.mask.selection.start
+          && !this.isMaskPatternChar(
+            this.props.mask[this.mask.selection.start - 1],
+          )
+        ) {
+          this.mask.backspace();
+        }
+      }
+
+      const value = this.mask.getValue().slice(0, this.mask.selection.start);
+      // Update text
+      this.props.onChangeText(value);
+    } else {
+      // No masking, just update text
+      this.props.onChangeText(text);
+    }
   };
 
   isMaskPatternChar(char) {
-      if (!char || char.length !== 1) {
-          return false;
-      }
+    if (!char || char.length !== 1) {
+      return false;
+    }
 
-      return (
-          char === '1'
+    return (
+      char === '1'
       || char === 'a'
       || char === 'A'
       || char === '*'
       || char === '#'
-      );
+    );
   }
 
   render() {
-      // If you wanted animated shadows
-      return (
-          <View>
-              {this.props.title && (
-              <FormGroup>
-                  <Text style={Styles.inputLabel}>{this.props.title}</Text>
-              </FormGroup>
-              )}
-              <Animated.View>
-                  <ReactNative.TextInput
-                    {...this.props}
-                    onFocus={this.onFocus}
-                    onBlur={this.onBlur}
-                    onChangeText={this.onChangeText}
-                    style={[Styles.textInput, Styles.textInputAndroid, this.props.style]}
-                    value={this.props.value}
-                    testID={this.props.testID}
-                    ref={(ref) => this.inputRef = ref}
-                    blurOnSubmit={Platform.OS === 'ios'}
+    // If you wanted animated shadows
+    return (
+        <View>
+            {this.props.title && (
+            <FormGroup>
+                <Text style={Styles.inputLabel}>{this.props.title}</Text>
+            </FormGroup>
+            )}
+            <Animated.View>
+                <ReactNative.TextInput
+                  {...this.props}
+                  onFocus={this.onFocus}
+                  onBlur={this.onBlur}
+                  onChangeText={this.onChangeText}
+                  style={[Styles.textInput, Styles.textInputAndroid, this.props.style]}
+                  value={this.props.value}
+                  testID={this.props.testID}
+                  ref={(ref) => this.inputRef = ref}
+                  blurOnSubmit={Platform.OS === 'ios'}
                   />
-              </Animated.View>
-              <Animated.View
-                style={[
-                    {
-                        marginTop: -Math.round((1 / PixelRatio.get()) * 3),
-                        transform: [{ scaleX: this.animation }],
-                        backgroundColor: palette.bookmakerPrimary,
-                        height: Math.round((1 / PixelRatio.get()) * 6),
-                    },
-                ]}
+            </Animated.View>
+            <Animated.View
+              style={[
+                {
+                  marginTop: -Math.round((1 / PixelRatio.get()) * 3),
+                  transform: [{ scaleX: this.animation }],
+                  backgroundColor: palette.bookmakerPrimary,
+                  height: Math.round((1 / PixelRatio.get()) * 6),
+                },
+              ]}
               />
-          </View>
-      );
+        </View>
+    );
   }
 };
 
 TextInput.propTypes = {};
 
 TextInput.propTypes = {
-    value: propTypes.string,
-    placeholder: propTypes.string,
-    editable: propTypes.bool,
-    multiline: propTypes.bool,
-    maxLines: propTypes.number,
-    minLines: propTypes.number,
-    mask: propTypes.string,
-    onChangeText: propTypes.func,
-    height: propTypes.number,
-    style: propTypes.any,
-    secureTextEntry: propTypes.bool,
-    disabled: propTypes.bool,
-    keyboardType: propTypes.string,
-    onSubmit: propTypes.func,
-    onFocus: propTypes.func,
-    textStyle: propTypes.any,
-    testID: propTypes.string,
+  value: propTypes.string,
+  placeholder: propTypes.string,
+  editable: propTypes.bool,
+  multiline: propTypes.bool,
+  maxLines: propTypes.number,
+  minLines: propTypes.number,
+  mask: propTypes.string,
+  onChangeText: propTypes.func,
+  height: propTypes.number,
+  style: propTypes.any,
+  secureTextEntry: propTypes.bool,
+  disabled: propTypes.bool,
+  keyboardType: propTypes.string,
+  onSubmit: propTypes.func,
+  onFocus: propTypes.func,
+  textStyle: propTypes.any,
+  testID: propTypes.string,
 };
 
 // const styles = ReactNative.StyleSheet.create({

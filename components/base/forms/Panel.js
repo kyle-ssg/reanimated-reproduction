@@ -7,8 +7,8 @@ import Row from '../grid/Row';
 const Panel = ({ className, icon, title, action, children }) => (
     <div
       className={cn({
-          'panel': true,
-          'panel-default': true,
+        'panel': true,
+        'panel-default': true,
       }, className)}
     >
         <div className="panel-heading">
@@ -33,11 +33,11 @@ const Panel = ({ className, icon, title, action, children }) => (
 Panel.displayName = 'Panel';
 global.Panel = Panel;
 Panel.propTypes = {
-    className: propTypes.any,
-    action: propTypes.node,
-    title: propTypes.node,
-    icon: propTypes.string,
-    children: propTypes.node,
+  className: propTypes.any,
+  action: propTypes.node,
+  title: propTypes.node,
+  icon: propTypes.string,
+  children: propTypes.node,
 };
 
 export default Panel;

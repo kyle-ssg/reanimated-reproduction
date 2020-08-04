@@ -37,7 +37,7 @@ module.exports = {
         'dot-notation': 'error',
         'guard-for-in': 'error',
         'indent': [
-            "error", 4,
+            "error", 2,
             {
                 SwitchCase: 1,
                 ignoredNodes: ['TemplateLiteral', 'JSXElement', 'JSXElement > *', 'JSXAttribute', 'JSXIdentifier', 'JSXNamespacedName', 'JSXMemberExpression', 'JSXSpreadAttribute', 'JSXExpressionContainer', 'JSXOpeningElement', 'JSXClosingElement', 'JSXText', 'JSXEmptyExpression', 'JSXSpreadChild'],

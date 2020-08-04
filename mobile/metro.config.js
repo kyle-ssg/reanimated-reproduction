@@ -16,8 +16,8 @@ module.exports = {
     extraNodeModules: new Proxy(
       {},
       {
-                get: (target, name) => path.join(process.cwd(), `node_modules/${name}`),
-            },
+        get: (target, name) => path.join(process.cwd(), `node_modules/${name}`),
+      },
     ),
   },
 

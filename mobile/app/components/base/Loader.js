@@ -7,33 +7,33 @@ import Animation from 'lottie-react-native';
 const json = { ...require('./loader.json') };
 
 json.assets[0].layers[0].shapes[0].it[1].c.k = [
-    1,
-    0,
-    0,
-    1,
+  1,
+  0,
+  0,
+  1,
 ];
 
 export const Loader = class extends PureComponent {
   static displayName = 'LOADER';
 
   componentDidMount() {
-      this.refs.animation.play();
+    this.refs.animation.play();
   }
 
   render() {
-      return (
-          <View style={{ opacity: 0.75 }}>
-              <Animation
-                ref="animation"
-                style={{
-                    width: 40 * 1.25,
-                    height: 30 * 1.25,
-                }}
-                loop
-                source={json}
+    return (
+        <View style={{ opacity: 0.75 }}>
+            <Animation
+              ref="animation"
+              style={{
+                width: 40 * 1.25,
+                height: 30 * 1.25,
+              }}
+              loop
+              source={json}
               />
-          </View>
-      );
+        </View>
+    );
   }
 };
 
