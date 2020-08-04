@@ -36,13 +36,13 @@ module.exports = {
         'default-case': 'error',
         'dot-notation': 'error',
         'guard-for-in': 'error',
-        'indent': [
-            "error", 2,
-            {
-                SwitchCase: 1,
-                ignoredNodes: ['TemplateLiteral', 'JSXElement', 'JSXElement > *', 'JSXAttribute', 'JSXIdentifier', 'JSXNamespacedName', 'JSXMemberExpression', 'JSXSpreadAttribute', 'JSXExpressionContainer', 'JSXOpeningElement', 'JSXClosingElement', 'JSXText', 'JSXEmptyExpression', 'JSXSpreadChild'],
-            },
-        ],
+        // 'indent': [
+        //     "error", 2,
+        //     {
+        //         SwitchCase: 1,
+        //         ignoredNodes: ['TemplateLiteral', 'JSXElement', 'JSXElement > *', 'JSXAttribute', 'JSXIdentifier', 'JSXNamespacedName', 'JSXMemberExpression', 'JSXSpreadAttribute', 'JSXExpressionContainer', 'JSXOpeningElement', 'JSXClosingElement', 'JSXText', 'JSXEmptyExpression', 'JSXSpreadChild'],
+        //     },
+        // ],
         'no-caller': 'error',
         'no-empty-parameters': 0,
         '@typescript-eslint/no-explicit-any': 0,
@@ -56,6 +56,7 @@ module.exports = {
         "react/prop-types": "off",
         'react/jsx-indent': ["error", 4],
         'react/jsx-indent-props': ["error", 2],
+        'react/jsx-closing-bracket-location': 1,
         'react/jsx-max-props-per-line': [1,
             {
                 'maximum': 3

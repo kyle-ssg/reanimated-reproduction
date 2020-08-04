@@ -69,9 +69,9 @@ const PanelSearch = class extends Component {
                                 {search && (
                                 <span>
                                     for
-                                      <strong>
-                                          {` "${search}"`}
-                                      </strong>
+                                    <strong>
+                                        {` "${search}"`}
+                                    </strong>
                                 </span>
                                 )}
                             </div>

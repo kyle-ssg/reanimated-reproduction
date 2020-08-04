@@ -59,12 +59,12 @@ const TextInput = class extends Component {
     // If you wanted animated shadows
     return (
         <>
-          {this.props.title && (
+            {this.props.title && (
             <FormGroup>
-              <Text style={Styles.inputLabel}>{this.props.title}</Text>
-          </FormGroup>
+                <Text style={Styles.inputLabel}>{this.props.title}</Text>
+            </FormGroup>
             )}
-          <ReactNative.TextInput
+            <ReactNative.TextInput
               {...this.props}
               onFocus={this.onFocus}
               editable={!this.props.disabled}
@@ -75,8 +75,8 @@ const TextInput = class extends Component {
               testID={this.props.testID}
               ref={(ref) => this.inputRef = ref}
               blurOnSubmit={Platform.OS === 'ios' && !this.props.multiline}
-              />
-      </>
+            />
+        </>
     );
   }
 };

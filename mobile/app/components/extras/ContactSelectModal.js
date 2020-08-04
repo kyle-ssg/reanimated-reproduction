@@ -1,3 +1,4 @@
+import React from 'react';
 import propTypes from 'prop-types';
 import { Loader } from '../base/Loader';
 
@@ -67,7 +68,7 @@ const ContactSelectModal = class extends React.Component {
                           <ListItem style={Styles.listItem} onPress={toggleItem}>
                               <Text style={Styles.listItemText}>{givenName}</Text>
                               <ION
-                                  style={[
+                                style={[
                                     Styles.listIcon,
                                     {
                                       color: isSelected
@@ -75,14 +76,14 @@ const ContactSelectModal = class extends React.Component {
                                         : palette.iconFaint,
                                     },
                                   ]}
-                                  name={
+                                name={
                         isSelected ? 'ios-checkbox' : 'ios-checkbox-outline'
                       }
-                                />
+                              />
                           </ListItem>
                       )}
                       filterItem={(contact, search) => contact.search.indexOf(search) !== -1}
-                      />
+                    />
                 </Fade>
                 )}
                 <Button onPress={this.onDone}>Done</Button>

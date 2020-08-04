@@ -73,26 +73,26 @@ setup(() => {
   getStory('Tabs')
     .add('default', () => (
         <>
-          <ExampleTabs/>
-      </>
+            <ExampleTabs/>
+        </>
     ))
     .add('scrolled', () => (
         <>
-          <ExampleTabs scrollEnabled/>
-      </>
+            <ExampleTabs scrollEnabled/>
+        </>
     ));
   getStory('Type')
     .addDecorator(withPaddedContainer)
     .addDecorator(withNavbarWrapper)
     .add('all', () => (
         <>
-          <H1 style={Styles.mb5}>Header 1</H1>
-          <H2 style={Styles.mb5}>Header 2</H2>
-          <H3 style={Styles.mb5}>H4eader 3</H3>
-          <H4 style={Styles.mb5}>Header 4</H4>
-          <Bold style={Styles.mb5}>Header 4</Bold>
-          <ErrorMessage style={Styles.mb5}>Header 4</ErrorMessage>
-      </>
+            <H1 style={Styles.mb5}>Header 1</H1>
+            <H2 style={Styles.mb5}>Header 2</H2>
+            <H3 style={Styles.mb5}>H4eader 3</H3>
+            <H4 style={Styles.mb5}>Header 4</H4>
+            <Bold style={Styles.mb5}>Header 4</Bold>
+            <ErrorMessage style={Styles.mb5}>Header 4</ErrorMessage>
+        </>
     ));
   getStory('Routes')
     .add('all', () => (
@@ -102,32 +102,32 @@ setup(() => {
     .addDecorator(withNavbarWrapper)
     .add('all', () => (
         <>
-          <SharedElementExample/>
-          <SharedElementExample/>
-          <SharedElementExample/>
-          <SharedElementExample/>
-          <SharedElementExample/>
-          <SharedElementExample/>
-      </>
+            <SharedElementExample/>
+            <SharedElementExample/>
+            <SharedElementExample/>
+            <SharedElementExample/>
+            <SharedElementExample/>
+            <SharedElementExample/>
+        </>
     ));
   getStory('Button')
     .addDecorator(withPaddedContainer)
     .addDecorator(withNavbarWrapper)
     .add('all', () => (
         <>
-          <Button>Button</Button>
-          <ButtonSecondary>Button Secondary</ButtonSecondary>
-          <ButtonTertiary>Button Secondary</ButtonTertiary>
-          <ButtonNav>
+            <Button>Button</Button>
+            <ButtonSecondary>Button Secondary</ButtonSecondary>
+            <ButtonTertiary>Button Secondary</ButtonTertiary>
+            <ButtonNav>
                 <ION
-                style={{
+                  style={{
                     color: palette.primary,
                     fontSize: styleVariables.fontSizeH1
                   }}
-                name="ios-close"
+                  name="ios-close"
                     />
             </ButtonNav>
-      </>
+        </>
     ))
     .add('default', () => (
         <Button>Button</Button>

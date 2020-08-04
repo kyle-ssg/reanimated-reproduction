@@ -79,7 +79,7 @@ getStory('Date Picker')
       <DatePicker
         dateFormat="do MMM yyyy"
         selected={new Date()}
-        />
+      />
   ))
   .add('highlight/exclude date', () => (
       <DatePicker
@@ -92,13 +92,13 @@ getStory('Date Picker')
           moment().add('days', 3).toISOString(),
           moment().add('days', 4).toISOString(),
         ]}
-        />
+      />
   ))
   .add('minmax', () => (
       <DatePicker
         minDate={new Date().toISOString()}
         maxDate={moment().add('days', 5).toISOString()}
-        />
+      />
   ))
   .add('time', () => (
       <DatePicker showTimeSelect/>
@@ -107,14 +107,14 @@ getStory('Date Picker')
       <DatePicker
         dateFormat="HH:mma"
         showTimeSelect
-        />
+      />
   ))
   .add('time format', () => (
       <DatePicker
         selected={new Date()}
         timeFormat="HH:mm"
         showTimeSelect
-        />
+      />
   ))
 
   .add('time interval', () => (
@@ -122,7 +122,7 @@ getStory('Date Picker')
         selected={new Date()}
         timeIntervals={20}
         showTimeSelect
-        />
+      />
   ))
   .add('time only', () => (
       <DatePicker
@@ -131,7 +131,7 @@ getStory('Date Picker')
         dateFormat="HH:mma"
         showTimeSelectOnly
         showTimeSelect
-        />
+      />
   ));
 
 getStory('Modals')
@@ -161,7 +161,7 @@ getStory('Modals')
   ))
   .add('Dynamic', () => (
       <>
-        <ButtonTertiary
+          <ButtonTertiary
             className="mr-2"
             onClick={() => openConfirm(<div>Confirm</div>, <div>Body</div>,
             () => {
@@ -170,15 +170,15 @@ getStory('Modals')
             () => {
               alert('Selected No');
             })}
-            >
+          >
               Open confirm
-            </ButtonTertiary>
-        <ButtonTertiary
+          </ButtonTertiary>
+          <ButtonTertiary
             onClick={() => openAlert(<div>Alert</div>, <div>Body</div>, () => {
             alert('Dismissed');
           })}
-            >
+          >
               Open alert
-            </ButtonTertiary>
-    </>
+          </ButtonTertiary>
+      </>
   ));
