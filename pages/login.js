@@ -52,10 +52,10 @@ class LoginPage extends Component {
                               placeholder="Username"
                               value={email}
                               onChange={email =>
-                    this.setState({
-                      email: Utils.safeParseEventValue(email),
-                    })
-                  }
+                                this.setState({
+                                  email: Utils.safeParseEventValue(email),
+                                })
+                              }
                             />
                         </div>
                         <div>
@@ -65,10 +65,10 @@ class LoginPage extends Component {
                               value={password}
                               type="password"
                               onChange={password =>
-                    this.setState({
-                      password: Utils.safeParseEventValue(password),
-                    })
-                  }
+                                this.setState({
+                                  password: Utils.safeParseEventValue(password),
+                                })
+                              }
                             />
                         </div>
                         {userError && <ErrorMessage>{userError}</ErrorMessage>}
