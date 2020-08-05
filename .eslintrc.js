@@ -64,6 +64,7 @@ module.exports = {
     ],
     'no-caller': 'error',
     'no-empty-parameters': 0,
+    '@typescript-eslint/explicit-module-boundary-types':0,
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/ban-types': 0,
     'no-shadow': 0,
