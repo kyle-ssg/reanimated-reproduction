@@ -30,7 +30,7 @@ setup(() => {
                         value={value}
                         items={items}
                         trackStyle={Styles.mb10}
-                            />
+                      />
                   )}
               </WithSetValue>
               <WithSetValue defaultValue={items[2]}>
@@ -45,7 +45,7 @@ setup(() => {
                         paddingY={10}
                         barStyle={{ backgroundColor:"#333" }}
                         trackStyle={[{ backgroundColor:"#222", height:80 }, Styles.mb10]}
-                            />
+                      />
                   )}
               </WithSetValue>
               <WithSetValue defaultValue={items[1]}>
@@ -60,7 +60,7 @@ setup(() => {
                         paddingY={0}
                         barStyle={{ backgroundColor:"#333" }}
                         trackStyle={[{ backgroundColor:"#222" }, Styles.mb10]}
-                            />
+                      />
                   )}
               </WithSetValue>
           </Flex>
@@ -125,7 +125,7 @@ setup(() => {
                     fontSize: styleVariables.fontSizeH1
                   }}
                   name="ios-close"
-                    />
+                />
             </ButtonNav>
         </>
     ))
