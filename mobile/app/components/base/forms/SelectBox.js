@@ -1,4 +1,5 @@
 // HTML like select input
+import React from 'react';
 import propTypes from "prop-types";
 import { PureComponent } from "react";
 
