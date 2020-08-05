@@ -9,7 +9,7 @@ const Row = (props) => (
       props.space && { justifyContent: "space-between" },
       props.style,
     ]}
-  >
+    >
         {props.children}
     </View>
 );

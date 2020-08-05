@@ -176,7 +176,7 @@ export class MaskedInput extends React.Component {
               onChange={this.onChange}
               value={this.props.value}
               className={combinedInputClassName}
-        />
+            />
         </div>
     );
   }

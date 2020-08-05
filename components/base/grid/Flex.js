@@ -39,7 +39,7 @@ export class Flex extends PureComponent {
           `flex-${value}`,
           className
         )}
-      >
+        >
             {children}
         </div>
     );

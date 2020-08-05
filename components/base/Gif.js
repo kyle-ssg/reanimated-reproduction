@@ -17,12 +17,12 @@ const Gif = class extends Component {
           className={`centered-container gif ${
           this.state.paused ? "paused" : "playing"
         }`}
-      >
+        >
             <img
               {...this.props}
               alt="Pause"
               src={this.state.paused ? this.props.pausedSrc : this.props.src}
-        />
+            />
             <ion className="ion ion-ios-play" />
         </Flex>
     );

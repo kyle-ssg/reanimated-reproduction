@@ -49,14 +49,14 @@ const CustomModal: FunctionComponent<ModalType> = ({
             opacity: animatedValue,
           },
         ]}
-      >
+          >
               {fadeContent && (
               <>
                   <TouchableOpacity
                     onPress={onDismissPress}
                     activeOpacity={1}
                     style={ReactNative.StyleSheet.absoluteFill}
-            />
+                  />
                   {children}
               </>
         )}
@@ -67,7 +67,7 @@ const CustomModal: FunctionComponent<ModalType> = ({
                 onPress={onDismissPress}
                 activeOpacity={1}
                 style={ReactNative.StyleSheet.absoluteFill}
-          />
+              />
               {children}
           </View>
       )}

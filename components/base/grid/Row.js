@@ -35,7 +35,7 @@ export class Row extends PureComponent {
           },
           className
         )}
-      >
+        >
             {children}
         </div>
     );

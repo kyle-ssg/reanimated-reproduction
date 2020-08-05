@@ -16,22 +16,22 @@ const StackScreen: FunctionComponent<ComponentType> = () => {
           <Navigator
             screenOptions={defaultNavigationOptions}
             initialRouteName={RouteUrls.home}
-      >
+          >
               <Stack.Screen
                 name={RouteUrls.home}
                 options={routes[RouteUrls.home].options}
                 component={routes[RouteUrls.home].component}
-        />
+              />
               <Stack.Screen
                 name={RouteUrls.generic}
                 options={routes[RouteUrls.generic].options}
                 component={routes[RouteUrls.generic].component}
-        />
+              />
               <Stack.Screen
                 name={RouteUrls.stack}
                 options={routes[RouteUrls.stack].options}
                 component={routes[RouteUrls.stack].component}
-        />
+              />
           </Navigator>
       </NavigationContainer>
   );

@@ -94,7 +94,7 @@ const withScreen = (Component: React.ComponentType) => {
             <FocusAwareStatusBar
               {...props.route.params?.statusBar}
               animated={true}
-          />
+            />
             )}
             <Component
               push={push}
@@ -104,7 +104,7 @@ const withScreen = (Component: React.ComponentType) => {
               setOptions={setOptions}
               {...props.route.params}
               {...props}
-        />
+            />
         </>
     );
   };

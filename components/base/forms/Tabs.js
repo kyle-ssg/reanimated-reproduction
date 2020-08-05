@@ -48,7 +48,7 @@ export class Tabs extends Component {
                   className={`btn-tab btn-primary${
                   isSelected ? " tab-active" : ""
                 }`}
-              >
+                >
                     {tabLabel || i}
                 </Button>
             );
@@ -60,7 +60,7 @@ export class Tabs extends Component {
             width: `${100 / this.props.children.length}%`,
             left: `${(100 / this.props.children.length) * value}%`,
           }}
-        />
+            />
             <div className="tabs-content">
                 {this.props.children.map((child, i) => {
             const isSelected = value === i;
@@ -68,7 +68,7 @@ export class Tabs extends Component {
                 <div
                   key={`content${i}`}
                   className={`tab-item${isSelected ? " tab-active" : ""}`}
-              >
+                >
                     {child}
                 </div>
             );

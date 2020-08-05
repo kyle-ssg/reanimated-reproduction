@@ -43,7 +43,7 @@ export default class Tabs extends PureComponent {
       }}
         renderIcon={({ route }) => route.icon || null}
         renderLabel={this.props.renderLabel}
-    />
+      />
   );
 
   render() {
@@ -60,7 +60,7 @@ export default class Tabs extends PureComponent {
           width: Dimensions.get("window").width,
           height: Dimensions.get("window").height,
         }}
-      />
+        />
     );
   }
 }

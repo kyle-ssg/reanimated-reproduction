@@ -80,7 +80,7 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
         { paddingHorizontal: paddingX, paddingVertical: paddingY },
       ]}
         onLayout={onLayout}
-    >
+      >
           {!!sliderWidth && (
           <PanGestureHandler onGestureEvent={handleGestureEvent}>
               <View style={styles.barContainer}>
@@ -94,7 +94,7 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
                     transform: [{ translateX: sliderPosition }],
                   },
                 ]}
-              />
+                      />
                       {items.map((item, i) => (
                           <Pressable
                             key={i}
@@ -104,7 +104,7 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
                     onChange(item);
                   }}
                             style={styles.labelContainer}
-                >
+                          >
                               {({ pressed }) => (
                                   <Text
                                     style={[
@@ -115,7 +115,7 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
                         value === item && styles.labelActive,
                         value === item && textActiveStyle,
                       ]}
-                    >
+                                  >
                                       {item.label}
                                   </Text>
                   )}

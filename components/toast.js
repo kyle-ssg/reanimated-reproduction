@@ -84,7 +84,7 @@ const Toast = class extends React.Component {
                   isRemoving={message.isRemoving}
                   remove={() => this.remove(message.id)}
                   expiry={message.expiry}
-          >
+                >
                     {message.content}
                 </Message>
         ))}

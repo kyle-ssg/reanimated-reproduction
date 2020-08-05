@@ -86,19 +86,19 @@ class StackExample extends Component {
                         <Navigator
                           screenOptions={defaultNavigationOptions}
                           initialRouteName="1"
-              >
+                        >
                             <Stack.Screen
                               name={"1"}
                               options={{}}
                               component={GenericScreen}
-                />
+                            />
                             {Object.values(RouteUrls).map((v) => (
                                 <Stack.Screen
                                   key={v}
                                   name={v}
                                   options={routes[v].options}
                                   component={routes[v].component}
-                  />
+                                />
                 ))}
                         </Navigator>
                     </NavigationContainer>

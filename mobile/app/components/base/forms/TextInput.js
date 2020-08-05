@@ -75,7 +75,7 @@ const TextInput = class extends Component {
               testID={this.props.testID}
               ref={(ref) => (this.inputRef = ref)}
               blurOnSubmit={Platform.OS === "ios" && !this.props.multiline}
-        />
+            />
         </>
     );
   }

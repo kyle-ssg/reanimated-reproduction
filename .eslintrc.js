@@ -1,13 +1,16 @@
 module.exports = {
   env: {
     es6: true,
-    browser: true,
+    browser: true
   },
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
+    // "prettier/@typescript-eslint",
+    // "plugin:prettier/recommended",
+    // "prettier"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -15,9 +18,9 @@ module.exports = {
     sourceType: "module",
     ecmaFeatures: {
       legacyDecorators: true,
-      modules: true,
+      modules: true
     },
-    parser: "typescript-eslint",
+    parser: "typescript-eslint"
   },
   plugins: ["react", "react-hooks"],
   rules: {
@@ -27,7 +30,6 @@ module.exports = {
     "guard-for-in": "error",
     "no-caller": "error",
     "no-empty-parameters": 0,
-    "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/ban-types": 0,
     "no-shadow": 0,
@@ -37,65 +39,68 @@ module.exports = {
     "object-curly-spacing": ["error", "always"],
     radix: 0,
     "react/prop-types": "off",
-    '@typescript-eslint/indent': [
-      "error", 2,
+
+    // "prettier/prettier": ["error"],
+    "@typescript-eslint/indent": [
+      "error",
+      2,
       {
         SwitchCase: 1,
         ignoredNodes: [
-          'JSXAttribute',
-          'JSXIdentifier',
-          'JSXOpeningFragment' ,
-          'JSXClosingFragment' ,
-          'JSXClosingElement' ,
-          'JSXClosingElement',
-          'JSXElement *',
-          'JSXElement',
-          'JSXElement > *',
-          'JSXEmptyExpression',
-          'JSXExpressionContainer',
-          'JSXMemberExpression',
-          'JSXNamespacedName',
-          'JSXOpeningElement',
-          'JSXSpreadAttribute',
-          'JSXSpreadChild',
-          'JSXText',
-          'TemplateLiteral',
-        ],
-      },
+          "JSXAttribute",
+          "JSXIdentifier",
+          "JSXOpeningFragment",
+          "JSXClosingFragment",
+          "JSXClosingElement",
+          "JSXClosingElement",
+          "JSXElement *",
+          "JSXElement",
+          "JSXElement > *",
+          "JSXEmptyExpression",
+          "JSXExpressionContainer",
+          "JSXMemberExpression",
+          "JSXNamespacedName",
+          "JSXOpeningElement",
+          "JSXSpreadAttribute",
+          "JSXSpreadChild",
+          "JSXText",
+          "TemplateLiteral"
+        ]
+      }
     ],
-    'react/jsx-indent': ["error", 4],
-    'react/jsx-indent-props': ["error", 2],
-    'react/jsx-closing-bracket-location': 1,
+    "react/jsx-indent": ["error", 4],
+    "react/jsx-indent-props": ["error", 2],
+    "react/jsx-closing-bracket-location": 1,
     "react/jsx-max-props-per-line": [
       1,
       {
-        maximum: 3,
-      },
-    ],
+        maximum: 3
+      }
+    ]
   },
   settings: {
     react: {
-      version: "detect",
-    },
+      version: "detect"
+    }
   },
   globals: {
+    global: true,
     API: true,
     Actions: true,
-    Alert: true,
     Animated: true,
     AppActions: true,
     AsyncStorage: true,
-    Bold: true,
     Button: true,
+    ButtonPrimary: true,
     ButtonSecondary: true,
     ButtonTertiary: true,
     Column: true,
     Constants: true,
-    Container: true,
     Dimensions: true,
     E2E: true,
     ErrorMessage: true,
     Fade: true,
+    FlatList: true,
     Flex: true,
     FormGroup: true,
     Format: true,
@@ -103,6 +108,8 @@ module.exports = {
     H2: true,
     H3: true,
     H4: true,
+    Image: true,
+    ImageBackground: true,
     ION: true,
     Input: true,
     InputGroup: true,
@@ -117,7 +124,6 @@ module.exports = {
     SafeAreaView: true,
     ScrollView: true,
     Select: true,
-    SelectBox: true,
     Strings: true,
     Styles: true,
     SuccessMessage: true,
@@ -134,8 +140,6 @@ module.exports = {
     em: true,
     expect: true,
     ga: true,
-    global: true,
-    grecaptcha: true,
     it: true,
     mixpanel: true,
     module: true,
@@ -146,6 +150,6 @@ module.exports = {
     process: true,
     projectOverrides: true,
     require: true,
-    styleVariables: true,
-  },
+    styleVariables: true
+  }
 };

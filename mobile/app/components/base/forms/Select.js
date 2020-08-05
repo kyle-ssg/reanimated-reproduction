@@ -69,7 +69,7 @@ const Select = class extends Component {
                   })
                 }
                       testID={this.props.searchTestID}
-              />
+                    />
                 </Container>
             </FormGroup>
         )}
@@ -83,7 +83,7 @@ const Select = class extends Component {
               };
               return renderRow(item, isSelected, toggleItem);
             }}
-          />
+                />
         ) : renderNoResults ? (
           renderNoResults()
         ) : (

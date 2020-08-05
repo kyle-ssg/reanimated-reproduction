@@ -67,7 +67,7 @@ class FormPage extends Component {
                   onBlur={handleBlur}
                   value={values.name}
                   name="name"
-          />
+                />
                 {errors.name && touched.name && (
                 <div id="feedback">{errors.name}</div>
           )}
@@ -82,7 +82,7 @@ class FormPage extends Component {
                   onBlur={handleBlur}
                   value={values.occupation}
                   name="occupation"
-          />
+                />
                 {errors.occupation && touched.occupation && (
                 <div id="feedback">{errors.occupation}</div>
           )}
@@ -94,7 +94,7 @@ class FormPage extends Component {
                   onChange={this.onDogChanged}
                   onBlur={handleBlur}
                   value={values.dog}
-          >
+                >
                     <option value="" />
                     <option value="poodle">Poodle</option>
                     <option value="pug">Pug</option>
@@ -115,7 +115,7 @@ class FormPage extends Component {
                   onBlur={handleBlur}
                   value={_.get(values, "alias.value") || ""}
                   name="alias"
-          />
+                />
                 {_.get(errors, "alias.value") && _.get(touched, "alias.value") && (
                 <div id="feedback">{errors.alias.value}</div>
           )}

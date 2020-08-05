@@ -66,15 +66,15 @@ const PanelSearch = class extends Component {
                 }
                     type="text"
                     value={this.props.search || search}
-              />
+                  />
                   <span
                     style={{ marginLeft: 10, position: "absolute" }}
                     className="icon ion-ios-search"
-              />
+                  />
               </Row>
           ) : null
         }
-      >
+          >
               {!!paging && (
               <Paging paging={paging} isLoading={isLoading} goToPage={goToPage} />
         )}
@@ -82,7 +82,7 @@ const PanelSearch = class extends Component {
                 id={this.props.id}
                 className="search-list"
                 style={isLoading ? { opacity: 0.5 } : {}}
-        >
+              >
                   {filteredItems && filteredItems.length ? (
             filteredItems.map(renderRow)
           ) : renderNoResults && !search ? (

@@ -33,7 +33,7 @@ class Toggle extends PureComponent {
         }`}
           onClick={this.handleClick}
           type="button"
-      >
+        >
             {this.props.children}
         </button>
     );

@@ -65,7 +65,7 @@ export const withModalOptions = (
             fontSize: styleVariables.fontSizeH1,
           }}
               name="ios-close"
-        />
+            />
         </ButtonNav>
     );
   },

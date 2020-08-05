@@ -116,11 +116,11 @@ const BottomDrawer: FunctionComponent<ComponentType> = ({
         style={styles.container}
         animatedValue={animatedValue}
         visible={modalVisible}
-    >
+      >
           <PanGestureHandler enabled={!disabled} {...gestureHandler}>
               <Animated.View
                 style={[styles.drawer, { height, transform: [{ translateY }] }]}
-        >
+              >
                   {children}
               </Animated.View>
           </PanGestureHandler>

@@ -56,7 +56,7 @@ class LoginPage extends Component {
                       email: Utils.safeParseEventValue(email),
                     })
                   }
-                />
+                            />
                         </div>
                         <div>
                             <Input
@@ -69,7 +69,7 @@ class LoginPage extends Component {
                       password: Utils.safeParseEventValue(password),
                     })
                   }
-                />
+                            />
                         </div>
                         {userError && <ErrorMessage>{userError}</ErrorMessage>}
                         <div className="text-right">

@@ -56,7 +56,7 @@ getStory("Panel")
       <Panel
         action={<ButtonPrimary>Action</ButtonPrimary>}
         title="Panel with action"
-    >
+      >
           Content
       </Panel>
   ))
@@ -91,13 +91,13 @@ getStory("Date Picker")
         moment().add("days", 3).toISOString(),
         moment().add("days", 4).toISOString(),
       ]}
-    />
+      />
   ))
   .add("minmax", () => (
       <DatePicker
         minDate={new Date().toISOString()}
         maxDate={moment().add("days", 5).toISOString()}
-    />
+      />
   ))
   .add("time", () => <DatePicker showTimeSelect />)
   .add("time only", () => <DatePicker dateFormat="HH:mma" showTimeSelect />)
@@ -115,7 +115,7 @@ getStory("Date Picker")
         dateFormat="HH:mma"
         showTimeSelectOnly
         showTimeSelect
-    />
+      />
   ));
 
 getStory("Modals")
@@ -164,7 +164,7 @@ getStory("Modals")
             }
           )
         }
-      >
+          >
               Open confirm
           </ButtonTertiary>
           <ButtonTertiary
@@ -173,7 +173,7 @@ getStory("Modals")
             alert("Dismissed");
           })
         }
-      >
+          >
               Open alert
           </ButtonTertiary>
       </>

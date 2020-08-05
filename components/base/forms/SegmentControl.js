@@ -45,7 +45,7 @@ class SegmentControl extends PureComponent {
                   type="button"
                   key={option.key}
                   onClick={() => this.handleClick(option.key)}
-          >
+                >
                     {option.name}
                 </button>
         ))}

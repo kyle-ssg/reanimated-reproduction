@@ -89,7 +89,7 @@ const Input = class extends PureComponent {
                   onBlur={this.onBlur}
                   value={this.props.value}
                   className={combinedInputClassName}
-          />
+                />
         ) : (
             <input
               ref={(c) => (this.input = c)}
@@ -99,7 +99,7 @@ const Input = class extends PureComponent {
               onBlur={this.onBlur}
               value={this.props.value}
               className={combinedInputClassName}
-          />
+            />
         )}
 
             {children && children}

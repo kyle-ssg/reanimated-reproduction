@@ -15,7 +15,7 @@ export default class Flex extends Component {
           this.props.space && { justifyContent: "space-between" },
         ]}
           testID={this.props.testID}
-      >
+        >
             {this.props.children}
         </View>
     );

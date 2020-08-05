@@ -39,7 +39,7 @@ const withModal = (WrappedComponent) => {
                 toggle={this.toggle}
                 {...this.props}
                 {...this.state}
-          />
+              />
           </Provider>
       );
     }
@@ -65,7 +65,9 @@ export const openAlert = (global.openAlert = (title, children, onDismiss) => {
 export const openConfirm = (global.openConfirm = (title, body, onYes, onNo) => {
   ReactDOM.unmountComponentAtNode(document.getElementById("confirm"));
   ReactDOM.render(
-      <_Confirm isOpen onNo={onNo} onYes={onYes} title={title}>
+      <_Confirm isOpen onNo={onNo} onYes={onYes}
+        title={title}
+      >
           {body}
       </_Confirm>,
       document.getElementById("confirm")

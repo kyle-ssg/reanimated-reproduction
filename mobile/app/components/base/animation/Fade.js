@@ -93,7 +93,7 @@ const Fade = class extends Component {
           },
           this.props.style,
         ]}
-      >
+        >
             {this.props.children}
         </Animated.View>
     );

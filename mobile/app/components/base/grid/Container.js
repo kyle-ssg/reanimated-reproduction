@@ -29,7 +29,7 @@ const Container = ({
       mr20 && Styles.mr20,
       style,
     ]}
-  >
+    >
         {children}
     </View>
 );

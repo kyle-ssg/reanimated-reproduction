@@ -13,7 +13,7 @@ const Panel = ({ className, icon, title, action, children }) => (
       },
       className
     )}
-  >
+    >
         <div className="panel-heading">
             <Row space>
                 <Row className="flex-1">

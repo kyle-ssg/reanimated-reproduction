@@ -33,7 +33,7 @@ export class Button extends PureComponent {
           },
           this.props.className
         )}
-      >
+        >
             {children}
         </button>
     );
@@ -84,7 +84,7 @@ export class ButtonTertiary extends React.PureComponent {
         <Button
           {...props}
           className={cn(props.className, "btn btn-outline-primary")}
-      />
+        />
     );
   }
 }

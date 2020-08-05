@@ -10,7 +10,7 @@ const h1 = class extends Component {
           accessible={this.props.accessible}
           accessibilityLabel={this.props.accessibilityLabel}
           style={[Styles.h1, this.props.style]}
-      >
+        >
             {this.props.children}
         </Text>
     );

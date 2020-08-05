@@ -69,7 +69,7 @@ const NativeModal = class extends Component {
                 renderRow(item, isSelected, toggleItem)
               }
                   filterItem={filterItem}
-            />
+                />
             </Fade>
         )}
             <FormGroup>

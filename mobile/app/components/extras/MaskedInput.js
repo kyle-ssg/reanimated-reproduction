@@ -185,7 +185,7 @@ const TextInput = class extends PureComponent {
                   testID={this.props.testID}
                   ref={(ref) => (this.inputRef = ref)}
                   blurOnSubmit={Platform.OS === "ios"}
-          />
+                />
             </Animated.View>
             <Animated.View
               style={[
@@ -196,7 +196,7 @@ const TextInput = class extends PureComponent {
               height: ReactNative.StyleSheet.hairlineWidth * 6,
             },
           ]}
-        />
+            />
         </View>
     );
   }

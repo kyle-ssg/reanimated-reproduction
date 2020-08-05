@@ -54,7 +54,7 @@ const Button: FunctionComponent<ComponentType> = ({
             style={({ pressed }) => (pressed ? pressedStyles : groupStyles)}
             disabled={disabled}
             android_ripple={android_ripple || darkAndroidRipple}
-      >
+          >
               {Utils.reactChildIsString(children) ? (
                   <Text style={textStyles}>
                       {children.length === 1 ? children[0] : children}
@@ -77,7 +77,7 @@ export const ButtonSecondary: FunctionComponent<ComponentType> = (props) => {
         {...props}
         pressedStyle={[Styles.buttonGroupSecondaryPressed, props.pressedStyle]}
         style={[{ backgroundColor: palette.secondary }, props.style]}
-    />
+      />
   );
 };
 
@@ -88,7 +88,7 @@ export const ButtonTertiary: FunctionComponent<ComponentType> = (props) => {
         style={[styles.buttonTertiary, props.style]}
         pressedStyle={[styles.buttonTertiaryPressed, props.pressedStyle]}
         textStyle={[styles.buttonTertiaryText, props.textStyle]}
-    />
+      />
   );
 };
 
@@ -99,7 +99,7 @@ export const ButtonNav: FunctionComponent<ComponentType> = (props) => {
         android_ripple={circleButtonRipple}
         style={{ backgroundColor: "transparent", width: 34, height: 34 }}
         textStyle={[styles.buttonTertiaryText, props.textStyle]}
-    />
+      />
   );
 };
 

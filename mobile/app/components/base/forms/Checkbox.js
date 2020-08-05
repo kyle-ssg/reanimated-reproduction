@@ -34,7 +34,7 @@ const TheComponent = class extends Component {
           progress={this.animatedValue}
           style={styles.checkbox}
           source={json}
-      />
+        />
     );
   }
 };

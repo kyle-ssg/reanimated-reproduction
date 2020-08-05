@@ -35,7 +35,7 @@ const InputGroup = class extends Component {
                 <span
                   id={props.inputProps.name ? `${props.inputProps.name}-error` : ""}
                   className="text-danger"
-            >
+                >
                     {inputProps.error}
                 </span>
             </span>
@@ -59,7 +59,7 @@ const InputGroup = class extends Component {
                         type={props.type || "text"}
                         id={id}
                         placeholder={props.placeholder}
-                />
+                      />
               ) : (
                   <Input
                     ref={(c) => (this.input = c)}
@@ -73,7 +73,7 @@ const InputGroup = class extends Component {
                     type={props.type || "text"}
                     id={id}
                     placeholder={props.placeholder}
-                />
+                  />
               )}
               </div>
           )}

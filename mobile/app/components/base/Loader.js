@@ -22,7 +22,7 @@ export const Loader = class extends PureComponent {
           }}
               loop
               source={json}
-        />
+            />
         </View>
     );
   }
