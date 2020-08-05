@@ -15,8 +15,8 @@ const Container = ({
   style,
   children,
 }) => (
-  <View
-    style={[
+    <View
+      style={[
       ml10 && Styles.ml10,
       mr10 && Styles.mr10,
       ml0 && Styles.ml0,
@@ -30,8 +30,8 @@ const Container = ({
       style,
     ]}
   >
-    {children}
-  </View>
+        {children}
+    </View>
 );
 
 Container.displayName = "Container";

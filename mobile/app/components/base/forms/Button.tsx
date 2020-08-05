@@ -48,22 +48,22 @@ const Button: FunctionComponent<ComponentType> = ({
   }, [textStyle]);
 
   return (
-    <View style={{ overflow: "hidden" }}>
-      <Pressable
-        {...rest}
-        style={({ pressed }) => (pressed ? pressedStyles : groupStyles)}
-        disabled={disabled}
-        android_ripple={android_ripple || darkAndroidRipple}
+      <View style={{ overflow: "hidden" }}>
+          <Pressable
+            {...rest}
+            style={({ pressed }) => (pressed ? pressedStyles : groupStyles)}
+            disabled={disabled}
+            android_ripple={android_ripple || darkAndroidRipple}
       >
-        {Utils.reactChildIsString(children) ? (
-          <Text style={textStyles}>
-            {children.length === 1 ? children[0] : children}
-          </Text>
+              {Utils.reactChildIsString(children) ? (
+                  <Text style={textStyles}>
+                      {children.length === 1 ? children[0] : children}
+                  </Text>
         ) : (
           children
         )}
-      </Pressable>
-    </View>
+          </Pressable>
+      </View>
   );
 };
 
@@ -73,32 +73,32 @@ export const ButtonPrimary: FunctionComponent<ComponentType> = (props) => {
 
 export const ButtonSecondary: FunctionComponent<ComponentType> = (props) => {
   return (
-    <Button
-      {...props}
-      pressedStyle={[Styles.buttonGroupSecondaryPressed, props.pressedStyle]}
-      style={[{ backgroundColor: palette.secondary }, props.style]}
+      <Button
+        {...props}
+        pressedStyle={[Styles.buttonGroupSecondaryPressed, props.pressedStyle]}
+        style={[{ backgroundColor: palette.secondary }, props.style]}
     />
   );
 };
 
 export const ButtonTertiary: FunctionComponent<ComponentType> = (props) => {
   return (
-    <Button
-      {...props}
-      style={[styles.buttonTertiary, props.style]}
-      pressedStyle={[styles.buttonTertiaryPressed, props.pressedStyle]}
-      textStyle={[styles.buttonTertiaryText, props.textStyle]}
+      <Button
+        {...props}
+        style={[styles.buttonTertiary, props.style]}
+        pressedStyle={[styles.buttonTertiaryPressed, props.pressedStyle]}
+        textStyle={[styles.buttonTertiaryText, props.textStyle]}
     />
   );
 };
 
 export const ButtonNav: FunctionComponent<ComponentType> = (props) => {
   return (
-    <Button
-      {...props}
-      android_ripple={circleButtonRipple}
-      style={{ backgroundColor: "transparent", width: 34, height: 34 }}
-      textStyle={[styles.buttonTertiaryText, props.textStyle]}
+      <Button
+        {...props}
+        android_ripple={circleButtonRipple}
+        style={{ backgroundColor: "transparent", width: 34, height: 34 }}
+        textStyle={[styles.buttonTertiaryText, props.textStyle]}
     />
   );
 };

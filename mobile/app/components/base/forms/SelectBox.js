@@ -40,37 +40,37 @@ const SelectBox = class extends PureComponent {
       title,
     } = this.props;
     return (
-      <View style={{ opacity: disabled ? 0.5 : 1 }}>
-        {!!title && (
-          <FormGroup>
-            <Text style={Styles.inputLabel}>{this.props.title}</Text>
-          </FormGroup>
+        <View style={{ opacity: disabled ? 0.5 : 1 }}>
+            {!!title && (
+            <FormGroup>
+                <Text style={Styles.inputLabel}>{this.props.title}</Text>
+            </FormGroup>
         )}
-        <TouchableOpacity
-          activeOpacity={disabled ? 1 : 0.8}
-          onPress={!disabled && (onPress || this.onPress)}
-          style={[Styles.selectBoxContainer, containerStyle || {}]}
+            <TouchableOpacity
+              activeOpacity={disabled ? 1 : 0.8}
+              onPress={!disabled && (onPress || this.onPress)}
+              style={[Styles.selectBoxContainer, containerStyle || {}]}
         >
-          <Row style={{ flexWrap: "nowrap" }} space>
-            <Flex>
-              <Text
-                numberOfLines={1}
-                style={[Styles.selectBoxText, textStyle || {}]}
+                <Row style={{ flexWrap: "nowrap" }} space>
+                    <Flex>
+                        <Text
+                          numberOfLines={1}
+                          style={[Styles.selectBoxText, textStyle || {}]}
               >
-                {children}{" "}
-              </Text>
-            </Flex>
-            {!hideIcon && (
-              <Column>
-                <ION
-                  style={[Styles.selectBoxIcon, iconStyle || {}]}
-                  name="ios-chevron-down"
+                            {children}{" "}
+                        </Text>
+                    </Flex>
+                    {!hideIcon && (
+                    <Column>
+                        <ION
+                          style={[Styles.selectBoxIcon, iconStyle || {}]}
+                          name="ios-chevron-down"
                 />
-              </Column>
+                    </Column>
             )}
-          </Row>
-        </TouchableOpacity>
-      </View>
+                </Row>
+            </TouchableOpacity>
+        </View>
     );
   }
 };

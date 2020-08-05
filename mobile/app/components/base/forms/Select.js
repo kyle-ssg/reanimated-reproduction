@@ -53,30 +53,30 @@ const Select = class extends Component {
       : this.props.items;
 
     return (
-      <Flex style={[Styles.body, { style }]}>
-        {filterItem && (
-          <FormGroup style={{ backgroundColor: "#FCF8F5" }}>
-            <Container>
-              <TextInput
-                style={{
+        <Flex style={[Styles.body, { style }]}>
+            {filterItem && (
+            <FormGroup style={{ backgroundColor: "#FCF8F5" }}>
+                <Container>
+                    <TextInput
+                      style={{
                   shadowOpacity: 0,
                   borderBottomWidth: 0,
                 }}
-                placeholder={placeholder}
-                onChangeText={(searchNew) =>
+                      placeholder={placeholder}
+                      onChangeText={(searchNew) =>
                   this.setState({
                     search: searchNew.toLowerCase(),
                   })
                 }
-                testID={this.props.searchTestID}
+                      testID={this.props.searchTestID}
               />
-            </Container>
-          </FormGroup>
+                </Container>
+            </FormGroup>
         )}
-        {data && data.length ? (
-          <FlatList
-            data={data}
-            renderItem={({ item }) => {
+            {data && data.length ? (
+                <FlatList
+                  data={data}
+                  renderItem={({ item }) => {
               const isSelected = this.isSelected(item);
               const toggleItem = () => {
                 this.setItem(item, !isSelected);
@@ -87,12 +87,12 @@ const Select = class extends Component {
         ) : renderNoResults ? (
           renderNoResults()
         ) : (
-          <Text style={Styles.textCenter}>
-            No Results Found for:
-            <Bold>{search}</Bold>
-          </Text>
+            <Text style={Styles.textCenter}>
+                No Results Found for:
+                <Bold>{search}</Bold>
+            </Text>
         )}
-      </Flex>
+        </Flex>
     );
   }
 };

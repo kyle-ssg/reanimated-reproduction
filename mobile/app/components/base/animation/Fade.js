@@ -85,8 +85,8 @@ const Fade = class extends Component {
 
   render() {
     return (
-      <Animated.View
-        style={[
+        <Animated.View
+          style={[
           {
             overflow: "hidden",
             opacity: this.state.animated_value,
@@ -94,8 +94,8 @@ const Fade = class extends Component {
           this.props.style,
         ]}
       >
-        {this.props.children}
-      </Animated.View>
+            {this.props.children}
+        </Animated.View>
     );
   }
 };

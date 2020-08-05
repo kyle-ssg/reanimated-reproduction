@@ -58,15 +58,15 @@ export const withModalOptions = (
   headerHideBackButton: true,
   headerRight: function HeaderRight(props: any) {
     return (
-      <ButtonNav onPress={() => navigation.pop()}>
-        <ION
-          style={{
+        <ButtonNav onPress={() => navigation.pop()}>
+            <ION
+              style={{
             color: props.tintColor,
             fontSize: styleVariables.fontSizeH1,
           }}
-          name="ios-close"
+              name="ios-close"
         />
-      </ButtonNav>
+        </ButtonNav>
     );
   },
 });

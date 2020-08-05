@@ -40,9 +40,9 @@ const CustomModal: FunctionComponent<ModalType> = ({
   }
 
   return (
-    <Modal visible={!!visible} transparent={true} statusBarTranslucent={true}>
-      <Animated.View
-        style={[
+      <Modal visible={!!visible} transparent={true} statusBarTranslucent={true}>
+          <Animated.View
+            style={[
           style,
           dark ? styles.darkBackdrop : styles.lightBackdrop,
           {
@@ -50,28 +50,28 @@ const CustomModal: FunctionComponent<ModalType> = ({
           },
         ]}
       >
-        {fadeContent && (
-          <>
-            <TouchableOpacity
-              onPress={onDismissPress}
-              activeOpacity={1}
-              style={ReactNative.StyleSheet.absoluteFill}
+              {fadeContent && (
+              <>
+                  <TouchableOpacity
+                    onPress={onDismissPress}
+                    activeOpacity={1}
+                    style={ReactNative.StyleSheet.absoluteFill}
             />
-            {children}
-          </>
+                  {children}
+              </>
         )}
-      </Animated.View>
-      {!fadeContent && (
-        <View style={[styles.childrenContainer, style]}>
-          <TouchableOpacity
-            onPress={onDismissPress}
-            activeOpacity={1}
-            style={ReactNative.StyleSheet.absoluteFill}
+          </Animated.View>
+          {!fadeContent && (
+          <View style={[styles.childrenContainer, style]}>
+              <TouchableOpacity
+                onPress={onDismissPress}
+                activeOpacity={1}
+                style={ReactNative.StyleSheet.absoluteFill}
           />
-          {children}
-        </View>
+              {children}
+          </View>
       )}
-    </Modal>
+      </Modal>
   );
 };
 

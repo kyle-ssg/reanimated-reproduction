@@ -87,14 +87,14 @@ const SlideUp = class extends Component {
       outputRange: [0, this.props.height, this.props.zoomedHeight], // 0 : 150, 0.5 : 75, 1 : 0
     });
     return (
-      <Animated.View
-        style={[
+        <Animated.View
+          style={[
           { overflow: "hidden", justifyContent: "center", height },
           this.props.style,
         ]}
       >
-        {this.props.children}
-      </Animated.View>
+            {this.props.children}
+        </Animated.View>
     );
   }
 };

@@ -79,31 +79,31 @@ const Input = class extends PureComponent {
     );
 
     return (
-      <div className={className}>
-        {textarea ? (
-          <textarea
-            ref={(c) => (this.input = c)}
-            {...rest}
-            onFocus={this.onFocus}
-            onKeyDown={this.onKeyDown}
-            onBlur={this.onBlur}
-            value={this.props.value}
-            className={combinedInputClassName}
+        <div className={className}>
+            {textarea ? (
+                <textarea
+                  ref={(c) => (this.input = c)}
+                  {...rest}
+                  onFocus={this.onFocus}
+                  onKeyDown={this.onKeyDown}
+                  onBlur={this.onBlur}
+                  value={this.props.value}
+                  className={combinedInputClassName}
           />
         ) : (
-          <input
-            ref={(c) => (this.input = c)}
-            {...rest}
-            onFocus={this.onFocus}
-            onKeyDown={this.onKeyDown}
-            onBlur={this.onBlur}
-            value={this.props.value}
-            className={combinedInputClassName}
+            <input
+              ref={(c) => (this.input = c)}
+              {...rest}
+              onFocus={this.onFocus}
+              onKeyDown={this.onKeyDown}
+              onBlur={this.onBlur}
+              value={this.props.value}
+              className={combinedInputClassName}
           />
         )}
 
-        {children && children}
-      </div>
+            {children && children}
+        </div>
     );
   }
 };

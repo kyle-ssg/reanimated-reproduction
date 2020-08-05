@@ -89,23 +89,23 @@ const withScreen = (Component: React.ComponentType) => {
     );
 
     return (
-      <>
-        {Platform.OS !== "ios" && (
-          <FocusAwareStatusBar
-            {...props.route.params?.statusBar}
-            animated={true}
+        <>
+            {Platform.OS !== "ios" && (
+            <FocusAwareStatusBar
+              {...props.route.params?.statusBar}
+              animated={true}
           />
-        )}
-        <Component
-          push={push}
-          pop={pop}
-          replace={replace}
-          canGoBack={props.navigation.canGoBack}
-          setOptions={setOptions}
-          {...props.route.params}
-          {...props}
+            )}
+            <Component
+              push={push}
+              pop={pop}
+              replace={replace}
+              canGoBack={props.navigation.canGoBack}
+              setOptions={setOptions}
+              {...props.route.params}
+              {...props}
         />
-      </>
+        </>
     );
   };
 };

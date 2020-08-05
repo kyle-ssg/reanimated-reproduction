@@ -164,31 +164,31 @@ const TextInput = class extends PureComponent {
   render() {
     // If you wanted animated shadows
     return (
-      <View>
-        {this.props.title && (
-          <FormGroup>
-            <Text style={Styles.inputLabel}>{this.props.title}</Text>
-          </FormGroup>
+        <View>
+            {this.props.title && (
+            <FormGroup>
+                <Text style={Styles.inputLabel}>{this.props.title}</Text>
+            </FormGroup>
         )}
-        <Animated.View>
-          <ReactNative.TextInput
-            {...this.props}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-            onChangeText={this.onChangeText}
-            style={[
+            <Animated.View>
+                <ReactNative.TextInput
+                  {...this.props}
+                  onFocus={this.onFocus}
+                  onBlur={this.onBlur}
+                  onChangeText={this.onChangeText}
+                  style={[
               Styles.textInput,
               Styles.textInputAndroid,
               this.props.style,
             ]}
-            value={this.props.value}
-            testID={this.props.testID}
-            ref={(ref) => (this.inputRef = ref)}
-            blurOnSubmit={Platform.OS === "ios"}
+                  value={this.props.value}
+                  testID={this.props.testID}
+                  ref={(ref) => (this.inputRef = ref)}
+                  blurOnSubmit={Platform.OS === "ios"}
           />
-        </Animated.View>
-        <Animated.View
-          style={[
+            </Animated.View>
+            <Animated.View
+              style={[
             {
               marginTop: ReactNative.StyleSheet.hairlineWidth * 3,
               transform: [{ scaleX: this.animation }],
@@ -197,7 +197,7 @@ const TextInput = class extends PureComponent {
             },
           ]}
         />
-      </View>
+        </View>
     );
   }
 };
@@ -230,6 +230,6 @@ TextInput.propTypes = {
 
 export default TextInput;
 export const FlatInput = (props) => (
-  <TextInput {...props} style={[Styles.flatInput, props.style]} />
+    <TextInput {...props} style={[Styles.flatInput, props.style]} />
 );
 FlatInput.propTypes = textInputPropTypes;

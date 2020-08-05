@@ -45,9 +45,9 @@ export default (WrappedComponent) => {
     }
     render() {
       return (
-        <WrappedComponent
-          {...this.props}
-          grecaptcher={this.state.grecaptcher}
+          <WrappedComponent
+            {...this.props}
+            grecaptcher={this.state.grecaptcher}
         />
       );
     }

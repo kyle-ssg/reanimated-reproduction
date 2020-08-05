@@ -26,9 +26,9 @@ export class Row extends PureComponent {
       props: { className, space, children, ...rest },
     } = this;
     return (
-      <div
-        {...rest}
-        className={cn(
+        <div
+          {...rest}
+          className={cn(
           {
             "flex-row": true,
             space,
@@ -36,8 +36,8 @@ export class Row extends PureComponent {
           className
         )}
       >
-        {children}
-      </div>
+            {children}
+        </div>
     );
   }
 }

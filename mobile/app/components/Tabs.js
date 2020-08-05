@@ -26,37 +26,37 @@ export default class Tabs extends PureComponent {
   };
 
   renderTabBar = (props) => (
-    <TabBar
-      {...props}
-      scrollEnabled={this.props.scrollEnabled}
-      labelStyle={[styles.TabText, this.props.labelStyle]}
-      getLabelText={({ route: { title } }) => title}
-      style={{ ...styles.tabPrimary, ...this.props.tabBarStyle }}
-      tabStyle={
+      <TabBar
+        {...props}
+        scrollEnabled={this.props.scrollEnabled}
+        labelStyle={[styles.TabText, this.props.labelStyle]}
+        getLabelText={({ route: { title } }) => title}
+        style={{ ...styles.tabPrimary, ...this.props.tabBarStyle }}
+        tabStyle={
         this.props.tabBarRow
           ? { ...Styles.row, ...this.props.tabStyle }
           : this.props.tabStyle
       }
-      indicatorStyle={{
+        indicatorStyle={{
         ...styles.indicatorPrimary,
         ...this.props.indicatorStyle,
       }}
-      renderIcon={({ route }) => route.icon || null}
-      renderLabel={this.props.renderLabel}
+        renderIcon={({ route }) => route.icon || null}
+        renderLabel={this.props.renderLabel}
     />
   );
 
   render() {
     return (
-      <TabView
-        useNativeDriver
-        lazy={this.props.lazy}
-        navigationState={this.props.navigationState}
-        renderTabBar={this.renderTabBar}
-        renderScene={this.props.renderScene}
-        timingConfig={{ duration: 100 }}
-        onIndexChange={(index) => this.props.onIndexChange(index)}
-        initialLayout={{
+        <TabView
+          useNativeDriver
+          lazy={this.props.lazy}
+          navigationState={this.props.navigationState}
+          renderTabBar={this.renderTabBar}
+          renderScene={this.props.renderScene}
+          timingConfig={{ duration: 100 }}
+          onIndexChange={(index) => this.props.onIndexChange(index)}
+          initialLayout={{
           width: Dimensions.get("window").width,
           height: Dimensions.get("window").height,
         }}

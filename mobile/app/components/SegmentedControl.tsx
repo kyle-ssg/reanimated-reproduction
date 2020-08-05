@@ -73,20 +73,20 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
   };
 
   return (
-    <View
-      style={[
+      <View
+        style={[
         styles.track,
         trackStyle,
         { paddingHorizontal: paddingX, paddingVertical: paddingY },
       ]}
-      onLayout={onLayout}
+        onLayout={onLayout}
     >
-      {!!sliderWidth && (
-        <PanGestureHandler onGestureEvent={handleGestureEvent}>
-          <View style={styles.barContainer}>
-            <>
-              <Animated.View
-                style={[
+          {!!sliderWidth && (
+          <PanGestureHandler onGestureEvent={handleGestureEvent}>
+              <View style={styles.barContainer}>
+                  <>
+                      <Animated.View
+                        style={[
                   styles.bar,
                   barStyle,
                   {
@@ -95,19 +95,19 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
                   },
                 ]}
               />
-              {items.map((item, i) => (
-                <Pressable
-                  key={i}
-                  pointerEvents={value === item ? "none" : "auto"}
-                  disabled={disabled}
-                  onPress={() => {
+                      {items.map((item, i) => (
+                          <Pressable
+                            key={i}
+                            pointerEvents={value === item ? "none" : "auto"}
+                            disabled={disabled}
+                            onPress={() => {
                     onChange(item);
                   }}
-                  style={styles.labelContainer}
+                            style={styles.labelContainer}
                 >
-                  {({ pressed }) => (
-                    <Text
-                      style={[
+                              {({ pressed }) => (
+                                  <Text
+                                    style={[
                         styles.label,
                         textStyle,
                         pressed && styles.labelPressed,
@@ -116,16 +116,16 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
                         value === item && textActiveStyle,
                       ]}
                     >
-                      {item.label}
-                    </Text>
+                                      {item.label}
+                                  </Text>
                   )}
-                </Pressable>
+                          </Pressable>
               ))}
-            </>
-          </View>
-        </PanGestureHandler>
+                  </>
+              </View>
+          </PanGestureHandler>
       )}
-    </View>
+      </View>
   );
 };
 

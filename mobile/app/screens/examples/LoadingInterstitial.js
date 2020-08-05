@@ -23,12 +23,12 @@ class LoadingInterstitial extends Component {
     const { text } = this.props;
 
     return (
-      <Flex style={[Styles.body, Styles.centeredContainer]}>
-        <Flex style={[Styles.centeredContainer]}>
-          <Animation style={{ width: "30%" }} loop autoPlay source={loader} />
-          <H3 style={[Styles.textCenter, Styles.pt20]}>{text}</H3>
+        <Flex style={[Styles.body, Styles.centeredContainer]}>
+            <Flex style={[Styles.centeredContainer]}>
+                <Animation style={{ width: "30%" }} loop autoPlay source={loader} />
+                <H3 style={[Styles.textCenter, Styles.pt20]}>{text}</H3>
+            </Flex>
         </Flex>
-      </Flex>
     );
   }
 }
