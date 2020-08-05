@@ -68,14 +68,14 @@ export class DatePicker extends PureComponent {
       },
     } = this;
     return (
-      <_DatePicker
-        minDate={this.getDate(minDate)}
-        maxDate={this.getDate(maxDate)}
-        highlightDates={this.getDates(highlightDates)}
-        excludeDates={this.getDates(excludeDates)}
-        selected={this.getDate(selected)}
-        {...rest}
-      />
+        <_DatePicker
+          minDate={this.getDate(minDate)}
+          maxDate={this.getDate(maxDate)}
+          highlightDates={this.getDates(highlightDates)}
+          excludeDates={this.getDates(excludeDates)}
+          selected={this.getDate(selected)}
+          {...rest}
+        />
     );
   }
 }

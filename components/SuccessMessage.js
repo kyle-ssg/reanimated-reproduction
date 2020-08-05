@@ -19,15 +19,15 @@ const SuccessMessage = class extends Component {
       props: { children },
     } = this;
     return (
-      <div
-        className={`alert mt-1 mb-1 alert-success ${
+        <div
+          className={`alert mt-1 mb-1 alert-success ${
           this.props.className || ""
         }`}
-      >
-        {typeof this.props.children === "string"
+        >
+            {typeof this.props.children === "string"
           ? this.props.children.replace(/\n/g, "")
           : "Success processing request"}
-      </div>
+        </div>
     );
   }
 };

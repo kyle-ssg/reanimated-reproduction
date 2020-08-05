@@ -23,19 +23,19 @@ export class Button extends PureComponent {
   render() {
     const { children, ...rest } = this.props;
     return (
-      <button
-        type="button"
-        {...rest}
-        onMouseUp={this.onMouseUp}
-        className={cn(
+        <button
+          type="button"
+          {...rest}
+          onMouseUp={this.onMouseUp}
+          className={cn(
           {
             btn: true,
           },
           this.props.className
         )}
-      >
-        {children}
-      </button>
+        >
+            {children}
+        </button>
     );
   }
 }
@@ -51,7 +51,7 @@ export class ButtonPrimary extends React.PureComponent {
   render() {
     const { props } = this;
     return (
-      <Button {...props} className={cn(props.className, "btn btn-primary")} />
+        <Button {...props} className={cn(props.className, "btn btn-primary")} />
     );
   }
 }
@@ -66,7 +66,7 @@ export class ButtonSecondary extends React.PureComponent {
   render() {
     const { props } = this;
     return (
-      <Button {...props} className={cn(props.className, "btn btn-secondary")} />
+        <Button {...props} className={cn(props.className, "btn btn-secondary")} />
     );
   }
 }
@@ -81,10 +81,10 @@ export class ButtonTertiary extends React.PureComponent {
   render() {
     const { props } = this;
     return (
-      <Button
-        {...props}
-        className={cn(props.className, "btn btn-outline-primary")}
-      />
+        <Button
+          {...props}
+          className={cn(props.className, "btn btn-outline-primary")}
+        />
     );
   }
 }

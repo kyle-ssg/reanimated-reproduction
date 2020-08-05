@@ -17,18 +17,18 @@ const Confirm = (props) => {
     props.toggle();
   };
   return (
-    <Modal unmountOnClose isOpen={props.isOpen} toggle={no}>
-      <ModalHeader toggle={no}>{props.title}</ModalHeader>
-      <ModalBody>{props.children}</ModalBody>
-      <ModalFooter>
-        <Button color="primary" onClick={yes}>
-          {props.yesText}
-        </Button>{" "}
-        <Button color="secondary" onClick={no}>
-          {props.noText}
-        </Button>
-      </ModalFooter>
-    </Modal>
+      <Modal unmountOnClose isOpen={props.isOpen} toggle={no}>
+          <ModalHeader toggle={no}>{props.title}</ModalHeader>
+          <ModalBody>{props.children}</ModalBody>
+          <ModalFooter>
+              <Button color="primary" onClick={yes}>
+                  {props.yesText}
+              </Button>{" "}
+              <Button color="secondary" onClick={no}>
+                  {props.noText}
+              </Button>
+          </ModalFooter>
+      </Modal>
   );
 };
 

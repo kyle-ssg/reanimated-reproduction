@@ -45,9 +45,9 @@ export default (
 
     render() {
       return (
-        <Profiler id={_id} onRender={this.logMeasurement}>
-          <WrappedComponent {...this.props} {...this.state} />
-        </Profiler>
+          <Profiler id={_id} onRender={this.logMeasurement}>
+              <WrappedComponent {...this.props} {...this.state} />
+          </Profiler>
       );
     }
   }

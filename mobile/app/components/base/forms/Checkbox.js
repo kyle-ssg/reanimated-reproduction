@@ -30,12 +30,12 @@ const TheComponent = class extends Component {
 
   render() {
     return (
-      <Animation
-        progress={this.animatedValue}
-        ref="animation"
-        style={styles.checkbox}
-        source={json}
-      />
+        <Animation
+          progress={this.animatedValue}
+          ref="animation"
+          style={styles.checkbox}
+          source={json}
+        />
     );
   }
 };

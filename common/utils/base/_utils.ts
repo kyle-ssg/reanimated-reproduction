@@ -166,8 +166,8 @@ const Utils = {
       return target.type === "checkbox" || target.type === "radio"
         ? target.getAttribute("checked")
         : typeof target.value === "string"
-        ? target.value
-        : target.getAttribute("data-value") || target.getAttribute("value");
+          ? target.value
+          : target.getAttribute("data-value") || target.getAttribute("value");
     }
 
     if (target && target.textContent) {

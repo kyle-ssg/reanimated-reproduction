@@ -111,21 +111,21 @@ global.API = {
     }
     return includePhotos
       ? new Promise((resolve) =>
-          Contacts.getAll((error, contacts) =>
-            resolve({
-              error,
-              contacts: contacts,
-            })
-          )
+        Contacts.getAll((error, contacts) =>
+          resolve({
+            error,
+            contacts: contacts,
+          })
         )
+      )
       : new Promise((resolve) =>
-          Contacts.getAllWithoutPhotos((error, contacts) =>
-            resolve({
-              error,
-              contacts: contacts,
-            })
-          )
-        );
+        Contacts.getAllWithoutPhotos((error, contacts) =>
+          resolve({
+            error,
+            contacts: contacts,
+          })
+        )
+      );
   },
   showUpload: (
     title,

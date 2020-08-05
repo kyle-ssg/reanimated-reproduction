@@ -17,9 +17,9 @@ const ActiveLink = ({ match, href, as, activeClassName, children }) => {
   }
 
   return (
-    <Link as={as} href={href}>
-      {React.cloneElement(child, { className })}
-    </Link>
+      <Link as={as} href={href}>
+          {React.cloneElement(child, { className })}
+      </Link>
   );
 };
 

@@ -26,49 +26,49 @@ export function setup(cb) {
 }
 
 export const withProvider = (story) => (
-  <Provider store={store}>{story()}</Provider>
+    <Provider store={store}>{story()}</Provider>
 );
 export const withSafeArea = (story) => (
-  <SafeAreaProvider>
-    <SafeAreaView style={{ flex: 1, marginBottom: 80 }}>{story()}</SafeAreaView>
-  </SafeAreaProvider>
+    <SafeAreaProvider>
+        <SafeAreaView style={{ flex: 1, marginBottom: 80 }}>{story()}</SafeAreaView>
+    </SafeAreaProvider>
 );
 
 export const withPaddedContainer = (story) => (
-  <Flex style={Styles.p5}>{story()}</Flex>
+    <Flex style={Styles.p5}>{story()}</Flex>
 );
 export const withScrollView = (story) => (
-  <Flex style={[Styles.pt10]}>
-    <ScrollView style={{ overflow: "visible" }}>{story()}</ScrollView>
-  </Flex>
+    <Flex style={[Styles.pt10]}>
+        <ScrollView style={{ overflow: "visible" }}>{story()}</ScrollView>
+    </Flex>
 );
 
 const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;
 
 export const withNavbarWrapper = (story) => (
-  <Provider store={store}>
-    <StatusBar
-      backgroundColor="transparent"
-      translucent
-      barStyle="dark-content"
-    />
-    <>
-      <NavigationContainer independent>
-        <Navigator
-          screenOptions={defaultNavigationOptions}
-          initialRouteName="1"
-        >
-          <Stack.Screen
-            name={"1"}
-            options={{ title: "A generic page" }}
-            initialParams={{ children: story() }}
-            component={GenericScreen}
-          />
-        </Navigator>
-      </NavigationContainer>
-    </>
-  </Provider>
+    <Provider store={store}>
+        <StatusBar
+          backgroundColor="transparent"
+          translucent
+          barStyle="dark-content"
+        />
+        <>
+            <NavigationContainer independent>
+                <Navigator
+                  screenOptions={defaultNavigationOptions}
+                  initialRouteName="1"
+                >
+                    <Stack.Screen
+                      name={"1"}
+                      options={{ title: "A generic page" }}
+                      initialParams={{ children: story() }}
+                      component={GenericScreen}
+                    />
+                </Navigator>
+            </NavigationContainer>
+        </>
+    </Provider>
 );
 export const getStory = (name) =>
   storiesOf(name, module)

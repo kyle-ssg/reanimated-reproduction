@@ -11,10 +11,10 @@ const ModalDefault = (props) => {
     props.toggle();
   };
   return (
-    <Modal unmountOnClose isOpen={props.isOpen} toggle={onDismiss}>
-      <ModalHeader toggle={onDismiss}>{props.title}</ModalHeader>
-      <ModalBody>{props.children}</ModalBody>
-    </Modal>
+      <Modal unmountOnClose isOpen={props.isOpen} toggle={onDismiss}>
+          <ModalHeader toggle={onDismiss}>{props.title}</ModalHeader>
+          <ModalBody>{props.children}</ModalBody>
+      </Modal>
   );
 };
 

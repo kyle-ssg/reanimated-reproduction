@@ -33,9 +33,9 @@ const VisibleForScreens: FunctionComponent<ComponentType> = ({
     }
   }, [activeScreen, activeScreen]);
   return (
-    <Fade style={style} value={isActive}>
-      {children}
-    </Fade>
+      <Fade style={style} value={isActive}>
+          {children}
+      </Fade>
   );
 };
 

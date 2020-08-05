@@ -26,10 +26,10 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className="container">
-        Home Page
-        <Button>Hi</Button>
-      </div>
+        <div className="container">
+            Home Page
+            <Button>Hi</Button>
+        </div>
     );
   }
 }

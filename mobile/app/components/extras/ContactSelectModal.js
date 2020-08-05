@@ -38,35 +38,35 @@ const ContactSelectModal = class extends React.Component {
     const { multiple } = this.props;
     const { isLoading, contacts, value } = this.state;
     return (
-      <Delay>
-        <Flex style={[Styles.body, Styles.container]}>
-          <Flex style={Styles.centeredContainer}>
-            <Loader />
-          </Flex>
-          <Button>Done</Button>
-        </Flex>
-
-        <Flex style={[Styles.body, Styles.container]}>
-          {isLoading && (
-            <Flex style={Styles.centeredContainer}>
-              <Loader />
+        <Delay>
+            <Flex style={[Styles.body, Styles.container]}>
+                <Flex style={Styles.centeredContainer}>
+                    <Loader />
+                </Flex>
+                <Button>Done</Button>
             </Flex>
+
+            <Flex style={[Styles.body, Styles.container]}>
+                {isLoading && (
+                <Flex style={Styles.centeredContainer}>
+                    <Loader />
+                </Flex>
           )}
-          {contacts && (
-            <Fade style={{ flex: 1 }} autostart value={1}>
-              <Select
-                placeholder="Search by name"
-                items={contacts}
-                value={value}
-                onChange={(changeValue) =>
+                {contacts && (
+                <Fade style={{ flex: 1 }} autostart value={1}>
+                    <Select
+                      placeholder="Search by name"
+                      items={contacts}
+                      value={value}
+                      onChange={(changeValue) =>
                   this.setState({ value: changeValue })
                 }
-                multiple={multiple}
-                renderRow={({ givenName }, isSelected, toggleItem) => (
-                  <ListItem style={Styles.listItem} onPress={toggleItem}>
-                    <Text style={Styles.listItemText}>{givenName}</Text>
-                    <ION
-                      style={[
+                      multiple={multiple}
+                      renderRow={({ givenName }, isSelected, toggleItem) => (
+                          <ListItem style={Styles.listItem} onPress={toggleItem}>
+                              <Text style={Styles.listItemText}>{givenName}</Text>
+                              <ION
+                                style={[
                         Styles.listIcon,
                         {
                           color: isSelected
@@ -74,21 +74,21 @@ const ContactSelectModal = class extends React.Component {
                             : palette.iconFaint,
                         },
                       ]}
-                      name={
+                                name={
                         isSelected ? "ios-checkbox" : "ios-checkbox-outline"
                       }
-                    />
-                  </ListItem>
+                              />
+                          </ListItem>
                 )}
-                filterItem={(contact, search) =>
+                      filterItem={(contact, search) =>
                   contact.search.indexOf(search) !== -1
                 }
-              />
-            </Fade>
+                    />
+                </Fade>
           )}
-          <Button onPress={this.onDone}>Done</Button>
-        </Flex>
-      </Delay>
+                <Button onPress={this.onDone}>Done</Button>
+            </Flex>
+        </Delay>
     );
   }
 };

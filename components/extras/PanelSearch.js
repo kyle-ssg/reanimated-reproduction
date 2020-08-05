@@ -46,64 +46,64 @@ const PanelSearch = class extends Component {
     return !search &&
       (!filteredItems || !filteredItems.length) &&
       !this.props.renderSearchWithNoResults ? (
-      renderNoResults
-    ) : (
-      <Panel
-        className={this.props.className}
-        title={this.props.title}
-        icon={this.props.icon}
-        action={
+        renderNoResults
+      ) : (
+          <Panel
+            className={this.props.className}
+            title={this.props.title}
+            icon={this.props.icon}
+            action={
           this.props.filterRow ? (
-            <Row onClick={() => this.input.focus()}>
-              <input
-                ref={(c) => (this.input = c)}
-                onChange={(e) =>
+              <Row onClick={() => this.input.focus()}>
+                  <input
+                    ref={(c) => (this.input = c)}
+                    onChange={(e) =>
                   this.props.onChange
                     ? this.props.onChange(e)
                     : this.setState({ search: Utils.safeParseEventValue(e) })
                 }
-                type="text"
-                value={this.props.search || search}
-              />
-              <span
-                style={{ marginLeft: 10, position: "absolute" }}
-                className="icon ion-ios-search"
-              />
-            </Row>
+                    type="text"
+                    value={this.props.search || search}
+                  />
+                  <span
+                    style={{ marginLeft: 10, position: "absolute" }}
+                    className="icon ion-ios-search"
+                  />
+              </Row>
           ) : null
         }
-      >
-        {!!paging && (
-          <Paging paging={paging} isLoading={isLoading} goToPage={goToPage} />
+          >
+              {!!paging && (
+              <Paging paging={paging} isLoading={isLoading} goToPage={goToPage} />
         )}
-        <div
-          id={this.props.id}
-          className="search-list"
-          style={isLoading ? { opacity: 0.5 } : {}}
-        >
-          {filteredItems && filteredItems.length ? (
+              <div
+                id={this.props.id}
+                className="search-list"
+                style={isLoading ? { opacity: 0.5 } : {}}
+              >
+                  {filteredItems && filteredItems.length ? (
             filteredItems.map(renderRow)
           ) : renderNoResults && !search ? (
             renderNoResults
           ) : (
-            <Column>
-              <div>
-                {"No results "}
-                {search && (
-                  <span>
-                    for
-                    <strong>{` "${search}"`}</strong>
-                  </span>
+              <Column>
+                  <div>
+                      {"No results "}
+                      {search && (
+                      <span>
+                          for
+                          <strong>{` "${search}"`}</strong>
+                      </span>
                 )}
-              </div>
-            </Column>
+                  </div>
+              </Column>
           )}
-        </div>
-        {!!paging && filteredItems && filteredItems.length > 10 && (
-          <Paging paging={paging} isLoading={isLoading} goToPage={goToPage} />
+              </div>
+              {!!paging && filteredItems && filteredItems.length > 10 && (
+              <Paging paging={paging} isLoading={isLoading} goToPage={goToPage} />
         )}
-      </Panel>
-    );
+          </Panel>
+      );
   }
 };
 
