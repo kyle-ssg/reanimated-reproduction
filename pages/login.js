@@ -1,37 +1,42 @@
-import React, { Component } from 'react';
-import { withRouter } from 'next/router';
-import ErrorMessage from 'components/Messages';
-import withAuth from 'common/providers/withAuth';
-import { ButtonPrimary } from 'components/base/forms/Button';
+import React, { Component } from "react";
+import { withRouter } from "next/router";
+import ErrorMessage from "components/Messages";
+import withAuth from "common/providers/withAuth";
+import { ButtonPrimary } from "components/base/forms/Button";
 
 class LoginPage extends Component {
-  static displayName = 'LoginPage';
+  static displayName = "LoginPage";
 
   constructor(props) {
     super(props);
     this.state = {
-      email: 'a@a.com',
-      password: 'password',
+      email: "a@a.com",
+      password: "password"
     };
     if (props.user) {
       const redir = Utils.fromParam().redirect;
-      props.router.replace(redir || '/');
+      props.router.replace(redir || "/");
     }
   }
 
-  login = (e) => {
+  login = e => {
     Utils.preventDefault(e);
-    const { state: { index, isRegister, ...rest } } = this;
+    const {
+      state: { index, isRegister, ...rest }
+    } = this;
     this.props.login(rest, {
-      onSuccess: (user) => {
+      onSuccess: user => {
         const redir = Utils.fromParam().redirect;
-        this.props.router.replace(redir || '/');
-      },
+        this.props.router.replace(redir || "/");
+      }
     });
-  }
+  };
 
   render() {
-    const { state: { email, password }, props: { userLoading, userError } } = this;
+    const {
+      state: { email, password },
+      props: { userLoading, userError }
+    } = this;
 
     return (
         <div>
@@ -42,29 +47,34 @@ class LoginPage extends Component {
                         <div>
                             <Input
                               className="mb-2 full-width"
-                              placeholder="Username" value={email}
-                              onChange={email => this.setState({ email: Utils.safeParseEventValue(email) })}
+                              placeholder="Username"
+                              value={email}
+                              onChange={email =>
+                    this.setState({ email: Utils.safeParseEventValue(email) })
+                  }
                             />
                         </div>
                         <div>
                             <Input
                               className="mb-2 full-width"
-                              placeholder="Password" value={password} type="password"
-                              onChange={password => this.setState({ password: Utils.safeParseEventValue(password) })}
+                              placeholder="Password"
+                              value={password}
+                              type="password"
+                              onChange={password =>
+                    this.setState({
+                      password: Utils.safeParseEventValue(password)
+                    })
+                  }
                             />
                         </div>
-                        {userError && (
-                        <ErrorMessage>{userError}</ErrorMessage>
-                          )}
+                        {userError && <ErrorMessage>{userError}</ErrorMessage>}
                         <div className="text-right">
                             <ButtonPrimary type="submit" disabled={userLoading}>
                                 Login
                             </ButtonPrimary>
                         </div>
                     </form>
-
                 </div>
-
             </div>
 
             <footer className="sticky-footer bg-white">
@@ -75,11 +85,8 @@ class LoginPage extends Component {
                 </div>
             </footer>
         </div>
-
     );
   }
 }
 
-export default withRouter(
-  withAuth(LoginPage),
-);
+export default withRouter(withAuth(LoginPage));

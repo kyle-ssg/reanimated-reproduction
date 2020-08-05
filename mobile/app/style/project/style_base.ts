@@ -1,70 +1,73 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
+const style: Record<
+string,
+ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+> = {
   bodyBackground: {
-    backgroundColor: palette.bodyBackground,
+    backgroundColor: palette.bodyBackground
   },
 
   hero: {
-    overflow: 'hidden',
+    overflow: "hidden",
     paddingTop: styleVariables.marginBaseVertical,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent"
   },
 
   bodyAlt: {
-    backgroundColor: palette.backgroundLight,
+    backgroundColor: palette.backgroundLight
   },
 
   bodyWithTabs: {
-    backgroundColor: palette.bodyBackground,
+    backgroundColor: palette.bodyBackground
   },
 
   shadow: {
-    shadowColor: '#333',
+    shadowColor: "#333",
     shadowOffset: {
       width: 3,
-      height: 3,
+      height: 3
     },
     shadowRadius: 5,
-    shadowOpacity: 0.4,
+    shadowOpacity: 0.4
   },
 
   // ICONS
   iconDefault: {
     height: 30,
-    resizeMode: 'contain',
+    resizeMode: "contain"
   },
 
   iconButton: {
-    resizeMode: 'contain',
+    resizeMode: "contain",
     paddingLeft: 6,
     paddingRight: 6,
     paddingTop: 1,
     height: 25,
-    marginRight: 10,
+    marginRight: 10
   },
 
   roundedAnimationContainer: {
-    backgroundColor: 'white',
-    alignSelf: 'center',
+    backgroundColor: "white",
+    alignSelf: "center",
     top: -40,
     zIndex: 2,
-    position: 'absolute',
+    position: "absolute",
     borderRadius: 40,
     width: 80,
     height: 80,
-    justifyContent: 'center',
+    justifyContent: "center"
   },
 
   roundedAnimationInner: {
-    backgroundColor: 'white',
-    alignSelf: 'center',
+    backgroundColor: "white",
+    alignSelf: "center",
     borderRadius: 35,
     width: 70,
     height: 70,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+    justifyContent: "center",
+    alignItems: "center"
+  }
 };
 
 module.exports = style;

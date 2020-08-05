@@ -1,66 +1,69 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
+const style: Record<
+string,
+ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+> = {
   //
   // Grid system / Rows
   // --------------------------------------------------
 
   column: {
     marginLeft: styleVariables.gutterBase,
-    marginRight: styleVariables.gutterBase,
+    marginRight: styleVariables.gutterBase
   },
 
   container: {
     marginLeft: styleVariables.marginBaseHorizontal,
-    marginRight: styleVariables.marginBaseHorizontal,
+    marginRight: styleVariables.marginBaseHorizontal
   },
 
   noPad: {
     marginLeft: -styleVariables.paddingBase,
-    marginRight: -styleVariables.paddingBase,
+    marginRight: -styleVariables.paddingBase
   },
 
   alignItemsRight: {
-    alignItems: 'flex-end',
+    alignItems: "flex-end"
   },
 
   containerLoading: {
-    opacity: 0.8,
+    opacity: 0.8
   },
 
   baseline: {
-    alignItems: 'flex-start',
+    alignItems: "flex-start"
   },
 
   centeredContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center"
   },
 
   alignCenter: {
-    alignSelf: 'center',
+    alignSelf: "center"
   },
 
   alignRight: {
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end"
   },
 
   centeredRow: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center"
   },
 
   row: {
-    alignSelf: 'stretch',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    alignItems: 'center',
+    alignSelf: "stretch",
+    flexWrap: "wrap",
+    flexDirection: "row",
+    alignItems: "center"
   },
 
   spacedRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between"
   },
 
   mb0: { marginBottom: 0 },
@@ -111,7 +114,6 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
   pt15: { paddingTop: 24 },
   pt20: { paddingTop: 32 },
 
-
   m0: { margin: 0 },
   m5: { margin: 8 },
   m10: { margin: 16 },
@@ -147,7 +149,7 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
   mv5: { paddingTop: 8, paddingBottom: 8 },
   mv10: { paddingTop: 16, paddingBottom: 16 },
   mv15: { paddingTop: 24, paddingBottom: 24 },
-  mv20: { paddingTop: 32, paddingBottom: 32 },
+  mv20: { paddingTop: 32, paddingBottom: 32 }
 };
 
 module.exports = style;

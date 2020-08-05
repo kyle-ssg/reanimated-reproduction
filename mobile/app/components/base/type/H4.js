@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import propTypes from 'prop-types';
+import React, { Component } from "react";
+import propTypes from "prop-types";
 
 const h4 = class extends Component {
-  static displayName = 'H4';
+  static displayName = "H4";
 
   render() {
     return (
@@ -21,7 +21,7 @@ h4.propTypes = {
   accessible: propTypes.bool,
   accessibilityLabel: propTypes.string,
   style: propTypes.any,
-  children: propTypes.node,
+  children: propTypes.node
 };
 
 module.exports = h4;

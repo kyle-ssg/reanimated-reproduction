@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class WithSetValue extends Component {
-  static displayName = 'withFoo';
+  static displayName = "withFoo";
 
   constructor(props) {
     super(props);
@@ -10,15 +10,13 @@ export default class WithSetValue extends Component {
     };
   }
 
-
-  setValue = (value)=>this.setState({ value })
-
+  setValue = value => this.setState({ value });
 
   render() {
     return this.props.children({
       ...this.props,
       ...this.state,
-      setValue:this.setValue
-    })
+      setValue: this.setValue
+    });
   }
 }

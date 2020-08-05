@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 // Here you can override any style variable and it'll only be overridden in android - e.g. inputHeight
 module.exports = {
-  inputHeight: 44,
+  inputHeight: 44
 };

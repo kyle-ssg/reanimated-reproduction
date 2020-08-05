@@ -3,5 +3,5 @@ export enum RouteUrls {
   "generic" = "/generic",
   "tabs" = "/tabs",
   "stack" = "/stack",
-  "storybook" = "/storybook",
+  "storybook" = "/storybook"
 }

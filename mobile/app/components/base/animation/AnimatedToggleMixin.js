@@ -2,7 +2,7 @@
  * Created by kylejohnson on 09/01/2016.
  * __deprecated__, copy existing logic to components you wish to animate
  */
-import { Animated, Easing } from 'react-native';
+import { Animated, Easing } from "react-native";
 
 module.exports = {
   getDefaultProps() {
@@ -13,21 +13,21 @@ module.exports = {
       tension: 20,
       easing: Easing.inOut(Easing.ease),
       easingOut: Easing.linear(Easing.ease),
-      animatedProps: ['value'],
+      animatedProps: ["value"]
     };
   },
   getInitialState() {
     const props = {};
-    _.each(this.props.animatedProps, (prop) => {
+    _.each(this.props.animatedProps, prop => {
       props[`animated_${prop}`] = new Animated.Value(
-        this.props[prop] && !this.props.autostart ? 1 : 0,
+        this.props[prop] && !this.props.autostart ? 1 : 0
       );
     });
     return props;
   },
   componentDidMount() {
     if (this.props.autostart) {
-      _.each(this.props.animatedProps, (key) => {
+      _.each(this.props.animatedProps, key => {
         this.props
           .animation(
             // Base: spring, decay, timing
@@ -40,15 +40,15 @@ module.exports = {
                 : this.props[key], // Animate to smaller size
               duration: this.props.duration,
               friction: this.props.friction,
-              tension: this.props.tension,
-            },
+              tension: this.props.tension
+            }
           )
           .start();
       });
     }
   },
   UNSAFE_componentWillReceiveProps(newProps) {
-    _.each(newProps.animatedProps, (key) => {
+    _.each(newProps.animatedProps, key => {
       const easing = newProps.value ? newProps.easing : newProps.easingOut;
       // eslint-disable-next-line eqeqeq
       if (newProps[key] != this.props[key]) {
@@ -65,11 +65,11 @@ module.exports = {
                 : newProps[key], // Animate to smaller size
               duration: newProps.duration,
               friction: newProps.friction,
-              tension: newProps.tension,
-            },
+              tension: newProps.tension
+            }
           )
           .start();
       }
     });
-  },
+  }
 };

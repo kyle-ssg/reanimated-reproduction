@@ -1,14 +1,14 @@
-import React from 'react';
-import propTypes from 'prop-types';
-import { Loader } from '../base/Loader';
+import React from "react";
+import propTypes from "prop-types";
+import { Loader } from "../base/Loader";
 
 const ContactSelectModal = class extends React.Component {
-  static displayName = 'ContactSelectModal';
+  static displayName = "ContactSelectModal";
 
   static propTypes = {
     componentId: propTypes.string,
     onChange: propTypes.func.isRequired,
-    multiple: propTypes.bool.isRequired,
+    multiple: propTypes.bool.isRequired
   };
 
   constructor(props) {
@@ -22,7 +22,7 @@ const ContactSelectModal = class extends React.Component {
       .then(({ error, contacts }) => {
         this.setState({ contacts, error, isLoading: false });
       })
-      .catch((err) => {
+      .catch(err => {
         Navigation.dismissModal(this.props.componentId);
         // eslint-disable-next-line
               alert(err);
@@ -51,41 +51,37 @@ const ContactSelectModal = class extends React.Component {
                 <Flex style={Styles.centeredContainer}>
                     <Loader />
                 </Flex>
-                )}
+          )}
                 {contacts && (
                 <Fade style={{ flex: 1 }} autostart value={1}>
                     <Select
                       placeholder="Search by name"
                       items={contacts}
                       value={value}
-                      onChange={(changeValue) => this.setState({ value: changeValue })}
+                      onChange={changeValue => this.setState({ value: changeValue })}
                       multiple={multiple}
-                      renderRow={(
-                        { givenName },
-                        isSelected,
-                        toggleItem,
-                      ) => (
+                      renderRow={({ givenName }, isSelected, toggleItem) => (
                           <ListItem style={Styles.listItem} onPress={toggleItem}>
                               <Text style={Styles.listItemText}>{givenName}</Text>
                               <ION
                                 style={[
-                                    Styles.listIcon,
-                                    {
-                                      color: isSelected
-                                        ? colour.primary
-                                        : palette.iconFaint,
-                                    },
-                                  ]}
+                        Styles.listIcon,
+                        {
+                          color: isSelected ? colour.primary : palette.iconFaint
+                        }
+                      ]}
                                 name={
-                        isSelected ? 'ios-checkbox' : 'ios-checkbox-outline'
+                        isSelected ? "ios-checkbox" : "ios-checkbox-outline"
                       }
                               />
                           </ListItem>
-                      )}
-                      filterItem={(contact, search) => contact.search.indexOf(search) !== -1}
+                )}
+                      filterItem={(contact, search) =>
+                  contact.search.indexOf(search) !== -1
+                }
                     />
                 </Fade>
-                )}
+          )}
                 <Button onPress={this.onDone}>Done</Button>
             </Flex>
         </Delay>

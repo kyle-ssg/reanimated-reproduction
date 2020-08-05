@@ -1,20 +1,16 @@
-import React from 'react';
-import { Component } from 'react';
-import withScreen, { Screen } from '../screens/withScreen';
+import React from "react";
+import { Component } from "react";
+import withScreen, { Screen } from "../screens/withScreen";
 
 type ComponentType = Screen & {
-  text: string
-}
+  text: string;
+};
 
 class GenericScreen extends Component<ComponentType> {
-  state = {}
+  state = {};
   render() {
-    return (
-        <>
-
-        </>
-    )
+    return <></>;
   }
 }
 
-export default withScreen(GenericScreen)
+export default withScreen(GenericScreen);

@@ -2,21 +2,21 @@
  * Created by kylejohnson on 14/11/2015.
  */
 
-import propTypes from 'prop-types';
-import ReactNative, { Animated, Easing } from 'react-native';
-import React, { Component } from 'react';
+import propTypes from "prop-types";
+import ReactNative, { Animated, Easing } from "react-native";
+import React, { Component } from "react";
 
 const textInputPropTypes = {
   onBlur: propTypes.func,
   title: propTypes.oneOfType([
     propTypes.arrayOf(propTypes.node),
-    propTypes.node,
+    propTypes.node
   ]).isRequired,
-  style: propTypes.any,
+  style: propTypes.any
 };
 
 const TextInput = class extends Component {
-  static displayName = 'TextInput';
+  static displayName = "TextInput";
 
   static propTypes = textInputPropTypes;
 
@@ -42,13 +42,13 @@ const TextInput = class extends Component {
     }
   };
 
-  onBlur = (e) => {
+  onBlur = e => {
     if (this.props.onBlur) {
       this.props.onBlur(e);
     }
   };
 
-  onChangeText = (text) => {
+  onChangeText = text => {
     if (!this.props.onChangeText) {
       return;
     }
@@ -73,8 +73,8 @@ const TextInput = class extends Component {
               style={[Styles.textInput, Styles.textInputAndroid, this.props.style]}
               value={this.props.value}
               testID={this.props.testID}
-              ref={(ref) => this.inputRef = ref}
-              blurOnSubmit={Platform.OS === 'ios' && !this.props.multiline}
+              ref={ref => (this.inputRef = ref)}
+              blurOnSubmit={Platform.OS === "ios" && !this.props.multiline}
             />
         </>
     );
@@ -99,7 +99,7 @@ TextInput.propTypes = {
   onSubmit: propTypes.func,
   onFocus: propTypes.func,
   textStyle: propTypes.any,
-  testID: propTypes.string,
+  testID: propTypes.string
 };
 
 // const styles = ReactNative.StyleSheet.create({
@@ -107,7 +107,7 @@ TextInput.propTypes = {
 // });
 
 export default TextInput;
-export const FlatInput = (props) => (
+export const FlatInput = props => (
     <TextInput {...props} style={[Styles.flatInput, props.style]} />
 );
 FlatInput.propTypes = textInputPropTypes;

@@ -1,10 +1,10 @@
-import propTypes from 'prop-types';
-import { Navigation } from 'react-native-navigation';
-import { Loader } from './Loader';
+import propTypes from "prop-types";
+import { Navigation } from "react-native-navigation";
+import { Loader } from "./Loader";
 
 // propTypes: uri: RequiredString
 const NativeModal = class extends React.Component {
-  static displayName = 'SelectModal';
+  static displayName = "SelectModal";
 
   static propTypes = {
     componentId: propTypes.string,
@@ -16,7 +16,7 @@ const NativeModal = class extends React.Component {
     placeholder: propTypes.string,
     filterItem: propTypes.func,
     renderRow: propTypes.func,
-    autoclose: propTypes.bool,
+    autoclose: propTypes.bool
   };
 
   constructor(props) {
@@ -24,7 +24,7 @@ const NativeModal = class extends React.Component {
     this.navigationEventListener = Navigation.events().bindComponent(this);
     this.state = {
       isLoading: true,
-      value: props.value,
+      value: props.value
     };
   }
 
@@ -33,7 +33,7 @@ const NativeModal = class extends React.Component {
     this.props.onChange(this.state.value);
   };
 
-  onChange = (value) => {
+  onChange = value => {
     this.setState({ value }, this.props.autoclose && this.onDone);
   };
 
@@ -44,7 +44,7 @@ const NativeModal = class extends React.Component {
       items,
       placeholder,
       filterItem,
-      renderRow,
+      renderRow
     } = this.props;
     const { onChange } = this;
     const { value } = this.state;
@@ -54,21 +54,23 @@ const NativeModal = class extends React.Component {
             <Flex style={Styles.centeredContainer}>
                 <Loader />
             </Flex>
-            )}
+        )}
             {items && (
             <Fade style={{ flex: 1 }} autostart value={1}>
                 <Select
-                  placeholder={placeholder || 'Search'}
+                  placeholder={placeholder || "Search"}
                   items={items}
                   value={value}
                   onChange={onChange}
                   multiple={multiple}
-                  style={{ backgroundColor: 'black' }}
-                  renderRow={(item, isSelected, toggleItem) => renderRow(item, isSelected, toggleItem)}
+                  style={{ backgroundColor: "black" }}
+                  renderRow={(item, isSelected, toggleItem) =>
+                renderRow(item, isSelected, toggleItem)
+              }
                   filterItem={filterItem}
-                />
+            />
             </Fade>
-            )}
+        )}
             <FormGroup>
                 <Column>
                     <ButtonPrimary style={Styles.mb5} onPress={this.onDone}>

@@ -1,23 +1,27 @@
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 // eslint-disable-next-line no-unused-vars
-import { AppActions } from '../app-actions';
-import { AppState } from '../state-type';
+import { AppActions } from "../app-actions";
+import { AppState } from "../state-type";
 
-const withWidgets = (WrappedComponent) => {
+const withWidgets = WrappedComponent => {
   return connect(
     mapStateToProps,
-    mapDispatchToProps,
+    mapDispatchToProps
   )(WrappedComponent);
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  // getWidgets: AppActions.getWidgets,
-}, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      // getWidgets: AppActions.getWidgets,
+    },
+    dispatch
+  );
 
-function mapStateToProps(state:AppState) {
+function mapStateToProps(state: AppState) {
   const { widgets, widgetLoading, widgetError } = state;
   return { widgets, widgetLoading, widgetError };
 }
 
-export default (withWidgets);
+export default withWidgets;

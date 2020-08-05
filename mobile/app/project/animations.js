@@ -1,4 +1,4 @@
-let { Easing } = require('react-native');
+let { Easing } = require("react-native");
 
 const EPSILON = 1e-9;
 

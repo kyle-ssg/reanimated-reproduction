@@ -1,4 +1,4 @@
-import propTypes from 'prop-types';
+import propTypes from "prop-types";
 
 export const formikPropTypes = {
   dirty: propTypes.bool.isRequired,
@@ -25,5 +25,5 @@ export const formikPropTypes = {
   touched: propTypes.object.isRequired,
   values: propTypes.object.isRequired,
   validateForm: propTypes.func.isRequired,
-  validateField: propTypes.func.isRequired,
+  validateField: propTypes.func.isRequired
 };

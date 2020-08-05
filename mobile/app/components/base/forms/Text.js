@@ -1,17 +1,17 @@
-import propTypes from 'prop-types';
-import ReactNative from 'react-native';
-import React, { PureComponent } from 'react';
+import propTypes from "prop-types";
+import ReactNative from "react-native";
+import React, { PureComponent } from "react";
 
 export default class Text extends PureComponent {
-  static displayName = 'Text';
+  static displayName = "Text";
 
   static propTypes = {
     style: propTypes.any,
-    children: propTypes.node,
+    children: propTypes.node
   };
   render() {
     const {
-      props: { style, children },
+      props: { style, children }
     } = this;
     return (
         <ReactNative.Text {...this.props} style={[Styles.text, style]}>

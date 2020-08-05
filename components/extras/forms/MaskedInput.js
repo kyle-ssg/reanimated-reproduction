@@ -1,54 +1,54 @@
 /**
  * Created by kylejohnson on 30/07/2016.
  */
-import React from 'react';
-import cn from 'classnames';
-import InputMask from 'inputmask-core';
+import React from "react";
+import cn from "classnames";
+import InputMask from "inputmask-core";
 
 export class MaskedInput extends React.Component {
-  static displayName = 'MaskedInput'
+  static displayName = "MaskedInput";
 
   constructor(props, context) {
     super(props, context);
     this.state = { shouldValidate: false };
   }
 
-  onFocus = (e) => {
+  onFocus = e => {
     this.setState({
-      isFocused: true,
+      isFocused: true
     });
     // eslint-disable-next-line no-unused-expressions
     this.props.onFocus && this.props.onFocus(e);
-  }
+  };
 
   focus = () => {
     this.input.focus();
-  }
+  };
 
-  onKeyDown = (e) => {
+  onKeyDown = e => {
     if (Utils.keys.isEscape(e)) {
       this.input.blur();
     }
     // eslint-disable-next-line no-unused-expressions
     this.props.onKeyDown && this.props.onKeyDown(e);
-  }
+  };
 
   validate = () => {
     this.setState({
-      shouldValidate: true,
+      shouldValidate: true
     });
-  }
+  };
 
-  onBlur = (e) => {
+  onBlur = e => {
     this.setState({
       shouldValidate: true,
-      isFocused: false,
+      isFocused: false
     });
     // eslint-disable-next-line no-unused-expressions
     this.props.onBlur && this.props.onBlur(e);
-  }
+  };
 
-  onChange = (e) => {
+  onChange = e => {
     if (!this.props.onChange) {
       return;
     }
@@ -63,17 +63,17 @@ export class MaskedInput extends React.Component {
             a: {
               validate(char) {
                 return /[ap]/.test(char);
-              },
+              }
             },
             m: {
               validate(char) {
                 return /\w/.test(char);
               },
               transform() {
-                return 'm';
-              },
-            },
-          },
+                return "m";
+              }
+            }
+          }
         });
       }
 
@@ -94,9 +94,9 @@ export class MaskedInput extends React.Component {
           // to the non-pattern character.
           while (
             !this.isMaskPatternChar(
-              this.props.mask[this.mask.selection.start],
-            )
-              && this.mask.selection.start !== this.props.mask.length
+              this.props.mask[this.mask.selection.start]
+            ) &&
+            this.mask.selection.start !== this.props.mask.length
           ) {
             // On failure abort loop as cursor position will not change
             if (!this.mask.input(text)) {
@@ -114,10 +114,10 @@ export class MaskedInput extends React.Component {
 
         // Check whether more backspaces are required until we reach a pattern char or nothing is left
         while (
-          this.mask.selection.start
-            && !this.isMaskPatternChar(
-              this.props.mask[this.mask.selection.start - 1],
-            )
+          this.mask.selection.start &&
+          !this.isMaskPatternChar(
+            this.props.mask[this.mask.selection.start - 1]
+          )
         ) {
           this.mask.backspace();
         }
@@ -130,7 +130,7 @@ export class MaskedInput extends React.Component {
       // No masking, just update text
       this.props.onChange(text);
     }
-  }
+  };
 
   isMaskPatternChar(char) {
     if (!char || char.length !== 1) {
@@ -138,49 +138,60 @@ export class MaskedInput extends React.Component {
     }
 
     return (
-      char === '1'
-        || char === 'a'
-        || char === 'A'
-        || char === '*'
-        || char === '#'
+      char === "1" ||
+      char === "a" ||
+      char === "A" ||
+      char === "*" ||
+      char === "#"
     );
   }
 
   render() {
-    const { isValid, disableInputContainerClass, placeholderChar, inputClassName, ...rest } = this.props;
+    const {
+      isValid,
+      disableInputContainerClass,
+      placeholderChar,
+      inputClassName,
+      ...rest
+    } = this.props;
 
-    const className = cn({
-      'input-container': !disableInputContainerClass,
-      'focused': this.state.isFocused,
-      'invalid': this.state.shouldValidate && !isValid,
-    }, this.props.className);
+    const className = cn(
+      {
+        "input-container": !disableInputContainerClass,
+        focused: this.state.isFocused,
+        invalid: this.state.shouldValidate && !isValid
+      },
+      this.props.className
+    );
 
-    const combinedInputClassName = cn({
-      input: true,
-    }, this.props.inputClassName);
+    const combinedInputClassName = cn(
+      {
+        input: true
+      },
+      this.props.inputClassName
+    );
 
     return (
-        <div
-          className={className}
-        >
+        <div className={className}>
             <input
-              ref={c => this.input = c}
-              {...rest} onFocus={this.onFocus}
+              ref={c => (this.input = c)}
+              {...rest}
+              onFocus={this.onFocus}
               onKeyDown={this.onKeyDown}
               onBlur={this.onBlur}
               onChange={this.onChange}
               value={this.props.value}
               className={combinedInputClassName}
-            />
+        />
         </div>
     );
   }
-};
+}
 
 MaskedInput.defaultProps = {
-  className: '',
-  placeholderChar: ' ',
-  isValid: true,
+  className: "",
+  placeholderChar: " ",
+  isValid: true
 };
 global.MaskedInput = MaskedInput;
 export default MaskedInput;

@@ -1,27 +1,29 @@
-import React, { Component, ReactNode } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import defaultNavigationOptions from '../style/style_navs';
-import { routes } from '../routes';
-import { createNativeStackNavigator } from 'react-native-screens/native-stack';
-import { Platform, ScrollViewProps, TouchableOpacity } from 'react-native';
-import { RouteUrls } from '../route-urls';
-import { initialWindowMetrics } from 'react-native-safe-area-context';
+import React, { Component, ReactNode } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import defaultNavigationOptions from "../style/style_navs";
+import { routes } from "../routes";
+import { createNativeStackNavigator } from "react-native-screens/native-stack";
+import { Platform, ScrollViewProps, TouchableOpacity } from "react-native";
+import { RouteUrls } from "../route-urls";
+import { initialWindowMetrics } from "react-native-safe-area-context";
 
-type ComponentType = {}
+type ComponentType = {};
 
 const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;
 
-
 class TabLayout extends Component<ComponentType> {
   state = {
-    activeIndex: 0,
+    activeIndex: 0
   };
   scrollView = null;
 
-  goTab = (index) => {
+  goTab = index => {
     const scrollView: ReactNative.ScrollView = this.scrollView;
-    scrollView.scrollTo({ x: Dimensions.get('window').width * (index - 1), animated: false });
+    scrollView.scrollTo({
+      x: Dimensions.get("window").width * (index - 1),
+      animated: false
+    });
     this.setState({ activeIndex: index - 1 });
   };
 
@@ -38,10 +40,14 @@ class TabLayout extends Component<ComponentType> {
   };
 
   render() {
-    const { state: { activeIndex } } = this;
+    const {
+      state: { activeIndex }
+    } = this;
     return (
         <View style={ReactNative.StyleSheet.absoluteFillObject}>
-            <ScrollView scrollEnabled={false} ref={this.onRef}
+            <ScrollView
+              scrollEnabled={false}
+              ref={this.onRef}
               bounces={false}
               pagingEnabled
               horizontal
@@ -49,7 +55,10 @@ class TabLayout extends Component<ComponentType> {
             >
                 <View style={styles.screen}>
                     <NavigationContainer independent>
-                        <Navigator screenOptions={defaultNavigationOptions} initialRouteName={RouteUrls.home}>
+                        <Navigator
+                          screenOptions={defaultNavigationOptions}
+                          initialRouteName={RouteUrls.home}
+                        >
                             <Stack.Screen
                               name={RouteUrls.home}
                               options={routes[RouteUrls.home].options}
@@ -65,7 +74,10 @@ class TabLayout extends Component<ComponentType> {
                 </View>
                 <View style={styles.screen}>
                     <NavigationContainer independent>
-                        <Navigator screenOptions={defaultNavigationOptions} initialRouteName={RouteUrls.home}>
+                        <Navigator
+                          screenOptions={defaultNavigationOptions}
+                          initialRouteName={RouteUrls.home}
+                        >
                             <Stack.Screen
                               name={RouteUrls.home}
                               options={routes[RouteUrls.home].options}
@@ -81,19 +93,19 @@ class TabLayout extends Component<ComponentType> {
                 </View>
             </ScrollView>
             <Row style={styles.tabContainer}>
-                <TouchableOpacity activeOpacity={1} style={[styles.tab, activeIndex === 0 && styles.activeTab]}
+                <TouchableOpacity
+                  activeOpacity={1}
+                  style={[styles.tab, activeIndex === 0 && styles.activeTab]}
                   onPress={this.goTab1}
                 >
-                    <Text style={activeIndex === 0 && styles.activeTabText}>
-                        Tab 1
-                    </Text>
+                    <Text style={activeIndex === 0 && styles.activeTabText}>Tab 1</Text>
                 </TouchableOpacity>
-                <TouchableOpacity activeOpacity={1} style={[styles.tab, activeIndex === 1 && styles.activeTab]}
+                <TouchableOpacity
+                  activeOpacity={1}
+                  style={[styles.tab, activeIndex === 1 && styles.activeTab]}
                   onPress={this.goTab2}
                 >
-                    <Text style={activeIndex === 1 && styles.activeTabText}>
-                        Tab 2
-                    </Text>
+                    <Text style={activeIndex === 1 && styles.activeTabText}>Tab 2</Text>
                 </TouchableOpacity>
             </Row>
         </View>
@@ -104,28 +116,26 @@ class TabLayout extends Component<ComponentType> {
 const tabBarHeight = 64 + styleVariables.insets.bottom;
 const styles = {
   screen: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height - tabBarHeight,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height - tabBarHeight
   },
   activeTabText: {
-    fontWeight: styleVariables.boldFontWeight,
+    fontWeight: styleVariables.boldFontWeight
   },
-  activeTab: {
-
-  },
+  activeTab: {},
   tab: {
-    height:64,
+    height: 64,
     justifyContent: "center",
     paddingLeft: styleVariables.paddingBase,
-    paddingRight: styleVariables.paddingBase,
+    paddingRight: styleVariables.paddingBase
   },
   tabContainer: {
-    backgroundColor: '#f1f1f1',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height:tabBarHeight,
-    paddingBottom: styleVariables.insets.bottom,
-  },
+    backgroundColor: "#f1f1f1",
+    alignItems: "center",
+    justifyContent: "center",
+    height: tabBarHeight,
+    paddingBottom: styleVariables.insets.bottom
+  }
 };
 
 export default TabLayout;

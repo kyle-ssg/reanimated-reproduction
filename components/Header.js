@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import React from 'react';
+import Link from "next/link";
+import React from "react";
 
 function Header() {
   return (
@@ -13,10 +13,12 @@ function Header() {
               {__DEV__ && (
               <li className="nav-item">
                   <Link prefetch={false} href="/markup">
-                      <a target="_blank" className="nav-link">Markup</a>
+                      <a target="_blank" className="nav-link">
+                          Markup
+                      </a>
                   </Link>
               </li>
-              )}
+        )}
           </ul>
           <ul className="nav justify-content-end">
               <li className="nav-item" />

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-export default (WrappedComponent) => {
+export default WrappedComponent => {
   class HOC extends Component {
-    static displayName = 'withFoo';
+    static displayName = "withFoo";
 
     constructor(props) {
       super(props);
@@ -10,12 +10,7 @@ export default (WrappedComponent) => {
     }
 
     render() {
-      return (
-          <WrappedComponent
-            {...this.props}
-            {...this.state}
-          />
-      );
+      return <WrappedComponent {...this.props} {...this.state} />;
     }
   }
 

@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import propTypes from 'prop-types';
-import { Animated, Easing } from 'react-native';
-import Animation from 'lottie-react-native';
+import React, { Component } from "react";
+import propTypes from "prop-types";
+import { Animated, Easing } from "react-native";
+import Animation from "lottie-react-native";
 
-const json = require('./checkbox.json');
+const json = require("./checkbox.json");
 
 const TheComponent = class extends Component {
-  static displayName = 'TheComponent'
+  static displayName = "TheComponent";
 
   static propTypes = {
-    value: propTypes.number,
+    value: propTypes.number
   };
 
   constructor(props, context) {
@@ -23,7 +23,7 @@ const TheComponent = class extends Component {
       Animated.timing(this.animatedValue, {
         toValue: newProps.value ? 0.5 : 0,
         duration: 700,
-        easing: newProps.value ? Easing.linear : Easing.out(Easing.cubic),
+        easing: newProps.value ? Easing.linear : Easing.out(Easing.cubic)
       }).start();
     }
   }
@@ -35,13 +35,13 @@ const TheComponent = class extends Component {
           ref="animation"
           style={styles.checkbox}
           source={json}
-        />
+      />
     );
   }
 };
 
 TheComponent.propTypes = {};
 const styles = ReactNative.StyleSheet.create({
-  checkbox: { width: 54, height: 54 },
+  checkbox: { width: 54, height: 54 }
 });
 module.exports = TheComponent;

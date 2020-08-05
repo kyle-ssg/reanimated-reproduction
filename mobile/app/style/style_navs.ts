@@ -1,6 +1,6 @@
-import { NativeStackNavigationOptions } from 'react-native-screens/native-stack';
+import { NativeStackNavigationOptions } from "react-native-screens/native-stack";
 
-const defaultNavigationOptions:NativeStackNavigationOptions = {
+const defaultNavigationOptions: NativeStackNavigationOptions = {
   // title: "Boilerplate",
   // backButtonImage: undefined,
   // headerBackTitle: "",

@@ -1,36 +1,43 @@
 module.exports = {
-  "presets": [
-    ["next/babel", {
-      "preset-env": {
-        "targets": "last 2 versions"
+  presets: [
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          targets: "last 2 versions"
+        }
       }
-    }]
+    ]
   ],
-  "env": {
-    "production": {
-      "plugins": [
-      ]
+  env: {
+    production: {
+      plugins: []
     },
-    "test": {
-      "presets": [
-        ["@babel/preset-env",
+    test: {
+      presets: [
+        [
+          "@babel/preset-env",
           {
-            "targets": {
-              "node": true
+            targets: {
+              node: true
             }
-          }],
+          }
+        ],
         "next/babel"
       ]
     }
   },
-  "plugins": [
+  plugins: [
     ["@babel/proposal-class-properties"],
-    ["module-resolver", {
-      "alias": {
-        "components": "./components/",
-        "common": "./common/"
+    [
+      "module-resolver",
+      {
+        alias: {
+          components: "./components/",
+          common: "./common/"
+        }
       }
-    }],
+    ],
     ["react-docgen"]
   ]
-}
+};

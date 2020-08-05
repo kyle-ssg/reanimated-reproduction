@@ -1,46 +1,48 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
-
+const style: Record<
+string,
+ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+> = {
   listContainer: {
     flex: 1,
-    backgroundColor: colour.listBackground,
+    backgroundColor: colour.listBackground
   },
 
   insetList: {
     padding: styleVariables.paddingBase,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff"
   },
 
   listItem: {
     minHeight: 44,
-    alignItems: 'stretch',
-    alignSelf: 'stretch',
+    alignItems: "stretch",
+    alignSelf: "stretch",
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: colour.divider,
     backgroundColor: colour.listBackground,
     paddingTop: styleVariables.paddingBase,
-    paddingBottom: styleVariables.paddingBase,
+    paddingBottom: styleVariables.paddingBase
   },
 
   listItemAlt: {
     borderBottomColor: colour.dividerAlt,
-    backgroundColor: colour.listBackgroundAlt,
+    backgroundColor: colour.listBackgroundAlt
   },
 
   listItemDisabled: {
-    opacity: 0.5,
+    opacity: 0.5
   },
 
   listItemLast: {
-    borderBottomWidth: 0,
+    borderBottomWidth: 0
   },
 
   liContent: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
 
   listItemText: {
@@ -50,25 +52,24 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
 
   listIcon: {
     marginLeft: styleVariables.marginBaseHorizontal,
-    fontSize: styleVariables.fontSizeBase * 1.2,
+    fontSize: styleVariables.fontSizeBase * 1.2
   },
 
   listIconNav: {
     marginLeft: styleVariables.marginBaseHorizontal,
     fontSize: styleVariables.fontSizeBase * 1.2,
-    color: palette.iconFaint,
+    color: palette.iconFaint
   },
 
-  listItemTitle: {
-  },
+  listItemTitle: {},
 
   listHeaderText: {
-    color: '#fff',
+    color: "#fff"
   },
 
   indentListItem: {
-    paddingLeft: 30,
-  },
+    paddingLeft: 30
+  }
 };
 
 module.exports = style;

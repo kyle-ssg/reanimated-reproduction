@@ -2,24 +2,24 @@
  * Created by kylejohnson on 14/11/2015.
  */
 
-import propTypes from 'prop-types';
-import ReactNative, { Animated, Easing } from 'react-native';
-import React, { PureComponent } from 'react';
-import Animations from '../project/animations';
+import propTypes from "prop-types";
+import ReactNative, { Animated, Easing } from "react-native";
+import React, { PureComponent } from "react";
+import Animations from "../project/animations";
 // import InputMask from 'inputmask-core';
-const InputMask = () => Alert.alert('Please install input-mask-core');
+const InputMask = () => Alert.alert("Please install input-mask-core");
 
 const textInputPropTypes = {
   onBlur: propTypes.func,
   title: propTypes.oneOfType([
     propTypes.arrayOf(propTypes.node),
-    propTypes.node,
+    propTypes.node
   ]).isRequired,
-  style: propTypes.any,
+  style: propTypes.any
 };
 
 const TextInput = class extends PureComponent {
-  static displayName = 'TextInput';
+  static displayName = "TextInput";
 
   static propTypes = textInputPropTypes;
 
@@ -45,26 +45,26 @@ const TextInput = class extends PureComponent {
       toValue: 1,
       duration: 150,
       useNativeDriver: true, // <-- Add this
-      easing: Animations.standard,
+      easing: Animations.standard
     }).start();
     if (this.props.onFocus) {
       this.props.onFocus();
     }
   };
 
-  onBlur = (e) => {
+  onBlur = e => {
     Animated.timing(this.animation, {
       toValue: 0.0001,
       duration: 300,
       useNativeDriver: true, // <-- Add this
-      easing: Easing.cubic,
+      easing: Easing.cubic
     }).start();
     if (this.props.onBlur) {
       this.props.onBlur(e);
     }
   };
 
-  onChangeText = (text) => {
+  onChangeText = text => {
     if (!this.props.onChangeText) {
       return;
     }
@@ -78,17 +78,17 @@ const TextInput = class extends PureComponent {
             a: {
               validate(char) {
                 return /[ap]/.test(char);
-              },
+              }
             },
             m: {
               validate(char) {
                 return /\w/.test(char);
               },
               transform() {
-                return 'm';
-              },
-            },
-          },
+                return "m";
+              }
+            }
+          }
         });
       }
 
@@ -109,9 +109,9 @@ const TextInput = class extends PureComponent {
           // to the non-pattern character.
           while (
             !this.isMaskPatternChar(
-              this.props.mask[this.mask.selection.start],
-            )
-            && this.mask.selection.start !== this.props.mask.length
+              this.props.mask[this.mask.selection.start]
+            ) &&
+            this.mask.selection.start !== this.props.mask.length
           ) {
             // On failure abort loop as cursor position will not change
             if (!this.mask.input(text)) {
@@ -129,9 +129,9 @@ const TextInput = class extends PureComponent {
 
         // Check whether more backspaces are required until we reach a pattern char or nothing is left
         while (
-          this.mask.selection.start
-          && !this.isMaskPatternChar(
-            this.props.mask[this.mask.selection.start - 1],
+          this.mask.selection.start &&
+          !this.isMaskPatternChar(
+            this.props.mask[this.mask.selection.start - 1]
           )
         ) {
           this.mask.backspace();
@@ -153,11 +153,11 @@ const TextInput = class extends PureComponent {
     }
 
     return (
-      char === '1'
-      || char === 'a'
-      || char === 'A'
-      || char === '*'
-      || char === '#'
+      char === "1" ||
+      char === "a" ||
+      char === "A" ||
+      char === "*" ||
+      char === "#"
     );
   }
 
@@ -169,30 +169,34 @@ const TextInput = class extends PureComponent {
             <FormGroup>
                 <Text style={Styles.inputLabel}>{this.props.title}</Text>
             </FormGroup>
-            )}
+        )}
             <Animated.View>
                 <ReactNative.TextInput
                   {...this.props}
                   onFocus={this.onFocus}
                   onBlur={this.onBlur}
                   onChangeText={this.onChangeText}
-                  style={[Styles.textInput, Styles.textInputAndroid, this.props.style]}
+                  style={[
+              Styles.textInput,
+              Styles.textInputAndroid,
+              this.props.style
+            ]}
                   value={this.props.value}
                   testID={this.props.testID}
-                  ref={(ref) => this.inputRef = ref}
-                  blurOnSubmit={Platform.OS === 'ios'}
-                />
+                  ref={ref => (this.inputRef = ref)}
+                  blurOnSubmit={Platform.OS === "ios"}
+          />
             </Animated.View>
             <Animated.View
               style={[
-                {
-                  marginTop: -Math.round((1 / PixelRatio.get()) * 3),
-                  transform: [{ scaleX: this.animation }],
-                  backgroundColor: palette.bookmakerPrimary,
-                  height: Math.round((1 / PixelRatio.get()) * 6),
-                },
-              ]}
-            />
+            {
+              marginTop: -Math.round((1 / PixelRatio.get()) * 3),
+              transform: [{ scaleX: this.animation }],
+              backgroundColor: palette.bookmakerPrimary,
+              height: Math.round((1 / PixelRatio.get()) * 6)
+            }
+          ]}
+        />
         </View>
     );
   }
@@ -217,7 +221,7 @@ TextInput.propTypes = {
   onSubmit: propTypes.func,
   onFocus: propTypes.func,
   textStyle: propTypes.any,
-  testID: propTypes.string,
+  testID: propTypes.string
 };
 
 // const styles = ReactNative.StyleSheet.create({
@@ -225,7 +229,7 @@ TextInput.propTypes = {
 // });
 
 export default TextInput;
-export const FlatInput = (props) => (
+export const FlatInput = props => (
     <TextInput {...props} style={[Styles.flatInput, props.style]} />
 );
 FlatInput.propTypes = textInputPropTypes;

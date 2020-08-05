@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
-import { enableScreens } from 'react-native-screens';
-import { Provider } from 'react-redux';
-import { StatusBar,Animated } from 'react-native';
-import store from 'common/store';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from 'react-native-screens/native-stack';
-import defaultNavigationOptions from './style/style_navs';
-import { routes } from './routes';
-import { RouteUrls } from './route-urls';
+import React, { Component } from "react";
+import { enableScreens } from "react-native-screens";
+import { Provider } from "react-redux";
+import { StatusBar, Animated } from "react-native";
+import store from "common/store";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "react-native-screens/native-stack";
+import defaultNavigationOptions from "./style/style_navs";
+import { routes } from "./routes";
+import { RouteUrls } from "./route-urls";
 
 enableScreens();
 const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;
 const linking = {
-  prefixes: ['mobile://'],
+  prefixes: ["mobile://"]
 };
 
 class App extends Component {
-  static displayName = 'TheComponent';
+  static displayName = "TheComponent";
   state = {
     name: new Date().valueOf() + ""
-  }
+  };
   static propTypes = {};
 
   render() {
@@ -28,12 +28,18 @@ class App extends Component {
     return (
         <>
             <Provider store={store()}>
-                <StatusBar backgroundColor="transparent" translucent barStyle="dark-content"/>
+                <StatusBar
+                  backgroundColor="transparent"
+                  translucent
+                  barStyle="dark-content"
+                />
                 <>
                     <NavigationContainer linking={linking}>
-                        <Navigator screenOptions={defaultNavigationOptions} initialRouteName={
-                                Constants.STORYBOOK? RouteUrls.storybook : RouteUrls.home
-                            }
+                        <Navigator
+                          screenOptions={defaultNavigationOptions}
+                          initialRouteName={
+                  Constants.STORYBOOK ? RouteUrls.storybook : RouteUrls.home
+                }
                         >
                             <Stack.Screen
                               name={RouteUrls.home}
@@ -61,7 +67,6 @@ class App extends Component {
                               component={routes[RouteUrls.storybook].component}
                             />
                         </Navigator>
-
                     </NavigationContainer>
                 </>
             </Provider>

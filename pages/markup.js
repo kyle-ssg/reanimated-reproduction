@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class MarkupPage extends Component {
-  displayName = 'MarkupPage';
+  displayName = "MarkupPage";
 
   constructor(props) {
     super(props);
@@ -10,15 +10,12 @@ class MarkupPage extends Component {
 
   componentDidMount() {
     // Use storybook
-    document.location = 'http://localhost:4000';
+    document.location = "http://localhost:4000";
   }
 
   render() {
-    return (
-        <div className="container" />
-    );
+    return <div className="container" />;
   }
 }
-
 
 export default MarkupPage;

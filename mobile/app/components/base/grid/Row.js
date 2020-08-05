@@ -1,34 +1,34 @@
-import React from 'react';
-import propTypes from 'prop-types';
-import { View, StyleSheet } from 'react-native';
+import React from "react";
+import propTypes from "prop-types";
+import { View, StyleSheet } from "react-native";
 
-const Row = (props) => (
+const Row = props => (
     <View
       style={[
-        styles.row,
-        props.space && { justifyContent: 'space-between' },
-        props.style,
-      ]}
+      styles.row,
+      props.space && { justifyContent: "space-between" },
+      props.style
+    ]}
     >
         {props.children}
     </View>
 );
 
-Row.displayName = 'Row';
+Row.displayName = "Row";
 
 Row.propTypes = {
   children: propTypes.node,
   space: propTypes.bool,
   noWrap: propTypes.bool,
-  style: propTypes.any,
+  style: propTypes.any
 };
 
 const styles = ReactNative.StyleSheet.create({
   row: {
-    alignSelf: 'stretch',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
+    alignSelf: "stretch",
+    flexDirection: "row",
+    alignItems: "center"
+  }
 });
 
 module.exports = Row;

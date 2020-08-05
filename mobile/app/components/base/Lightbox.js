@@ -1,13 +1,13 @@
-import propTypes from 'prop-types';
-import { easeIn, easeInOut } from '../../project/animations';
+import propTypes from "prop-types";
+import { easeIn, easeInOut } from "../../project/animations";
 
-export default (WrappedComponent) => {
+export default WrappedComponent => {
   class Lightbox extends React.Component {
-    static displayName = 'Lightbox';
+    static displayName = "Lightbox";
 
     static propTypes = {
       duration: propTypes.number,
-      componentId: propTypes.string,
+      componentId: propTypes.string
     };
 
     constructor(props) {
@@ -16,12 +16,12 @@ export default (WrappedComponent) => {
         slideInFromTop: {
           easing: easeIn,
           from: { translateY: -DeviceHeight },
-          to: { translateY: 0 },
+          to: { translateY: 0 }
         },
         fadeInBackground: {
-          from: { backgroundColor: 'rgba(0, 0, 0, 0)' },
-          to: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
-        },
+          from: { backgroundColor: "rgba(0, 0, 0, 0)" },
+          to: { backgroundColor: "rgba(0, 0, 0, 0.5)" }
+        }
       };
     }
 
@@ -30,23 +30,23 @@ export default (WrappedComponent) => {
         slideInFromTop: {
           easing: easeInOut,
           from: { translateY: 0 },
-          to: { translateY: -DeviceHeight },
+          to: { translateY: -DeviceHeight }
         },
         fadeInBackground: {
-          from: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
-          to: { backgroundColor: 'rgba(0, 0, 0, 0)' },
-        },
+          from: { backgroundColor: "rgba(0, 0, 0, 0.5)" },
+          to: { backgroundColor: "rgba(0, 0, 0, 0)" }
+        }
       });
       setTimeout(
         () => Navigation.dismissOverlay(this.props.componentId),
-        this.props.duration || 500,
+        this.props.duration || 500
       );
     };
 
     render() {
       const {
         state: { slideInFromTop, fadeInBackground },
-        props: { duration },
+        props: { duration }
       } = this;
       return (
           <Animatable.View

@@ -1,9 +1,9 @@
-import propTypes from 'prop-types';
-import React from 'react';
+import propTypes from "prop-types";
+import React from "react";
 
-import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from "./Modal";
 
-const ModalAlert = (props) => {
+const ModalAlert = props => {
   const onDismiss = () => {
     if (props.onDismiss) {
       props.onDismiss();
@@ -11,21 +11,11 @@ const ModalAlert = (props) => {
     props.toggle();
   };
   return (
-      <Modal
-        unmountOnClose
-        isOpen={props.isOpen}
-        toggle={onDismiss}
-      >
-          <ModalHeader toggle={onDismiss}>
-              {props.title}
-          </ModalHeader>
-          <ModalBody>
-              {props.children}
-          </ModalBody>
+      <Modal unmountOnClose isOpen={props.isOpen} toggle={onDismiss}>
+          <ModalHeader toggle={onDismiss}>{props.title}</ModalHeader>
+          <ModalBody>{props.children}</ModalBody>
           <ModalFooter>
-              <Button
-                color="primary" onClick={onDismiss}
-              >
+              <Button color="primary" onClick={onDismiss}>
                   {props.okText}
               </Button>
           </ModalFooter>
@@ -34,7 +24,7 @@ const ModalAlert = (props) => {
 };
 
 ModalAlert.defaultProps = {
-  okText: 'OK',
+  okText: "OK"
 };
 ModalAlert.propTypes = {
   okText: propTypes.string,
@@ -42,7 +32,7 @@ ModalAlert.propTypes = {
   title: propTypes.node,
   isOpen: propTypes.bool,
   onDismiss: propTypes.func,
-  toggle: propTypes.func,
+  toggle: propTypes.func
 };
 
 export default ModalAlert;

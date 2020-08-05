@@ -1,6 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
+const style: Record<
+string,
+ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+> = {
   //
   // Forms
   // --------------------------------------------------
@@ -9,47 +12,46 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
 
   formGroup: {
     paddingTop: styleVariables.paddingBase,
-    paddingBottom: styleVariables.paddingBase,
+    paddingBottom: styleVariables.paddingBase
   },
 
   input: {
     fontSize: styleVariables.fontSizeBase,
-    flex: 1,
+    flex: 1
   },
 
   inputContainer: {
-    justifyContent: 'center',
+    justifyContent: "center"
   },
 
   inputLarge: {
-    fontSize: styleVariables.fontSizeInputLarge,
+    fontSize: styleVariables.fontSizeInputLarge
   },
 
   disabled: {
-    opacity: styleVariables.disabledOpacity,
+    opacity: styleVariables.disabledOpacity
   },
 
   disabledText: {
-    color: colour.disabledText,
+    color: colour.disabledText
   },
 
   // Checkboxes and radios
 
   radioText: {
-    color: colour.radioText,
+    color: colour.radioText
   },
 
   radioTextActive: {
-    color: colour.radioTextActive,
+    color: colour.radioTextActive
   },
 
   radio: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginRight: 5,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: StyleSheet.hairlineWidth
   },
-
 
   // adherium
 
@@ -59,59 +61,54 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
     backgroundColor: palette.inputBackground,
     paddingLeft: styleVariables.gutterBase,
     borderBottomColor: palette.divider,
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: StyleSheet.hairlineWidth
   },
 
   inputLabel: {
     color: palette.primary,
-    fontSize: 16,
+    fontSize: 16
   },
 
   inputLabelFlat: {
     color: palette.primary,
-    fontSize: 12,
+    fontSize: 12
   },
 
   label: {
     color: styleVariables.text,
-    marginBottom: styleVariables.gutterBase / 2,
+    marginBottom: styleVariables.gutterBase / 2
   },
 
   inputAppendContainer: {
-    position: 'relative',
+    position: "relative"
   },
 
   inputAppend: {
-    position: 'absolute',
+    position: "absolute",
     zIndex: 1,
     left: 0,
     top: 0,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     height: 54,
     width: 54,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center"
   },
 
   inputIndent: {
-    paddingLeft: 40,
+    paddingLeft: 40
   },
 
   selectBoxContainer: {
     padding: 10,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#eaeaea',
+    borderColor: "#eaeaea"
   },
 
-  selectBoxIcon: {
+  selectBoxIcon: {},
 
-  },
-
-  selectBoxText: {
-
-  },
-
+  selectBoxText: {}
 };
 
 module.exports = style;
