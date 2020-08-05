@@ -34,13 +34,13 @@ const withModal = WrappedComponent => {
 
     render() {
       return (
-        <Provider store={store()}>
-          <WrappedComponent
-            toggle={this.toggle}
-            {...this.props}
-            {...this.state}
-          />
-        </Provider>
+          <Provider store={store()}>
+              <WrappedComponent
+                toggle={this.toggle}
+                {...this.props}
+                {...this.state}
+              />
+          </Provider>
       );
     }
   }
@@ -55,29 +55,31 @@ const _ModalDefault = withModal(ModalDefault);
 export const openAlert = (global.openAlert = (title, children, onDismiss) => {
   ReactDOM.unmountComponentAtNode(document.getElementById('alert'));
   ReactDOM.render(
-    <_Alert title={title} onDismiss={onDismiss}>
-      {children}
-    </_Alert>,
-    document.getElementById('alert'),
+      <_Alert title={title} onDismiss={onDismiss}>
+          {children}
+      </_Alert>,
+      document.getElementById('alert'),
   );
 });
 
 export const openConfirm = (global.openConfirm = (title, body, onYes, onNo) => {
   ReactDOM.unmountComponentAtNode(document.getElementById('confirm'));
   ReactDOM.render(
-    <_Confirm isOpen onNo={onNo} onYes={onYes} title={title}>
-      {body}
-    </_Confirm>,
-    document.getElementById('confirm'),
+      <_Confirm isOpen onNo={onNo} onYes={onYes}
+        title={title}
+      >
+          {body}
+      </_Confirm>,
+      document.getElementById('confirm'),
   );
 });
 
 export const openModal = (global.openModal = (title, body) => {
   ReactDOM.unmountComponentAtNode(document.getElementById('modal'));
   ReactDOM.render(
-    <_ModalDefault isOpen title={title}>
-      {body}
-    </_ModalDefault>,
-    document.getElementById('modal'),
+      <_ModalDefault isOpen title={title}>
+          {body}
+      </_ModalDefault>,
+      document.getElementById('modal'),
   );
 });

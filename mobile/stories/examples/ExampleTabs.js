@@ -15,9 +15,9 @@ export default class extends Component {
     const { i } = scene.route.data;
     const label = `Tab ${i}`;
     return (
-      <Flex>
-        <Text>{label}</Text>
-      </Flex>
+        <Flex>
+            <Text>{label}</Text>
+        </Flex>
     );
   };
 
@@ -26,20 +26,20 @@ export default class extends Component {
       state: { activeButton },
     } = this;
     return (
-      <Tabs
-        scrollEnabled={this.props.scrollEnabled}
-        lazy
-        tabBarStyle={{
+        <Tabs
+          scrollEnabled={this.props.scrollEnabled}
+          lazy
+          tabBarStyle={{
           backgroundColor: palette.primary,
         }}
-        labelStyle={{
+          labelStyle={{
           textAlign: 'center',
           color: 'white',
         }}
-        indicatorStyle={{
+          indicatorStyle={{
           backgroundColor: 'white',
         }}
-        navigationState={{
+          navigationState={{
           index: activeButton || 0,
           routes: [1, 2, 3].map(i => ({
             title: `Tab ${i}`,
@@ -47,9 +47,9 @@ export default class extends Component {
             data: { i },
           })),
         }}
-        onIndexChange={this.onTabChange}
-        renderScene={this.renderScene}
-      />
+          onIndexChange={this.onTabChange}
+          renderScene={this.renderScene}
+        />
     );
   }
 }

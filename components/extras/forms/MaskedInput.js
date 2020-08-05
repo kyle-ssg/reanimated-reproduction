@@ -166,18 +166,18 @@ export class MaskedInput extends React.Component {
     );
 
     return (
-      <div className={className}>
-        <input
-          ref={c => (this.input = c)}
-          {...rest}
-          onFocus={this.onFocus}
-          onKeyDown={this.onKeyDown}
-          onBlur={this.onBlur}
-          onChange={this.onChange}
-          value={this.props.value}
-          className={combinedInputClassName}
-        />
-      </div>
+        <div className={className}>
+            <input
+              ref={c => (this.input = c)}
+              {...rest}
+              onFocus={this.onFocus}
+              onKeyDown={this.onKeyDown}
+              onBlur={this.onBlur}
+              onChange={this.onChange}
+              value={this.props.value}
+              className={combinedInputClassName}
+            />
+        </div>
     );
   }
 }

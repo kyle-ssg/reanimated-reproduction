@@ -43,7 +43,7 @@ class _GenericScreen extends Component<ComponentType> {
   render() {
     return (
       this.props.children || (
-        <Flex style={Styles.body}>
+      <Flex style={Styles.body}>
           <FocusAwareStatusBar barStyle="dark-content" animated={true} />
           <FlatList
             keyExtractor={(item) => item}
@@ -51,17 +51,17 @@ class _GenericScreen extends Component<ComponentType> {
             data={Object.values(RouteUrls)}
             renderItem={({ item }) =>
               item !== '/storybook' && (
-                <View key={item}>
+              <View key={item}>
                   <H3>{item}</H3>
                   <Button onPress={() => this.goScreen(item)}>Push</Button>
                   <ButtonSecondary onPress={() => this.goModal(item)}>
-                    Modal
+                      Modal
                   </ButtonSecondary>
-                </View>
+              </View>
               )
             }
           />
-        </Flex>
+      </Flex>
       )
     );
   }
@@ -79,32 +79,32 @@ class StackExample extends Component {
   render() {
     // const { props } = this
     return (
-      <>
-        <Provider store={store()}>
-          <>
-            <NavigationContainer independent>
-              <Navigator
-                screenOptions={defaultNavigationOptions}
-                initialRouteName="1"
-              >
-                <Stack.Screen
-                  name={'1'}
-                  options={{}}
-                  component={GenericScreen}
-                />
-                {Object.values(RouteUrls).map((v) => (
-                  <Stack.Screen
-                    key={v}
-                    name={v}
-                    options={routes[v].options}
-                    component={routes[v].component}
-                  />
+        <>
+            <Provider store={store()}>
+                <>
+                    <NavigationContainer independent>
+                        <Navigator
+                          screenOptions={defaultNavigationOptions}
+                          initialRouteName="1"
+                        >
+                            <Stack.Screen
+                              name={'1'}
+                              options={{}}
+                              component={GenericScreen}
+                            />
+                            {Object.values(RouteUrls).map((v) => (
+                                <Stack.Screen
+                                  key={v}
+                                  name={v}
+                                  options={routes[v].options}
+                                  component={routes[v].component}
+                                />
                 ))}
-              </Navigator>
-            </NavigationContainer>
-          </>
-        </Provider>
-      </>
+                        </Navigator>
+                    </NavigationContainer>
+                </>
+            </Provider>
+        </>
     );
   }
 }

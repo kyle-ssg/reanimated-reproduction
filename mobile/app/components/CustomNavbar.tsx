@@ -17,19 +17,19 @@ const CustomNavbar: FunctionComponent<ComponentType> = ({
     navigation.pop();
   }, [navigation]);
   return (
-    <Row style={[styles.navbar, style]}>
-      {navigation.canGoBack() && (
-        <View style={styles.leftContainer}>
-          <TouchableOpacity style={styles.buttonContainer} onPress={pop}>
-            <ION style={styles.icon} name="ios-chevron-back" />
-          </TouchableOpacity>
-        </View>
+      <Row style={[styles.navbar, style]}>
+          {navigation.canGoBack() && (
+          <View style={styles.leftContainer}>
+              <TouchableOpacity style={styles.buttonContainer} onPress={pop}>
+                  <ION style={styles.icon} name="ios-chevron-back" />
+              </TouchableOpacity>
+          </View>
       )}
 
-      <View style={styles.titleContainer}>
-        <Text style={[styles.title, titleStyle]}>{title}</Text>
-      </View>
-    </Row>
+          <View style={styles.titleContainer}>
+              <Text style={[styles.title, titleStyle]}>{title}</Text>
+          </View>
+      </Row>
   );
 };
 

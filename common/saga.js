@@ -6,11 +6,11 @@ import Project from './project';
 import {
   handleResponse,
   updateAction,
-  // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   deleteAction,
-  // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   errorHandler,
-  // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   getAction,
   postAction,
 } from './utils/saga-helpers';

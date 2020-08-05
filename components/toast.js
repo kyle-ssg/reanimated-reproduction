@@ -18,12 +18,12 @@ const Message = class extends React.Component {
     });
 
     return (
-      <div className={className}>
-        <a onClick={this.props.remove} className="float-right">
-          <span className="icon ion-md-close" />
-        </a>
-        {this.props.children}
-      </div>
+        <div className={className}>
+            <a onClick={this.props.remove} className="float-right">
+                <span className="icon ion-md-close" />
+            </a>
+            {this.props.children}
+        </div>
     );
   }
 };
@@ -77,18 +77,18 @@ const Toast = class extends React.Component {
 
   render() {
     return (
-      <div className="toast-messages">
-        {this.state.messages.map(message => (
-          <Message
-            key={message.id}
-            isRemoving={message.isRemoving}
-            remove={() => this.remove(message.id)}
-            expiry={message.expiry}
-          >
-            {message.content}
-          </Message>
+        <div className="toast-messages">
+            {this.state.messages.map(message => (
+                <Message
+                  key={message.id}
+                  isRemoving={message.isRemoving}
+                  remove={() => this.remove(message.id)}
+                  expiry={message.expiry}
+                >
+                    {message.content}
+                </Message>
         ))}
-      </div>
+        </div>
     );
   }
 };

@@ -6,13 +6,13 @@ const h3 = class extends Component {
 
   render() {
     return (
-      <Text
-        accessible={this.props.accessible}
-        accessibilityLabel={this.props.accessibilityLabel}
-        style={[Styles.h3, this.props.style]}
-      >
-        {this.props.children}
-      </Text>
+        <Text
+          accessible={this.props.accessible}
+          accessibilityLabel={this.props.accessibilityLabel}
+          style={[Styles.h3, this.props.style]}
+        >
+            {this.props.children}
+        </Text>
     );
   }
 };

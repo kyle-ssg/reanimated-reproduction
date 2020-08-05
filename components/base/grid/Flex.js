@@ -30,18 +30,18 @@ export class Flex extends PureComponent {
       props: { className, children, value, ...rest },
     } = this;
     return (
-      <div
-        {...rest}
-        className={cn(
+        <div
+          {...rest}
+          className={cn(
           {
             flex: true,
           },
           `flex-${value}`,
           className,
         )}
-      >
-        {children}
-      </div>
+        >
+            {children}
+        </div>
     );
   }
 }

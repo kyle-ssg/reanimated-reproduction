@@ -27,17 +27,17 @@ export class Tabs extends Component {
   render() {
     const value = this.props.uncontrolled ? this.state.value : this.props.value;
     return (
-      <div className={`tabs ${this.props.className || ''}`}>
-        <div className="tabs-nav">
-          {this.props.children.map((child, i) => {
+        <div className={`tabs ${this.props.className || ''}`}>
+            <div className="tabs-nav">
+                {this.props.children.map((child, i) => {
             const isSelected = value === i;
             const tabLabel = this.props.tabLabels[i];
             return (
-              <Button
-                data-test={child.props['data-test']}
-                id={child.props.id}
-                key={`button${i}`}
-                onClick={e => {
+                <Button
+                  data-test={child.props['data-test']}
+                  id={child.props.id}
+                  key={`button${i}`}
+                  onClick={e => {
                   if (this.props.uncontrolled) {
                     this.setState({ value: i });
                   }
@@ -45,36 +45,36 @@ export class Tabs extends Component {
                   e.preventDefault();
                   if (this.props.onChange) this.props.onChange(i);
                 }}
-                className={`btn-tab btn-primary${
+                  className={`btn-tab btn-primary${
                   isSelected ? ' tab-active' : ''
                 }`}
-              >
-                {tabLabel || i}
-              </Button>
+                >
+                    {tabLabel || i}
+                </Button>
             );
           })}
-        </div>
-        <div
-          className="tab-line"
-          style={{
+            </div>
+            <div
+              className="tab-line"
+              style={{
             width: `${100 / this.props.children.length}%`,
             left: `${(100 / this.props.children.length) * value}%`,
           }}
-        />
-        <div className="tabs-content">
-          {this.props.children.map((child, i) => {
+            />
+            <div className="tabs-content">
+                {this.props.children.map((child, i) => {
             const isSelected = value === i;
             return (
-              <div
-                key={`content${i}`}
-                className={`tab-item${isSelected ? ' tab-active' : ''}`}
-              >
-                {child}
-              </div>
+                <div
+                  key={`content${i}`}
+                  className={`tab-item${isSelected ? ' tab-active' : ''}`}
+                >
+                    {child}
+                </div>
             );
           })}
+            </div>
         </div>
-      </div>
     );
   }
 }

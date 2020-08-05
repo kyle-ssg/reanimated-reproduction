@@ -111,20 +111,20 @@ const BottomDrawer: FunctionComponent<ComponentType> = ({
   );
 
   return (
-    <CustomModal
-      dark
-      style={styles.container}
-      animatedValue={animatedValue}
-      visible={modalVisible}
-    >
-      <PanGestureHandler enabled={!disabled} {...gestureHandler}>
-        <Animated.View
-          style={[styles.drawer, { height, transform: [{ translateY }] }]}
-        >
-          {children}
-        </Animated.View>
-      </PanGestureHandler>
-    </CustomModal>
+      <CustomModal
+        dark
+        style={styles.container}
+        animatedValue={animatedValue}
+        visible={modalVisible}
+      >
+          <PanGestureHandler enabled={!disabled} {...gestureHandler}>
+              <Animated.View
+                style={[styles.drawer, { height, transform: [{ translateY }] }]}
+              >
+                  {children}
+              </Animated.View>
+          </PanGestureHandler>
+      </CustomModal>
   );
 };
 const styles = ReactNative.StyleSheet.create({

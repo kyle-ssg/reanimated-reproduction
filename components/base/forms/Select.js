@@ -12,10 +12,10 @@ const Select = class extends PureComponent {
   render() {
     const { title, children } = this.props;
     return (
-      <div className="select">
-        <span className="select__text">{title}</span>
-        <select {...this.props}>{children}</select>
-      </div>
+        <div className="select">
+            <span className="select__text">{title}</span>
+            <select {...this.props}>{children}</select>
+        </div>
     );
   }
 };

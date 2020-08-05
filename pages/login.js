@@ -21,8 +21,8 @@ class LoginPage extends Component {
 
   login = e => {
     Utils.preventDefault(e);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       state: { index, isRegister, ...rest },
     } = this;
     this.props.login(rest, {
@@ -41,54 +41,54 @@ class LoginPage extends Component {
     } = this;
 
     return (
-      <div>
-        <div id="content">
-          <div className="container-fluid">
-            <form onSubmit={this.login}>
-              <h1>Login</h1>
-              <div>
-                <Input
-                  className="mb-2 full-width"
-                  placeholder="Username"
-                  value={email}
-                  onChange={email =>
+        <div>
+            <div id="content">
+                <div className="container-fluid">
+                    <form onSubmit={this.login}>
+                        <h1>Login</h1>
+                        <div>
+                            <Input
+                              className="mb-2 full-width"
+                              placeholder="Username"
+                              value={email}
+                              onChange={email =>
                     this.setState({
                       email: Utils.safeParseEventValue(email),
                     })
                   }
-                />
-              </div>
-              <div>
-                <Input
-                  className="mb-2 full-width"
-                  placeholder="Password"
-                  value={password}
-                  type="password"
-                  onChange={password =>
+                            />
+                        </div>
+                        <div>
+                            <Input
+                              className="mb-2 full-width"
+                              placeholder="Password"
+                              value={password}
+                              type="password"
+                              onChange={password =>
                     this.setState({
                       password: Utils.safeParseEventValue(password),
                     })
                   }
-                />
-              </div>
-              {userError && <ErrorMessage>{userError}</ErrorMessage>}
-              <div className="text-right">
-                <ButtonPrimary type="submit" disabled={userLoading}>
-                  Login
-                </ButtonPrimary>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <footer className="sticky-footer bg-white">
-          <div className="container my-auto">
-            <div className="copyright text-center my-auto">
-              <span>Copyright &copy; Your Website 2019</span>
+                            />
+                        </div>
+                        {userError && <ErrorMessage>{userError}</ErrorMessage>}
+                        <div className="text-right">
+                            <ButtonPrimary type="submit" disabled={userLoading}>
+                                Login
+                            </ButtonPrimary>
+                        </div>
+                    </form>
+                </div>
             </div>
-          </div>
-        </footer>
-      </div>
+
+            <footer className="sticky-footer bg-white">
+                <div className="container my-auto">
+                    <div className="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2019</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
     );
   }
 }

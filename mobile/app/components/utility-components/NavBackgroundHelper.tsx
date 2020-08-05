@@ -11,10 +11,10 @@ type ComponentType = {
 
 const NavBackgroundHelper: FunctionComponent<ComponentType> = ({}) => {
   return (
-    <Flex>
-      <View style={[styles.navbar, this.props.navbarStyle]} />
-      {this.props.children}
-    </Flex>
+      <Flex>
+          <View style={[styles.navbar, this.props.navbarStyle]} />
+          {this.props.children}
+      </Flex>
   );
 };
 

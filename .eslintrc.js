@@ -34,6 +34,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/no-var-requires': 0,
+    '@typescript-eslint/no-unused-vars': 0,
     'no-empty-pattern': 0,
     '@typescript-eslint/ban-ts-comment': 0,
     'react/prop-types':0,
@@ -41,6 +42,16 @@ module.exports = {
     'default-case': 'error',
     'dot-notation': 'error',
     'guard-for-in': 'error',
+    'radix': 0,
+    'no-unused-vars':0,
+    'react/jsx-indent': ["error", 4],
+    'react/jsx-indent-props': ["error", 2],
+    'react/jsx-closing-bracket-location': 1,
+    'react/jsx-max-props-per-line': [1,
+      {
+        'maximum': 3
+      }
+    ],
     '@typescript-eslint/indent': [
       "error", 2,
       {

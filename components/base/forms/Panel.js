@@ -5,30 +5,30 @@ import propTypes from 'prop-types';
 import Row from '../grid/Row';
 
 const Panel = ({ className, icon, title, action, children }) => (
-  <div
-    className={cn(
+    <div
+      className={cn(
       {
         panel: true,
         'panel-default': true,
       },
       className,
     )}
-  >
-    <div className="panel-heading">
-      <Row space>
-        <Row className="flex-1">
-          {icon && (
-            <span className="panel-icon">
-              <ion className={cn({ icon: true }, icon)} />
-            </span>
+    >
+        <div className="panel-heading">
+            <Row space>
+                <Row className="flex-1">
+                    {icon && (
+                    <span className="panel-icon">
+                        <ion className={cn({ icon: true }, icon)} />
+                    </span>
           )}
-          {title}
-        </Row>
-        {action}
-      </Row>
+                    {title}
+                </Row>
+                {action}
+            </Row>
+        </div>
+        <div className="panel-content">{children}</div>
     </div>
-    <div className="panel-content">{children}</div>
-  </div>
 );
 
 Panel.displayName = 'Panel';

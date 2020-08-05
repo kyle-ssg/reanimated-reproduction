@@ -50,56 +50,56 @@ const FormScreen = class extends Component {
       setFieldTouched,
     } = this.props;
     return (
-      <Flex style={[Styles.body]}>
-        <Column>
-          <TextInput
-            title="Name"
-            onChangeText={this.onNameChanged}
-            onBlur={handleBlur('name')}
-            value={values.name}
-          />
-          {errors.name && touched.name && (
-            <ErrorMessage>{errors.name}</ErrorMessage>
+        <Flex style={[Styles.body]}>
+            <Column>
+                <TextInput
+                  title="Name"
+                  onChangeText={this.onNameChanged}
+                  onBlur={handleBlur('name')}
+                  value={values.name}
+                />
+                {errors.name && touched.name && (
+                <ErrorMessage>{errors.name}</ErrorMessage>
           )}
-        </Column>
-        <Column>
-          <TextInput
-            title="Occupation"
-            onChangeText={handleChange('occupation')}
-            onBlur={handleBlur('occupation')}
-            value={values.occupation}
-          />
-          {errors.occupation && touched.occupation && (
-            <ErrorMessage>{errors.occupation}</ErrorMessage>
+            </Column>
+            <Column>
+                <TextInput
+                  title="Occupation"
+                  onChangeText={handleChange('occupation')}
+                  onBlur={handleBlur('occupation')}
+                  value={values.occupation}
+                />
+                {errors.occupation && touched.occupation && (
+                <ErrorMessage>{errors.occupation}</ErrorMessage>
           )}
-        </Column>
-        <Column>
-          <SelectBox
-            title="Dog"
-            options={['Poodle', 'Pug']}
-            onChange={handleChange('dog')}
-            onBlur={() => setFieldTouched('dog', true)}
-          >
-            {values.dog}
-          </SelectBox>
-          {errors.dog && touched.dog && (
-            <ErrorMessage>{errors.dog}</ErrorMessage>
+            </Column>
+            <Column>
+                <SelectBox
+                  title="Dog"
+                  options={['Poodle', 'Pug']}
+                  onChange={handleChange('dog')}
+                  onBlur={() => setFieldTouched('dog', true)}
+                >
+                    {values.dog}
+                </SelectBox>
+                {errors.dog && touched.dog && (
+                <ErrorMessage>{errors.dog}</ErrorMessage>
           )}
-        </Column>
-        <Column>
-          <TextInput
-            title="Alias"
-            onChangeText={this.onAliasChanged}
-            onBlur={handleBlur('alias.value')}
-            value={_.get(values, 'alias.value') || ''}
-          />
-          {_.get(errors, 'alias.value') && _.get(touched, 'alias.value') && (
-            <ErrorMessage>{errors.alias.value}</ErrorMessage>
+            </Column>
+            <Column>
+                <TextInput
+                  title="Alias"
+                  onChangeText={this.onAliasChanged}
+                  onBlur={handleBlur('alias.value')}
+                  value={_.get(values, 'alias.value') || ''}
+                />
+                {_.get(errors, 'alias.value') && _.get(touched, 'alias.value') && (
+                <ErrorMessage>{errors.alias.value}</ErrorMessage>
           )}
-        </Column>
+            </Column>
 
-        <Button onPress={this.onSubmit}>Submit</Button>
-      </Flex>
+            <Button onPress={this.onSubmit}>Submit</Button>
+        </Flex>
     );
   }
 };

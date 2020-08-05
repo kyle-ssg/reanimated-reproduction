@@ -13,17 +13,17 @@ export const Loader = class extends PureComponent {
 
   render() {
     return (
-      <View style={{ opacity: 0.75 }}>
-        <Animation
-          autoPlay
-          style={{
+        <View style={{ opacity: 0.75 }}>
+            <Animation
+              autoPlay
+              style={{
             width: 40 * 1.25,
             height: 30 * 1.25,
           }}
-          loop
-          source={json}
-        />
-      </View>
+              loop
+              source={json}
+            />
+        </View>
     );
   }
 };

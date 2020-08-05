@@ -11,13 +11,13 @@ export default class ErrorMessage extends Component {
   render() {
     const { props } = this;
     return (
-      <View style={styles.container}>
-        <Text style={styles.ErrorMessageText}>
-          {typeof props.children === 'string'
+        <View style={styles.container}>
+            <Text style={styles.ErrorMessageText}>
+                {typeof props.children === 'string'
             ? props.children
             : 'Error processing request'}
-        </Text>
-      </View>
+            </Text>
+        </View>
     );
   }
 }

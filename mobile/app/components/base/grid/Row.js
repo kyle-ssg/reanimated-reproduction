@@ -3,15 +3,15 @@ import propTypes from 'prop-types';
 import { View } from 'react-native';
 
 const Row = props => (
-  <View
-    style={[
+    <View
+      style={[
       styles.row,
       props.space && { justifyContent: 'space-between' },
       props.style,
     ]}
-  >
-    {props.children}
-  </View>
+    >
+        {props.children}
+    </View>
 );
 
 Row.displayName = 'Row';

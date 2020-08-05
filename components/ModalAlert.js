@@ -11,15 +11,15 @@ const ModalAlert = props => {
     props.toggle();
   };
   return (
-    <Modal unmountOnClose isOpen={props.isOpen} toggle={onDismiss}>
-      <ModalHeader toggle={onDismiss}>{props.title}</ModalHeader>
-      <ModalBody>{props.children}</ModalBody>
-      <ModalFooter>
-        <Button color="primary" onClick={onDismiss}>
-          {props.okText}
-        </Button>
-      </ModalFooter>
-    </Modal>
+      <Modal unmountOnClose isOpen={props.isOpen} toggle={onDismiss}>
+          <ModalHeader toggle={onDismiss}>{props.title}</ModalHeader>
+          <ModalBody>{props.children}</ModalBody>
+          <ModalFooter>
+              <Button color="primary" onClick={onDismiss}>
+                  {props.okText}
+              </Button>
+          </ModalFooter>
+      </Modal>
   );
 };
 
