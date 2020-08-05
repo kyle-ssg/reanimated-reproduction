@@ -36,7 +36,7 @@ const withScreen = (Component: React.ComponentType) => {
     React.useEffect(() => {
       // @ts-ignore
       // eslint-disable-next-line prettier/prettier
-              const previousStyle = ReactNative.StatusBar?._currentValues?.value || 'dark-content'
+      const previousStyle = ReactNative.StatusBar?._currentValues?.value || 'dark-content'
       const unsubscribe = props.navigation.addListener('focus', () => {
         dispatch(AppActions.setActiveScreen(props.route.name));
       });

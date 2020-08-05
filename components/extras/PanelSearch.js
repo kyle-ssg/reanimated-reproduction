@@ -46,8 +46,8 @@ const PanelSearch = class extends Component {
     return !search &&
       (!filteredItems || !filteredItems.length) &&
       !this.props.renderSearchWithNoResults ? (
-      renderNoResults
-    ) : (
+        renderNoResults
+      ) : (
       <Panel
         className={this.props.className}
         title={this.props.title}
@@ -105,7 +105,7 @@ const PanelSearch = class extends Component {
           <Paging paging={paging} isLoading={isLoading} goToPage={goToPage} />
         )}
       </Panel>
-    );
+      );
   }
 };
 

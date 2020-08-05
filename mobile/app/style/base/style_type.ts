@@ -4,8 +4,8 @@ import { StyleSheet } from 'react-native';
 require('./style_pxToEm');
 
 const styles: Record<
-  string,
-  ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+string,
+ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 > = {
   //
   // Typography

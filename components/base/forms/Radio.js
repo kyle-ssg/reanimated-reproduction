@@ -24,11 +24,11 @@ export class Radio extends Component {
     );
     return this.props.renderWrapper
       ? this.props.renderWrapper({
-          ...this.props,
-          onChange: optional.onChange,
-          radio: input,
-          checked: optional.checked,
-        })
+        ...this.props,
+        onChange: optional.onChange,
+        radio: input,
+        checked: optional.checked,
+      })
       : input;
   }
 }
@@ -54,11 +54,13 @@ export class RadioGroup extends React.Component {
   }
 
   render() {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const {
       Component,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       name,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       selectedValue,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onChange,
       children,
       ...rest

@@ -1,8 +1,8 @@
 import { Dimensions } from 'react-native';
 
 const style: Record<
-  string,
-  ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+string,
+ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 > = {
   //
   // Overlays
