@@ -1,57 +1,41 @@
 module.exports = {
-  env: {
-    es6: true,
-    browser: true,
+  'env': {
+    'es6': true,
+    'browser': true,
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-    'prettier/@typescript-eslint',
-    'prettier',
+  'extends': [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+    "prettier"
   ],
-  parser: '@typescript-eslint/parser',
+  'parser': '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
+    "ecmaVersion": 6,
+    "sourceType": "module",
     ecmaFeatures: {
       legacyDecorators: true,
       modules: true,
     },
-    parser: 'babel-eslint',
+    parser: 'typescript-eslint'
   },
-  plugins: ['react', 'react-hooks'],
-  rules: {
+  'plugins': [
+    'prettier',
+    'react',
+    'react-hooks',
+  ],
+  'rules': {
     'prettier/prettier': ['error'],
     'react/jsx-no-undef': [
       "error",
-      {"allowGlobals":true}
+      { "allowGlobals":true }
     ],
-    '@typescript-eslint/ban-types': 0,
-    '@typescript-eslint/no-empty-function': 0,
-    '@typescript-eslint/explicit-module-boundary-types': 0,
-    '@typescript-eslint/no-explicit-any': 0,
-    '@typescript-eslint/no-var-requires': 0,
-    '@typescript-eslint/no-unused-vars': 0,
-    'no-empty-pattern': 0,
-    '@typescript-eslint/ban-ts-comment': 0,
-    'react/prop-types':0,
-    'react/react-in-jsx-scope': 0,
     'default-case': 'error',
     'dot-notation': 'error',
     'guard-for-in': 'error',
-    'radix': 0,
-    'no-unused-vars':0,
-    'react/jsx-indent': ["error", 4],
-    'react/jsx-indent-props': ["error", 2],
-    'react/jsx-closing-bracket-location': 1,
-    'react/jsx-max-props-per-line': [1,
-      {
-        'maximum': 3
-      }
-    ],
     '@typescript-eslint/indent': [
       "error", 2,
       {
@@ -78,10 +62,29 @@ module.exports = {
         ],
       },
     ],
+    'no-caller': 'error',
+    'no-empty-parameters': 0,
+    '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/ban-types': 0,
+    'no-shadow': 0,
+    'no-empty-pattern': 0,
+    'no-var': 'error',
+    "@typescript-eslint/no-empty-function": 0,
+    'object-curly-spacing': ['error', 'always'],
+    'radix': 0,
+    "react/prop-types": "off",
+    'react/jsx-indent': ["error", 4],
+    'react/jsx-indent-props': ["error", 2],
+    'react/jsx-closing-bracket-location': 1,
+    'react/jsx-max-props-per-line': [1,
+      {
+        'maximum': 3
+      }
+    ],
   },
-  settings: {
-    react: {
-      version: 'detect',
+  'settings': {
+    'react': {
+      'version': 'detect',
     },
   },
   globals: {
