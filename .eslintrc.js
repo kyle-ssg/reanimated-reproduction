@@ -112,6 +112,8 @@ module.exports = {
     H2:true,
     H3:true,
     H4:true,
+    Image:true,
+    ImageBackground:true,
     ION:true,
     Input:true,
     InputGroup:true,
