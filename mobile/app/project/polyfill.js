@@ -14,7 +14,8 @@ import cloneDeep from 'lodash/cloneDeep';
 import findIndex from 'lodash/findIndex';
 import range from 'lodash/range';
 import keyBy from 'lodash/keyBy';
+import get from 'lodash/get';
 
 global.moment = moment;
-global._ = { each, filter, uniqBy, find, partial, findIndex, merge, range, map, cloneDeep, keyBy };
+global._ = { each, filter, uniqBy, find, partial, findIndex, merge, range, map, cloneDeep, keyBy, get };
 global.propTypes = propTypes;
