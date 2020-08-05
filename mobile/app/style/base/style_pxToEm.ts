@@ -12,7 +12,7 @@ const unit = baseUnit * ratioX;
 
 // We add an em() shortcut function
 const em =  (value) => {
-    return unit * value;
+  return unit * value;
 };
 module.exports = em;
 // @ts-ignore

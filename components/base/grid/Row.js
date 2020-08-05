@@ -17,24 +17,24 @@ const _propTypes = {
  * Div with flex
  */
 export class Row extends PureComponent {
-    static displayName = 'Row';
+  static displayName = 'Row';
 
-    static propTypes = _propTypes;
+  static propTypes = _propTypes;
 
-    render() {
-      const { props: { className, space, children, ...rest } } = this;
-      return (
-          <div
-            {...rest}
-            className={cn({
+  render() {
+    const { props: { className, space, children, ...rest } } = this;
+    return (
+        <div
+          {...rest}
+          className={cn({
               'flex-row': true,
               space,
             }, className)}
             >
-              {children}
-          </div>
-      );
-    }
+            {children}
+        </div>
+    );
+  }
 }
 
 global.Row = Row;

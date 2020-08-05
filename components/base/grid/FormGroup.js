@@ -13,16 +13,16 @@ const _propTypes = {
  * Div with standard vertical padding
  */
 export class FormGroup extends PureComponent {
-    static displayName = 'FormGroup';
+  static displayName = 'FormGroup';
 
-    static propTypes = _propTypes;
+  static propTypes = _propTypes;
 
-    render() {
-      const { props: { className, ...rest } } = this;
-      return (
-          <div {...rest} className={cn(className, 'form-group')}/>
-      );
-    }
+  render() {
+    const { props: { className, ...rest } } = this;
+    return (
+        <div {...rest} className={cn(className, 'form-group')}/>
+    );
+  }
 }
 
 global.FormGroup = FormGroup;

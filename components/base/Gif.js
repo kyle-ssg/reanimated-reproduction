@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 import Flex from './grid/Flex';
 const Gif = class extends Component {
-    static displayName = 'Gif'
+  static displayName = 'Gif'
 
-    constructor(props, context) {
-      super(props, context);
-      this.state = {
-        paused: true,
-      };
-    }
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      paused: true,
+    };
+  }
 
-    render() {
-      return (
-          <Flex
-            onClick={() => this.setState({ paused: !this.state.paused })}
-            className={`centered-container gif ${this.state.paused ? 'paused' : 'playing'}`}
+  render() {
+    return (
+        <Flex
+          onClick={() => this.setState({ paused: !this.state.paused })}
+          className={`centered-container gif ${this.state.paused ? 'paused' : 'playing'}`}
             >
-              <img
-                {...this.props}
-                alt="Pause"
-                src={this.state.paused ? this.props.pausedSrc : this.props.src}
+            <img
+              {...this.props}
+              alt="Pause"
+              src={this.state.paused ? this.props.pausedSrc : this.props.src}
                 />
-              <ion className="ion ion-ios-play"/>
-          </Flex>
-      );
-    }
+            <ion className="ion ion-ios-play"/>
+        </Flex>
+    );
+  }
 };
 
 Gif.propTypes = {};

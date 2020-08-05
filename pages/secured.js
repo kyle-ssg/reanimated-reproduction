@@ -4,15 +4,15 @@ import withAuth from '../common/providers/withAuth';
 import withUserRedirect from '../components/withUserRedirect';
 
 class SecuredPage extends Component {
-    static displayName = 'SecuredPage';
+  static displayName = 'SecuredPage';
 
-    render() {
-      return (
-          <div className="container-fluid">
-              Secret page
-          </div>
-      );
-    }
+  render() {
+    return (
+        <div className="container-fluid">
+            Secret page
+        </div>
+    );
+  }
 }
 
 export default withRouter(

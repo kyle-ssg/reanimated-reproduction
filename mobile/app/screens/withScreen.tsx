@@ -26,70 +26,70 @@ export type ScreenProps = {
 }
 
 const withScreen = (Component: React.ComponentType) => {
-    return function withScreen (props: ScreenProps):React.ReactNode {
-        const dispatch = useDispatch();
-        React.useEffect(
-            () => {
-                const previousStyle = ReactNative.StatusBar?._currentValues?.value || "dark-content"
-                const unsubscribe = props.navigation.addListener('focus', e => {
-                    dispatch(AppActions.setActiveScreen(props.route.name))
-                });
-                const unsubscribe2 = props.navigation.addListener('beforeRemove', e => {
-                    if (Platform.OS === 'ios') {
-                        ReactNative.StatusBar.setBarStyle(previousStyle, true)
-                    }
-                });
+  return function withScreen (props: ScreenProps):React.ReactNode {
+    const dispatch = useDispatch();
+    React.useEffect(
+      () => {
+        const previousStyle = ReactNative.StatusBar?._currentValues?.value || "dark-content"
+        const unsubscribe = props.navigation.addListener('focus', e => {
+          dispatch(AppActions.setActiveScreen(props.route.name))
+        });
+        const unsubscribe2 = props.navigation.addListener('beforeRemove', e => {
+          if (Platform.OS === 'ios') {
+            ReactNative.StatusBar.setBarStyle(previousStyle, true)
+          }
+        });
 
-                if (Platform.OS === 'ios') {
-                    const style = props.route?.params?.statusBar?.barStyle || "default"
-                    ReactNative.StatusBar.setBarStyle(style, true)
-                }
-                return ()=>{
-                    unsubscribe();
-                    unsubscribe2();
-                    return
-                }
-            },
-            [props.navigation]
-        );
+        if (Platform.OS === 'ios') {
+          const style = props.route?.params?.statusBar?.barStyle || "default"
+          ReactNative.StatusBar.setBarStyle(style, true)
+        }
+        return ()=>{
+          unsubscribe();
+          unsubscribe2();
+          return
+        }
+      },
+      [props.navigation]
+    );
 
-        useLayoutEffect(() => {
-            if (props.route?.params?.screenOptions) {
-                props.navigation.setOptions(props.route.params.screenOptions)
-            }
-        }, [props.navigation, props.route]);
+    useLayoutEffect(() => {
+      if (props.route?.params?.screenOptions) {
+        props.navigation.setOptions(props.route.params.screenOptions)
+      }
+    }, [props.navigation, props.route]);
 
-        const push = useCallback((name,params)=>{
-            props.navigation.push(name, params)
-        }, [props.navigation])
+    const push = useCallback((name,params)=>{
+      props.navigation.push(name, params)
+    }, [props.navigation])
 
-        const replace = useCallback((name,params)=>{
-            props.navigation.replace(name, params)
-        }, [props.navigation])
+    const replace = useCallback((name,params)=>{
+      props.navigation.replace(name, params)
+    }, [props.navigation])
 
-        const pop = useCallback(()=>{
-            props.navigation.pop()
-        }, [props.navigation])
+    const pop = useCallback(()=>{
+      props.navigation.pop()
+    }, [props.navigation])
 
-        const setOptions = useCallback((options)=>{
-            props.navigation.setOptions(options)
-        }, [props.navigation])
+    const setOptions = useCallback((options)=>{
+      props.navigation.setOptions(options)
+    }, [props.navigation])
 
-        return <>
-            {Platform.OS !== "ios" && (
+    return <>
+        {Platform.OS !== "ios" && (
             <FocusAwareStatusBar {...(props.route.params?.statusBar)} animated={true}/>
-            )}
-            <Component
-              push={push}
-              pop={pop}
-              replace={replace}
-              canGoBack={props.navigation.canGoBack}
-              setOptions={setOptions}
-              {...props.route.params}
-              {...props}
+        )}
+        <Component
+          push={push}
+          pop={pop}
+          replace={replace}
+          canGoBack={props.navigation.canGoBack}
+          setOptions={setOptions}
+          {...props.route.params}
+          {...props}
             />
-        </>
-    };
+    </>
+  };
 };
 
 export default withScreen;

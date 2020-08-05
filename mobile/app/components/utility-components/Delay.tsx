@@ -6,11 +6,11 @@ type ComponentType = {
 }
 
 const Delay: FunctionComponent<ComponentType> = ({ children, delay=500 }) => {
-    const [isReady, setIsReady] = useState<boolean>(false);
-    setTimeout(()=>{
-        setIsReady(true)
-    },delay)
-    return <>{isReady? children:null}</>
+  const [isReady, setIsReady] = useState<boolean>(false);
+  setTimeout(()=>{
+    setIsReady(true)
+  },delay)
+  return <>{isReady? children:null}</>
 };
 
 export default Delay;

@@ -9,11 +9,11 @@ type ComponentType = Screen & {
 class GenericScreen extends Component<ComponentType> {
   state = {}
   render() {
-      return (
-          <>
+    return (
+        <>
 
-          </>
-      )
+        </>
+    )
   }
 }
 

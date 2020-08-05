@@ -11,28 +11,28 @@ const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;
 
 const StackScreen: FunctionComponent<ComponentType> = ({ style }) => {
-    return (
-        <NavigationContainer independent>
-            <Navigator screenOptions={defaultNavigationOptions} initialRouteName={RouteUrls.home}>
-                <Stack.Screen
-                  name={RouteUrls.home}
-                  options={routes[RouteUrls.home].options}
-                  component={routes[RouteUrls.home].component}
+  return (
+      <NavigationContainer independent>
+          <Navigator screenOptions={defaultNavigationOptions} initialRouteName={RouteUrls.home}>
+              <Stack.Screen
+                name={RouteUrls.home}
+                options={routes[RouteUrls.home].options}
+                component={routes[RouteUrls.home].component}
             />
-                <Stack.Screen
-                  name={RouteUrls.generic}
-                  options={routes[RouteUrls.generic].options}
-                  component={routes[RouteUrls.generic].component}
+              <Stack.Screen
+                name={RouteUrls.generic}
+                options={routes[RouteUrls.generic].options}
+                component={routes[RouteUrls.generic].component}
             />
-                <Stack.Screen
-                  name={RouteUrls.stack}
-                  options={routes[RouteUrls.stack].options}
-                  component={routes[RouteUrls.stack].component}
+              <Stack.Screen
+                name={RouteUrls.stack}
+                options={routes[RouteUrls.stack].options}
+                component={routes[RouteUrls.stack].component}
             />
-            </Navigator>
-        </NavigationContainer>
+          </Navigator>
+      </NavigationContainer>
 
-    );
+  );
 };
 
 export default withScreen(StackScreen);

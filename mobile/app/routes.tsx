@@ -17,53 +17,53 @@ export interface IRoute {
 }
 // Contains default route config and components
 export const routes: Record<RouteUrls, IRoute> = {
-    [RouteUrls.home]: {
-        options: {
-            title: 'Home',
-        },
-        component: HomeScreen
+  [RouteUrls.home]: {
+    options: {
+      title: 'Home',
     },
-    [RouteUrls.generic]: {
-        options: {
-            title: 'About',
-        },
-        component: GenericScreen,
+    component: HomeScreen
+  },
+  [RouteUrls.generic]: {
+    options: {
+      title: 'About',
     },
-    [RouteUrls.tabs]: {
-        options: {
-            headerShown: false,
-        },
-        component: TabLayout,
+    component: GenericScreen,
+  },
+  [RouteUrls.tabs]: {
+    options: {
+      headerShown: false,
     },
-    [RouteUrls.stack]: {
-        options: {
-            headerShown: false,
-        },
-        component: StackScreen,
+    component: TabLayout,
+  },
+  [RouteUrls.stack]: {
+    options: {
+      headerShown: false,
     },
-    [RouteUrls.storybook]: {
-        options: {
-            headerShown: false,
-        },
-        component: StorybookUIRoot,
+    component: StackScreen,
+  },
+  [RouteUrls.storybook]: {
+    options: {
+      headerShown: false,
     },
+    component: StorybookUIRoot,
+  },
 };
 
 export const withModalOptions = (base:Partial<NativeStackNavigationOptions>, navigation) => (
-    {
-        ...base,
-        hideBackButton:true,
-        headerHideBackButton: true,
-        headerRight: function HeaderRight(props:any) {
-            return <ButtonNav onPress={()=>navigation.pop()}>
-                <ION
-                  style={{
+  {
+    ...base,
+    hideBackButton:true,
+    headerHideBackButton: true,
+    headerRight: function HeaderRight(props:any) {
+      return <ButtonNav onPress={()=>navigation.pop()}>
+          <ION
+            style={{
                       color: props.tintColor,
                       fontSize: styleVariables.fontSizeH1
                   }}
-                  name="ios-close"
+            name="ios-close"
               />
-            </ButtonNav>
-        }
+      </ButtonNav>
     }
+  }
 )

@@ -13,16 +13,16 @@ const _propTypes = {
  * The Component
  */
 export class TheComponent extends PureComponent {
-    static displayName = 'TheComponent';
+  static displayName = 'TheComponent';
 
-    static propTypes = _propTypes;
+  static propTypes = _propTypes;
 
-    render() {
-      const { props: { className, children } } = this;
-      return (
-          <div className={cn(className, 'some-custom-class')}>{children}</div>
-      );
-    }
+  render() {
+    const { props: { className, children } } = this;
+    return (
+        <div className={cn(className, 'some-custom-class')}>{children}</div>
+    );
+  }
 }
 
 export default TheComponent;

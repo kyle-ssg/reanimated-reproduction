@@ -6,30 +6,30 @@ import propTypes from 'prop-types';
 import Button from './Button';
 
 export class Tabs extends Component {
-    static displayName = 'Tabs'
+  static displayName = 'Tabs'
 
-    static propTypes = {
-      value: propTypes.any,
-      onChange: propTypes.func,
-      children: propTypes.node,
-      className: propTypes.string,
-      uncontrolled: propTypes.bool,
-      tabLabels: propTypes.array.isRequired,
+  static propTypes = {
+    value: propTypes.any,
+    onChange: propTypes.func,
+    children: propTypes.node,
+    className: propTypes.string,
+    uncontrolled: propTypes.bool,
+    tabLabels: propTypes.array.isRequired,
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: props.value,
     };
+  }
 
-    constructor(props) {
-      super(props);
-      this.state = {
-        value: props.value,
-      };
-    }
-
-    render() {
-      const value = this.props.uncontrolled ? this.state.value : this.props.value;
-      return (
-          <div className={`tabs ${this.props.className || ''}`}>
-              <div className="tabs-nav">
-                  {this.props.children.map((child, i) => {
+  render() {
+    const value = this.props.uncontrolled ? this.state.value : this.props.value;
+    return (
+        <div className={`tabs ${this.props.className || ''}`}>
+            <div className="tabs-nav">
+                {this.props.children.map((child, i) => {
                     const isSelected = value === i;
                     const tabLabel = this.props.tabLabels[i];
                     return (
@@ -51,15 +51,15 @@ export class Tabs extends Component {
                         </Button>
                     );
                   })}
-              </div>
-              <div
-                className="tab-line" style={{
+            </div>
+            <div
+              className="tab-line" style={{
                   width: `${100 / this.props.children.length}%`,
                   left: `${100 / this.props.children.length * value}%`,
                 }}
                 />
-              <div className="tabs-content">
-                  {this.props.children.map((child, i) => {
+            <div className="tabs-content">
+                {this.props.children.map((child, i) => {
                     const isSelected = value === i;
                     return (
                         <div key={`content${i}`} className={`tab-item${isSelected ? ' tab-active' : ''}`}>
@@ -67,10 +67,10 @@ export class Tabs extends Component {
                         </div>
                     );
                   })}
-              </div>
-          </div>
-      );
-    }
+            </div>
+        </div>
+    );
+  }
 }
 
 Tabs.defaultProps = {

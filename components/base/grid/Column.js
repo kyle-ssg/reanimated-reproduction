@@ -13,16 +13,16 @@ const _propTypes = {
  * Div with standard horizontal padding
  */
 export class Column extends PureComponent {
-    static displayName = 'Column';
+  static displayName = 'Column';
 
-    static propTypes = _propTypes;
+  static propTypes = _propTypes;
 
-    render() {
-      const { props: { className, ...rest } } = this;
-      return (
-          <div {...rest} className={cn(className, 'flex-column')}/>
-      );
-    }
+  render() {
+    const { props: { className, ...rest } } = this;
+    return (
+        <div {...rest} className={cn(className, 'flex-column')}/>
+    );
+  }
 }
 
 global.Column = Column;

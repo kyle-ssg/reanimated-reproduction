@@ -38,38 +38,38 @@ const _propTypes = {
  * The Component
  */
 export class DatePicker extends PureComponent {
-    static displayName = 'DatePicker';
+  static displayName = 'DatePicker';
 
-    static propTypes = _propTypes;
+  static propTypes = _propTypes;
 
-    getDate = (d) => {
-      if (typeof d === 'string') {
-        return new Date(d);
-      }
-      return d;
+  getDate = (d) => {
+    if (typeof d === 'string') {
+      return new Date(d);
     }
+    return d;
+  }
 
-    getDates = (dates) => {
-      if (!dates) {
-        return dates;
-      }
-      return dates.map(this.getDate);
+  getDates = (dates) => {
+    if (!dates) {
+      return dates;
     }
+    return dates.map(this.getDate);
+  }
 
 
-    render() {
-      const { props: { minDate, maxDate, selected, highlightDates, excludeDates, ...rest } } = this;
-      return (
-          <_DatePicker
-            minDate={this.getDate(minDate)}
-            maxDate={this.getDate(maxDate)}
-            highlightDates={this.getDates(highlightDates)}
-            excludeDates={this.getDates(excludeDates)}
-            selected={this.getDate(selected)}
-            {...rest}
+  render() {
+    const { props: { minDate, maxDate, selected, highlightDates, excludeDates, ...rest } } = this;
+    return (
+        <_DatePicker
+          minDate={this.getDate(minDate)}
+          maxDate={this.getDate(maxDate)}
+          highlightDates={this.getDates(highlightDates)}
+          excludeDates={this.getDates(excludeDates)}
+          selected={this.getDate(selected)}
+          {...rest}
             />
-      );
-    }
+    );
+  }
 }
 
 export default DatePicker;

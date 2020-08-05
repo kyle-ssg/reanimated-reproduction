@@ -7,26 +7,26 @@ type ComponentType = Screen & {}
 
 class HomeScreen extends Component<ComponentType, {modalVisible:boolean}> {
   state = {
-      modalVisible: false
+    modalVisible: false
   }
 
   constructor(props) {
-      super(props);
+    super(props);
   }
 
   goGeneric = ()=> {
-      this.props.push(RouteUrls.generic, {
-      })
+    this.props.push(RouteUrls.generic, {
+    })
   }
 
   render() {
-      return (
-          <>
-              <Flex style={Styles.body}>
-                  <Button onPress={this.goGeneric}>Go to a generic page</Button>
-              </Flex>
-          </>
-      )
+    return (
+        <>
+            <Flex style={Styles.body}>
+                <Button onPress={this.goGeneric}>Go to a generic page</Button>
+            </Flex>
+        </>
+    )
   }
 }
 

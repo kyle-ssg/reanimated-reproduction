@@ -19,31 +19,31 @@ export const ModalBody = _ModalBody;
 
 const withModal = (WrappedComponent) => {
   class HOC extends React.Component {
-        static displayName = 'withFoo';
+    static displayName = 'withFoo';
 
-        constructor(props) {
-          super(props);
-          this.state = {
-            isOpen: true,
-          };
-          global.closeModal = this.toggle;
-        }
+    constructor(props) {
+      super(props);
+      this.state = {
+        isOpen: true,
+      };
+      global.closeModal = this.toggle;
+    }
 
-        toggle = () => {
-          this.setState({ isOpen: false });
-        }
+    toggle = () => {
+      this.setState({ isOpen: false });
+    }
 
-        render() {
-          return (
-              <Provider store={store()}>
-                  <WrappedComponent
-                    toggle={this.toggle}
-                    {...this.props}
-                    {...this.state}
+    render() {
+      return (
+          <Provider store={store()}>
+              <WrappedComponent
+                toggle={this.toggle}
+                {...this.props}
+                {...this.state}
                     />
-              </Provider>
-          );
-        }
+          </Provider>
+      );
+    }
   }
 
   return HOC;

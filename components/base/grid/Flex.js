@@ -17,27 +17,27 @@ const _propTypes = {
  * Div with flex
  */
 export class Flex extends PureComponent {
-    static displayName = 'Flex';
+  static displayName = 'Flex';
 
-    static propTypes = _propTypes;
+  static propTypes = _propTypes;
 
-    static defaultProps = {
-      value: 1
-    }
+  static defaultProps = {
+    value: 1
+  }
 
-    render() {
-      const { props: { className, children, value, ...rest } } = this;
-      return (
-          <div
-            {...rest}
-            className={cn({
+  render() {
+    const { props: { className, children, value, ...rest } } = this;
+    return (
+        <div
+          {...rest}
+          className={cn({
               'flex': true,
             }, `flex-${value}`, className)}
             >
-              {children}
-          </div>
-      );
-    }
+            {children}
+        </div>
+    );
+  }
 }
 
 global.Flex = Flex;
