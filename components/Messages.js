@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
-import propTypes from 'prop-types';
-import cn from 'classnames';
+import React, { PureComponent } from "react";
+import propTypes from "prop-types";
+import cn from "classnames";
 
 const _propTypes = {
   /** The error message to be displayed, replaces \n */
@@ -12,7 +12,7 @@ const _propTypes = {
  * Generic error message
  */
 export class Message extends PureComponent {
-  static displayName = 'ErrorMessage';
+  static displayName = "ErrorMessage";
 
   static propTypes = _propTypes;
 
@@ -23,11 +23,11 @@ export class Message extends PureComponent {
 
   render() {
     return (
-        <div className={`alert mt-1 mb-1 ${this.props.className || ''}`}>
-            {typeof this.props.children === 'string'
-          ? this.props.children.replace(/\n/g, '')
-          : 'Error processing request'}
-        </div>
+      <div className={`alert mt-1 mb-1 ${this.props.className || ""}`}>
+        {typeof this.props.children === "string"
+          ? this.props.children.replace(/\n/g, "")
+          : "Error processing request"}
+      </div>
     );
   }
 }
@@ -39,7 +39,7 @@ export class ErrorMessage extends React.PureComponent {
   render() {
     const { props } = this;
     return (
-        <Message {...props} className={cn(props.className, 'alert-danger')} />
+      <Message {...props} className={cn(props.className, "alert-danger")} />
     );
   }
 }
@@ -51,7 +51,7 @@ export class SuccessMessage extends React.PureComponent {
   render() {
     const { props } = this;
     return (
-        <Message {...props} className={cn(props.className, 'alert-success')} />
+      <Message {...props} className={cn(props.className, "alert-success")} />
     );
   }
 }

@@ -6,15 +6,15 @@
 const getQueryString = (params: any): string => {
   const esc = encodeURIComponent;
   return Object.keys(params)
-    .map(k => `${esc(k)}=${esc(params[k])}`)
-    .join('&');
+    .map((k) => `${esc(k)}=${esc(params[k])}`)
+    .join("&");
 };
 
 export enum RequestMethod {
-  get = 'get',
-  put = 'put',
-  delete = 'delete',
-  post = 'post',
+  get = "get",
+  put = "put",
+  delete = "delete",
+  post = "post",
 }
 
 interface RequestOptions {
@@ -24,16 +24,16 @@ interface RequestOptions {
   body?: string;
 }
 const _data = {
-  token: '',
-  refreshToken: '',
-  type: '',
+  token: "",
+  refreshToken: "",
+  type: "",
 
   status(response: any): Promise<any> {
     // handle ajax requests
     // console.debug(response);
     if (response.status === 403) {
       API.logout();
-      return Promise.reject({ message: 'UNAUTHORIZED' });
+      return Promise.reject({ message: "UNAUTHORIZED" });
     }
     if (response.status >= 200 && response.status < 300) {
       return Promise.resolve(response);
@@ -42,14 +42,14 @@ const _data = {
       .clone()
       .text() // cloned so response body can be used downstream
       .then((err: string) => {
-        if (E2E && document.getElementById('e2e-error')) {
+        if (E2E && document.getElementById("e2e-error")) {
           const error = {
             url: response.url,
             status: response.status,
             error: err,
           };
-          document.getElementById('e2e-error').innerText = JSON.stringify(
-            error,
+          document.getElementById("e2e-error").innerText = JSON.stringify(
+            error
           );
         }
         API.log(response.url, response.status, err);
@@ -79,7 +79,7 @@ const _data = {
     method: RequestMethod,
     url: string,
     data: any,
-    headers: any = {},
+    headers: any = {}
   ): Promise<any> {
     const prom = Promise.resolve();
 
@@ -91,10 +91,10 @@ const _data = {
           ...headers,
         },
       };
-      let qs = '';
+      let qs = "";
 
-      if (method !== RequestMethod.get && !options.headers['content-type'])
-        options.headers['content-type'] = 'application/json';
+      if (method !== RequestMethod.get && !options.headers["content-type"])
+        options.headers["content-type"] = "application/json";
 
       if (_data.token) {
         // add auth tokens to headers of all requests
@@ -104,53 +104,53 @@ const _data = {
       if (data) {
         if (method === RequestMethod.get) {
           qs = getQueryString(data);
-          url += url.indexOf('?') !== -1 ? `&${qs}` : `?${qs}`;
-        } else if (options.headers['content-type'] === 'application/json') {
+          url += url.indexOf("?") !== -1 ? `&${qs}` : `?${qs}`;
+        } else if (options.headers["content-type"] === "application/json") {
           options.body = JSON.stringify(data);
         }
       } else if (
         method === RequestMethod.post ||
         method === RequestMethod.put
       ) {
-        options.body = '{}';
+        options.body = "{}";
       }
 
-      if (E2E && document.getElementById('e2e-request')) {
+      if (E2E && document.getElementById("e2e-request")) {
         const payload = {
           url,
           options,
         };
-        document.getElementById('e2e-request').innerText = JSON.stringify(
-          payload,
+        document.getElementById("e2e-request").innerText = JSON.stringify(
+          payload
         );
       }
 
-      API.log('API', 'REQUEST', method, url, data, headers);
+      API.log("API", "REQUEST", method, url, data, headers);
 
       const req = fetch(url, options);
       return req
         .then(_data.status)
-        .then(response => {
+        .then((response) => {
           // always return json
-          let contentType = response.headers.get('content-type');
+          let contentType = response.headers.get("content-type");
           if (!contentType) {
-            contentType = response.headers.get('Content-Type');
+            contentType = response.headers.get("Content-Type");
           }
-          if (contentType && contentType.indexOf('application/json') !== -1) {
+          if (contentType && contentType.indexOf("application/json") !== -1) {
             return response.json();
           }
           return {};
         })
-        .then(response => {
+        .then((response) => {
           API.log(
-            'API',
-            'RESPONSE',
+            "API",
+            "RESPONSE",
             method,
             url,
-            'Response body',
+            "Response body",
             response,
-            'Original request',
-            options,
+            "Original request",
+            options
           );
           return response;
         });

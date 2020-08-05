@@ -1,7 +1,7 @@
-import _DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import React, { PureComponent } from 'react';
-import propTypes from 'prop-types';
+import _DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import React, { PureComponent } from "react";
+import propTypes from "prop-types";
 
 const _propTypes = {
   /** What class to add to the component */
@@ -38,18 +38,18 @@ const _propTypes = {
  * The Component
  */
 export class DatePicker extends PureComponent {
-  static displayName = 'DatePicker';
+  static displayName = "DatePicker";
 
   static propTypes = _propTypes;
 
-  getDate = d => {
-    if (typeof d === 'string') {
+  getDate = (d) => {
+    if (typeof d === "string") {
       return new Date(d);
     }
     return d;
   };
 
-  getDates = dates => {
+  getDates = (dates) => {
     if (!dates) {
       return dates;
     }
@@ -68,14 +68,14 @@ export class DatePicker extends PureComponent {
       },
     } = this;
     return (
-        <_DatePicker
-          minDate={this.getDate(minDate)}
-          maxDate={this.getDate(maxDate)}
-          highlightDates={this.getDates(highlightDates)}
-          excludeDates={this.getDates(excludeDates)}
-          selected={this.getDate(selected)}
-          {...rest}
-        />
+      <_DatePicker
+        minDate={this.getDate(minDate)}
+        maxDate={this.getDate(maxDate)}
+        highlightDates={this.getDates(highlightDates)}
+        excludeDates={this.getDates(excludeDates)}
+        selected={this.getDate(selected)}
+        {...rest}
+      />
     );
   }
 }

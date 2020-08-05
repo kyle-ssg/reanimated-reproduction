@@ -1,9 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const style: Record<
-string,
-ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+  string,
+  ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 > = {
   //
   // Grid system / Rows
@@ -25,7 +25,7 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   },
 
   alignItemsRight: {
-    alignItems: 'flex-end',
+    alignItems: "flex-end",
   },
 
   containerLoading: {
@@ -33,38 +33,38 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   },
 
   baseline: {
-    alignItems: 'flex-start',
+    alignItems: "flex-start",
   },
 
   centeredContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   alignCenter: {
-    alignSelf: 'center',
+    alignSelf: "center",
   },
 
   alignRight: {
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
   },
 
   centeredRow: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
   },
 
   row: {
-    alignSelf: 'stretch',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    alignItems: 'center',
+    alignSelf: "stretch",
+    flexWrap: "wrap",
+    flexDirection: "row",
+    alignItems: "center",
   },
 
   spacedRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
 
   mb0: { marginBottom: 0 },

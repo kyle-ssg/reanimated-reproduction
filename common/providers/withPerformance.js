@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 const Profiler = React.Profiler;
 
@@ -6,10 +6,10 @@ export default (
   WrappedComponent,
   _id,
   remote,
-  events = ['mount', 'update'],
+  events = ["mount", "update"]
 ) => {
   class HOC extends Component {
-    static displayName = 'withPerformance';
+    static displayName = "withPerformance";
 
     constructor(props) {
       super(props);
@@ -34,9 +34,9 @@ export default (
 
       if (remote) {
         fetch(remote, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({ value: actualDuration }),
         });
@@ -45,9 +45,9 @@ export default (
 
     render() {
       return (
-          <Profiler id={_id} onRender={this.logMeasurement}>
-              <WrappedComponent {...this.props} {...this.state} />
-          </Profiler>
+        <Profiler id={_id} onRender={this.logMeasurement}>
+          <WrappedComponent {...this.props} {...this.state} />
+        </Profiler>
       );
     }
   }

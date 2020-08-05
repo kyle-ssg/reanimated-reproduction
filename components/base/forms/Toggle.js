@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
-import propTypes from 'prop-types';
+import React, { PureComponent } from "react";
+import propTypes from "prop-types";
 
 class Toggle extends PureComponent {
-  static displayName = 'Toggle';
+  static displayName = "Toggle";
 
   static propTypes = {
     onChange: propTypes.func,
@@ -27,15 +27,15 @@ class Toggle extends PureComponent {
 
   render() {
     return (
-        <button
-          className={`btn toggle-control d-flex justify-content-center align-items-center ${
-          this.state.toggled ? 'selected' : ''
+      <button
+        className={`btn toggle-control d-flex justify-content-center align-items-center ${
+          this.state.toggled ? "selected" : ""
         }`}
-          onClick={this.handleClick}
-          type="button"
-        >
-            {this.props.children}
-        </button>
+        onClick={this.handleClick}
+        type="button"
+      >
+        {this.props.children}
+      </button>
     );
   }
 }

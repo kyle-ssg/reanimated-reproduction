@@ -1,8 +1,8 @@
 // propTypes: value: OptionalNumber
-import React, { PureComponent } from 'react';
-import propTypes from 'prop-types';
+import React, { PureComponent } from "react";
+import propTypes from "prop-types";
 
-const cn = require('classnames');
+const cn = require("classnames");
 
 const _propTypes = {
   /** The element's children */
@@ -17,7 +17,7 @@ const _propTypes = {
  * Div with flex
  */
 export class Flex extends PureComponent {
-  static displayName = 'Flex';
+  static displayName = "Flex";
 
   static propTypes = _propTypes;
 
@@ -30,18 +30,18 @@ export class Flex extends PureComponent {
       props: { className, children, value, ...rest },
     } = this;
     return (
-        <div
-          {...rest}
-          className={cn(
+      <div
+        {...rest}
+        className={cn(
           {
             flex: true,
           },
           `flex-${value}`,
-          className,
+          className
         )}
-        >
-            {children}
-        </div>
+      >
+        {children}
+      </div>
     );
   }
 }

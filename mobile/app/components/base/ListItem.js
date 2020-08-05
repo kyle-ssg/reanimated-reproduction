@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import propTypes from 'prop-types';
-import { Platform, TouchableNativeFeedback } from 'react-native';
+import React, { Component } from "react";
+import propTypes from "prop-types";
+import { Platform, TouchableNativeFeedback } from "react-native";
 
 const ListItem = class extends Component {
-  static displayName = 'ListItem';
+  static displayName = "ListItem";
 
   static propTypes = {
     accessible: propTypes.bool,
@@ -27,46 +27,46 @@ const ListItem = class extends Component {
 
   render() {
     const content = (
-        <View style={[Styles.ph5, this.props.style]}>
-            <Row>
-                {this.props.icon}
-                <View
-                  style={[
+      <View style={[Styles.ph5, this.props.style]}>
+        <Row>
+          {this.props.icon}
+          <View
+            style={[
               this.props.disabled && Styles.listItemDisabled,
               Styles.liContent,
-              { backgroundColor: 'transparent' },
+              { backgroundColor: "transparent" },
             ]}
-                >
-                    {this.props.children}
-                </View>
-            </Row>
-        </View>
+          >
+            {this.props.children}
+          </View>
+        </Row>
+      </View>
     );
 
     return this.props.onPress ? (
-        <View style={this.props.style || Styles.listItem}>
-            {Platform.OS === 'android' ? (
-                <TouchableNativeFeedback
-                  accessible={this.props.accessible}
-                  accessibilityLabel={this.props.accessibilityLabel}
-                  onPress={this.props.disabled ? null : this.props.onPress}
-                  background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
-                >
-                    {content}
-                </TouchableNativeFeedback>
+      <View style={this.props.style || Styles.listItem}>
+        {Platform.OS === "android" ? (
+          <TouchableNativeFeedback
+            accessible={this.props.accessible}
+            accessibilityLabel={this.props.accessibilityLabel}
+            onPress={this.props.disabled ? null : this.props.onPress}
+            background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
+          >
+            {content}
+          </TouchableNativeFeedback>
         ) : (
-            <TouchableOpacity
-              accessible={this.props.accessible}
-              accessibilityLabel={this.props.accessibilityLabel}
-              activeOpacity={0.8}
-              onPress={this.props.disabled ? null : this.props.onPress}
-            >
-                {content}
-            </TouchableOpacity>
+          <TouchableOpacity
+            accessible={this.props.accessible}
+            accessibilityLabel={this.props.accessibilityLabel}
+            activeOpacity={0.8}
+            onPress={this.props.disabled ? null : this.props.onPress}
+          >
+            {content}
+          </TouchableOpacity>
         )}
-        </View>
+      </View>
     ) : (
-        <View style={[this.props.style || Styles.listItem]}>{content}</View>
+      <View style={[this.props.style || Styles.listItem]}>{content}</View>
     );
   }
 };

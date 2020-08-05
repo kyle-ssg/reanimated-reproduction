@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
-import propTypes from 'prop-types';
+import React, { PureComponent } from "react";
+import propTypes from "prop-types";
 
 class SegmentControl extends PureComponent {
-  static displayName = 'SegmentControl';
+  static displayName = "SegmentControl";
 
   static propTypes = {
     options: propTypes.arrayOf(
@@ -10,7 +10,7 @@ class SegmentControl extends PureComponent {
         key: propTypes.string.isRequired,
         name: propTypes.string,
         selected: propTypes.bool,
-      }),
+      })
     ),
     onChange: propTypes.func,
   };
@@ -25,7 +25,7 @@ class SegmentControl extends PureComponent {
   handleClick(key) {
     const { options } = this.state;
     this.setState({
-      options: options.map(option => ({
+      options: options.map((option) => ({
         ...option,
         selected: option.key === key,
       })),
@@ -36,20 +36,20 @@ class SegmentControl extends PureComponent {
   render() {
     const options = this.state.options;
     return (
-        <div className="segment-control">
-            {options.map(option => (
-                <button
-                  className={`btn ${
-              option.selected ? 'segment-control__selected' : ''
+      <div className="segment-control">
+        {options.map((option) => (
+          <button
+            className={`btn ${
+              option.selected ? "segment-control__selected" : ""
             }`}
-                  type="button"
-                  key={option.key}
-                  onClick={() => this.handleClick(option.key)}
-                >
-                    {option.name}
-                </button>
+            type="button"
+            key={option.key}
+            onClick={() => this.handleClick(option.key)}
+          >
+            {option.name}
+          </button>
         ))}
-        </div>
+      </div>
     );
   }
 }

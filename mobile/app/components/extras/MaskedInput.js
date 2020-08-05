@@ -2,12 +2,12 @@
  * Created by kylejohnson on 14/11/2015.
  */
 
-import propTypes from 'prop-types';
-import ReactNative, { Animated, Easing } from 'react-native';
-import React, { PureComponent } from 'react';
-import Animations from '../project/animations';
+import propTypes from "prop-types";
+import ReactNative, { Animated, Easing } from "react-native";
+import React, { PureComponent } from "react";
+import Animations from "../project/animations";
 // import InputMask from 'inputmask-core';
-const InputMask = () => Alert.alert('Please install input-mask-core');
+const InputMask = () => Alert.alert("Please install input-mask-core");
 
 const textInputPropTypes = {
   onBlur: propTypes.func,
@@ -19,7 +19,7 @@ const textInputPropTypes = {
 };
 
 const TextInput = class extends PureComponent {
-  static displayName = 'TextInput';
+  static displayName = "TextInput";
 
   static propTypes = textInputPropTypes;
 
@@ -52,7 +52,7 @@ const TextInput = class extends PureComponent {
     }
   };
 
-  onBlur = e => {
+  onBlur = (e) => {
     Animated.timing(this.animation, {
       toValue: 0.0001,
       duration: 300,
@@ -64,7 +64,7 @@ const TextInput = class extends PureComponent {
     }
   };
 
-  onChangeText = text => {
+  onChangeText = (text) => {
     if (!this.props.onChangeText) {
       return;
     }
@@ -85,7 +85,7 @@ const TextInput = class extends PureComponent {
                 return /\w/.test(char);
               },
               transform() {
-                return 'm';
+                return "m";
               },
             },
           },
@@ -109,7 +109,7 @@ const TextInput = class extends PureComponent {
           // to the non-pattern character.
           while (
             !this.isMaskPatternChar(
-              this.props.mask[this.mask.selection.start],
+              this.props.mask[this.mask.selection.start]
             ) &&
             this.mask.selection.start !== this.props.mask.length
           ) {
@@ -131,7 +131,7 @@ const TextInput = class extends PureComponent {
         while (
           this.mask.selection.start &&
           !this.isMaskPatternChar(
-            this.props.mask[this.mask.selection.start - 1],
+            this.props.mask[this.mask.selection.start - 1]
           )
         ) {
           this.mask.backspace();
@@ -153,42 +153,42 @@ const TextInput = class extends PureComponent {
     }
 
     return (
-      char === '1' ||
-      char === 'a' ||
-      char === 'A' ||
-      char === '*' ||
-      char === '#'
+      char === "1" ||
+      char === "a" ||
+      char === "A" ||
+      char === "*" ||
+      char === "#"
     );
   }
 
   render() {
     // If you wanted animated shadows
     return (
-        <View>
-            {this.props.title && (
-            <FormGroup>
-                <Text style={Styles.inputLabel}>{this.props.title}</Text>
-            </FormGroup>
+      <View>
+        {this.props.title && (
+          <FormGroup>
+            <Text style={Styles.inputLabel}>{this.props.title}</Text>
+          </FormGroup>
         )}
-            <Animated.View>
-                <ReactNative.TextInput
-                  {...this.props}
-                  onFocus={this.onFocus}
-                  onBlur={this.onBlur}
-                  onChangeText={this.onChangeText}
-                  style={[
+        <Animated.View>
+          <ReactNative.TextInput
+            {...this.props}
+            onFocus={this.onFocus}
+            onBlur={this.onBlur}
+            onChangeText={this.onChangeText}
+            style={[
               Styles.textInput,
               Styles.textInputAndroid,
               this.props.style,
             ]}
-                  value={this.props.value}
-                  testID={this.props.testID}
-                  ref={ref => (this.inputRef = ref)}
-                  blurOnSubmit={Platform.OS === 'ios'}
-                />
-            </Animated.View>
-            <Animated.View
-              style={[
+            value={this.props.value}
+            testID={this.props.testID}
+            ref={(ref) => (this.inputRef = ref)}
+            blurOnSubmit={Platform.OS === "ios"}
+          />
+        </Animated.View>
+        <Animated.View
+          style={[
             {
               marginTop: ReactNative.StyleSheet.hairlineWidth * 3,
               transform: [{ scaleX: this.animation }],
@@ -196,8 +196,8 @@ const TextInput = class extends PureComponent {
               height: ReactNative.StyleSheet.hairlineWidth * 6,
             },
           ]}
-            />
-        </View>
+        />
+      </View>
     );
   }
 };
@@ -229,7 +229,7 @@ TextInput.propTypes = {
 // });
 
 export default TextInput;
-export const FlatInput = props => (
-    <TextInput {...props} style={[Styles.flatInput, props.style]} />
+export const FlatInput = (props) => (
+  <TextInput {...props} style={[Styles.flatInput, props.style]} />
 );
 FlatInput.propTypes = textInputPropTypes;

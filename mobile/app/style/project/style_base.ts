@@ -1,18 +1,18 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const style: Record<
-string,
-ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+  string,
+  ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 > = {
   bodyBackground: {
     backgroundColor: palette.bodyBackground,
   },
 
   hero: {
-    overflow: 'hidden',
+    overflow: "hidden",
     paddingTop: styleVariables.marginBaseVertical,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
   },
 
   bodyAlt: {
@@ -24,7 +24,7 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   },
 
   shadow: {
-    shadowColor: '#333',
+    shadowColor: "#333",
     shadowOffset: {
       width: 3,
       height: 3,
@@ -36,11 +36,11 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   // ICONS
   iconDefault: {
     height: 30,
-    resizeMode: 'contain',
+    resizeMode: "contain",
   },
 
   iconButton: {
-    resizeMode: 'contain',
+    resizeMode: "contain",
     paddingLeft: 6,
     paddingRight: 6,
     paddingTop: 1,
@@ -49,25 +49,25 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   },
 
   roundedAnimationContainer: {
-    backgroundColor: 'white',
-    alignSelf: 'center',
+    backgroundColor: "white",
+    alignSelf: "center",
     top: -40,
     zIndex: 2,
-    position: 'absolute',
+    position: "absolute",
     borderRadius: 40,
     width: 80,
     height: 80,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 
   roundedAnimationInner: {
-    backgroundColor: 'white',
-    alignSelf: 'center',
+    backgroundColor: "white",
+    alignSelf: "center",
     borderRadius: 35,
     width: 70,
     height: 70,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 };
 

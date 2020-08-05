@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import propTypes from 'prop-types';
-import { Animated, Easing } from 'react-native';
-import Animation from 'lottie-react-native';
+import React, { Component } from "react";
+import propTypes from "prop-types";
+import { Animated, Easing } from "react-native";
+import Animation from "lottie-react-native";
 
-const json = require('./checkbox.json');
+const json = require("./checkbox.json");
 
 const TheComponent = class extends Component {
-  static displayName = 'TheComponent';
+  static displayName = "TheComponent";
 
   static propTypes = {
     value: propTypes.number,
@@ -30,11 +30,11 @@ const TheComponent = class extends Component {
 
   render() {
     return (
-        <Animation
-          progress={this.animatedValue}
-          style={styles.checkbox}
-          source={json}
-        />
+      <Animation
+        progress={this.animatedValue}
+        style={styles.checkbox}
+        source={json}
+      />
     );
   }
 };

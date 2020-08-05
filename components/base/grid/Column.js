@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
-import propTypes from 'prop-types';
-import cn from 'classnames';
+import React, { PureComponent } from "react";
+import propTypes from "prop-types";
+import cn from "classnames";
 
 const _propTypes = {
   /** The element's children */
@@ -13,7 +13,7 @@ const _propTypes = {
  * Div with standard horizontal padding
  */
 export class Column extends PureComponent {
-  static displayName = 'Column';
+  static displayName = "Column";
 
   static propTypes = _propTypes;
 
@@ -21,7 +21,7 @@ export class Column extends PureComponent {
     const {
       props: { className, ...rest },
     } = this;
-    return <div {...rest} className={cn(className, 'flex-column')} />;
+    return <div {...rest} className={cn(className, "flex-column")} />;
   }
 }
 

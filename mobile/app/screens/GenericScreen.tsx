@@ -1,6 +1,6 @@
-import React from 'react';
-import { Component } from 'react';
-import withScreen, { Screen } from './withScreen';
+import React from "react";
+import { Component } from "react";
+import withScreen, { Screen } from "./withScreen";
 
 type ComponentType = Screen & {
   text: string;
@@ -12,9 +12,9 @@ class GenericScreen extends Component<ComponentType> {
   render() {
     return (
       this.props.children || (
-      <Flex style={Styles.body}>
+        <Flex style={Styles.body}>
           <Text>I am a generic screen</Text>
-      </Flex>
+        </Flex>
       )
     );
   }

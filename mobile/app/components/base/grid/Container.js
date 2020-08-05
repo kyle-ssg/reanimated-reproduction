@@ -1,5 +1,5 @@
-import React from 'react';
-import propTypes from 'prop-types';
+import React from "react";
+import propTypes from "prop-types";
 
 const Container = ({
   ml0,
@@ -15,8 +15,8 @@ const Container = ({
   style,
   children,
 }) => (
-    <View
-      style={[
+  <View
+    style={[
       ml10 && Styles.ml10,
       mr10 && Styles.mr10,
       ml0 && Styles.ml0,
@@ -29,12 +29,12 @@ const Container = ({
       mr20 && Styles.mr20,
       style,
     ]}
-    >
-        {children}
-    </View>
+  >
+    {children}
+  </View>
 );
 
-Container.displayName = 'Container';
+Container.displayName = "Container";
 
 Container.propTypes = {
   children: propTypes.node,

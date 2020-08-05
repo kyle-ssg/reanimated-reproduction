@@ -1,18 +1,18 @@
 //Anything that provides functionality that would benefit from being accessed by common
 
 // import Contacts from 'react-native-contacts';
-import BottomSheet from 'react-native-bottomsheet';
-import _analytics from '@react-native-firebase/analytics';
-import errorHandler from 'common/utils/errorHandler';
-import getStoreDangerous from 'common/store';
+import BottomSheet from "react-native-bottomsheet";
+import _analytics from "@react-native-firebase/analytics";
+import errorHandler from "common/utils/errorHandler";
+import getStoreDangerous from "common/store";
 
-import ReactNative from 'react-native';
-import storage from './async-storage-api';
+import ReactNative from "react-native";
+import storage from "./async-storage-api";
 
-import push from './push-notifications-api';
-import auth from './auth';
+import push from "./push-notifications-api";
+import auth from "./auth";
 
-const analytics = typeof _analytics === 'undefined' ? undefined : _analytics();
+const analytics = typeof _analytics === "undefined" ? undefined : _analytics();
 
 global.API = {
   isMobile: () => true,
@@ -35,9 +35,9 @@ global.API = {
           onSuccess: () => {
             // todo: add for react-navigation
             // routes.logout();
-            Alert.alert('Logged out', 'You have been logged out');
+            Alert.alert("Logged out", "You have been logged out");
           },
-        }),
+        })
       );
     }
   },
@@ -51,16 +51,16 @@ global.API = {
       const { event, ...rest } = data;
       if (!data) {
         // eslint-disable-next-line no-console
-        console.error('Passed null event data');
+        console.error("Passed null event data");
       }
       // eslint-disable-next-line no-console
-      console.info('track', data);
+      console.info("track", data);
       if (!data || !data.category || !data.event) {
         // eslint-disable-next-line no-console
-        console.error('Invalid event provided', data);
+        console.error("Invalid event provided", data);
       }
 
-      analytics().logEvent(event.toLowerCase().replace(/ /g, '_'), rest);
+      analytics().logEvent(event.toLowerCase().replace(/ /g, "_"), rest);
     }
   },
   trackPage(name) {
@@ -71,7 +71,7 @@ global.API = {
   share: (uri, message, title, subject, excludedActivityTypes) => {
     ReactNative.Share.share(
       { message, title, url: uri },
-      { subject, excludedActivityTypes },
+      { subject, excludedActivityTypes }
     );
   },
   showOptions: (
@@ -80,10 +80,10 @@ global.API = {
     cancelButton = true,
     dark = false,
     destructiveOption,
-    resolveCancel,
+    resolveCancel
   ) =>
-    new Promise(resolve => {
-      const options = cancelButton ? _options.concat(['Cancel']) : _options;
+    new Promise((resolve) => {
+      const options = cancelButton ? _options.concat(["Cancel"]) : _options;
       BottomSheet.showBottomSheetWithOptions(
         {
           options,
@@ -95,44 +95,40 @@ global.API = {
               : options.length - 1,
           cancelButtonIndex: cancelButton && options.length - 1,
         },
-        value => {
+        (value) => {
           if (cancelButton && value === options.length - 1) {
             if (resolveCancel) resolve(null);
             return;
           }
           resolve(value);
-        },
+        }
       );
     }),
-  getContacts: includePhotos => {
-    if (typeof Contacts === 'undefined') {
+  getContacts: (includePhotos) => {
+    if (typeof Contacts === "undefined") {
       return Promise.reject(
-        new Error(
-          'You need to link react-native-contacts to use this function',
-        ),
+        new Error("You need to link react-native-contacts to use this function")
       );
     }
     return includePhotos
-      ?
-      new Promise(resolve =>
-        // eslint-disable-next-line no-undef
-        Contacts.getAll((error, contacts) =>
-          resolve({
-            error,
-            contacts: contacts,
-          }),
-        ),
-      )
-      :
-      new Promise(resolve =>
-        // eslint-disable-next-line no-undef
-        Contacts.getAllWithoutPhotos((error, contacts) =>
-          resolve({
-            error,
-            contacts: contacts,
-          }),
-        ),
-      );
+      ? new Promise((resolve) =>
+          // eslint-disable-next-line no-undef
+          Contacts.getAll((error, contacts) =>
+            resolve({
+              error,
+              contacts: contacts,
+            })
+          )
+        )
+      : new Promise((resolve) =>
+          // eslint-disable-next-line no-undef
+          Contacts.getAllWithoutPhotos((error, contacts) =>
+            resolve({
+              error,
+              contacts: contacts,
+            })
+          )
+        );
   },
   showUpload: (
     title,
@@ -140,11 +136,11 @@ global.API = {
     width,
     height,
     compressImageQuality = 0.8,
-    onStart,
+    onStart
   ) =>
-    new Promise(resolve => {
-      API.showOptions(title, ['Camera', 'Upload a Photo']).then(i => {
-        if (typeof ImagePicker === 'undefined') {
+    new Promise((resolve) => {
+      API.showOptions(title, ["Camera", "Upload a Photo"]).then((i) => {
+        if (typeof ImagePicker === "undefined") {
           // eslint-disable-next-line
           alert('You need to link react-native-image-crop-picker to use this function');
           return;
@@ -171,27 +167,27 @@ global.API = {
       });
     }),
   generateLink: (title, customMetadata) => {
-    if (typeof branch === 'undefined') {
+    if (typeof branch === "undefined") {
       // eslint-disable-next-line
             alert('You need to link react-native-branch to use this function');
       return Promise.reject();
     }
     // eslint-disable-next-line no-undef
     return branch
-      .createBranchUniversalObject('share', {
+      .createBranchUniversalObject("share", {
         title,
         contentMetadata: {
           customMetadata,
         },
       })
-      .then(branchUniversalObject => {
+      .then((branchUniversalObject) => {
         const controlParams = {};
         return branchUniversalObject
           .generateShortUrl({}, controlParams)
           .then(({ url }) => url);
       });
   },
-  getInitialLink: cb => {
+  getInitialLink: (cb) => {
     // eslint-disable-next-line
         initialLinkCb = cb;
     // eslint-disable-next-line
@@ -200,16 +196,16 @@ global.API = {
 
   setStoredToken(val) {
     if (!val) {
-      return API.storage.removeItem('token');
+      return API.storage.removeItem("token");
     }
-    API.storage.setString('token', val);
+    API.storage.setString("token", val);
   },
 
   setStoredRefreshToken(val) {
     if (!val) {
-      return API.storage.removeItem('refreshToken');
+      return API.storage.removeItem("refreshToken");
     }
-    API.storage.setString('refreshToken', val);
+    API.storage.setString("refreshToken", val);
   },
 
   push,
@@ -217,7 +213,7 @@ global.API = {
   storage,
 };
 
-if (typeof branch !== 'undefined') {
+if (typeof branch !== "undefined") {
   let linkCb = null;
   // eslint-disable-next-line
     var initialLinkCb = null;
@@ -228,7 +224,7 @@ if (typeof branch !== 'undefined') {
   // eslint-disable-next-line
     var initialLink = null;
 
-  API.onLink = cb => (linkCb = cb);
+  API.onLink = (cb) => (linkCb = cb);
   // eslint-disable-next-line no-undef
   branch.subscribe(({ error, params }) => {
     if (error) {
@@ -237,7 +233,7 @@ if (typeof branch !== 'undefined') {
       return;
     }
 
-    if (params['+clicked_branch_link']) {
+    if (params["+clicked_branch_link"]) {
       link = params;
 
       if (!checkedInitialLink) {

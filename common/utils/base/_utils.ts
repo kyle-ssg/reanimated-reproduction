@@ -1,6 +1,6 @@
-import omit from 'lodash/omit';
-import filter from 'lodash/filter';
-import { SyntheticEvent } from 'react';
+import omit from "lodash/omit";
+import filter from "lodash/filter";
+import { SyntheticEvent } from "react";
 
 const KEY_Y = 89;
 const KEY_Z = 90;
@@ -73,21 +73,21 @@ const Utils = {
   },
 
   getTypedValue(str: any) {
-    if (typeof str !== 'string') {
+    if (typeof str !== "string") {
       return str;
     }
 
     const isNum = /^\d+$/.test(str) || /^\d+\.\d+$/.test(str);
 
-    if (str === 'true') {
+    if (str === "true") {
       return true;
     }
-    if (str === 'false') {
+    if (str === "false") {
       return false;
     }
 
     if (isNum) {
-      if (str.indexOf('.') !== -1) {
+      if (str.indexOf(".") !== -1) {
         return parseFloat(str);
       }
       return parseInt(str);
@@ -110,30 +110,30 @@ const Utils = {
 
   toParam(obj?: Record<string, any>): string {
     // {min:100,max:200} -> ?min=100&max=200
-    if (!obj) return '';
+    if (!obj) return "";
     const allDefined = omit(
       obj,
       filter(
         Object.keys(obj),
-        (key) => typeof obj[key] === 'undefined' || obj[key] === null,
-      ),
+        (key) => typeof obj[key] === "undefined" || obj[key] === null
+      )
     );
     return Object.keys(allDefined)
       .map((k) => {
         // @ts-ignore
         let val = allDefined[k];
-        if (Array.isArray('array')) {
-          val = val.join(',');
+        if (Array.isArray("array")) {
+          val = val.join(",");
         }
         return `${encodeURIComponent(k)}=${encodeURIComponent(val)}`;
       })
-      .join('&');
+      .join("&");
   },
 
   fromParam(str?: string): Record<string, any> {
     // {min:100,max:200} <- ?min=100&max=200
     const documentSearch =
-      typeof document === 'undefined' ? '' : document.location.search;
+      typeof document === "undefined" ? "" : document.location.search;
 
     if (!str && !documentSearch) {
       return {};
@@ -142,12 +142,12 @@ const Utils = {
         const urlString= (str || documentSearch).replace(/(^\?)/, '');
     return JSON.parse(
       `{"${urlString.replace(/&/g, '","').replace(/=/g, '":"')}"}`,
-      (key, value) => (key === '' ? value : decodeURIComponent(value)),
+      (key, value) => (key === "" ? value : decodeURIComponent(value))
     );
   },
 
   capitalize(s?: string): string {
-    if (typeof s !== 'string') return '';
+    if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
   },
 
@@ -163,11 +163,11 @@ const Utils = {
     const target = e.target as HTMLFormElement;
 
     if (target.getAttribute) {
-      return target.type === 'checkbox' || target.type === 'radio'
-        ? target.getAttribute('checked')
-        : typeof target.value === 'string'
-          ? target.value
-          : target.getAttribute('data-value') || target.getAttribute('value');
+      return target.type === "checkbox" || target.type === "radio"
+        ? target.getAttribute("checked")
+        : typeof target.value === "string"
+        ? target.value
+        : target.getAttribute("data-value") || target.getAttribute("value");
     }
 
     if (target && target.textContent) {
@@ -181,9 +181,9 @@ const Utils = {
     return text && Utils.emailRegex.test(text);
   },
 
-  GUID(append = ''): string {
+  GUID(append = ""): string {
     let d = new Date().getTime();
-    const uuid = 'xxxx-xxxx-xxxx'.replace(/[xy]/g, (c) => {
+    const uuid = "xxxx-xxxx-xxxx".replace(/[xy]/g, (c) => {
       // eslint-disable-next-line
             const r = (d + Math.random() * 16) % 16 | 0;
       d = Math.floor(d / 16);
@@ -196,8 +196,8 @@ const Utils = {
 
   reactChildIsString(children): boolean {
     return (
-      typeof children === 'string' ||
-      (children && children.length === 1 && typeof children[0] === 'string')
+      typeof children === "string" ||
+      (children && children.length === 1 && typeof children[0] === "string")
     );
   },
 };

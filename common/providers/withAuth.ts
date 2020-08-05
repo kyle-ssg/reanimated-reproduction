@@ -1,7 +1,7 @@
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { AppActions } from '../app-actions';
-import { AppState } from '../state-type';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { AppActions } from "../app-actions";
+import { AppState } from "../state-type";
 
 const withAuth = (WrappedComponent) => {
   return connect(mapStateToProps, mapDispatchToProps)(WrappedComponent);
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) =>
       confirmEmail: AppActions.confirmEmail,
       updateUser: AppActions.updateUser,
     },
-    dispatch,
+    dispatch
   );
 
 function mapStateToProps(state: AppState) {

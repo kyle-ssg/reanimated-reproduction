@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import propTypes from 'prop-types';
+import React, { Component } from "react";
+import propTypes from "prop-types";
 
 export default class ErrorMessage extends Component {
-  static displayName = 'ErrorMessage';
+  static displayName = "ErrorMessage";
 
   static propTypes = {
     children: propTypes.node,
@@ -11,13 +11,13 @@ export default class ErrorMessage extends Component {
   render() {
     const { props } = this;
     return (
-        <View style={styles.container}>
-            <Text style={styles.ErrorMessageText}>
-                {typeof props.children === 'string'
+      <View style={styles.container}>
+        <Text style={styles.ErrorMessageText}>
+          {typeof props.children === "string"
             ? props.children
-            : 'Error processing request'}
-            </Text>
-        </View>
+            : "Error processing request"}
+        </Text>
+      </View>
     );
   }
 }
@@ -32,7 +32,7 @@ const styles = ReactNative.StyleSheet.create({
 
   ErrorMessageText: {
     color: palette.danger,
-    textAlign: 'center',
+    textAlign: "center",
   },
   text: {
     color: colour.third,

@@ -1,31 +1,31 @@
 // import SecuredStorage from 'react-native-secured-storage';
-import cookie from 'cookie';
-import jsCookie from 'js-cookie';
+import cookie from "cookie";
+import jsCookie from "js-cookie";
 
-const getItem = function(key, req) {
-  API.log('STORAGE', 'GET', key, req);
+const getItem = function (key, req) {
+  API.log("STORAGE", "GET", key, req);
 
   if (req) {
-    const parsedCookies = cookie.parse(req.headers.cookie || '');
+    const parsedCookies = cookie.parse(req.headers.cookie || "");
     return parsedCookies && parsedCookies.token;
   }
-  if (typeof window === 'undefined') {
-    return '';
+  if (typeof window === "undefined") {
+    return "";
   }
-  return jsCookie.get('token');
+  return jsCookie.get("token");
 };
-const setItem = function(key, value) {
-  if (typeof window === 'undefined') {
+const setItem = function (key, value) {
+  if (typeof window === "undefined") {
     //todo: should be able to set this in nodejs
     return;
   }
   return jsCookie.set(name, value);
 };
 
-const removeItem = function(key, req) {
-  API.log('STORAGE', 'REMOVE', key, req);
+const removeItem = function (key, req) {
+  API.log("STORAGE", "REMOVE", key, req);
 
-  if (typeof window === 'undefined') {
+  if (typeof window === "undefined") {
     //todo: should be able to set this in nodejs
     return;
   }
@@ -36,7 +36,7 @@ const StorageManager = class {
   init = async () => {};
 
   clear = async () => {
-    console.error('Web does not support clear cookies');
+    console.error("Web does not support clear cookies");
   };
 
   setNumber = async (key, val, req) => {

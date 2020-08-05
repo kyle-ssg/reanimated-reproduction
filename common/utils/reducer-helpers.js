@@ -1,5 +1,5 @@
 // Sets item in reducer as loading, clears error for that item
-import filter from 'lodash/filter';
+import filter from "lodash/filter";
 
 export const itemLoading = (state, prefix) => {
   state[`${prefix}Error`] = null;
@@ -17,7 +17,7 @@ export const itemLoaded = (
   state,
   prefix,
   action,
-  skipLoadingLoaded = false,
+  skipLoadingLoaded = false
 ) => {
   if (action.index) {
     // Item is part of a collection, add it within the prefix
@@ -61,14 +61,14 @@ export const itemSaved = (state, prefix, action, skipSavingSaved = false) => {
 export const appendItem = (state, prefix, action) => {
   state[prefix] = filter(
     state[prefix],
-    i => i.id !== action.id || action.data.id,
+    (i) => i.id !== action.id || action.data.id
   ).concat([action.data]);
 };
 
 // Removes an item from a collection based on an ID
 // eslint-disable-next-line no-unused-vars
 export const deleteItem = (state, prefix, action) => {
-  state[prefix] = filter(state[prefix], i => i.id !== action.id);
+  state[prefix] = filter(state[prefix], (i) => i.id !== action.id);
 };
 
 export const itemError = (state, prefix, action) => {

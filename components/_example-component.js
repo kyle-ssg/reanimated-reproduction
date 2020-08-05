@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
-import propTypes from 'prop-types';
-import cn from 'classnames';
+import React, { PureComponent } from "react";
+import propTypes from "prop-types";
+import cn from "classnames";
 
 const _propTypes = {
   /** What class to add to the component */
@@ -13,7 +13,7 @@ const _propTypes = {
  * The Component
  */
 export class TheComponent extends PureComponent {
-  static displayName = 'TheComponent';
+  static displayName = "TheComponent";
 
   static propTypes = _propTypes;
 
@@ -21,7 +21,7 @@ export class TheComponent extends PureComponent {
     const {
       props: { className, children },
     } = this;
-    return <div className={cn(className, 'some-custom-class')}>{children}</div>;
+    return <div className={cn(className, "some-custom-class")}>{children}</div>;
   }
 }
 

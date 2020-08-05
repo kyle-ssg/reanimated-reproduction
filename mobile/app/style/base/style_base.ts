@@ -1,9 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const style: Record<
-string,
-ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+  string,
+  ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 > = {
   //
   // Base styles
@@ -16,7 +16,7 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 
   divider: {
     height: StyleSheet.hairlineWidth,
-    alignSelf: 'stretch',
+    alignSelf: "stretch",
     borderColor: palette.divider,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },

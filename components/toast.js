@@ -1,9 +1,9 @@
-import cn from 'classnames';
-import React from 'react';
-import propTypes from 'prop-types';
+import cn from "classnames";
+import React from "react";
+import propTypes from "prop-types";
 
 const Message = class extends React.Component {
-  static displayName = 'Message';
+  static displayName = "Message";
 
   componentDidMount() {
     setTimeout(this.props.remove, this.props.expiry);
@@ -11,19 +11,19 @@ const Message = class extends React.Component {
 
   render() {
     const className = cn({
-      'toast-message': true,
-      'alert alert-warning fade': true,
-      'in show': !this.props.isRemoving,
-      'removing out': this.props.isRemoving,
+      "toast-message": true,
+      "alert alert-warning fade": true,
+      "in show": !this.props.isRemoving,
+      "removing out": this.props.isRemoving,
     });
 
     return (
-        <div className={className}>
-            <a onClick={this.props.remove} className="float-right">
-                <span className="icon ion-md-close" />
-            </a>
-            {this.props.children}
-        </div>
+      <div className={className}>
+        <a onClick={this.props.remove} className="float-right">
+          <span className="icon ion-md-close" />
+        </a>
+        {this.props.children}
+      </div>
     );
   }
 };
@@ -41,7 +41,7 @@ Message.propTypes = {
 };
 
 const Toast = class extends React.Component {
-  static displayName = 'ToastMessages';
+  static displayName = "ToastMessages";
 
   constructor(props, context) {
     super(props, context);
@@ -59,7 +59,7 @@ const Toast = class extends React.Component {
     }
   };
 
-  remove = id => {
+  remove = (id) => {
     const index = _.findIndex(this.state.messages, { id });
     const messages = this.state.messages;
 
@@ -77,18 +77,18 @@ const Toast = class extends React.Component {
 
   render() {
     return (
-        <div className="toast-messages">
-            {this.state.messages.map(message => (
-                <Message
-                  key={message.id}
-                  isRemoving={message.isRemoving}
-                  remove={() => this.remove(message.id)}
-                  expiry={message.expiry}
-                >
-                    {message.content}
-                </Message>
+      <div className="toast-messages">
+        {this.state.messages.map((message) => (
+          <Message
+            key={message.id}
+            isRemoving={message.isRemoving}
+            remove={() => this.remove(message.id)}
+            expiry={message.expiry}
+          >
+            {message.content}
+          </Message>
         ))}
-        </div>
+      </div>
     );
   }
 };

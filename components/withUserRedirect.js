@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { withRouter } from 'next/router';
-import withAuth from '../common/providers/withAuth';
+import React, { Component } from "react";
+import { withRouter } from "next/router";
+import withAuth from "../common/providers/withAuth";
 
-const withUserRedirect = WrappedComponent => {
+const withUserRedirect = (WrappedComponent) => {
   class HOC extends Component {
-    static displayName = 'withUserRedirect';
+    static displayName = "withUserRedirect";
 
     constructor(props) {
       super(props);
       this.state = {};
       const user = this.props.user;
-      if (!user && typeof window !== 'undefined') {
+      if (!user && typeof window !== "undefined") {
         const redirect = encodeURIComponent(this.props.router.route);
         const as = encodeURIComponent(this.props.router.asPath);
         let path = `/login?redirect=${redirect}`;

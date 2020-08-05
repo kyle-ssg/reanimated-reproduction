@@ -1,12 +1,12 @@
-import React, { FunctionComponent, useState } from 'react'; // we need this to make JSX compile
-import { useMeasure } from 'components/utility-components/useMeasure';
-import { Pressable, TextStyle, ViewStyle } from 'react-native';
+import React, { FunctionComponent, useState } from "react"; // we need this to make JSX compile
+import { useMeasure } from "components/utility-components/useMeasure";
+import { Pressable, TextStyle, ViewStyle } from "react-native";
 import {
   PanGestureHandler,
   PanGestureHandlerGestureEvent,
-} from 'react-native-gesture-handler';
-import Animated, { Easing } from 'react-native-reanimated';
-import { timing } from 'react-native-redash';
+} from "react-native-gesture-handler";
+import Animated, { Easing } from "react-native-reanimated";
+import { timing } from "react-native-redash";
 function clamp(num: number, min: number, max: number): number {
   return Math.min(Math.max(num, min), max);
 }
@@ -30,7 +30,7 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
 }) => {
   const [initialised, setInitialised] = useState(false);
   const [sliderPosition, setSliderPosition] = useState(
-    new Animated.Value<number>(0),
+    new Animated.Value<number>(0)
   );
   const [size, onLayout] = useMeasure((initialSize) => {
     const initialWidth = initialSize.width;
@@ -53,7 +53,7 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
             to: sliderWidth * index,
             easing: Easing.bezier(0.25, 0.1, 0.25, 1),
             duration: 250,
-          }),
+          })
         );
       }
     }
@@ -73,20 +73,20 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
   };
 
   return (
-      <View
-        style={[
+    <View
+      style={[
         styles.track,
         trackStyle,
         { paddingHorizontal: paddingX, paddingVertical: paddingY },
       ]}
-        onLayout={onLayout}
-      >
-          {!!sliderWidth && (
-          <PanGestureHandler onGestureEvent={handleGestureEvent}>
-              <View style={styles.barContainer}>
-                  <>
-                      <Animated.View
-                        style={[
+      onLayout={onLayout}
+    >
+      {!!sliderWidth && (
+        <PanGestureHandler onGestureEvent={handleGestureEvent}>
+          <View style={styles.barContainer}>
+            <>
+              <Animated.View
+                style={[
                   styles.bar,
                   barStyle,
                   {
@@ -94,20 +94,20 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
                     transform: [{ translateX: sliderPosition }],
                   },
                 ]}
-                      />
-                      {items.map((item, i) => (
-                          <Pressable
-                            key={i}
-                            pointerEvents={value === item ? 'none' : 'auto'}
-                            disabled={disabled}
-                            onPress={() => {
+              />
+              {items.map((item, i) => (
+                <Pressable
+                  key={i}
+                  pointerEvents={value === item ? "none" : "auto"}
+                  disabled={disabled}
+                  onPress={() => {
                     onChange(item);
                   }}
-                            style={styles.labelContainer}
-                          >
-                              {({ pressed }) => (
-                                  <Text
-                                    style={[
+                  style={styles.labelContainer}
+                >
+                  {({ pressed }) => (
+                    <Text
+                      style={[
                         styles.label,
                         textStyle,
                         pressed && styles.labelPressed,
@@ -115,17 +115,17 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
                         value === item && styles.labelActive,
                         value === item && textActiveStyle,
                       ]}
-                                  >
-                                      {item.label}
-                                  </Text>
+                    >
+                      {item.label}
+                    </Text>
                   )}
-                          </Pressable>
+                </Pressable>
               ))}
-                  </>
-              </View>
-          </PanGestureHandler>
+            </>
+          </View>
+        </PanGestureHandler>
       )}
-      </View>
+    </View>
   );
 };
 
@@ -133,37 +133,37 @@ const styles = ReactNative.StyleSheet.create({
   track: {
     height: CONTAINER_HEIGHT,
     borderRadius: 8,
-    justifyContent: 'center',
-    backgroundColor: '#ededef',
-    position: 'relative',
+    justifyContent: "center",
+    backgroundColor: "#ededef",
+    position: "relative",
   },
   barContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     flex: 1,
   },
   labelContainer: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
   bar: {
-    backgroundColor: 'white',
-    position: 'absolute',
+    backgroundColor: "white",
+    position: "absolute",
     borderRadius: CONTAINER_RADIUS,
-    height: '100%',
+    height: "100%",
   },
   label: {
     fontSize: 14,
-    color: '#666',
+    color: "#666",
   },
   labelActive: {
-    color: '#333',
+    color: "#333",
   },
   disabled: {
     opacity: 0.5,
   },
   labelPressed: {
-    color: '#333',
+    color: "#333",
   },
 });
 

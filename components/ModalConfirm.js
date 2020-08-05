@@ -1,9 +1,9 @@
-import propTypes from 'prop-types';
-import React from 'react';
+import propTypes from "prop-types";
+import React from "react";
 
-import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from "./Modal";
 
-const Confirm = props => {
+const Confirm = (props) => {
   const no = () => {
     if (props.onNo) {
       props.onNo();
@@ -17,24 +17,24 @@ const Confirm = props => {
     props.toggle();
   };
   return (
-      <Modal unmountOnClose isOpen={props.isOpen} toggle={no}>
-          <ModalHeader toggle={no}>{props.title}</ModalHeader>
-          <ModalBody>{props.children}</ModalBody>
-          <ModalFooter>
-              <Button color="primary" onClick={yes}>
-                  {props.yesText}
-              </Button>{' '}
-              <Button color="secondary" onClick={no}>
-                  {props.noText}
-              </Button>
-          </ModalFooter>
-      </Modal>
+    <Modal unmountOnClose isOpen={props.isOpen} toggle={no}>
+      <ModalHeader toggle={no}>{props.title}</ModalHeader>
+      <ModalBody>{props.children}</ModalBody>
+      <ModalFooter>
+        <Button color="primary" onClick={yes}>
+          {props.yesText}
+        </Button>{" "}
+        <Button color="secondary" onClick={no}>
+          {props.noText}
+        </Button>
+      </ModalFooter>
+    </Modal>
   );
 };
 
 Confirm.defaultProps = {
-  noText: 'Cancel',
-  yesText: 'OK',
+  noText: "Cancel",
+  yesText: "OK",
 };
 
 Confirm.propTypes = {

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from "react";
 import Animated, {
   add,
   cond,
@@ -9,8 +9,8 @@ import Animated, {
   useCode,
   useCallback,
   and,
-} from 'react-native-reanimated';
-import { PanGestureHandler, State } from 'react-native-gesture-handler';
+} from "react-native-reanimated";
+import { PanGestureHandler, State } from "react-native-gesture-handler";
 import {
   clamp,
   useConst,
@@ -18,12 +18,12 @@ import {
   timing,
   snapPoint,
   usePanGestureHandler,
-} from 'react-native-redash';
-import { CustomModal, ModalType } from 'components/CustomModal';
+} from "react-native-redash";
+import { CustomModal, ModalType } from "components/CustomModal";
 import {
   easingConfigDrawerIn,
   easingConfigDrawerOut,
-} from '../project/reanimations';
+} from "../project/reanimations";
 
 type ComponentType = ModalType & {
   height: number;
@@ -36,7 +36,7 @@ const BottomDrawer: FunctionComponent<ComponentType> = ({
   visible,
   disabled = false,
   children,
-  height = ReactNative.Dimensions.get('screen').height / 2,
+  height = ReactNative.Dimensions.get("screen").height / 2,
   animatedValue = useValue(0),
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -64,12 +64,12 @@ const BottomDrawer: FunctionComponent<ComponentType> = ({
           from: value,
           ...easingConfigDrawerOut,
           to: snapPoint(value, velocity.y, snapPoints),
-        }),
+        })
       ),
-      value,
+      value
     ),
     snapPoints[0],
-    snapPoints[1],
+    snapPoints[1]
   );
   useCode(
     () =>
@@ -82,10 +82,10 @@ const BottomDrawer: FunctionComponent<ComponentType> = ({
             from: value,
             ...easingConfigDrawerIn,
             to: 0,
-          }),
-        ),
+          })
+        )
       ),
-    [visible, state],
+    [visible, state]
   );
   useCode(
     () =>
@@ -93,9 +93,9 @@ const BottomDrawer: FunctionComponent<ComponentType> = ({
         and(eq(offset, height), eq(state, State.UNDETERMINED)),
         call([], () => {
           onDismiss();
-        }),
+        })
       ),
-    [translateY, state],
+    [translateY, state]
   );
 
   useCode(
@@ -105,37 +105,37 @@ const BottomDrawer: FunctionComponent<ComponentType> = ({
         interpolate(translateY, {
           inputRange: [0, height],
           outputRange: [1, 0],
-        }),
+        })
       ),
-    [animatedValue, translateY],
+    [animatedValue, translateY]
   );
 
   return (
-      <CustomModal
-        dark
-        style={styles.container}
-        animatedValue={animatedValue}
-        visible={modalVisible}
-      >
-          <PanGestureHandler enabled={!disabled} {...gestureHandler}>
-              <Animated.View
-                style={[styles.drawer, { height, transform: [{ translateY }] }]}
-              >
-                  {children}
-              </Animated.View>
-          </PanGestureHandler>
-      </CustomModal>
+    <CustomModal
+      dark
+      style={styles.container}
+      animatedValue={animatedValue}
+      visible={modalVisible}
+    >
+      <PanGestureHandler enabled={!disabled} {...gestureHandler}>
+        <Animated.View
+          style={[styles.drawer, { height, transform: [{ translateY }] }]}
+        >
+          {children}
+        </Animated.View>
+      </PanGestureHandler>
+    </CustomModal>
   );
 };
 const styles = ReactNative.StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end",
   },
   drawer: {
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
 });
 type PanGestureType = {

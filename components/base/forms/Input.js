@@ -1,19 +1,19 @@
 /**
  * Created by kylejohnson on 30/07/2016.
  */
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from "react";
 
-import cn from 'classnames';
+import cn from "classnames";
 
 const Input = class extends PureComponent {
-  static displayName = 'Input';
+  static displayName = "Input";
 
   constructor(props, context) {
     super(props, context);
     this.state = { shouldValidate: false };
   }
 
-  onFocus = e => {
+  onFocus = (e) => {
     this.setState({
       isFocused: true,
     });
@@ -25,7 +25,7 @@ const Input = class extends PureComponent {
     this.input.focus();
   };
 
-  onKeyDown = e => {
+  onKeyDown = (e) => {
     if (Utils.keys.isEscape(e)) {
       this.input.blur();
     }
@@ -39,7 +39,7 @@ const Input = class extends PureComponent {
     });
   };
 
-  onBlur = e => {
+  onBlur = (e) => {
     this.setState({
       shouldValidate: true,
       isFocused: false,
@@ -49,7 +49,6 @@ const Input = class extends PureComponent {
   };
 
   render() {
-
     const {
       children,
       textarea,
@@ -65,53 +64,53 @@ const Input = class extends PureComponent {
 
     const className = cn(
       {
-        'input-container': true,
+        "input-container": true,
         focused: this.state.isFocused,
         invalid: this.state.shouldValidate && !isValid,
       },
-      this.props.className,
+      this.props.className
     );
 
     const combinedInputClassName = cn(
       {
         input: true,
       },
-      this.props.inputClassName,
+      this.props.inputClassName
     );
 
     return (
-        <div className={className}>
-            {textarea ? (
-                <textarea
-                  ref={c => (this.input = c)}
-                  {...rest}
-                  onFocus={this.onFocus}
-                  onKeyDown={this.onKeyDown}
-                  onBlur={this.onBlur}
-                  value={this.props.value}
-                  className={combinedInputClassName}
-                />
+      <div className={className}>
+        {textarea ? (
+          <textarea
+            ref={(c) => (this.input = c)}
+            {...rest}
+            onFocus={this.onFocus}
+            onKeyDown={this.onKeyDown}
+            onBlur={this.onBlur}
+            value={this.props.value}
+            className={combinedInputClassName}
+          />
         ) : (
-            <input
-              ref={c => (this.input = c)}
-              {...rest}
-              onFocus={this.onFocus}
-              onKeyDown={this.onKeyDown}
-              onBlur={this.onBlur}
-              value={this.props.value}
-              className={combinedInputClassName}
-            />
+          <input
+            ref={(c) => (this.input = c)}
+            {...rest}
+            onFocus={this.onFocus}
+            onKeyDown={this.onKeyDown}
+            onBlur={this.onBlur}
+            value={this.props.value}
+            className={combinedInputClassName}
+          />
         )}
 
-            {children && children}
-        </div>
+        {children && children}
+      </div>
     );
   }
 };
 
 Input.defaultProps = {
-  className: '',
-  placeholderChar: ' ',
+  className: "",
+  placeholderChar: " ",
   isValid: true,
 };
 global.Input = Input;

@@ -1,7 +1,7 @@
-import { put, all, takeLatest } from 'redux-saga/effects';
-import _data from './utils/_data';
-import { Actions } from './app-actions';
-import Project from './project';
+import { put, all, takeLatest } from "redux-saga/effects";
+import _data from "./utils/_data";
+import { Actions } from "./app-actions";
+import Project from "./project";
 
 import {
   handleResponse,
@@ -13,15 +13,15 @@ import {
   // eslint-disable-next-line no-unused-vars
   getAction,
   postAction,
-} from './utils/saga-helpers';
+} from "./utils/saga-helpers";
 
 // Called when the application starts up, if using SSR this is done in the server
 export function* startup(action = {}) {
   try {
     const { ...rest } = action.data || {};
     // todo: deprecate _.get for action.data?.token
-    const token = _.get(action, 'data.token');
-    const refreshToken = _.get(action, 'data.refreshToken');
+    const token = _.get(action, "data.token");
+    const refreshToken = _.get(action, "data.refreshToken");
 
     if (refreshToken) {
       _data.setRefreshToken(refreshToken);
@@ -32,7 +32,7 @@ export function* startup(action = {}) {
       yield onToken(action, { user: {} });
     }
 
-    const isOnline = typeof navigator === 'undefined' ? true : navigator.onLine;
+    const isOnline = typeof navigator === "undefined" ? true : navigator.onLine;
 
     yield put({
       type: Actions.STARTUP_LOADED,
@@ -49,7 +49,7 @@ export function* startup(action = {}) {
 
 export function* onToken(action, result) {
   //  If you need to refresh a user profile, do it here
-  yield handleResponse(action, 'LOGIN', result, false);
+  yield handleResponse(action, "LOGIN", result, false);
 }
 
 export function* login(action) {
@@ -67,13 +67,13 @@ export function* login(action) {
 }
 
 export function* register(action) {
-  yield postAction(action, `${Project.api}user/register`, 'REGISTER');
+  yield postAction(action, `${Project.api}user/register`, "REGISTER");
 }
 
 export function* logout(action) {
   yield put({ type: Actions.CLEAR_USER });
   yield API.setStoredToken(null);
-  yield API.storage.removeItem('user');
+  yield API.storage.removeItem("user");
   yield API.setStoredRefreshToken(null);
   _data.setToken(null);
   _data.setRefreshToken(null);
@@ -82,14 +82,14 @@ export function* logout(action) {
 }
 
 export function* confirmEmail(action) {
-  yield postAction(action, `${Project.api}user/verify/email`, 'CONFIRM_EMAIL');
+  yield postAction(action, `${Project.api}user/verify/email`, "CONFIRM_EMAIL");
 }
 
 export function* updateUser(action) {
   yield updateAction(
     action,
     `${Project.api}user/${action.data.id}`,
-    'UPDATE_USER',
+    "UPDATE_USER"
   );
 }
 

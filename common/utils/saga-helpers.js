@@ -1,7 +1,7 @@
 // Error handler for a CRUD redux action
-import { Actions } from '../app-actions';
-import { put } from 'redux-saga/effects';
-import _data from './_data';
+import { Actions } from "../app-actions";
+import { put } from "redux-saga/effects";
+import _data from "./_data";
 
 export function* errorHandler(action, prefix, preventSuccess, e) {
   const error = API.ajaxHandler(Actions[`${prefix}_ERROR`], e);
@@ -18,7 +18,7 @@ export function* handleResponse(
   prefix,
   apiResult,
   preventSuccess,
-  dto,
+  dto
 ) {
   const data = yield dto ? dto(apiResult) : apiResult;
   const params = { type: Actions[`${prefix}_LOADED`], data };
@@ -52,7 +52,7 @@ export function* updateAction(
   preventSuccess,
   dto,
   requestDto,
-  append = true,
+  append = true
 ) {
   try {
     const request = yield requestDto ? requestDto(action.data) : action.data;
@@ -63,7 +63,7 @@ export function* updateAction(
       data,
       preventSuccess,
       dto,
-      append,
+      append
     );
   } catch (e) {
     yield errorHandler(action, prefix, preventSuccess, e);
@@ -78,12 +78,12 @@ export function* postAction(
   preventSuccess,
   dto,
   requestDto,
-  append = true,
+  append = true
 ) {
   try {
     const data = yield _data.post(
       url,
-      requestDto ? requestDto(action.data) : action.data,
+      requestDto ? requestDto(action.data) : action.data
     );
     return yield handleResponse(
       action,
@@ -91,7 +91,7 @@ export function* postAction(
       data,
       preventSuccess,
       dto,
-      append,
+      append
     );
   } catch (e) {
     yield errorHandler(action, prefix, preventSuccess, e);

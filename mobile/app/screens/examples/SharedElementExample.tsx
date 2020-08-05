@@ -2,12 +2,12 @@ import {
   SharedElement,
   SharedElementTransition,
   nodeFromRef,
-} from 'react-native-shared-element';
-import React, { Component } from 'react';
-import { CustomModal } from 'components//CustomModal';
-import { ease } from '../../project/animations';
-import Delay from 'components//utility-components/Delay';
-import { ButtonSecondary } from 'components//base/forms/Button';
+} from "react-native-shared-element";
+import React, { Component } from "react";
+import { CustomModal } from "components//CustomModal";
+import { ease } from "../../project/animations";
+import Delay from "components//utility-components/Delay";
+import { ButtonSecondary } from "components//base/forms/Button";
 
 type ComponentType = {};
 
@@ -41,7 +41,7 @@ class TheComponent extends Component<ComponentType> {
             isBack: true,
           });
         });
-      },
+      }
     );
   };
 
@@ -62,7 +62,7 @@ class TheComponent extends Component<ComponentType> {
             isBack: false,
           });
         });
-      },
+      }
     );
   };
 
@@ -76,19 +76,19 @@ class TheComponent extends Component<ComponentType> {
   onSetScene2Node = (node) => this.setState({ scene2Node: node });
 
   renderScene2 = () => (
-      <View>
-          <ButtonSecondary style={{ width: 150 }} onPress={this.onPressBack}>
-              Press me
-          </ButtonSecondary>
-      </View>
+    <View>
+      <ButtonSecondary style={{ width: 150 }} onPress={this.onPressBack}>
+        Press me
+      </ButtonSecondary>
+    </View>
   );
 
   renderScene1 = () => (
-      <View>
-          <Button style={{ width: 150 }} onPress={this.onPressNavigate}>
-              Press me
-          </Button>
-      </View>
+    <View>
+      <Button style={{ width: 150 }} onPress={this.onPressNavigate}>
+        Press me
+      </Button>
+    </View>
   );
 
   render() {
@@ -102,49 +102,49 @@ class TheComponent extends Component<ComponentType> {
       ancestor: state.scene2Ancestor,
     };
     return (
-        <>
-            {/* Scene 1 */}
-            <View style={{ alignItems: 'center' }}>
-                <View style={{ height: 64 }}>
-                    {this.state.isScene1Visible && (
-                    <View collapsable={false} ref={this.onSetScene1Ref}>
-                        <SharedElement onNode={this.onSetScene1Node}>
-                            {this.renderScene1()}
-                        </SharedElement>
-                    </View>
+      <>
+        {/* Scene 1 */}
+        <View style={{ alignItems: "center" }}>
+          <View style={{ height: 64 }}>
+            {this.state.isScene1Visible && (
+              <View collapsable={false} ref={this.onSetScene1Ref}>
+                <SharedElement onNode={this.onSetScene1Node}>
+                  {this.renderScene1()}
+                </SharedElement>
+              </View>
             )}
-                </View>
-            </View>
+          </View>
+        </View>
 
-            <CustomModal
-              style={{ justifyContent: 'center', alignItems: 'center' }}
-              fadeContent={false}
-              dark
-              visible={this.state.modalVisible}
-            >
-                {this.state.isScene2Visible && (
-                <View collapsable={false} ref={this.onSetScene2Ref} style={[{}]}>
-                    <SharedElement onNode={this.onSetScene2Node}>
-                        {Platform.select({
+        <CustomModal
+          style={{ justifyContent: "center", alignItems: "center" }}
+          fadeContent={false}
+          dark
+          visible={this.state.modalVisible}
+        >
+          {this.state.isScene2Visible && (
+            <View collapsable={false} ref={this.onSetScene2Ref} style={[{}]}>
+              <SharedElement onNode={this.onSetScene2Node}>
+                {Platform.select({
                   ios: this.renderScene2(),
                   // Not sure why, but android needs time to measure to prevent a glitch
                   android: <Delay delay={10}>{this.renderScene2()}</Delay>,
                 })}
-                    </SharedElement>
-                </View>
+              </SharedElement>
+            </View>
           )}
-                {state.isInProgress && (
-                <SharedElementTransition
-                  start={this.state.isBack ? scene2 : scene1}
-                  end={this.state.isBack ? scene1 : scene2}
-                  position={state.progress}
-                  animation="fade"
-                  resize="auto"
-                  align="auto"
-                />
+          {state.isInProgress && (
+            <SharedElementTransition
+              start={this.state.isBack ? scene2 : scene1}
+              end={this.state.isBack ? scene1 : scene2}
+              position={state.progress}
+              animation="fade"
+              resize="auto"
+              align="auto"
+            />
           )}
-            </CustomModal>
-        </>
+        </CustomModal>
+      </>
     );
   }
 }

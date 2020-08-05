@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 // eslint-disable-next-line no-unused-vars
-import '../app-actions';
-import { AppState } from '../state-type';
+import "../app-actions";
+import { AppState } from "../state-type";
 
 const withWidgets = (WrappedComponent) => {
   return connect(mapStateToProps, mapDispatchToProps)(WrappedComponent);
@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) =>
     {
       // getWidgets: AppActions.getWidgets,
     },
-    dispatch,
+    dispatch
   );
 
 function mapStateToProps(state: AppState) {

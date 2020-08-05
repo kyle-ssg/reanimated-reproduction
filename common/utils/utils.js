@@ -1,5 +1,5 @@
-import '../project';
-import BaseUtils from './base/_utils';
+import "../project";
+import BaseUtils from "./base/_utils";
 
 const Utils = (global.Utils = Object.assign({}, BaseUtils, {}));
 

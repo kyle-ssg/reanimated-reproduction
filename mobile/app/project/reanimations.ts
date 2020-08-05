@@ -1,4 +1,4 @@
-import Animated, { Easing } from 'react-native-reanimated';
+import Animated, { Easing } from "react-native-reanimated";
 
 export type AnimationConfigType = {
   duration: number;

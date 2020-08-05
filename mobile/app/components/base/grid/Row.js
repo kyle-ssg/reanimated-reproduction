@@ -1,20 +1,20 @@
-import React from 'react';
-import propTypes from 'prop-types';
-import { View } from 'react-native';
+import React from "react";
+import propTypes from "prop-types";
+import { View } from "react-native";
 
-const Row = props => (
-    <View
-      style={[
+const Row = (props) => (
+  <View
+    style={[
       styles.row,
-      props.space && { justifyContent: 'space-between' },
+      props.space && { justifyContent: "space-between" },
       props.style,
     ]}
-    >
-        {props.children}
-    </View>
+  >
+    {props.children}
+  </View>
 );
 
-Row.displayName = 'Row';
+Row.displayName = "Row";
 
 Row.propTypes = {
   children: propTypes.node,
@@ -25,9 +25,9 @@ Row.propTypes = {
 
 const styles = ReactNative.StyleSheet.create({
   row: {
-    alignSelf: 'stretch',
-    flexDirection: 'row',
-    alignItems: 'center',
+    alignSelf: "stretch",
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
 

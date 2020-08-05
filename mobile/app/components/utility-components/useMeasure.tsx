@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState } from "react";
 
 export const useMeasure = (initialCb?: (size) => void): any => {
   const [size, setSize] = useState({ width: 0, height: 0 });

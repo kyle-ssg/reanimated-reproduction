@@ -1,19 +1,19 @@
 /**
  * Created by kylejohnson on 30/07/2016.
  */
-import React from 'react';
-import cn from 'classnames';
-import InputMask from 'inputmask-core';
+import React from "react";
+import cn from "classnames";
+import InputMask from "inputmask-core";
 
 export class MaskedInput extends React.Component {
-  static displayName = 'MaskedInput';
+  static displayName = "MaskedInput";
 
   constructor(props, context) {
     super(props, context);
     this.state = { shouldValidate: false };
   }
 
-  onFocus = e => {
+  onFocus = (e) => {
     this.setState({
       isFocused: true,
     });
@@ -25,7 +25,7 @@ export class MaskedInput extends React.Component {
     this.input.focus();
   };
 
-  onKeyDown = e => {
+  onKeyDown = (e) => {
     if (Utils.keys.isEscape(e)) {
       this.input.blur();
     }
@@ -39,7 +39,7 @@ export class MaskedInput extends React.Component {
     });
   };
 
-  onBlur = e => {
+  onBlur = (e) => {
     this.setState({
       shouldValidate: true,
       isFocused: false,
@@ -48,7 +48,7 @@ export class MaskedInput extends React.Component {
     this.props.onBlur && this.props.onBlur(e);
   };
 
-  onChange = e => {
+  onChange = (e) => {
     if (!this.props.onChange) {
       return;
     }
@@ -70,7 +70,7 @@ export class MaskedInput extends React.Component {
                 return /\w/.test(char);
               },
               transform() {
-                return 'm';
+                return "m";
               },
             },
           },
@@ -94,7 +94,7 @@ export class MaskedInput extends React.Component {
           // to the non-pattern character.
           while (
             !this.isMaskPatternChar(
-              this.props.mask[this.mask.selection.start],
+              this.props.mask[this.mask.selection.start]
             ) &&
             this.mask.selection.start !== this.props.mask.length
           ) {
@@ -116,7 +116,7 @@ export class MaskedInput extends React.Component {
         while (
           this.mask.selection.start &&
           !this.isMaskPatternChar(
-            this.props.mask[this.mask.selection.start - 1],
+            this.props.mask[this.mask.selection.start - 1]
           )
         ) {
           this.mask.backspace();
@@ -138,11 +138,11 @@ export class MaskedInput extends React.Component {
     }
 
     return (
-      char === '1' ||
-      char === 'a' ||
-      char === 'A' ||
-      char === '*' ||
-      char === '#'
+      char === "1" ||
+      char === "a" ||
+      char === "A" ||
+      char === "*" ||
+      char === "#"
     );
   }
 
@@ -151,40 +151,40 @@ export class MaskedInput extends React.Component {
 
     const className = cn(
       {
-        'input-container': !disableInputContainerClass,
+        "input-container": !disableInputContainerClass,
         focused: this.state.isFocused,
         invalid: this.state.shouldValidate && !isValid,
       },
-      this.props.className,
+      this.props.className
     );
 
     const combinedInputClassName = cn(
       {
         input: true,
       },
-      this.props.inputClassName,
+      this.props.inputClassName
     );
 
     return (
-        <div className={className}>
-            <input
-              ref={c => (this.input = c)}
-              {...rest}
-              onFocus={this.onFocus}
-              onKeyDown={this.onKeyDown}
-              onBlur={this.onBlur}
-              onChange={this.onChange}
-              value={this.props.value}
-              className={combinedInputClassName}
-            />
-        </div>
+      <div className={className}>
+        <input
+          ref={(c) => (this.input = c)}
+          {...rest}
+          onFocus={this.onFocus}
+          onKeyDown={this.onKeyDown}
+          onBlur={this.onBlur}
+          onChange={this.onChange}
+          value={this.props.value}
+          className={combinedInputClassName}
+        />
+      </div>
     );
   }
 }
 
 MaskedInput.defaultProps = {
-  className: '',
-  placeholderChar: ' ',
+  className: "",
+  placeholderChar: " ",
   isValid: true,
 };
 global.MaskedInput = MaskedInput;

@@ -1,10 +1,10 @@
 // import propTypes from 'prop-types';
-import React, { PureComponent } from 'react';
-import propTypes from 'prop-types';
-import { TabBar, TabView } from 'react-native-tab-view';
+import React, { PureComponent } from "react";
+import propTypes from "prop-types";
+import { TabBar, TabView } from "react-native-tab-view";
 
 export default class Tabs extends PureComponent {
-  static displayName = 'Tabs';
+  static displayName = "Tabs";
 
   static propTypes = {
     tabBarRow: propTypes.bool,
@@ -25,49 +25,49 @@ export default class Tabs extends PureComponent {
     labelStyle: {},
   };
 
-  renderTabBar = props => (
-      <TabBar
-        {...props}
-        scrollEnabled={this.props.scrollEnabled}
-        labelStyle={[styles.TabText, this.props.labelStyle]}
-        getLabelText={({ route: { title } }) => title}
-        style={{ ...styles.tabPrimary, ...this.props.tabBarStyle }}
-        tabStyle={
+  renderTabBar = (props) => (
+    <TabBar
+      {...props}
+      scrollEnabled={this.props.scrollEnabled}
+      labelStyle={[styles.TabText, this.props.labelStyle]}
+      getLabelText={({ route: { title } }) => title}
+      style={{ ...styles.tabPrimary, ...this.props.tabBarStyle }}
+      tabStyle={
         this.props.tabBarRow
           ? { ...Styles.row, ...this.props.tabStyle }
           : this.props.tabStyle
       }
-        indicatorStyle={{
+      indicatorStyle={{
         ...styles.indicatorPrimary,
         ...this.props.indicatorStyle,
       }}
-        renderIcon={({ route }) => route.icon || null}
-        renderLabel={this.props.renderLabel}
-      />
+      renderIcon={({ route }) => route.icon || null}
+      renderLabel={this.props.renderLabel}
+    />
   );
 
   render() {
     return (
-        <TabView
-          useNativeDriver
-          lazy={this.props.lazy}
-          navigationState={this.props.navigationState}
-          renderTabBar={this.renderTabBar}
-          renderScene={this.props.renderScene}
-          timingConfig={{ duration: 100 }}
-          onIndexChange={index => this.props.onIndexChange(index)}
-          initialLayout={{
-          width: Dimensions.get('window').width,
-          height: Dimensions.get('window').height,
+      <TabView
+        useNativeDriver
+        lazy={this.props.lazy}
+        navigationState={this.props.navigationState}
+        renderTabBar={this.renderTabBar}
+        renderScene={this.props.renderScene}
+        timingConfig={{ duration: 100 }}
+        onIndexChange={(index) => this.props.onIndexChange(index)}
+        initialLayout={{
+          width: Dimensions.get("window").width,
+          height: Dimensions.get("window").height,
         }}
-        />
+      />
     );
   }
 }
 
 const styles = ReactNative.StyleSheet.create({
   tabPrimary: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderTopWidth: 0,
     borderBottomWidth: 0,
     borderColor: palette.CoolGray,
@@ -81,7 +81,7 @@ const styles = ReactNative.StyleSheet.create({
   },
   TabText: {
     color: palette.text,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: em(1),
   },
 
@@ -94,7 +94,7 @@ const styles = ReactNative.StyleSheet.create({
     color: palette.primaryDark,
   },
   bar: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   tab: {
     borderRightWidth: StyleSheet.hairlineWidth,

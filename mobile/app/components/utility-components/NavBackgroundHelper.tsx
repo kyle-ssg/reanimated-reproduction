@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react';
-import { initialWindowMetrics } from 'react-native-safe-area-context';
+import React, { FunctionComponent } from "react";
+import { initialWindowMetrics } from "react-native-safe-area-context";
 
 //This component, for iOS, lets you draw a custom view where the navbar is, use with a backgroundColor:"transparent"
 // This will be cross platform when the following is merged https://github.com/software-mansion/react-native-screens/pull/575
@@ -11,10 +11,10 @@ type ComponentType = {
 
 const NavBackgroundHelper: FunctionComponent<ComponentType> = ({}) => {
   return (
-      <Flex>
-          <View style={[styles.navbar, this.props.navbarStyle]} />
-          {this.props.children}
-      </Flex>
+    <Flex>
+      <View style={[styles.navbar, this.props.navbarStyle]} />
+      {this.props.children}
+    </Flex>
   );
 };
 

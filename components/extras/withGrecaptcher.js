@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-export default WrappedComponent => {
+export default (WrappedComponent) => {
   class HOC extends Component {
-    static displayName = 'withGrecaptcher';
+    static displayName = "withGrecaptcher";
 
     constructor(props) {
       super(props);
@@ -11,9 +11,9 @@ export default WrappedComponent => {
 
     componentDidMount() {
       if (Project.grecaptcher) {
-        if (typeof grecaptcha === 'undefined') {
+        if (typeof grecaptcha === "undefined") {
           alert(
-            'Grecaptcha not found, add https://www.google.com/recaptcha/api.js to _app.js',
+            "Grecaptcha not found, add https://www.google.com/recaptcha/api.js to _app.js"
           );
         }
         this.interval = setInterval(() => {
@@ -21,7 +21,7 @@ export default WrappedComponent => {
           // add to _app.js <script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
           if (!this.renderedGre && grecaptcha.render) {
             this.renderedGre = true;
-            grecaptcha.render(document.getElementById('recaptcha'), {
+            grecaptcha.render(document.getElementById("recaptcha"), {
               sitekey: Project.grecaptcher,
             });
           }
@@ -34,7 +34,7 @@ export default WrappedComponent => {
           }
         }, 100);
       } else {
-        alert('grecaptcha key not found in project.js');
+        alert("grecaptcha key not found in project.js");
       }
     }
 
@@ -45,10 +45,10 @@ export default WrappedComponent => {
     }
     render() {
       return (
-          <WrappedComponent
-            {...this.props}
-            grecaptcher={this.state.grecaptcher}
-          />
+        <WrappedComponent
+          {...this.props}
+          grecaptcher={this.state.grecaptcher}
+        />
       );
     }
   }

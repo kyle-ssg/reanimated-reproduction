@@ -1,28 +1,28 @@
 /**
  * Created by kylejohnson on 18/04/2016.
  */
-import { StyleSheet } from 'react-native';
-import { initialWindowMetrics } from 'react-native-safe-area-context';
+import { StyleSheet } from "react-native";
+import { initialWindowMetrics } from "react-native-safe-area-context";
 
-const em = require('./style_pxToEm');
-let deviceH = Dimensions.get('screen').height;
+const em = require("./style_pxToEm");
+let deviceH = Dimensions.get("screen").height;
 // the value returned does not include the bottom navigation bar, I am not sure why yours does.
-let windowH = Dimensions.get('window').height;
+let windowH = Dimensions.get("window").height;
 let bottomNavBarH = deviceH - windowH;
 
 global.palette = {
-  bodyBackground: '#fff', // General app  background
-  lightBackdrop: 'rgba(255,255,255,.5)',
-  darkBackdrop: 'rgba(0,0,0,.5)',
-  primary: 'rgb(10,132,255)',
-  primaryPressed: 'rgb(0,109,217)',
-  secondary: 'rgb(255,55,95)',
-  secondaryPressed: 'rgb(236,50,86)',
-  success: 'rgb(48,209,88)',
-  divider: 'rgb(229,229,234)',
-  textLight: 'rgb(174,174,178)',
-  iconFaint: 'rgb(229,229,234)',
-  text: 'rgb(28,28,30)',
+  bodyBackground: "#fff", // General app  background
+  lightBackdrop: "rgba(255,255,255,.5)",
+  darkBackdrop: "rgba(0,0,0,.5)",
+  primary: "rgb(10,132,255)",
+  primaryPressed: "rgb(0,109,217)",
+  secondary: "rgb(255,55,95)",
+  secondaryPressed: "rgb(236,50,86)",
+  success: "rgb(48,209,88)",
+  divider: "rgb(229,229,234)",
+  textLight: "rgb(174,174,178)",
+  iconFaint: "rgb(229,229,234)",
+  text: "rgb(28,28,30)",
   ...global.palette,
 };
 
@@ -66,14 +66,14 @@ export const styleVariables = (global.styleVariables = {
   borderRadiusDefault: 2,
 
   // font weights and family
-  normalFontWeight: 'normal',
-  boldFontWeight: 'bold',
-  buttonFontWeight: 'bold',
+  normalFontWeight: "normal",
+  boldFontWeight: "bold",
+  buttonFontWeight: "bold",
 
-  normalFontFamily: Platform.select({ ios: 'System', android: 'System' }),
-  italicFontFamily: Platform.select({ ios: 'System', android: 'System' }),
-  boldFontFamily: Platform.select({ ios: 'System', android: 'System' }),
-  buttonFontFamily: Platform.select({ ios: 'System', android: 'System' }),
+  normalFontFamily: Platform.select({ ios: "System", android: "System" }),
+  italicFontFamily: Platform.select({ ios: "System", android: "System" }),
+  boldFontFamily: Platform.select({ ios: "System", android: "System" }),
+  buttonFontFamily: Platform.select({ ios: "System", android: "System" }),
 
   ...global.styleVariables,
 });
@@ -83,8 +83,8 @@ global.colour = {
   iosStyle: 0,
   buttonActiveOpacity: 0.8,
   disabledOpacity: 0.8,
-  bodyBackground: '#ffffff', // General app  background
-  backdropBackground: 'rgba(0,0,0,0.2)',
+  bodyBackground: "#ffffff", // General app  background
+  backdropBackground: "rgba(0,0,0,0.2)",
 
   // text
   text: palette.text, // General app text colour
@@ -94,15 +94,15 @@ global.colour = {
 
   // input
   input: palette.text,
-  inputBackground: '#fff',
+  inputBackground: "#fff",
   inputBorder: palette.divider,
   placeholderTextColor: palette.textLight,
   disabledText: palette.textLight,
 
   // list items
-  listBackground: 'white',
-  listBackgroundAlt: '#f9f9fa',
-  listItemNav: '#d9d9d9',
+  listBackground: "white",
+  listBackgroundAlt: "#f9f9fa",
+  listItemNav: "#d9d9d9",
   listItemDivider: palette.divider,
 
   dividerAlt: palette.secondary,
@@ -115,22 +115,22 @@ global.colour = {
   buttonDefault: palette.primary,
   btnAlt: palette.primary,
 
-  modalBackground: 'white',
+  modalBackground: "white",
 
-  panel: '#f1f1f1',
+  panel: "#f1f1f1",
 
   // nav
   navBar: palette.primary,
-  navBarIcon: 'white',
+  navBarIcon: "white",
   // navBarSubtitle: palette.secondary,
-  navBarButtonText: 'white',
-  navBarBorder: 'transparent',
-  navBarText: 'black',
-  alert: 'red',
-  avatar: '#dbdbdb',
+  navBarButtonText: "white",
+  navBarBorder: "transparent",
+  navBarText: "black",
+  alert: "red",
+  avatar: "#dbdbdb",
 
-  facebook: '#3b5998',
-  twitter: '#1DA1F3',
-  google: '#dd4b39',
+  facebook: "#3b5998",
+  twitter: "#1DA1F3",
+  google: "#dd4b39",
   ...global.colour,
 };

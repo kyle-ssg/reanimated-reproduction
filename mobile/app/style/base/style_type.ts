@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-require('./style_pxToEm');
+require("./style_pxToEm");
 
 const styles: Record<
-string,
-ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+  string,
+  ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 > = {
   //
   // Typography
@@ -74,11 +74,11 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   },
 
   textCenter: {
-    textAlign: 'center',
+    textAlign: "center",
   },
 
   textBottom: {
-    textAlignVertical: 'bottom',
+    textAlignVertical: "bottom",
   },
 
   icon: {
@@ -91,7 +91,7 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   },
 
   text: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     color: palette.text,
     fontFamily: styleVariables.normalFontFamily,
     fontSize: styleVariables.fontSizeBase,
@@ -139,7 +139,7 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   anchor: {
     color: palette.primaryDark,
     fontFamily: styleVariables.headerText,
-    textDecorationLine: 'underline',
+    textDecorationLine: "underline",
     letterSpacing: em(0.06),
     fontSize: em(0.86),
   },

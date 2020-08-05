@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
-import propTypes from 'prop-types';
-import cn from 'classnames';
+import React, { PureComponent } from "react";
+import propTypes from "prop-types";
+import cn from "classnames";
 
 const _propTypes = {
   /** The element's children */
@@ -13,7 +13,7 @@ const _propTypes = {
  * Div with standard vertical padding
  */
 export class FormGroup extends PureComponent {
-  static displayName = 'FormGroup';
+  static displayName = "FormGroup";
 
   static propTypes = _propTypes;
 
@@ -21,7 +21,7 @@ export class FormGroup extends PureComponent {
     const {
       props: { className, ...rest },
     } = this;
-    return <div {...rest} className={cn(className, 'form-group')} />;
+    return <div {...rest} className={cn(className, "form-group")} />;
   }
 }
 

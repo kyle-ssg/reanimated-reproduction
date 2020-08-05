@@ -1,27 +1,27 @@
-require('./style_pxToEm');
+require("./style_pxToEm");
 const style: Record<
-string,
-ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+  string,
+  ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 > = {
   button: {
     height: styleVariables.buttonHeight,
   },
 
   buttonWithIcon: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
 
   buttonText: {
     fontWeight: styleVariables.buttonFontWeight,
     fontFamily: styleVariables.buttonFontFamily,
-    backgroundColor: 'transparent',
-    color: 'white',
+    backgroundColor: "transparent",
+    color: "white",
   },
 
   buttonIcon: {
     fontSize: em(1),
-    color: 'white',
+    color: "white",
     marginRight: 10,
   },
 
@@ -39,8 +39,8 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   },
 
   buttonGroup: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     backgroundColor: palette.primary,
     height: styleVariables.buttonHeight,
   },

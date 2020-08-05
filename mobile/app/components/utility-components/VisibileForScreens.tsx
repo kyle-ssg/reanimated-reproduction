@@ -3,14 +3,14 @@ import React, {
   ReactNode,
   useEffect,
   useState,
-} from 'react'; // we need this to make JSX compile
-import { connect } from 'react-redux';
+} from "react"; // we need this to make JSX compile
+import { connect } from "react-redux";
 // eslint-disable-next-line no-unused-vars
-import { AppState } from 'common/state-type';
-import { RouteUrls } from '../../route-urls';
+import { AppState } from "common/state-type";
+import { RouteUrls } from "../../route-urls";
 
 type ComponentType = {
-  activeScreen: AppState['activeScreen'];
+  activeScreen: AppState["activeScreen"];
   target: RouteUrls[];
   navigator?: string;
   style: ReactNative.ViewStyle;
@@ -24,7 +24,7 @@ const VisibleForScreens: FunctionComponent<ComponentType> = ({
   activeScreen,
   style,
   target,
-  navigator = 'root',
+  navigator = "root",
 }) => {
   const [isActive, setIsActive] = useState<boolean>(false);
   useEffect(() => {
@@ -33,9 +33,9 @@ const VisibleForScreens: FunctionComponent<ComponentType> = ({
     }
   }, [activeScreen, activeScreen]);
   return (
-      <Fade style={style} value={isActive}>
-          {children}
-      </Fade>
+    <Fade style={style} value={isActive}>
+      {children}
+    </Fade>
   );
 };
 

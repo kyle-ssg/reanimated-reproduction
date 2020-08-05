@@ -1,11 +1,11 @@
-const withOffline = require('next-offline');
-const withFonts = require('next-fonts');
-const withImages = require('next-images');
+const withOffline = require("next-offline");
+const withFonts = require("next-fonts");
+const withImages = require("next-images");
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.BUNDLE_ANALYZE === 'true',
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.BUNDLE_ANALYZE === "true",
 });
-const withSourceMaps = require('@zeit/next-source-maps');
+const withSourceMaps = require("@zeit/next-source-maps");
 
 const nextConfig = {
   // next-offline options
@@ -14,13 +14,13 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   workboxOpts: {
-    swDest: 'static/service-worker.js',
+    swDest: "static/service-worker.js",
     runtimeCaching: [
       {
-        urlPattern: new RegExp('.*?.woff'),
-        handler: 'CacheFirst',
+        urlPattern: new RegExp(".*?.woff"),
+        handler: "CacheFirst",
         options: {
-          cacheName: 'fonts',
+          cacheName: "fonts",
           expiration: {
             maxEntries: 150,
             maxAgeSeconds: 60 * 60 * 24 * 10, // 2 days
@@ -32,9 +32,9 @@ const nextConfig = {
       },
       {
         urlPattern: /^https?.*/,
-        handler: 'NetworkFirst',
+        handler: "NetworkFirst",
         options: {
-          cacheName: 'https-calls',
+          cacheName: "https-calls",
           networkTimeoutSeconds: 15,
           expiration: {
             maxEntries: 150,
@@ -50,15 +50,15 @@ const nextConfig = {
   // buildId, dev, isServer, defaultLoaders, webpack
   webpack: (config, { dev }) => {
     const base = dev
-      ? require('./.webpack/webpack.config.dev')
-      : require('./.webpack/webpack.config.prod');
+      ? require("./.webpack/webpack.config.dev")
+      : require("./.webpack/webpack.config.prod");
     if (base.plugins) {
       config.plugins = config.plugins.concat(base.plugins);
     }
 
     config.module.rules.push({
       test: /\.md$/,
-      use: 'raw-loader',
+      use: "raw-loader",
     });
 
     return config;
@@ -66,5 +66,5 @@ const nextConfig = {
 };
 
 module.exports = withFonts(
-  withSourceMaps(withImages(withOffline(withBundleAnalyzer(nextConfig)))),
+  withSourceMaps(withImages(withOffline(withBundleAnalyzer(nextConfig))))
 );

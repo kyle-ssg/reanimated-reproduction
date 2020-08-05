@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import propTypes from 'prop-types';
+import React, { Component } from "react";
+import propTypes from "prop-types";
 
 const h4 = class extends Component {
-  static displayName = 'H4';
+  static displayName = "H4";
 
   render() {
     return (
-        <Text
-          accessible={this.props.accessible}
-          accessibilityLabel={this.props.accessibilityLabel}
-          style={[Styles.h4, this.props.style]}
-        >
-            {this.props.children}
-        </Text>
+      <Text
+        accessible={this.props.accessible}
+        accessibilityLabel={this.props.accessibilityLabel}
+        style={[Styles.h4, this.props.style]}
+      >
+        {this.props.children}
+      </Text>
     );
   }
 };

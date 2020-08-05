@@ -1,8 +1,8 @@
 // propTypes: value: OptionalNumber
-import React, { PureComponent } from 'react';
-import propTypes from 'prop-types';
+import React, { PureComponent } from "react";
+import propTypes from "prop-types";
 
-const cn = require('classnames');
+const cn = require("classnames");
 
 const _propTypes = {
   /** The element's children */
@@ -17,7 +17,7 @@ const _propTypes = {
  * Div with flex
  */
 export class Row extends PureComponent {
-  static displayName = 'Row';
+  static displayName = "Row";
 
   static propTypes = _propTypes;
 
@@ -26,18 +26,18 @@ export class Row extends PureComponent {
       props: { className, space, children, ...rest },
     } = this;
     return (
-        <div
-          {...rest}
-          className={cn(
+      <div
+        {...rest}
+        className={cn(
           {
-            'flex-row': true,
+            "flex-row": true,
             space,
           },
-          className,
+          className
         )}
-        >
-            {children}
-        </div>
+      >
+        {children}
+      </div>
     );
   }
 }
