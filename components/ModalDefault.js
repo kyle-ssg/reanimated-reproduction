@@ -15,7 +15,7 @@ const ModalDefault = (props) => {
         unmountOnClose
         isOpen={props.isOpen}
         toggle={onDismiss}
-        >
+      >
           <ModalHeader toggle={onDismiss}>
               {props.title}
           </ModalHeader>

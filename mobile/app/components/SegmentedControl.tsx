@@ -88,7 +88,7 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
                                   onChange(item);
                               }}
                             style={styles.labelContainer}
-                      >
+                          >
                               {({ pressed }) => (
                                   <Text style={[
                                         styles.label,
@@ -98,9 +98,9 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
                                         value === item && styles.labelActive,
                                         value === item && textActiveStyle,
                                     ]}
-                            >
-                                        {item.label}
-                                    </Text>
+                                  >
+                                      {item.label}
+                                  </Text>
                                 )}
                           </Pressable>
                         ))}

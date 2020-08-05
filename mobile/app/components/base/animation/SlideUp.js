@@ -90,7 +90,7 @@ const SlideUp = class extends Component {
         <Animated.View
           style={[
               { overflow: 'hidden', justifyContent: 'center', height }, this.props.style]}
-            >
+        >
             {this.props.children}
         </Animated.View>
     );

@@ -46,7 +46,7 @@ export default class extends Component {
             }}
           onIndexChange={this.onTabChange}
           renderScene={this.renderScene}
-            />
+        />
     );
   }
 }

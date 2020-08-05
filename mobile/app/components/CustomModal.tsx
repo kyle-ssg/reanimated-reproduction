@@ -53,7 +53,7 @@ const CustomModal: FunctionComponent<ComponentType> = ({ dark, style, onDismissP
         visible={!!modalVisible}
         transparent={true}
         statusBarTranslucent={true}
-    >
+      >
           <Animated.View
             style={[
                   style,
@@ -62,7 +62,7 @@ const CustomModal: FunctionComponent<ComponentType> = ({ dark, style, onDismissP
                       opacity: animatedValue,
                   },
               ]}
-      >
+          >
               {fadeContent && <>
                   <TouchableOpacity onPress={onDismissPress} activeOpacity={1} style={ReactNative.StyleSheet.absoluteFill}/>
                   {children}

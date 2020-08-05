@@ -36,7 +36,7 @@ const ListItem = class extends Component {
                     Styles.liContent,
                     { backgroundColor: 'transparent' },
                   ]}
-                  >
+                >
                     {this.props.children}
                 </View>
             </Row>
@@ -51,7 +51,7 @@ const ListItem = class extends Component {
                   accessibilityLabel={this.props.accessibilityLabel}
                   onPress={this.props.disabled ? null : this.props.onPress}
                   background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
-                  >
+                >
                     {content}
                 </TouchableNativeFeedback>
             ) : (
@@ -60,7 +60,7 @@ const ListItem = class extends Component {
                   accessibilityLabel={this.props.accessibilityLabel}
                   activeOpacity={0.8}
                   onPress={this.props.disabled ? null : this.props.onPress}
-                  >
+                >
                     {content}
                 </TouchableOpacity>
             )}
@@ -68,7 +68,7 @@ const ListItem = class extends Component {
     ) : (
         <View
           style={[this.props.style || Styles.listItem]}
-          >
+        >
             {content}
         </View>
     );

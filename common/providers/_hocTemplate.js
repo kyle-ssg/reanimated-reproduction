@@ -14,7 +14,7 @@ export default (WrappedComponent) => {
           <WrappedComponent
             {...this.props}
             {...this.state}
-                />
+          />
       );
     }
   }

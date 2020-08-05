@@ -41,7 +41,7 @@ export class ErrorMessage extends React.PureComponent {
         <Message
           {...props}
           className={cn(props.className, 'alert-danger')}
-            />
+        />
     );
   }
 }
@@ -57,7 +57,7 @@ export class SuccessMessage extends React.PureComponent {
         <Message
           {...props}
           className={cn(props.className, 'alert-success')}
-            />
+        />
     );
   }
 }

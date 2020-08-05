@@ -35,7 +35,7 @@ const TheComponent = class extends Component {
           ref="animation"
           style={styles.checkbox}
           source={json}
-          />
+        />
     );
   }
 };

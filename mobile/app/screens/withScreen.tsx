@@ -87,7 +87,7 @@ const withScreen = (Component: React.ComponentType) => {
           setOptions={setOptions}
           {...props.route.params}
           {...props}
-            />
+        />
     </>
   };
 };

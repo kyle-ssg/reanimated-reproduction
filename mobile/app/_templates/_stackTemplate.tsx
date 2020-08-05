@@ -19,12 +19,12 @@ const TheComponent: FunctionComponent<ComponentType> = ({})=>{
                 name={RouteUrls.home}
                 options={routes[RouteUrls.home].options}
                 component={routes[RouteUrls.home].component}
-                />
+              />
               <Stack.Screen
                 name={RouteUrls.generic}
                 options={routes[RouteUrls.generic].options}
                 component={routes[RouteUrls.generic].component}
-                />
+              />
           </Navigator>
       </NavigationContainer>
   );

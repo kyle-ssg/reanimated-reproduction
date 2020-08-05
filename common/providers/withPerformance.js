@@ -44,7 +44,7 @@ export default (WrappedComponent, _id, remote, events = ['mount', 'update']) => 
               <WrappedComponent
                 {...this.props}
                 {...this.state}
-                    />
+              />
           </Profiler>
 
       );

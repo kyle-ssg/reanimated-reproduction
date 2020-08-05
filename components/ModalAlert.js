@@ -15,7 +15,7 @@ const ModalAlert = (props) => {
         unmountOnClose
         isOpen={props.isOpen}
         toggle={onDismiss}
-        >
+      >
           <ModalHeader toggle={onDismiss}>
               {props.title}
           </ModalHeader>
@@ -25,7 +25,7 @@ const ModalAlert = (props) => {
           <ModalFooter>
               <Button
                 color="primary" onClick={onDismiss}
-                >
+              >
                   {props.okText}
               </Button>
           </ModalFooter>

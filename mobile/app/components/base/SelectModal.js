@@ -66,7 +66,7 @@ const NativeModal = class extends React.Component {
                   style={{ backgroundColor: 'black' }}
                   renderRow={(item, isSelected, toggleItem) => renderRow(item, isSelected, toggleItem)}
                   filterItem={filterItem}
-                  />
+                />
             </Fade>
             )}
             <FormGroup>

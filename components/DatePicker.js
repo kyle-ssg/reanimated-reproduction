@@ -67,7 +67,7 @@ export class DatePicker extends PureComponent {
           excludeDates={this.getDates(excludeDates)}
           selected={this.getDate(selected)}
           {...rest}
-            />
+        />
     );
   }
 }

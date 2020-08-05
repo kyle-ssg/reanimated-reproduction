@@ -50,7 +50,7 @@ export default class Tabs extends PureComponent {
           timingConfig={{ duration: 100 }}
           onIndexChange={(index) => this.props.onIndexChange(index)}
           initialLayout={{ width: Dimensions.get('window').width, height: Dimensions.get('window').height }}
-          />
+        />
     );
   }
 }

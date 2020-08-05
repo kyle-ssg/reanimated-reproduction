@@ -53,7 +53,8 @@ class _GenericScreen extends Component<ComponentType> {
                   Modal
               </ButtonSecondary>
           </View>
-            )}/>
+            )}
+        />
 
     </Flex>
   }
@@ -80,7 +81,7 @@ class StackExample extends Component {
                               name={"1"}
                               options={{  }}
                               component={GenericScreen}
-                              />
+                            />
                             {
                               Object.values(RouteUrls).map((v)=>(
                                   <Stack.Screen
@@ -88,7 +89,7 @@ class StackExample extends Component {
                                     name={v}
                                     options={routes[v].options}
                                     component={routes[v].component}
-                                />
+                                  />
                               ))
                             }
                         </Navigator>

@@ -52,14 +52,14 @@ export default (WrappedComponent) => {
           <Animatable.View
             duration={duration || 500}
             animation={fadeInBackground}
-            >
+          >
               <Animatable.View
                 style={Styles.lightboxOuter}
                 useNativeDriver
                 duration={duration || 500}
                 animation={slideInFromTop}
                 easing={slideInFromTop.easing}
-                >
+              >
                   <WrappedComponent dismiss={this.dismiss} {...this.props} />
               </Animatable.View>
           </Animatable.View>

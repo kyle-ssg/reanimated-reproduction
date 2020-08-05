@@ -31,7 +31,7 @@ class Toggle extends PureComponent {
           className={`btn toggle-control d-flex justify-content-center align-items-center ${this.state.toggled ? 'selected' : ''}`}
           onClick={this.handleClick}
           type="button"
-            >
+        >
             {this.props.children}
         </button>
     );

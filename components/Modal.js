@@ -40,7 +40,7 @@ const withModal = (WrappedComponent) => {
                 toggle={this.toggle}
                 {...this.props}
                 {...this.state}
-                    />
+              />
           </Provider>
       );
     }
@@ -59,7 +59,7 @@ export const openAlert = global.openAlert = (title, children, onDismiss) => {
       <_Alert
         title={title}
         onDismiss={onDismiss}
-            >
+      >
           {children}
       </_Alert>
   ),
@@ -74,7 +74,7 @@ export const openConfirm = global.openConfirm = (title, body, onYes, onNo) => {
         onNo={onNo}
         onYes={onYes}
         title={title}
-            >
+      >
           {body}
       </_Confirm>
   ),
@@ -87,7 +87,7 @@ export const openModal = global.openModal = (title, body) => {
       <_ModalDefault
         isOpen
         title={title}
-            >
+      >
           {body}
       </_ModalDefault>
   ),

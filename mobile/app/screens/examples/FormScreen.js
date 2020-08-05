@@ -60,7 +60,7 @@ const FormScreen = class extends Component {
                   onChangeText={this.onNameChanged}
                   onBlur={handleBlur('name')}
                   value={values.name}
-                  />
+                />
                 {errors.name && touched.name && <ErrorMessage>{errors.name}</ErrorMessage>}
             </Column>
             <Column>
@@ -69,14 +69,14 @@ const FormScreen = class extends Component {
                   onChangeText={handleChange('occupation')}
                   onBlur={handleBlur('occupation')}
                   value={values.occupation}
-                  />
+                />
                 {errors.occupation && touched.occupation && <ErrorMessage>{errors.occupation}</ErrorMessage>}
             </Column>
             <Column>
                 <SelectBox
                   title="Dog" options={['Poodle', 'Pug']} onChange={handleChange('dog')}
                   onBlur={() => setFieldTouched('dog', true)}
-                  >
+                >
                     {values.dog}
                 </SelectBox>
                 {errors.dog && touched.dog && <ErrorMessage>{errors.dog}</ErrorMessage>}
@@ -87,7 +87,7 @@ const FormScreen = class extends Component {
                   onChangeText={this.onAliasChanged}
                   onBlur={handleBlur('alias.value')}
                   value={_.get(values, 'alias.value') || ''}
-                  />
+                />
                 {_.get(errors, 'alias.value') && _.get(touched, 'alias.value') && <ErrorMessage>{errors.alias.value}</ErrorMessage>}
             </Column>
 

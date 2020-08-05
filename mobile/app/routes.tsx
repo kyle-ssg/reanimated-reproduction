@@ -62,7 +62,7 @@ export const withModalOptions = (base:Partial<NativeStackNavigationOptions>, nav
                       fontSize: styleVariables.fontSizeH1
                   }}
             name="ios-close"
-              />
+          />
       </ButtonNav>
     }
   }

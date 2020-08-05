@@ -30,7 +30,7 @@ export class Row extends PureComponent {
               'flex-row': true,
               space,
             }, className)}
-            >
+        >
             {children}
         </div>
     );

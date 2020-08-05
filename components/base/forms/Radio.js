@@ -20,7 +20,7 @@ export class Radio extends Component {
           type="radio"
           name={name}
           {...optional}
-            />
+        />
     );
     return this.props.renderWrapper ? this.props.renderWrapper({
       ...this.props,

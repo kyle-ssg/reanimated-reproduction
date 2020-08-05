@@ -30,7 +30,7 @@ class LoadingInterstitial extends Component {
                   loop
                   autoPlay
                   source={loader}
-                    />
+                />
                 <H3 style={[Styles.textCenter, Styles.pt20]}>{text}</H3>
             </Flex>
         </Flex>

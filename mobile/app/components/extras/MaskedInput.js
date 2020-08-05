@@ -181,7 +181,7 @@ const TextInput = class extends PureComponent {
                   testID={this.props.testID}
                   ref={(ref) => this.inputRef = ref}
                   blurOnSubmit={Platform.OS === 'ios'}
-                  />
+                />
             </Animated.View>
             <Animated.View
               style={[
@@ -192,7 +192,7 @@ const TextInput = class extends PureComponent {
                   height: Math.round((1 / PixelRatio.get()) * 6),
                 },
               ]}
-              />
+            />
         </View>
     );
   }

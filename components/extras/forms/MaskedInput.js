@@ -162,7 +162,7 @@ export class MaskedInput extends React.Component {
     return (
         <div
           className={className}
-            >
+        >
             <input
               ref={c => this.input = c}
               {...rest} onFocus={this.onFocus}
@@ -171,7 +171,7 @@ export class MaskedInput extends React.Component {
               onChange={this.onChange}
               value={this.props.value}
               className={combinedInputClassName}
-                />
+            />
         </div>
     );
   }

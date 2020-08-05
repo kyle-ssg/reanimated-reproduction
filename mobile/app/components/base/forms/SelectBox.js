@@ -41,7 +41,7 @@ const SelectBox = class extends PureComponent {
               activeOpacity={disabled ? 1 : 0.8}
               onPress={!disabled && (onPress || this.onPress)}
               style={[Styles.selectBoxContainer, containerStyle || {}]}
-                >
+            >
                 <Row style={{ flexWrap: 'nowrap' }} space>
                     <Flex>
                         <Text numberOfLines={1} style={[Styles.selectBoxText, textStyle || {}]}>

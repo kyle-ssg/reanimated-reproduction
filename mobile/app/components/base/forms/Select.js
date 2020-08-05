@@ -65,7 +65,7 @@ const Select = class extends Component {
                       placeholder={placeholder}
                       onChangeText={(searchNew) => this.setState({ search: searchNew.toLowerCase() })}
                       testID={this.props.searchTestID}
-                      />
+                    />
                 </Container>
             </FormGroup>
             )}
@@ -79,7 +79,7 @@ const Select = class extends Component {
                     };
                     return renderRow(item, isSelected, toggleItem);
                   }}
-                  />
+                />
             ) : renderNoResults ? (
               renderNoResults()
             ) : (

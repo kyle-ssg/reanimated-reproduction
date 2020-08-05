@@ -21,7 +21,7 @@ const Confirm = (props) => {
         unmountOnClose
         isOpen={props.isOpen}
         toggle={no}
-        >
+      >
           <ModalHeader toggle={no}>
               {props.title}
           </ModalHeader>
@@ -31,13 +31,13 @@ const Confirm = (props) => {
           <ModalFooter>
               <Button
                 color="primary" onClick={yes}
-                >
+              >
                   {props.yesText}
               </Button>
               {' '}
               <Button
                 color="secondary" onClick={no}
-                >
+              >
                   {props.noText}
               </Button>
           </ModalFooter>

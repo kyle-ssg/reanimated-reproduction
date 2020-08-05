@@ -33,7 +33,7 @@ export class Flex extends PureComponent {
           className={cn({
               'flex': true,
             }, `flex-${value}`, className)}
-            >
+        >
             {children}
         </div>
     );

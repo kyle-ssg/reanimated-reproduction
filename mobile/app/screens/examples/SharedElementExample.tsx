@@ -107,7 +107,8 @@ class TheComponent extends Component<ComponentType> {
             </View>
 
             <CustomModal style={{ justifyContent:'center', alignItems:'center' }} fadeContent={false} dark
-              visible={this.state.modalVisible}>
+              visible={this.state.modalVisible}
+            >
                 {this.state.isScene2Visible && (
                 <View collapsable={false} ref={this.onSetScene2Ref} style={[{  }]}>
                     <SharedElement onNode={this.onSetScene2Node}>
@@ -130,7 +131,7 @@ class TheComponent extends Component<ComponentType> {
                   animation="fade"
                   resize="auto"
                   align="auto"
-                          />
+                />
                   )}
             </CustomModal>
         </>

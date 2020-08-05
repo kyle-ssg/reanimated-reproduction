@@ -48,17 +48,17 @@ const PanelSearch = class extends Component {
                     onChange={e => (this.props.onChange ? this.props.onChange(e) : this.setState({ search: Utils.safeParseEventValue(e) }))}
                     type="text"
                     value={this.props.search || search}
-                        />
+                  />
                   <span style={{ marginLeft: 10, position: 'absolute' }} className="icon ion-ios-search" />
               </Row>
             ) : null}
-            >
+        >
             {!!paging && (
             <Paging
               paging={paging}
               isLoading={isLoading}
               goToPage={goToPage}
-                    />
+            />
               )}
             <div id={this.props.id} className="search-list" style={isLoading ? { opacity: 0.5 } : {}}>
                 {filteredItems && filteredItems.length
@@ -83,7 +83,7 @@ const PanelSearch = class extends Component {
               paging={paging}
               isLoading={isLoading}
               goToPage={goToPage}
-                    />
+            />
               )}
         </Panel>
     );

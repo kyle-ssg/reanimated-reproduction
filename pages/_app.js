@@ -94,11 +94,11 @@ class MyApp extends App {
                     <link
                       rel="icon" type="image/png" sizes="32x32"
                       href="/images/favicon-32x32.png"
-                        />
+                    />
                     <link
                       rel="icon" type="image/png" sizes="16x16"
                       href="/images/favicon-16x16.png"
-                        />
+                    />
                     <meta property="og:title" content="The Rock" />
                     <meta property="og:type" content="video.movie" />
                     <meta property="og:url" content="http://www.imdb.com/title/tt0117500/" />

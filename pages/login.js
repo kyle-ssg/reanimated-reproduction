@@ -44,14 +44,14 @@ class LoginPage extends Component {
                               className="mb-2 full-width"
                               placeholder="Username" value={email}
                               onChange={email => this.setState({ email: Utils.safeParseEventValue(email) })}
-                                />
+                            />
                         </div>
                         <div>
                             <Input
                               className="mb-2 full-width"
                               placeholder="Password" value={password} type="password"
                               onChange={password => this.setState({ password: Utils.safeParseEventValue(password) })}
-                                />
+                            />
                         </div>
                         {userError && (
                         <ErrorMessage>{userError}</ErrorMessage>

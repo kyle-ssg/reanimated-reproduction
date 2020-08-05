@@ -31,7 +31,7 @@ const withUserRedirect = (WrappedComponent) => {
           <WrappedComponent
             {...this.props}
             {...this.state}
-                />
+          />
       );
     }
   }
