@@ -8,7 +8,7 @@ const Select = class extends Component {
   static propTypes = {
     onChange: propTypes.func,
     renderNoResults: propTypes.bool,
-    style: propTypes.any
+    style: propTypes.any,
   };
 
   constructor(props, context) {
@@ -16,7 +16,7 @@ const Select = class extends Component {
     this.state = {};
   }
 
-  isSelected = i => {
+  isSelected = (i) => {
     const { multiple } = this.props;
     const value = this.props.value || [];
     return multiple ? value.indexOf(i) !== -1 : value === i;
@@ -45,52 +45,52 @@ const Select = class extends Component {
       renderNoResults,
       filterItem,
       placeholder,
-      style
+      style,
     } = this.props;
     const { search } = this.state;
     const data = filterItem
-      ? _.filter(this.props.items, i => !search || filterItem(i, search))
+      ? _.filter(this.props.items, (i) => !search || filterItem(i, search))
       : this.props.items;
 
     return (
-        <Flex style={[Styles.body, { style }]}>
-            {filterItem && (
-            <FormGroup style={{ backgroundColor: "#FCF8F5" }}>
-                <Container>
-                    <TextInput
-                      style={{
+      <Flex style={[Styles.body, { style }]}>
+        {filterItem && (
+          <FormGroup style={{ backgroundColor: "#FCF8F5" }}>
+            <Container>
+              <TextInput
+                style={{
                   shadowOpacity: 0,
-                  borderBottomWidth: 0
+                  borderBottomWidth: 0,
                 }}
-                      placeholder={placeholder}
-                      onChangeText={searchNew =>
+                placeholder={placeholder}
+                onChangeText={(searchNew) =>
                   this.setState({ search: searchNew.toLowerCase() })
                 }
-                      testID={this.props.searchTestID}
-                    />
-                </Container>
-            </FormGroup>
+                testID={this.props.searchTestID}
+              />
+            </Container>
+          </FormGroup>
         )}
-            {data && data.length ? (
-                <FlatList
-                  data={data}
-                  renderItem={({ item }) => {
+        {data && data.length ? (
+          <FlatList
+            data={data}
+            renderItem={({ item }) => {
               const isSelected = this.isSelected(item);
               const toggleItem = () => {
                 this.setItem(item, !isSelected);
               };
               return renderRow(item, isSelected, toggleItem);
             }}
-                />
+          />
         ) : renderNoResults ? (
           renderNoResults()
         ) : (
-            <Text style={Styles.textCenter}>
-                No Results Found for:
-                <Bold>{search}</Bold>
-            </Text>
+          <Text style={Styles.textCenter}>
+            No Results Found for:
+            <Bold>{search}</Bold>
+          </Text>
         )}
-        </Flex>
+      </Flex>
     );
   }
 };
@@ -102,7 +102,7 @@ Select.propTypes = {
   filterItem: propTypes.func,
   renderRow: propTypes.func,
   placeholder: propTypes.string,
-  searchTestID: propTypes.string
+  searchTestID: propTypes.string,
 };
 
 module.exports = Select;

@@ -17,20 +17,20 @@ const ActiveLink = ({ match, href, as, activeClassName, children }) => {
   }
 
   return (
-      <Link as={as} href={href}>
-          {React.cloneElement(child, { className })}
-      </Link>
+    <Link as={as} href={href}>
+      {React.cloneElement(child, { className })}
+    </Link>
   );
 };
 
 ActiveLink.propTypes = {
   href: PropTypes.string,
   activeClassName: PropTypes.string,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 ActiveLink.defaultProps = {
   href: "",
-  activeClassName: ""
+  activeClassName: "",
 };
 
 export default ActiveLink;

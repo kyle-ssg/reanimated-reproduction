@@ -13,9 +13,9 @@ const Input = class extends PureComponent {
     this.state = { shouldValidate: false };
   }
 
-  onFocus = e => {
+  onFocus = (e) => {
     this.setState({
-      isFocused: true
+      isFocused: true,
     });
     // eslint-disable-next-line no-unused-expressions
     this.props.onFocus && this.props.onFocus(e);
@@ -25,7 +25,7 @@ const Input = class extends PureComponent {
     this.input.focus();
   };
 
-  onKeyDown = e => {
+  onKeyDown = (e) => {
     if (Utils.keys.isEscape(e)) {
       this.input.blur();
     }
@@ -35,14 +35,14 @@ const Input = class extends PureComponent {
 
   validate = () => {
     this.setState({
-      shouldValidate: true
+      shouldValidate: true,
     });
   };
 
-  onBlur = e => {
+  onBlur = (e) => {
     this.setState({
       shouldValidate: true,
-      isFocused: false
+      isFocused: false,
     });
     // eslint-disable-next-line no-unused-expressions
     this.props.onBlur && this.props.onBlur(e);
@@ -63,44 +63,44 @@ const Input = class extends PureComponent {
       {
         "input-container": true,
         focused: this.state.isFocused,
-        invalid: this.state.shouldValidate && !isValid
+        invalid: this.state.shouldValidate && !isValid,
       },
       this.props.className
     );
 
     const combinedInputClassName = cn(
       {
-        input: true
+        input: true,
       },
       this.props.inputClassName
     );
 
     return (
-        <div className={className}>
-            {textarea ? (
-                <textarea
-                  ref={c => (this.input = c)}
-                  {...rest}
-                  onFocus={this.onFocus}
-                  onKeyDown={this.onKeyDown}
-                  onBlur={this.onBlur}
-                  value={this.props.value}
-                  className={combinedInputClassName}
-                />
+      <div className={className}>
+        {textarea ? (
+          <textarea
+            ref={(c) => (this.input = c)}
+            {...rest}
+            onFocus={this.onFocus}
+            onKeyDown={this.onKeyDown}
+            onBlur={this.onBlur}
+            value={this.props.value}
+            className={combinedInputClassName}
+          />
         ) : (
-            <input
-              ref={c => (this.input = c)}
-              {...rest}
-              onFocus={this.onFocus}
-              onKeyDown={this.onKeyDown}
-              onBlur={this.onBlur}
-              value={this.props.value}
-              className={combinedInputClassName}
-            />
+          <input
+            ref={(c) => (this.input = c)}
+            {...rest}
+            onFocus={this.onFocus}
+            onKeyDown={this.onKeyDown}
+            onBlur={this.onBlur}
+            value={this.props.value}
+            className={combinedInputClassName}
+          />
         )}
 
-            {children && children}
-        </div>
+        {children && children}
+      </div>
     );
   }
 };
@@ -108,7 +108,7 @@ const Input = class extends PureComponent {
 Input.defaultProps = {
   className: "",
   placeholderChar: " ",
-  isValid: true
+  isValid: true,
 };
 global.Input = Input;
 export default Input;

@@ -13,9 +13,9 @@ export class MaskedInput extends React.Component {
     this.state = { shouldValidate: false };
   }
 
-  onFocus = e => {
+  onFocus = (e) => {
     this.setState({
-      isFocused: true
+      isFocused: true,
     });
     // eslint-disable-next-line no-unused-expressions
     this.props.onFocus && this.props.onFocus(e);
@@ -25,7 +25,7 @@ export class MaskedInput extends React.Component {
     this.input.focus();
   };
 
-  onKeyDown = e => {
+  onKeyDown = (e) => {
     if (Utils.keys.isEscape(e)) {
       this.input.blur();
     }
@@ -35,20 +35,20 @@ export class MaskedInput extends React.Component {
 
   validate = () => {
     this.setState({
-      shouldValidate: true
+      shouldValidate: true,
     });
   };
 
-  onBlur = e => {
+  onBlur = (e) => {
     this.setState({
       shouldValidate: true,
-      isFocused: false
+      isFocused: false,
     });
     // eslint-disable-next-line no-unused-expressions
     this.props.onBlur && this.props.onBlur(e);
   };
 
-  onChange = e => {
+  onChange = (e) => {
     if (!this.props.onChange) {
       return;
     }
@@ -63,7 +63,7 @@ export class MaskedInput extends React.Component {
             a: {
               validate(char) {
                 return /[ap]/.test(char);
-              }
+              },
             },
             m: {
               validate(char) {
@@ -71,9 +71,9 @@ export class MaskedInput extends React.Component {
               },
               transform() {
                 return "m";
-              }
-            }
-          }
+              },
+            },
+          },
         });
       }
 
@@ -159,31 +159,31 @@ export class MaskedInput extends React.Component {
       {
         "input-container": !disableInputContainerClass,
         focused: this.state.isFocused,
-        invalid: this.state.shouldValidate && !isValid
+        invalid: this.state.shouldValidate && !isValid,
       },
       this.props.className
     );
 
     const combinedInputClassName = cn(
       {
-        input: true
+        input: true,
       },
       this.props.inputClassName
     );
 
     return (
-        <div className={className}>
-            <input
-              ref={c => (this.input = c)}
-              {...rest}
-              onFocus={this.onFocus}
-              onKeyDown={this.onKeyDown}
-              onBlur={this.onBlur}
-              onChange={this.onChange}
-              value={this.props.value}
-              className={combinedInputClassName}
+      <div className={className}>
+        <input
+          ref={(c) => (this.input = c)}
+          {...rest}
+          onFocus={this.onFocus}
+          onKeyDown={this.onKeyDown}
+          onBlur={this.onBlur}
+          onChange={this.onChange}
+          value={this.props.value}
+          className={combinedInputClassName}
         />
-        </div>
+      </div>
     );
   }
 }
@@ -191,7 +191,7 @@ export class MaskedInput extends React.Component {
 MaskedInput.defaultProps = {
   className: "",
   placeholderChar: " ",
-  isValid: true
+  isValid: true,
 };
 global.MaskedInput = MaskedInput;
 export default MaskedInput;

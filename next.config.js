@@ -3,7 +3,7 @@ const withFonts = require("next-fonts");
 const withImages = require("next-images");
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.BUNDLE_ANALYZE === "true"
+  enabled: process.env.BUNDLE_ANALYZE === "true",
 });
 const withSourceMaps = require("@zeit/next-source-maps");
 
@@ -11,7 +11,7 @@ const nextConfig = {
   // next-offline options
   typescript: {
     ignoreDevErrors: true,
-    ignoreBuildErrors: true
+    ignoreBuildErrors: true,
   },
   workboxOpts: {
     swDest: "static/service-worker.js",
@@ -23,12 +23,12 @@ const nextConfig = {
           cacheName: "fonts",
           expiration: {
             maxEntries: 150,
-            maxAgeSeconds: 60 * 60 * 24 * 10 // 2 days
+            maxAgeSeconds: 60 * 60 * 24 * 10, // 2 days
           },
           cacheableResponse: {
-            statuses: [0, 200, 304]
-          }
-        }
+            statuses: [0, 200, 304],
+          },
+        },
       },
       {
         urlPattern: /^https?.*/,
@@ -38,14 +38,14 @@ const nextConfig = {
           networkTimeoutSeconds: 15,
           expiration: {
             maxEntries: 150,
-            maxAgeSeconds: 30 * 24 * 60 * 60 // 1 month
+            maxAgeSeconds: 30 * 24 * 60 * 60, // 1 month
           },
           cacheableResponse: {
-            statuses: [0, 200, 304]
-          }
-        }
-      }
-    ]
+            statuses: [0, 200, 304],
+          },
+        },
+      },
+    ],
   },
   // buildId, dev, isServer, defaultLoaders, webpack
   webpack: (config, { dev }) => {
@@ -58,11 +58,11 @@ const nextConfig = {
 
     config.module.rules.push({
       test: /\.md$/,
-      use: "raw-loader"
+      use: "raw-loader",
     });
 
     return config;
-  }
+  },
 };
 
 module.exports = withFonts(

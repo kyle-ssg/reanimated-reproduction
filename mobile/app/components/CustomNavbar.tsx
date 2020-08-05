@@ -12,29 +12,26 @@ const CustomNavbar: FunctionComponent<ComponentType> = ({
   style,
   title,
   titleStyle,
-  navbarStyle
+  navbarStyle,
 }) => {
   const navigation = useNavigation();
-  const pop = useCallback(
-    () => {
-      navigation.pop();
-    },
-    [navigation]
-  );
+  const pop = useCallback(() => {
+    navigation.pop();
+  }, [navigation]);
   return (
-      <Row style={[styles.navbar, style]}>
-          {navigation.canGoBack() && (
-          <View style={styles.leftContainer}>
-              <TouchableOpacity style={styles.buttonContainer} onPress={pop}>
-                  <ION style={styles.icon} name="ios-chevron-back" />
-              </TouchableOpacity>
-          </View>
+    <Row style={[styles.navbar, style]}>
+      {navigation.canGoBack() && (
+        <View style={styles.leftContainer}>
+          <TouchableOpacity style={styles.buttonContainer} onPress={pop}>
+            <ION style={styles.icon} name="ios-chevron-back" />
+          </TouchableOpacity>
+        </View>
       )}
 
-          <View style={styles.titleContainer}>
-              <Text style={[styles.title, titleStyle]}>{title}</Text>
-          </View>
-      </Row>
+      <View style={styles.titleContainer}>
+        <Text style={[styles.title, titleStyle]}>{title}</Text>
+      </View>
+    </Row>
   );
 };
 
@@ -42,27 +39,27 @@ const navHeight = styleVariables.insets.top + 44;
 const styles = ReactNative.StyleSheet.create({
   titleContainer: {
     height: 44,
-    justifyContent: "center"
+    justifyContent: "center",
   },
   title: {
     fontSize: 17,
-    fontWeight: "600"
+    fontWeight: "600",
   },
   buttonContainer: {
     width: 34,
     height: 44,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   leftContainer: {
     justifyContent: "center",
     position: "absolute",
     left: 20,
     top: styleVariables.insets.top,
-    bottom: 0
+    bottom: 0,
   },
   icon: {
-    fontSize: 24
+    fontSize: 24,
   },
   navbar: {
     position: "relative",
@@ -70,8 +67,8 @@ const styles = ReactNative.StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-end",
     height: navHeight,
-    backgroundColor: "transparent"
-  }
+    backgroundColor: "transparent",
+  },
 });
 
 export default CustomNavbar;

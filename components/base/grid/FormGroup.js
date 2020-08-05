@@ -6,7 +6,7 @@ const _propTypes = {
   /** The element's children */
   children: propTypes.node,
   /** The element's class name */
-  className: propTypes.string
+  className: propTypes.string,
 };
 
 /**
@@ -19,7 +19,7 @@ export class FormGroup extends PureComponent {
 
   render() {
     const {
-      props: { className, ...rest }
+      props: { className, ...rest },
     } = this;
     return <div {...rest} className={cn(className, "form-group")} />;
   }

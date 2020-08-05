@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default WrappedComponent => {
+export default (WrappedComponent) => {
   class HOC extends Component {
     static displayName = "withGrecaptcher";
 
@@ -22,7 +22,7 @@ export default WrappedComponent => {
           if (!this.renderedGre && grecaptcha.render) {
             this.renderedGre = true;
             grecaptcha.render(document.getElementById("recaptcha"), {
-              sitekey: Project.grecaptcher
+              sitekey: Project.grecaptcher,
             });
           }
 
@@ -45,10 +45,10 @@ export default WrappedComponent => {
     }
     render() {
       return (
-          <WrappedComponent
-            {...this.props}
-            grecaptcher={this.state.grecaptcher}
-          />
+        <WrappedComponent
+          {...this.props}
+          grecaptcher={this.state.grecaptcher}
+        />
       );
     }
   }

@@ -69,7 +69,7 @@ const Utils = {
       if (!e) return;
       const code = e.keyCode ? e.keyCode : e.which;
       return code === 13 && !e.shiftKey && !e.ctrlKey;
-    }
+    },
   },
 
   getTypedValue(str: any) {
@@ -115,11 +115,11 @@ const Utils = {
       obj,
       filter(
         Object.keys(obj),
-        key => typeof obj[key] === "undefined" || obj[key] === null
+        (key) => typeof obj[key] === "undefined" || obj[key] === null
       )
     );
     return Object.keys(allDefined)
-      .map(k => {
+      .map((k) => {
         // @ts-ignore
         let val = allDefined[k];
         if (Array.isArray("array")) {
@@ -166,8 +166,8 @@ const Utils = {
       return target.type === "checkbox" || target.type === "radio"
         ? target.getAttribute("checked")
         : typeof target.value === "string"
-          ? target.value
-          : target.getAttribute("data-value") || target.getAttribute("value");
+        ? target.value
+        : target.getAttribute("data-value") || target.getAttribute("value");
     }
 
     if (target && target.textContent) {
@@ -183,7 +183,7 @@ const Utils = {
 
   GUID(append = ""): string {
     let d = new Date().getTime();
-    const uuid = "xxxx-xxxx-xxxx".replace(/[xy]/g, c => {
+    const uuid = "xxxx-xxxx-xxxx".replace(/[xy]/g, (c) => {
       // eslint-disable-next-line
             const r = (d + Math.random() * 16) % 16 | 0;
       d = Math.floor(d / 16);
@@ -199,6 +199,6 @@ const Utils = {
       typeof children === "string" ||
       (children && children.length === 1 && typeof children[0] === "string")
     );
-  }
+  },
 };
 export default Utils;

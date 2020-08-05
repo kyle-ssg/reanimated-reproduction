@@ -12,9 +12,9 @@ class GenericScreen extends Component<ComponentType> {
   render() {
     return (
       this.props.children || (
-      <Flex style={Styles.body}>
+        <Flex style={Styles.body}>
           <Text>I am a generic screen</Text>
-      </Flex>
+        </Flex>
       )
     );
   }

@@ -16,15 +16,15 @@ const Fade = class extends Component {
     animation: propTypes.func,
     children: propTypes.oneOfType([
       propTypes.arrayOf(propTypes.node),
-      propTypes.node
+      propTypes.node,
     ]).isRequired,
-    style: propTypes.any
+    style: propTypes.any,
   };
 
   constructor(props, context) {
     super(props, context);
     const _props = {};
-    each(this.props.animatedProps, prop => {
+    each(this.props.animatedProps, (prop) => {
       _props[`animated_${prop}`] = new Animated.Value(
         props[prop] && !props.autostart ? 1 : props.startValue || 0.00001
       );
@@ -34,7 +34,7 @@ const Fade = class extends Component {
 
   componentDidMount() {
     if (this.props.autostart) {
-      each(this.props.animatedProps, key => {
+      each(this.props.animatedProps, (key) => {
         this.props
           .animation(
             // Base: spring, decay, timing
@@ -48,7 +48,7 @@ const Fade = class extends Component {
                 : this.props[key], // Animate to smaller size
               duration: this.props.duration,
               friction: this.props.friction,
-              tension: this.props.tension
+              tension: this.props.tension,
             }
           )
           .start();
@@ -57,7 +57,7 @@ const Fade = class extends Component {
   }
 
   UNSAFE_componentWillReceiveProps(newProps) {
-    each(newProps.animatedProps, key => {
+    each(newProps.animatedProps, (key) => {
       const easing = newProps.value ? newProps.easing : newProps.easingOut;
       // eslint-disable-next-line eqeqeq
       if (newProps[key] != this.props[key]) {
@@ -75,7 +75,7 @@ const Fade = class extends Component {
                 : newProps[key], // Animate to smaller size
               duration: newProps.duration,
               friction: newProps.friction,
-              tension: newProps.tension
+              tension: newProps.tension,
             }
           )
           .start();
@@ -85,17 +85,17 @@ const Fade = class extends Component {
 
   render() {
     return (
-        <Animated.View
-          style={[
+      <Animated.View
+        style={[
           {
             overflow: "hidden",
-            opacity: this.state.animated_value
+            opacity: this.state.animated_value,
           },
-          this.props.style
+          this.props.style,
         ]}
       >
-            {this.props.children}
-        </Animated.View>
+        {this.props.children}
+      </Animated.View>
     );
   }
 };
@@ -105,7 +105,7 @@ Fade.defaultProps = {
   duration: 250,
   friction: 5,
   tension: 20,
-  animatedProps: ["value"]
+  animatedProps: ["value"],
 };
 
 module.exports = Fade;

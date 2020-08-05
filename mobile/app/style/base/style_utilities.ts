@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 
 const style: Record<
-string,
-ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+  string,
+  ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 > = {
   // Utility classes
   // -------------------------
@@ -11,51 +11,51 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
     paddingBottom: 0,
     paddingTop: 0,
     paddingLeft: 0,
-    paddingRight: 0
+    paddingRight: 0,
   },
 
   textCenter: {
-    textAlign: "center"
+    textAlign: "center",
   },
 
   textLeft: {
-    textAlign: "left"
+    textAlign: "left",
   },
 
   textRight: {
-    textAlign: "right"
+    textAlign: "right",
   },
 
   alignLeft: {
-    alignItems: "flex-start"
+    alignItems: "flex-start",
   },
 
   alignRight: {
-    alignItems: "flex-end"
+    alignItems: "flex-end",
   },
 
   backdrop: {
     flex: 1,
-    backgroundColor: styleVariables.backdropBackground
+    backgroundColor: styleVariables.backdropBackground,
   },
 
   padded: {
-    padding: styleVariables.paddingBase
+    padding: styleVariables.paddingBase,
   },
 
   clipped: {
-    overflow: "hidden"
+    overflow: "hidden",
   },
 
   shadow: {
     shadowColor: "#333",
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 2,
     },
     shadowRadius: 3,
-    shadowOpacity: 0.3
-  }
+    shadowOpacity: 0.3,
+  },
 };
 
 module.exports = style;

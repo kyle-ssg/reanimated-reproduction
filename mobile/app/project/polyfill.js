@@ -29,6 +29,6 @@ global._ = {
   map,
   cloneDeep,
   keyBy,
-  get
+  get,
 };
 global.propTypes = propTypes;

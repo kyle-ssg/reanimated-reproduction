@@ -17,16 +17,16 @@ const IS_SSR_CACHE_ENABLED = !dev; // TODO move to config
  * @param ttl - how long to persist
  * @returns function({req?: *, res?: *, [p: string]: *}): *}
  */
-const ssrCache = ttl => {
+const ssrCache = (ttl) => {
   return cacheableResponse({
     ttl, // 1hour
     get: async ({ req, res, pagePath, queryParams }) => {
       console.log("Caching", req.url); // eslint-disable-line no-console
       return {
-        data: await app.renderToHTML(req, res, pagePath, queryParams)
+        data: await app.renderToHTML(req, res, pagePath, queryParams),
       };
     },
-    send: ({ data, res }) => res.send(data)
+    send: ({ data, res }) => res.send(data),
   });
 };
 
@@ -71,7 +71,7 @@ Promise.all([app.prepare()]).then(() => {
 
   server.get("*", (req, res) => handle(req, res));
 
-  server.listen(port, err => {
+  server.listen(port, (err) => {
     if (err) throw err;
     console.log(`> Ready on http://localhost:${port}`); // eslint-disable-line no-console
     if (process.send) {

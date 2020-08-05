@@ -14,31 +14,31 @@ export class Radio extends Component {
 
     const inputProps = _.omit(this.props, ["renderWrapper", "label"]);
     const input = (
-        <input
-          {...inputProps}
-          aria-checked={optional.checked}
-          type="radio"
-          name={name}
-          {...optional}
+      <input
+        {...inputProps}
+        aria-checked={optional.checked}
+        type="radio"
+        name={name}
+        {...optional}
       />
     );
     return this.props.renderWrapper
       ? this.props.renderWrapper({
-        ...this.props,
-        onChange: optional.onChange,
-        radio: input,
-        checked: optional.checked
-      })
+          ...this.props,
+          onChange: optional.onChange,
+          radio: input,
+          checked: optional.checked,
+        })
       : input;
   }
 }
 
 Radio.propTypes = {
-  renderWrapper: PropTypes.func
+  renderWrapper: PropTypes.func,
 };
 
 Radio.contextTypes = {
-  radioGroup: PropTypes.object
+  radioGroup: PropTypes.object,
 };
 
 export class RadioGroup extends React.Component {
@@ -48,8 +48,8 @@ export class RadioGroup extends React.Component {
       radioGroup: {
         name,
         selectedValue,
-        onChange
-      }
+        onChange,
+      },
     };
   }
 
@@ -63,15 +63,15 @@ export class RadioGroup extends React.Component {
       ...rest
     } = this.props;
     return (
-        <Component role="radiogroup" {...rest}>
-            {children}
-        </Component>
+      <Component role="radiogroup" {...rest}>
+        {children}
+      </Component>
     );
   }
 }
 
 RadioGroup.defaultProps = {
-  Component: "div"
+  Component: "div",
 };
 
 RadioGroup.propTypes = {
@@ -79,17 +79,17 @@ RadioGroup.propTypes = {
   selectedValue: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-    PropTypes.bool
+    PropTypes.bool,
   ]),
   onChange: PropTypes.func,
   children: PropTypes.node.isRequired,
   Component: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.func,
-    PropTypes.object
-  ])
+    PropTypes.object,
+  ]),
 };
 
 RadioGroup.childContextTypes = {
-  radioGroup: PropTypes.object
+  radioGroup: PropTypes.object,
 };

@@ -13,9 +13,9 @@ const textInputPropTypes = {
   onBlur: propTypes.func,
   title: propTypes.oneOfType([
     propTypes.arrayOf(propTypes.node),
-    propTypes.node
+    propTypes.node,
   ]).isRequired,
-  style: propTypes.any
+  style: propTypes.any,
 };
 
 const TextInput = class extends PureComponent {
@@ -45,26 +45,26 @@ const TextInput = class extends PureComponent {
       toValue: 1,
       duration: 150,
       useNativeDriver: true, // <-- Add this
-      easing: Animations.standard
+      easing: Animations.standard,
     }).start();
     if (this.props.onFocus) {
       this.props.onFocus();
     }
   };
 
-  onBlur = e => {
+  onBlur = (e) => {
     Animated.timing(this.animation, {
       toValue: 0.0001,
       duration: 300,
       useNativeDriver: true, // <-- Add this
-      easing: Easing.cubic
+      easing: Easing.cubic,
     }).start();
     if (this.props.onBlur) {
       this.props.onBlur(e);
     }
   };
 
-  onChangeText = text => {
+  onChangeText = (text) => {
     if (!this.props.onChangeText) {
       return;
     }
@@ -78,7 +78,7 @@ const TextInput = class extends PureComponent {
             a: {
               validate(char) {
                 return /[ap]/.test(char);
-              }
+              },
             },
             m: {
               validate(char) {
@@ -86,9 +86,9 @@ const TextInput = class extends PureComponent {
               },
               transform() {
                 return "m";
-              }
-            }
-          }
+              },
+            },
+          },
         });
       }
 
@@ -164,40 +164,40 @@ const TextInput = class extends PureComponent {
   render() {
     // If you wanted animated shadows
     return (
-        <View>
-            {this.props.title && (
-            <FormGroup>
-                <Text style={Styles.inputLabel}>{this.props.title}</Text>
-            </FormGroup>
+      <View>
+        {this.props.title && (
+          <FormGroup>
+            <Text style={Styles.inputLabel}>{this.props.title}</Text>
+          </FormGroup>
         )}
-            <Animated.View>
-                <ReactNative.TextInput
-                  {...this.props}
-                  onFocus={this.onFocus}
-                  onBlur={this.onBlur}
-                  onChangeText={this.onChangeText}
-                  style={[
+        <Animated.View>
+          <ReactNative.TextInput
+            {...this.props}
+            onFocus={this.onFocus}
+            onBlur={this.onBlur}
+            onChangeText={this.onChangeText}
+            style={[
               Styles.textInput,
               Styles.textInputAndroid,
-              this.props.style
+              this.props.style,
             ]}
-                  value={this.props.value}
-                  testID={this.props.testID}
-                  ref={ref => (this.inputRef = ref)}
-                  blurOnSubmit={Platform.OS === "ios"}
+            value={this.props.value}
+            testID={this.props.testID}
+            ref={(ref) => (this.inputRef = ref)}
+            blurOnSubmit={Platform.OS === "ios"}
           />
-            </Animated.View>
-            <Animated.View
-              style={[
+        </Animated.View>
+        <Animated.View
+          style={[
             {
               marginTop: -Math.round((1 / PixelRatio.get()) * 3),
               transform: [{ scaleX: this.animation }],
               backgroundColor: palette.bookmakerPrimary,
-              height: Math.round((1 / PixelRatio.get()) * 6)
-            }
+              height: Math.round((1 / PixelRatio.get()) * 6),
+            },
           ]}
         />
-        </View>
+      </View>
     );
   }
 };
@@ -221,7 +221,7 @@ TextInput.propTypes = {
   onSubmit: propTypes.func,
   onFocus: propTypes.func,
   textStyle: propTypes.any,
-  testID: propTypes.string
+  testID: propTypes.string,
 };
 
 // const styles = ReactNative.StyleSheet.create({
@@ -229,7 +229,7 @@ TextInput.propTypes = {
 // });
 
 export default TextInput;
-export const FlatInput = props => (
-    <TextInput {...props} style={[Styles.flatInput, props.style]} />
+export const FlatInput = (props) => (
+  <TextInput {...props} style={[Styles.flatInput, props.style]} />
 );
 FlatInput.propTypes = textInputPropTypes;

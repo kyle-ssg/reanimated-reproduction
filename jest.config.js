@@ -7,16 +7,16 @@ module.exports = {
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
     "^components(.*)$": "<rootDir>/components$1",
-    "^common(.*)$": "<rootDir>/common$1"
+    "^common(.*)$": "<rootDir>/common$1",
   },
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest"
+    "^.+\\.(ts|tsx)$": "ts-jest",
   },
   setupFilesAfterEnv: ["<rootDir>/tests/setupJest/setupTests.js"],
   testPathIgnorePatterns: [
     "/node_modules/",
     "/mobile/",
     "/tests/e2e/",
-    "/.next/"
-  ]
+    "/.next/",
+  ],
 };

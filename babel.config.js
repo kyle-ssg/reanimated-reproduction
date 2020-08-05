@@ -4,14 +4,14 @@ module.exports = {
       "next/babel",
       {
         "preset-env": {
-          targets: "last 2 versions"
-        }
-      }
-    ]
+          targets: "last 2 versions",
+        },
+      },
+    ],
   ],
   env: {
     production: {
-      plugins: []
+      plugins: [],
     },
     test: {
       presets: [
@@ -19,13 +19,13 @@ module.exports = {
           "@babel/preset-env",
           {
             targets: {
-              node: true
-            }
-          }
+              node: true,
+            },
+          },
         ],
-        "next/babel"
-      ]
-    }
+        "next/babel",
+      ],
+    },
   },
   plugins: [
     ["@babel/proposal-class-properties"],
@@ -34,10 +34,10 @@ module.exports = {
       {
         alias: {
           components: "./components/",
-          common: "./common/"
-        }
-      }
+          common: "./common/",
+        },
+      },
     ],
-    ["react-docgen"]
-  ]
+    ["react-docgen"],
+  ],
 };

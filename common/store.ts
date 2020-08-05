@@ -8,7 +8,7 @@ import rootSaga from "./saga";
 import { AppState } from "./state-type";
 
 let _store;
-export default function(initialState: AppState = {}, forceNewStore?: boolean) {
+export default function (initialState: AppState = {}, forceNewStore?: boolean) {
   // It's very important to only return the cached store on the client, otherwise SSR will return the previous request state
   if (_store && typeof window !== "undefined" && !forceNewStore) {
     return _store;

@@ -11,7 +11,7 @@ class LoginPage extends Component {
     super(props);
     this.state = {
       email: "a@a.com",
-      password: "password"
+      password: "password",
     };
     if (props.user) {
       const redir = Utils.fromParam().redirect;
@@ -19,72 +19,72 @@ class LoginPage extends Component {
     }
   }
 
-  login = e => {
+  login = (e) => {
     Utils.preventDefault(e);
     const {
-      state: { index, isRegister, ...rest }
+      state: { index, isRegister, ...rest },
     } = this;
     this.props.login(rest, {
-      onSuccess: user => {
+      onSuccess: (user) => {
         const redir = Utils.fromParam().redirect;
         this.props.router.replace(redir || "/");
-      }
+      },
     });
   };
 
   render() {
     const {
       state: { email, password },
-      props: { userLoading, userError }
+      props: { userLoading, userError },
     } = this;
 
     return (
-        <div>
-            <div id="content">
-                <div className="container-fluid">
-                    <form onSubmit={this.login}>
-                        <h1>Login</h1>
-                        <div>
-                            <Input
-                              className="mb-2 full-width"
-                              placeholder="Username"
-                              value={email}
-                              onChange={email =>
+      <div>
+        <div id="content">
+          <div className="container-fluid">
+            <form onSubmit={this.login}>
+              <h1>Login</h1>
+              <div>
+                <Input
+                  className="mb-2 full-width"
+                  placeholder="Username"
+                  value={email}
+                  onChange={(email) =>
                     this.setState({ email: Utils.safeParseEventValue(email) })
                   }
-                            />
-                        </div>
-                        <div>
-                            <Input
-                              className="mb-2 full-width"
-                              placeholder="Password"
-                              value={password}
-                              type="password"
-                              onChange={password =>
+                />
+              </div>
+              <div>
+                <Input
+                  className="mb-2 full-width"
+                  placeholder="Password"
+                  value={password}
+                  type="password"
+                  onChange={(password) =>
                     this.setState({
-                      password: Utils.safeParseEventValue(password)
+                      password: Utils.safeParseEventValue(password),
                     })
                   }
-                            />
-                        </div>
-                        {userError && <ErrorMessage>{userError}</ErrorMessage>}
-                        <div className="text-right">
-                            <ButtonPrimary type="submit" disabled={userLoading}>
-                                Login
-                            </ButtonPrimary>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <footer className="sticky-footer bg-white">
-                <div className="container my-auto">
-                    <div className="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2019</span>
-                    </div>
-                </div>
-            </footer>
+                />
+              </div>
+              {userError && <ErrorMessage>{userError}</ErrorMessage>}
+              <div className="text-right">
+                <ButtonPrimary type="submit" disabled={userLoading}>
+                  Login
+                </ButtonPrimary>
+              </div>
+            </form>
+          </div>
         </div>
+
+        <footer className="sticky-footer bg-white">
+          <div className="container my-auto">
+            <div className="copyright text-center my-auto">
+              <span>Copyright &copy; Your Website 2019</span>
+            </div>
+          </div>
+        </footer>
+      </div>
     );
   }
 }

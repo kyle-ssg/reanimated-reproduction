@@ -1,8 +1,8 @@
 import { Dimensions } from "react-native";
 
 const style: Record<
-string,
-ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+  string,
+  ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 > = {
   //
   // Overlays
@@ -14,14 +14,14 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
     alignItems: "center",
     paddingBottom: 40,
     paddingTop: 40,
-    height: Dimensions.get("window").height
+    height: Dimensions.get("window").height,
   },
 
   lightbox: {
     width: Dimensions.get("window").width - 40,
     borderRadius: 5,
-    backgroundColor: "white"
-  }
+    backgroundColor: "white",
+  },
 };
 
 module.exports = style;

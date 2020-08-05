@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 
 const style: Record<
-string,
-ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+  string,
+  ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 > = {
   //
   // Grid system / Rows
@@ -10,60 +10,60 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 
   column: {
     marginLeft: styleVariables.gutterBase,
-    marginRight: styleVariables.gutterBase
+    marginRight: styleVariables.gutterBase,
   },
 
   container: {
     marginLeft: styleVariables.marginBaseHorizontal,
-    marginRight: styleVariables.marginBaseHorizontal
+    marginRight: styleVariables.marginBaseHorizontal,
   },
 
   noPad: {
     marginLeft: -styleVariables.paddingBase,
-    marginRight: -styleVariables.paddingBase
+    marginRight: -styleVariables.paddingBase,
   },
 
   alignItemsRight: {
-    alignItems: "flex-end"
+    alignItems: "flex-end",
   },
 
   containerLoading: {
-    opacity: 0.8
+    opacity: 0.8,
   },
 
   baseline: {
-    alignItems: "flex-start"
+    alignItems: "flex-start",
   },
 
   centeredContainer: {
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   alignCenter: {
-    alignSelf: "center"
+    alignSelf: "center",
   },
 
   alignRight: {
-    alignSelf: "flex-end"
+    alignSelf: "flex-end",
   },
 
   centeredRow: {
     flexDirection: "row",
-    justifyContent: "center"
+    justifyContent: "center",
   },
 
   row: {
     alignSelf: "stretch",
     flexWrap: "wrap",
     flexDirection: "row",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   spacedRow: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
 
   mb0: { marginBottom: 0 },
@@ -149,7 +149,7 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   mv5: { paddingTop: 8, paddingBottom: 8 },
   mv10: { paddingTop: 16, paddingBottom: 16 },
   mv15: { paddingTop: 24, paddingBottom: 24 },
-  mv20: { paddingTop: 32, paddingBottom: 32 }
+  mv20: { paddingTop: 32, paddingBottom: 32 },
 };
 
 module.exports = style;

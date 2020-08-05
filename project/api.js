@@ -22,7 +22,7 @@ const API = {
     const params = Router.query;
     params.redirect = params.redirect || Project.loginRedirect || "/";
     Router.replace(params.redirect, params.as || params.redirect, {
-      shallow: true
+      shallow: true,
     });
   },
   getStoredToken(req) {
@@ -78,7 +78,7 @@ const API = {
         hitType: "event",
         eventCategory: data.category,
         eventAction: data.event,
-        eventLabel: data.label
+        eventLabel: data.label,
       });
     }
 
@@ -92,7 +92,7 @@ const API = {
                 console.error("MIXPANEL: Invalid event provided", data);
       }
       mixpanel.track(data.event, {
-        category: data.category
+        category: data.category,
       });
     }
   },
@@ -102,7 +102,7 @@ const API = {
         hitType: "pageview",
         title,
         location: document.location.href,
-        page: document.location.pathname
+        page: document.location.pathname,
       });
     }
 
@@ -110,7 +110,7 @@ const API = {
       mixpanel.track("Page View", {
         title,
         location: document.location.href,
-        page: document.location.pathname
+        page: document.location.pathname,
       });
     }
   },
@@ -129,7 +129,7 @@ const API = {
       mixpanel.register({
         Email: email,
         "First Name": firstName,
-        "Last Name": lastName
+        "Last Name": lastName,
       });
     }
   },
@@ -143,7 +143,7 @@ const API = {
       // eslint-disable-next-line no-console
       console.log.apply(this, [namespace, ...args]);
     }
-  }
+  },
 };
 
 global.API = API;

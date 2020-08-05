@@ -3,7 +3,7 @@ import React from "react";
 
 import { Modal, ModalBody, ModalHeader } from "./Modal";
 
-const ModalDefault = props => {
+const ModalDefault = (props) => {
   const onDismiss = () => {
     if (props.onDismiss) {
       props.onDismiss();
@@ -11,10 +11,10 @@ const ModalDefault = props => {
     props.toggle();
   };
   return (
-      <Modal unmountOnClose isOpen={props.isOpen} toggle={onDismiss}>
-          <ModalHeader toggle={onDismiss}>{props.title}</ModalHeader>
-          <ModalBody>{props.children}</ModalBody>
-      </Modal>
+    <Modal unmountOnClose isOpen={props.isOpen} toggle={onDismiss}>
+      <ModalHeader toggle={onDismiss}>{props.title}</ModalHeader>
+      <ModalBody>{props.children}</ModalBody>
+    </Modal>
   );
 };
 
@@ -23,7 +23,7 @@ ModalDefault.propTypes = {
   title: propTypes.node,
   isOpen: propTypes.bool,
   onDismiss: propTypes.func,
-  toggle: propTypes.func
+  toggle: propTypes.func,
 };
 
 export default ModalDefault;

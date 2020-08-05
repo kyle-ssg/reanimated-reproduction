@@ -13,10 +13,10 @@ const Container = ({
   mr15,
   mr20,
   style,
-  children
+  children,
 }) => (
-    <View
-      style={[
+  <View
+    style={[
       ml10 && Styles.ml10,
       mr10 && Styles.mr10,
       ml0 && Styles.ml0,
@@ -27,11 +27,11 @@ const Container = ({
       mr5 && Styles.mr5,
       mr15 && Styles.mr15,
       mr20 && Styles.mr20,
-      style
+      style,
     ]}
-    >
-        {children}
-    </View>
+  >
+    {children}
+  </View>
 );
 
 Container.displayName = "Container";
@@ -48,12 +48,12 @@ Container.propTypes = {
   mr10: propTypes.bool,
   mr15: propTypes.bool,
   mr20: propTypes.bool,
-  style: propTypes.any
+  style: propTypes.any,
 };
 
 Container.defaultProps = {
   ml10: true,
-  mr10: true
+  mr10: true,
 };
 
 module.exports = Container;

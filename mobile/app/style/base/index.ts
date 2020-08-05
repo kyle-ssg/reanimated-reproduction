@@ -13,5 +13,5 @@ module.exports = {
   ...require("./style_grid"),
   ...require("./style_type"),
   ...require("./style_lists"),
-  ...require("./style_overlays")
+  ...require("./style_overlays"),
 };

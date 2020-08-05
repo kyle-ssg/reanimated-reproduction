@@ -3,7 +3,7 @@ import { withRouter } from "next/router";
 import withAuth from "../common/providers/withAuth";
 import Router from "next/router";
 
-const withUserRedirect = WrappedComponent => {
+const withUserRedirect = (WrappedComponent) => {
   class HOC extends Component {
     static displayName = "withUserRedirect";
 

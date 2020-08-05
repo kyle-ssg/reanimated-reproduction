@@ -9,7 +9,7 @@ import {
   deleteAction,
   errorHandler,
   getAction,
-  postAction
+  postAction,
 } from "./utils/saga-helpers";
 
 // Called when the application starts up, if using SSR this is done in the server
@@ -33,7 +33,7 @@ export function* startup(action = {}) {
 
     yield put({
       type: Actions.STARTUP_LOADED,
-      data: { ready: true, isOnline, ...rest }
+      data: { ready: true, isOnline, ...rest },
     });
     if (action.onSuccess) {
       action.onSuccess();
@@ -99,7 +99,7 @@ function* rootSaga() {
     takeLatest(Actions.REGISTER, register),
     takeLatest(Actions.LOGOUT, logout),
     takeLatest(Actions.CONFIRM_EMAIL, confirmEmail),
-    takeLatest(Actions.UPDATE_USER, updateUser)
+    takeLatest(Actions.UPDATE_USER, updateUser),
     // END OF TAKE_LATEST
     // KEEP THE ABOVE LINE IN, IT IS USED BY OUR CLI
   ]);

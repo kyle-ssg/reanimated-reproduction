@@ -31,7 +31,7 @@ const _propTypes = {
   /** show only a time select */
   showTimeSelectOnly: propTypes.bool,
   /** custom time format */
-  timeFormat: propTypes.string
+  timeFormat: propTypes.string,
 };
 
 /**
@@ -42,14 +42,14 @@ export class DatePicker extends PureComponent {
 
   static propTypes = _propTypes;
 
-  getDate = d => {
+  getDate = (d) => {
     if (typeof d === "string") {
       return new Date(d);
     }
     return d;
   };
 
-  getDates = dates => {
+  getDates = (dates) => {
     if (!dates) {
       return dates;
     }
@@ -65,17 +65,17 @@ export class DatePicker extends PureComponent {
         highlightDates,
         excludeDates,
         ...rest
-      }
+      },
     } = this;
     return (
-        <_DatePicker
-          minDate={this.getDate(minDate)}
-          maxDate={this.getDate(maxDate)}
-          highlightDates={this.getDates(highlightDates)}
-          excludeDates={this.getDates(excludeDates)}
-          selected={this.getDate(selected)}
-          {...rest}
-        />
+      <_DatePicker
+        minDate={this.getDate(minDate)}
+        maxDate={this.getDate(maxDate)}
+        highlightDates={this.getDates(highlightDates)}
+        excludeDates={this.getDates(excludeDates)}
+        selected={this.getDate(selected)}
+        {...rest}
+      />
     );
   }
 }

@@ -6,7 +6,7 @@
 const getQueryString = (params: any): string => {
   const esc = encodeURIComponent;
   return Object.keys(params)
-    .map(k => `${esc(k)}=${esc(params[k])}`)
+    .map((k) => `${esc(k)}=${esc(params[k])}`)
     .join("&");
 };
 
@@ -14,7 +14,7 @@ export enum RequestMethod {
   get = "get",
   put = "put",
   delete = "delete",
-  post = "post"
+  post = "post",
 }
 
 interface RequestOptions {
@@ -50,7 +50,7 @@ const _data = {
           const error = {
             url: response.url,
             status: response.status,
-            error: err
+            error: err,
           };
           document.getElementById("e2e-error").innerText = JSON.stringify(
             error
@@ -92,8 +92,8 @@ const _data = {
         timeout: 5000,
         method,
         headers: {
-          ...headers
-        }
+          ...headers,
+        },
       };
       let qs = "";
 
@@ -126,7 +126,7 @@ const _data = {
       ) {
         const payload = {
           url,
-          options
+          options,
         };
         document.getElementById("e2e-request").innerText = JSON.stringify(
           payload
@@ -138,7 +138,7 @@ const _data = {
       const req = fetch(url, options);
       return req
         .then(_data.status)
-        .then(response => {
+        .then((response) => {
           // always return json
           let contentType = response.headers.get("content-type");
           if (!contentType) {
@@ -149,7 +149,7 @@ const _data = {
           }
           return {};
         })
-        .then(response => {
+        .then((response) => {
           API.log(
             "API",
             "RESPONSE",
@@ -173,7 +173,7 @@ const _data = {
   setRefreshToken(_refreshToken?: string): void {
     // set the token for future requests
     _data.refreshToken = _refreshToken;
-  }
+  },
 };
 global._data = _data;
 export default _data;

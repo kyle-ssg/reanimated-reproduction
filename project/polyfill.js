@@ -4,7 +4,7 @@ global.fetch = fetch;
 if (typeof projectOverrides !== "undefined") {
   global.Project = {
     ...global.Project,
-    ...projectOverrides // environment.js (also app.yaml if using app engine)
+    ...projectOverrides, // environment.js (also app.yaml if using app engine)
   };
 }
 
@@ -12,7 +12,7 @@ import {
   AsyncStorage,
   AppState,
   NetInfo,
-  Clipboard
+  Clipboard,
 } from "polyfill-react-native";
 import "./localization";
 import "../common/utils";

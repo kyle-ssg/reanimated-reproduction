@@ -9,46 +9,46 @@ export default class extends Component {
     this.state = {};
   }
 
-  onTabChange = index => this.setState({ activeButton: index });
+  onTabChange = (index) => this.setState({ activeButton: index });
 
-  renderScene = scene => {
+  renderScene = (scene) => {
     const { i } = scene.route.data;
     const label = `Tab ${i}`;
     return (
-        <Flex>
-            <Text>{label}</Text>
-        </Flex>
+      <Flex>
+        <Text>{label}</Text>
+      </Flex>
     );
   };
 
   render() {
     const {
-      state: { activeButton }
+      state: { activeButton },
     } = this;
     return (
-        <Tabs
-          scrollEnabled={this.props.scrollEnabled}
-          lazy
-          tabBarStyle={{
-          backgroundColor: palette.primary
+      <Tabs
+        scrollEnabled={this.props.scrollEnabled}
+        lazy
+        tabBarStyle={{
+          backgroundColor: palette.primary,
         }}
-          labelStyle={{
+        labelStyle={{
           textAlign: "center",
-          color: "white"
+          color: "white",
         }}
-          indicatorStyle={{
-          backgroundColor: "white"
+        indicatorStyle={{
+          backgroundColor: "white",
         }}
-          navigationState={{
+        navigationState={{
           index: activeButton || 0,
-          routes: [1, 2, 3].map(i => ({
+          routes: [1, 2, 3].map((i) => ({
             title: `Tab ${i}`,
             key: i,
-            data: { i }
-          }))
+            data: { i },
+          })),
         }}
-          onIndexChange={this.onTabChange}
-          renderScene={this.renderScene}
+        onIndexChange={this.onTabChange}
+        renderScene={this.renderScene}
       />
     );
   }

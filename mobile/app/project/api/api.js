@@ -35,7 +35,7 @@ global.API = {
           onSuccess: () => {
             routes.logout();
             Alert.alert("Logged out", "You have been logged out");
-          }
+          },
         })
       );
     }
@@ -81,7 +81,7 @@ global.API = {
     destructiveOption,
     resolveCancel
   ) =>
-    new Promise(resolve => {
+    new Promise((resolve) => {
       const options = cancelButton ? _options.concat(["Cancel"]) : _options;
       BottomSheet.showBottomSheetWithOptions(
         {
@@ -92,9 +92,9 @@ global.API = {
             destructiveOption && cancelButton
               ? options.length - 2
               : options.length - 1,
-          cancelButtonIndex: cancelButton && options.length - 1
+          cancelButtonIndex: cancelButton && options.length - 1,
         },
-        value => {
+        (value) => {
           if (cancelButton && value === options.length - 1) {
             if (resolveCancel) resolve(null);
             return;
@@ -103,29 +103,29 @@ global.API = {
         }
       );
     }),
-  getContacts: includePhotos => {
+  getContacts: (includePhotos) => {
     if (typeof Contacts === "undefined") {
       return Promise.reject(
         new Error("You need to link react-native-contacts to use this function")
       );
     }
     return includePhotos
-      ? new Promise(resolve =>
-        Contacts.getAll((error, contacts) =>
-          resolve({
-            error,
-            contacts: contacts
-          })
+      ? new Promise((resolve) =>
+          Contacts.getAll((error, contacts) =>
+            resolve({
+              error,
+              contacts: contacts,
+            })
+          )
         )
-      )
-      : new Promise(resolve =>
-        Contacts.getAllWithoutPhotos((error, contacts) =>
-          resolve({
-            error,
-            contacts: contacts
-          })
-        )
-      );
+      : new Promise((resolve) =>
+          Contacts.getAllWithoutPhotos((error, contacts) =>
+            resolve({
+              error,
+              contacts: contacts,
+            })
+          )
+        );
   },
   showUpload: (
     title,
@@ -135,8 +135,8 @@ global.API = {
     compressImageQuality = 0.8,
     onStart
   ) =>
-    new Promise(resolve => {
-      API.showOptions(title, ["Camera", "Upload a Photo"]).then(i => {
+    new Promise((resolve) => {
+      API.showOptions(title, ["Camera", "Upload a Photo"]).then((i) => {
         if (typeof ImagePicker === "undefined") {
           // eslint-disable-next-line
                 alert('You need to link react-native-image-crop-picker to use this function');
@@ -149,7 +149,7 @@ global.API = {
             multiple,
             width,
             height,
-            compressImageQuality
+            compressImageQuality,
           };
 
           // eslint-disable-next-line no-undef
@@ -174,17 +174,17 @@ global.API = {
       .createBranchUniversalObject("share", {
         title,
         contentMetadata: {
-          customMetadata
-        }
+          customMetadata,
+        },
       })
-      .then(branchUniversalObject => {
+      .then((branchUniversalObject) => {
         const controlParams = {};
         return branchUniversalObject
           .generateShortUrl({}, controlParams)
           .then(({ url }) => url);
       });
   },
-  getInitialLink: cb => {
+  getInitialLink: (cb) => {
     // eslint-disable-next-line
         initialLinkCb = cb;
     // eslint-disable-next-line
@@ -207,7 +207,7 @@ global.API = {
 
   push,
   auth,
-  storage
+  storage,
 };
 
 if (typeof branch !== "undefined") {
@@ -221,7 +221,7 @@ if (typeof branch !== "undefined") {
   // eslint-disable-next-line
     var initialLink = null;
 
-  API.onLink = cb => (linkCb = cb);
+  API.onLink = (cb) => (linkCb = cb);
   branch.subscribe(({ error, params }) => {
     if (error) {
       // eslint-disable-next-line no-console

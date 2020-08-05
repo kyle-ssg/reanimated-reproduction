@@ -26,7 +26,7 @@ const BaseConstants = {
   UPDATE_USER_ERROR: "UPDATE_USER_ERROR",
   UPDATE_USER_LOADED: "UPDATE_USER_LOADED",
 
-  SET_ACTIVE_SCREEN: "SET_ACTIVE_SCREEN"
+  SET_ACTIVE_SCREEN: "SET_ACTIVE_SCREEN",
 };
 interface Callbacks {
   onSuccess?: (data: any) => void;
@@ -38,7 +38,7 @@ const BaseActions = {
     return {
       type: Actions.LOGIN,
       data,
-      ...callbacks
+      ...callbacks,
     };
   },
   // STARTUP
@@ -46,7 +46,7 @@ const BaseActions = {
     return {
       type: Actions.STARTUP,
       data,
-      ...callbacks
+      ...callbacks,
     };
   },
   // REGISTER
@@ -54,14 +54,14 @@ const BaseActions = {
     return {
       type: Actions.REGISTER,
       data,
-      ...callbacks
+      ...callbacks,
     };
   },
   updateUser(data: Record<string, any>, callbacks: Callbacks = {}): AnyAction {
     return {
       type: Actions.UPDATE_USER,
       data,
-      ...callbacks
+      ...callbacks,
     };
   },
   confirmEmail(
@@ -71,22 +71,22 @@ const BaseActions = {
     return {
       type: Actions.CONFIRM_EMAIL,
       data,
-      ...callbacks
+      ...callbacks,
     };
   },
   logout(callbacks: Callbacks = {}): AnyAction {
     return {
       type: Actions.LOGOUT,
-      ...callbacks
+      ...callbacks,
     };
   },
   setActiveScreen(name: string, navigator = "root"): AnyAction {
     return {
       type: Actions.SET_ACTIVE_SCREEN,
       index: navigator,
-      data: name
+      data: name,
     };
-  }
+  },
 };
 
 export const Actions = (global.Actions = Object.assign({}, BaseConstants, {

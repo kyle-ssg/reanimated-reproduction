@@ -4,14 +4,11 @@ import { bindActionCreators } from "redux";
 import { AppActions } from "../app-actions";
 import { AppState } from "../state-type";
 
-const withWidgets = WrappedComponent => {
-  return connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(WrappedComponent);
+const withWidgets = (WrappedComponent) => {
+  return connect(mapStateToProps, mapDispatchToProps)(WrappedComponent);
 };
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       // getWidgets: AppActions.getWidgets,

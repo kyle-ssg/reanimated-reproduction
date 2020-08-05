@@ -3,21 +3,18 @@ import { bindActionCreators } from "redux";
 import { AppActions } from "../app-actions";
 import { AppState } from "../state-type";
 
-const withAuth = WrappedComponent => {
-  return connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(WrappedComponent);
+const withAuth = (WrappedComponent) => {
+  return connect(mapStateToProps, mapDispatchToProps)(WrappedComponent);
 };
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       register: AppActions.register,
       login: AppActions.login,
       logout: AppActions.logout,
       confirmEmail: AppActions.confirmEmail,
-      updateUser: AppActions.updateUser
+      updateUser: AppActions.updateUser,
     },
     dispatch
   );

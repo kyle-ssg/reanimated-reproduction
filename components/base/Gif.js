@@ -6,25 +6,25 @@ const Gif = class extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      paused: true
+      paused: true,
     };
   }
 
   render() {
     return (
-        <Flex
-          onClick={() => this.setState({ paused: !this.state.paused })}
-          className={`centered-container gif ${
+      <Flex
+        onClick={() => this.setState({ paused: !this.state.paused })}
+        className={`centered-container gif ${
           this.state.paused ? "paused" : "playing"
         }`}
-        >
-            <img
-              {...this.props}
-              alt="Pause"
-              src={this.state.paused ? this.props.pausedSrc : this.props.src}
-            />
-            <ion className="ion ion-ios-play" />
-        </Flex>
+      >
+        <img
+          {...this.props}
+          alt="Pause"
+          src={this.state.paused ? this.props.pausedSrc : this.props.src}
+        />
+        <ion className="ion ion-ios-play" />
+      </Flex>
     );
   }
 };

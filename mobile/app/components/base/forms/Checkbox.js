@@ -9,7 +9,7 @@ const TheComponent = class extends Component {
   static displayName = "TheComponent";
 
   static propTypes = {
-    value: propTypes.number
+    value: propTypes.number,
   };
 
   constructor(props, context) {
@@ -23,18 +23,18 @@ const TheComponent = class extends Component {
       Animated.timing(this.animatedValue, {
         toValue: newProps.value ? 0.5 : 0,
         duration: 700,
-        easing: newProps.value ? Easing.linear : Easing.out(Easing.cubic)
+        easing: newProps.value ? Easing.linear : Easing.out(Easing.cubic),
       }).start();
     }
   }
 
   render() {
     return (
-        <Animation
-          progress={this.animatedValue}
-          ref="animation"
-          style={styles.checkbox}
-          source={json}
+      <Animation
+        progress={this.animatedValue}
+        ref="animation"
+        style={styles.checkbox}
+        source={json}
       />
     );
   }
@@ -42,6 +42,6 @@ const TheComponent = class extends Component {
 
 TheComponent.propTypes = {};
 const styles = ReactNative.StyleSheet.create({
-  checkbox: { width: 54, height: 54 }
+  checkbox: { width: 54, height: 54 },
 });
 module.exports = TheComponent;

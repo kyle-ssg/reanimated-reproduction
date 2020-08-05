@@ -9,14 +9,14 @@ class Toggle extends PureComponent {
     toggled: propTypes.bool,
     children: propTypes.oneOfType([
       propTypes.arrayOf(propTypes.node),
-      propTypes.node
-    ])
+      propTypes.node,
+    ]),
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      toggled: !!props.toggled
+      toggled: !!props.toggled,
     };
   }
 
@@ -27,15 +27,15 @@ class Toggle extends PureComponent {
 
   render() {
     return (
-        <button
-          className={`btn toggle-control d-flex justify-content-center align-items-center ${
+      <button
+        className={`btn toggle-control d-flex justify-content-center align-items-center ${
           this.state.toggled ? "selected" : ""
         }`}
-          onClick={this.handleClick}
-          type="button"
-        >
-            {this.props.children}
-        </button>
+        onClick={this.handleClick}
+        type="button"
+      >
+        {this.props.children}
+      </button>
     );
   }
 }

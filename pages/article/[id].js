@@ -16,9 +16,9 @@ class ArticlePage extends Component {
     const {
       props: {
         router: {
-          query: { id }
-        }
-      }
+          query: { id },
+        },
+      },
     } = this;
     return <div className="container">Article {id}</div>;
   }

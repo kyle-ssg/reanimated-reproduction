@@ -7,16 +7,16 @@ export default class Text extends PureComponent {
 
   static propTypes = {
     style: propTypes.any,
-    children: propTypes.node
+    children: propTypes.node,
   };
   render() {
     const {
-      props: { style, children }
+      props: { style, children },
     } = this;
     return (
-        <ReactNative.Text {...this.props} style={[Styles.text, style]}>
-            {children}
-        </ReactNative.Text>
+      <ReactNative.Text {...this.props} style={[Styles.text, style]}>
+        {children}
+      </ReactNative.Text>
     );
   }
 }

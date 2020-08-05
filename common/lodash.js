@@ -32,7 +32,7 @@ export {
   range,
   set,
   sortBy,
-  throttle
+  throttle,
 };
 export const lodash = {
   chunk,
@@ -51,7 +51,7 @@ export const lodash = {
   range,
   set,
   sortBy,
-  throttle
+  throttle,
 };
 global._ = lodash;
 export default lodash;

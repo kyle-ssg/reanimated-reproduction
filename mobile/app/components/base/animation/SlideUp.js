@@ -16,15 +16,15 @@ const SlideUp = class extends Component {
     zoomedHeight: propTypes.number,
     children: propTypes.oneOfType([
       propTypes.arrayOf(propTypes.node),
-      propTypes.node
+      propTypes.node,
     ]).isRequired,
-    style: propTypes.any
+    style: propTypes.any,
   };
 
   constructor(props, context) {
     super(props, context);
     const newState = {};
-    _.each(this.props.animatedProps, prop => {
+    _.each(this.props.animatedProps, (prop) => {
       newState[`animated_${prop}`] = new Animated.Value(
         this.props[prop] && !this.props.autostart ? 1 : 0
       );
@@ -34,7 +34,7 @@ const SlideUp = class extends Component {
 
   componentDidMount() {
     if (this.props.autostart) {
-      _.each(this.props.animatedProps, key => {
+      _.each(this.props.animatedProps, (key) => {
         this.props
           .animation(
             // Base: spring, decay, timing
@@ -47,7 +47,7 @@ const SlideUp = class extends Component {
                 : this.props[key], // Animate to smaller size
               duration: this.props.duration,
               friction: this.props.friction,
-              tension: this.props.tension
+              tension: this.props.tension,
             }
           )
           .start();
@@ -56,7 +56,7 @@ const SlideUp = class extends Component {
   }
 
   UNSAFE_componentWillReceiveProps(newProps) {
-    _.each(newProps.animatedProps, key => {
+    _.each(newProps.animatedProps, (key) => {
       const easing = newProps.value ? newProps.easing : newProps.easingOut;
       // eslint-disable-next-line
             if (newProps[key] != this.props[key]) {
@@ -73,7 +73,7 @@ const SlideUp = class extends Component {
                 : newProps[key], // Animate to smaller size
               duration: newProps.duration,
               friction: newProps.friction,
-              tension: newProps.tension
+              tension: newProps.tension,
             }
           )
           .start();
@@ -84,17 +84,17 @@ const SlideUp = class extends Component {
   render() {
     const height = this.state.animated_value.interpolate({
       inputRange: [0, 1, 2],
-      outputRange: [0, this.props.height, this.props.zoomedHeight] // 0 : 150, 0.5 : 75, 1 : 0
+      outputRange: [0, this.props.height, this.props.zoomedHeight], // 0 : 150, 0.5 : 75, 1 : 0
     });
     return (
-        <Animated.View
-          style={[
+      <Animated.View
+        style={[
           { overflow: "hidden", justifyContent: "center", height },
-          this.props.style
+          this.props.style,
         ]}
-        >
-            {this.props.children}
-        </Animated.View>
+      >
+        {this.props.children}
+      </Animated.View>
     );
   }
 };
@@ -104,7 +104,7 @@ SlideUp.defaultProps = {
   duration: 300,
   friction: 5,
   tension: 20,
-  animatedProps: ["value"]
+  animatedProps: ["value"],
 };
 
 module.exports = SlideUp;

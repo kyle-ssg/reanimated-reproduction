@@ -41,27 +41,27 @@ const StorageManager = class {
     return MMKV.setBoolAsync(key, val);
   };
 
-  getNumber = async key => {
+  getNumber = async (key) => {
     API.log("STORAGE", "GET NUMBER", key);
     return MMKV.getIntAsync(key);
   };
 
-  getString = async key => {
+  getString = async (key) => {
     API.log("STORAGE", "GET STRING", key);
     return MMKV.getStringAsync(key);
   };
 
-  getObject = async key => {
+  getObject = async (key) => {
     API.log("STORAGE", "GET OBJECT", key);
-    return MMKV.getMapAsync(key).then(res => res && JSON.parse(res));
+    return MMKV.getMapAsync(key).then((res) => res && JSON.parse(res));
   };
 
-  getBool = async key => {
+  getBool = async (key) => {
     API.log("STORAGE", "GET BOOL", key);
     return MMKV.getBoolAsync(key);
   };
 
-  removeItem = async key => {
+  removeItem = async (key) => {
     API.log("STORAGE", "REMOVE ITEM", key);
     await MMKV.removeItem(key);
   };

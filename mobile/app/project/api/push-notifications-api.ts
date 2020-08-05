@@ -8,12 +8,12 @@ const PushManager = class {
 
   getInitialNotification = () => messaging().getInitialNotification();
 
-  subscribe = topic => {
+  subscribe = (topic) => {
     API.log("PUSH_NOTIFICATIONS", `Subscribed to ${topic}`);
     return messaging().subscribeToTopic(topic);
   };
 
-  unsubscribe = topic => {
+  unsubscribe = (topic) => {
     API.log("PUSH_NOTIFICATIONS", `Unsubscribed to ${topic}`);
     return messaging().unsubscribeFromTopic(topic);
   };
@@ -27,14 +27,14 @@ const PushManager = class {
     this.onNotification = onNotification;
 
     if (!this.notificationListener) {
-      messaging().onMessage(notification => {
+      messaging().onMessage((notification) => {
         if (this.notificationListener) {
           this.notificationListener(notification);
         }
       });
     }
 
-    this.notificationListener = notification => {
+    this.notificationListener = (notification) => {
       // Callback if notification is valid
 
       if (notification._notificationType === "will_present_notification")
@@ -44,7 +44,7 @@ const PushManager = class {
         this.onNotification(
           Object.assign({}, notification, {
             fromClick:
-              notification._notificationType === "notification_response"
+              notification._notificationType === "notification_response",
           })
         );
     };
@@ -55,7 +55,7 @@ const PushManager = class {
 
     await Platform.select({
       ios: silent ? await messaging().requestPermission() : null,
-      android: null
+      android: null,
     });
 
     if (!silent) {
@@ -63,7 +63,7 @@ const PushManager = class {
     }
 
     const token = await messaging().getToken();
-    this.refreshTokenListener = messaging().onTokenRefresh(token => {
+    this.refreshTokenListener = messaging().onTokenRefresh((token) => {
       if (token) {
         this.token = token;
       }

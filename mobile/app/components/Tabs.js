@@ -17,48 +17,48 @@ export default class Tabs extends PureComponent {
     tabStyle: propTypes.object,
     indicatorStyle: propTypes.object,
     labelStyle: propTypes.object,
-    renderLabel: propTypes.func
+    renderLabel: propTypes.func,
   };
 
   static defaultProps = {
     tabStyle: {},
-    labelStyle: {}
+    labelStyle: {},
   };
 
-  renderTabBar = props => (
-      <TabBar
-        {...props}
-        scrollEnabled={this.props.scrollEnabled}
-        labelStyle={[styles.TabText, this.props.labelStyle]}
-        getLabelText={({ route: { title } }) => title}
-        style={{ ...styles.tabPrimary, ...this.props.tabBarStyle }}
-        tabStyle={
+  renderTabBar = (props) => (
+    <TabBar
+      {...props}
+      scrollEnabled={this.props.scrollEnabled}
+      labelStyle={[styles.TabText, this.props.labelStyle]}
+      getLabelText={({ route: { title } }) => title}
+      style={{ ...styles.tabPrimary, ...this.props.tabBarStyle }}
+      tabStyle={
         this.props.tabBarRow
           ? { ...Styles.row, ...this.props.tabStyle }
           : this.props.tabStyle
       }
-        indicatorStyle={{
+      indicatorStyle={{
         ...styles.indicatorPrimary,
-        ...this.props.indicatorStyle
+        ...this.props.indicatorStyle,
       }}
-        renderIcon={({ route }) => route.icon || null}
-        renderLabel={this.props.renderLabel}
+      renderIcon={({ route }) => route.icon || null}
+      renderLabel={this.props.renderLabel}
     />
   );
 
   render() {
     return (
-        <TabView
-          useNativeDriver
-          lazy={this.props.lazy}
-          navigationState={this.props.navigationState}
-          renderTabBar={this.renderTabBar}
-          renderScene={this.props.renderScene}
-          timingConfig={{ duration: 100 }}
-          onIndexChange={index => this.props.onIndexChange(index)}
-          initialLayout={{
+      <TabView
+        useNativeDriver
+        lazy={this.props.lazy}
+        navigationState={this.props.navigationState}
+        renderTabBar={this.renderTabBar}
+        renderScene={this.props.renderScene}
+        timingConfig={{ duration: 100 }}
+        onIndexChange={(index) => this.props.onIndexChange(index)}
+        initialLayout={{
           width: Dimensions.get("window").width,
-          height: Dimensions.get("window").height
+          height: Dimensions.get("window").height,
         }}
       />
     );
@@ -71,30 +71,30 @@ const styles = ReactNative.StyleSheet.create({
     borderTopWidth: 0,
     borderBottomWidth: 0,
     borderColor: palette.CoolGray,
-    elevation: 0
+    elevation: 0,
   },
   tabSecondary: {
     backgroundColor: palette.defaultLight,
     borderBottomWidth: 1,
     borderColor: palette.CoolGray,
-    elevation: 0
+    elevation: 0,
   },
   TabText: {
     color: palette.text,
     fontWeight: "bold",
-    fontSize: em(1)
+    fontSize: em(1),
   },
 
   indicatorPrimary: {
-    backgroundColor: palette.primary
+    backgroundColor: palette.primary,
   },
 
   TabTextLight: {
     fontSize: 11,
-    color: palette.primaryDark
+    color: palette.primaryDark,
   },
   bar: {
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   tab: {
     borderRightWidth: StyleSheet.hairlineWidth,
@@ -102,6 +102,6 @@ const styles = ReactNative.StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: palette.divider,
     borderRightColor: palette.dividerLight,
-    elevation: 0
-  }
+    elevation: 0,
+  },
 });

@@ -1,41 +1,41 @@
 import { StyleSheet } from "react-native";
 
 const style: Record<
-string,
-ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
+  string,
+  ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 > = {
   bodyBackground: {
-    backgroundColor: palette.bodyBackground
+    backgroundColor: palette.bodyBackground,
   },
 
   hero: {
     overflow: "hidden",
     paddingTop: styleVariables.marginBaseVertical,
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
   },
 
   bodyAlt: {
-    backgroundColor: palette.backgroundLight
+    backgroundColor: palette.backgroundLight,
   },
 
   bodyWithTabs: {
-    backgroundColor: palette.bodyBackground
+    backgroundColor: palette.bodyBackground,
   },
 
   shadow: {
     shadowColor: "#333",
     shadowOffset: {
       width: 3,
-      height: 3
+      height: 3,
     },
     shadowRadius: 5,
-    shadowOpacity: 0.4
+    shadowOpacity: 0.4,
   },
 
   // ICONS
   iconDefault: {
     height: 30,
-    resizeMode: "contain"
+    resizeMode: "contain",
   },
 
   iconButton: {
@@ -44,7 +44,7 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
     paddingRight: 6,
     paddingTop: 1,
     height: 25,
-    marginRight: 10
+    marginRight: 10,
   },
 
   roundedAnimationContainer: {
@@ -56,7 +56,7 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
     borderRadius: 40,
     width: 80,
     height: 80,
-    justifyContent: "center"
+    justifyContent: "center",
   },
 
   roundedAnimationInner: {
@@ -66,8 +66,8 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
     width: 70,
     height: 70,
     justifyContent: "center",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 };
 
 module.exports = style;

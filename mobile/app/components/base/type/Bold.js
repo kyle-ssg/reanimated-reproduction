@@ -6,14 +6,14 @@ const Bold = class extends Component {
 
   render() {
     return (
-        <Text style={[Styles.bold, this.props.style]}>{this.props.children}</Text>
+      <Text style={[Styles.bold, this.props.style]}>{this.props.children}</Text>
     );
   }
 };
 
 Bold.propTypes = {
   style: propTypes.any,
-  children: propTypes.node
+  children: propTypes.node,
 };
 
 module.exports = Bold;

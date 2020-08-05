@@ -10,7 +10,7 @@ const _propTypes = {
   /** The element's class name */
   className: propTypes.string,
   /** The flex value */
-  value: propTypes.number
+  value: propTypes.number,
 };
 
 /**
@@ -22,26 +22,26 @@ export class Flex extends PureComponent {
   static propTypes = _propTypes;
 
   static defaultProps = {
-    value: 1
+    value: 1,
   };
 
   render() {
     const {
-      props: { className, children, value, ...rest }
+      props: { className, children, value, ...rest },
     } = this;
     return (
-        <div
-          {...rest}
-          className={cn(
+      <div
+        {...rest}
+        className={cn(
           {
-            flex: true
+            flex: true,
           },
           `flex-${value}`,
           className
         )}
-        >
-            {children}
-        </div>
+      >
+        {children}
+      </div>
     );
   }
 }

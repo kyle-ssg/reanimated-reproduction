@@ -6,7 +6,7 @@ const _propTypes = {
   /** What class to add to the component */
   className: propTypes.string,
   /** The element's children */
-  children: propTypes.node
+  children: propTypes.node,
 };
 
 /**
@@ -19,7 +19,7 @@ export class TheComponent extends PureComponent {
 
   render() {
     const {
-      props: { className, children }
+      props: { className, children },
     } = this;
     return <div className={cn(className, "some-custom-class")}>{children}</div>;
   }

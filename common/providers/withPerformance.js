@@ -36,18 +36,18 @@ export default (
         fetch(remote, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify({ value: actualDuration })
+          body: JSON.stringify({ value: actualDuration }),
         });
       }
     };
 
     render() {
       return (
-          <Profiler id={_id} onRender={this.logMeasurement}>
-              <WrappedComponent {...this.props} {...this.state} />
-          </Profiler>
+        <Profiler id={_id} onRender={this.logMeasurement}>
+          <WrappedComponent {...this.props} {...this.state} />
+        </Profiler>
       );
     }
   }

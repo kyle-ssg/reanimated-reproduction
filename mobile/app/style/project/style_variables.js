@@ -2,7 +2,7 @@ require("../base/style_pxToEm");
 
 export const projectPalette = (global.palette = {
   bodyBackground: "#fff", // General app  background (overriding palette in base/stylevariables)
-  danger: "#fe4948"
+  danger: "#fe4948",
 });
 
 export const projectStyles = (global.styleVariables = {
@@ -16,5 +16,5 @@ export const projectStyles = (global.styleVariables = {
   boldFontFamily: Platform.select({ ios: "System", android: "System" }),
   buttonFontFamily: Platform.select({ ios: "System", android: "System" }),
 
-  ...require("./style_platform_variables")
+  ...require("./style_platform_variables"),
 });

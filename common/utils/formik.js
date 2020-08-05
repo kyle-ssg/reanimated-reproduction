@@ -25,5 +25,5 @@ export const formikPropTypes = {
   touched: propTypes.object.isRequired,
   values: propTypes.object.isRequired,
   validateForm: propTypes.func.isRequired,
-  validateField: propTypes.func.isRequired
+  validateField: propTypes.func.isRequired,
 };

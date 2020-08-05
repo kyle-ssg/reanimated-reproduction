@@ -10,7 +10,7 @@ const _propTypes = {
   /** The element's class name */
   className: propTypes.string,
   /** Whether to space children apart */
-  space: propTypes.bool
+  space: propTypes.bool,
 };
 
 /**
@@ -23,21 +23,21 @@ export class Row extends PureComponent {
 
   render() {
     const {
-      props: { className, space, children, ...rest }
+      props: { className, space, children, ...rest },
     } = this;
     return (
-        <div
-          {...rest}
-          className={cn(
+      <div
+        {...rest}
+        className={cn(
           {
             "flex-row": true,
-            space
+            space,
           },
           className
         )}
       >
-            {children}
-        </div>
+        {children}
+      </div>
     );
   }
 }

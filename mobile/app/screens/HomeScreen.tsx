@@ -7,7 +7,7 @@ type ComponentType = Screen & {};
 
 class HomeScreen extends Component<ComponentType, { modalVisible: boolean }> {
   state = {
-    modalVisible: false
+    modalVisible: false,
   };
 
   constructor(props) {
@@ -20,11 +20,11 @@ class HomeScreen extends Component<ComponentType, { modalVisible: boolean }> {
 
   render() {
     return (
-        <>
-            <Flex style={Styles.body}>
-                <Button onPress={this.goGeneric}>Go to a generic page</Button>
-            </Flex>
-        </>
+      <>
+        <Flex style={Styles.body}>
+          <Button onPress={this.goGeneric}>Go to a generic page</Button>
+        </Flex>
+      </>
     );
   }
 }

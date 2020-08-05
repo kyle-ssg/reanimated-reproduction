@@ -2,7 +2,7 @@ import React, {
   FunctionComponent,
   ReactNode,
   useEffect,
-  useState
+  useState,
 } from "react"; // we need this to make JSX compile
 import { connect } from "react-redux";
 // eslint-disable-next-line no-unused-vars
@@ -24,21 +24,18 @@ const VisibleForScreens: FunctionComponent<ComponentType> = ({
   activeScreen,
   style,
   target,
-  navigator = "root"
+  navigator = "root",
 }) => {
   const [isActive, setIsActive] = useState<boolean>(false);
-  useEffect(
-    () => {
-      if (activeScreen) {
-        setIsActive(target.includes(activeScreen[navigator]));
-      }
-    },
-    [activeScreen, activeScreen]
-  );
+  useEffect(() => {
+    if (activeScreen) {
+      setIsActive(target.includes(activeScreen[navigator]));
+    }
+  }, [activeScreen, activeScreen]);
   return (
-      <Fade style={style} value={isActive}>
-          {children}
-      </Fade>
+    <Fade style={style} value={isActive}>
+      {children}
+    </Fade>
   );
 };
 

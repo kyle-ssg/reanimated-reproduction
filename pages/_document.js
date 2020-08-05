@@ -15,13 +15,13 @@ class MyDocument extends Document {
 
   render() {
     return (
-        <html lang={this.props.locale}>
-            <Head />
-            <body>
-                <Main />
-                <NextScript />
-            </body>
-        </html>
+      <html lang={this.props.locale}>
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </html>
     );
   }
 }

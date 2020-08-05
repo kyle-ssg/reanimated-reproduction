@@ -15,22 +15,22 @@ const Message = class extends React.Component {
       "toast-message": true,
       "alert alert-warning fade": true,
       "in show": !this.props.isRemoving,
-      "removing out": this.props.isRemoving
+      "removing out": this.props.isRemoving,
     });
 
     return (
-        <div className={className}>
-            <a onClick={this.props.remove} className="float-right">
-                <span className="icon ion-md-close" />
-            </a>
-            {this.props.children}
-        </div>
+      <div className={className}>
+        <a onClick={this.props.remove} className="float-right">
+          <span className="icon ion-md-close" />
+        </a>
+        {this.props.children}
+      </div>
     );
   }
 };
 
 Message.defaultProps = {
-  expiry: 5000
+  expiry: 5000,
 };
 
 Message.propTypes = {
@@ -38,7 +38,7 @@ Message.propTypes = {
   expiry: propTypes.number,
   content: propTypes.node,
   remove: propTypes.func,
-  isRemoving: propTypes.bool
+  isRemoving: propTypes.bool,
 };
 
 const Toast = class extends React.Component {
@@ -60,7 +60,7 @@ const Toast = class extends React.Component {
     }
   };
 
-  remove = id => {
+  remove = (id) => {
     const index = _.findIndex(this.state.messages, { id });
     const messages = this.state.messages;
 
@@ -78,18 +78,18 @@ const Toast = class extends React.Component {
 
   render() {
     return (
-        <div className="toast-messages">
-            {this.state.messages.map(message => (
-                <Message
-                  key={message.id}
-                  isRemoving={message.isRemoving}
-                  remove={() => this.remove(message.id)}
-                  expiry={message.expiry}
-                >
-                    {message.content}
-                </Message>
+      <div className="toast-messages">
+        {this.state.messages.map((message) => (
+          <Message
+            key={message.id}
+            isRemoving={message.isRemoving}
+            remove={() => this.remove(message.id)}
+            expiry={message.expiry}
+          >
+            {message.content}
+          </Message>
         ))}
-        </div>
+      </div>
     );
   }
 };

@@ -21,7 +21,7 @@ global.palette = {
   textLight: "rgb(174,174,178)",
   iconFaint: "rgb(229,229,234)",
   text: "rgb(28,28,30)",
-  ...global.palette
+  ...global.palette,
 };
 
 //= = Other Variables
@@ -31,13 +31,13 @@ export const styleVariables = (global.styleVariables = {
     ...(initialWindowMetrics.insets || {}),
     bottom: Platform.select({
       android: initialWindowMetrics?.insets.bottom - bottomNavBarH,
-      ios: initialWindowMetrics?.insets.bottom
+      ios: initialWindowMetrics?.insets.bottom,
     }),
     top: Platform.select({
       // android: initialWindowMetrics.insets.top  - StatusBar.currentHeight, // if you don't use a transparent status bar the height gets included
       android: initialWindowMetrics?.insets.top,
-      ios: initialWindowMetrics?.insets.top
-    })
+      ios: initialWindowMetrics?.insets.top,
+    }),
   },
 
   //= = Typography
@@ -73,7 +73,7 @@ export const styleVariables = (global.styleVariables = {
   boldFontFamily: Platform.select({ ios: "System", android: "System" }),
   buttonFontFamily: Platform.select({ ios: "System", android: "System" }),
 
-  ...global.styleVariables
+  ...global.styleVariables,
 });
 
 global.colour = {
@@ -130,5 +130,5 @@ global.colour = {
   facebook: "#3b5998",
   twitter: "#1DA1F3",
   google: "#dd4b39",
-  ...global.colour
+  ...global.colour,
 };

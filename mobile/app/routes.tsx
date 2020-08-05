@@ -19,34 +19,34 @@ export interface IRoute {
 export const routes: Record<RouteUrls, IRoute> = {
   [RouteUrls.home]: {
     options: {
-      title: "Home"
+      title: "Home",
     },
-    component: HomeScreen
+    component: HomeScreen,
   },
   [RouteUrls.generic]: {
     options: {
-      title: "About"
+      title: "About",
     },
-    component: GenericScreen
+    component: GenericScreen,
   },
   [RouteUrls.tabs]: {
     options: {
-      headerShown: false
+      headerShown: false,
     },
-    component: TabLayout
+    component: TabLayout,
   },
   [RouteUrls.stack]: {
     options: {
-      headerShown: false
+      headerShown: false,
     },
-    component: StackScreen
+    component: StackScreen,
   },
   [RouteUrls.storybook]: {
     options: {
-      headerShown: false
+      headerShown: false,
     },
-    component: StorybookUIRoot
-  }
+    component: StorybookUIRoot,
+  },
 };
 
 export const withModalOptions = (
@@ -58,15 +58,15 @@ export const withModalOptions = (
   headerHideBackButton: true,
   headerRight: function HeaderRight(props: any) {
     return (
-        <ButtonNav onPress={() => navigation.pop()}>
-            <ION
-              style={{
+      <ButtonNav onPress={() => navigation.pop()}>
+        <ION
+          style={{
             color: props.tintColor,
-            fontSize: styleVariables.fontSizeH1
+            fontSize: styleVariables.fontSizeH1,
           }}
-              name="ios-close"
+          name="ios-close"
         />
-        </ButtonNav>
+      </ButtonNav>
     );
-  }
+  },
 });

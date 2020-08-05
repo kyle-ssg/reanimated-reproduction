@@ -3679,5 +3679,5 @@ declare enum IONName {
   "md-wine-sharp",
   "md-woman",
   "md-woman-outline",
-  "md-woman-sharp" = 62922
+  "md-woman-sharp" = 62922,
 }

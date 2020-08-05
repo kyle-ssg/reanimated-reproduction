@@ -11,13 +11,13 @@ const ListItem = class extends Component {
     icon: propTypes.node,
     children: propTypes.oneOfType([
       propTypes.arrayOf(propTypes.node),
-      propTypes.node
+      propTypes.node,
     ]).isRequired,
     delay: propTypes.number,
     index: propTypes.number,
     onPress: propTypes.func,
     style: propTypes.any,
-    disabled: propTypes.bool
+    disabled: propTypes.bool,
   };
 
   constructor(props) {
@@ -27,52 +27,52 @@ const ListItem = class extends Component {
 
   render() {
     const content = (
-        <View style={[Styles.ph5, this.props.style]}>
-            <Row>
-                {this.props.icon}
-                <View
-                  style={[
+      <View style={[Styles.ph5, this.props.style]}>
+        <Row>
+          {this.props.icon}
+          <View
+            style={[
               this.props.disabled && Styles.listItemDisabled,
               Styles.liContent,
-              { backgroundColor: "transparent" }
+              { backgroundColor: "transparent" },
             ]}
-                >
-                    {this.props.children}
-                </View>
-            </Row>
-        </View>
+          >
+            {this.props.children}
+          </View>
+        </Row>
+      </View>
     );
 
     return this.props.onPress ? (
-        <View style={this.props.style || Styles.listItem}>
-            {Platform.OS === "android" ? (
-                <TouchableNativeFeedback
-                  accessible={this.props.accessible}
-                  accessibilityLabel={this.props.accessibilityLabel}
-                  onPress={this.props.disabled ? null : this.props.onPress}
-                  background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
-                >
-                    {content}
-                </TouchableNativeFeedback>
+      <View style={this.props.style || Styles.listItem}>
+        {Platform.OS === "android" ? (
+          <TouchableNativeFeedback
+            accessible={this.props.accessible}
+            accessibilityLabel={this.props.accessibilityLabel}
+            onPress={this.props.disabled ? null : this.props.onPress}
+            background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
+          >
+            {content}
+          </TouchableNativeFeedback>
         ) : (
-            <TouchableOpacity
-              accessible={this.props.accessible}
-              accessibilityLabel={this.props.accessibilityLabel}
-              activeOpacity={0.8}
-              onPress={this.props.disabled ? null : this.props.onPress}
-            >
-                {content}
-            </TouchableOpacity>
+          <TouchableOpacity
+            accessible={this.props.accessible}
+            accessibilityLabel={this.props.accessibilityLabel}
+            activeOpacity={0.8}
+            onPress={this.props.disabled ? null : this.props.onPress}
+          >
+            {content}
+          </TouchableOpacity>
         )}
-        </View>
+      </View>
     ) : (
-        <View style={[this.props.style || Styles.listItem]}>{content}</View>
+      <View style={[this.props.style || Styles.listItem]}>{content}</View>
     );
   }
 };
 ListItem.defaultProps = {
   onPress: null,
-  delay: 0
+  delay: 0,
 };
 
 module.exports = ListItem;

@@ -5,19 +5,19 @@ export default class ErrorMessage extends Component {
   static displayName = "ErrorMessage";
 
   static propTypes = {
-    children: propTypes.node
+    children: propTypes.node,
   };
 
   render() {
     const { props } = this;
     return (
-        <View style={styles.container}>
-            <Text style={styles.ErrorMessageText}>
-                {typeof props.children === "string"
+      <View style={styles.container}>
+        <Text style={styles.ErrorMessageText}>
+          {typeof props.children === "string"
             ? props.children
             : "Error processing request"}
-            </Text>
-        </View>
+        </Text>
+      </View>
     );
   }
 }
@@ -27,16 +27,16 @@ const styles = ReactNative.StyleSheet.create({
   errorIcon: {
     fontSize: 18,
     marginBottom: 2,
-    color: palette.danger
+    color: palette.danger,
   },
 
   ErrorMessageText: {
     color: palette.danger,
-    textAlign: "center"
+    textAlign: "center",
   },
   text: {
-    color: colour.third
-  }
+    color: colour.third,
+  },
 });
 
 module.exports = ErrorMessage;

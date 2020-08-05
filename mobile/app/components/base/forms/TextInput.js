@@ -10,9 +10,9 @@ const textInputPropTypes = {
   onBlur: propTypes.func,
   title: propTypes.oneOfType([
     propTypes.arrayOf(propTypes.node),
-    propTypes.node
+    propTypes.node,
   ]).isRequired,
-  style: propTypes.any
+  style: propTypes.any,
 };
 
 const TextInput = class extends Component {
@@ -42,13 +42,13 @@ const TextInput = class extends Component {
     }
   };
 
-  onBlur = e => {
+  onBlur = (e) => {
     if (this.props.onBlur) {
       this.props.onBlur(e);
     }
   };
 
-  onChangeText = text => {
+  onChangeText = (text) => {
     if (!this.props.onChangeText) {
       return;
     }
@@ -58,25 +58,25 @@ const TextInput = class extends Component {
   render() {
     // If you wanted animated shadows
     return (
-        <>
-            {this.props.title && (
-            <FormGroup>
-                <Text style={Styles.inputLabel}>{this.props.title}</Text>
-            </FormGroup>
-            )}
-            <ReactNative.TextInput
-              {...this.props}
-              onFocus={this.onFocus}
-              editable={!this.props.disabled}
-              onBlur={this.onBlur}
-              onChangeText={this.onChangeText}
-              style={[Styles.textInput, Styles.textInputAndroid, this.props.style]}
-              value={this.props.value}
-              testID={this.props.testID}
-              ref={ref => (this.inputRef = ref)}
-              blurOnSubmit={Platform.OS === "ios" && !this.props.multiline}
-            />
-        </>
+      <>
+        {this.props.title && (
+          <FormGroup>
+            <Text style={Styles.inputLabel}>{this.props.title}</Text>
+          </FormGroup>
+        )}
+        <ReactNative.TextInput
+          {...this.props}
+          onFocus={this.onFocus}
+          editable={!this.props.disabled}
+          onBlur={this.onBlur}
+          onChangeText={this.onChangeText}
+          style={[Styles.textInput, Styles.textInputAndroid, this.props.style]}
+          value={this.props.value}
+          testID={this.props.testID}
+          ref={(ref) => (this.inputRef = ref)}
+          blurOnSubmit={Platform.OS === "ios" && !this.props.multiline}
+        />
+      </>
     );
   }
 };
@@ -99,7 +99,7 @@ TextInput.propTypes = {
   onSubmit: propTypes.func,
   onFocus: propTypes.func,
   textStyle: propTypes.any,
-  testID: propTypes.string
+  testID: propTypes.string,
 };
 
 // const styles = ReactNative.StyleSheet.create({
@@ -107,7 +107,7 @@ TextInput.propTypes = {
 // });
 
 export default TextInput;
-export const FlatInput = props => (
-    <TextInput {...props} style={[Styles.flatInput, props.style]} />
+export const FlatInput = (props) => (
+  <TextInput {...props} style={[Styles.flatInput, props.style]} />
 );
 FlatInput.propTypes = textInputPropTypes;
