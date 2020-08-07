@@ -1,4 +1,5 @@
 // Anything that web has that's common, import here
+import propTypes from "prop-types";
 import moment from "moment";
 
 // Lodash
@@ -13,6 +14,7 @@ import cloneDeep from "lodash/cloneDeep";
 import findIndex from "lodash/findIndex";
 import range from "lodash/range";
 import keyBy from "lodash/keyBy";
+import get from "lodash/get";
 
 global.moment = moment;
 global._ = {
@@ -27,4 +29,6 @@ global._ = {
   map,
   cloneDeep,
   keyBy,
+  get,
 };
+global.propTypes = propTypes;
