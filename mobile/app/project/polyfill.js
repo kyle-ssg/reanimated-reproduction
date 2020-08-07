@@ -1,5 +1,5 @@
 // Anything that web has that's common, import here
-import PropTypes from "prop-types";
+import propTypes from "prop-types";
 import moment from "moment";
 
 // Lodash
