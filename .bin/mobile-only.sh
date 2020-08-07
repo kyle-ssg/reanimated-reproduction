@@ -13,6 +13,7 @@ rm -rf styles
 rm -rf tests
 rm -rf types
 rm .nowignore
+mv ./bin/.eslintrc ./eslintrc
 mv .eslintrc.js ./mobile/.eslintrc.js
 rm ./babel.config.js
 rm ./jest.config.js
