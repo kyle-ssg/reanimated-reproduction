@@ -1,56 +1,78 @@
-import React, { useRef } from "react";
-import { FunctionComponent } from "react";
-import Animated from "react-native-reanimated";
-import { timing } from "react-native-redash";
-import { Modal } from "react-native";
-import { easingConfigModal } from "../project/reanimations";
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
+import { Modal } from 'react-native';
+import Animated, {
+  and,
+  block,
+  cond,
+  not,
+  set,
+  useCode,
+  useValue,
+  Value,
+  Easing, startClock, clockRunning, call, stopClock,
+} from 'react-native-reanimated';
+import { timing, useClock, useConst } from 'react-native-redash';
+
 
 export type ModalType = {
   animatedValue?: Animated.Value<number>;
-  dark?: boolean;
   visible: boolean;
-  fadeContent?: boolean;
   style: ReactNative.ViewStyle;
   onDismissPress?: () => void;
 };
 
+
 const CustomModal: FunctionComponent<ModalType> = ({
   animatedValue: _animatedValue,
-  dark,
   style,
   onDismissPress,
   visible,
   children,
-  fadeContent = true,
-}) => {
-  const animatedValue =
-    _animatedValue || useRef(_animatedValue || new Animated.Value(0)).current;
-  const shouldAnimate = !_animatedValue;
-  if (shouldAnimate) {
-    Animated.useCode(() => {
-      return Animated.set(
-        animatedValue,
-        timing({
-          ...easingConfigModal,
-          from: visible ? 0 : 1,
-          to: visible ? 1 : 0,
-        })
-      );
-    }, [visible]);
+
+})=> {
+  const [modalVisible,setModalVisible]= useState<boolean>(false);
+  const $clock = useClock();
+  const $on = useValue<number>(visible?1:0);
+  const $animation = useValue<number>(0);
+
+  useEffect(()=>{
+    if(visible) {
+      setModalVisible(true);
+    }
+    $on.setValue(visible?1:0);
+  },[$on, visible]);
+
+  const onComplete = function([newValue]: readonly number[]) {
+    if (newValue === 0) {
+      setModalVisible(false)
+    }
   }
 
+  useCode(()=>(
+    block([
+      set($animation, timing({
+        from: $animation,
+        clock:$clock,
+        duration: 300,
+        easing: Easing.ease,
+        to:$on
+      })),
+      cond(
+        not(clockRunning($clock)),
+        block([
+          call([$animation],onComplete)
+        ])
+      )
+    ])
+
+  ), [$animation, $clock]);
   return (
-      <Modal visible={!!visible} transparent={true} statusBarTranslucent={true}>
-          <Animated.View
-            style={[
-          style,
-          dark ? styles.darkBackdrop : styles.lightBackdrop,
-          {
-            opacity: animatedValue,
-          },
-        ]}
-          >
-              {fadeContent && (
+      <Modal
+        visible={modalVisible}
+        transparent={true}
+        statusBarTranslucent={true}
+      >
+          <Animated.View style={[style, styles.backdrop, { opacity: $animation, }]} >
               <>
                   <TouchableOpacity
                     onPress={onDismissPress}
@@ -59,37 +81,18 @@ const CustomModal: FunctionComponent<ModalType> = ({
                   />
                   {children}
               </>
-        )}
           </Animated.View>
-          {!fadeContent && (
-          <View style={[styles.childrenContainer, style]}>
-              <TouchableOpacity
-                onPress={onDismissPress}
-                activeOpacity={1}
-                style={ReactNative.StyleSheet.absoluteFill}
-              />
-              {children}
-          </View>
-      )}
       </Modal>
-  );
-};
+  )
 
-export { CustomModal };
+}
 
-export const styles = ReactNative.StyleSheet.create({
-  parentContainer: {
+const styles = ReactNative.StyleSheet.create({
+  backdrop: {
     ...ReactNative.StyleSheet.absoluteFillObject,
-  },
-  lightBackdrop: {
-    ...ReactNative.StyleSheet.absoluteFillObject,
-    backgroundColor: palette.lightBackdrop,
-  },
-  darkBackdrop: {
-    ...ReactNative.StyleSheet.absoluteFillObject,
-    backgroundColor: palette.darkBackdrop,
-  },
-  childrenContainer: {
-    ...ReactNative.StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(0,0,0,0.25)",
   },
 });
+
+
+export default CustomModal;

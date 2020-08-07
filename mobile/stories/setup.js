@@ -73,7 +73,6 @@ export const withNavbarWrapper = (story) => (
 export const getStory = (name) =>
   storiesOf(name, module)
     .addDecorator(withKnobs)
-    .addDecorator(withSafeArea)
     .addDecorator(withProvider);
 
 export default StorybookUIRoot;

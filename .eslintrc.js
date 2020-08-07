@@ -43,6 +43,7 @@ module.exports = {
     "object-curly-spacing": ["error", "always"],
     radix: 0,
     "react/prop-types": "off",
+    "react-hooks/exhaustive-deps": 'error',
     "@typescript-eslint/indent": [
       "error",
       2,

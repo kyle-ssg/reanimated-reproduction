@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, {   useCallback, FunctionComponent, useEffect, useState } from "react";
 import Animated, {
   add,
   cond,
@@ -7,7 +7,6 @@ import Animated, {
   interpolate,
   set,
   useCode,
-  useCallback,
   and,
 } from "react-native-reanimated";
 import { PanGestureHandler, State } from "react-native-gesture-handler";
@@ -44,7 +43,9 @@ const BottomDrawer: FunctionComponent<ComponentType> = ({
   useEffect(() => {
     setModalVisible(visible);
   }, [visible]);
-  const onDismiss = useCallback;
+  const onDismiss = useCallback(()=>{
+
+  },[]);
   const snapPoints = useConst([0, height]);
   const {
     state,
