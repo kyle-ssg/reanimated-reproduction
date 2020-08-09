@@ -6,14 +6,19 @@ export type AnimationConfigType = {
 };
 
 export const easingConfigDrawerIn: AnimationConfigType = {
-  duration: 250,
-  easing: Easing.ease,
+  duration: 300,
+  easing: Easing.bezier(0.25, 0.1, 0.25, 1) //Easing.ease
 };
 
 export const easingConfigDrawerOut: AnimationConfigType = {
-  duration: 250,
-  easing: Easing.out(Easing.ease),
+  duration: 300,
+  easing: Easing.bezier(0.25, 0.1, 0.25, 1) //Easing.ease
 };
+
+export const easingConfigSlide: AnimationConfigType = {
+  duration: 250,
+  easing: Easing.bezier(0.25, 0.1, 0.25, 1) //Easing.ease
+}
 
 export const easingConfigModal: AnimationConfigType = {
   duration: 300,

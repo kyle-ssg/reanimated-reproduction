@@ -31,7 +31,7 @@ const VisibleForScreens: FunctionComponent<ComponentType> = ({
     if (activeScreen) {
       setIsActive(target.includes(activeScreen[navigator]));
     }
-  }, [activeScreen, activeScreen]);
+  }, [activeScreen, navigator, target]);
   return (
       <Fade style={style} value={isActive}>
           {children}

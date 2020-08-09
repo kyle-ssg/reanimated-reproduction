@@ -2,7 +2,7 @@
  * Created by kylejohnson on 09/01/2016.
  * __deprecated__, copy existing logic to components you wish to animate
  */
-import { Animated, Easing } from "react-native";
+import { Animated, Easing } from 'react-native';
 
 module.exports = {
   getDefaultProps() {
@@ -13,14 +13,14 @@ module.exports = {
       tension: 20,
       easing: Easing.inOut(Easing.ease),
       easingOut: Easing.linear(Easing.ease),
-      animatedProps: ["value"],
+      animatedProps: ['value'],
     };
   },
   getInitialState() {
     const props = {};
     _.each(this.props.animatedProps, (prop) => {
       props[`animated_${prop}`] = new Animated.Value(
-        this.props[prop] && !this.props.autostart ? 1 : 0
+        this.props[prop] && !this.props.autostart ? 1 : 0,
       );
     });
     return props;
@@ -41,7 +41,7 @@ module.exports = {
               duration: this.props.duration,
               friction: this.props.friction,
               tension: this.props.tension,
-            }
+            },
           )
           .start();
       });
@@ -66,7 +66,7 @@ module.exports = {
               duration: newProps.duration,
               friction: newProps.friction,
               tension: newProps.tension,
-            }
+            },
           )
           .start();
       }

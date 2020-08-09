@@ -1,9 +1,7 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
-const style: Record<
-string,
-ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
-> = {
+const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
+
   listContainer: {
     flex: 1,
     backgroundColor: colour.listBackground,
@@ -11,13 +9,13 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 
   insetList: {
     padding: styleVariables.paddingBase,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
   },
 
   listItem: {
     minHeight: 44,
-    alignItems: "stretch",
-    alignSelf: "stretch",
+    alignItems: 'stretch',
+    alignSelf: 'stretch',
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: colour.divider,
     backgroundColor: colour.listBackground,
@@ -40,14 +38,14 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 
   liContent: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 
   listItemText: {
     color: palette.textLight,
-    fontWeight: styleVariables.normalFontWeight,
+    fontWeight: styleVariables.normalFontWeight
   },
 
   listIcon: {
@@ -61,10 +59,12 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
     color: palette.iconFaint,
   },
 
-  listItemTitle: {},
+  listItemTitle: {
+    marginBottom:3,
+  },
 
   listHeaderText: {
-    color: "#fff",
+    color: '#fff',
   },
 
   indentListItem: {

@@ -1,9 +1,6 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
-const style: Record<
-string,
-ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
-> = {
+const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
   //
   // Forms
   // --------------------------------------------------
@@ -21,7 +18,7 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   },
 
   inputContainer: {
-    justifyContent: "center",
+    justifyContent: 'center',
   },
 
   inputLarge: {
@@ -47,11 +44,12 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   },
 
   radio: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     marginRight: 5,
     borderWidth: StyleSheet.hairlineWidth,
   },
+
 
   // adherium
 
@@ -65,7 +63,7 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   },
 
   inputLabel: {
-    color: palette.primary,
+    color: palette.navy,
     fontSize: 16,
   },
 
@@ -80,19 +78,19 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   },
 
   inputAppendContainer: {
-    position: "relative",
+    position: 'relative',
   },
 
   inputAppend: {
-    position: "absolute",
+    position: 'absolute',
     zIndex: 1,
     left: 0,
     top: 0,
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
     height: 54,
     width: 54,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   inputIndent: {
@@ -103,12 +101,12 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
     padding: 10,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: "#eaeaea",
+    borderColor: '#eaeaea',
   },
 
-  selectBoxIcon: {},
+  selectBoxIcon: {
 
-  selectBoxText: {},
+  },
 };
 
 module.exports = style;

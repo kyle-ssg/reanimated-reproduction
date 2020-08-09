@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import Tabs from "../../app/components/Tabs";
+import React, { Component } from 'react';
+import Tabs from 'components/extras/Tabs';
 
 export default class extends Component {
-  static displayName = "TheComponent";
+  static displayName = 'TheComponent';
 
   constructor(props, context) {
     super(props, context);
@@ -16,37 +16,34 @@ export default class extends Component {
     const label = `Tab ${i}`;
     return (
         <Flex>
-            <Text>{label}</Text>
+            <Text>
+                {label}
+            </Text>
         </Flex>
     );
-  };
+  }
+
 
   render() {
-    const {
-      state: { activeButton },
-    } = this;
+    const { state: { activeButton } } = this;
     return (
         <Tabs
           scrollEnabled={this.props.scrollEnabled}
           lazy
           tabBarStyle={{
-          backgroundColor: palette.primary,
-        }}
+                  backgroundColor: palette.primary,
+              }}
           labelStyle={{
-          textAlign: "center",
-          color: "white",
-        }}
+                  textAlign: 'center',
+                  color: 'white',
+              }}
           indicatorStyle={{
-          backgroundColor: "white",
-        }}
+                  backgroundColor: 'white',
+              }}
           navigationState={{
-          index: activeButton || 0,
-          routes: [1, 2, 3].map((i) => ({
-            title: `Tab ${i}`,
-            key: i,
-            data: { i },
-          })),
-        }}
+                  index: activeButton || 0,
+                  routes: [1, 2, 3].map((i) => ({ title: `Tab ${i}`, key: i, data: { i } })),
+              }}
           onIndexChange={this.onTabChange}
           renderScene={this.renderScene}
         />

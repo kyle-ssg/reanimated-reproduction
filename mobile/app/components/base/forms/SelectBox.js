@@ -11,7 +11,7 @@ const SelectBox = class extends PureComponent {
     hideIcon: propTypes.bool,
     onPress: propTypes.func,
     textStyle: propTypes.object,
-    containerStyle: propTypes.object,
+    containerStyle: propTypes.any,
     iconStyle: propTypes.object,
     children: propTypes.any,
     options: propTypes.array,
@@ -38,10 +38,11 @@ const SelectBox = class extends PureComponent {
       iconStyle,
       hideIcon,
       children,
+      style,
       title,
     } = this.props;
     return (
-        <View style={{ opacity: disabled ? 0.5 : 1 }}>
+        <View style={[{ opacity: disabled ? 0.5 : 1 }, style]}>
             {!!title && (
             <FormGroup>
                 <Text style={Styles.inputLabel}>{this.props.title}</Text>

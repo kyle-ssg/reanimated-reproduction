@@ -1,0 +1,50 @@
+diff --git a/node_modules/react-native-redash/src/AnimationRunners.ts b/node_modules/react-native-redash/src/AnimationRunners.ts
+index f84d384..93fd17a 100644
+--- a/node_modules/react-native-redash/src/AnimationRunners.ts
++++ b/node_modules/react-native-redash/src/AnimationRunners.ts
+@@ -51,12 +51,12 @@ interface DecayAnimation {
+ type Animation = SpringAnimation | DecayAnimation | TimingAnimation;
+ 
+ const animate = <T extends Animation>({
+-  fn,
+-  clock,
+-  state,
+-  config,
+-  from,
+-}: AnimateParams<T["state"], T["config"]>) =>
++                                        fn,
++                                        clock,
++                                        state,
++                                        config,
++                                        from,
++                                      }: AnimateParams<T["state"], T["config"]>) =>
+   block([
+     cond(not(clockRunning(clock)), [
+       set(state.finished, 0),
+@@ -73,7 +73,11 @@ export interface TimingParams {
+   clock?: Animated.Clock;
+   from?: Animated.Adaptable<number>;
+   to?: Animated.Adaptable<number>;
++  finished?: Animated.Value<number>;
++  time?: Animated.Value<number>;
+   duration?: Animated.Adaptable<number>;
++  position?: Animated.Value<number>;
++  frameTime?: Animated.Value<number>;
+   easing?: Animated.EasingFunction;
+ }
+ 
+@@ -88,10 +92,10 @@ export const timing = (params: TimingParams) => {
+   };
+ 
+   const state: Animated.TimingState = {
+-    finished: new Value(0),
+-    position: new Value(0),
+-    time: new Value(0),
+-    frameTime: new Value(0),
++    finished: params.finished||new Value(0),
++    position: params.position||new Value(0),
++    time: params.time||new Value(0),
++    frameTime: params.frameTime||new Value(0),
+   };
+ 
+   const config = {

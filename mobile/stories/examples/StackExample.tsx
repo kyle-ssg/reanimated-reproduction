@@ -1,79 +1,67 @@
-import React, { Component } from "react";
-import { Provider } from "react-redux";
-import { FlatList } from "react-native";
-import store from "common/store";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "react-native-screens/native-stack";
-import defaultNavigationOptions from "../../app/style/style_navs";
-import { RouteUrls } from "../../app/route-urls";
-import withScreen, { Screen } from "screens/withScreen";
-import { ButtonSecondary } from "components/base/forms/Button";
-import { routes } from "../../app/routes";
-import { FocusAwareStatusBar } from "components/utility-components/FocusAwareStatusBar";
+import React, { Component } from 'react';
+import { enableScreens } from 'react-native-screens';
+import { Provider } from 'react-redux';
+import { StatusBar, Animated, FlatList } from 'react-native';
+import store from 'common/store';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from 'react-native-screens/native-stack';
+import defaultNavigationOptions from '../../app/style/style_navs';
+import { RouteUrls } from '../../app/route-urls';
+import withScreen, { Screen } from '../../app/screens/withScreen';
+import { ButtonSecondary } from '../../app/components/base/forms/Button';
+import { routes } from '../../app/routes';
 
 const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;
 
+
 type ComponentType = Screen & {
   text: string;
-  style: ReactNative.ViewStyle;
-};
+  style: ReactNative.ViewStyle,
+}
 
 class _GenericScreen extends Component<ComponentType> {
-  state = {};
-  goScreen = (url: RouteUrls) => {
-    this.props.push(url, {
+  state = {}
+  goScreen = (url:RouteUrls)=> {
+    this.props.push(url,{
       screenOptions: {
-        headerShown: true,
-      },
-    });
-  };
-  goModal = (url: RouteUrls) => {
-    this.props.push(url, {
-      statusBar: {
-        backgroundColor: "red",
-        barStyle: "light-content",
-        animated: true,
-      },
-      screenOptions: {
-        stackPresentation: "modal",
-      },
-    });
-  };
+        headerShown: true
+      }
+    })
+  }
+  goModal = (url:RouteUrls)=> {
+    this.props.push(url,{ screenOptions:{
+      stackPresentation:"modal"
+    } })
+  }
   render() {
-    return (
-      this.props.children || (
-      <Flex style={Styles.body}>
-          <FocusAwareStatusBar barStyle="dark-content" animated={true} />
-          <FlatList
-            keyExtractor={(item) => item}
-            style={{ padding: 20, flex: 1 }}
-            data={Object.values(RouteUrls)}
-            renderItem={({ item }) =>
-              item !== "/storybook" && (
-              <View key={item}>
-                  <H3>{item}</H3>
-                  <Button onPress={() => this.goScreen(item)}>Push</Button>
-                  <ButtonSecondary onPress={() => this.goModal(item)}>
-                      Modal
-                  </ButtonSecondary>
-              </View>
-              )
-            }
-          />
-      </Flex>
-      )
-    );
+    return this.props.children || <Flex style={Styles.body}>
+        <FlatList
+          keyExtractor={(item)=>item}
+          style={{ padding:20, flex:1 }} data={Object.values(RouteUrls)} renderItem={({ item })=> item !== "/storybook" && (
+          <View key={item}>
+              <H3>{item}</H3>
+              <ButtonPrimary onPress={()=>this.goScreen(item)}>
+                  Push
+              </ButtonPrimary>
+              <Button onPress={()=>this.goModal(item)}>
+                  Modal
+              </Button>
+          </View>
+            )}
+        />
+
+    </Flex>
   }
 }
 
-const GenericScreen = withScreen(_GenericScreen);
+const GenericScreen = withScreen(_GenericScreen)
 
 class StackExample extends Component {
-  static displayName = "TheComponent";
+  static displayName = 'TheComponent';
   state = {
-    name: new Date().valueOf() + "",
-  };
+    name: new Date().valueOf() + ""
+  }
   static propTypes = {};
 
   render() {
@@ -81,26 +69,27 @@ class StackExample extends Component {
     return (
         <>
             <Provider store={store()}>
+                <StatusBar backgroundColor="transparent" translucent barStyle="dark-content"/>
                 <>
                     <NavigationContainer independent>
-                        <Navigator
-                          screenOptions={defaultNavigationOptions}
-                          initialRouteName="1"
-                        >
+                        <Navigator screenOptions={defaultNavigationOptions} initialRouteName="1">
                             <Stack.Screen
                               name={"1"}
-                              options={{}}
+                              options={{  }}
                               component={GenericScreen}
                             />
-                            {Object.values(RouteUrls).map((v) => (
-                                <Stack.Screen
-                                  key={v}
-                                  name={v}
-                                  options={routes[v].options}
-                                  component={routes[v].component}
-                                />
-                ))}
+                            {
+                              Object.values(RouteUrls).map((v)=>(
+                                  <Stack.Screen
+                                    key={v}
+                                    name={v}
+                                    options={routes[v].options}
+                                    component={routes[v].component}
+                                  />
+                              ))
+                            }
                         </Navigator>
+
                     </NavigationContainer>
                 </>
             </Provider>

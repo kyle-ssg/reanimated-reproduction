@@ -112,7 +112,7 @@ global.API = {
     }
     return includePhotos
       ? new Promise((resolve) =>
-      // eslint-disable-next-line no-undef
+        // eslint-disable-next-line no-undef
         Contacts.getAll((error, contacts) =>
           resolve({
             error,
@@ -121,7 +121,7 @@ global.API = {
         )
       )
       : new Promise((resolve) =>
-      // eslint-disable-next-line no-undef
+        // eslint-disable-next-line no-undef
         Contacts.getAllWithoutPhotos((error, contacts) =>
           resolve({
             error,
@@ -169,7 +169,7 @@ global.API = {
   generateLink: (title, customMetadata) => {
     if (typeof branch === "undefined") {
       // eslint-disable-next-line
-            alert('You need to link react-native-branch to use this function');
+      alert('You need to link react-native-branch to use this function');
       return Promise.reject();
     }
     // eslint-disable-next-line no-undef
@@ -189,9 +189,9 @@ global.API = {
   },
   getInitialLink: (cb) => {
     // eslint-disable-next-line
-        initialLinkCb = cb;
+    initialLinkCb = cb;
     // eslint-disable-next-line
-        return initialLink ? cb(link) : null;
+    return initialLink ? cb(link) : null;
   },
 
   setStoredToken(val) {
@@ -216,13 +216,13 @@ global.API = {
 if (typeof branch !== "undefined") {
   let linkCb = null;
   // eslint-disable-next-line
-    var initialLinkCb = null;
+  var initialLinkCb = null;
   // eslint-disable-next-line
-    var link = null;
+  var link = null;
   // eslint-disable-next-line
-    var checkedInitialLink = null;
+  var checkedInitialLink = null;
   // eslint-disable-next-line
-    var initialLink = null;
+  var initialLink = null;
 
   API.onLink = (cb) => (linkCb = cb);
   // eslint-disable-next-line no-undef

@@ -15,8 +15,8 @@ describe.only('saga',()=>{
             token
           })
         )
-        .put({type:'LOGIN_LOADED', data:{user:{}}}) //Expected response
-        .put({type:'STARTUP_LOADED', data:{  ready: true, isOnline: true, token }})
+        .put({ type:'LOGIN_LOADED', data:{ user:{} } }) //Expected response
+        .put({ type:'STARTUP_LOADED', data:{  ready: true, isOnline: true, token } })
         .silentRun()
     })
     it('startup without token', ()=>{
@@ -24,19 +24,19 @@ describe.only('saga',()=>{
         .dispatch(
           AppActions.startup({})
         )
-        .put({type:'STARTUP_LOADED', data:{ ready: true, isOnline: true }})  //Expected response
+        .put({ type:'STARTUP_LOADED', data:{ ready: true, isOnline: true } })  //Expected response
         .silentRun();
     })
   })
   describe('login', ()=> {
     it('login', ()=> {
       const action = AppActions.login({ email:"kyle@bla.com" });
-      const APIResponse = mockRequest({a:1, email:"kyle@bla.com"});
+      const APIResponse = mockRequest({ a:1, email:"kyle@bla.com" });
       const identifySpy = jest.spyOn(API, 'identify');
 
       return sagaWithReducer(saga)
         .dispatch(action)  // Dispatch any actions that the saga will `take`.
-        .put({type:'LOGIN_LOADED', data:APIResponse}) // Assert that the `put` will eventually happen.
+        .put({ type:'LOGIN_LOADED', data:APIResponse }) // Assert that the `put` will eventually happen.
         .hasFinalState({  // Test reducer state
           userError: null,
           userLoading: false,

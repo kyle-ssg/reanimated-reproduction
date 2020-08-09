@@ -11,27 +11,55 @@ import StorybookUIRoot from "../stories/index";
 type functionComponent = (props: any) => React.ReactNode;
 
 export interface IRoute {
-  options?: Partial<NativeStackNavigationOptions>;
-  component: any;
-  params?: Record<string, any>;
+  options?: Partial<NativeStackNavigationOptions>,
+  component: any,
+  params?: Record<string, any>
 }
+
+export const withPushModalOptions = (base:Partial<NativeStackNavigationOptions>):NativeStackNavigationOptions => (
+  {
+    ...base,
+    headerShown:false,
+    stackPresentation:"modal",
+  }
+)
+
+export const withFullScreenPushModalOptions = (base:Partial<NativeStackNavigationOptions>):NativeStackNavigationOptions => (
+  {
+    ...base,
+    headerShown:false,
+    stackPresentation:"fullScreenModal",
+  }
+)
+
+export const withModalOptions = (base:Partial<NativeStackNavigationOptions>):NativeStackNavigationOptions => (
+  {
+    ...base,
+    hideBackButton:true,
+    headerHideBackButton: true,
+    headerRight: ModalCloseButton
+  }
+)
+
 // Contains default route config and components
 export const routes: Record<RouteUrls, IRoute> = {
   [RouteUrls.home]: {
     options: {
-      title: "Home",
+      title: 'Home',
     },
-    component: HomeScreen,
+    component: HomeScreen
   },
+
   [RouteUrls.generic]: {
     options: {
-      title: "About",
+      headerShown: false,
+      title: 'About',
     },
     component: GenericScreen,
   },
   [RouteUrls.tabs]: {
     options: {
-      headerShown: false,
+      headerShown: true,
     },
     component: TabLayout,
   },
@@ -48,25 +76,3 @@ export const routes: Record<RouteUrls, IRoute> = {
     component: StorybookUIRoot,
   },
 };
-
-export const withModalOptions = (
-  base: Partial<NativeStackNavigationOptions>,
-  navigation
-) => ({
-  ...base,
-  hideBackButton: true,
-  headerHideBackButton: true,
-  headerRight: function HeaderRight(props: any) {
-    return (
-        <ButtonNav onPress={() => navigation.pop()}>
-            <ION
-              style={{
-            color: props.tintColor,
-            fontSize: styleVariables.fontSizeH1,
-          }}
-              name="ios-close"
-            />
-        </ButtonNav>
-    );
-  },
-});

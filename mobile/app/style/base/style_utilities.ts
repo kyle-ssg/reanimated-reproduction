@@ -1,10 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
-const style: Record<
-string,
-ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
-> = {
+const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
   // Utility classes
   // -------------------------
 
@@ -16,23 +12,23 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   },
 
   textCenter: {
-    textAlign: "center",
+    textAlign: 'center',
   },
 
   textLeft: {
-    textAlign: "left",
+    textAlign: 'left',
   },
 
   textRight: {
-    textAlign: "right",
+    textAlign: 'right',
   },
 
   alignLeft: {
-    alignItems: "flex-start",
+    alignItems: 'flex-start',
   },
 
   alignRight: {
-    alignItems: "flex-end",
+    alignItems: 'flex-end',
   },
 
   backdrop: {
@@ -45,18 +41,19 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   },
 
   clipped: {
-    overflow: "hidden",
+    overflow: 'hidden',
   },
 
   shadow: {
-    shadowColor: "#333",
+    shadowColor: '#333',
     shadowOffset: {
-      width: 0,
+      width:0,
       height: 2,
     },
     shadowRadius: 3,
     shadowOpacity: 0.3,
   },
+
 };
 
 module.exports = style;

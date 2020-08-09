@@ -1,13 +1,15 @@
-import React from "react";
-import { Component } from "react";
+import React from 'react';
+import { Component } from 'react';
 
-type ComponentType = {};
+type ComponentType = {
+
+}
 
 class TheComponent extends Component<ComponentType> {
-  state = {};
+  state = {}
   render() {
     return <View />;
   }
 }
 
-export default TheComponent;
+export default TheComponent

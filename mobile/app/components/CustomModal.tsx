@@ -9,79 +9,141 @@ import Animated, {
   useCode,
   useValue,
   Value,
-  Easing, startClock, clockRunning, call, stopClock,
+  timing,
+  Easing,
+  startClock,
+  clockRunning,
+  call,
+  stopClock,
+  interpolate,
 } from 'react-native-reanimated';
-import { timing, useClock, useConst } from 'react-native-redash';
-
+import { useClock, useConst } from 'react-native-redash/src';
+import { easingConfigModal } from '../project/reanimations';
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 
 export type ModalType = {
-  animatedValue?: Animated.Value<number>;
+  animatedValue?: Animated.Node<number>;
+  fadeContent?: boolean;
   visible: boolean;
   style: ReactNative.ViewStyle;
   onDismissPress?: () => void;
+  preventDismiss?:boolean;
 };
+
+export type ModalInnerType = {
+  fadeContent?: boolean;
+  style: ReactNative.ViewStyle;
+  onDismissPress?: () => void;
+  children:React.ReactNode;
+  animation:Animated.Value<number>;
+};
+
+
+
+const ModalInner = gestureHandlerRootHOC(function GestureExample({
+  style,
+  onDismissPress,
+  fadeContent,
+  children,
+  animation
+}:ModalInnerType) { // We do this in order to support gestures within the modal
+  return (
+      <View style={[style,ReactNative.StyleSheet.absoluteFill]}>
+          <TouchableOpacity
+            onPress={onDismissPress}
+            activeOpacity={1}
+            style={[ReactNative.StyleSheet.absoluteFill]}
+          />
+          {fadeContent ? <Animated.View style={{ opacity: animation }}>
+              {children}
+          </Animated.View> : children }
+      </View>
+  );
+});
 
 
 const CustomModal: FunctionComponent<ModalType> = ({
   animatedValue: _animatedValue,
-  style,
-  onDismissPress,
-  visible,
   children,
-
+  fadeContent = true,
+  onDismissPress,
+  preventDismiss,
+  style,
+  visible,
 })=> {
   const [modalVisible,setModalVisible]= useState<boolean>(false);
   const $clock = useClock();
+
+  const $trigger = useValue<number>(0);
   const $on = useValue<number>(visible?1:0);
-  const $animation = useValue<number>(0);
+  const state = useConst({
+    finished: new Value(0), position: new Value(0), time: new Value(0), frameTime: new Value(0),
+  });
 
   useEffect(()=>{
-    if(visible) {
-      setModalVisible(true);
+    if (_animatedValue) {
+      setModalVisible(visible);
+    } else {
+      if(visible) {
+        setModalVisible(true);
+      }
+      $trigger.setValue(1);
+      $on.setValue(visible?1:0);
     }
-    $on.setValue(visible?1:0);
-  },[$on, visible]);
 
-  const onComplete = function([newValue]: readonly number[]) {
+  },[$on,$trigger, visible, _animatedValue]);
+
+  const onComplete = _animatedValue? null: function([newValue]: readonly number[]) {
     if (newValue === 0) {
       setModalVisible(false)
     }
   }
 
-  useCode(()=>(
-    block([
-      set($animation, timing({
-        from: $animation,
-        clock:$clock,
-        duration: 300,
-        easing: Easing.ease,
-        to:$on
-      })),
-      cond(
-        not(clockRunning($clock)),
-        block([
-          call([$animation],onComplete)
+  if (!_animatedValue) {
+    useCode(()=>(
+      block([
+        cond ($trigger, [ // modal has been triggered, reset the clock
+          startClock($clock),
+          set($trigger, 0),
+          set(state.finished, 0),
+          set(state.time, 0),
+          set(state.frameTime, 0),
+        ]),
+        block([ // set the current timing function
+          timing($clock, state, {
+            toValue: $on,
+            ...easingConfigModal
+          }),
+        ]),
+        cond(and(clockRunning($clock),state.finished), [
+          set(state.finished, 0),
+          set(state.time, 0),
+          set(state.frameTime, 0),
+          stopClock($clock),
+          call([state.position],onComplete),
         ])
-      )
-    ])
+      ])
+    ), [$on, $clock]);
+  } else {
+    useConst(null)
+  }
 
-  ), [$animation, $clock]);
+  const animation = _animatedValue || state.position;
+
   return (
       <Modal
         visible={modalVisible}
         transparent={true}
         statusBarTranslucent={true}
       >
-          <Animated.View style={[style, styles.backdrop, { opacity: $animation, }]} >
-              <>
-                  <TouchableOpacity
-                    onPress={onDismissPress}
-                    activeOpacity={1}
-                    style={ReactNative.StyleSheet.absoluteFill}
-                  />
-                  {children}
-              </>
-          </Animated.View>
+
+          <Animated.View style={[styles.backdrop, { opacity: animation, }]}/>
+          <ModalInner style={style} onDismissPress={preventDismiss?null:onDismissPress} fadeContent={fadeContent}
+            animation={animation}
+          >
+              {children}
+          </ModalInner>
+
       </Modal>
   )
 

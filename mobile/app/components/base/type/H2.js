@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import propTypes from "prop-types";
+import React, { Component } from 'react';
+import propTypes from 'prop-types';
 
 const h2 = class extends Component {
-  static displayName = "H2";
+  static displayName = 'H2';
 
   render() {
     return (

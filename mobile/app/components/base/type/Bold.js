@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import propTypes from "prop-types";
+import React, { Component } from 'react';
+import propTypes from 'prop-types';
 
 const Bold = class extends Component {
-  static displayName = "Bold";
+  static displayName = 'Bold';
 
   render() {
     return (

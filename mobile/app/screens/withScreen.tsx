@@ -3,6 +3,7 @@ import {
   NativeStackNavigationOptions,
   NativeStackNavigationProp,
 } from "react-native-screens/native-stack";
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { useDispatch } from "react-redux";
 import { AppActions } from "common/app-actions";
 import { FocusAwareStatusBar } from "components/utility-components/FocusAwareStatusBar";
@@ -12,10 +13,10 @@ export interface IRouteParams {
   screenOptions: Partial<NativeStackNavigationOptions>;
 }
 export type Screen = {
-  push: (name: string, routeParams: Partial<IRouteParams>) => void;
+  push: (name: string, routeParams?: Partial<IRouteParams>) => void;
   pop: () => void;
   canGoBack: () => boolean;
-  replace: (name: string, routeParams: Partial<IRouteParams>) => void;
+  replace: (name: string, routeParams?: Partial<IRouteParams>) => void;
   setOptions: (options: Partial<NativeStackNavigationOptions>) => void;
   style: ReactNative.ViewStyle;
   children: React.ReactNode;
@@ -30,68 +31,75 @@ export type ScreenProps = {
   };
 };
 
-const withScreen = (Component: React.ComponentType) => {
+const withScreen = (Component: React.ComponentType, isChild=false) => {
   return function withScreen(props: ScreenProps): React.ReactNode {
-    const dispatch = useDispatch();
-    React.useEffect(() => {
-      // @ts-ignore
-      const previousStyle = ReactNative.StatusBar?._currentValues?.value || 'dark-content'
-      const unsubscribe = props.navigation.addListener("focus", () => {
-        dispatch(AppActions.setActiveScreen(props.route.name));
-      });
-      const unsubscribe2 = props.navigation.addListener("beforeRemove", () => {
-        if (Platform.OS === "ios") {
-          ReactNative.StatusBar.setBarStyle(previousStyle, true);
-        }
-      });
 
-      if (Platform.OS === "ios") {
-        const style = props.route?.params?.statusBar?.barStyle || "default";
-        ReactNative.StatusBar.setBarStyle(style, true);
-      }
-      return () => {
-        unsubscribe();
-        unsubscribe2();
-        return;
-      };
-    }, [props.navigation]);
+    const navigation = useNavigation();
+    const route = useRoute();
+    const dispatch = useDispatch();
+
+    if (!isChild) {
+      React.useEffect(() => {
+        // @ts-ignore
+        const previousStyle = ReactNative.StatusBar?._currentValues?.value || 'dark-content'
+        const unsubscribe = navigation.addListener("focus", () => {
+          dispatch(AppActions.setActiveScreen(route.name));
+        });
+        const unsubscribe2 = navigation.addListener("beforeRemove", () => {
+          if (Platform.OS === "ios") {
+            ReactNative.StatusBar.setBarStyle(previousStyle, true);
+          }
+        });
+
+        if (Platform.OS === "ios") {
+          const style = route?.params?.statusBar?.barStyle || "default";
+          ReactNative.StatusBar.setBarStyle(style, true);
+        }
+        return () => {
+          unsubscribe();
+          unsubscribe2();
+          return;
+        };
+      }, [navigation, dispatch, route]);
+    }
+
 
     useLayoutEffect(() => {
-      if (props.route?.params?.screenOptions) {
-        props.navigation.setOptions(props.route.params.screenOptions);
+      if (route?.params?.screenOptions) {
+        navigation.setOptions(route.params.screenOptions);
       }
-    }, [props.navigation, props.route]);
+    }, [navigation, route]);
 
     const push = useCallback(
       (name, params) => {
-        props.navigation.push(name, params);
+        navigation.push(name, params);
       },
-      [props.navigation]
+      [navigation]
     );
 
     const replace = useCallback(
       (name, params) => {
-        props.navigation.replace(name, params);
+        navigation.replace(name, params);
       },
-      [props.navigation]
+      [navigation]
     );
 
     const pop = useCallback(() => {
-      props.navigation.pop();
-    }, [props.navigation]);
+      navigation.pop();
+    }, [navigation]);
 
     const setOptions = useCallback(
       (options) => {
-        props.navigation.setOptions(options);
+        navigation.setOptions(options);
       },
-      [props.navigation]
+      [navigation]
     );
 
     return (
         <>
-            {Platform.OS !== "ios" && (
+            {Platform.OS !== "ios" && !isChild && (
             <FocusAwareStatusBar
-              {...props.route.params?.statusBar}
+              {...route.params?.statusBar}
               animated={true}
             />
             )}
@@ -99,9 +107,9 @@ const withScreen = (Component: React.ComponentType) => {
               push={push}
               pop={pop}
               replace={replace}
-              canGoBack={props.navigation.canGoBack}
+              canGoBack={navigation.canGoBack}
               setOptions={setOptions}
-              {...props.route.params}
+              {...route.params}
               {...props}
             />
         </>

@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import propTypes from "prop-types";
-import { Animated } from "react-native";
+import React, { Component } from 'react';
+import propTypes from 'prop-types';
+import { Animated } from 'react-native';
 
 const SlideUp = class extends Component {
-  static displayName = "SlideUp";
+  static displayName = 'SlideUp';
 
   static propTypes = {
     autostart: propTypes.bool,
@@ -26,7 +26,7 @@ const SlideUp = class extends Component {
     const newState = {};
     _.each(this.props.animatedProps, (prop) => {
       newState[`animated_${prop}`] = new Animated.Value(
-        this.props[prop] && !this.props.autostart ? 1 : 0
+        this.props[prop] && !this.props.autostart ? 1 : 0,
       );
     });
     this.state = newState;
@@ -48,7 +48,7 @@ const SlideUp = class extends Component {
               duration: this.props.duration,
               friction: this.props.friction,
               tension: this.props.tension,
-            }
+            },
           )
           .start();
       });
@@ -74,7 +74,7 @@ const SlideUp = class extends Component {
               duration: newProps.duration,
               friction: newProps.friction,
               tension: newProps.tension,
-            }
+            },
           )
           .start();
       }
@@ -89,9 +89,7 @@ const SlideUp = class extends Component {
     return (
         <Animated.View
           style={[
-          { overflow: "hidden", justifyContent: "center", height },
-          this.props.style,
-        ]}
+                  { overflow: 'hidden', justifyContent: 'center', height }, this.props.style]}
         >
             {this.props.children}
         </Animated.View>
@@ -104,7 +102,7 @@ SlideUp.defaultProps = {
   duration: 300,
   friction: 5,
   tension: 20,
-  animatedProps: ["value"],
+  animatedProps: ['value'],
 };
 
 module.exports = SlideUp;

@@ -1,9 +1,9 @@
-import propTypes from "prop-types";
-import React, { Component } from "react";
-import { FlatList } from "react-native";
+import propTypes from 'prop-types';
+import React, { Component } from 'react';
+import { FlatList } from 'react-native';
 
 const Select = class extends Component {
-  static displayName = "Select";
+  static displayName = 'Select';
 
   static propTypes = {
     onChange: propTypes.func,
@@ -55,43 +55,39 @@ const Select = class extends Component {
     return (
         <Flex style={[Styles.body, { style }]}>
             {filterItem && (
-            <FormGroup style={{ backgroundColor: "#FCF8F5" }}>
+            <FormGroup style={{ backgroundColor: '#FCF8F5' }}>
                 <Container>
                     <TextInput
                       style={{
-                  shadowOpacity: 0,
-                  borderBottomWidth: 0,
-                }}
+                            shadowOpacity: 0,
+                            borderBottomWidth: 0,
+                        }}
                       placeholder={placeholder}
-                      onChangeText={(searchNew) =>
-                  this.setState({
-                    search: searchNew.toLowerCase(),
-                  })
-                }
+                      onChangeText={(searchNew) => this.setState({ search: searchNew.toLowerCase() })}
                       testID={this.props.searchTestID}
                     />
                 </Container>
             </FormGroup>
-        )}
+              )}
             {data && data.length ? (
                 <FlatList
                   data={data}
                   renderItem={({ item }) => {
-              const isSelected = this.isSelected(item);
-              const toggleItem = () => {
-                this.setItem(item, !isSelected);
-              };
-              return renderRow(item, isSelected, toggleItem);
-            }}
+                        const isSelected = this.isSelected(item);
+                        const toggleItem = () => {
+                            this.setItem(item, !isSelected);
+                        };
+                        return renderRow(item, isSelected, toggleItem);
+                    }}
                 />
-        ) : renderNoResults ? (
-          renderNoResults()
-        ) : (
-            <Text style={Styles.textCenter}>
-                No Results Found for:
-                <Bold>{search}</Bold>
-            </Text>
-        )}
+              ) : renderNoResults ? (
+                  renderNoResults()
+              ) : (
+                  <Text style={Styles.textCenter}>
+                      No Results Found for:
+                      <Bold>{search}</Bold>
+                  </Text>
+              )}
         </Flex>
     );
   }

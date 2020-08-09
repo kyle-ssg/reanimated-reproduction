@@ -1,41 +1,39 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
-require("./style_pxToEm");
+require('./style_pxToEm');
 
-const styles: Record<
-string,
-ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
-> = {
+const styles:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
+
+
   //
   // Typography
   // --------------------------------------------------
 
   h1: {
+    color: palette.navy,
     fontSize: styleVariables.fontSizeH1,
     lineHeight: styleVariables.fontSizeH1,
-    fontWeight: styleVariables.boldFontWeight,
     fontFamily: styleVariables.boldFontFamily,
   },
 
   h2: {
+    color: palette.navy,
     fontSize: styleVariables.fontSizeH2,
     lineHeight: styleVariables.fontSizeH2,
-    fontWeight: styleVariables.boldFontWeight,
     fontFamily: styleVariables.boldFontFamily,
   },
 
   h3: {
+    color: palette.navy,
     fontSize: styleVariables.fontSizeH3,
     lineHeight: styleVariables.fontSizeH3,
     fontFamily: styleVariables.boldFontFamily,
-    fontWeight: styleVariables.boldFontWeight,
   },
 
   h4: {
+    color: palette.navy,
     fontSize: styleVariables.fontSizeH4,
     lineHeight: styleVariables.fontSizeH4,
-    fontWeight: styleVariables.boldFontWeight,
     fontFamily: styleVariables.boldFontFamily,
   },
 
@@ -57,8 +55,13 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
     fontFamily: styleVariables.normalFontFamily,
   },
 
+
   textLight: {
     color: colour.textLight,
+  },
+
+  textWhite: {
+    color: palette.white,
   },
 
   textMid: {
@@ -74,11 +77,11 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   },
 
   textCenter: {
-    textAlign: "center",
+    textAlign: 'center',
   },
 
   textBottom: {
-    textAlignVertical: "bottom",
+    textAlignVertical: 'bottom',
   },
 
   icon: {
@@ -91,12 +94,13 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   },
 
   text: {
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
     color: palette.text,
     fontFamily: styleVariables.normalFontFamily,
     fontSize: styleVariables.fontSizeBase,
     fontWeight: styleVariables.normalFontWeight,
   },
+
 
   paragraph: {
     marginBottom: styleVariables.marginBaseVertical,
@@ -107,6 +111,10 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
 
   textSmall: {
     fontSize: styleVariables.fontSizeSmall,
+  },
+
+  textLarge: {
+    fontSize: styleVariables.fontSizeLarge,
   },
 
   textFaint: {
@@ -139,10 +147,15 @@ ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
   anchor: {
     color: palette.primaryDark,
     fontFamily: styleVariables.headerText,
-    textDecorationLine: "underline",
+    textDecorationLine: 'underline',
     letterSpacing: em(0.06),
     fontSize: em(0.86),
   },
+
+  iconAlignTop:{
+    paddingTop:5,
+  }
+
 };
 
-module.exports = styles;
+module.exports = styles

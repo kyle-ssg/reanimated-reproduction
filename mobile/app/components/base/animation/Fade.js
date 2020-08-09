@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import propTypes from "prop-types";
-import each from "lodash/each";
-import { Animated } from "react-native";
+import React, { Component } from 'react';
+import propTypes from 'prop-types';
+import each from 'lodash/each';
+import { Animated } from 'react-native';
 
 const Fade = class extends Component {
-  static displayName = "Fade";
+  static displayName = 'Fade';
 
   static propTypes = {
     autostart: propTypes.bool,
@@ -25,9 +25,7 @@ const Fade = class extends Component {
     super(props, context);
     const _props = {};
     each(this.props.animatedProps, (prop) => {
-      _props[`animated_${prop}`] = new Animated.Value(
-        props[prop] && !props.autostart ? 1 : props.startValue || 0.00001
-      );
+      _props[`animated_${prop}`] = new Animated.Value(props[prop] && !props.autostart ? 1 : props.startValue || 0.00001);
     });
     this.state = _props;
   }
@@ -49,7 +47,7 @@ const Fade = class extends Component {
               duration: this.props.duration,
               friction: this.props.friction,
               tension: this.props.tension,
-            }
+            },
           )
           .start();
       });
@@ -76,7 +74,7 @@ const Fade = class extends Component {
               duration: newProps.duration,
               friction: newProps.friction,
               tension: newProps.tension,
-            }
+            },
           )
           .start();
       }
@@ -87,12 +85,12 @@ const Fade = class extends Component {
     return (
         <Animated.View
           style={[
-          {
-            overflow: "hidden",
-            opacity: this.state.animated_value,
-          },
-          this.props.style,
-        ]}
+                {
+                    overflow: 'hidden',
+                    opacity: this.state.animated_value,
+                },
+                this.props.style,
+            ]}
         >
             {this.props.children}
         </Animated.View>
@@ -105,7 +103,7 @@ Fade.defaultProps = {
   duration: 250,
   friction: 5,
   tension: 20,
-  animatedProps: ["value"],
+  animatedProps: ['value'],
 };
 
 module.exports = Fade;

@@ -12,11 +12,11 @@ export function renderWithRouter(
   children,
 ) {
   return (
-    <RouterContext.Provider
-      value={router}
-    >
-      {children}
-    </RouterContext.Provider>
+      <RouterContext.Provider
+        value={router}
+      >
+          {children}
+      </RouterContext.Provider>
   );
 }
 

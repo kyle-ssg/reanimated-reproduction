@@ -8,9 +8,6 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    // "prettier/@typescript-eslint",
-    // "plugin:prettier/recommended",
-    // "prettier"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -123,6 +120,8 @@ module.exports = {
     ReactNative: true,
     Record: true,
     Row: true,
+    DeviceWidth: true,
+    DeviceHeight: true,
     SafeAreaView: true,
     ScrollView: true,
     Switch: true,
