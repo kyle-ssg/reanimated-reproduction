@@ -47,7 +47,7 @@
     "react-native-modal-datetime-picker": "^8.7.1",
     "react-native-performance-monitor": "^1.2.1",
     "react-native-reanimated": "^1.10.1",
-    "react-native-redash": "^14.2.3",
+    "react-native-redash": "https://github.com/kyle-ssg/react-native-redash#master",
     "react-native-render-html": "^4.2.1",
     "react-native-safe-area-context": "^3.1.1",
     "react-native-screens": "^2.9.0",

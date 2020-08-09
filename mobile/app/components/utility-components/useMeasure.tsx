@@ -9,7 +9,9 @@ export const useMeasure = (initialCb?: (size) => void): any => {
       initialCb && initialCb(newSize);
     }
     setSize(newSize);
-  }, []);
+  }, [
+    initialCb, size.width
+  ]);
 
   return [size, onLayout];
 };
