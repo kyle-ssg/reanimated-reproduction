@@ -43,22 +43,34 @@ const StorageManager = class {
 
     getNumber = async (key) => {
         API.log("STORAGE", "GET NUMBER", key);
-        return MMKV.getIntAsync(key);
+        return MMKV.getIntAsync(key).catch(e => {
+            if (e === 'Value for key does not exist') return null;
+            return Promise.reject(e);
+        });
     }
 
     getString = async (key) => {
         API.log("STORAGE", "GET STRING", key);
-        return MMKV.getStringAsync(key);
+        return MMKV.getStringAsync(key).catch(e => {
+            if (e === 'Value for key does not exist') return null;
+            return Promise.reject(e);
+        });
     }
 
     getObject = async (key) => {
         API.log("STORAGE", "GET OBJECT", key);
-        return MMKV.getMapAsync(key).then((res)=>res && JSON.parse(res));
+        return MMKV.getStringAsync(key).then((res)=>res && JSON.parse(res)).catch(e => {
+            if (e === 'Value for key does not exist') return null;
+            return Promise.reject(e);
+        });
     }
 
     getBool = async (key) => {
         API.log("STORAGE", "GET BOOL", key);
-        return MMKV.getBoolAsync(key);
+        return MMKV.getBoolAsync(key).catch(e => {
+            if (e === 'Value for key does not exist') return null;
+            return Promise.reject(e);
+        });
     }
 
     removeItem = async (key) => {
