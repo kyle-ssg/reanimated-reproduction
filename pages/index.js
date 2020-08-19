@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import { withRouter } from 'next/router';
-import propTypes from 'prop-types';
+import React, { Component } from "react";
+import { withRouter } from "next/router";
+import propTypes from "prop-types";
 
-import withAuth from 'common/providers/withAuth';
-import Button from '../components/base/forms/Button';
+import withAuth from "common/providers/withAuth";
+import Button from "../components/base/forms/Button";
 
 class HomePage extends Component {
-  static displayName = 'HomePage';
+  static displayName = "HomePage";
 
   static propTypes = {
-      user: propTypes.object,
-  }
+    user: propTypes.object,
+  };
 
   componentDidMount() {
-      API.trackPage('HomePage');
+    API.trackPage("HomePage");
 
-      if (this.props.user) {
-          API.loginRedirect();
-      }
+    if (this.props.user) {
+      API.loginRedirect();
+    }
   }
 
   // Do server rendered actions such as fetching data here
@@ -25,14 +25,12 @@ class HomePage extends Component {
   // }
 
   render() {
-      return (
-          <div className="container">
-              Home Page
-              <Button>
-                  Hi
-              </Button>
-          </div>
-      );
+    return (
+        <div className="container">
+            Home Page
+            <Button>Hi</Button>
+        </div>
+    );
   }
 }
 

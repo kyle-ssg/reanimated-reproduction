@@ -1,5 +1,5 @@
 import
-  React from 'react';
+React from 'react';
 import { ExpectApi, expectSaga } from 'redux-saga-test-plan';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
@@ -31,9 +31,9 @@ export const sagaWithReducer = (saga,state={}): ExpectApi => expectSaga(saga)
 // Render a component with a store
 export const renderWithStore = (store:Store, children: JSX.Element): RenderResult => {
   return render(
-    <Provider store={store}>
-      {children}
-    </Provider>
+      <Provider store={store}>
+          {children}
+      </Provider>
   )
 }
 
@@ -41,9 +41,9 @@ export const renderWithStore = (store:Store, children: JSX.Element): RenderResul
 export const reRenderWithStore = async (originalRender:RenderResult, store:Store, children: JSX.Element): Promise<void> => {
   await act(async () => {
     originalRender.rerender(
-      <Provider store={store}>
-        {children}
-      </Provider>
+        <Provider store={store}>
+            {children}
+        </Provider>
     );
   });
 }

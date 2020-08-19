@@ -1,5 +1,5 @@
 import '@storybook/addon-ondevice-knobs/register';
-import GenericScreen from 'screens/GenericScreen';
+import GenericScreen from 'screens/examples/GenericScreen';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';
@@ -16,15 +16,15 @@ import defaultNavigationOptions from '../app/style/style_navs';
 
 
 const StorybookUIRoot = getStorybookUI({
-    asyncStorage: null
+  asyncStorage: null
 });
 const store = _store();
 
 // import stories
 export function setup(cb) {
-    configure(() => {
-        cb();
-    }, module);
+  configure(() => {
+    cb();
+  }, module);
 }
 
 export const withProvider = (story) => (
@@ -76,8 +76,8 @@ export const withNavbarWrapper = (story) => (
     </Provider>
 );
 export const getStory = (name) => storiesOf(name, module)
-    .addDecorator(withKnobs)
-    .addDecorator(withSafeArea)
-    .addDecorator(withProvider);
+  .addDecorator(withKnobs)
+  .addDecorator(withSafeArea)
+  .addDecorator(withProvider);
 
 export default StorybookUIRoot;

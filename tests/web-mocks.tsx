@@ -38,6 +38,6 @@ export const mockRouter = (initialPath="") => {
     }
   };
 
-    return router;
+  return router;
 }
 

@@ -8,7 +8,7 @@ type ComponentType = {
 class TheComponent extends Component<ComponentType> {
   state = {}
   render() {
-      return <View />;
+    return <View />;
   }
 }
 

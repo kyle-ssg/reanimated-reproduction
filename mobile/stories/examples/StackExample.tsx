@@ -10,7 +10,6 @@ import { RouteUrls } from '../../app/route-urls';
 import withScreen, { Screen } from '../../app/screens/withScreen';
 import { ButtonSecondary } from '../../app/components/base/forms/Button';
 import { routes } from '../../app/routes';
-import { FocusAwareStatusBar } from 'components/utility-components/FocusAwareStatusBar';
 
 const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;
@@ -24,38 +23,35 @@ type ComponentType = Screen & {
 class _GenericScreen extends Component<ComponentType> {
   state = {}
   goScreen = (url:RouteUrls)=> {
-      this.props.push(url,{
-          screenOptions: {
-              headerShown: true
-          }
-      })
+    this.props.push(url,{
+      screenOptions: {
+        headerShown: true
+      }
+    })
   }
   goModal = (url:RouteUrls)=> {
-      this.props.push(url,{
-          statusBar: { backgroundColor: "red", barStyle:"light-content", animated:true },
-          screenOptions:{
-              stackPresentation:"modal"
-          }
-      })
+    this.props.push(url,{ screenOptions:{
+      stackPresentation:"modal"
+    } })
   }
   render() {
-      return this.props.children || <Flex style={Styles.body}>
-          <FocusAwareStatusBar barStyle="dark-content" animated={true}/>
-          <FlatList
-            keyExtractor={(item)=>item}
-            style={{ padding:20, flex:1 }} data={Object.values(RouteUrls)} renderItem={({ item })=> item !== "/storybook" && (
-            <View key={item}>
-                <H3>{item}</H3>
-                <Button onPress={()=>this.goScreen(item)}>
-                    Push
-                </Button>
-                <ButtonSecondary onPress={()=>this.goModal(item)}>
-                    Modal
-                </ButtonSecondary>
-            </View>
-            )}/>
+    return this.props.children || <Flex style={Styles.body}>
+        <FlatList
+          keyExtractor={(item)=>item}
+          style={{ padding:20, flex:1 }} data={Object.values(RouteUrls)} renderItem={({ item })=> item !== "/storybook" && (
+          <View key={item}>
+              <H3>{item}</H3>
+              <ButtonPrimary onPress={()=>this.goScreen(item)}>
+                  Push
+              </ButtonPrimary>
+              <Button onPress={()=>this.goModal(item)}>
+                  Modal
+              </Button>
+          </View>
+            )}
+        />
 
-      </Flex>
+    </Flex>
   }
 }
 
@@ -64,40 +60,41 @@ const GenericScreen = withScreen(_GenericScreen)
 class StackExample extends Component {
   static displayName = 'TheComponent';
   state = {
-      name: new Date().valueOf() + ""
+    name: new Date().valueOf() + ""
   }
   static propTypes = {};
 
   render() {
-      // const { props } = this
-      return (
-          <>
-              <Provider store={store()}>
-                  <>
-                      <NavigationContainer independent>
-                          <Navigator screenOptions={defaultNavigationOptions} initialRouteName="1">
-                              <Stack.Screen
-                                name={"1"}
-                                options={{  }}
-                                component={GenericScreen}
-                              />
-                              {
+    // const { props } = this
+    return (
+        <>
+            <Provider store={store()}>
+                <StatusBar backgroundColor="transparent" translucent barStyle="dark-content"/>
+                <>
+                    <NavigationContainer independent>
+                        <Navigator screenOptions={defaultNavigationOptions} initialRouteName="1">
+                            <Stack.Screen
+                              name={"1"}
+                              options={{  }}
+                              component={GenericScreen}
+                            />
+                            {
                               Object.values(RouteUrls).map((v)=>(
                                   <Stack.Screen
                                     key={v}
                                     name={v}
                                     options={routes[v].options}
                                     component={routes[v].component}
-                                />
+                                  />
                               ))
                             }
-                          </Navigator>
+                        </Navigator>
 
-                      </NavigationContainer>
-                  </>
-              </Provider>
-          </>
-      );
+                    </NavigationContainer>
+                </>
+            </Provider>
+        </>
+    );
   }
 }
 

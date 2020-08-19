@@ -5,11 +5,12 @@ type ComponentType = {
 }
 
 const TheComponent:FunctionComponent<ComponentType> = ({  }) => {
-    return (
-        <>
+  return (
+      <>
 
-        </>
-    )
+      </>
+  )
 }
 
 export default TheComponent
+

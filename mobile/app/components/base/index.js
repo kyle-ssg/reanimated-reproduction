@@ -2,10 +2,12 @@ import TextInput, { FlatInput } from './forms/TextInput';
 
 // Forms
 import Button, {
-    ButtonPrimary,
-    ButtonSecondary,
-    ButtonNav,
-    ButtonTertiary,
+  ButtonPrimary,
+  ButtonOutlinePrimary,
+  ButtonText,
+  ButtonSecondary,
+  ButtonNav,
+  ButtonTertiary,
 } from './forms/Button';
 
 // Grid
@@ -44,11 +46,13 @@ global.Row = require('./grid/Row');
 
 global.Button = Button;
 global.ButtonPrimary = ButtonPrimary;
+global.ButtonText = ButtonText;
+global.ButtonOutlinePrimary = ButtonOutlinePrimary;
 global.ButtonSecondary = ButtonSecondary;
 global.ButtonTertiary = ButtonTertiary;
 global.ButtonNav = ButtonNav;
 
-global.Checkbox = require('./forms/Checkbox');
+global.Checkbox = require("./forms/Checkbox");
 
 global.TextInput = TextInput;
 global.FlatInput = FlatInput;
@@ -58,3 +62,4 @@ global.Select = require('./forms/Select');
 // Navs
 global.Delay = require('../utility-components/Delay');
 global.ListItem = require('./ListItem');
+

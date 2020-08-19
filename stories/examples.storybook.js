@@ -1,7 +1,11 @@
-import React from 'react';
-import propTypes from 'prop-types';
-import Button, { ButtonPrimary, ButtonSecondary, ButtonTertiary } from '../components/base/forms/Button';
-import Message, { SuccessMessage, ErrorMessage } from '../components/Messages';
+import React from "react";
+import propTypes from "prop-types";
+import Button, {
+  ButtonPrimary,
+  ButtonSecondary,
+  ButtonTertiary,
+} from "../components/base/forms/Button";
+import Message, { SuccessMessage, ErrorMessage } from "../components/Messages";
 
 export const TextExamples = ({ text }) => (
     <>
@@ -21,15 +25,9 @@ export const TextExamples = ({ text }) => (
 );
 export const MessagesExamples = ({ text }) => (
     <>
-        <Message>
-            {text}
-        </Message>
-        <SuccessMessage>
-            {text}
-        </SuccessMessage>
-        <ErrorMessage>
-            {text}
-        </ErrorMessage>
+        <Message>{text}</Message>
+        <SuccessMessage>{text}</SuccessMessage>
+        <ErrorMessage>{text}</ErrorMessage>
     </>
 );
 
@@ -42,22 +40,21 @@ export const ButtonExamples = ({ text }) => (
     </>
 );
 
-
 ButtonExamples.propTypes = {
-    text: propTypes.string,
+  text: propTypes.string,
 };
 ButtonExamples.defaultProps = {
-    text: 'Text',
+  text: "Text",
 };
 TextExamples.propTypes = {
-    text: propTypes.string,
+  text: propTypes.string,
 };
 MessagesExamples.propTypes = {
-    text: propTypes.string,
+  text: propTypes.string,
 };
 MessagesExamples.defaultProps = {
-    text: 'Text',
+  text: "Text",
 };
 TextExamples.defaultProps = {
-    text: 'Text',
+  text: "Text",
 };

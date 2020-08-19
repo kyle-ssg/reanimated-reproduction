@@ -3,8 +3,14 @@ import ErrorMessage from 'components/ErrorMessage';
 global.ErrorMessage = ErrorMessage;
 
 // const LinearGradient = require('react-native-linear-gradient')
-const LiniearGradient = ()=>Alert.alert("Install react-native-linear-gradient and pod install to use this")
-global.LinearGradient = LiniearGradient;
+// const LiniearGradient = ()=>Alert.alert("Install react-native-linear-gradient and pod install to use this")
+// global.LinearGradient = LiniearGradient;
 
 import ION from 'react-native-vector-icons/Ionicons';
 global.ION = ION;
+
+import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro';
+global.FA5Pro = FA5Pro;
+
+import LinearGradient from 'react-native-linear-gradient';
+global.LinearGradient = LinearGradient;

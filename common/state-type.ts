@@ -7,6 +7,6 @@ export interface AppState {
     firstName: string;
     lastName: string;
     [extraProps: string]: any;
-  },
+  };
   // END OF STATE_TYPES
 }
