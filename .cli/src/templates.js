@@ -90,7 +90,7 @@ module.exports = {
     // reducer
     reducerCollection(action, prefix) {
         return `case Actions.${action}:
-            return itemLoading(state, '${prefix}', action);
+            return itemLoading(state, '${prefix}');
         case Actions.${action}_LOADED:
             return itemLoaded(state, '${prefix}', action);
         case Actions.${action}_ERROR:
@@ -98,7 +98,7 @@ module.exports = {
     },
     reducerGet(action, prefix) {
         return `case Actions.${action}:
-            return itemLoading(state, '${prefix}', action);
+            return itemLoading(state, '${prefix}');
         case Actions.${action}_LOADED:
             return itemLoaded(state, '${prefix}', action);
         case Actions.${action}_ERROR:
@@ -106,7 +106,7 @@ module.exports = {
     },
     reducerPost(action, prefix) {
         return `case Actions.${action}:
-            return itemSaving(state, '${prefix}', action);
+            return itemSaving(state, '${prefix}');
         case Actions.${action}_LOADED:
             return itemSaved(state, '${prefix}', action);
         case Actions.${action}_ERROR:
@@ -114,7 +114,7 @@ module.exports = {
     },
     reducerUpdate(action, prefix) {
         return `case Actions.${action}:
-            return itemSaving(state, '${prefix}', action);
+            return itemSaving(state, '${prefix}');
         case Actions.${action}_LOADED:
             return itemSaved(state, '${prefix}', action);
         case Actions.${action}_ERROR:
@@ -122,7 +122,7 @@ module.exports = {
     },
     reducerDelete(action, prefix) {
         return `case Actions.${action}:
-            return itemSaving(state, '${prefix}', action);
+            return itemSaving(state, '${prefix}');
         case Actions.${action}_LOADED:
             return itemSaved(state, '${prefix}', action);
         case Actions.${action}_ERROR:
