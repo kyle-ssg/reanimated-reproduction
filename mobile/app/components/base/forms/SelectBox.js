@@ -57,7 +57,7 @@ const SelectBox = class extends PureComponent {
                     <Flex>
                         <Text
                           numberOfLines={1}
-                          style={[Styles.inputText, textStyle || {}]}
+                          style={[Styles.selectBoxText, textStyle || {}]}
                         >
                             {children}{" "}
                         </Text>

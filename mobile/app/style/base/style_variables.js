@@ -78,7 +78,7 @@ global.colour = { ...palette,
   // text
   text: palette.text, // General app text colour
   anchor: palette.anchor, // General app text colour
-  textLight: palette.textLight, // General app text colour
+
   label: palette.textLightest, // text color for labels
 
   // input

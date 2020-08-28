@@ -6,6 +6,10 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
   // --------------------------------------------------
 
   // TextInput
+  inputLabel: {
+    color: palette.navy,
+    fontSize: 16,
+  },
 
   textInput: {
     padding: 10,
@@ -18,20 +22,6 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
     color: palette.primary
   },
 
-  formGroup: {
-    paddingTop: styleVariables.paddingBase,
-    paddingBottom: styleVariables.paddingBase,
-  },
-
-  input: {
-    fontSize: styleVariables.fontSizeBase,
-    flex: 1,
-  },
-
-  inputText: {
-    fontSize: styleVariables.fontSizeBase,
-  },
-
   disabled: {
     opacity: styleVariables.disabledOpacity,
   },
@@ -40,18 +30,16 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
     color: colour.disabledText,
   },
 
-  inputLabel: {
-    color: palette.navy,
-    fontSize: 16,
-  },
-
   // Select
-
   selectBoxContainer: {
     padding: 10,
     borderRadius: 5,
     borderWidth: 1,
     borderColor: '#eaeaea',
+  },
+
+  selectBoxText: {
+    fontSize: styleVariables.fontSizeBase,
   },
 
   selectBoxIcon: {

@@ -6,7 +6,7 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
   },
 
   buttonText: {
-    fontFamily: styleVariables.buttonFontFamily,
+    fontFamily: styleVariables.boldFontFamily,
     backgroundColor: 'transparent',
     color: 'white',
   },
