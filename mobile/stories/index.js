@@ -198,7 +198,9 @@ setup(() => {
       return (
           <Flex style={[{ backgroundColor:'white' }, Styles.p10]}>
 
-              <TextInput selectionColor={palette.primary} placeholder={'Enter Name'} placeholderTextColor={'lightgrey'} title={'Name'}/>
+              <TextInput selectionColor={palette.primary} placeholder={'Enter Name'} placeholderTextColor={'lightgrey'}
+                title={'Name'}
+              />
               <TextInputIcon
                 icon={<ION name="ios-star"/>}
               />
@@ -210,8 +212,7 @@ setup(() => {
 
               <WithSetValue defaultValue={false}>
                   {({ value, setValue }) => (
-                      <Switch
-                      />
+                      <Switch />
                   )}
               </WithSetValue>
           </Flex>
@@ -251,7 +252,8 @@ setup(() => {
     .addDecorator(withNavbarWrapper)
     .add('all', () => (
         <>
-            <ListItem icon={<FontAwesome name="plus"/>}><Text>Hey</Text></ListItem>
+            <ListItem icon={<FontAwesome name="plus"/>}><Text>List Item text</Text></ListItem>
+            <ListItem icon={<FontAwesome name="plus"/>}><Text>List Item text</Text></ListItem>
         </>
     ));
 

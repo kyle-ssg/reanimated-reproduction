@@ -5,7 +5,7 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
   // Forms
   // --------------------------------------------------
 
-  // Input
+  // TextInput
 
   textInput: {
     padding: 10,
@@ -44,6 +44,8 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
     color: palette.navy,
     fontSize: 16,
   },
+
+  // Select
 
   selectBoxContainer: {
     padding: 10,

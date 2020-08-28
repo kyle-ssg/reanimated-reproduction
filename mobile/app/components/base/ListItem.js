@@ -29,13 +29,11 @@ const ListItem = class extends Component {
     const content = (
         <View style={[Styles.ph5, this.props.style]}>
             <Row>
-                {this.props.icon}
+                <View style={Styles.pr5}>
+                    {this.props.icon}
+                </View>
                 <View
-                  style={[
-              this.props.disabled && Styles.listItemDisabled,
-              Styles.liContent,
-              { backgroundColor: "transparent" },
-            ]}
+                  style={[this.props.disabled && Styles.listItemDisabled]}
                 >
                     {this.props.children}
                 </View>

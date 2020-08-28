@@ -89,8 +89,8 @@ global.colour = { ...palette,
   disabledText: palette.textLight,
 
   // list items
-  listBackground: 'white',
-  listBackgroundAlt: '#f9f9fa',
+
+
   listItemNav: '#d9d9d9',
   listItemDivider: palette.divider,
 
@@ -116,10 +116,6 @@ global.colour = { ...palette,
   navBarBorder: 'transparent',
   navBarText: 'black',
   alert: 'red',
-  avatar: '#dbdbdb',
 
-  facebook: '#3b5998',
-  twitter: '#1DA1F3',
-  google: '#dd4b39',
   ...global.colour };
 
