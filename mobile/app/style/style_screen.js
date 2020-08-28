@@ -10,8 +10,7 @@ global.Styles = StyleSheet.create(
     require("./base/"),
     require("./project/style_base"),
     require("./project/style_buttons"),
-    // require('./project/style_modals'),
-    // require('./project/style_card'),
-    // require('./project/style_backgroundImage'),
+    require("./project/style_forms"),
+    require("./project/style_lists"),
     // eslint-disable-next-line
     require('./project/style_platform')));

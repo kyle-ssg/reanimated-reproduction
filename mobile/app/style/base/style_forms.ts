@@ -22,14 +22,6 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
     color: palette.primary
   },
 
-  disabled: {
-    opacity: styleVariables.disabledOpacity,
-  },
-
-  disabledText: {
-    color: colour.disabledText,
-  },
-
   // Select
   selectBoxContainer: {
     padding: 10,
