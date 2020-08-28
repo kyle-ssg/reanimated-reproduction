@@ -7,6 +7,17 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
 
   // Input
 
+  textInput: {
+    padding: 10,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#eaeaea',
+    height: styleVariables.inputHeight,
+    fontSize: styleVariables.inputFontSizeBase,
+    backgroundColor: palette.inputBackground,
+    color: palette.primary
+  },
+
   formGroup: {
     paddingTop: styleVariables.paddingBase,
     paddingBottom: styleVariables.paddingBase,
@@ -17,12 +28,8 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
     flex: 1,
   },
 
-  inputContainer: {
-    justifyContent: 'center',
-  },
-
-  inputLarge: {
-    fontSize: styleVariables.fontSizeInputLarge,
+  inputText: {
+    fontSize: styleVariables.fontSizeBase,
   },
 
   disabled: {
@@ -33,69 +40,9 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
     color: colour.disabledText,
   },
 
-  // Checkboxes and radios
-
-  radioText: {
-    color: colour.radioText,
-  },
-
-  radioTextActive: {
-    color: colour.radioTextActive,
-  },
-
-  radio: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 5,
-    borderWidth: StyleSheet.hairlineWidth,
-  },
-
-
-  // adherium
-
-  textInput: {
-    height: styleVariables.inputHeight,
-    fontSize: styleVariables.inputFontSizeBase,
-    backgroundColor: palette.inputBackground,
-    paddingLeft: styleVariables.gutterBase,
-    borderBottomColor: palette.divider,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    color: palette.primary
-  },
-
   inputLabel: {
     color: palette.navy,
     fontSize: 16,
-  },
-
-  inputLabelFlat: {
-    color: palette.primary,
-    fontSize: 12,
-  },
-
-  label: {
-    color: styleVariables.text,
-    marginBottom: styleVariables.gutterBase / 2,
-  },
-
-  inputAppendContainer: {
-    position: 'relative',
-  },
-
-  inputAppend: {
-    position: 'absolute',
-    zIndex: 1,
-    left: 0,
-    top: 0,
-    backgroundColor: 'transparent',
-    height: 54,
-    width: 54,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  inputIndent: {
-    paddingLeft: 40,
   },
 
   selectBoxContainer: {
@@ -106,7 +53,7 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
   },
 
   selectBoxIcon: {
-
+    fontSize: styleVariables.inputFontSizeBase,
   },
 };
 

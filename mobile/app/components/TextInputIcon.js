@@ -72,7 +72,8 @@ const TextInputIcon = class extends Component {
                   testID={this.props.testID}
                   ref={(ref) => this.inputRef = ref}
                   blurOnSubmit={Platform.OS === 'ios' && !this.props.multiline}
-                  textStyle={Styles.textInputText}
+                  placeholderTextColor={this.props.placeholderTextColor}
+                  selectionColor={this.props.selectionColor}
                 >
 
                 </ReactNative.TextInput>
@@ -104,9 +105,10 @@ TextInputIcon.propTypes = {
   keyboardType: propTypes.string,
   onSubmit: propTypes.func,
   onFocus: propTypes.func,
-  textStyle: propTypes.any,
   testID: propTypes.string,
   icon: propTypes.string,
+  placeholderTextColor: propTypes.string,
+  selectionColor: propTypes.string,
 };
 
 export default TextInputIcon;

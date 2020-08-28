@@ -102,6 +102,7 @@ TextInput.propTypes = {
   onFocus: propTypes.func,
   testID: propTypes.string,
   placeholderTextColor: propTypes.string,
+  selectionColor: propTypes.string,
 };
 
 // const styles = ReactNative.StyleSheet.create({

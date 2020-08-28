@@ -196,15 +196,13 @@ setup(() => {
     .add('all',()=>{
 
       return (
-          <Flex style={{ backgroundColor:'white', padding: 20 }}>
+          <Flex style={[{ backgroundColor:'white' }, Styles.p10]}>
 
-              <TextInput selectionColor={palette.primary} placeholder={'Enter Name'} placeholderTextColor={'lightgrey'} style={Styles.mb10} title={'Name'}/>
+              <TextInput selectionColor={palette.primary} placeholder={'Enter Name'} placeholderTextColor={'lightgrey'} title={'Name'}/>
               <TextInputIcon
-                style={Styles.mb10}
                 icon={<ION name="ios-star"/>}
               />
-
-              <SelectBox title="Date" icon={<ION name="ios-search"/>} style={Styles.mb10} >
+              <SelectBox title="Date" icon={<ION name="ios-search"/>} >
                   12 July
               </SelectBox>
 
@@ -213,7 +211,6 @@ setup(() => {
               <WithSetValue defaultValue={false}>
                   {({ value, setValue }) => (
                       <Switch
-                        style={Styles.mt10}
                       />
                   )}
               </WithSetValue>
