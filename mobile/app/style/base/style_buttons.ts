@@ -11,7 +11,6 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
   },
 
   buttonText: {
-    // fontWeight: styleVariables.buttonFontWeight,
     fontFamily: styleVariables.buttonFontFamily,
     backgroundColor: 'transparent',
     color: 'white',

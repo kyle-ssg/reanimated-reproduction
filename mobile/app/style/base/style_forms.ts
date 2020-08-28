@@ -60,6 +60,7 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
     paddingLeft: styleVariables.gutterBase,
     borderBottomColor: palette.divider,
     borderBottomWidth: StyleSheet.hairlineWidth,
+    color: palette.primary
   },
 
   inputLabel: {

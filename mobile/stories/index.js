@@ -167,7 +167,7 @@ setup(() => {
             <H2 style={Styles.mb5}>Header 2</H2>
             <H3 style={Styles.mb5}>Header 3</H3>
             <H4 style={Styles.mb5}>Header 4</H4>
-            <ErrorMessage style={Styles.mb5}>Header 4</ErrorMessage>
+            <ErrorMessage style={Styles.mb5}>Error Text</ErrorMessage>
         </>
     ));
 
@@ -176,9 +176,10 @@ setup(() => {
     .addDecorator(withNavbarWrapper)
     .add('all', () => (
         <>
-            <Button>Button</Button>
-            <ButtonSecondary>Button Secondary</ButtonSecondary>
-            <ButtonTertiary>Button Secondary</ButtonTertiary>
+            <ButtonPrimary style={Styles.mb5}>Primary</ButtonPrimary>
+            <ButtonSecondary style={Styles.mb5}>Button Secondary</ButtonSecondary>
+            <ButtonTertiary style={Styles.mb5}>Button Tertiary</ButtonTertiary>
+            <ButtonText style={Styles.mb5}>Text Button</ButtonText>
             <ButtonNav>
                 <ION
                   style={{
@@ -197,7 +198,7 @@ setup(() => {
       return (
           <Flex style={{ backgroundColor:'white', padding: 20 }}>
 
-              <TextInput style={Styles.mb10} title={'Name'}/>
+              <TextInput selectionColor={palette.primary} placeholder={'Enter Name'} placeholderTextColor={'lightgrey'} style={Styles.mb10} title={'Name'}/>
               <TextInputIcon
                 style={Styles.mb10}
                 icon={<ION name="ios-star"/>}

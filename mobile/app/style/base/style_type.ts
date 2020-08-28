@@ -43,7 +43,6 @@ const styles:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNa
 
   italic: {
     fontFamily: styleVariables.italicFontFamily,
-    fontWeight: styleVariables.normalFontWeight,
   },
 
   textError: {
@@ -51,7 +50,6 @@ const styles:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNa
   },
 
   fontWeightLight: {
-    fontWeight: styleVariables.normalFontWeight,
     fontFamily: styleVariables.normalFontFamily,
   },
 
@@ -89,7 +87,6 @@ const styles:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNa
   },
 
   bold: {
-    fontWeight: styleVariables.boldFontWeight,
     fontFamily: styleVariables.boldFontFamily,
   },
 
@@ -98,7 +95,6 @@ const styles:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNa
     color: palette.text,
     fontFamily: styleVariables.normalFontFamily,
     fontSize: styleVariables.fontSizeBase,
-    fontWeight: styleVariables.normalFontWeight,
   },
 
 
@@ -106,7 +102,6 @@ const styles:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNa
     marginBottom: styleVariables.marginBaseVertical,
     fontFamily: styleVariables.paragraphText,
     color: palette.primaryDark,
-    // letterSpacing: 0.9
   },
 
   textSmall: {
@@ -127,12 +122,10 @@ const styles:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNa
 
   fontSizeHeading: {
     fontSize: styleVariables.fontSizeHeading,
-    fontWeight: styleVariables.boldFontWeight,
     fontFamily: styleVariables.boldFontFamily,
   },
 
   fontSizeSubHeading: {
-    fontWeight: styleVariables.boldFontWeight,
     fontFamily: styleVariables.boldFontFamily,
   },
 

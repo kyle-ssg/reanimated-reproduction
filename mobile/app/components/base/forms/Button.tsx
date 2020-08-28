@@ -78,18 +78,8 @@ export const ButtonPrimary: FunctionComponent<ComponentType> = (props) => {
   return (
       <Button
         {...props}
-        style={[Styles.buttonPrimary, props.style]}
-        textStyle={[styles.buttonPrimaryText, props.textStyle]}
-      />
-  );
-};
-
-export const ButtonText: FunctionComponent<ComponentType> = (props) => {
-  return (
-      <Button
-        {...props}
-        style={[Styles.buttonText, props.style]}
-        textStyle={[{ color: palette.primary }, props.textStyle]}
+        style={[styles.buttonPrimary, props.style]}
+        textStyle={[props.textStyle]}
       />
   );
 };
@@ -115,6 +105,16 @@ export const ButtonTertiary: FunctionComponent<ComponentType> = (props) => {
   );
 };
 
+export const ButtonText: FunctionComponent<ComponentType> = (props) => {
+  return (
+    <Button
+      {...props}
+      style={[Styles.buttonText, props.style]}
+      textStyle={[{ color: palette.primary }, props.textStyle]}
+    />
+  );
+};
+
 export const ButtonNav: FunctionComponent<ComponentType> = (props) => {
   return (
       <Button
@@ -129,22 +129,7 @@ export const ButtonNav: FunctionComponent<ComponentType> = (props) => {
 
 
 const styles = ReactNative.StyleSheet.create({
-  TabButtonPill: {
-    height: 34,
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  TabButtonPillText: {
-    color: palette.primaryDark,
-  },
-  buttonNav: {
-    backgroundColor: 'white',
-    width: 44,
-    height:44,
-    borderRadius:22,
-    overflow:"hidden"
-  },
+  buttonPrimary: { backgroundColor: palette.primary },
   buttonTertiary: {
     backgroundColor: 'white',
     borderColor: palette.primary,
@@ -156,7 +141,6 @@ const styles = ReactNative.StyleSheet.create({
   buttonTertiaryText: {
     color: palette.primary,
   },
-  buttonPrimary: { backgroundColor: 'pink' },
 });
 
 export default Button

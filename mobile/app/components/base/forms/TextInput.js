@@ -61,7 +61,7 @@ const TextInput = class extends Component {
         <>
             {this.props.title && (
             <FormGroup>
-                <Text style={Styles.textInputLabel}>{this.props.title}</Text>
+                <Text>{this.props.title}</Text>
             </FormGroup>
             )}
             <ReactNative.TextInput
@@ -75,7 +75,8 @@ const TextInput = class extends Component {
               testID={this.props.testID}
               ref={(ref) => this.inputRef = ref}
               blurOnSubmit={Platform.OS === 'ios' && !this.props.multiline}
-              textStyle={Styles.textInputText}
+              placeholderTextColor={this.props.placeholderTextColor}
+              selectionColor={this.props.selectionColor}
             />
         </>
     );
@@ -99,8 +100,8 @@ TextInput.propTypes = {
   keyboardType: propTypes.string,
   onSubmit: propTypes.func,
   onFocus: propTypes.func,
-  textStyle: propTypes.any,
   testID: propTypes.string,
+  placeholderTextColor: propTypes.string,
 };
 
 // const styles = ReactNative.StyleSheet.create({
