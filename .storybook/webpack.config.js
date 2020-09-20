@@ -14,8 +14,20 @@ module.exports = async ({ config, mode }) => {
             include: path.resolve(__dirname, '../'),
         }
     );
-
-    config.module.rules = config.module.rules.concat(require('../webpack/loaders.js'));
+    config.module.rules.push({
+        test: /\.(ts|tsx)$/,
+        use: [
+            {
+                loader: require.resolve('ts-loader'),
+            },
+            // Optional
+            {
+                loader: require.resolve('react-docgen-typescript-loader'),
+            },
+        ],
+    });
+    config.module.rules = config.module.rules.concat(require('../.webpack/loaders.js'));
+    config.resolve.extensions.push('.ts', '.tsx');
 
     // Return the altered config
     return config;

@@ -1,28 +1,18 @@
+import React, { Component } from "react";
+
 export default (WrappedComponent) => {
-    class HOC extends React.Component {
-        static displayName = 'withFoo';
+  class HOC extends Component {
+    static displayName = "withFoo";
 
-        constructor(props) {
-            super(props);
-            this.state = {};
-        }
-
-        componentWillMount() {
-            if (!this.props.user) {
-                debugger;
-            }
-        }
-
-        render() {
-            return (
-                <WrappedComponent
-                  ref="wrappedComponent"
-                  {...this.props}
-                  {...this.state}
-                />
-            );
-        }
+    constructor(props) {
+      super(props);
+      this.state = {};
     }
 
-    return HOC;
+    render() {
+      return <WrappedComponent {...this.props} {...this.state} />;
+    }
+  }
+
+  return HOC;
 };

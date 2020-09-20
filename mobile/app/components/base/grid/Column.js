@@ -14,9 +14,9 @@ const FCol = (props) => (
 );
 
 Column.propTypes = FCol.propTypes = {
-    flexStyle: propTypes.any,
-    style: propTypes.any,
-    children: propTypes.any,
+  flexStyle: propTypes.any,
+  style: propTypes.any,
+  children: propTypes.any,
 };
 
 module.exports = { Column, FCol };

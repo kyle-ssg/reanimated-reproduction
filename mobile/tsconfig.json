@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "jsx": "react-native",
+    "lib": ["es6"],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "strict": false,
+    "baseUrl": ".",
+    "paths": {
+      "common/*": ["../common/*"],
+      "components/*": ["app/components/*"],
+      "screens/*": ["app/screens/*"]
+    },
+    "target": "esnext"
+  },
+  "exclude": [
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
+}

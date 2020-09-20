@@ -1,25 +1,29 @@
-import React from 'react';
-import cn from 'classnames';
-import propTypes from 'prop-types';
+import React, { PureComponent } from "react";
+import propTypes from "prop-types";
+import cn from "classnames";
 
-const FormGroup = ({ className, children, ...rest }) => (
-    <div
-      {...rest}
-      className={cn({
-          'form-group': true,
-      }, className)}
-    >
-        {children}
-    </div>
-);
-
-FormGroup.displayName = 'FormGroup';
-
-FormGroup.defaultProps = {};
-
-FormGroup.propTypes = {
-    className: propTypes.string,
-    children: propTypes.node,
+const _propTypes = {
+  /** The element's children */
+  children: propTypes.node,
+  /** The element's class name */
+  className: propTypes.string,
 };
 
+/**
+ * Div with standard vertical padding
+ */
+export class FormGroup extends PureComponent {
+  static displayName = "FormGroup";
+
+  static propTypes = _propTypes;
+
+  render() {
+    const {
+      props: { className, ...rest },
+    } = this;
+    return <div {...rest} className={cn(className, "form-group")} />;
+  }
+}
+
 global.FormGroup = FormGroup;
+export default FormGroup;

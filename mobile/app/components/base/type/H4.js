@@ -5,23 +5,23 @@ const h4 = class extends Component {
   static displayName = 'H4';
 
   render() {
-      return (
-          <Text
-            accessible={this.props.accessible}
-            accessibilityLabel={this.props.accessibilityLabel}
-            style={[Styles.h4, this.props.style]}
-          >
-              {this.props.children}
-          </Text>
-      );
+    return (
+        <Text
+          accessible={this.props.accessible}
+          accessibilityLabel={this.props.accessibilityLabel}
+          style={[Styles.h4, this.props.style]}
+        >
+            {this.props.children}
+        </Text>
+    );
   }
 };
 
 h4.propTypes = {
-    accessible: propTypes.bool,
-    accessibilityLabel: propTypes.string,
-    style: propTypes.any,
-    children: propTypes.node,
+  accessible: propTypes.bool,
+  accessibilityLabel: propTypes.string,
+  style: propTypes.any,
+  children: propTypes.node,
 };
 
 module.exports = h4;

@@ -2,7 +2,6 @@ mobile
 stories
 docs
 cli
-bin
 .storybook
 pacts
 logs

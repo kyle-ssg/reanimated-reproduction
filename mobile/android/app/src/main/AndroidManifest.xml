@@ -1,28 +1,28 @@
-<!--FACEBOOK_LOGIN Added xmlns:tools="http://schemas.android.com/tools-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.mobile.project">
+  package="com.mobile.project">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <application
-            android:name=".MainApplication"
-            android:label="@string/app_name"
-            android:icon="@mipmap/ic_launcher"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:allowBackup="false"
-            android:theme="@style/AppTheme">
-        <activity
-                android:name=".MainActivity"
-                android:label="@string/app_name"
-                android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-                android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+      android:name=".MainApplication"
+      android:label="@string/app_name"
+      android:icon="@mipmap/ic_launcher"
+      android:roundIcon="@mipmap/ic_launcher_round"
+      android:allowBackup="false"
+      android:theme="@style/AppTheme">
+      <activity
+        android:name=".MainActivity"
+        android:label="@string/app_name"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+        android:launchMode="singleTask"
+        android:windowSoftInputMode="adjustResize">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+      </activity>
+      <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
         <!--FACEBOOK_LOGIN-->
         <!--                <activity tools:replace="android:theme"-->
         <!--                          android:name="com.facebook.FacebookActivity"-->
@@ -49,16 +49,16 @@
         <!-- END OF FACEBOOK_LOGIN-->
 
         <!--REACT_NATIVE_BRANCH-->
-<!--        <meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_ajwnUd3ezHRgbK5wLA0l9mbcEBo55Nso"/>-->
-<!--        <meta-data android:name="io.branch.sdk.BranchKey.test"-->
-<!--                   android:value="key_test_oiuoOp4cuIKciT1yOqXPjebjzBjYXKuF"/>-->
-<!--        <meta-data android:name="io.branch.sdk.TestMode" android:value="true"/>-->
+        <!--        <meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_ajwnUd3ezHRgbK5wLA0l9mbcEBo55Nso"/>-->
+        <!--        <meta-data android:name="io.branch.sdk.BranchKey.test"-->
+        <!--                   android:value="key_test_oiuoOp4cuIKciT1yOqXPjebjzBjYXKuF"/>-->
+        <!--        <meta-data android:name="io.branch.sdk.TestMode" android:value="true"/>-->
 
-<!--        <receiver android:name="io.branch.referral.InstallListener" android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="com.android.vending.INSTALL_REFERRER"/>-->
-<!--            </intent-filter>-->
-<!--        </receiver>-->
+        <!--        <receiver android:name="io.branch.referral.InstallListener" android:exported="true">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="com.android.vending.INSTALL_REFERRER"/>-->
+        <!--            </intent-filter>-->
+        <!--        </receiver>-->
         <!--END OF REACT_NATIVE_BRANCH-->
     </application>
 

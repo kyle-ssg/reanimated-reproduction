@@ -1,38 +1,38 @@
 module.exports = ({
-    body,
-    method,
-    path,
-    query = null,
-    requestBody = null,
-    state = 'Default',
-    status = 200,
-    uponReceiving,
+  body,
+  method,
+  path,
+  query = null,
+  requestBody = null,
+  state = 'Default',
+  status = 200,
+  uponReceiving,
 }, pact) => {
-    const interaction = {
-        state,
-        uponReceiving,
-        withRequest: {
-            method: method.toUpperCase(),
-            path,
-            query,
-        },
-        willRespondWith: {
-            status,
-            body,
-        },
+  const interaction = {
+    state,
+    uponReceiving,
+    withRequest: {
+      method: method.toUpperCase(),
+      path,
+      query,
+    },
+    willRespondWith: {
+      status,
+      body,
+    },
+  };
+
+  if (requestBody) {
+    interaction.withRequest.headers = {
+      'Content-Type': 'application/json',
     };
 
-    if (requestBody) {
-        interaction.withRequest.headers = {
-            'Content-Type': 'application/json',
-        };
+    interaction.willRespondWith.headers = {
+      'Content-Type': 'application/json',
+    };
 
-        interaction.willRespondWith.headers = {
-            'Content-Type': 'application/json',
-        };
+    interaction.withRequest.body = requestBody;
+  }
 
-        interaction.withRequest.body = requestBody;
-    }
-
-    return pact.addInteraction(interaction);
+  return pact.addInteraction(interaction);
 };

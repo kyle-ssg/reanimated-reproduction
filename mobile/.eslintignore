@@ -1,1 +1,3 @@
-common-mobile/**/*
+ios
+android
+node_modules

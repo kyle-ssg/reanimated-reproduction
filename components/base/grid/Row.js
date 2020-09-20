@@ -1,37 +1,46 @@
+// propTypes: value: OptionalNumber
+import React, { PureComponent } from "react";
+import propTypes from "prop-types";
+
+const cn = require("classnames");
+
+const _propTypes = {
+  /** The element's children */
+  children: propTypes.node,
+  /** The element's class name */
+  className: propTypes.string,
+  /** Whether to space children apart */
+  space: propTypes.bool,
+};
+
 /**
- * Created by kylejohnson on 24/07/2016.
+ * Div with flex
  */
-import cn from 'classnames';
-import React from 'react';
-import propTypes from 'prop-types';
+export class Row extends PureComponent {
+  static displayName = "Row";
 
-const Row = ({ children, className, space, ...rest }) => (
-    <div
-      {...rest}
-      className={cn({
-          'flex-row': true,
-          space,
-      }, className)}
-    >
-        {children}
-    </div>
-);
+  static propTypes = _propTypes;
 
-Row.displayName = 'Row';
-
-Row.defaultProps = {
-    children: null,
-    className: '',
-    space: false,
-    style: null,
-};
-
-Row.propTypes = {
-    className: propTypes.string,
-    space: propTypes.bool,
-    children: propTypes.node,
-    style: propTypes.any,
-};
+  render() {
+    const {
+      props: { className, space, children, ...rest },
+    } = this;
+    return (
+        <div
+          {...rest}
+          className={cn(
+          {
+            "flex-row": true,
+            space,
+          },
+          className
+        )}
+        >
+            {children}
+        </div>
+    );
+  }
+}
 
 global.Row = Row;
 export default Row;

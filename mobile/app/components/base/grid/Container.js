@@ -2,18 +2,18 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 const Container = ({
-    ml0,
-    ml5,
-    ml10,
-    ml15,
-    ml20,
-    mr0,
-    mr5,
-    mr10,
-    mr15,
-    mr20,
-    style,
-    children,
+  ml0,
+  ml5,
+  ml10,
+  ml15,
+  ml20,
+  mr0,
+  mr5,
+  mr10,
+  mr15,
+  mr20,
+  style,
+  children,
 }) => (
     <View
       style={[
@@ -37,23 +37,23 @@ const Container = ({
 Container.displayName = 'Container';
 
 Container.propTypes = {
-    children: propTypes.node,
-    ml0: propTypes.bool,
-    ml5: propTypes.bool,
-    ml10: propTypes.bool,
-    ml15: propTypes.bool,
-    ml20: propTypes.bool,
-    mr0: propTypes.bool,
-    mr5: propTypes.bool,
-    mr10: propTypes.bool,
-    mr15: propTypes.bool,
-    mr20: propTypes.bool,
-    style: propTypes.any,
+  children: propTypes.node,
+  ml0: propTypes.bool,
+  ml5: propTypes.bool,
+  ml10: propTypes.bool,
+  ml15: propTypes.bool,
+  ml20: propTypes.bool,
+  mr0: propTypes.bool,
+  mr5: propTypes.bool,
+  mr10: propTypes.bool,
+  mr15: propTypes.bool,
+  mr20: propTypes.bool,
+  style: propTypes.any,
 };
 
 Container.defaultProps = {
-    ml10: true,
-    mr10: true,
+  ml10: true,
+  mr10: true,
 };
 
 module.exports = Container;

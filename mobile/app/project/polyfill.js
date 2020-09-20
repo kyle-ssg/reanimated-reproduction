@@ -1,4 +1,7 @@
-import PropTypes from 'prop-types';
+// Anything that web has that's common, import here
+import propTypes from 'prop-types';
+import moment from 'moment';
+
 // Lodash
 import each from 'lodash/each';
 import map from 'lodash/map';
@@ -11,26 +14,8 @@ import cloneDeep from 'lodash/cloneDeep';
 import findIndex from 'lodash/findIndex';
 import range from 'lodash/range';
 import keyBy from 'lodash/keyBy';
+import get from 'lodash/get';
 
-global._ = { each, filter, uniqBy, find, partial, findIndex, merge, range, map, cloneDeep, keyBy };
-// React Prop Types, todo: move to react-native-globals
-global.Any = PropTypes.any;
-global.OptionalArray = PropTypes.array;
-global.OptionalBool = PropTypes.bool;
-global.OptionalFunc = PropTypes.func;
-global.OptionalNumber = PropTypes.number;
-global.OptionalObject = PropTypes.object;
-global.OptionalString = PropTypes.string;
-global.OptionalNode = PropTypes.node;
-global.OptionalElement = PropTypes.node;
-global.oneOf = PropTypes.oneOf;
-global.oneOfType = PropTypes.oneOfType;
-global.RequiredArray = PropTypes.array.isRequired;
-global.RequiredBool = PropTypes.bool.isRequired;
-global.RequiredFunc = PropTypes.func.isRequired;
-global.RequiredNumber = PropTypes.number.isRequired;
-global.RequiredObject = PropTypes.object.isRequired;
-global.RequiredString = PropTypes.string.isRequired;
-global.RequiredNode = PropTypes.node.isRequired;
-global.RequiredElement = PropTypes.node.isRequired;
-global.propTypes = PropTypes;
+global.moment = moment;
+global._ = { each, filter, uniqBy, find, partial, findIndex, merge, range, map, cloneDeep, keyBy, get };
+global.propTypes = propTypes;

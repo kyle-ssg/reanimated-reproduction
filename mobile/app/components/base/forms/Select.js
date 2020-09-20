@@ -6,101 +6,101 @@ const Select = class extends Component {
   static displayName = 'Select';
 
   static propTypes = {
-      onChange: propTypes.func,
-      renderNoResults: propTypes.bool,
-      style: propTypes.any,
+    onChange: propTypes.func,
+    renderNoResults: propTypes.bool,
+    style: propTypes.any,
   };
 
   constructor(props, context) {
-      super(props, context);
-      this.state = {};
+    super(props, context);
+    this.state = {};
   }
 
   isSelected = (i) => {
-      const { multiple } = this.props;
-      const value = this.props.value || [];
-      return multiple ? value.indexOf(i) !== -1 : value === i;
+    const { multiple } = this.props;
+    const value = this.props.value || [];
+    return multiple ? value.indexOf(i) !== -1 : value === i;
   };
 
   setItem = (i, selected) => {
-      const { multiple, value, onChange } = this.props;
-      if (multiple) {
-          if (selected) {
-              onChange((value || []).concat(i));
-          } else {
-              const index = _.findIndex(value, i);
-              value.splice(index, 1);
-              onChange(value);
-          }
-      } else if (selected) {
-          onChange(i);
+    const { multiple, value, onChange } = this.props;
+    if (multiple) {
+      if (selected) {
+        onChange((value || []).concat(i));
       } else {
-          onChange(null);
+        const index = _.findIndex(value, i);
+        value.splice(index, 1);
+        onChange(value);
       }
+    } else if (selected) {
+      onChange(i);
+    } else {
+      onChange(null);
+    }
   };
 
   render() {
-      const {
-          renderRow,
-          renderNoResults,
-          filterItem,
-          placeholder,
-          style,
-      } = this.props;
-      const { search } = this.state;
-      const data = filterItem
-          ? _.filter(this.props.items, (i) => !search || filterItem(i, search))
-          : this.props.items;
+    const {
+      renderRow,
+      renderNoResults,
+      filterItem,
+      placeholder,
+      style,
+    } = this.props;
+    const { search } = this.state;
+    const data = filterItem
+      ? _.filter(this.props.items, (i) => !search || filterItem(i, search))
+      : this.props.items;
 
-      return (
-          <Flex style={[Styles.body, { style }]}>
-              {filterItem && (
-              <FormGroup style={{ backgroundColor: '#FCF8F5' }}>
-                  <Container>
-                      <TextInput
-                        style={{
+    return (
+        <Flex style={[Styles.body, { style }]}>
+            {filterItem && (
+            <FormGroup style={{ backgroundColor: '#FCF8F5' }}>
+                <Container>
+                    <TextInput
+                      style={{
                             shadowOpacity: 0,
                             borderBottomWidth: 0,
                         }}
-                        placeholder={placeholder}
-                        onChangeText={(searchNew) => this.setState({ search: searchNew.toLowerCase() })}
-                        testID={this.props.searchTestID}
-                      />
-                  </Container>
-              </FormGroup>
+                      placeholder={placeholder}
+                      onChangeText={(searchNew) => this.setState({ search: searchNew.toLowerCase() })}
+                      testID={this.props.searchTestID}
+                    />
+                </Container>
+            </FormGroup>
               )}
-              {data && data.length ? (
-                  <FlatList
-                    data={data}
-                    renderItem={({ item }) => {
+            {data && data.length ? (
+                <FlatList
+                  data={data}
+                  renderItem={({ item }) => {
                         const isSelected = this.isSelected(item);
                         const toggleItem = () => {
                             this.setItem(item, !isSelected);
                         };
                         return renderRow(item, isSelected, toggleItem);
                     }}
-                  />
+                />
               ) : renderNoResults ? (
                   renderNoResults()
               ) : (
                   <Text style={Styles.textCenter}>
-            No Results Found for:
+                      No Results Found for:
                       <Bold>{search}</Bold>
                   </Text>
               )}
-          </Flex>
-      );
+        </Flex>
+    );
   }
 };
 
 Select.propTypes = {
-    value: propTypes.any,
-    items: propTypes.array,
-    multiple: propTypes.bool,
-    filterItem: propTypes.func,
-    renderRow: propTypes.func,
-    placeholder: propTypes.string,
-    searchTestID: propTypes.string,
+  value: propTypes.any,
+  items: propTypes.array,
+  multiple: propTypes.bool,
+  filterItem: propTypes.func,
+  renderRow: propTypes.func,
+  placeholder: propTypes.string,
+  searchTestID: propTypes.string,
 };
 
 module.exports = Select;

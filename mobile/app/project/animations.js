@@ -1,38 +1,10 @@
-import * as Animatable from 'react-native-animatable';
-import { Easing } from 'react-native';
+let { Easing } = require('react-native');
 
-Animatable.initializeRegistryWithDefinitions({
-    basicListEntrance: {
-        from: { opacity: 0, 'translateX': 20 },
-        to: { opacity: 1, 'translateX': 0 },
-    },
-    basicListEntranceFade: {
-        from: { opacity: 0, 'translateX': 40 },
-        to: { opacity: 1, 'translateX': 0 },
-    },
-});
+const EPSILON = 1e-9;
 
-global.Animatable = Animatable;
-
-const acceleration = Easing.bezier(0.4, 0.0, 1, 1);
-const deceleration = Easing.bezier(0.0, 0.0, 0.2, 1);
-const standard = Easing.bezier(0.0, 0.0, 0.0, 1.0);
-const linear = Easing.linear();
-
-
-export default {
-    smallElementDuration: 200,
-    expandDuration: 200,
-    collapseDuration: 150,
-    expandEasing: deceleration,
-    collapseEasing: linear,
-    acceleration, // See https://material.io/design/motion/speed.html#easing
-    deceleration, // See https://material.io/design/motion/speed.html#easing
-    standard, // See https://material.io/design/motion/speed.html#easing
-    // listItem: {
-    //     useNativeDriver: true,
-    //     animation: 'basicListEntrance',
-    //     duration: 150,
-    //     easing: acceleration,
-    // },
-};
+// See Apple's "CAMediaTimingFunction Class Reference" for the Bezier control
+// points
+export const easeIn = Easing.bezier(0.42, 0, 1, 1, EPSILON);
+export const easeOut = Easing.bezier(0, 0, 0.58, 1, EPSILON);
+export const easeInOut = Easing.bezier(0.42, 0, 0.58, 1, EPSILON);
+export const ease = Easing.bezier(0.25, 0.1, 0.25, 1, EPSILON);

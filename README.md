@@ -35,9 +35,48 @@ npm run dev
 
 Every branch gets deployed with Zeit. See the deployments tab in this GitHub.
 
+
+## Testing with jest
+allows component level, unit, saga and reducer testing
+```
+npm run test
+```
+
+## E2E tests with nightwatch
+requires dependencies listed in tests/e2e/readme.md
+
+```
+npm run test:e2e
+```
+
+## Generating pact tests files
+Only really relevant if the backends use pact requires dependencies listed in tests/pact/readme.md
+
+```
+npm run test:pct
+```
+
+## Running a pact mock server 
+Can be done regardless of if pact is installed
+```
+npm run test:pact:server
+```
+
+## ENV variables
+
+Variables that differ per environment are exported globally to ``window.Project in`` [common/project.js](./common/project.js), this file gets replaced by a project.js located in [env](./env) by webpack based on what is set to the "ENV" environment variable (e.g. ENV=prod).
+ 
+You can override each variable individually or add more by editing [environment.js](.env/environment-variables.js). 
+
+e.g. with  ``API_URL=test npm run test`` Project.API will be "test"
+
 ## Storybook
 
-This project uses storybook, you can run ```npm run storybook``` , this will render stories according to /stories/index.
+This project uses storybook, running the project in dev mode will launch storybook on port 4000, this will render stories according to /stories/index.
+
+## Web Entrypoint
+
+pages/_app.js is where the initial app code is run
 
 
 ## Creating pages
@@ -53,50 +92,6 @@ There's a standardised Page component which will add any seo meta tags necessary
 ```
 
 
-## Creating a blog
-
-There is an automatic blog generator built into this project, any pages within /static/pages/blog-markdown will be parsed and the metadata inside will generate a blog.json.
-
-
-
-```$xslt
-         ---
-         title: Achieving a perfect 100% Google Lighthouse audit score with Next and Redux
-         published: true
-         description: Jumping down a satisfying rabbit hole with NextJS
-         tags: webdev, showdev, react, javascript
-         author: Kyle Johnson
-         avatar: /static/images/blog/kyle.png
-         date: 26-aug-2019
-         ---
-         <--- Markdown content here -->
-```
-
-Once you have created the post in the required folder you will need to create a route at blog/filename.js, within that you can create your markup, e.g.
-
-```$xslt
-
-import md from '../../static/pages-blog-markdown/100-percent-lighthouse-score.md';
-import BlogPost from '../../components/BlogPost';
-
-
-const BlogPostPage = props => (
-    <BlogPost
-      route={props.router.route}
-      source={md}
-    />
-);
-
-BlogPostPage.displayName = 'BlogPostPage';
-
-export default BlogPostPage;
-
-```
-
-## Blog comments
-
-This project makes use of isso, if you add a valid isso api to project.js.
-
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/kyle-ssg/c36a03aebe492e45cbd3eefb21cb0486) for details on our code of conduct, and the process for submitting pull requests to us.
@@ -108,3 +103,8 @@ If you encounter a bug or feature request we would like to hear about it. Before
 ## Get in touch
 
 If you have any questions about our projects you can email <a href="mailto:projects@solidstategroup.com">projects@solidstategroup.com</a>.
+
+## Libraries of note
+    "react-autocomplete": "^1.8.1", for a suitable autocomplete
+    "react-autolinker": "^1.0.7", converting @ # etc to html
+    "react-json-tree": "^0.11.2", debugging json in UI
