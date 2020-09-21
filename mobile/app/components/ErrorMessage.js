@@ -10,8 +10,11 @@ export default class ErrorMessage extends Component {
 
   render() {
     const { props } = this;
+    if (!props.children) {
+      return null
+    }
     return (
-        <View>
+        <View style={[styles.container, props.style]}>
             <Text style={styles.ErrorMessageText}>
                 {typeof props.children === 'string' ? props.children : 'Error processing request'}
             </Text>

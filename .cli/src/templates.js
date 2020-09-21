@@ -31,6 +31,9 @@ module.exports = {
     takeLatest(action, prefix) {
         return `takeLatest(Actions.${action}, ${functionName(action, prefix)}),`;
     },
+    takeEvery(action, prefix) {
+        return `takeEvery(Actions.${action}, ${functionName(action, prefix)}),`;
+    },
     // appactions
     getCollection(action, prefix) {
         return `

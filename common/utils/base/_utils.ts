@@ -1,7 +1,7 @@
 import omit from "lodash/omit";
 import filter from "lodash/filter";
 import { SyntheticEvent } from "react";
-
+import moment from 'moment';
 const KEY_Y = 89;
 const KEY_Z = 90;
 const Utils = {
@@ -9,6 +9,36 @@ const Utils = {
     emailRegex: /^([\w-+]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
   // eslint-disable-next-line
     urlRegex: /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]+(:[0-9]{1,5})?(\/.*)?$/,
+
+  todayUtc(local = moment()) {
+     return Utils.convertToUtc();
+  },
+
+  convertToUtc(local = moment()) {
+    const date = moment.utc().startOf("day").set({
+      days: local.day(),
+      months: local.month(),
+      years: local.year(),
+    })
+    return date;
+  },
+
+  convertToUtcWithHours(local = moment()) {
+    const date = moment.utc().startOf("day").set({
+      days: local.day(),
+      months: local.month(),
+      years: local.year(),
+      hours: local.hour(),
+      minutes: local.minute(),
+    })
+    return date;
+  },
+
+  mapEnum(enumerable: any, fn: ()=>void): any[] {
+    let enumMembers: any[] = Object.keys(enumerable).map(key => enumerable[key]);
+    let enumValues: number[] = enumMembers.filter(v => typeof v === "number");
+    return enumValues.map(m => fn(m));
+  },
 
   keys: {
     isUndo /* istanbul ignore next */(e: KeyboardEvent): boolean {
@@ -144,6 +174,14 @@ const Utils = {
       `{"${urlString.replace(/&/g, '","').replace(/=/g, '":"')}"}`,
       (key, value) => (key === "" ? value : decodeURIComponent(value))
     );
+  },
+
+  round(number:number, decimalPlaces:number) {
+    if (!number) {
+      return 0
+    }
+      // @ts-ignore
+    return Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces)
   },
 
   capitalize(s?: string): string {

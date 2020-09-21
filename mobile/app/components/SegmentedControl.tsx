@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback, useState } from 'react'; // we need this to make JSX compile
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'; // we need this to make JSX compile
 import { useMeasure } from "components/utility-components/useMeasure";
 import { Pressable, TextStyle, ViewStyle } from "react-native";
 import {
@@ -75,14 +75,15 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
   const [sliderPosition, setSliderPosition] = useState(
     new Animated.Value<number>(0)
   );
-  const [size, onLayout] = useMeasure((initialSize) => {
-    const initialWidth = initialSize.width;
+  const [size, onLayout] = useMeasure();
+  useEffect(()=>{
+    const initialWidth = size.width;
     const initialSliderWidth =
       (initialWidth - paddingX * 2) * (1 / items.length);
     const index = items.indexOf(value) || 0;
     setSliderPosition(new Animated.Value(initialSliderWidth * index));
     setInitialised(true);
-  });
+  }, [size,items,paddingX])
   const sliderWidth = size && (size.width - paddingX * 2) * (1 / items.length);
   // This hook is used to animate the slider position
   Animated.useCode(() => {
@@ -118,7 +119,7 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
       <View
         style={[
         styles.track,
-          disabled && styles.disabled,
+        disabled && styles.disabled,
         trackStyle,
         { paddingHorizontal: paddingX, paddingVertical: paddingY },
       ]}
@@ -130,9 +131,9 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
                   <>
                       <Animated.View
                         style={[styles.bar, barStyle, {
-                            width: sliderWidth,
-                            transform: [{ translateX: sliderPosition }],
-                          }]}
+                  width: sliderWidth,
+                  transform: [{ translateX: sliderPosition }],
+                }]}
                       />
                       {items.map((item, i) => (
                           <SegmentText
@@ -146,7 +147,7 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
                             textStyle={textStyle}
                             value={value}
                           />
-                      ))}
+              ))}
                   </>
               </View>
           </PanGestureHandler>

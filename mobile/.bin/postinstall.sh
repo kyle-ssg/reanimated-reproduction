@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ -z "$APPCENTER_BUILD_ID" ]]
+if [[ -z "$APPCENTER_ACCESS_TOKEN" ]]
 then
     cd ./ios && pod install && cd ..
 else

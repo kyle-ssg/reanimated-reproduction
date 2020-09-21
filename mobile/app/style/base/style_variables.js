@@ -10,13 +10,16 @@ let deviceH = Dimensions.get('screen').height;
 let windowH = Dimensions.get('window').height;
 let bottomNavBarH = deviceH - windowH;
 
-global.palette = {
-  bodyBackground: '#fff', // General app  background
+global.palette = { bodyBackground: '#fff', // General app  background
   primary: 'rgb(10,132,255)',
   primaryPressed: 'rgb(0,109,217)',
   secondary: 'rgb(255,55,95)',
   secondaryPressed: 'rgb(236,50,86)',
-
+  success: 'rgb(48,209,88)',
+  divider: 'rgb(229,229,234)',
+  textLight: 'rgb(174,174,178)',
+  iconFaint: 'rgb(229,229,234)',
+  text: 'rgb(28,28,30)',
   ...global.palette };
 
 //= = Other Variables
@@ -35,8 +38,18 @@ export const styleVariables =  global.styleVariables = {
     })
   },
 
+  //= = Typography
+  fontSizeBase: em(1), //16px
+  fontSizeH1: em(2), // 32px
+  fontSizeH2: em(1.5), // 24px
+  fontSizeH3: em(1.25), // 20px
+  fontSizeH4: em(1), // 16px
+
   // Buttons
   buttonHeight: 44,
+
+  // Inputs
+  fontSizeInputLarge: em(2),
 
   // Grid
   marginBaseVertical: 15,
@@ -45,15 +58,9 @@ export const styleVariables =  global.styleVariables = {
   gutterBase: 10,
   borderWidth: 1,
   borderBottomWidth: StyleSheet.hairlineWidth*2,
+  disabledOpacity: 0.2,
+  borderRadiusDefault: 2,
 
-
-
-  //= = Typography
-  fontSizeBase: em(1), //16px
-  fontSizeH1: em(2), // 32px
-  fontSizeH2: em(1.5), // 24px
-  fontSizeH3: em(1.25), // 20px
-  fontSizeH4: em(1), // 16px
   normalFontFamily: Platform.select({ ios: 'System', android: 'System' }),
   italicFontFamily: Platform.select({ ios: 'System', android: 'System' }),
   boldFontFamily: Platform.select({ ios: 'System', android: 'System' }),
@@ -61,4 +68,58 @@ export const styleVariables =  global.styleVariables = {
 
   ...global.styleVariables };
 
-global.colour = { ...palette, ...global.colour };
+global.colour = { ...palette,
+  iosStyle: 0,
+  buttonActiveOpacity: 0.8,
+  disabledOpacity: 0.8,
+  bodyBackground: '#ffffff', // General app  background
+  backdropBackground: 'rgba(0,0,0,0.2)',
+
+  // text
+  text: palette.text, // General app text colour
+  anchor: palette.anchor, // General app text colour
+  textLight: palette.textLight, // General app text colour
+  label: palette.textLightest, // text color for labels
+
+  // input
+  input: palette.text,
+  inputBackground: '#fff',
+  inputBorder: palette.divider,
+  placeholderTextColor: palette.textLight,
+  disabledText: palette.textLight,
+
+  // list items
+  listBackground: 'white',
+  listBackgroundAlt: '#f9f9fa',
+  listItemNav: '#d9d9d9',
+  listItemDivider: palette.divider,
+
+  dividerAlt: palette.secondary,
+
+  // Loader.js
+  loader: palette.text,
+
+  // BUTTON / SELECT COLOURS
+
+  buttonDefault: palette.primary,
+  btnAlt: palette.primary,
+
+  modalBackground: 'white',
+
+  panel: '#f1f1f1',
+
+  // nav
+  navBar: palette.primary,
+  navBarIcon: 'white',
+  // navBarSubtitle: palette.secondary,
+  navBarButtonText: 'white',
+  navBarBorder: 'transparent',
+  navBarText: 'black',
+  alert: 'red',
+  avatar: '#dbdbdb',
+
+  facebook: '#3b5998',
+  twitter: '#1DA1F3',
+  google: '#dd4b39',
+  ...global.colour };
+

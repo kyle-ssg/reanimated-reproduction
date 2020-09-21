@@ -2,6 +2,7 @@
 import React from 'react';
 import propTypes from "prop-types";
 import { PureComponent } from "react";
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const SelectBox = class extends PureComponent {
   static displayName = "SelectBox";
@@ -18,14 +19,18 @@ const SelectBox = class extends PureComponent {
     title: propTypes.string,
     onChange: propTypes.func,
     onBlur: propTypes.func,
+    style: propTypes.func,
+    titleStyle: propTypes.func,
+    destructiveButton: propTypes.bool,
   };
 
   onPress = () => {
-    const { options, title, onChange, onBlur } = this.props;
-    API.showOptions(title, options, true, false, null, true).then((i) => {
+    const { options, title, onChange, onBlur, destructiveButton } = this.props;
+    if (!options || !options.length) return;
+    API.showOptions(title, options, true, false, destructiveButton, true).then((i) => {
       if (onBlur) onBlur();
       if (onChange && i != null)
-        onChange(i < options.length ? options[i] : null);
+        onChange(i < options.length ? options[i] : null, i < options.length ? i : null);
     });
   };
 
@@ -38,14 +43,17 @@ const SelectBox = class extends PureComponent {
       iconStyle,
       hideIcon,
       children,
-      style,
       title,
+      style,
+      titleStyle
     } = this.props;
     return (
-        <View style={[{ opacity: disabled ? 0.5 : 1 }, style]}>
+        <View style={[this.props.style, { opacity: disabled ? 0.5 : 1 }]}>
             {!!title && (
             <FormGroup>
-                <Text style={Styles.inputLabel}>{this.props.title}</Text>
+                <Text
+                  style={[Styles.inputLabel, titleStyle || {}]}
+                >{this.props.title}</Text>
             </FormGroup>
         )}
             <TouchableOpacity
@@ -53,22 +61,30 @@ const SelectBox = class extends PureComponent {
               onPress={!disabled && (onPress || this.onPress)}
               style={[Styles.selectBoxContainer, containerStyle || {}]}
             >
-                <Row style={{ flexWrap: "nowrap" }} space>
-                    <Flex>
+                <Row>
+
+                    {this.props.icon ? (
+                        <View style={{ marginRight: 10 }}>
+                            {this.props.icon}
+                        </View>
+                  ) : (
+                    null
+                  )}
+
+                    <View style={Styles.pr15}>
                         <Text
                           numberOfLines={1}
-                          style={[Styles.selectBoxText, textStyle || {}]}
+                          style={[Styles.textInputText, textStyle || {}]}
                         >
                             {children}{" "}
                         </Text>
-                    </Flex>
+                    </View>
                     {!hideIcon && (
-                    <Column>
-                        <ION
-                          style={[Styles.selectBoxIcon, iconStyle || {}]}
-                          name="ios-chevron-down"
+                    <View style={[{ position: 'absolute', right: 0 }, Styles.pr5]}>
+                        <Icon name="chevron-down" size={13} color={palette.navy}
+                          light
                         />
-                    </Column>
+                    </View>
             )}
                 </Row>
             </TouchableOpacity>

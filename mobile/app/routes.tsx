@@ -1,12 +1,13 @@
-import React from "react";
-import { NativeStackNavigationOptions } from "react-native-screens/native-stack";
-import { ButtonNav } from "components/base/forms/Button";
-import GenericScreen from "screens/GenericScreen";
-import HomeScreen from "screens/HomeScreen";
-import { RouteUrls } from "./route-urls";
-import TabLayout from "screens/TabLayout";
-import StackScreen from "screens/StackScreen";
-import StorybookUIRoot from "../stories/index";
+import React from 'react';
+import { NativeStackNavigationOptions } from 'react-native-screens/native-stack';
+import { RouteUrls } from './route-urls';
+import BottomTabsNavigator from 'navigation/BottomTabsNavigator';
+import GenericScreen from 'screens/examples/GenericScreen';
+import Login from 'screens/GenericScreen';
+import HomeScreen from 'screens/GenericScreen';
+import WebScreen from 'screens/WebScreen';
+import ModalCloseButton from 'components/ModalCloseButton';
+import StorybookUIRoot from '../stories/index';
 
 type functionComponent = (props: any) => React.ReactNode;
 
@@ -40,14 +41,43 @@ export const withModalOptions = (base:Partial<NativeStackNavigationOptions>):Nat
     headerRight: ModalCloseButton
   }
 )
-
 // Contains default route config and components
 export const routes: Record<RouteUrls, IRoute> = {
+  [RouteUrls.mainApp]: {
+    options: {
+      title: '',
+      headerShown: false,
+    },
+    component: BottomTabsNavigator
+  },
+
+  [RouteUrls.web]: {
+    options: {
+      title: '',
+    },
+    component: WebScreen
+  },
+
   [RouteUrls.home]: {
     options: {
-      title: 'Home',
+      title: '',
     },
     component: HomeScreen
+  },
+
+  [RouteUrls.login]: {
+    options: {
+      headerShown: false,
+    },
+    component: Login
+  },
+
+  [RouteUrls.onboarding]: {
+    options: {
+      // headerShown: false,
+      title: 'About',
+    },
+    component: GenericScreen,
   },
 
   [RouteUrls.generic]: {
@@ -57,18 +87,8 @@ export const routes: Record<RouteUrls, IRoute> = {
     },
     component: GenericScreen,
   },
-  [RouteUrls.tabs]: {
-    options: {
-      headerShown: true,
-    },
-    component: TabLayout,
-  },
-  [RouteUrls.stack]: {
-    options: {
-      headerShown: false,
-    },
-    component: StackScreen,
-  },
+
+
   [RouteUrls.storybook]: {
     options: {
       headerShown: false,
