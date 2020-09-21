@@ -3,6 +3,7 @@ export interface AppState {
   [extraProps: string]: any; // Means that extra props are fine
   userLoading?: boolean;
   userError?: string;
+  theme?: {}
   user?: {
     firstName: string;
     lastName: string;

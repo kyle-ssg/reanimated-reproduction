@@ -107,6 +107,6 @@
     "storybook-addon-smart-knobs": "^6.0.2",
     "ts-jest": "^26.1.0",
     "ts-loader": "^6.2.2",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.7"
   }
 }

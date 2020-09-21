@@ -9,6 +9,7 @@ const h4 = class extends Component {
         <Text
           accessible={this.props.accessible}
           accessibilityLabel={this.props.accessibilityLabel}
+          numberOfLines={this.props.numberOfLines}
           style={[Styles.h4, this.props.style]}
         >
             {this.props.children}

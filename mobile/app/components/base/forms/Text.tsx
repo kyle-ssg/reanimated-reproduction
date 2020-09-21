@@ -1,22 +1,13 @@
 import propTypes from "prop-types";
 import ReactNative from "react-native";
-import React, { PureComponent } from "react";
+import React, { FunctionComponent } from "react";
 
-export default class Text extends PureComponent {
-  static displayName = "Text";
+const TheComponent: FunctionComponent<ReactNative.TextProps> = (props) => {
+  return (
+      <ReactNative.Text {...props} style={[Styles.text, props.style]}>
+          {props.children}
+      </ReactNative.Text>
+  );
+};
 
-  static propTypes = {
-    style: propTypes.any,
-    children: propTypes.node,
-  };
-  render() {
-    const {
-      props: { style, children },
-    } = this;
-    return (
-        <ReactNative.Text {...this.props} style={[Styles.text, style]}>
-            {children}
-        </ReactNative.Text>
-    );
-  }
-}
+export default TheComponent;

@@ -21,14 +21,18 @@ import { clamp, snapPoint, timing as timing2, useClock, useConst, usePanGestureH
 import { easingConfigDrawerIn, easingConfigDrawerOut, easingConfigModal } from '../project/reanimations';
 import { PanGestureHandler, State } from 'react-native-gesture-handler';
 import CustomModal from 'components/CustomModal';
+import { KeyboardAvoidingView } from 'react-native';
+
 
 export type ModalType = {
   animatedValue?: Animated.Value<number>;
   visible: boolean;
+  keyboardAvoidingProps?:ReactNative.KeyboardAvoidingViewProps,
   preventDismiss: boolean;
   height: number;
-  style: ReactNative.ViewStyle;
-  onDismissPress?: () => void;
+  style?: ReactNative.ViewStyle;
+  onDismissPress: () => void;
+  showNotch?: boolean
 };
 
 const BottomDrawer: FunctionComponent<ModalType> = ({
@@ -38,12 +42,12 @@ const BottomDrawer: FunctionComponent<ModalType> = ({
   visible,
   preventDismiss,
   height = 200,
-  children,
+  keyboardAvoidingProps,
+  children, showNotch
 })=> {
   const [modalVisible,setModalVisible]= useState<boolean>(false);
   const snapPoints = [0,height]
   const $clock = useClock();
-
   const {
     state:gestureState,
     gestureHandler,
@@ -68,7 +72,6 @@ const BottomDrawer: FunctionComponent<ModalType> = ({
     }
   ), translation.y));
   const gestureAnimationFinished = useValue(0);
-
 
   useCode(()=>( // gesture finished, animate to snap point
     cond(eq(gestureState,State.END), [
@@ -159,6 +162,7 @@ const BottomDrawer: FunctionComponent<ModalType> = ({
     })
   ))
 
+  const Container = keyboardAvoidingProps? KeyboardAvoidingView: View
   return (
       <CustomModal
         animatedValue={animation}
@@ -168,13 +172,20 @@ const BottomDrawer: FunctionComponent<ModalType> = ({
         style={styles.container}
         visible={modalVisible}
       >
-          <PanGestureHandler enabled={!preventDismiss} {...gestureHandler}>
-              <Animated.View
-                style={[styles.drawer,style, { height, transform: [{ translateY }] }]}
-              >
-                  {children}
-              </Animated.View>
-          </PanGestureHandler>
+          <Container {...keyboardAvoidingProps||{}}>
+              <PanGestureHandler enabled={!preventDismiss} {...gestureHandler}>
+                  <Animated.View
+                    style={[styles.drawer,style, { height, transform: [{ translateY }] }]}
+                  >
+
+                      {showNotch ?  <View style={[Styles.alignCenter, Styles.BottomDrawerNotch]}/> : null}
+
+
+
+                      {children}
+                  </Animated.View>
+              </PanGestureHandler>
+          </Container>
       </CustomModal>
   )
 
@@ -185,6 +196,7 @@ const styles = ReactNative.StyleSheet.create({
     justifyContent: "flex-end",
   },
   drawer: {
+    paddingTop: 20,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     backgroundColor: "white",
