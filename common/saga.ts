@@ -1,8 +1,11 @@
 import { put, all, takeLatest, takeEvery, select } from "redux-saga/effects";
 import _data from "./utils/_data";
-import { Actions } from "./app-actions";
+import { Actions, Callbacks } from './app-actions';
 import Project from "./project";
 
+type IAction = Callbacks & AnyAction &{
+  data?: any
+}
 import {
   handleResponse,
   updateAction,
@@ -14,14 +17,15 @@ import {
   getAction,
   postAction,
 } from "./utils/saga-helpers";
+import { AnyAction } from 'redux';
 
 // Called when the application starts up, if using SSR this is done in the server
-export function* startup(action = {}) {
+export function* startup(action : IAction) {
   try {
     const { ...rest } = action.data || {};
     // todo: deprecate _.get for action.data?.token
-    const token = _.get(action, "data.token");
-    const refreshToken = _.get(action, "data.refreshToken");
+    const token = action.data?.token;
+    const refreshToken = action.data?.refreshToken;
 
     if (refreshToken) {
       _data.setRefreshToken(refreshToken);
@@ -29,21 +33,23 @@ export function* startup(action = {}) {
 
     if (token) {
       _data.setToken(token);
-      yield onToken(action, action.data.user );
+      yield onToken(action, action.data?.user );
     }
 
     const isOnline = typeof navigator === "undefined" ? true : navigator.onLine;
-
+    const data =  { ready: true, isOnline, ...rest };
     yield put({
       type: Actions.STARTUP_LOADED,
       data: { ready: true, isOnline, ...rest },
     });
     if (action.onSuccess) {
-      action.onSuccess();
+      action.onSuccess(data);
     }
   } catch (e) {
     yield put(API.ajaxHandler(Actions.STARTUP_ERROR, e));
-    action.onError && action.onError();
+    if (action?.onError) {
+      action.onError({ error:e });
+    }
   }
 }
 
@@ -97,12 +103,12 @@ export function* updateUser(action) {
 
 function* rootSaga() {
   yield all([
-    takeLatest(Actions.STARTUP, startup),
     takeLatest(Actions.LOGIN, login),
     takeLatest(Actions.REGISTER, register),
     takeLatest(Actions.LOGOUT, logout),
     takeLatest(Actions.CONFIRM_EMAIL, confirmEmail),
     takeLatest(Actions.UPDATE_USER, updateUser),
+    takeLatest(Actions.STARTUP, startup),
     // END OF TAKE_LATEST
     // KEEP THE ABOVE LINE IN, IT IS USED BY OUR CLI
   ]);

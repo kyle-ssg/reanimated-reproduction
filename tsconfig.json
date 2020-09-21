@@ -28,7 +28,8 @@
     "isolatedModules": true
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "mobile"
   ],
   "include": [
     "next-env.d.ts",
