@@ -23,7 +23,6 @@ import { AnyAction } from 'redux';
 export function* startup(action : IAction) {
   try {
     const { ...rest } = action.data || {};
-    // todo: deprecate _.get for action.data?.token
     const token = action.data?.token;
     const refreshToken = action.data?.refreshToken;
 
@@ -33,7 +32,8 @@ export function* startup(action : IAction) {
 
     if (token) {
       _data.setToken(token);
-      yield onToken(action, action.data?.user );
+      // set the user
+      yield onToken(action, {  } );
     }
 
     const isOnline = typeof navigator === "undefined" ? true : navigator.onLine;
@@ -63,8 +63,8 @@ export function* login(action) {
     const res = yield _data.post(`${Project.api}auth/login/`, action.data);
     API.trackEvent(Constants.events.LOGIN);
     API.identify(action.data.email);
-    _data.setToken(res.token);
-    API.setStoredToken(res.token);
+    // _data.setToken(res.token);
+    // API.setStoredToken(res.token);
     yield onToken(action, res);
   } catch (e) {
     yield put(API.ajaxHandler(Actions.LOGIN_ERROR, e));

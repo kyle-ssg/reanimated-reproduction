@@ -11,7 +11,7 @@ const Utils = {
     urlRegex: /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]+(:[0-9]{1,5})?(\/.*)?$/,
 
   todayUtc(local = moment()) {
-     return Utils.convertToUtc();
+    return Utils.convertToUtc();
   },
 
   convertToUtc(local = moment()) {
@@ -34,9 +34,9 @@ const Utils = {
     return date;
   },
 
-  mapEnum(enumerable: any, fn: ()=>void): any[] {
-    let enumMembers: any[] = Object.keys(enumerable).map(key => enumerable[key]);
-    let enumValues: number[] = enumMembers.filter(v => typeof v === "number");
+  mapEnum(enumerable: any, fn: (data:any)=>void): any[] {
+    const enumMembers: any[] = Object.keys(enumerable).map(key => enumerable[key]);
+    const enumValues: number[] = enumMembers.filter(v => typeof v === "number");
     return enumValues.map(m => fn(m));
   },
 
@@ -180,7 +180,7 @@ const Utils = {
     if (!number) {
       return 0
     }
-      // @ts-ignore
+    // @ts-ignore
     return Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces)
   },
 

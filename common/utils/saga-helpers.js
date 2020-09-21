@@ -23,7 +23,7 @@ export function* handleResponse(
 ) {
   const data = yield dto ? dto(apiResult) : apiResult;
   const params = { type: Actions[`${prefix}_LOADED`], data };
-  if (data.token) {
+  if (data?.token) {
     // API.setStoredToken(data.token);
     _data.setToken(data.token);
   }
