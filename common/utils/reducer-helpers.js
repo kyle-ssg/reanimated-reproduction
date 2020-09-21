@@ -38,19 +38,23 @@ export const itemLoaded = (
   }
 };
 
-export const itemSaved = (state, prefix, action, skipSavingSaved = false) => {
+export const itemSaved = (state, prefix, action, skipSavingSaved = false, skipReplaceData = false) => {
   if (action.index) {
     // Item is part of a collection, add it within the prefix
     if (!state[prefix]) {
       state[prefix] = {};
     }
-    state[prefix][action.index] = action.data;
+    if (!skipReplaceData) {
+      state[prefix][action.index] = action.data;
+    }
     if (!skipSavingSaved) {
       state[`${prefix}Error`] = null;
       state[`${prefix}Saving`] = false;
     }
   } else if (!skipSavingSaved) {
-    state[prefix] = action.data;
+    if (!skipReplaceData) {
+      state[prefix] = action.data;
+    }
     state[`${prefix}Saving`] = false;
     state[`${prefix}Error`] = null;
   }

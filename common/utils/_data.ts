@@ -42,11 +42,7 @@ const _data = {
       .clone()
       .text() // cloned so response body can be used downstream
       .then((err: string) => {
-        if (
-          typeof document !== "undefined" &&
-          E2E &&
-          document.getElementById("e2e-error")
-        ) {
+        if (global.E2E && document.getElementById("e2e-error")) {
           const error = {
             url: response.url,
             status: response.status,
@@ -119,11 +115,7 @@ const _data = {
         options.body = "{}";
       }
 
-      if (
-        typeof document !== "undefined" &&
-        E2E &&
-        document.getElementById("e2e-request")
-      ) {
+      if (global.E2E && document.getElementById("e2e-request")) {
         const payload = {
           url,
           options,

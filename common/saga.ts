@@ -1,4 +1,4 @@
-import { put, all, takeLatest } from "redux-saga/effects";
+import { put, all, takeLatest, takeEvery, select } from "redux-saga/effects";
 import _data from "./utils/_data";
 import { Actions } from "./app-actions";
 import Project from "./project";
@@ -29,7 +29,7 @@ export function* startup(action = {}) {
 
     if (token) {
       _data.setToken(token);
-      yield onToken(action, { user: {} });
+      yield onToken(action, action.data.user );
     }
 
     const isOnline = typeof navigator === "undefined" ? true : navigator.onLine;
@@ -71,13 +71,13 @@ export function* register(action) {
 }
 
 export function* logout(action) {
-  yield put({ type: Actions.CLEAR_USER });
   yield API.setStoredToken(null);
   yield API.storage.removeItem("user");
   yield API.setStoredRefreshToken(null);
   _data.setToken(null);
   _data.setRefreshToken(null);
   API.logout();
+  yield put({ type: Actions.CLEAR_USER });
   action.onSuccess && action.onSuccess();
 }
 

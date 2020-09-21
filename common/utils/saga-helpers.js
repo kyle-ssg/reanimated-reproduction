@@ -18,7 +18,8 @@ export function* handleResponse(
   prefix,
   apiResult,
   preventSuccess,
-  dto
+  dto,
+  ignoreId,
 ) {
   const data = yield dto ? dto(apiResult) : apiResult;
   const params = { type: Actions[`${prefix}_LOADED`], data };
@@ -26,7 +27,7 @@ export function* handleResponse(
     // API.setStoredToken(data.token);
     _data.setToken(data.token);
   }
-  if (action.id) {
+  if (action.id && !ignoreId) {
     params.index = action.id;
   }
   yield put(params);
@@ -35,10 +36,10 @@ export function* handleResponse(
 }
 
 // GET request with standard response and error handler
-export function* getAction(action, url, prefix, preventSuccess, dto) {
+export function* getAction(action, url, prefix, preventSuccess, dto, ignoreId) {
   try {
     const data = yield _data.get(url);
-    return yield handleResponse(action, prefix, data, preventSuccess, dto);
+    return yield handleResponse(action, prefix, data, preventSuccess, dto, ignoreId);
   } catch (e) {
     yield errorHandler(action, prefix, preventSuccess, e);
   }

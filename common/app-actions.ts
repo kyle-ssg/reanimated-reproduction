@@ -28,7 +28,7 @@ const BaseConstants = {
 
   SET_ACTIVE_SCREEN: "SET_ACTIVE_SCREEN",
 };
-interface Callbacks {
+export interface Callbacks {
   onSuccess?: (data: any) => void;
   onError?: (data: any) => void;
 }

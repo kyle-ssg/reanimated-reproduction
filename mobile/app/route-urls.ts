@@ -1,7 +1,12 @@
 export enum RouteUrls {
+  "web" = "/web",
+  "mainApp" = "/mainApp",
+  "login" = "/login",
+  "onboarding" = "/onboarding",
   "home" = "/",
+
   "generic" = "/generic",
-  "tabs" = "/tabs",
-  "stack" = "/stack",
   "storybook" = "/storybook",
+
+
 }

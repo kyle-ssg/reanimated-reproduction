@@ -36,6 +36,33 @@ const styles:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNa
     fontFamily: styleVariables.boldFontFamily,
   },
 
+  p: {
+    marginBottom: styleVariables.marginBaseVertical,
+  },
+
+  italic: {
+    fontFamily: styleVariables.italicFontFamily,
+    fontWeight: styleVariables.normalFontWeight,
+  },
+
+  textError: {
+    color: colour.errorText,
+  },
+
+  fontWeightLight: {
+    fontWeight: styleVariables.normalFontWeight,
+    fontFamily: styleVariables.normalFontFamily,
+  },
+
+  textLight: {
+    color: colour.textLight,
+  },
+
+  textPrimary: {
+    color: palette.primary,
+  },
+
+
   textCenter: {
     textAlign: 'center',
   },
@@ -44,7 +71,12 @@ const styles:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNa
     textAlignVertical: 'bottom',
   },
 
+  icon: {
+    fontSize: em(2),
+  },
+
   bold: {
+    fontWeight: styleVariables.boldFontWeight,
     fontFamily: styleVariables.boldFontFamily,
   },
 
@@ -53,8 +85,59 @@ const styles:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNa
     color: palette.text,
     fontFamily: styleVariables.normalFontFamily,
     fontSize: styleVariables.fontSizeBase,
+    fontWeight: styleVariables.normalFontWeight,
   },
 
+
+  paragraph: {
+    marginBottom: styleVariables.marginBaseVertical,
+    fontFamily: styleVariables.paragraphText,
+    color: palette.primaryDark,
+    // letterSpacing: 0.9
+  },
+
+  textSmall: {
+    fontSize: styleVariables.fontSizeSmall,
+  },
+
+  textLarge: {
+    fontSize: styleVariables.fontSizeLarge,
+  },
+
+  textFaint: {
+    color: palette.textFaint,
+  },
+
+  errorText: {
+    color: palette.error,
+  },
+
+  fontSizeHeading: {
+    fontSize: styleVariables.fontSizeHeading,
+    fontWeight: styleVariables.boldFontWeight,
+    fontFamily: styleVariables.boldFontFamily,
+  },
+
+  fontSizeSubHeading: {
+    fontWeight: styleVariables.boldFontWeight,
+    fontFamily: styleVariables.boldFontFamily,
+  },
+
+  fontSizeSmall: {
+    fontSize: styleVariables.fontSizeSmall,
+  },
+
+  sup: {
+    fontSize: em(0.65),
+  },
+
+  anchor: {
+    color: palette.primaryDark,
+    fontFamily: styleVariables.headerText,
+    textDecorationLine: 'underline',
+    letterSpacing: em(0.06),
+    fontSize: em(0.86),
+  },
 };
 
 module.exports = styles

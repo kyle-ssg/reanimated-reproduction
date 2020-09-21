@@ -13,7 +13,9 @@
     "paths": {
       "common/*": ["../common/*"],
       "components/*": ["app/components/*"],
-      "screens/*": ["app/screens/*"]
+      "images/*": ["app/images/*"],
+      "screens/*": ["app/screens/*"],
+      "navigation/*": ["app/navigation/*"]
     },
     "target": "esnext"
   },

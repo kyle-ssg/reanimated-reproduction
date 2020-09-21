@@ -22,6 +22,9 @@ export class Message extends PureComponent {
   }
 
   render() {
+    if (!this.props.children) {
+      return null
+    }
     return (
         <div className={`alert mt-1 mb-1 ${this.props.className || ""}`}>
             {typeof this.props.children === "string"
