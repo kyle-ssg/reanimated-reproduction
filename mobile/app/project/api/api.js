@@ -2,7 +2,7 @@
 
 // import Contacts from 'react-native-contacts';
 import BottomSheet from "react-native-bottomsheet";
-import _analytics from "@react-native-firebase/analytics";
+// import _analytics from "@react-native-firebase/analytics";  // ^7.3.1
 import errorHandler from "common/utils/errorHandler";
 import getStoreDangerous from "common/store";
 

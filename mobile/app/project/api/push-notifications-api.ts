@@ -1,6 +1,8 @@
-import messaging from '@react-native-firebase/messaging';
+// import messaging from '@react-native-firebase/messaging';
 
-
+if (typeof messaging === 'undefined') {
+  console.log("Install @react-native-firebase/messaging ^7.4.2 for push notification support")
+}
 const PushManager = class {
   token = null;
   onNotification = null;
