@@ -5,5 +5,5 @@
 # $3 - Git branch
 # $4 - iOS/Android
 _ENV=${ENV:-dev}
-echo "Using project_$_ENV.js"
-cp ./.env/project_$_ENV.js ./common/project.js
+echo "Using project_$_ENV.ts"
+cp ./.env/project_$_ENV.ts ./common/project.ts

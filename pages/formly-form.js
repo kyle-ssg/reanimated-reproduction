@@ -3,7 +3,7 @@ import { withRouter } from "next/router";
 import { withFormik } from "formik";
 import { formikPropTypes } from "common/utils/formik";
 import * as yup from "yup";
-import withGrecaptcher from "../components/extras/withGrecaptcher";
+import withGrecaptcher from "../components/extras/withGracecaptcher";
 
 //How does this work ?
 // set formly and grecaptcher in project.js

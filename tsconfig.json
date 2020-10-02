@@ -36,6 +36,6 @@
     "**/*.ts",
     "**/*.tsx",
     "types/global.d.ts",
-    "./mobile/src/global.d.ts"
+    "./mobile/src/global.d.ts", "components/extras/CookiePolicy.js", "components/base/forms/Tabs.js", "components/extras/PanelSearch.js", "common/project.js", "common/providers/WithSetValue.js", "common/providers/_hocTemplate.js", "components/extras/withGracecaptcher.ts"
   ]
 }

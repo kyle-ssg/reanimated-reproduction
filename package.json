@@ -26,6 +26,10 @@
     "test:pact:publish": "node tests/pact/helpers/pact.publish.js"
   },
   "dependencies": {
+    "@types/classnames": "^2.2.10",
+    "@types/cookie": "^0.4.0",
+    "@types/react-datepicker": "^3.1.1",
+    "@types/yup": "^0.29.7",
     "bootstrap": "4.4.1",
     "cacheable-response": "^1.9.1",
     "classnames": "2.2.6",
