@@ -20,7 +20,7 @@ const withUserRedirect = (WrappedComponent) => {
         this.props.router.replace(path);
         this.preventRender = true;
       }
-    }
+    } 
 
     render() {
       if (this.preventRender) {
@@ -32,5 +32,4 @@ const withUserRedirect = (WrappedComponent) => {
 
   return withRouter(withAuth(HOC));
 };
-
 export default withUserRedirect;

@@ -11,6 +11,7 @@ import Utils from 'common/utils/base/_utils';
 
 import React, { FunctionComponent, useMemo } from 'react';
 import withTheme, { useTheme } from 'common/providers/withTheme';
+
 type ComponentType = ReactNative.PressableProps & {
   children: React.ReactNode,
   textStyle?: ReactNative.TextStyle | ReactNative.TextStyle[],
@@ -23,6 +24,7 @@ export const standardAndroidRipple:ReactNative.PressableAndroidRippleConfig = {
   color: 'rgba(255,255,255,.25)',
   borderless: false,
 }
+
 const circleButtonRipple:ReactNative.PressableAndroidRippleConfig = {
   color: 'rgba(0,0,0,.15)',
   borderless: true,
@@ -32,7 +34,6 @@ export const darkAndroidRipple:ReactNative.PressableAndroidRippleConfig = {
   color: 'rgba(0,0,0,.15)',
   borderless: false,
 }
-
 
 const Button: FunctionComponent<ComponentType> = ({
   disabled,

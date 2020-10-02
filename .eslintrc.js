@@ -69,7 +69,7 @@ module.exports = {
         ]
       }
     ],
-    "react/jsx-indent": ["error", 4],
+    // "react/jsx-indent": ["error", 4],
     "react/jsx-indent-props": ["error", 2],
     "react/jsx-closing-bracket-location": 1,
     "react/jsx-max-props-per-line": [
