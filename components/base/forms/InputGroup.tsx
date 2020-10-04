@@ -81,7 +81,6 @@ const InputGroup: React.FC<InputGroup> = ({ inputProps = {}, isValid, className,
   );
 };
 
-//I'm not sure how I should write that.
-//global.InputGroup = InputGroup;
+global.InputGroup = InputGroup;
 InputGroup.displayName = "InputGroup";
 export default InputGroup;

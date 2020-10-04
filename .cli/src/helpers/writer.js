@@ -49,7 +49,7 @@ module.exports = {
         if (res.includes(takeLatest)) {
             console.log('Skipping latest string, already exists');
         } else {
-            res = res.replace(takeLatestPointer, `${takeLatest}\n        ${takeLatestPointer}`);
+            res = res.replace(takeLatestPointer, `${takeLatest}\n    ${takeLatestPointer}`);
         }
         return fs.writeFileSync(saga, res, 'utf8');
     },
@@ -58,7 +58,7 @@ module.exports = {
         if (res.includes(reducerString)) {
             console.log('Reducer string, already exists');
         } else {
-            res = res.replace(reducerPointer, `${reducerString}\n        ${reducerPointer}`);
+            res = res.replace(reducerPointer, `${reducerString}\n    ${reducerPointer}`);
         }
 
         if (stateTypes) {
@@ -76,7 +76,7 @@ module.exports = {
         return fs.writeFileSync(reducer, res, 'utf8');
     },
     async writeProvider(providerString, prefix) {
-        const providerPath = path.join(providers, `${functionName('WITH', prefix)}.ts`);
+        const providerPath = path.join(providers, `${functionName('USE', prefix)}.ts`);
         const res = fs.existsSync(providerPath);
         if (res) {
             console.log('Skipping provider, already exists');
@@ -85,7 +85,7 @@ module.exports = {
         }
     },
     async writeComponent(reducerString, prefix) {
-        const providerPath = path.join(providers, `${functionName('WITH', prefix)}.js`);
+        const providerPath = path.join(providers, `${functionName('USE', prefix)}.tsx`);
         const res = fs.existsSync(providerPath);
         if (res) {
             console.log('Skipping provider, already exists');
@@ -94,7 +94,7 @@ module.exports = {
         }
     },
     async writeWebPostExample(string, prefix) {
-        const webPath = path.join(components, `Edit${functionName('', prefix)}.js`);
+        const webPath = path.join(components, `Edit${functionName('', prefix)}.tsx`);
         const res = fs.existsSync(webPath);
         if (res) {
             console.log('Skipping web example, already exists');
@@ -103,7 +103,7 @@ module.exports = {
         }
     },
     async writeWebGetExample(string, prefix) {
-        const webPath = path.join(components, `${functionName('', prefix)}.js`);
+        const webPath = path.join(components, `${functionName('', prefix)}.tsx`);
         const res = fs.existsSync(webPath);
         if (res) {
             console.log('Skipping web example, already exists');

@@ -29,7 +29,7 @@ class MyApp extends App<{ store: Store  }> {
     // Only use this function if you are using SSR, then this will retrieve the users token and perform
     const locale =
       Constants.simulate.FORCE_LANGUAGE || API.getStoredLocale(ctx.req); // Retrieve the locale from cookie or headers
-    const token = API.getStoredToken(ctx.req); // Retrieve token cookie from req.headers
+    const token = await API.getStoredToken(ctx.req); // Retrieve token cookie from req.headers
     await ctx.store.dispatch(AppActions.startup({ locale, token })); // Post startup action with token and locale
     if (Component.getInitialProps) {
       // Wait for pages to complete any async getInitialProps
@@ -60,9 +60,9 @@ class MyApp extends App<{ store: Store  }> {
   }
 
   componentDidMount() {
-    if (document.getElementById("toast")) {
-      ReactDOM.render(<Toast />, document.getElementById("toast"));
-    }
+    // if (window?.document?.getElementById("toast")) {
+    //   ReactDOM.render(<Toast />, document.getElementById("toast"));
+    // }
   }
 
   onFirstRender = () => {

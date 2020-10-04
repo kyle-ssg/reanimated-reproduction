@@ -7,6 +7,7 @@ const updateController = require('../controller').writeUpdate;
 const postController = require('../controller').writePost;
 const data = require('../../../tests/pact/tests/test.pact');
 const each = require('lodash/each');
+const { exec } = require('child_process');
 
 class TheCommand extends Command {
     async run() {
@@ -28,6 +29,7 @@ class TheCommand extends Command {
                 }
             }
         });
+        exec('cd ../ && npm run lint:fix');
     }
 }
 TheCommand.args = [

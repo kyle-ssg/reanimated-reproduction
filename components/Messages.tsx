@@ -27,9 +27,8 @@ export const ErrorMessage: React.FC<Messages> = ({ className, ...props }) => <Me
 // Default message added alert-success
 export const SuccessMessage: React.FC<Messages> = ({ className, ...props }) => <Message {...props} className={cn(className, "alert-success")} />
 
-/*I'm not sure what should do with this.
 global.ErrorMessage = ErrorMessage;
-global.SuccessMessage = SuccessMessage;*/
+global.SuccessMessage = SuccessMessage;
 
 Message.displayName = "ErrorMessage";
 export default Message;

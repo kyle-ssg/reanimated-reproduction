@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useRouter } from 'next/router'
-import withAuth from "common/providers/withAuth";
 import Button from "../components/base/forms/Button";
+import { useAuth } from '../common/providers/useAuth';
 
-const HomePage = ( { user } ) => {
+const HomePage = () => {
   const router = useRouter();
-
+  const { user } = useAuth()
   useEffect(() => {
     if (user){API.loginRedirect()}
   },[user]);
@@ -23,4 +23,4 @@ HomePage.displayName = "HomePage";
 // Do server rendered actions such as fetching data here
 // HomePage.getInitialProps = async({ Component, ctx }) => {};
 
-export default withAuth(HomePage);
+export default HomePage;

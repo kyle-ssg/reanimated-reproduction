@@ -1,9 +1,8 @@
 const templates = require('./templates');
 const writer = require('./helpers/writer');
-const { exec } = require('child_process');
 
 module.exports = {
-    async writeCollection(action, prefix, api, createProvider, webExample, reactNativeExample) {
+    async writeCollection(action, prefix, api, createProvider, webExample) {
         const actionStrings = templates.action(action, prefix);
         const appAction = templates.getCollection(action, prefix);
         const yieldString = templates.yieldCollection(action, prefix, api);
@@ -26,13 +25,12 @@ module.exports = {
         if (webExample) {
             await writer.writeWebGetExample(webExampleString, prefix);
         }
-        exec('cd ../ && git add .');
     },
     async writeComponent(name) {
         const componentString = templates.component(name);
         await writer.writeComponent(componentString, name);
     },
-    async writePost(action, prefix, api, createProvider, webExample, reactNativeExample) {
+    async writePost(action, prefix, api, createProvider, webExample) {
         const actionStrings = templates.action(action, prefix);
         const appAction = templates.post(action, prefix);
         const yieldString = templates.yieldPost(action, prefix, api);
@@ -52,9 +50,8 @@ module.exports = {
         if (webExample) {
             await writer.writeWebPostExample(webExampleString, prefix);
         }
-        exec('cd ../ && git add .');
     },
-    async writeGet(action, prefix, api, createProvider, webExample, reactNativeExample) {
+    async writeGet(action, prefix, api, createProvider, webExample) {
         const actionStrings = templates.action(action, prefix);
         const appAction = templates.get(action, prefix);
         const yieldString = templates.yieldGet(action, prefix, api);
@@ -74,9 +71,8 @@ module.exports = {
         if (webExample) {
             await writer.writeWebGetExample(webExampleString, prefix);
         }
-        exec('cd ../ && git add .');
     },
-    async writeDelete(action, prefix, api, createProvider, webExample, reactNativeExample) {
+    async writeDelete(action, prefix, api, createProvider, webExample) {
         const actionStrings = templates.action(action, prefix);
         const appAction = templates.delete(action, prefix);
         const yieldString = templates.yieldDelete(action, prefix, api);
@@ -96,9 +92,8 @@ module.exports = {
         if (webExample) {
             await writer.writeWebPostExample(webExampleString, prefix);
         }
-        exec('cd ../ && git add .');
     },
-    async writeUpdate(action, prefix, api, createProvider, webExample, reactNativeExample) {
+    async writeUpdate(action, prefix, api, createProvider, webExample) {
         const actionStrings = templates.action(action, prefix);
         const appAction = templates.update(action, prefix);
         const yieldString = templates.yieldUpdate(action, prefix, api);
@@ -118,6 +113,5 @@ module.exports = {
         if (webExample) {
             await writer.writeWebPostExample(webExampleString, prefix);
         }
-        exec('cd ../ && git add .');
     },
 };

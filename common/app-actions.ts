@@ -90,7 +90,8 @@ const BaseActions = {
 };
 
 export const Actions = (global.Actions = Object.assign({}, BaseConstants, {
-  // END OF ACTION_STRINGS
+
+// END OF ACTION_STRINGS
 }));
 
 export const AppActions = (global.AppActions = Object.assign({}, BaseActions, {

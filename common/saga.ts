@@ -60,11 +60,12 @@ export function* onToken(action, result) {
 
 export function* login(action) {
   try {
-    const res = yield _data.post(`${Project.api}auth/login/`, action.data);
+    // const res = yield _data.post(`${Project.api}auth/login/`, action.data);
+    const res = { token:"token" }
     API.trackEvent(Constants.events.LOGIN);
     API.identify(action.data.email);
     // _data.setToken(res.token);
-    // API.setStoredToken(res.token);
+    API.setStoredToken(res.token);
     yield onToken(action, res);
   } catch (e) {
     yield put(API.ajaxHandler(Actions.LOGIN_ERROR, e));

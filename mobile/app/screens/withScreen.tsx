@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 
 import { AppActions } from "common/app-actions";
 import { StatusBarStyle } from 'react-native';
-import withTheme, { useTheme } from 'common/providers/withTheme';
+import useTheme  from 'common/providers/useTheme';
 import { AppState } from 'common/state-type';
 
 export interface IRouteParams {
@@ -39,14 +39,14 @@ export type ScreenProps = {
 };
 
 const withScreen = (Component: React.ComponentType, isChild=false) => {
-  return withTheme(function withScreen(props: ScreenProps): React.ReactNode {
-
+  function withScreen(props: ScreenProps): React.ReactNode {
     // @ts-ignore
     const statusColour = useRef(route?.params?.statusBar?.barStyle || styleVariables.defaultStatusBarColour)
     const navigation = useNavigation();
     const route = useRoute();
+    const theme = useTheme()
+
     const dispatch = useDispatch();
-    const theme = props.theme;
     useEffect(()=>{
       // @ts-ignore
       if ((route?.params?.statusBar?.barStyle|| styleVariables.defaultStatusBarColour) !== statusColour.current) {
@@ -86,21 +86,8 @@ const withScreen = (Component: React.ComponentType, isChild=false) => {
         ...route.params?.screenOptions || {}
       }
 
-      if(!ignoreTheme) {
-        if (theme?.navBarSideColor) {
-          options.headerStyle = {
-            backgroundColor: theme?.navBarSideColor
-          }
-        }
-        if (theme?.navBarColor) {
-          options.headerTitleStyle = {
-            color: theme?.navBarColor
-          }
-          options.headerTintColor = theme?.navBarColor
-        }
-        const col = statusColour.current;
-        const newCol = theme?.lightText ? "light-content": "dark-content";
-        setStatusBar(newCol);
+      if(!ignoreTheme && theme) {
+        // set theme options here e.g. options.headerTintColor = theme.tintColor
       }
 
       if (Platform.OS === "android") {
@@ -168,7 +155,7 @@ const withScreen = (Component: React.ComponentType, isChild=false) => {
             />
         </>
     );
-  });
+  }
 };
 
 export default withScreen;

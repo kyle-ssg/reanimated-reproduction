@@ -11,7 +11,7 @@ import WithSetValue from 'common/providers/WithSetValue';
 import LazyTabs from '../LazyTabs';
 import SegmentedControl from 'components/SegmentedControl';
 const Stack = createStackNavigator();
-import { useTheme } from 'common/providers/withTheme';
+import useTheme from 'common/providers/useTheme';
 
 
 

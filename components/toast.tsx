@@ -82,7 +82,6 @@ const Toast: React.FC = () => {
   );
 };
 
-// I'm not sure how I should managed that:
-// global.toast = this.toast;
+global.toast = this.toast;
 Toast.displayName = "ToastMessages";
 export default Toast;

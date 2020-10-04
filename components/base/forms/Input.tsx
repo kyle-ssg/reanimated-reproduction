@@ -77,7 +77,7 @@ const Input: React.FC<Input> = ({ children, textarea, isValid = true, placeholde
       </div>
   )
 }
-//I'm not sure what should do with this.
-//global.Input = Input;
+
+global.Input = Input;
 Input.displayName = "Input";
 export default Input;

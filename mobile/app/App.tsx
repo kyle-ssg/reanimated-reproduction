@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import AppNavigator from 'navigation/AppNavigator';
 import { navigationRef } from 'navigation/RootNavigation';
 import NeverUpdate from 'components/NeverUpdate';
-import withTheme, { IWithTheme, useTheme } from 'common/providers/withTheme';
+import useTheme from 'common/providers/useTheme';
 
 const store = _store();
 

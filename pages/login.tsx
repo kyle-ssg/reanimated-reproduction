@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import ErrorMessage from "components/Messages";
-import withAuth from "common/providers/withAuth";
 import { ButtonPrimary } from "components/base/forms/Button";
+import { useAuth } from '../common/providers/useAuth';
 
-type SuccessHandler = (user: unknown) => void;
-type Login = ({ email, password }: { email: string, password: string}, { onSuccess }: { onSuccess: SuccessHandler }) => void
-interface Props {
-  user?: unknown;
-  userLoading: boolean;
-  userError: string;
-  login: Login
-}
-const LoginPage: React.FC<Props> = ({ user, userLoading, userError, login }) => {
+
+const LoginPage: React.FC<{ }> = () => {
+  const { user, userLoading, userError, login } = useAuth()
   const router = useRouter();
 
-  const [ loginData, setLoginData ] = useState({ 
+  const [ loginData, setLoginData ] = useState({
     email: "a@a.com",
     password: "password"
   });
@@ -87,4 +81,4 @@ const LoginPage: React.FC<Props> = ({ user, userLoading, userError, login }) => 
 };
 
 
-export default withAuth(LoginPage);
+export default LoginPage;

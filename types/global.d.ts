@@ -13,6 +13,9 @@ declare global {
       Project: ProjectType;
       AsyncStorage: any;
       Button: any;
+      ButtonPrimary: any;
+      ButtonSecondary: any;
+      ButtonTertiary: any;
       Column: any;
       Constants: any;
       ErrorMessage: any;
@@ -54,6 +57,9 @@ declare global {
   declare let AppActions = AppActions;
   declare let AsyncStorage: any;
   declare let Button: any;
+  declare let ButtonPrimary: any;
+  declare let ButtonSecondary: any;
+  declare let ButtonTertiary: any;
   declare let Column: any;
   declare let Project = _Project;
   declare let Constants: any;

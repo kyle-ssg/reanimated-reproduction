@@ -5,6 +5,7 @@ const controller = require('../controller').writePost;
 const controllerRead = require('../controller').writeGet;
 const controllerUpdate = require('../controller').writeUpdate;
 const controllerDelete = require('../controller').writeDelete;
+const { exec } = require('child_process');
 
 class TheCommand extends Command {
     async run() {
@@ -19,11 +20,16 @@ class TheCommand extends Command {
         const apiPost = await cli.prompt('What\'s the api path to post? ', { default: `/${getPrefix(`A_${action}`)}` });
         const createProvider = await cli.prompt('Do you want to create a provider?', { default: 'yes' });
         const createExample = createProvider ? await cli.prompt('Do you want to create a web example using it?', { default: 'yes' }) : false;
-        const createExampleReactNative = createProvider ? await cli.prompt('Do you want to create an example component using it?', { default: 'yes' }) : false;
-        await controller(`CREATE_${action}`, prefix, apiPost, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes');
-        await controllerRead(`GET_${action}`, prefix, api, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes');
-        await controllerUpdate(`UPDATE_${action}`, prefix, api, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes');
-        await controllerDelete(`DELETE_${action}`, prefix, api, createProvider === 'yes', createExample === 'yes', createExampleReactNative === 'yes');
+        const gitAdd = await cli.prompt('git add?', { default: 'no' });
+        await controller(`CREATE_${action}`, prefix, apiPost, createProvider === 'yes', createExample === 'yes');
+        await controllerRead(`GET_${action}`, prefix, api, createProvider === 'yes', createExample === 'yes');
+        await controllerUpdate(`UPDATE_${action}`, prefix, api, createProvider === 'yes', createExample === 'yes');
+        await controllerDelete(`DELETE_${action}`, prefix, api, createProvider === 'yes', createExample === 'yes');
+
+        if(gitAdd === 'yes') {
+            exec('cd ../ && git add .');
+        }
+        exec('cd ../ && npm run lint:fix');
     }
 }
 TheCommand.args = [

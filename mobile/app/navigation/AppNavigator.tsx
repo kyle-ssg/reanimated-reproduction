@@ -7,7 +7,7 @@ import _store from 'common/store';
 import defaultNavigationOptions from '../style/style_navs';
 import { routes, withPushModalOptions } from '../routes';
 import { RouteUrls } from '../route-urls';
-import withAuth, { IWithAuth } from 'common/providers/withAuth';
+import withAuth, { IWithAuth } from 'common/providers/withAuth'; // todo: migrate this to functional component and use useAuth
 
 const store = _store();
 
@@ -17,7 +17,7 @@ const Navigator = Stack.Navigator;
 
 const codePushOptions = {
   checkFrequency: codePush.CheckFrequency.MANUAL,
-  installMode: codePush.InstallMode.MANUAL,
+  installMode: codePush.InstallMode.IMMEDIATE,
   updateDialog: true,
 };
 
