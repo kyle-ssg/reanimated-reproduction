@@ -17,7 +17,7 @@ import { AppState } from "./state-type";
 
 const defaultReducer = produce((state: AppState, action): AppState | void => {
   if (typeof window === "undefined") {
-    API.log("SERVER", action.type);
+    API.log("SERVER", action.type, action.data);
     if (action.type.includes("ERROR")) {
       API.log("SERVER", action);
     }

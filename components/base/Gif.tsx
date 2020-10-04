@@ -22,13 +22,9 @@ const Gif: React.FC<Gif> = ({ pausedSrc, src, ...props }) => {
             alt="Pause"
             src={ isPaused ? pausedSrc : src }
           />
-          {//I'm not sure what should do with this.
-          /* <ion className="ion ion-ios-play" /> */}
       </Flex>
   )
 };
 
 Gif.displayName = "Gif";
-//I'm not sure what should do with this.
-// global.Gif = Gif;
 export default Gif;

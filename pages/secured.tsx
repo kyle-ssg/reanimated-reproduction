@@ -1,11 +1,18 @@
 import React from "react";
-import { useRouter } from "next/router";
-import withAuth from "../common/providers/withAuth";
-import withUserRedirect from "../components/withUserRedirect";
+import useUserRedirect from "../components/useUserRedirect";
+import { useAuth } from '../common/providers/useAuth';
 
-const SecuredPage = () => { const router = useRouter(); return (<div className="container-fluid">Secret page</div>)}
+const SecuredPage = () => {
+  useUserRedirect();
+  const { logout } = useAuth()
+  return (
+    <div className="container-fluid">
+      Secret page
+      <Button onClick={()=>logout()}>Logout</Button>
+    </div>
+  )
+}
 
 SecuredPage.displayName = "SecuredPage";
-
-export default withAuth(withUserRedirect(SecuredPage));
+export default SecuredPage;
 

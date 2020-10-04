@@ -6,6 +6,7 @@ import Constants from "common/utils/constants";
 import errorHandler from "common/utils/errorHandler";
 import Project from "common/project";
 import storage from "./async-storage-api";
+import { IncomingMessage } from 'http';
 const API = {
   isMobile: () => false,
   storage,
@@ -24,7 +25,7 @@ const API = {
       shallow: true,
     });
   },
-  getStoredToken(req) {
+  getStoredToken(req?:IncomingMessage) {
     return API.storage.getString("token", req);
   },
   getStoredUser(req) {

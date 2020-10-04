@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react'; // we need this to make JSX compile
+import React, { FC } from 'react'; // we need this to make JSX compile
 
 type ComponentType = {
 
 }
 
-const TheComponent:FunctionComponent<ComponentType> = ({  }) => {
+const TheComponent:FC<ComponentType> = ({  }) => {
   return (
       <>
 
@@ -12,5 +12,6 @@ const TheComponent:FunctionComponent<ComponentType> = ({  }) => {
   )
 }
 
+TheComponent.displayName = "TheComponent"
 export default TheComponent
 

@@ -6,6 +6,7 @@ interface ProjectType {
   logs: {
     DATA: boolean;
     STORE: boolean;
+    STORAGE: boolean;
     DISPATCHER: boolean;
     SERVER: boolean;
   };
@@ -24,6 +25,7 @@ const Project:ProjectType = global.Project = {
     DATA: true,
     STORE: true,
     DISPATCHER: true,
+    STORAGE: true,
     SERVER: true,
   },
   grecaptcher: "6Lc1mf4UAAAAAC6uZ0HaGJ3ufgwCXY4GFoNhMeBD",

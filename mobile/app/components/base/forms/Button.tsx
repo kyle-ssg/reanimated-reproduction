@@ -10,7 +10,7 @@ import {
 import Utils from 'common/utils/base/_utils';
 
 import React, { FunctionComponent, useMemo } from 'react';
-import withTheme, { useTheme } from 'common/providers/withTheme';
+import useTheme  from 'common/providers/useTheme';
 
 type ComponentType = ReactNative.PressableProps & {
   children: React.ReactNode,

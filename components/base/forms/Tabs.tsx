@@ -3,7 +3,7 @@ import Button from './Button';
 
 interface Tabs {
   value?: any;
-  onChange?: (i: number) => void; 
+  onChange?: (i: number) => void;
   children?: {id?: string }[];
   className?: string;
   uncontrolled?: boolean;
@@ -53,8 +53,6 @@ const Tabs: React.FC<Tabs> = ({ className = "", value = 0, children, tabLabels, 
     </div>
 );
 
-//I'm not sure how I should write that.
-// global.Tabs = Tabs;
 Tabs.displayName = "Tabs";
 export default Tabs;
 
