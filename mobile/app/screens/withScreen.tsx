@@ -39,14 +39,14 @@ export type ScreenProps = {
 };
 
 const withScreen = (Component: React.ComponentType, isChild=false) => {
-  function withScreen(props: ScreenProps): React.ReactNode {
+  return function withScreen(props: ScreenProps): React.ReactNode {
+
     // @ts-ignore
     const statusColour = useRef(route?.params?.statusBar?.barStyle || styleVariables.defaultStatusBarColour)
     const navigation = useNavigation();
     const route = useRoute();
-    const theme = useTheme()
-
     const dispatch = useDispatch();
+    const theme = useTheme();
     useEffect(()=>{
       // @ts-ignore
       if ((route?.params?.statusBar?.barStyle|| styleVariables.defaultStatusBarColour) !== statusColour.current) {
@@ -139,7 +139,6 @@ const withScreen = (Component: React.ComponentType, isChild=false) => {
     );
 
     return (
-        <>
             <Component
           // @ts-ignore
               push={push}
@@ -153,7 +152,6 @@ const withScreen = (Component: React.ComponentType, isChild=false) => {
               {...route.params}
               {...props}
             />
-        </>
     );
   }
 };
