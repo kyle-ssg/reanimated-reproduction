@@ -21,12 +21,12 @@ module.exports = {
   '${action}_ERROR': '${action}_ERROR',
 `;
     },
-    stateTypes(action, prefix) {
+    stateTypes(action, prefix, type='any') {
         return `${prefix}Loading?: boolean;
   ${prefix}Saving?: boolean;
   ${prefix}Error?: string;
   ${prefix}?: {
-    [extraProps: string]: any;
+    [extraProps: string]: ${type};
   },`;
     },
     takeLatest(action, prefix) {
