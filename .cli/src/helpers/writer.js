@@ -102,6 +102,11 @@ module.exports = {
             return fs.writeFileSync(webPath, string, 'utf8');
         }
     },
+    async writeTypes(string) {
+        const webPath = path.join(common, `swagger-definitions.ts`);
+        const res = fs.existsSync(webPath);
+        return fs.writeFileSync(webPath, string, 'utf8');
+    },
     async writeWebGetExample(string, prefix) {
         const webPath = path.join(components, `${functionName('', prefix)}.tsx`);
         const res = fs.existsSync(webPath);
