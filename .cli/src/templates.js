@@ -25,9 +25,9 @@ module.exports = {
         return `${prefix}Loading?: boolean;
   ${prefix}Saving?: boolean;
   ${prefix}Error?: string;
-  ${prefix}?: {
-    [extraProps: string]: ${type};
-  },`;
+  ${prefix}?: ${type === 'any'? `{
+    [extraProps: string]: any;
+  }` : type },`;
     },
     takeLatest(action, prefix) {
         return `takeLatest(Actions.${action}, ${functionName(action, prefix)}),`;
