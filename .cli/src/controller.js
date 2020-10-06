@@ -43,7 +43,7 @@ module.exports = {
         console.log('Writing post', action, prefix, api);
         await writer.writeActions(actionStrings, appAction);
         await writer.writeSaga(yieldString, takeLatest);
-        await writer.writeReducer(reducer, stateTypes);
+        await writer.writeReducer(reducer);
         if (createProvider) {
             await writer.writeProvider(provider, prefix);
         }
@@ -85,7 +85,7 @@ module.exports = {
         console.log('Writing delete', action, prefix, api);
         await writer.writeActions(actionStrings, appAction);
         await writer.writeSaga(yieldString, takeLatest);
-        await writer.writeReducer(reducer, stateTypes);
+        await writer.writeReducer(reducer);
         if (createProvider) {
             await writer.writeProvider(provider, prefix);
         }
@@ -94,6 +94,7 @@ module.exports = {
         }
     },
     async writeUpdate(action, prefix, api, createProvider, webExample, type='any') {
+        console.log("Update", type)
         const actionStrings = templates.action(action, prefix);
         const appAction = templates.update(action, prefix);
         const yieldString = templates.yieldUpdate(action, prefix, api);
@@ -106,7 +107,7 @@ module.exports = {
         console.log('Writing update', action, prefix, api);
         await writer.writeActions(actionStrings, appAction);
         await writer.writeSaga(yieldString, takeLatest);
-        await writer.writeReducer(reducer, stateTypes);
+        await writer.writeReducer(reducer);
         if (createProvider) {
             await writer.writeProvider(provider, prefix);
         }
