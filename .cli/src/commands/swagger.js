@@ -5,7 +5,7 @@ const controller = require('../controller').writeUpdate;
 const swaggerToTS = require("@manifoldco/swagger-to-ts").default;
 const request = require("request");
 const _ = require('lodash')
-const { exec } = require('child_process');
+const { exec, execSync } = require('child_process');
 const reg = /\{(.*?)\}/g
 const collectionController = require('../controller').writeCollection;
 const getController = require('../controller').writeGet;
@@ -48,41 +48,17 @@ class TheCommand extends Command {
 
       }
 
-      // _.each(swagger.paths, async ()=>{
-      //   const prefix = await cli.prompt('Define the entity for GS', { default: 'THING' })
-      //   swagger.paths.fo
-      // })
-      // _.each(swagger.paths, async (path,pathKey)=>{
-      //   const prefix = await cli.prompt('Define the entity for ' + pathKey + ', e.g. THING or THINGS', { default: 'THING' })
-      //   _.each(path,async (method,methodKey)=> {
-      //     let type = "any";
-      //     if (v === 3) {
-      //       const parsedResponse = v === 3 ? _.get(method, "responses.200.content.application/json.schema.$ref") : _.get(method, "responses.200.schema")
-      //       if (parsedResponse) {
-      //         const [index,index2,...rest] = parsedResponse.replace("#","").split("/");
-      //         type = index2 + rest.map((index)=>"['"+index+"']").join("")
-      //       }
-      //     }
-      //     const cliPath = pathKey.replace(reg,":$1")
-      //
-      //     if (methodKey === 'get') {
-      //       if (cliPath.includes(":")) { // get
-      //         await getController(`GET_${prefix.toUpperCase()}`, prefix, cliPath, true, true, type);
-      //       } else { // collection
-      //         await collectionController(`GET_${prefix.toUpperCase()}`, prefix, cliPath, true, true, type);
-      //       }
-      //     } else if (methodKey === 'delete') { // delete
-      //     } else if (methodKey === 'put') {
-      //       await updateController(`UPDATE_${prefix.toUpperCase()}`, prefix, cliPath, true, true, type);
-      //     } else if (methodKey === 'post') {
-      //       await updateController(`CREATE_${prefix.toUpperCase()}`, prefix, cliPath, true, true, type);
-      //     }
-      //   })
-      // })
+      const gitAdd = await cli.prompt('git add?', { default: 'no' });
+      if(gitAdd !== 'no') {
+        execSync('cd ../ && git add .');
+      }
+      execSync('cd ../ && npm run lint:fix');
+
+
     }
 
-    // const uri = await cli.prompt('Where is the Swagger JSON?');
-    const uri = "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.json";
+    const uri = await cli.prompt('Where is the Swagger JSON?');
+    // const uri = "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.json";
       await new Promise(async (resolve ,reject)=>{
           request.get(uri, function (error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -91,6 +67,7 @@ class TheCommand extends Command {
               writeTypes(output)
               const v = parseInt(swagger.swagger||swagger.openapi);
               parseBody(swagger, v)
+
             }
           });
       })
