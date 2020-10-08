@@ -257,39 +257,34 @@ export default function ${functionName('USE', prefix)}():Use${functionName('', p
 `;
     },
     webGet(action, prefix) {
-        const prefixCamel = functionName('', prefix);
-        return `
-import { useDispatch, useSelector } from 'react-redux';
-import { AppActions, Callbacks } from '../app-actions';
-import { AppState } from "../state-type";
-import { useCallback } from 'react';
+      const prefixCamel = functionName('', prefix);
+      return `
+import React, { FC } from 'react'; // we need this to make JSX compile
 
-type Use${functionName('', prefix)} = {
-  ${prefix}: AppState['${prefix}'],
-  ${prefix}Loading: AppState['${prefix}Loading'],
-  ${prefix}Error: AppState['${prefix}Error'],
-  ${functionName('GET', prefix)}: (id:string, callbacks?:Callbacks)=>void,
+import use${prefixCamel} from '../common/providers/${functionName('use', prefix)}';
+
+type ComponentType = {
+
 }
 
-export default function ${functionName('USE', prefix)}():Use${functionName('', prefix)} {
-  const {
-    ${prefix}, ${prefix}Loading, ${prefix}Error } = useSelector((state:AppState)=>({
-    ${prefix}: state.${prefix},
-    ${prefix}Loading: state.${prefix}Loading,
-    ${prefix}Error: state.${prefix}Error,
-  }));
-  const dispatch = useDispatch();
-  const ${functionName('GET', prefix)} = useCallback((id:string, callbacks?:Callbacks)=>{
-    return dispatch(AppActions.${functionName('GET', prefix)}(id, callbacks))
-  },[dispatch])
-  return {
-    ${prefix},
-    ${prefix}Loading,
-    ${prefix}Saving,
-    ${prefix}Error,
-    ${functionName('GET', prefix)},
-  }
+const ${prefixCamel}:FC<ComponentType> = ({  }) => {
+  const { ${prefix}, ${prefix}Loading, ${prefix}Error } = use${prefixCamel}()
+  return (
+      <>
+        <h2>${prefix}</h2>
+            {!${prefix} && ${prefix}Loading && <Loader/>}
+            { ${prefix} &&
+             <div>{JSON.stringify(${prefix})}</div>
+            }
+            {${prefix}Error && (
+                <ErrorMessage>{${prefix}Error}</ErrorMessage>
+            )}
+      </>
+  )
 }
+
+${prefixCamel}.displayName = "${prefixCamel}"
+export default ${prefixCamel};
 `;
     },
     webCollection(action, prefix) {

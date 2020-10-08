@@ -2,7 +2,7 @@ const { Command, flags } = require('@oclif/command');
 const cli = require('cli-ux').default;
 const getPrefix = require('../helpers/getPrefix');
 const controller = require('../controller').writeUpdate;
-const { exec } = require('child_process');
+const { execSync } = require('child_process');
 
 class TheCommand extends Command {
     async run() {
@@ -17,10 +17,10 @@ class TheCommand extends Command {
         const createExample = createProvider ? await cli.prompt('Do you want to create a web example using it?', { default: 'yes' }) : false;
         const gitAdd = await cli.prompt('git add?', { default: 'no' });
         await controller(action, prefix, api, createProvider === 'yes', createExample === 'yes');
-        if(gitAdd === 'yes') {
-            exec('cd ../ && git add .');
+        if(gitAdd !== 'no') {
+            execSync('cd ../ && git add .');
         }
-        exec('cd ../ && npm run lint:fix');
+        execSync('cd ../ && npm run lint:fix');
     }
 }
 TheCommand.args = [
