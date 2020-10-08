@@ -18,34 +18,46 @@ class TheCommand extends Command {
 
     const parseBody = async (swagger, v) => {
 
+      let end = false;
       for (const pathKey of Object.keys(swagger.paths)) {
-        const prefix = (await cli.prompt('Define the entity for ' + pathKey, { default: 'THING' })).toLowerCase()
+        const prefix = (await cli.prompt('Define the entity for ' + pathKey, { default: 'skip' })).toLowerCase()
+        if (prefix === 'end') {
+          end = true
+        }
+        if (prefix !== 'skip' || end) {
+          for (const methodKey of Object.keys(swagger.paths[pathKey])) {
+            const method = swagger.paths[pathKey][methodKey]
+            let type = "any";
+              const parsedResponse = v === 3 ? _.get(method, "responses.200.content.application/json.schema.$ref") : _.get(method, "responses.200.schema.$ref")
+              if (parsedResponse) {
+                const [index,index2,...rest] = parsedResponse.replace("#","").split("/");
+                type = index2 + rest.map((index)=>"['"+index+"']").join("")
+              }
+            const cliPath = pathKey.replace(reg,":$1")
+            const skip = (await cli.prompt('Write actions for ' + methodKey + " " + pathKey + "?", { default: 'yes' })).toLowerCase()
+            if (skip === 'end') {
+              end = true;
+            }
+            const writeComponent = (await cli.prompt('Write component?', { default: 'yes' })).toLowerCase()
+            const shouldWriteComponent = writeComponent === 'yes';
+            if (skip === "yes") {
+              console.log("Writing files for " + methodKey + " " + pathKey)
+              if (methodKey === 'get') {
+                if (cliPath.includes(":")) { // get
+                  await getController(`GET_${prefix.toUpperCase()}`, prefix, cliPath, true, shouldWriteComponent, type);
+                } else { // collection
+                  await collectionController(`GET_${prefix.toUpperCase()}`, prefix, cliPath, true, shouldWriteComponent, type);
+                }
+              } else if (methodKey === 'delete') { // delete
+              } else if (methodKey === 'put') {
+                await updateController(`UPDATE_${prefix.toUpperCase()}`, prefix, cliPath, true, shouldWriteComponent, type);
+              } else if (methodKey === 'post') {
+                await updateController(`CREATE_${prefix.toUpperCase()}`, prefix, cliPath, true, shouldWriteComponent, type);
+              }
+            }
 
-        for (const methodKey of Object.keys(swagger.paths[pathKey])) {
-          const method = swagger.paths[pathKey][methodKey]
-          let type = "any";
-          if (v === 3) {
-            const parsedResponse = v === 3 ? _.get(method, "responses.200.content.application/json.schema.$ref") : _.get(method, "responses.200.schema")
-            if (parsedResponse) {
-              const [index,index2,...rest] = parsedResponse.replace("#","").split("/");
-              type = index2 + rest.map((index)=>"['"+index+"']").join("")
-            }
-          }
-          const cliPath = pathKey.replace(reg,":$1")
-          if (methodKey === 'get') {
-            if (cliPath.includes(":")) { // get
-              await getController(`GET_${prefix.toUpperCase()}`, prefix, cliPath, true, true, type);
-            } else { // collection
-              await collectionController(`GET_${prefix.toUpperCase()}`, prefix, cliPath, true, true, type);
-            }
-          } else if (methodKey === 'delete') { // delete
-          } else if (methodKey === 'put') {
-            await updateController(`UPDATE_${prefix.toUpperCase()}`, prefix, cliPath, true, true, type);
-          } else if (methodKey === 'post') {
-            await updateController(`CREATE_${prefix.toUpperCase()}`, prefix, cliPath, true, true, type);
           }
         }
-
       }
 
       const gitAdd = await cli.prompt('git add?', { default: 'no' });
