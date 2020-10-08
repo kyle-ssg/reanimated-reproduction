@@ -177,10 +177,10 @@ type Use${functionName('', prefix)} = {
   ${prefix}Loading: AppState['${prefix}Loading'],
   ${prefix}Saving: AppState['${prefix}Saving'],
   ${prefix}Error: AppState['${prefix}Error'],
-  ${functionName('GET', prefix)}: (id:string, callbacks?:Callbacks)=>void,
+  ${functionName('GET', prefix)}: (data:Record<string, any>, callbacks?:Callbacks)=>void,
   ${functionName('CREATE', prefix)}: (data: Record<string, any>, callbacks?:Callbacks)=>void,
   ${functionName('UPDATE', prefix)}: (data: Record<string, any>, callbacks?:Callbacks)=>void,
-  ${functionName('DELETE', prefix)}: (id:string, callbacks?:Callbacks)=>void,
+  ${functionName('DELETE', prefix)}: (data:Record<string, any>,, callbacks?:Callbacks)=>void,
 }
 
 export default function ${functionName('USE', prefix)}():Use${functionName('', prefix)} {

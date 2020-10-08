@@ -35,12 +35,9 @@ class TheCommand extends Command {
               }
             const cliPath = pathKey.replace(reg,":$1")
             const skip = (await cli.prompt('Write actions for ' + methodKey + " " + pathKey + "?", { default: 'yes' })).toLowerCase()
-            if (skip === 'end') {
-              end = true;
-            }
             const writeComponent = (await cli.prompt('Write component?', { default: 'yes' })).toLowerCase()
             const shouldWriteComponent = writeComponent === 'yes';
-            if (skip === "yes") {
+            if (skip === "yes" || end) {
               console.log("Writing files for " + methodKey + " " + pathKey)
               if (methodKey === 'get') {
                 if (cliPath.includes(":")) { // get
