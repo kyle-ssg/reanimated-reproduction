@@ -6,7 +6,7 @@ const functionName = function (action, prefix) {
 
 const apiName = function (api, isUpdate) {
     // eslint-disable-next-line no-template-curly-in-string
-    const replace = isUpdate ? '${action.data.id}' : '${action.id}';
+    const replace = '${action.data.id}';
     if (api.charAt(0) === '/') {
         return api.slice(1).replace(':id', replace);
     }
@@ -49,10 +49,10 @@ module.exports = {
     },
     get(action, prefix) {
         return `
-  ${functionName(action, prefix)}(id:string, callbacks:Callbacks={}):AnyAction {
+  ${functionName(action, prefix)}(data:Record<string, any>, callbacks:Callbacks={}):AnyAction {
     return {
       type: Actions.${action},
-      id,
+      data,
       ...callbacks,
     };
   },
@@ -60,7 +60,7 @@ module.exports = {
     },
     delete(action, prefix) {
         return `
-  ${functionName(action, prefix)}(id:string, callbacks:Callbacks={}):AnyAction {
+  ${functionName(action, prefix)}(data:Record<string, any>, callbacks:Callbacks={}):AnyAction {
     return {
       type: Actions.${action},
       id,
@@ -259,7 +259,7 @@ export default function ${functionName('USE', prefix)}():Use${functionName('', p
     webGet(action, prefix) {
       const prefixCamel = functionName('', prefix);
       return `
-import React, { FC } from 'react'; // we need this to make JSX compile
+import React, { FC,useEffect } from 'react'; // we need this to make JSX compile
 
 import use${prefixCamel} from '../common/providers/${functionName('use', prefix)}';
 
@@ -267,8 +267,11 @@ type ComponentType = {
 
 }
 
-const ${prefixCamel}:FC<ComponentType> = ({  }) => {
-  const { ${prefix}, ${prefix}Loading, ${prefix}Error } = use${prefixCamel}()
+const ${prefixCamel}:FC<ComponentType> = ({ id:string }) => {
+  const { ${prefix}, get${prefixCamel}, ${prefix}Loading, ${prefix}Error } = use${prefixCamel}()
+  useEffect(()=>{
+    get${prefixCamel}(id)
+  }, [get${prefixCamel}, id])
   return (
       <>
         <h2>${prefix}</h2>
@@ -290,7 +293,7 @@ export default ${prefixCamel};
     webCollection(action, prefix) {
         const prefixCamel = functionName('', prefix);
         return `
-import React, { FC } from 'react'; // we need this to make JSX compile
+import React, { FC,useEffect } from 'react'; // we need this to make JSX compile
 
 import use${prefixCamel} from '../common/providers/${functionName('use', prefix)}';
 
@@ -299,7 +302,10 @@ type ComponentType = {
 }
 
 const ${prefixCamel}:FC<ComponentType> = ({  }) => {
-  const { ${prefix}, ${prefix}Loading, ${prefix}Error } = use${prefixCamel}()
+  const { ${prefix}, get${prefixCamel}, ${prefix}Loading, ${prefix}Error } = use${prefixCamel}();
+  useEffect(()=>{
+    get${prefixCamel}()
+  },[])
   return (
       <>
         <h2>${prefix}</h2>

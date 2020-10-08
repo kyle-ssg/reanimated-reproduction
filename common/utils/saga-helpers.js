@@ -27,8 +27,8 @@ export function* handleResponse(
     // API.setStoredToken(data.token);
     _data.setToken(data.token);
   }
-  if (action.id && !ignoreId) {
-    params.index = action.id;
+  if (action.data.id && !ignoreId) {
+    params.index = action.data.id;
   }
   yield put(params);
   action.onSuccess && !preventSuccess && action.onSuccess(data);
