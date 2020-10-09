@@ -33,7 +33,7 @@ class TheCommand extends Command {
                 const [index,index2,...rest] = parsedResponse.replace("#","").split("/");
                 type = index2 + rest.map((index)=>"['"+index+"']").join("")
               }
-            const cliPath = pathKey.replace(reg,":$1")
+            const cliPath = pathKey.replace(reg,":id")
             const skip = (await cli.prompt('Write actions for ' + methodKey + " " + pathKey + "?", { default: 'yes' })).toLowerCase()
             const writeComponent = (await cli.prompt('Write component?', { default: 'yes' })).toLowerCase()
             const shouldWriteComponent = writeComponent === 'yes';
