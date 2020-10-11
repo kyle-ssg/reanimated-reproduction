@@ -17,27 +17,32 @@ import { Store } from "redux";
 
 let initialRender = false;
 
-class MyApp extends App<{ store: Store  }> {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps;
+export async function getInitialProps({ Component, ctx }) {
+  let pageProps;
 
-    // todo: this shouldn't happen for static resources
-    if (ctx.pathname === "/_error" || !ctx.pathname) {
-      return;
-    }
-
-    // Only use this function if you are using SSR, then this will retrieve the users token and perform
-    const locale =
-      Constants.simulate.FORCE_LANGUAGE || API.getStoredLocale(ctx.req); // Retrieve the locale from cookie or headers
-    const token = await API.getStoredToken(ctx.req); // Retrieve token cookie from req.headers
-    await ctx.store.dispatch(AppActions.startup({ locale, token })); // Post startup action with token and locale
-    if (Component.getInitialProps) {
-      // Wait for pages to complete any async getInitialProps
-      pageProps = await Component.getInitialProps({ ctx });
-    }
-
-    return { pageProps };
+  // todo: this shouldn't happen for static resources
+  if (ctx.pathname === "/_error" || !ctx.pathname) {
+    return;
   }
+
+  // Only use this function if you are using SSR, then this will retrieve the users token and perform
+  const locale =
+    Constants.simulate.FORCE_LANGUAGE || API.getStoredLocale(ctx.req); // Retrieve the locale from cookie or headers
+  const token = await API.getStoredToken(ctx.req); // Retrieve token cookie from req.headers
+  await new Promise( (resolve,reject)=>{
+    ctx.store.dispatch(AppActions.startup({ locale, token }, { onSuccess:resolve, onError:reject })); // Post startup action with token and locale
+  })
+  if (Component?.getInitialProps) {
+    // Wait for pages to complete any async getInitialProps
+    pageProps = await Component.getInitialProps({ ctx });
+  }
+
+  return { pageProps };
+}
+
+
+class MyApp extends App<{ store: Store  }> {
+  static getInitialProps = getInitialProps;
 
   constructor(props) {
     super(props);
@@ -146,4 +151,4 @@ class MyApp extends App<{ store: Store  }> {
 }
 
 //
-export default withRedux(createStore as unknown as MakeStore)(withReduxSaga(MyApp));
+export default global.__JEST__ ? null : withRedux(createStore as unknown as MakeStore)(withReduxSaga(MyApp));

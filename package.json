@@ -20,6 +20,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "test:cache": "jest --clearCache",
     "test:e2e": "cross-env NODE_ENV=production E2E=true nightwatch ./tests/e2e/index.e2e.js -c ./tests/e2e/nightwatch.conf.js",
     "test:pact": "cross-env NODE_ENV=pactTest node_modules/mocha/bin/mocha --timeout 50000 --require @babel/register \"**/*.pact.js\"",
     "test:pact:server": "cross-env MOCK_SERVER=true node_modules/.bin/nodemon --watch tests --exec node ./tests/pact/helpers/pact.mock-server.js",

@@ -28,6 +28,10 @@ global.Clipboard = Clipboard;
 global.AsyncStorage = AsyncStorage;
 global.Link = Link;
 
+if (typeof E2E === 'undefined') {
+  global.E2E = false;
+}
+
 // For debugging reasons for re-rendering components we use whyDidYouRender in dev mode
 if (
   typeof __DEV__ !== "undefined" &&

@@ -15,12 +15,13 @@ type UseAuthType = {
 }
 
 export function useAuth():UseAuthType {
-  const {
-    user, userLoading, userError } = useSelector((state:AppState)=>({
-    user: state.user,
-    userLoading: state.userLoading,
-    userError: state.userError,
-  }));
+  const { user, userLoading, userError } = useSelector((state:AppState)=>{
+    return {
+      user: state.user,
+      userLoading: state.userLoading,
+      userError: state.userError,
+    }
+  });
   const dispatch = useDispatch()
   const login = useCallback((data,callbacks)=>{
     return dispatch(AppActions.login(data,callbacks))
