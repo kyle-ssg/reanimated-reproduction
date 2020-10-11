@@ -264,13 +264,13 @@ import React, { FC,useEffect } from 'react'; // we need this to make JSX compile
 import use${prefixCamel} from '../common/providers/${functionName('use', prefix)}';
 
 type ComponentType = {
-
+  id:string
 }
 
-const ${prefixCamel}:FC<ComponentType> = ({ id:string }) => {
+const ${prefixCamel}:FC<ComponentType> = ({ id }) => {
   const { ${prefix}, get${prefixCamel}, ${prefix}Loading, ${prefix}Error } = use${prefixCamel}()
   useEffect(()=>{
-    get${prefixCamel}(id)
+    get${prefixCamel}({ id })
   }, [get${prefixCamel}, id])
   return (
       <>
@@ -305,7 +305,7 @@ const ${prefixCamel}:FC<ComponentType> = ({  }) => {
   const { ${prefix}, get${prefixCamel}, ${prefix}Loading, ${prefix}Error } = use${prefixCamel}();
   useEffect(()=>{
     get${prefixCamel}()
-  },[])
+  },[get${prefixCamel}])
   return (
       <>
         <h2>${prefix}</h2>
@@ -367,7 +367,7 @@ const ${prefixCamel}:FC<ComponentType> = ({ id }) => {
   
   useEffect(()=>{
     if (id) {
-      ${functionName('GET', prefix)}(id, {
+      ${functionName('GET', prefix)}({ id }, {
         onSuccess: onRetrieved${prefixCamel},
       });     
     }
