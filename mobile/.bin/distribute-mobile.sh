@@ -9,6 +9,7 @@
 # 1 = ">"
 # 2 = "<"
 # i.e. vercomp 2.1 2.2 == "<"
+
 vercomp () {
     if [[ $1 == $2 ]]
     then
@@ -39,6 +40,10 @@ vercomp () {
     done
     return 0
 }
+
+ios_target=$6
+export ios_target
+
 # Checkout last commit to compare the last version number
 commitSHA=$(appcenter build branches list -a $1 | grep -A8 -E "Branch: +$3" | grep -E -m 1 'Commit SHA: +' | awk '{split($0,a,": "); print a[2]}' | sed 's/^ *//g')
 git reset --hard HEAD
