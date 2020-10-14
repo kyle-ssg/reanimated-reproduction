@@ -1,11 +1,10 @@
 #!/bin/bash
-
-# $1 = App ID
+# $1 = AppCenter ID
 # $2 = Code Push Environment
 # $3 - Git branch
 # $4 - iOS/Android
-# $5 - Target (iOS only)
-
+# $5 - Code Push ID
+# $6 - Target (required for iOS only)
 # 0 = "="
 # 1 = ">"
 # 2 = "<"
@@ -40,26 +39,31 @@ vercomp () {
     done
     return 0
 }
-
-lastVersion=$(appcenter distribute releases list -a $1 | head -2 | tail -1 | awk '{split($0,a,": "); print a[2]}')
-
+# Checkout last commit to compare the last version number
+commitSHA=$(appcenter build branches list -a $1 | grep -A8 -E "Branch: +$3" | grep -E -m 1 'Commit SHA: +' | awk '{split($0,a,": "); print a[2]}' | sed 's/^ *//g')
+git reset --hard HEAD
+git checkout $commitSHA
 if [[ $4 == "ios" ]]
 then
-    if [[ -z $5 ]]
-    then
-        currentVersion=$(grep 'MARKETING_VERSION =' ios/mobile.xcodeproj/project.pbxproj | head -2 | tail -1 | awk '{split($0,a,"= "); print a[2]}' | sed 's/;$//')
-    else
-        currentVersion=$(grep -A11 '/\* Pods-staging.release.xcconfig \*/;' ios/mobile.xcodeproj/project.pbxproj | tail -1 | awk '{split($0,a,"= "); print a[2]}' | sed 's/;$//')
-    fi
+    lastVersion=$(grep -A11 "/\* Pods-$6.release.xcconfig \*/;" ios/mobile.xcodeproj/project.pbxproj | tail -1 | awk '{split($0,a,"= "); print a[2]}' | sed 's/;$//')
+else
+    # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
+    # - currentVersion=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
+    lastVersion=$(grep 'versionName' android/app/build.gradle | grep -o '".*"' | tr -d '"')
+fi
+git checkout $3
+npm run env_script
+if [[ $4 == "ios" ]]
+then
+    currentVersion=$(grep -A11 "/\* Pods-$6.release.xcconfig \*/;" ios/mobile.xcodeproj/project.pbxproj | tail -1 | awk '{split($0,a,"= "); print a[2]}' | sed 's/;$//')
 else
     # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
     # - currentVersion=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
     currentVersion=$(grep 'versionName' android/app/build.gradle | grep -o '".*"' | tr -d '"')
 fi
-
 echo "Last version: ${lastVersion:-N/A}. Current version: $currentVersion"
 vercomp $lastVersion $currentVersion
-if [[ $? != 0 ]]
+if [[ $? == 2 ]]
 then
     echo "Queueing new native build ($currentVersion) on AppCenter"
     appcenter build queue -a $1 -b $3
@@ -67,10 +71,10 @@ else
     echo "Code-pushing new bundle to $2 environment on AppCenter"
     if [[ $4 == "ios" ]]
     then
-        appcenter codepush release-react -a $1 -d $2 --disable-duplicate-release-error --plist-file ./ios/mobile/Info.plist -t $currentVersion
+        appcenter codepush release-react -a $5 -d $2 --disable-duplicate-release-error -t $currentVersion
     else
         # - // Use this Android alternative when overriding versionName via product flavors
-        # - appcenter codepush release-react -a $1 --target-binary-version $currentVersion -d $2 --disable-duplicate-release-error
-        appcenter codepush release-react -a $1 -d $2 --disable-duplicate-release-error
+        # - appcenter codepush release-react -a $5 --target-binary-version $currentVersion -d $2 --disable-duplicate-release-error
+        appcenter codepush release-react -a $5 -d $2 --disable-duplicate-release-error
     fi
 fi

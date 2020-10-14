@@ -19,8 +19,7 @@
     "lint": "eslint .. || exit 0",
     "lint:fix": "eslint .. --fix || exit 0",
     "postinstall": ".bin/postinstall.sh && patch-package",
-    "preinstall": "npm run env_script",
-    "codepush:staging": "export ENV=staging && sh .bin/codepush.sh Staging"
+    "preinstall": "npm run env_script"
   },
   "dependencies": {
     "@react-native-community/datetimepicker": "2.6.2",

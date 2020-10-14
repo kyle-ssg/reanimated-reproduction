@@ -1,3 +1,12 @@
+# $APP_CENTER_NAME_ANDROID = The App Center project name for android e.g. Solid-State-Group/Hero-Wellbeing-Android
+# $APP_CENTER_NAME_IOS_PRODUCTION = The App Center project name for android e.g. Solid-State-Group/Hero-Wellbeing-iOS
+# $APP_CENTER_NAME_IOS_STAGING = The App Center project name for android e.g. Solid-State-Group/Hero-Wellbeing-iOS-Staging
+# APPCENTER_ACCESS_TOKEN = The token needed in order to use the appcenter cli in distribute-mobile.sh
+# $CODE_PUSH_NAME_IOS = The AppCenter Project all iOS codepush builds go to e.g. Solid-State-Group/Hero-Wellbeing-iOS
+# $CODE_PUSH_NAME_ANDROID = The AppCenter Project all iOS codepush builds go to e.g. Solid-State-Group/Hero-Wellbeing-iOS
+# $NOW_TEAM_NAME - The vercel team name to deploy with e.g. solidstategroup
+# $NOW_TOKEN - The vercel token to build web - https://vercel.com/account/tokens
+
 stages:
   - deploy
 
@@ -35,7 +44,7 @@ deploy-mobile-android-production:
       ENV: prod
     <<: *mobile_deploy_common_before_script
     script:
-        - ./../.bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_ANDROID Production master android
+        - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_ANDROID Production master android $CODE_PUSH_NAME_ANDROID
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -51,7 +60,7 @@ deploy-mobile-android-staging:
       ENV: staging
     <<: *mobile_deploy_common_before_script
     script:
-        - ./../.bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_ANDROID Staging staging android
+        - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_ANDROID Staging staging android $CODE_PUSH_NAME_ANDROID
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -67,7 +76,7 @@ deploy-mobile-ios-production:
       ENV: prod
     <<: *mobile_deploy_common_before_script
     script:
-        - ./../.bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_IOS Production master ios
+        - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_IOS_PRODUCTION Production master ios $CODE_PUSH_NAME_IOS appcenter-production
     only:
       <<: *mobile_deploy_common_required_changes
       refs:
@@ -83,7 +92,7 @@ deploy-mobile-ios-staging:
       ENV: staging
     <<: *mobile_deploy_common_before_script
     script:
-        - ./../.bin/distribute-mobile.sh $CODE_PUSH_APP_NAME_IOS Staging staging ios
+        - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_IOS_STAGING Staging staging ios $CODE_PUSH_NAME_IOS appcenter-staging
     only:
       <<: *mobile_deploy_common_required_changes
       refs:

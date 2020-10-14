@@ -39,13 +39,13 @@ steps:
 - script: |
     export APPCENTER_ACCESS_TOKEN=$(APPCENTER_ACCESS_TOKEN)
     cd mobile
-    ./.bin/distribute-mobile.sh $(CODE_PUSH_APP_NAME_ANDROID) $(CODE_PUSH_ENV) $(Build.SourceBranchName) android
+    ./.bin/distribute-mobile.sh $(APP_CENTER_NAME_ANDROID) $(CODE_PUSH_ENV) $(Build.SourceBranchName) android $(CODE_PUSH_NAME_ANDROID)
   condition: and(succeeded(), in(variables['Build.SourceBranchName'], 'develop', 'staging', 'master'))
   displayName: 'Deploy Android'
 
 - script: |
     export APPCENTER_ACCESS_TOKEN=$(APPCENTER_ACCESS_TOKEN)
     cd mobile
-    ./.bin/distribute-mobile.sh $(CODE_PUSH_APP_NAME_IOS) $(CODE_PUSH_ENV) $(Build.SourceBranchName) ios $(IOS_TARGET)
+    ./.bin/distribute-mobile.sh $(CODE_PUSH_APP_NAME_IOS) $(CODE_PUSH_ENV) $(Build.SourceBranchName) ios $(CODE_PUSH_NAME_IOS) $(IOS_TARGET)
   condition: and(succeeded(), in(variables['Build.SourceBranchName'], 'develop', 'staging', 'master'))
   displayName: 'Deploy iOS'
