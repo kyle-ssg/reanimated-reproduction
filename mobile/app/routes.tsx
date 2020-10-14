@@ -1,81 +1,81 @@
-import React from 'react';
-import { NativeStackNavigationOptions } from 'react-native-screens/native-stack';
-import { RouteUrls } from './route-urls';
-import BottomTabsNavigator from 'navigation/BottomTabsNavigator';
-import GenericScreen from 'screens/examples/GenericScreen';
-import Login from 'screens/GenericScreen';
-import HomeScreen from 'screens/GenericScreen';
-import WebScreen from 'screens/WebScreen';
-import ModalCloseButton from 'components/ModalCloseButton';
-import StorybookUIRoot from '../stories/index';
+import React from "react";
+import { NativeStackNavigationOptions } from "react-native-screens/native-stack";
+import { RouteUrls } from "./route-urls";
+import BottomTabsNavigator from "navigation/BottomTabsNavigator";
+import GenericScreen from "screens/examples/GenericScreen";
+import Login from "screens/GenericScreen";
+import HomeScreen from "screens/GenericScreen";
+import WebScreen from "screens/WebScreen";
+import ModalCloseButton from "components/ModalCloseButton";
+import StorybookUIRoot from "../stories/index";
 
 type functionComponent = (props: any) => React.ReactNode;
 
 export interface IRoute {
-  options?: Partial<NativeStackNavigationOptions>,
-  component: any,
-  params?: Record<string, any>
+  options?: Partial<NativeStackNavigationOptions>;
+  component: any;
+  params?: Record<string, any>;
 }
 
-export const withPushModalOptions = (base:Partial<NativeStackNavigationOptions>):NativeStackNavigationOptions => (
-  {
-    ...base,
-    headerShown:false,
-    stackPresentation:"modal",
-  }
-)
+export const withPushModalOptions = (
+  base: Partial<NativeStackNavigationOptions>
+): NativeStackNavigationOptions => ({
+  ...base,
+  headerShown: false,
+  stackPresentation: "modal",
+});
 
-export const withFullScreenPushModalOptions = (base:Partial<NativeStackNavigationOptions>):NativeStackNavigationOptions => (
-  {
-    ...base,
-    headerShown:false,
-    stackPresentation:"fullScreenModal",
-  }
-)
+export const withFullScreenPushModalOptions = (
+  base: Partial<NativeStackNavigationOptions>
+): NativeStackNavigationOptions => ({
+  ...base,
+  headerShown: false,
+  stackPresentation: "fullScreenModal",
+});
 
-export const withModalOptions = (base:Partial<NativeStackNavigationOptions>):NativeStackNavigationOptions => (
-  {
-    ...base,
-    hideBackButton:true,
-    headerHideBackButton: true,
-    headerRight: ModalCloseButton
-  }
-)
+export const withModalOptions = (
+  base: Partial<NativeStackNavigationOptions>
+): NativeStackNavigationOptions => ({
+  ...base,
+  hideBackButton: true,
+  headerHideBackButton: true,
+  headerRight: ModalCloseButton,
+});
 // Contains default route config and components
 export const routes: Record<RouteUrls, IRoute> = {
   [RouteUrls.mainApp]: {
     options: {
-      title: '',
+      title: "",
       headerShown: false,
     },
-    component: BottomTabsNavigator
+    component: BottomTabsNavigator,
   },
 
   [RouteUrls.web]: {
     options: {
-      title: '',
+      title: "",
     },
-    component: WebScreen
+    component: WebScreen,
   },
 
   [RouteUrls.home]: {
     options: {
-      title: '',
+      title: "",
     },
-    component: HomeScreen
+    component: HomeScreen,
   },
 
   [RouteUrls.login]: {
     options: {
       headerShown: false,
     },
-    component: Login
+    component: Login,
   },
 
   [RouteUrls.onboarding]: {
     options: {
       // headerShown: false,
-      title: 'About',
+      title: "About",
     },
     component: GenericScreen,
   },
@@ -83,11 +83,10 @@ export const routes: Record<RouteUrls, IRoute> = {
   [RouteUrls.generic]: {
     options: {
       headerShown: false,
-      title: 'About',
+      title: "About",
     },
     component: GenericScreen,
   },
-
 
   [RouteUrls.storybook]: {
     options: {

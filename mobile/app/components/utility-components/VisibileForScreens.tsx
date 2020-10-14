@@ -9,17 +9,17 @@ import { connect } from "react-redux";
 import { AppState } from "common/state-type";
 import { RouteUrls } from "../../route-urls";
 
-type ComponentType = {
+interface Props {
   activeScreen: AppState["activeScreen"];
   target: RouteUrls[];
   navigator?: string;
   style: ReactNative.ViewStyle;
   children: ReactNode;
-};
+}
 
 //Use this to make an absolute view persist across multiple native screens
 //You can put this within a NavigationContainer component to appear above the navbar
-const VisibleForScreens: FunctionComponent<ComponentType> = ({
+const VisibleForScreens: React.FC<Props> = ({
   children,
   activeScreen,
   style,
@@ -33,9 +33,9 @@ const VisibleForScreens: FunctionComponent<ComponentType> = ({
     }
   }, [activeScreen, navigator, target]);
   return (
-      <Fade style={style} value={isActive}>
-          {children}
-      </Fade>
+    <Fade style={style} value={isActive}>
+      {children}
+    </Fade>
   );
 };
 

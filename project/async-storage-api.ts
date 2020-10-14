@@ -5,7 +5,7 @@ import { IncomingMessage } from "http";
 const getItem = function (key: string, req: IncomingMessage) {
   API.log("STORAGE", "GET", key, req);
   if (req && typeof window === 'undefined') {
-    return cookie.parse(req.headers.cookie)[key]
+    return cookie.parse(req.headers.cookie||"")[key]
   }
   return jsCookie.get(key);
 };

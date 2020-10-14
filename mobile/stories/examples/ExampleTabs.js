@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import Tabs from 'components/extras/Tabs';
+import React, { Component } from "react";
+import { Tabs } from "components/extras/Tabs";
 
 export default class extends Component {
-  static displayName = 'TheComponent';
+  static displayName = "TheComponent";
 
   constructor(props, context) {
     super(props, context);
@@ -15,38 +15,41 @@ export default class extends Component {
     const { i } = scene.route.data;
     const label = `Tab ${i}`;
     return (
-        <Flex>
-            <Text>
-                {label}
-            </Text>
-        </Flex>
+      <Flex>
+        <Text>{label}</Text>
+      </Flex>
     );
-  }
-
+  };
 
   render() {
-    const { state: { activeButton } } = this;
+    const {
+      state: { activeButton },
+    } = this;
     return (
-        <Tabs
-          scrollEnabled={this.props.scrollEnabled}
-          lazy
-          tabBarStyle={{
-                  backgroundColor: palette.primary,
-              }}
-          labelStyle={{
-                  textAlign: 'center',
-                  color: 'white',
-              }}
-          indicatorStyle={{
-                  backgroundColor: 'white',
-              }}
-          navigationState={{
-                  index: activeButton || 0,
-                  routes: [1, 2, 3].map((i) => ({ title: `Tab ${i}`, key: i, data: { i } })),
-              }}
-          onIndexChange={this.onTabChange}
-          renderScene={this.renderScene}
-        />
+      <Tabs
+        scrollEnabled={this.props.scrollEnabled}
+        lazy
+        tabBarStyle={{
+          backgroundColor: palette.primary,
+        }}
+        labelStyle={{
+          textAlign: "center",
+          color: "white",
+        }}
+        indicatorStyle={{
+          backgroundColor: "white",
+        }}
+        navigationState={{
+          index: activeButton || 0,
+          routes: [1, 2, 3].map((i) => ({
+            title: `Tab ${i}`,
+            key: i,
+            data: { i },
+          })),
+        }}
+        onIndexChange={this.onTabChange}
+        renderScene={this.renderScene}
+      />
     );
   }
 }

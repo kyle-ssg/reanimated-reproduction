@@ -63,7 +63,6 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
   },
 
   inputLabel: {
-    color: palette.navy,
     fontSize: 16,
   },
 

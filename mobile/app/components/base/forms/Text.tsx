@@ -1,11 +1,18 @@
-import propTypes from "prop-types";
-import ReactNative from "react-native";
-import React, { FunctionComponent } from "react";
+import { Text } from "react-native";
+import React from "react";
 
-const TheComponent: FunctionComponent<ReactNative.TextProps> = (props) => (
-    <ReactNative.Text {...props} style={[Styles.text, props.style]}>
-        {props.children}
-    </ReactNative.Text>
-)
+interface Props {
+  style?: ReactNative.TextStyle;
+}
 
-export default TheComponent;
+const TextComponent: React.FC<Props> = (props) => {
+  const style = Array.isArray(props.style) ? props.style : [props.style];
+
+  return (
+    <Text {...props} style={[Styles.text, ...style]}>
+      {props.children}
+    </Text>
+  );
+}
+
+export default TextComponent;
