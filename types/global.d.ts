@@ -20,6 +20,7 @@ declare global {
       Constants: any;
       ErrorMessage: any;
       FormGroup: any;
+      __JEST__: boolean;
       Format: any;
       Flex: any;
       Input: any;
@@ -45,6 +46,7 @@ declare global {
       grecaptcha: any;
       closeModal: any;
       openModal: any;
+      window?: any;
     }
   }
 }

@@ -10,7 +10,8 @@ import { AppState } from "./state-type";
 let _store;
 export default function (initialState: AppState = {}, forceNewStore?: boolean) {
   // It's very important to only return the cached store on the client, otherwise SSR will return the previous request state
-  if (_store && typeof window !== "undefined" && !forceNewStore) {
+  // @ts-ignore
+  if (_store && (typeof window !== "undefined" || global.__JEST__ !== 'undefined') && !forceNewStore) {
     return _store;
   }
   const sagaMiddleware = createSagaMiddleware();

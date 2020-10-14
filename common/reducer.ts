@@ -22,7 +22,7 @@ const defaultReducer = produce((state: AppState, action): AppState | void => {
       API.log("SERVER", action);
     }
   } else {
-    // API.log('DISPATCHER', action.type);
+    API.log('DISPATCHER', action.type);
   }
   switch (action.type) {
     case Actions.LOGIN_LOADED:

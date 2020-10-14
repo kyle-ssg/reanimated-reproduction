@@ -1,14 +1,12 @@
+const { defaults } = require('jest-config');
+
 module.exports = {
-  preset: "ts-jest/presets/js-with-ts",
-  testEnvironment: "jsdom",
-  moduleFileExtensions: ["ts", "css", "scss", "tsx", "js"],
+  bail: true,
+  moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
     "^components(.*)$": "<rootDir>/components$1",
     "^common(.*)$": "<rootDir>/common$1",
-  },
-  transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest",
   },
   setupFilesAfterEnv: ["<rootDir>/tests/setupJest/setupTests.js"],
   testPathIgnorePatterns: [
@@ -17,4 +15,8 @@ module.exports = {
     "/tests/e2e/",
     "/.next/",
   ],
+  transform: {
+    "^.+\\.(js|jsx|ts|tsx)$": "ts-jest",
+  },
+  verbose: false,
 };
