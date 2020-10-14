@@ -1,19 +1,32 @@
 import _DatePicker, { ReactDatePickerProps } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import React from "react";
+import React, { useCallback } from "react";
 
-export const DatePicker: React.FC<ReactDatePickerProps> = ({ minDate, maxDate, selected, highlightDates, excludeDates, onChange, ...rest }) => {
-  
-  const getDate = (d: string | Date): Date => {
-    if (typeof d === "string") {
-      return new Date(d);
-    }
-    return d;
-  };
+type Props = Omit<ReactDatePickerProps, "onChange" | "minDate"> & {
+  onChange?: ReactDatePickerProps["onChange"];
+  minDate?: string;
+};
 
-  const getDates = (dates: Array<string | Date>): Date[] => dates.map(getDate);
+const getDate = (d: string | Date): Date => {
+  if (typeof d === "string") {
+    return new Date(d);
+  }
+  return d;
+};
 
-  return (
+const getDates = (dates: Array<string | Date>): Date[] => dates.map(getDate);
+
+export const DatePicker: React.FC<Props> = ({
+  minDate,
+  maxDate,
+  selected,
+  highlightDates,
+  excludeDates,
+  onChange,
+  ...rest
+}) => {
+  useCallback((excludeDates, maxDate, minDate, onChange, rest, selected) => {
+    return (
       <_DatePicker
         minDate={getDate(minDate)}
         maxDate={getDate(maxDate)}
@@ -23,8 +36,9 @@ export const DatePicker: React.FC<ReactDatePickerProps> = ({ minDate, maxDate, s
         onChange={onChange}
         {...rest}
       />
-  )
-}
+    );
+  }, []);
+};
 
-DatePicker.displayName = "DatePicker"
+DatePicker.displayName = "DatePicker";
 export default DatePicker;

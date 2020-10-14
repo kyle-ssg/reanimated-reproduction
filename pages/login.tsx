@@ -4,9 +4,9 @@ import ErrorMessage from "components/Messages";
 import { ButtonPrimary } from "components/base/forms/Button";
 import { useAuth } from '../common/providers/useAuth';
 
-
 const LoginPage: React.FC<{ }> = () => {
   const { user, userLoading, userError, login } = useAuth()
+  const [redirect, setRedirect] = useState<boolean>(false);
   const router = useRouter();
 
   const [ loginData, setLoginData ] = useState({
@@ -15,8 +15,11 @@ const LoginPage: React.FC<{ }> = () => {
   });
 
   useEffect(() => {
-    user && router.replace(Utils.fromParam().redirect || "/")
-  }, [user, router]);
+    user && setRedirect(true)
+  }, [user]);
+  useEffect(() => {
+    router.replace(Utils.fromParam().redirect || "/")
+  }, [redirect, router]);
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) =>
     setLoginData((prevState) => ({

@@ -39,6 +39,7 @@ declare global {
   declare let SafeAreaView: React.ComponentType<ReactNative.ViewProps>;
   declare let Platform: ReactNative.PlatformIOSStatic | ReactNative.PlatformAndroidStatic;
   declare let Dimensions: ReactNative.Dimensions;
+  declare let StyleSheet: ReactNative.StyleSheet;
   declare let Styles;
   declare let styleVariables = projectStyles;
   declare let Button = Button;

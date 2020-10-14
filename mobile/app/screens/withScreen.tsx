@@ -1,15 +1,19 @@
-import React, { useLayoutEffect, useCallback, useRef, useEffect } from 'react';
+import React, { useLayoutEffect, useCallback, useRef, useEffect } from "react";
 import {
   NativeStackNavigationOptions,
   NativeStackNavigationProp,
 } from "react-native-screens/native-stack";
-import { useNavigation, useNavigationState, useRoute } from '@react-navigation/native';
+import {
+  useNavigation,
+  useNavigationState,
+  useRoute,
+} from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 
 import { AppActions } from "common/app-actions";
-import { StatusBarStyle } from 'react-native';
-import useTheme  from 'common/providers/useTheme';
-import { AppState } from 'common/state-type';
+import { StatusBarStyle } from "react-native";
+import useTheme from "common/providers/useTheme";
+import { AppState } from "common/state-type";
 
 export interface IRouteParams {
   [extraProps: string]: any; // Means that extra props are fine
@@ -23,10 +27,10 @@ export type Screen = {
   canGoBack: () => boolean;
   replace: (name: string, routeParams?: Partial<IRouteParams>) => void;
   setOptions: (options: Partial<NativeStackNavigationOptions>) => void;
-  setStatusBar: (colour:StatusBarStyle) => void;
+  setStatusBar: (colour: StatusBarStyle) => void;
   style: ReactNative.ViewStyle;
   children: React.ReactNode;
-  theme?: AppState['theme'],
+  theme?: AppState["theme"];
 };
 export type ScreenProps = {
   navigation: NativeStackNavigationProp<any> & {
@@ -38,23 +42,30 @@ export type ScreenProps = {
   };
 };
 
-const withScreen = (Component: React.ComponentType, isChild=false) => {
+const withScreen = (Component: React.ComponentType, isChild = false) => {
   return function withScreen(props: ScreenProps): React.ReactNode {
-
     // @ts-ignore
-    const statusColour = useRef(route?.params?.statusBar?.barStyle || styleVariables.defaultStatusBarColour)
+    const statusColour = useRef(
+      route?.params?.statusBar?.barStyle ||
+        styleVariables.defaultStatusBarColour
+    );
     const navigation = useNavigation();
     const route = useRoute();
     const dispatch = useDispatch();
     const theme = useTheme();
-    useEffect(()=>{
+    useEffect(() => {
       // @ts-ignore
-      if ((route?.params?.statusBar?.barStyle|| styleVariables.defaultStatusBarColour) !== statusColour.current) {
+      if (
+        (route?.params?.statusBar?.barStyle ||
+          styleVariables.defaultStatusBarColour) !== statusColour.current
+      ) {
         // @ts-ignore
-        statusColour.current = route?.params?.statusBar?.barStyle|| styleVariables.defaultStatusBarColour
+        statusColour.current =
+          route?.params?.statusBar?.barStyle ||
+          styleVariables.defaultStatusBarColour;
         ReactNative.StatusBar.setBarStyle(statusColour.current, true);
       }
-    },[route])
+    }, [route]);
 
     if (!isChild) {
       React.useEffect(() => {
@@ -72,35 +83,32 @@ const withScreen = (Component: React.ComponentType, isChild=false) => {
 
     const setNavOptions = navigation.setOptions;
     const ignoreTheme = route.params?.ignoreTheme;
-    const setStatusBar = useCallback(
-      (colour:StatusBarStyle) => {
-        statusColour.current = colour
-        ReactNative.StatusBar.setBarStyle(statusColour.current, true);
-      },
-      []
-    );
+    const setStatusBar = useCallback((colour: StatusBarStyle) => {
+      statusColour.current = colour;
+      ReactNative.StatusBar.setBarStyle(statusColour.current, true);
+    }, []);
 
     useEffect(() => {
       // @ts-ignore
       const options: Partial<NativeStackNavigationOptions> = {
-        ...route.params?.screenOptions || {}
-      }
+        ...(route.params?.screenOptions || {}),
+      };
 
-      if(!ignoreTheme && theme) {
+      if (!ignoreTheme && theme) {
         // set theme options here e.g. options.headerTintColor = theme.tintColor
       }
 
       if (Platform.OS === "android") {
-        setTimeout(()=>{
+        setTimeout(() => {
           setNavOptions(options);
-        })
+        });
       } else {
         setNavOptions(options);
       }
 
       // @ts-ignore
       setNavOptions(options);
-    }, [setNavOptions,ignoreTheme, setStatusBar, route, theme]);
+    }, [setNavOptions, ignoreTheme, setStatusBar, route, theme]);
 
     const push = useCallback(
       (name, params) => {
@@ -116,7 +124,6 @@ const withScreen = (Component: React.ComponentType, isChild=false) => {
       },
       [navigation]
     );
-
 
     const replace = useCallback(
       (name, params) => {
@@ -139,21 +146,21 @@ const withScreen = (Component: React.ComponentType, isChild=false) => {
     );
 
     return (
-            <Component
-          // @ts-ignore
-              push={push}
-              them={theme}
-              navigate={navigate}
-              pop={pop}
-              replace={replace}
-              setStatusBar={setStatusBar}
-              canGoBack={navigation.canGoBack}
-              setOptions={setOptions}
-              {...route.params}
-              {...props}
-            />
+      <Component
+        // @ts-ignore
+        push={push}
+        them={theme}
+        navigate={navigate}
+        pop={pop}
+        replace={replace}
+        setStatusBar={setStatusBar}
+        canGoBack={navigation.canGoBack}
+        setOptions={setOptions}
+        {...route.params}
+        {...props}
+      />
     );
-  }
+  };
 };
 
 export default withScreen;

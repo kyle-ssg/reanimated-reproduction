@@ -112,23 +112,23 @@ global.API = {
     }
     return includePhotos
       ? new Promise((resolve) =>
-        // eslint-disable-next-line no-undef
-        Contacts.getAll((error, contacts) =>
-          resolve({
-            error,
-            contacts: contacts,
-          })
+          // eslint-disable-next-line no-undef
+          Contacts.getAll((error, contacts) =>
+            resolve({
+              error,
+              contacts: contacts,
+            })
+          )
         )
-      )
       : new Promise((resolve) =>
-        // eslint-disable-next-line no-undef
-        Contacts.getAllWithoutPhotos((error, contacts) =>
-          resolve({
-            error,
-            contacts: contacts,
-          })
-        )
-      );
+          // eslint-disable-next-line no-undef
+          Contacts.getAllWithoutPhotos((error, contacts) =>
+            resolve({
+              error,
+              contacts: contacts,
+            })
+          )
+        );
   },
   showUpload: (
     title,
@@ -142,7 +142,9 @@ global.API = {
       API.showOptions(title, ["Camera", "Upload a Photo"]).then((i) => {
         if (typeof ImagePicker === "undefined") {
           // eslint-disable-next-line
-          alert('You need to link react-native-image-crop-picker to use this function');
+          alert(
+            "You need to link react-native-image-crop-picker to use this function"
+          );
           return;
         }
         // todo : handle multiple
@@ -169,7 +171,7 @@ global.API = {
   generateLink: (title, customMetadata) => {
     if (typeof branch === "undefined") {
       // eslint-disable-next-line
-      alert('You need to link react-native-branch to use this function');
+      alert("You need to link react-native-branch to use this function");
       return Promise.reject();
     }
     // eslint-disable-next-line no-undef
