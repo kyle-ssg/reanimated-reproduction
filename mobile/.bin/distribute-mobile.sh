@@ -50,7 +50,7 @@ git reset --hard HEAD
 git checkout $commitSHA
 if [[ $4 == "ios" ]]
 then
-    lastVersion=$(grep -A11 "/\* Pods-$6.release.xcconfig \*/;" ios/mobile.xcodeproj/project.pbxproj | tail -1 | awk '{split($0,a,"= "); print a[2]}' | sed 's/;$//')
+    lastVersion=$(awk "/\/\* Pods-appcenter-staging.release.xcconfig \*\/;/,0" ios/mobile.xcodeproj/project.pbxproj | grep "MARKETING_VERSION" | head -1 | awk '{split($0,a,"= "); print a[2]}' | sed 's/;$//')
 else
     # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
     # - currentVersion=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
@@ -60,7 +60,7 @@ git checkout $3
 npm run env_script
 if [[ $4 == "ios" ]]
 then
-    currentVersion=$(grep -A11 "/\* Pods-$6.release.xcconfig \*/;" ios/mobile.xcodeproj/project.pbxproj | tail -1 | awk '{split($0,a,"= "); print a[2]}' | sed 's/;$//')
+    currentVersion=$(awk "/\/\* Pods-appcenter-staging.release.xcconfig \*\/;/,0" ios/mobile.xcodeproj/project.pbxproj | grep "MARKETING_VERSION" | head -1 | awk '{split($0,a,"= "); print a[2]}' | sed 's/;$//')
 else
     # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
     # - currentVersion=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
