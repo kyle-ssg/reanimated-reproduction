@@ -5,11 +5,12 @@
 # $4 - iOS/Android
 # $5 - Code Push ID
 # $6 - Target (required for iOS only)
+
+
 # 0 = "="
 # 1 = ">"
 # 2 = "<"
 # i.e. vercomp 2.1 2.2 == "<"
-
 vercomp () {
     if [[ $1 == $2 ]]
     then
