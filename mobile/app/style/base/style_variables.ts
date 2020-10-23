@@ -70,9 +70,7 @@ export const styleVariables =  global.styleVariables = {
   italicFontFamily: Platform.select({ ios: 'System', android: 'System' }),
   boldFontFamily: Platform.select({ ios: 'System', android: 'System' }),
   buttonFontFamily: Platform.select({ ios: 'System', android: 'System' }),
-
   ...projectStyles
-
 };
 
 global.colour = { ...palette,

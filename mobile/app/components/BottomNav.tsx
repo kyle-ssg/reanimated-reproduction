@@ -56,7 +56,7 @@ const BottomNav = ({ state, descriptors, navigation }) => {
   );
 };
 
-const tabBarHeight = 64 + styleVariables.insets.bottom;
+const tabBarHeight = 64 + global.styleVariables.insets.bottom;
 
 const styles = {
   screen: {
