@@ -1,13 +1,8 @@
-import { StyleSheet } from "react-native";
+import asStyle from '../asStyle';
 
-const style: Record<
-string,
-ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
-> = {
+export default asStyle({
   listItem: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: palette.divider,
   },
-};
-
-module.exports = style;
+});

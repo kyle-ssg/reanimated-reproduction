@@ -1,14 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { StyleSheet } from "react-native";
+import asStyle from '../asStyle';
 
-const style: Record<
-string,
-ReactNative.ViewStyle | ReactNative.ImageStyle | ReactNative.TextStyle
-> = {
+export default asStyle({
 
-
-  // buttonPrimary: { backgroundColor: 'pink' }
-
-};
-
-module.exports = style;
+});

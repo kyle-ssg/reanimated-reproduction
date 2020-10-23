@@ -1,21 +1,60 @@
-import { StyleSheet } from 'react-native';
+import asStyle from '../asStyle';
 
-const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
-  //
-  // Base styles
-  // --------------------------------------------------
+export default asStyle({
 
-  body: {
-    flex: 1,
-    backgroundColor: palette.bodyBackground,
+  button: {
+    height: styleVariables.buttonHeight,
   },
 
-  divider: {
-    height: StyleSheet.hairlineWidth,
-    alignSelf: 'stretch',
-    borderColor: palette.divider,
-    borderBottomWidth: StyleSheet.hairlineWidth,
+  buttonPrimaryPressed: {
+    backgroundColor: palette.primaryDark,
   },
-}
 
-module.exports = style;
+  buttonWithIcon: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  buttonText: {
+    // fontWeight: styleVariables.buttonFontWeight,
+    fontFamily: styleVariables.buttonFontFamily,
+    backgroundColor: 'transparent',
+    color: 'white',
+  },
+
+  buttonIcon: {
+    fontSize: em(1),
+    color: 'white',
+    marginRight: 10,
+  },
+
+  buttonIconRight: {
+    marginLeft: 10,
+    marginRight: 0,
+  },
+
+  buttonGroupPressed: {
+    backgroundColor: palette.primaryPressed,
+  },
+
+  buttonGroupSecondaryPressed: {
+    backgroundColor: palette.secondaryPressed,
+  },
+
+  buttonGroup: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: palette.primary,
+    height: styleVariables.buttonHeight,
+  },
+
+  buttonGroupLeft: {
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+  },
+
+  buttonGroupRight: {
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+  },
+});

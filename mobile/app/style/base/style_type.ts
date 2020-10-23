@@ -1,9 +1,6 @@
-import { StyleSheet } from 'react-native';
+import asStyle from '../asStyle';
 
-require('./style_pxToEm');
-
-const styles:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
-
+export default asStyle({
   //
   // Typography
   // --------------------------------------------------
@@ -134,6 +131,4 @@ const styles:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNa
     letterSpacing: em(0.06),
     fontSize: em(0.86),
   },
-};
-
-module.exports = styles
+});

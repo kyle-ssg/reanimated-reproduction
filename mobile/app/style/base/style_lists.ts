@@ -1,7 +1,6 @@
-import { StyleSheet } from 'react-native';
+import asStyle from '../asStyle';
 
-const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
-
+export default asStyle({
   listItem: {
     minHeight: 44,
     alignItems: 'stretch',
@@ -15,6 +14,4 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
   listItemDisabled: {
     opacity: 0.5,
   },
-};
-
-module.exports = style;
+});

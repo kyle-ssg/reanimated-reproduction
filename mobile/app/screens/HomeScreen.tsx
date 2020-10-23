@@ -14,7 +14,7 @@ const HomeScreen: React.FC<HomeScreen> = ({ push }) => {
   const goGeneric = () => push(RouteUrls.generic, {});
 
   return (
-    <Flex style={Styles.body}>
+    <Flex style={[Styles.body]}>
       <Button onPress={goGeneric}>Go to a generic page</Button>
     </Flex>
   );

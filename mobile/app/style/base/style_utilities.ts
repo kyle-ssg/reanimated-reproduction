@@ -1,7 +1,6 @@
-import { StyleSheet } from 'react-native';
+import asStyle from '../asStyle';
 
-const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
-
+export default asStyle({
   // Utility classes
   // -------------------------
   noPadding: {
@@ -30,6 +29,4 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
   alignRight: {
     alignItems: 'flex-end',
   },
-};
-
-module.exports = style;
+});

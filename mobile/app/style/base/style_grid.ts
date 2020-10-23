@@ -1,12 +1,10 @@
-import { StyleSheet } from 'react-native';
 
 export const paddingBase = 8; // todo: styleVariables.gutterBase should match this ?
-// marginBaseVertical: 15,
-//   marginBaseHorizontal: 10,
-//   paddingBase: 15,
-//   gutterBase: 10,
 
-const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
+
+import asStyle from '../asStyle';
+
+export default asStyle({
   //
   // Grid system / Rows
   // --------------------------------------------------
@@ -162,6 +160,4 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
   mv10: { marginTop: paddingBase*2, marginBottom: paddingBase*2 },
   mv15: { marginTop: paddingBase*3, marginBottom: paddingBase*3 },
   mv20: { marginTop: paddingBase*4, marginBottom: paddingBase*4 },
-};
-
-module.exports = style;
+});

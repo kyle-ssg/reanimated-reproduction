@@ -1,7 +1,7 @@
 import { Dimensions } from 'react-native';
+import asStyle from '../asStyle';
 
-const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNative.TextStyle> = {
-  //
+export default asStyle({  //
   // Overlays
   // --------------------------------------------------
 
@@ -20,6 +20,4 @@ const style:Record<string, ReactNative.ViewStyle|ReactNative.ImageStyle|ReactNat
     backgroundColor: 'white',
   },
 
-};
-
-module.exports = style;
+});

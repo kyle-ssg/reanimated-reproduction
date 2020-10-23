@@ -8,6 +8,7 @@ export const projectPalette = (global.palette = {
   primaryPressed: 'rgb(0,109,217)',
   secondary: 'rgb(255,55,95)',
   secondaryPressed: 'rgb(236,50,86)',
+  someProjectColor: "red"
 });
 
 export const projectStyles = (global.styleVariables = {
@@ -16,10 +17,10 @@ export const projectStyles = (global.styleVariables = {
   boldFontWeight: "bold",
   buttonFontWeight: "500",
 
+  someProjectStyleVariable:10,
   normalFontFamily: Platform.select({ ios: "System", android: "System" }),
   italicFontFamily: Platform.select({ ios: "System", android: "System" }),
   boldFontFamily: Platform.select({ ios: "System", android: "System" }),
   buttonFontFamily: Platform.select({ ios: "System", android: "System" }),
-
-  ...require("./style_platform_variables"),
+  inputHeight: 44,
 });

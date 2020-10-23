@@ -5,12 +5,15 @@ import { StyleSheet } from 'react-native';
 import { initialWindowMetrics } from 'react-native-safe-area-context';
 
 const em = require('./style_pxToEm');
-let deviceH = Dimensions.get('screen').height;
+const deviceH = Dimensions.get('screen').height;
 // the value returned does not include the bottom navigation bar, I am not sure why yours does.
-let windowH = Dimensions.get('window').height;
-let bottomNavBarH = deviceH - windowH;
+const windowH = Dimensions.get('window').height;
+const bottomNavBarH = deviceH - windowH;
 
-global.palette = { bodyBackground: '#fff', // General app  background
+import { projectPalette, projectStyles } from '../project/style_variables';
+
+export const palette = global.palette = {
+  bodyBackground: '#fff', // General app  background
   primary: 'rgb(10,132,255)',
   primaryPressed: 'rgb(0,109,217)',
   secondary: 'rgb(255,55,95)',
@@ -20,7 +23,9 @@ global.palette = { bodyBackground: '#fff', // General app  background
   textLight: 'rgb(174,174,178)',
   iconFaint: 'rgb(229,229,234)',
   text: 'rgb(28,28,30)',
-  ...global.palette };
+  ...projectPalette
+};
+
 
 //= = Other Variables
 
@@ -66,7 +71,9 @@ export const styleVariables =  global.styleVariables = {
   boldFontFamily: Platform.select({ ios: 'System', android: 'System' }),
   buttonFontFamily: Platform.select({ ios: 'System', android: 'System' }),
 
-  ...global.styleVariables };
+  ...projectStyles
+
+};
 
 global.colour = { ...palette,
   iosStyle: 0,

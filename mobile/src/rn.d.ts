@@ -7,8 +7,10 @@ import { KeyboardAwareScrollViewProps } from 'react-native-keyboard-aware-scroll
 import Button, { ButtonPrimary, ButtonSecondary, ButtonTertiary } from '../app/components/base/forms/Button';
 import Constants from 'common/utils/constants';
 import API from '../app/project/api/api'
-import { projectPalette, projectStyles } from '../app/style/project/style_variables'
 import { AppActions } from 'common/app-actions';
+import { styleTypes } from '../app/style/style_screen';
+
+import { palette,styleVariables } from '../app/style/base/style_variables';
 
 declare global {
   const ReactNative: typeof ReactNative;
@@ -40,8 +42,8 @@ declare global {
   declare let Platform: ReactNative.PlatformIOSStatic | ReactNative.PlatformAndroidStatic;
   declare let Dimensions: ReactNative.Dimensions;
   declare let StyleSheet: ReactNative.StyleSheet;
-  declare let Styles;
-  declare let styleVariables = projectStyles;
+  declare let Styles = styleTypes;
+  declare let styleVariables = styleVariables;
   declare let Button = Button;
   declare let API = API;
   declare let ButtonPrimary = ButtonPrimary;
@@ -50,7 +52,7 @@ declare global {
   declare let ButtonTertiary = ButtonTertiary;
   declare let routes;
   declare let Constants = Constants;
-  declare let palette = projectPalette;
+  declare let palette = palette;
   declare let AppActions = AppActions;
   declare let colour;
   declare let DeviceWidth:number;
