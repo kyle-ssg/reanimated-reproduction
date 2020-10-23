@@ -1,60 +1,19 @@
 import asStyle from '../asStyle';
 
 export default asStyle({
+  //
+  // Base styles
+  // --------------------------------------------------
 
-  button: {
-    height: styleVariables.buttonHeight,
+  body: {
+    flex: 1,
+    backgroundColor: palette.bodyBackground,
   },
 
-  buttonPrimaryPressed: {
-    backgroundColor: palette.primaryDark,
-  },
-
-  buttonWithIcon: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-
-  buttonText: {
-    // fontWeight: styleVariables.buttonFontWeight,
-    fontFamily: styleVariables.buttonFontFamily,
-    backgroundColor: 'transparent',
-    color: 'white',
-  },
-
-  buttonIcon: {
-    fontSize: em(1),
-    color: 'white',
-    marginRight: 10,
-  },
-
-  buttonIconRight: {
-    marginLeft: 10,
-    marginRight: 0,
-  },
-
-  buttonGroupPressed: {
-    backgroundColor: palette.primaryPressed,
-  },
-
-  buttonGroupSecondaryPressed: {
-    backgroundColor: palette.secondaryPressed,
-  },
-
-  buttonGroup: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: palette.primary,
-    height: styleVariables.buttonHeight,
-  },
-
-  buttonGroupLeft: {
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
-  },
-
-  buttonGroupRight: {
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
+  divider: {
+    height: StyleSheet.hairlineWidth,
+    alignSelf: 'stretch',
+    borderColor: palette.divider,
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });

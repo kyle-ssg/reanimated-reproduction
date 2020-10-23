@@ -2,14 +2,14 @@
  * Created by kylejohnson on 07/09/15.
  */
 // eslint-disable-next-line
-import * as _ from "lodash"
-
+import merge from "lodash/merge";
+import './base/style_variables'
 import base from './base';
 import projectBase from './project/style_base';
 import projectButtons from './project/style_buttons';
 import projectForms from './project/style_forms';
 import projectLists from './project/style_lists';
-const styleObj = _.merge(
+const styleObj = merge(
   {},
   base,
   projectBase,

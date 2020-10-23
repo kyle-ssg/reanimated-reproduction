@@ -1,6 +1,6 @@
 require("../base/style_pxToEm");
 
-export const projectPalette = (global.palette = {
+export const projectPalette = {
   bodyBackground: "#fff", // General app  background (overriding palette in base/stylevariables)
   danger: "#fe4948",
   dangerDark: '#ca2a3c',
@@ -8,10 +8,9 @@ export const projectPalette = (global.palette = {
   primaryPressed: 'rgb(0,109,217)',
   secondary: 'rgb(255,55,95)',
   secondaryPressed: 'rgb(236,50,86)',
-  someProjectColor: "red"
-});
+};
 
-export const projectStyles = (global.styleVariables = {
+export const projectStyles  = {
   // font weights and family (overriding base/styleVariables)
   normalFontWeight: "normal",
   boldFontWeight: "bold",
@@ -23,4 +22,6 @@ export const projectStyles = (global.styleVariables = {
   boldFontFamily: Platform.select({ ios: "System", android: "System" }),
   buttonFontFamily: Platform.select({ ios: "System", android: "System" }),
   inputHeight: 44,
-});
+};
+global.palette = projectPalette;
+global.styleVariables = projectStyles;
