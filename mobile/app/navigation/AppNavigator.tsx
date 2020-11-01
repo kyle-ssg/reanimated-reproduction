@@ -115,6 +115,8 @@ class AppNavigator extends Component<ComponentType> {
           options={withPushModalOptions(routes[RouteUrls.web].options)}
           component={routes[RouteUrls.web].component}
         />
+
+        {/* END OF ROUTES*/}
       </Navigator>
     );
   }
