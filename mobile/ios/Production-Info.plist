@@ -91,6 +91,8 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+    <true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>branch_app_domain</key>
