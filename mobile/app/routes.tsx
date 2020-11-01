@@ -9,6 +9,8 @@ import WebScreen from "screens/WebScreen";
 import ModalCloseButton from "components/ModalCloseButton";
 import StorybookUIRoot from "../stories/index";
 
+// END OF IMPORT
+
 type functionComponent = (props: any) => React.ReactNode;
 
 export interface IRoute {
@@ -94,4 +96,6 @@ export const routes: Record<RouteUrls, IRoute> = {
     },
     component: StorybookUIRoot,
   },
+
+  // END OF SCREENS
 };

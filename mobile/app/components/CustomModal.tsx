@@ -103,10 +103,10 @@ export const CustomModal: FunctionComponent<ModalType> = ({
   const onComplete = _animatedValue
     ? null
     : function ([newValue]: readonly number[]) {
-        if (newValue === 0) {
-          setModalVisible(false);
-        }
-      };
+      if (newValue === 0) {
+        setModalVisible(false);
+      }
+    };
 
   if (!_animatedValue) {
     useCode(

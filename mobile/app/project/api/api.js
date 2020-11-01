@@ -112,23 +112,23 @@ global.API = {
     }
     return includePhotos
       ? new Promise((resolve) =>
-          // eslint-disable-next-line no-undef
-          Contacts.getAll((error, contacts) =>
-            resolve({
-              error,
-              contacts: contacts,
-            })
-          )
+      // eslint-disable-next-line no-undef
+        Contacts.getAll((error, contacts) =>
+          resolve({
+            error,
+            contacts: contacts,
+          })
         )
+      )
       : new Promise((resolve) =>
-          // eslint-disable-next-line no-undef
-          Contacts.getAllWithoutPhotos((error, contacts) =>
-            resolve({
-              error,
-              contacts: contacts,
-            })
-          )
-        );
+      // eslint-disable-next-line no-undef
+        Contacts.getAllWithoutPhotos((error, contacts) =>
+          resolve({
+            error,
+            contacts: contacts,
+          })
+        )
+      );
   },
   showUpload: (
     title,
