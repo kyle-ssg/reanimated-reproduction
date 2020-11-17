@@ -19,32 +19,36 @@ export const palette = global.palette = {
   secondary: 'rgb(255,55,95)',
   secondaryPressed: 'rgb(236,50,86)',
   success: 'rgb(48,209,88)',
+  inputBackground: "#f8f7f7",
   divider: 'rgb(229,229,234)',
   textLight: 'rgb(174,174,178)',
   iconFaint: 'rgb(229,229,234)',
   text: 'rgb(28,28,30)',
+  textFaint: 'rgb(113,113,121)',
   ...projectPalette
 };
 
 
 //= = Other Variables
-
+const insets = {
+  ...initialWindowMetrics.insets||{},
+  bottom: Platform.select({
+    android: initialWindowMetrics?.insets.bottom  - bottomNavBarH,
+    ios: initialWindowMetrics?.insets.bottom,
+  }),
+  top: Platform.select({
+    // android: initialWindowMetrics.insets.top  - StatusBar.currentHeight, // if you don't use a transparent status bar the height gets included
+    android: initialWindowMetrics?.insets.top,
+    ios: initialWindowMetrics?.insets.top,
+  }),
+};
 export const styleVariables =  global.styleVariables = {
-  insets: {
-    ...initialWindowMetrics.insets||{},
-    bottom: Platform.select({
-      android: initialWindowMetrics?.insets.bottom  - bottomNavBarH,
-      ios: initialWindowMetrics?.insets.bottom,
-    }),
-    top: Platform.select({
-      // android: initialWindowMetrics.insets.top  - StatusBar.currentHeight, // if you don't use a transparent status bar the height gets included
-      android: initialWindowMetrics?.insets.top,
-      ios: initialWindowMetrics?.insets.top,
-    })
-  },
+  insets,
+  bottomNavPadding: 80 + (insets.bottom || 0),
 
   //= = Typography
   fontSizeBase: em(1), //16px
+  fontSizeSmall: em(0.8), //14px
   fontSizeH1: em(2), // 32px
   fontSizeH2: em(1.5), // 24px
   fontSizeH3: em(1.25), // 20px
@@ -53,6 +57,7 @@ export const styleVariables =  global.styleVariables = {
   // Buttons
   buttonHeight: 44,
 
+  inputFontSizeBase: em(1), //16px
   // Inputs
   fontSizeInputLarge: em(2),
 

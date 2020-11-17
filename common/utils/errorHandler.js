@@ -5,9 +5,11 @@ const parseErrorFromAPI = (error) => {
 
 export default (e) => {
   const defaultErrorMessage = Strings.defaultErrorMessage;
-
   if (!e) return defaultErrorMessage;
 
+  if (e && e.message) {
+    return e.message;
+  }
   // Handle string errors.
   if (typeof e === "string") return e;
 

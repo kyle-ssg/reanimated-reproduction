@@ -39,6 +39,7 @@ export const withModalOptions = (
   base: Partial<NativeStackNavigationOptions>
 ): NativeStackNavigationOptions => ({
   ...base,
+  headerShown: true,
   hideBackButton: true,
   headerHideBackButton: true,
   headerRight: ModalCloseButton,

@@ -1,12 +1,12 @@
-import React from "react";
-import { Component, FunctionComponent } from "react";
-import withScreen, { Screen } from "./withScreen";
-import { WebView, WebViewProps } from "react-native-webview";
-import { NavigationContainer } from "@react-navigation/native";
-import defaultNavigationOptions from "../style/style_navs";
-import { routes, withModalOptions } from "../routes";
-import { createNativeStackNavigator } from "react-native-screens/native-stack";
-import { RouteUrls } from "../route-urls";
+import React, { Component, FunctionComponent } from 'react';
+import withScreen, { Screen } from './withScreen';
+import { WebView, WebViewProps } from 'react-native-webview';
+import { NavigationContainer } from '@react-navigation/native';
+import defaultNavigationOptions from '../style/style_navs';
+import { routes, withModalOptions } from '../routes';
+import { createNativeStackNavigator } from 'react-native-screens/native-stack';
+import { RouteUrls } from '../route-urls';
+import ModalStack from 'navigation/ModalStack';
 
 type Props = Screen & {
   text: string;
@@ -21,13 +21,13 @@ class _WebScreen extends Component<Props> {
       headerLeft: () =>
         navState.canGoBack ? (
           <TouchableOpacity onPress={() => this.webview?.goBack()}>
-            <ION name={"ios-arrow-left"} size={20} color={palette.navy} />
+            <ION name={"ios-arrow-back"} size={20} color={palette.navy} />
           </TouchableOpacity>
         ) : (
           <View />
         ),
     });
-    this.props.webViewProps.onNavigationStateChange &&
+    this.props.webViewProps?.onNavigationStateChange &&
       this.props.webViewProps.onNavigationStateChange(navState);
   };
 
@@ -55,25 +55,4 @@ class _WebScreen extends Component<Props> {
 
 const WebScreen = withScreen(_WebScreen);
 
-const Stack = createNativeStackNavigator();
-const Navigator = Stack.Navigator;
-
-const TheComponent: FunctionComponent<ComponentType> = ({ webViewProps }) => {
-  return (
-    <NavigationContainer independent>
-      <Navigator
-        screenOptions={defaultNavigationOptions}
-        initialRouteName={RouteUrls.home}
-      >
-        <Stack.Screen
-          name={RouteUrls.home}
-          options={withModalOptions(routes[RouteUrls.home].options)}
-          component={WebScreen}
-          initialParams={{ webViewProps }}
-        />
-      </Navigator>
-    </NavigationContainer>
-  );
-};
-
-export default withScreen(TheComponent);
+export default ModalStack(WebScreen,RouteUrls.home);

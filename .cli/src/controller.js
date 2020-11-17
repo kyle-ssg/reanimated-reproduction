@@ -125,7 +125,6 @@ module.exports = {
         await writer.writeRouteUrl(routeUrl);
         await writer.writeRoute(routeImport, route);
         await writer.writeScreenComponent(name,component);
-        await writer.writeAppRoute(name,component);
         await writer.writeAppRouteComponent(routeComponent);
 
     },

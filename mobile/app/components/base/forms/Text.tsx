@@ -13,6 +13,6 @@ const TextComponent: React.FC<Props> = (props) => {
       {props.children}
     </Text>
   );
-}
+};
 
 export default TextComponent;

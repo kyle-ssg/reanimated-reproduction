@@ -22,26 +22,31 @@ const StorageManager = class {
   }
 
   setNumber = async (key, val) => {
+    await this.init();
     API.log("STORAGE", "SET NUMBER", key, val);
     return MMKV.setIntAsync(key, val);
   }
 
   setString = async (key, val) => {
+    await this.init();
     API.log("STORAGE", "SET STRING", key, val);
     return MMKV.setStringAsync(key, val);
   }
 
   setObject = async (key, val) => {
+    await this.init();
     API.log("STORAGE", "SET OBJECT", key, val);
     return MMKV.setStringAsync(key, JSON.stringify(val));
   }
 
   setBool = async (key, val) => {
+    await this.init();
     API.log("STORAGE", "SET BOOL", key, val);
     return MMKV.setBoolAsync(key, val);
   }
 
   getNumber = async (key) => {
+    await this.init();
     API.log("STORAGE", "GET NUMBER", key);
     return MMKV.getIntAsync(key).catch(e => {
       if (e === 'Value for key does not exist') return null;
@@ -50,6 +55,7 @@ const StorageManager = class {
   }
 
   getString = async (key) => {
+    await this.init();
     API.log("STORAGE", "GET STRING", key);
     return MMKV.getStringAsync(key).catch(e => {
       if (e === 'Value for key does not exist') return null;
@@ -57,7 +63,16 @@ const StorageManager = class {
     });
   }
 
+  getItem = async (key) => {
+    return this.getString(key)
+  }
+
+  setItem = async (key, value) => {
+    return this.setString(key, value)
+  }
+
   getObject = async (key) => {
+    await this.init();
     API.log("STORAGE", "GET OBJECT", key);
     return MMKV.getStringAsync(key).then((res)=>res && JSON.parse(res)).catch(e => {
       if (e === 'Value for key does not exist') return null;
@@ -66,6 +81,7 @@ const StorageManager = class {
   }
 
   getBool = async (key) => {
+    await this.init();
     API.log("STORAGE", "GET BOOL", key);
     return MMKV.getBoolAsync(key).catch(e => {
       if (e === 'Value for key does not exist') return null;
@@ -74,6 +90,7 @@ const StorageManager = class {
   }
 
   removeItem = async (key) => {
+    await this.init();
     API.log("STORAGE", "REMOVE ITEM", key);
     await MMKV.removeItem(key);
   }

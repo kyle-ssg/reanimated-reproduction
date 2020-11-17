@@ -22,10 +22,10 @@ module.exports = {
 `;
     },
     screenRouteUrl(key,path) {
-        return `  "${key}" = "${path}",`;
+        return `"${key}" = "${path}",`;
     },
     screenRoute(name,key) {
-        return `  [RouteUrls.${key}]: {
+        return `[RouteUrls.${key}]: {
     options: {
     },
     component: ${name},
@@ -37,10 +37,10 @@ module.exports = {
     },
     routeComponent(name) {
         return `<Stack.Screen
-    name={RouteUrls.${name}}
-    options={withPushModalOptions(routes[RouteUrls.${name}].options)}
-    component={routes[RouteUrls.${name}].component}
-/>
+          name={RouteUrls.${name}}
+          options={routes[RouteUrls.${name}].options}
+          component={routes[RouteUrls.${name}].component}
+        />
 `;
     },
     screenComponent(name) {
@@ -53,11 +53,9 @@ type ${name} = Screen & {
 
 const ${name}: React.FC<${name}> = ({ children }) => {
   return (
-    children || (
       <Flex style={Styles.body}>
         <Text>I am a generic screen</Text>
       </Flex>
-    )
   );
 };
 

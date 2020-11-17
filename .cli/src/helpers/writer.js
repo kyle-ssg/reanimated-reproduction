@@ -76,7 +76,6 @@ module.exports = {
                 console.log('state types string, already exists');
             } else {
                 res2 = res2.replace(stateTypesPointer, `${stateTypesString}\n  ${stateTypesPointer}`);
-                console.log("Writing", res2, stateTypes)
                 fs.writeFileSync(stateTypes, res2, 'utf8')
             }
         }
@@ -99,7 +98,6 @@ module.exports = {
             console.log('url string, already exists');
         } else {
             res = res.replace(routeUrlsPointer, `${urlString}\n  ${routeUrlsPointer}`);
-            console.log("Writing", res, stateTypes)
             fs.writeFileSync(routeUrls, res, 'utf8')
         }
     },
@@ -107,12 +105,12 @@ module.exports = {
         let res = fs.readFileSync(routes, 'utf8');
 
         if (res.includes(importString)) {
-            console.log('import routes string already exists');
+            console.log('Route import routes string already exists');
         } else {
-            res = res.replace(routesImportPointer, `${importString}\n  ${routesImportPointer}`);
+            res = res.replace(routesImportPointer, `${importString}\n${routesImportPointer}`);
         }
         if (res.includes(screenString)) {
-            console.log('screen string already exists');
+            console.log('Route screen string already exists');
         } else {
             res = res.replace(routesScreensPointer, `${screenString}\n  ${routesScreensPointer}`);
         }
@@ -122,16 +120,7 @@ module.exports = {
         const filePath = path.join(mobileScreens, `${name}.tsx`);
         const res = fs.existsSync(filePath);
         if (res) {
-            console.log('Skipping screen already exists');
-        } else {
-            return fs.writeFileSync(filePath, screenString, 'utf8');
-        }
-    },
-    async writeAppRoute(name, screenString) {
-        const filePath = path.join(mobileScreens, `${name}.tsx`);
-        const res = fs.existsSync(filePath);
-        if (res) {
-            console.log('Skipping screen already exists');
+            console.log('Skipping screen component already exists');
         } else {
             return fs.writeFileSync(filePath, screenString, 'utf8');
         }
@@ -141,11 +130,6 @@ module.exports = {
         let res = fs.readFileSync(mobileRoutes, 'utf8');
         if (res.includes(appRouteString)) {
             console.log('route string already exists');
-        } else {
-            res = res.replace(mobileRoutesPointer, `${appRouteString}\n  ${mobileRoutesPointer}`);
-        }
-        if (res.includes(appRouteString)) {
-            console.log('screen string already exists');
         } else {
             res = res.replace(mobileRoutesPointer, `${appRouteString}\n  ${mobileRoutesPointer}`);
         }

@@ -21,6 +21,6 @@ export const easingConfigSlide: AnimationConfigType = {
 }
 
 export const easingConfigModal: AnimationConfigType = {
-  duration: 300,
+  duration: 250,
   easing: Easing.ease,
 };

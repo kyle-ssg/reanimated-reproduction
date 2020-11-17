@@ -16,7 +16,6 @@ class TheCommand extends Command {
         if(gitAdd !== 'no') {
             execSync('cd ../ && git add .');
         }
-        execSync('cd ../ && npm run lint:fix');
     }
 }
 TheCommand.args = [
