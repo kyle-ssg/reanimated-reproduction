@@ -851,7 +851,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobile.project;
+				PRODUCT_BUNDLE_IDENTIFIER = org.ssg.boilerplate;
 				PRODUCT_NAME = "TheApp Local";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobile-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -910,7 +910,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobile.project.uat;
 				PRODUCT_NAME = "TheApp Staging";
-				PROVISIONING_PROFILE_SPECIFIER = "SSG Boilerplate AppCenter";
+				PROVISIONING_PROFILE_SPECIFIER = "appcenter-staging";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobile-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -966,9 +966,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobile.project;
+				PRODUCT_BUNDLE_IDENTIFIER = org.ssg.boilerplate;
 				PRODUCT_NAME = TheApp;
-				PROVISIONING_PROFILE_SPECIFIER = "SSG Boilerplate AppCenter";
+				PROVISIONING_PROFILE_SPECIFIER = "appcenter-production";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobile-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
