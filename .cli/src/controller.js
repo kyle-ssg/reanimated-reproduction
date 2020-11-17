@@ -115,4 +115,17 @@ module.exports = {
             await writer.writeWebPostExample(webExampleString, prefix);
         }
     },
+    async writeScreen(name, path,key) {
+        const routeUrl = templates.screenRouteUrl(key,path);
+        const route = templates.screenRoute(name,key);
+        const routeImport = templates.screenRouteImport(name);
+        const component = templates.screenComponent(name);
+        const routeComponent = templates.routeComponent(name);
+
+        await writer.writeRouteUrl(routeUrl);
+        await writer.writeRoute(routeImport, route);
+        await writer.writeScreenComponent(name,component);
+        await writer.writeAppRouteComponent(routeComponent);
+
+    },
 };

@@ -98,7 +98,7 @@ const _data = {
 
       if (_data.token) {
         // add auth tokens to headers of all requests
-        options.headers.AUTHORIZATION = `Token ${_data.token}`;
+        options.headers.AUTHORIZATION = `Bearer ${_data.token}`;
       }
 
       if (data) {

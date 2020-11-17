@@ -38,7 +38,6 @@ class TheCommand extends Command {
             const writeComponent = (await cli.prompt('Write component?', { default: 'yes' })).toLowerCase()
             const shouldWriteComponent = writeComponent === 'yes';
             if (skip === "yes" || end) {
-              console.log("Writing files for " + methodKey + " " + pathKey)
               if (methodKey === 'get') {
                 if (cliPath.includes(":")) { // get
                   await getController(`GET_${prefix.toUpperCase()}`, prefix, cliPath, true, shouldWriteComponent, type);

@@ -3,6 +3,7 @@ import { enableScreens } from "react-native-screens";
 import { createNativeStackNavigator } from "react-native-screens/native-stack";
 import codePush from "react-native-code-push";
 import { AppActions } from "common/app-actions";
+import "../project/api/api";
 import _store from "common/store";
 import defaultNavigationOptions from "../style/style_navs";
 import { routes, withPushModalOptions } from "../routes";
@@ -10,14 +11,14 @@ import { RouteUrls } from "../route-urls";
 import withAuth, { IWithAuth } from "common/providers/withAuth"; // todo: migrate this to functional component and use useAuth
 import Loader from "./../components/base/Loader";
 
-const store = _store();
+const { store } = _store();
 
 enableScreens();
 const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;
 
 const codePushOptions = {
-  checkFrequency: codePush.CheckFrequency.MANUAL,
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
   installMode: codePush.InstallMode.IMMEDIATE,
   updateDialog: true,
 };
@@ -34,35 +35,33 @@ class AppNavigator extends Component<ComponentType> {
   }
 
   _bootstrapAsync = async () => {
-    API.storage.init();
+    let user, token;
 
-    const token = await API.storage.getString("token");
+    try {
+      user = await API.auth.Cognito.getSession();
+      token = user.accessToken?.jwtToken;
+    } catch (e) {}
 
-    let user;
     if (token) {
-      user = await API.storage.getObject("user");
-      if (user) {
-        await new Promise((resolve) => {
-          store.dispatch(
-            AppActions.startup(
-              { token, user },
-              {
-                onSuccess: () => {
-                  resolve(user);
-                },
-                onError: () => {
-                  resolve(null);
-                },
-              }
-            )
-          );
-        });
-      }
+      await new Promise((resolve) => {
+        store.dispatch(
+          AppActions.startup(
+            { token, user },
+            {
+              onSuccess: () => {
+                resolve(user);
+              },
+              onError: () => {
+                resolve(null);
+              },
+            }
+          )
+        );
+      });
     }
 
     this.setState({ isLoading: false });
   };
-
   render() {
     const {
       props: { user },
@@ -115,6 +114,8 @@ class AppNavigator extends Component<ComponentType> {
           options={withPushModalOptions(routes[RouteUrls.web].options)}
           component={routes[RouteUrls.web].component}
         />
+
+        {/* END OF ROUTES*/}
       </Navigator>
     );
   }

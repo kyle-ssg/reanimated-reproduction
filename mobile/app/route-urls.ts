@@ -8,5 +8,5 @@ export enum RouteUrls {
   "generic" = "/generic",
   "storybook" = "/storybook",
 
-
+  // END OF SCREENS
 }

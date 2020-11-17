@@ -24,11 +24,6 @@ export function* startup(action : IAction) {
   try {
     const { ...rest } = action.data || {};
     const token = action.data?.token;
-    const refreshToken = action.data?.refreshToken;
-
-    if (refreshToken) {
-      _data.setRefreshToken(refreshToken);
-    }
 
     if (token) {
       _data.setToken(token);

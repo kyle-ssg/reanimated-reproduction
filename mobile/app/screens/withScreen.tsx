@@ -14,6 +14,7 @@ import { AppActions } from "common/app-actions";
 import { StatusBarStyle } from "react-native";
 import useTheme from "common/providers/useTheme";
 import { AppState } from "common/state-type";
+import { CommonActions } from '@react-navigation/native';
 
 export interface IRouteParams {
   [extraProps: string]: any; // Means that extra props are fine
@@ -24,8 +25,10 @@ export interface IRouteParams {
 export type Screen = {
   push: (name: string, routeParams?: Partial<IRouteParams>) => void;
   pop: () => void;
+  dismissModal: () => void;
   canGoBack: () => boolean;
   replace: (name: string, routeParams?: Partial<IRouteParams>) => void;
+  resetTo: (name: string, routeParams?: Partial<IRouteParams>) => void;
   setOptions: (options: Partial<NativeStackNavigationOptions>) => void;
   setStatusBar: (colour: StatusBarStyle) => void;
   style: ReactNative.ViewStyle;
@@ -47,7 +50,7 @@ const withScreen = (Component: React.ComponentType, isChild = false) => {
     // @ts-ignore
     const statusColour = useRef(
       route?.params?.statusBar?.barStyle ||
-        styleVariables.defaultStatusBarColour
+      styleVariables.defaultStatusBarColour
     );
     const navigation = useNavigation();
     const route = useRoute();
@@ -83,6 +86,22 @@ const withScreen = (Component: React.ComponentType, isChild = false) => {
 
     const setNavOptions = navigation.setOptions;
     const ignoreTheme = route.params?.ignoreTheme;
+
+    const resetTo = useCallback(
+      (name, params) => {
+        // @ts-ignore
+        navigation.dispatch(
+          CommonActions.reset({
+            index: 0,
+            routes: [
+              { name, params },
+            ],
+          })
+        );
+      },
+      [navigation]
+    );
+
     const setStatusBar = useCallback((colour: StatusBarStyle) => {
       statusColour.current = colour;
       ReactNative.StatusBar.setBarStyle(statusColour.current, true);
@@ -138,6 +157,11 @@ const withScreen = (Component: React.ComponentType, isChild = false) => {
       navigation.pop();
     }, [navigation]);
 
+    const dismissModal = useCallback(() => {
+      // @ts-ignore
+      navigation.dangerouslyGetParent().pop();
+    }, [navigation]);
+
     const setOptions = useCallback(
       (options) => {
         navigation.setOptions(options);
@@ -152,6 +176,8 @@ const withScreen = (Component: React.ComponentType, isChild = false) => {
         them={theme}
         navigate={navigate}
         pop={pop}
+        dismissModal={dismissModal}
+        resetTo={resetTo}
         replace={replace}
         setStatusBar={setStatusBar}
         canGoBack={navigation.canGoBack}
