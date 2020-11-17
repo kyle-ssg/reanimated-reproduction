@@ -61,6 +61,8 @@ else
     lastVersion=$(grep 'versionName' android/app/build.gradle | grep -o '".*"' | tr -d '"')
 fi
 
+echo $lastVersion
+
 git checkout $3
 git pull
 
