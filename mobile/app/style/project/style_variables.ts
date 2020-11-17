@@ -3,20 +3,20 @@ require("../base/style_pxToEm");
 export const projectPalette = {
   bodyBackground: "#fff", // General app  background (overriding palette in base/stylevariables)
   danger: "#fe4948",
-  dangerDark: '#ca2a3c',
-  primary: 'rgb(10,132,255)',
-  primaryPressed: 'rgb(0,109,217)',
-  secondary: 'rgb(255,55,95)',
-  secondaryPressed: 'rgb(236,50,86)',
+  dangerDark: "#ca2a3c",
+  primaryPressed: "rgb(0,109,217)",
+  secondaryPressed: "rgb(236,50,86)",
+  primary: "#65c2d7",
+  secondary: "#2e7bf7",
+  text: "#333",
+  link: "#2e7bf7",
 };
 
-export const projectStyles  = {
+export const projectStyles = {
   // font weights and family (overriding base/styleVariables)
   normalFontWeight: "normal",
   boldFontWeight: "bold",
   buttonFontWeight: "500",
-
-  someProjectStyleVariable:10,
   normalFontFamily: Platform.select({ ios: "System", android: "System" }),
   italicFontFamily: Platform.select({ ios: "System", android: "System" }),
   boldFontFamily: Platform.select({ ios: "System", android: "System" }),

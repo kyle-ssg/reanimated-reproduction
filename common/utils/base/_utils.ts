@@ -184,6 +184,12 @@ const Utils = {
     return Number(Math.round(number + "e" + decimalPlaces) + "e-" + decimalPlaces)
   },
 
+  roundToStep (value, step) {
+    step || (step = 1.0);
+    const inv = 1.0 / step;
+    return Math.round(value * inv) / inv;
+  },
+
   capitalize(s?: string): string {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();

@@ -1,4 +1,4 @@
-import asStyle from '../asStyle';
+import asStyle from "../asStyle";
 
 export default asStyle({
   //
@@ -19,13 +19,13 @@ export default asStyle({
 
   h3: {
     fontSize: styleVariables.fontSizeH3,
-    lineHeight: styleVariables.fontSizeH3,
+    lineHeight: styleVariables.lineHeightH3,
     fontFamily: styleVariables.boldFontFamily,
   },
 
   h4: {
     fontSize: styleVariables.fontSizeH4,
-    lineHeight: styleVariables.fontSizeH4,
+    lineHeight: styleVariables.lineHeightH4,
     fontFamily: styleVariables.boldFontFamily,
   },
 
@@ -55,13 +55,12 @@ export default asStyle({
     color: palette.primary,
   },
 
-
   textCenter: {
-    textAlign: 'center',
+    textAlign: "center",
   },
 
   textBottom: {
-    textAlignVertical: 'bottom',
+    textAlignVertical: "bottom",
   },
 
   icon: {
@@ -74,13 +73,13 @@ export default asStyle({
   },
 
   text: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     color: palette.text,
     fontFamily: styleVariables.normalFontFamily,
     fontSize: styleVariables.fontSizeBase,
+    lineHeight: styleVariables.lineHeightBase,
     fontWeight: styleVariables.normalFontWeight,
   },
-
 
   paragraph: {
     marginBottom: styleVariables.marginBaseVertical,
@@ -127,7 +126,7 @@ export default asStyle({
   anchor: {
     color: palette.primaryDark,
     fontFamily: styleVariables.headerText,
-    textDecorationLine: 'underline',
+    textDecorationLine: "underline",
     letterSpacing: em(0.06),
     fontSize: em(0.86),
   },

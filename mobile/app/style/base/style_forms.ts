@@ -1,6 +1,7 @@
-import asStyle from '../asStyle';
+import asStyle from "../asStyle";
 
-export default asStyle({  //
+export default asStyle({
+  //
   // Forms
   // --------------------------------------------------
 
@@ -17,7 +18,7 @@ export default asStyle({  //
   },
 
   inputContainer: {
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 
   inputLarge: {
@@ -43,14 +44,11 @@ export default asStyle({  //
   },
 
   radio: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginRight: 5,
     borderWidth: StyleSheet.hairlineWidth,
   },
-
-
-  // adherium
 
   textInput: {
     height: styleVariables.inputHeight,
@@ -76,19 +74,19 @@ export default asStyle({  //
   },
 
   inputAppendContainer: {
-    position: 'relative',
+    position: "relative",
   },
 
   inputAppend: {
-    position: 'absolute',
+    position: "absolute",
     zIndex: 1,
     left: 0,
     top: 0,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     height: 54,
     width: 54,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   inputIndent: {
@@ -99,10 +97,8 @@ export default asStyle({  //
     padding: 10,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#eaeaea',
+    borderColor: "#eaeaea",
   },
 
-  selectBoxIcon: {
-
-  },
+  selectBoxIcon: {},
 });

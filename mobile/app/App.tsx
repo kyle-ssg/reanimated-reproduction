@@ -1,4 +1,5 @@
 import React, { Component, FunctionComponent } from "react";
+import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import { StatusBar } from "react-native";
 import _store from "common/store";
@@ -8,7 +9,7 @@ import { navigationRef } from "navigation/RootNavigation";
 import NeverUpdate from "components/NeverUpdate";
 import useTheme from "common/providers/useTheme";
 
-const store = _store();
+const { store, persistor } = _store();
 
 const linking = {
   prefixes: ["mobile://"],
@@ -34,14 +35,16 @@ const AppContainer: FunctionComponent<Props> = ({ children }) => {
 
 const App: FunctionComponent<Props> = () => (
   <Provider store={store}>
-    <StatusBar backgroundColor="transparent" translucent />
-    <AppContainer>
-      <NeverUpdate>
-        <NavigationContainer linking={linking} ref={navigationRef}>
-          <AppNavigator />
-        </NavigationContainer>
-      </NeverUpdate>
-    </AppContainer>
+    <PersistGate loading={null} persistor={persistor}>
+      <StatusBar backgroundColor="transparent" translucent />
+      <AppContainer>
+        <NeverUpdate>
+          <NavigationContainer linking={linking} ref={navigationRef}>
+            <AppNavigator />
+          </NavigationContainer>
+        </NeverUpdate>
+      </AppContainer>
+    </PersistGate>
   </Provider>
 );
 

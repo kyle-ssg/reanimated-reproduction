@@ -42,7 +42,7 @@ const Fade = class extends Component {
               toValue: isNaN(this.props[key])
                 ? this.props[key]
                   ? 1
-                  : 0
+                  : this.props.startValue || 0.00001
                 : this.props[key], // Animate to smaller size
               duration: this.props.duration,
               friction: this.props.friction,
@@ -69,7 +69,7 @@ const Fade = class extends Component {
               toValue: isNaN(newProps[key])
                 ? newProps[key]
                   ? 1
-                  : 0.00001
+                  : this.props.startValue || 0.00001
                 : newProps[key], // Animate to smaller size
               duration: newProps.duration,
               friction: newProps.friction,

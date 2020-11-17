@@ -11,6 +11,8 @@ import storage from "./async-storage-api";
 
 import push from "./push-notifications-api";
 import auth from "./auth";
+import * as RootNavigation from 'navigation/RootNavigation';
+import {RouteUrls} from "../../route-urls";
 
 const analytics = typeof _analytics === "undefined" ? undefined : _analytics();
 
@@ -25,25 +27,12 @@ global.API = {
   },
   loggedIn: () => null,
   logout: () => {
-    const user = getStoreDangerous().getState().user;
-    if (user) {
-      // unsubscribe from push notifications etc
-    }
-    if (getStoreDangerous().getState().user) {
-      getStoreDangerous().dispatch(
-        AppActions.logout({
-          onSuccess: () => {
-            // todo: add for react-navigation
-            // routes.logout();
-            Alert.alert("Logged out", "You have been logged out");
-          },
-        })
-      );
-    }
+    RootNavigation.resetTo(0, [{ name: RouteUrls.onboarding }]);
   },
   logoutComplete: () => {
-    if (getStoreDangerous().getState().user) {
-      getStoreDangerous().dispatch(AppActions.logout());
+    const { store } = getStoreDangerous();
+    if (store.getState().user) {
+      store.dispatch(AppActions.logout());
     }
   },
   trackEvent(data) {
@@ -112,23 +101,23 @@ global.API = {
     }
     return includePhotos
       ? new Promise((resolve) =>
-          // eslint-disable-next-line no-undef
-          Contacts.getAll((error, contacts) =>
-            resolve({
-              error,
-              contacts: contacts,
-            })
-          )
+      // eslint-disable-next-line no-undef
+        Contacts.getAll((error, contacts) =>
+          resolve({
+            error,
+            contacts: contacts,
+          })
         )
+      )
       : new Promise((resolve) =>
-          // eslint-disable-next-line no-undef
-          Contacts.getAllWithoutPhotos((error, contacts) =>
-            resolve({
-              error,
-              contacts: contacts,
-            })
-          )
-        );
+      // eslint-disable-next-line no-undef
+        Contacts.getAllWithoutPhotos((error, contacts) =>
+          resolve({
+            error,
+            contacts: contacts,
+          })
+        )
+      );
   },
   showUpload: (
     title,

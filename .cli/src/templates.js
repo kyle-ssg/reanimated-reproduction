@@ -21,6 +21,47 @@ module.exports = {
   '${action}_ERROR': '${action}_ERROR',
 `;
     },
+    screenRouteUrl(key,path) {
+        return `"${key}" = "${path}",`;
+    },
+    screenRoute(name,key) {
+        return `[RouteUrls.${key}]: {
+    options: {
+    },
+    component: ${name},
+  },`;
+    },
+    screenRouteImport(name) {
+        return `import ${name} from "screens/${name}";
+`;
+    },
+    routeComponent(name) {
+        return `<Stack.Screen
+          name={RouteUrls.${name}}
+          options={routes[RouteUrls.${name}].options}
+          component={routes[RouteUrls.${name}].component}
+        />
+`;
+    },
+    screenComponent(name) {
+        return `import React from "react";
+import { Component } from "react";
+import withScreen, { Screen } from "./withScreen";
+
+type ${name} = Screen & {
+}
+
+const ${name}: React.FC<${name}> = ({ children }) => {
+  return (
+      <Flex style={Styles.body}>
+        <Text>I am a generic screen</Text>
+      </Flex>
+  );
+};
+
+export default withScreen(${name});
+`;
+    },
     stateTypes(action, prefix, type='any') {
         return `${prefix}Loading?: boolean;
   ${prefix}Saving?: boolean;
