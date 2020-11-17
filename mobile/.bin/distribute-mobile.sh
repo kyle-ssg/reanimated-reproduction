@@ -5,12 +5,11 @@
 # $4 - iOS/Android
 # $5 - Code Push ID
 # $6 - Target (required for iOS only)
-
-
 # 0 = "="
 # 1 = ">"
 # 2 = "<"
 # i.e. vercomp 2.1 2.2 == "<"
+
 vercomp () {
     if [[ $1 == $2 ]]
     then
@@ -49,6 +48,7 @@ export ios_target
 commitSHA=$(appcenter build branches list -a $1 | grep -A8 -E "Branch: +$3" | grep -E -m 1 'Commit SHA: +' | awk '{split($0,a,": "); print a[2]}' | sed 's/^ *//g')
 git reset --hard HEAD
 git checkout $commitSHA
+
 if [[ $4 == "ios" ]]
 then
     lastVersion=$(awk "/\/\* Pods-appcenter-staging.release.xcconfig \*\/;/,0" ios/mobile.xcodeproj/project.pbxproj | grep "MARKETING_VERSION" | head -1 | awk '{split($0,a,"= "); print a[2]}' | sed 's/;$//')
@@ -57,7 +57,10 @@ else
     # - currentVersion=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
     lastVersion=$(grep 'versionName' android/app/build.gradle | grep -o '".*"' | tr -d '"')
 fi
+
 git checkout $3
+git pull
+
 npm run env_script
 if [[ $4 == "ios" ]]
 then
@@ -84,3 +87,4 @@ else
         appcenter codepush release-react -a $5 -d $2 --disable-duplicate-release-error
     fi
 fi
+

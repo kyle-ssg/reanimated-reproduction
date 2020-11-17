@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { RouteUrls } from '../route-urls';
 import BottomNav from 'components/BottomNav';
 
-type ComponentType = {}
+type ComponentType = {};
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,17 +23,15 @@ const HomeStack = () => (
     </Navigator>
 )
 
-class MainAppNavigator extends Component<ComponentType> {
-  render() {
-    return (
-        <Tab.Navigator tabBar={props => <BottomNav {...props} />}>
-            <Tab.Screen
-              name={RouteUrls.home}
-              component={HomeStack}
-            />
-        </Tab.Navigator>
-    )
-  }
-}
+const MainAppNavigator = ({ route }) => {
+  return (
+    <Tab.Navigator initialRouteName={RouteUrls.home} tabBar={props => <BottomNav {...props} />}>
+      <Tab.Screen
+        name={RouteUrls.home}
+        component={HomeStack}
+      />
+    </Tab.Navigator>
+  );
+};
 
 export default MainAppNavigator;

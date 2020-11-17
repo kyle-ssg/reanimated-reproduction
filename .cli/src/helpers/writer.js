@@ -9,12 +9,20 @@ const reducer = path.join(common, './reducer.ts');
 const stateTypes = path.join(common, './state-type.ts');
 const providers = path.join(common, './providers');
 const components = path.join(rootPath, './components');
+const mobileScreens = path.join(rootPath, './mobile/app/screens');
+const mobileRoutes = path.join(rootPath, './mobile/app/navigation/AppNavigator.tsx');
+const routes = path.join(rootPath, './mobile/app/routes.tsx');
+const routeUrls = path.join(rootPath, './mobile/app/route-urls.ts');
 
 const stateTypesPointer = '// END OF STATE_TYPES';
 const actionsPointer = '// END OF APP_ACTIONS';
 const stringsPointer = '// END OF ACTION_STRINGS';
 const yieldPointer = '// END OF YIELDS';
 const takeLatestPointer = '// END OF TAKE_LATEST';
+const routeUrlsPointer = '// END OF SCREENS';
+const routesImportPointer = '// END OF IMPORT';
+const mobileRoutesPointer = '{/* END OF ROUTES*/}';
+const routesScreensPointer = '// END OF SCREENS';
 const reducerPointer = '// END OF REDUCER';
 
 const functionName = function (action, prefix) {
@@ -68,7 +76,6 @@ module.exports = {
                 console.log('state types string, already exists');
             } else {
                 res2 = res2.replace(stateTypesPointer, `${stateTypesString}\n  ${stateTypesPointer}`);
-                console.log("Writing", res2, stateTypes)
                 fs.writeFileSync(stateTypes, res2, 'utf8')
             }
         }
@@ -83,6 +90,50 @@ module.exports = {
         } else {
             return fs.writeFileSync(providerPath, providerString, 'utf8');
         }
+    },
+    async writeRouteUrl(urlString) {
+        let res = fs.readFileSync(routeUrls, 'utf8');
+
+        if (res.includes(urlString)) {
+            console.log('url string, already exists');
+        } else {
+            res = res.replace(routeUrlsPointer, `${urlString}\n  ${routeUrlsPointer}`);
+            fs.writeFileSync(routeUrls, res, 'utf8')
+        }
+    },
+    async writeRoute(importString, screenString) {
+        let res = fs.readFileSync(routes, 'utf8');
+
+        if (res.includes(importString)) {
+            console.log('Route import routes string already exists');
+        } else {
+            res = res.replace(routesImportPointer, `${importString}\n${routesImportPointer}`);
+        }
+        if (res.includes(screenString)) {
+            console.log('Route screen string already exists');
+        } else {
+            res = res.replace(routesScreensPointer, `${screenString}\n  ${routesScreensPointer}`);
+        }
+        fs.writeFileSync(routes, res, 'utf8')
+    },
+    async writeScreenComponent(name, screenString) {
+        const filePath = path.join(mobileScreens, `${name}.tsx`);
+        const res = fs.existsSync(filePath);
+        if (res) {
+            console.log('Skipping screen component already exists');
+        } else {
+            return fs.writeFileSync(filePath, screenString, 'utf8');
+        }
+    },
+    async writeAppRouteComponent(appRouteString) {
+        console.log(mobileRoutes)
+        let res = fs.readFileSync(mobileRoutes, 'utf8');
+        if (res.includes(appRouteString)) {
+            console.log('route string already exists');
+        } else {
+            res = res.replace(mobileRoutesPointer, `${appRouteString}\n  ${mobileRoutesPointer}`);
+        }
+        fs.writeFileSync(mobileRoutes, res, 'utf8')
     },
     async writeComponent(reducerString, prefix) {
         const providerPath = path.join(providers, `${functionName('USE', prefix)}.tsx`);
