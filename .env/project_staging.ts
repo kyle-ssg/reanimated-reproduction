@@ -1,21 +1,4 @@
-interface ProjectType {
-    [extraProps: string]: any; // Means that extra props are fine
-    debug: boolean;
-    api: string;
-    ga: string;
-    logs: {
-        DATA: boolean;
-        STORE: boolean;
-        STORAGE: boolean;
-        DISPATCHER: boolean;
-        SERVER: boolean;
-    };
-    grecaptcher: string;
-    formly: string;
-    mobile: {
-        useSecuredStorage: boolean
-    };
-}
+import ProjectType from 'common/project-type';
 
 const Project:ProjectType = global.Project = {
     debug: false,
@@ -35,5 +18,6 @@ const Project:ProjectType = global.Project = {
         useSecuredStorage: false,
     },
 };
-
 export default Project;
+// if (typeof ENV_NAME !== 'undefined' && typeof ENV_TYPE !== 'undefined') {
+// }
