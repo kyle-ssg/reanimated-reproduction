@@ -364,8 +364,6 @@ PODS:
     - React-jsi (= 0.63.2)
   - ReactNativeLocalization (2.1.6):
     - React
-  - RNAWSCognito (4.5.4):
-    - React
   - RNCMaskedView (0.1.10):
     - React
   - RNDateTimePicker (2.6.2):
@@ -447,7 +445,6 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeLocalization (from `../node_modules/react-native-localization`)
-  - RNAWSCognito (from `../node_modules/amazon-cognito-identity-js`)
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
@@ -559,8 +556,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   ReactNativeLocalization:
     :path: "../node_modules/react-native-localization"
-  RNAWSCognito:
-    :path: "../node_modules/amazon-cognito-identity-js"
   RNCMaskedView:
     :path: "../node_modules/@react-native-community/masked-view"
   RNDateTimePicker:
@@ -645,7 +640,6 @@ SPEC CHECKSUMS:
   React-RCTVibration: 4d2e726957f4087449739b595f107c0d4b6c2d2d
   ReactCommon: a0a1edbebcac5e91338371b72ffc66aa822792ce
   ReactNativeLocalization: 9abfb1717d6c6f2e3a4e444c4402d52acbf784cc
-  RNAWSCognito: b141dcda1e6eab8f4dfd434f40d94e778f9b7985
   RNCMaskedView: f5c7d14d6847b7b44853f7acb6284c1da30a3459
   RNDateTimePicker: dc9dab744823a2c734dbc7362cdf57a3adba3c43
   RNDeviceInfo: e9b45b08fd1d733c3940879ed286c37d90bff7a0

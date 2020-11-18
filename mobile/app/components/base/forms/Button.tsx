@@ -87,65 +87,47 @@ const Button: FunctionComponent<ComponentType> = ({
 
 
 export const ButtonPrimary: FunctionComponent<ComponentType> = (props) => {
-  const theme = useTheme();
-  const tint = theme?.primary;
   return (
       <Button
         {...props}
-        style={[Styles.buttonPrimary, props.style, tint && { backgroundColor:tint }]}
-        pressedStyle={[Styles.buttonPrimaryPressed, props.pressedStyle, tint && { backgroundColor:theme.primaryDark }]}
-        textStyle={[styles.buttonPrimaryText, Styles.textBold, props.textStyle]}
-      />
-  );
-};
-
-export const ButtonOutlinePrimary: FunctionComponent<ComponentType> = (props) => {
-  const theme = useTheme();
-  const tint = theme?.primary;
-  return (
-      <Button
-        {...props}
-
-        style={[Styles.buttonOutlinePrimary, props.style, tint && { borderColor:tint }]}
-        pressedStyle={[Styles.buttonOutlinePrimaryPressed, props.pressedStyle, tint && { borderColor:theme.primaryDark }]}
-        textStyle={[styles.buttonOutlinePrimaryText, Styles.textBold, props.textStyle, tint && { color:tint }]}
-        pressedTextStyle={[tint && { color:theme.primaryDark }]}
-      />
-  );
-};
-
-export const ButtonText: FunctionComponent<ComponentType> = (props) => {
-  const theme = useTheme();
-  const tint = theme?.primary;
-  return (
-      <Button
-        {...props}
-        style={[Styles.buttonText, props.style]}
-        // @ts-ignore
-        textStyle={[{ color: tint||palette.primary }, props.textStyle]}
+        style={[Styles.buttonPrimary, props.style]}
+        pressedStyle={[Styles.buttonPrimaryPressed, props.pressedStyle]}
+        textStyle={[Styles.buttonPrimaryText, props.textStyle]}
       />
   );
 };
 
 export const ButtonSecondary: FunctionComponent<ComponentType> = (props) => {
   return (
-      <Button
-        {...props}
-        pressedStyle={[Styles.buttonGroupSecondaryPressed, props.pressedStyle]}
-        style={[{ backgroundColor: palette.secondary }, props.style]}
-      />
+    <Button
+      {...props}
+      style={[Styles.buttonSecondary, props.style]}
+      pressedStyle={[Styles.buttonSecondaryPressed, props.pressedStyle]}
+    />
   );
 };
 
 export const ButtonTertiary: FunctionComponent<ComponentType> = (props) => {
   return (
+    <Button
+      {...props}
+      style={[Styles.buttonTertiary, props.style,]}
+      // @ts-ignore
+      pressedStyle={[Styles.buttonTertiaryPressed, props.pressedStyle]}
+      // @ts-ignore
+      textStyle={[Styles.buttonTertiaryText, props.textStyle]}
+    />
+  );
+};
+
+export const ButtonText: FunctionComponent<ComponentType> = (props) => {
+
+  return (
       <Button
         {...props}
-        style={[styles.buttonTertiary, props.style,]}
+        style={[Styles.buttonText, props.style]}
         // @ts-ignore
-        pressedStyle={[styles.buttonTertiaryPressed, props.pressedStyle]}
-        // @ts-ignore
-        textStyle={[styles.buttonTertiaryText, props.textStyle]}
+        textStyle={[Styles.buttonTextText, props.textStyle]}
       />
   );
 };
@@ -155,45 +137,15 @@ export const ButtonNav: FunctionComponent<ComponentType> = (props) => {
       <Button
         {...props}
         android_ripple={circleButtonRipple}
-        style={[ props.style, { backgroundColor: palette.gainsboro, width:28, height:28, borderRadius: 14 }]}
+        style={[ props.style, Styles.buttonText]}
       />
   );
 };
 
 const styles = ReactNative.StyleSheet.create({
-  TabButtonPill: {
-    height: 34,
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  TabButtonPillText: {
-    color: palette.primaryDark,
-  },
-  buttonNav: {
-    backgroundColor: 'white',
-    width: 44,
-    height:44,
-    borderRadius:22,
-    overflow:"hidden"
-  },
-  buttonTertiary: {
-    backgroundColor: 'white',
-    borderColor: palette.primary,
-    borderWidth: 1,
-  },
-  buttonTertiaryPressed: {
-    backgroundColor: '#eaeaea',
-  },
-  buttonTertiaryText: {
-    color: palette.primary,
-  },
-  buttonPrimaryText: {
-    color: 'white',
-  },
-  buttonOutlinePrimaryText: { color: palette.primary },
-  buttonOutlinePrimaryTextPressed: { color: palette.primaryDark },
-  buttonPrimary: { backgroundColor: 'pink' },
+
+
+
 });
 
 export default Button
