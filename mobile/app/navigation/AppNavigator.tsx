@@ -18,7 +18,7 @@ const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;
 
 const codePushOptions = {
-  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  checkFrequency: __DEV__ ? codePush.CheckFrequency.MANUAL : codePush.CheckFrequency.ON_APP_RESUME,
   installMode: codePush.InstallMode.IMMEDIATE,
   updateDialog: true,
 };
