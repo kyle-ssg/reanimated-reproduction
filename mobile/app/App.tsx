@@ -1,4 +1,5 @@
 import React, { Component, FunctionComponent } from "react";
+import "./routes"
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import { StatusBar } from "react-native";

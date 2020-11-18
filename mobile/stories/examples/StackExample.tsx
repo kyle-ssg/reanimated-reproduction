@@ -6,7 +6,6 @@ import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import defaultNavigationOptions from '../../app/style/style_navs';
 import { RouteUrls } from '../../app/route-urls';
 import withScreen, { Screen } from '../../app/screens/withScreen';
-import { routes } from '../../app/routes';
 import _store from 'common/store';
 import { WebViewProps } from 'react-native-webview';
 

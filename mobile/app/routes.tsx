@@ -100,3 +100,7 @@ export const routes: Record<RouteUrls, IRoute> = {
 
   // END OF SCREENS
 };
+global.routes = routes;
+global.withModalOptions = withModalOptions;
+global.withPushModalOptions = withPushModalOptions;
+global.withFullScreenPushModalOptions = withFullScreenPushModalOptions;

@@ -9,7 +9,7 @@ import Constants from 'common/utils/constants';
 import API from '../app/project/api/api'
 import { AppActions } from 'common/app-actions';
 import { styleTypes } from '../app/style/style_screen';
-
+import { routes, withModalOptions, withPushModalOptions, withFullScreenPushModalOptions } from '../app/routes';
 import { palette,styleVariables } from '../app/style/base/style_variables';
 
 declare global {
@@ -50,7 +50,10 @@ declare global {
   declare let Switch: React.ComponentType<ReactNative.SwitchProps>;
   declare let ButtonSecondary = ButtonSecondary;
   declare let ButtonTertiary = ButtonTertiary;
-  declare let routes;
+  declare let routes = routes;
+  declare let withModalOptions = withModalOptions;
+  declare let withPushModalOptions = withPushModalOptions;
+  declare let withFullScreenPushModalOptions = withFullScreenPushModalOptions;
   declare let Constants = Constants;
   declare let palette = palette;
   declare let AppActions = AppActions;

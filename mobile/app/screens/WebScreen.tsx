@@ -3,7 +3,6 @@ import withScreen, { Screen } from './withScreen';
 import { WebView, WebViewProps } from 'react-native-webview';
 import { NavigationContainer } from '@react-navigation/native';
 import defaultNavigationOptions from '../style/style_navs';
-import { routes, withModalOptions } from '../routes';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { RouteUrls } from '../route-urls';
 import ModalStack from 'navigation/ModalStack';

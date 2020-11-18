@@ -1,7 +1,6 @@
 import React, { Component, ReactNode } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import defaultNavigationOptions from '../style/style_navs';
-import { routes } from '../routes';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { RouteUrls } from '../route-urls';
 import BottomNav from 'components/BottomNav';

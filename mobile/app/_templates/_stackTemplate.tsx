@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import defaultNavigationOptions from '../style/style_navs';
-import { routes } from '../routes';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { RouteUrls } from '../route-urls';
 
