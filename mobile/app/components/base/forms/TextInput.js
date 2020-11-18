@@ -70,7 +70,7 @@ const TextInput = class extends Component {
               editable={!this.props.disabled}
               onBlur={this.onBlur}
               onChangeText={this.onChangeText}
-              style={[Styles.textInput, Styles.textInputAndroid, this.props.style]}
+              style={[Styles.textInput, this.props.style]}
               value={this.props.value}
               testID={this.props.testID}
               ref={(ref) => this.inputRef = ref}

@@ -37,7 +37,6 @@ global.SlideUp = require("./animation/SlideUp");
 
 // Typography
 global.Text = TextComponent;
-global.Strong = global.Bold = require("./type/Bold");
 
 global.H1 = H1;
 global.H2 = H2;

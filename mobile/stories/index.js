@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import "react-native-globals";
 import "../app/style/style_screen";
 import "../app/components/base";
-import ION from "react-native-vector-icons/Ionicons";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
 import StorybookUIRoot, {
   getStory,
   withPaddedContainer,
@@ -19,13 +17,9 @@ import Button, {
 } from "../app/components/base/forms/Button";
 import StackExample from "./examples/StackExample";
 import SegmentedControl from "components/SegmentedControl";
-import TextInputIcon from "components/TextInputIcon";
 import WithSetValue from "../../common/providers/WithSetValue";
-
 import TextInput from "../app/components/base/forms/TextInput";
-import SelectBox, {
-  SelectBoxSmall,
-} from "../app/components/base/forms/SelectBox";
+import SelectBox from "../app/components/base/forms/SelectBox";
 import ListItem from "../app/components/base/ListItem";
 import CustomModal from "components/CustomModal";
 import BottomDrawer from "components/BottomDrawer";
@@ -184,12 +178,8 @@ setup(() => {
         <ButtonTertiary style={Styles.mb5}>Button Tertiary</ButtonTertiary>
         <ButtonText style={Styles.mb5}>Text Button</ButtonText>
         <ButtonNav>
-          <ION
-            style={{
-              color: palette.primary,
-              fontSize: styleVariables.fontSizeH1,
-            }}
-            name="ios-close"
+          <FA5Pro name="times" size={20} color={palette.primary}
+            light
           />
         </ButtonNav>
       </>
@@ -204,8 +194,10 @@ setup(() => {
           placeholderTextColor={"lightgrey"}
           title={"Name"}
         />
-        <TextInputIcon icon={<ION name="ios-star" />} />
-        <SelectBox title="Date" icon={<ION name="ios-search" />}>
+        <SelectBox title="Date" icon={ <FA5Pro name="calendar-alt" size={20} color={palette.primary}
+          light
+                                       />}
+        >
           12 July
         </SelectBox>
 
@@ -248,10 +240,16 @@ setup(() => {
     .addDecorator(withNavbarWrapper)
     .add("all", () => (
       <>
-        <ListItem icon={<FontAwesome name="plus" />}>
+        <ListItem icon={ <FA5Pro name="plus" size={20} color={palette.primary}
+          light
+                         />}
+        >
           <Text>List Item text</Text>
         </ListItem>
-        <ListItem icon={<FontAwesome name="plus" />}>
+        <ListItem icon={<FA5Pro name="plus" size={20} color={palette.primary}
+          light
+                        />}
+        >
           <Text>List Item text</Text>
         </ListItem>
       </>

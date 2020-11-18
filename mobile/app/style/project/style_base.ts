@@ -1,7 +1,8 @@
 import asStyle from '../asStyle';
 
 export default asStyle({
-  bodyBackground: {
+  body: {
+    flex: 1,
     backgroundColor: palette.bodyBackground,
   },
 });

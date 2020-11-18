@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { FlatList } from "react-native";
 import FormGroup from "../grid/FormGroup";
 import TextInput from "./TextInput";
-import Bold from "../type/Bold";
 
 interface Props {
   onChange?: (argument: any) => void;
@@ -87,7 +86,7 @@ const Select: React.FC<Props> = ({
       ) : (
         <Text style={Styles.textCenter}>
           No Results Found for:
-          <Bold>{search}</Bold>
+          <Text>{search}</Text>
         </Text>
       )}
     </Flex>

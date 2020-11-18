@@ -9,5 +9,8 @@ global.ErrorMessage = ErrorMessage;
 import ION from 'react-native-vector-icons/Ionicons';
 global.ION = ION;
 
+import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro';
+global.FA5Pro = FA5Pro;
+
 import LinearGradient from 'react-native-linear-gradient';
 global.LinearGradient = LinearGradient;
