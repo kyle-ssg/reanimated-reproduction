@@ -18,6 +18,7 @@ const analytics = typeof _analytics === "undefined" ? undefined : _analytics();
 
 global.API = {
   isMobile: () => true,
+  reduxStorage:storage,
   ajaxHandler(type, e) {
     return { type, error: errorHandler(e) };
   },
