@@ -10,7 +10,7 @@ import { navigationRef } from "navigation/RootNavigation";
 import NeverUpdate from "components/NeverUpdate";
 import useTheme from "common/providers/useTheme";
 
-const { store, persistor } = _store();
+const store = _store();
 
 const linking = {
   prefixes: ["mobile://"],
@@ -36,7 +36,7 @@ const AppContainer: FunctionComponent<Props> = ({ children }) => {
 
 const App: FunctionComponent<Props> = () => (
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
+    <PersistGate loading={null} persistor={store.__PERSISTOR}>
       <StatusBar backgroundColor="transparent" translucent />
       <AppContainer>
         <NeverUpdate>

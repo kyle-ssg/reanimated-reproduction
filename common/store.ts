@@ -18,7 +18,7 @@ export default function (initialState: AppState = {}, forceNewStore?: boolean) {
     (typeof window !== "undefined" || global.__JEST__ !== "undefined") &&
     !forceNewStore
   ) {
-    return { store: _store, persistor: _persistor };
+    return _store;
   }
 
   const persistConfig = {
@@ -40,7 +40,7 @@ export default function (initialState: AppState = {}, forceNewStore?: boolean) {
   const middlewares = [sagaMiddleware, promiseMiddleware];
 
   const rootReducer = require("./reducer").default;
-  const reducer = persistReducer(persistConfig, rootReducer);
+  const reducer = typeof window === 'undefined' ? rootReducer :persistReducer(persistConfig, rootReducer);
 
   const store = createStore(
     reducer,
@@ -51,6 +51,10 @@ export default function (initialState: AppState = {}, forceNewStore?: boolean) {
   store.sagaTask = sagaMiddleware.run(rootSaga);
   _store = store;
 
-  _persistor = persistStore(store);
-  return { store: _store, persistor: _persistor };
+  if (typeof window !=='undefined') {
+    _persistor = persistStore(store);
+    // @ts-ignore
+    store.__PERSISTOR = persistStore(store);
+  }
+  return store;
 }

@@ -12,7 +12,7 @@ import storage from "./async-storage-api";
 import push from "./push-notifications-api";
 import auth from "./auth";
 import * as RootNavigation from 'navigation/RootNavigation';
-import {RouteUrls} from "../../route-urls";
+import { RouteUrls } from "../../route-urls";
 
 const analytics = typeof _analytics === "undefined" ? undefined : _analytics();
 
@@ -30,7 +30,7 @@ global.API = {
     RootNavigation.resetTo(0, [{ name: RouteUrls.onboarding }]);
   },
   logoutComplete: () => {
-    const { store } = getStoreDangerous();
+    const store = getStoreDangerous();
     if (store.getState().user) {
       store.dispatch(AppActions.logout());
     }
@@ -189,14 +189,14 @@ global.API = {
     if (!val) {
       return API.storage.removeItem("token");
     }
-    API.storage.setString("token", val);
+    API.storage.setItem("token", val);
   },
 
   setStoredRefreshToken(val) {
     if (!val) {
       return API.storage.removeItem("refreshToken");
     }
-    API.storage.setString("refreshToken", val);
+    API.storage.setItem("refreshToken", val);
   },
 
   push,

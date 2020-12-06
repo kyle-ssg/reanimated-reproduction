@@ -26,16 +26,16 @@ const API = {
     });
   },
   getStoredToken(req?:IncomingMessage) {
-    return API.storage.getString("token", req);
+    return API.storage.getItem("token", req);
   },
   getStoredUser(req) {
-    return API.storage.getObject("user", req);
+    return API.storage.getItem("user", req);
   },
   getStoredRefreshToken(req) {
-    return API.storage.getString("refreshToken", req);
+    return API.storage.getItem("refreshToken", req);
   },
   setStoredRefreshToken(v) {
-    return API.storage.setString("refreshToken", v);
+    return API.storage.setItem("refreshToken", v);
   },
   getStoredLocale(req) {
     if (req) {
@@ -55,7 +55,7 @@ const API = {
     return Constants.defaultLocale;
   },
   setStoredToken(v) {
-    return API.storage.setString("token", v);
+    return API.storage.setItem("token", v);
   },
   trackEvent(data) {
     if (__DEV__) {

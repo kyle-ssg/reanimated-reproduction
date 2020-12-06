@@ -10,7 +10,7 @@ import { RouteUrls } from "../route-urls";
 import withAuth, { IWithAuth } from "common/providers/withAuth"; // todo: migrate this to functional component and use useAuth
 import Loader from "./../components/base/Loader";
 
-const { store } = _store();
+const store = _store();
 
 enableScreens();
 const Stack = createNativeStackNavigator();
