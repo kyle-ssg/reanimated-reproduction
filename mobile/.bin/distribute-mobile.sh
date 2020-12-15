@@ -9,8 +9,7 @@
 # 1 = ">"
 # 2 = "<"
 # i.e. vercomp 2.1 2.2 == "<"
-# Test this locally with ./../mobile/.bin/distribute-mobile.sh Solid-State-Group/Frontend-Boilerplate-Android Production master android Solid-State-Group/Frontend-Boilerplate-Android
-# with export APPCENTER_ACCESS_TOKEN=(CHECKGITLAB)
+
 vercomp () {
     if [[ $1 == $2 ]]
     then
@@ -46,10 +45,7 @@ ios_target=$6
 export ios_target
 
 # Checkout last commit to compare the last version number
-
-appcenter build branches list -a $1
-
-commitSHA=$(appcenter build branches list -a $1 | grep -A9 -E "Branch: +$3" | grep -E -m 1 'Commit SHA: +' | awk '{split($0,a,": "); print a[2]}' | sed 's/^ *//g')
+commitSHA=$(appcenter build branches list -a $1 | grep -A8 -E "Branch: +$3" | grep -E -m 1 'Commit SHA: +' | awk '{split($0,a,": "); print a[2]}' | sed 's/^ *//g')
 git reset --hard HEAD
 git checkout $commitSHA
 
@@ -61,8 +57,6 @@ else
     # - currentVersion=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
     lastVersion=$(grep 'versionName' android/app/build.gradle | grep -o '".*"' | tr -d '"')
 fi
-
-echo $lastVersion
 
 git checkout $3
 git pull
