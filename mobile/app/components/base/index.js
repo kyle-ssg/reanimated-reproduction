@@ -33,7 +33,6 @@ import Loader from "./../base/Loader.tsx";
 
 // Animation
 global.Fade = require("./animation/Fade");
-global.SlideUp = require("./animation/SlideUp");
 
 // Typography
 global.Text = TextComponent;

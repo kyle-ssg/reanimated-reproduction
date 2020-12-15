@@ -38,7 +38,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CodePushDeploymentKey</key>
-	<string>wP_hi3rhZrahFSetndAeBt2FAuLe-gzABtKys</string>
+	<string>cphbl2WbvVo3Maa_I8yW97-9W5RryaKklTWhx</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -91,8 +91,6 @@
 	<array>
 		<string>armv7</string>
 	</array>
-	<key>UIRequiresFullScreen</key>
-	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -102,6 +100,6 @@
 	<key>branch_app_domain</key>
 	<string>9d64.app.link</string>
 	<key>branch_key</key>
-	<string>key_test_oiuoOp4cuIKciT1yOqXPjebjzBjYXKuF</string>
+	<string>key_live_ajwnUd3ezHRgbK5wLA0l9mbcEBo55Nso</string>
 </dict>
 </plist>

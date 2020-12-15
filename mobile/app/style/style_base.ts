@@ -1,4 +1,4 @@
-import asStyle from '../asStyle';
+import asStyle from './style-utils/asStyle';
 
 export default asStyle({
   body: {

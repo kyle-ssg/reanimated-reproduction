@@ -8,7 +8,6 @@ const saga = path.join(common, './saga.ts');
 const reducer = path.join(common, './reducer.ts');
 const stateTypes = path.join(common, './state-type.ts');
 const providers = path.join(common, './providers');
-const components = path.join(rootPath, './components');
 const mobileScreens = path.join(rootPath, './mobile/app/screens');
 const mobileRoutes = path.join(rootPath, './mobile/app/navigation/AppNavigator.tsx');
 const routes = path.join(rootPath, './mobile/app/routes.tsx');
@@ -23,6 +22,7 @@ const routeUrlsPointer = '// END OF SCREENS';
 const routesImportPointer = '// END OF IMPORT';
 const mobileRoutesPointer = '{/* END OF ROUTES*/}';
 const routesScreensPointer = '// END OF SCREENS';
+const requestStateTypesPointer = '// END OF REQUEST_TYPES';
 const reducerPointer = '// END OF REDUCER';
 
 const functionName = function (action, prefix) {
@@ -61,7 +61,7 @@ module.exports = {
         }
         return fs.writeFileSync(saga, res, 'utf8');
     },
-    async writeReducer(reducerString, stateTypesString) {
+    async writeReducer(reducerString, stateTypesString, requestStateTypesString) {
         let res = fs.readFileSync(reducer, 'utf8');
         if (res.includes(reducerString)) {
             console.log('Reducer string, already exists');
@@ -72,6 +72,13 @@ module.exports = {
         if (stateTypes) {
             console.log("STATE TYPES")
             let res2 = fs.readFileSync(stateTypes, 'utf8');
+
+            if (res2.includes(requestStateTypesString)) {
+                console.log('request state types string, already exists');
+            } else {
+                res2 = res2.replace(requestStateTypesPointer, `${requestStateTypesString}\n  ${requestStateTypesPointer}`);
+                fs.writeFileSync(stateTypes, res2, 'utf8')
+            }
             if (res2.includes(stateTypesString)) {
                 console.log('state types string, already exists');
             } else {
@@ -144,27 +151,9 @@ module.exports = {
             return fs.writeFileSync(providerPath, reducerString, 'utf8');
         }
     },
-    async writeWebPostExample(string, prefix) {
-        const webPath = path.join(components, `Edit${functionName('', prefix)}.tsx`);
-        const res = fs.existsSync(webPath);
-        if (res) {
-            console.log('Skipping web example, already exists');
-        } else {
-            return fs.writeFileSync(webPath, string, 'utf8');
-        }
-    },
     async writeTypes(string) {
         const webPath = path.join(common, `swagger-definitions.ts`);
         const res = fs.existsSync(webPath);
         return fs.writeFileSync(webPath, string, 'utf8');
-    },
-    async writeWebGetExample(string, prefix) {
-        const webPath = path.join(components, `${functionName('', prefix)}.tsx`);
-        const res = fs.existsSync(webPath);
-        if (res) {
-            console.log('Skipping web example, already exists');
-        } else {
-            return fs.writeFileSync(webPath, string, 'utf8');
-        }
     },
 };

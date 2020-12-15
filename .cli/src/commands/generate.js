@@ -16,16 +16,16 @@ class TheCommand extends Command {
                 const prefix = item.prefix || item.path.split('/')[1];
                 if (item.get) {
                     if (Array.isArray(item.get.body(r => r))) {
-                        await collectionController(`GET_${prefix.toUpperCase()}`, prefix, item.path, true, true, true);
+                        await collectionController(`GET_${prefix.toUpperCase()}`, prefix, item.path, true);
                     } else {
-                        await getController(`GET_${prefix.toUpperCase()}`, prefix, item.path, true, true, true);
+                        await getController(`GET_${prefix.toUpperCase()}`, prefix, item.path, true);
                     }
                 }
                 if (item.put) {
-                    await updateController(`UPDATE_${prefix.toUpperCase()}`, prefix, item.path, true, true, true);
+                    await updateController(`UPDATE_${prefix.toUpperCase()}`, prefix, item.path, true);
                 }
                 if (item.post) {
-                    await postController(`CREATE_${prefix.toUpperCase()}`, prefix, item.path, true, true, true);
+                    await postController(`CREATE_${prefix.toUpperCase()}`, prefix, item.path, true);
                 }
             }
         });

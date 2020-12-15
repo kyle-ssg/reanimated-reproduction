@@ -4,7 +4,7 @@
 
 import { AppRegistry } from "react-native";
 import "react-native-globals";
-import "./app/style/style_screen";
+import "./app/style/_style_screen";
 import './app/project/globals';
 import "./app/components/base";
 import "./app/project/project-components";

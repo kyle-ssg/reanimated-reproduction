@@ -1,38 +1,34 @@
 import React, { FunctionComponent } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import defaultNavigationOptions from "../style/style_navs";
+import defaultNavigationOptions from "../style/navigation_styles";
 import { RouteUrls } from "../route-urls";
 import {
   createNativeStackNavigator,
   NativeStackNavigationOptions,
 } from "react-native-screens/native-stack";
-import withScreen from 'screens/withScreen';
 
-export default function (TheScreen: React.Component, url: RouteUrls) {
+export default function (TheScreen: React.Component, url: RouteUrls, hideHeader, children) {
   const Stack = createNativeStackNavigator();
   const Navigator = Stack.Navigator;
 
-  const StackScreen = FunctionComponent = ({ webViewProps }) => {
+  const StackScreen: FunctionComponent = () => {
     return (
-      <NavigationContainer independent>
-        <Navigator
-          screenOptions={defaultNavigationOptions}
-          initialRouteName={RouteUrls.home}
-        >
+      <Navigator
+        independent
+        screenOptions={defaultNavigationOptions}
+        initialRouteName={"/"}
+      >
+        <>
           <Stack.Screen
-            name={RouteUrls.home}
-            options={withModalOptions(routes[RouteUrls.home].options)}
+            name={"/"}
+            options={{ ...routes[url].options, headerShown: !hideHeader }}
             component={TheScreen}
-            initialParams={{ webViewProps }}
           />
-        </Navigator>
-      </NavigationContainer>
+          {children && children(Stack)}
+        </>
+      </Navigator>
     );
   };
 
-  return withScreen(StackScreen);
+  return StackScreen;
 }
-
-
-// Usage
-// export default ModalStack(SomeScreen, RouteUrls.SomeScreenScreen);

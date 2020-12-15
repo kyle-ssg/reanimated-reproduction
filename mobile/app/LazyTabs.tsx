@@ -51,13 +51,13 @@ class LazyTabs extends Component<LazyTabsType> {
     const width = DeviceWidth-padding;
     const isVisible = selectedIndex === childIndex;
     return (
-        <Delay key={childIndex} delay={lazy && !isVisible?lazyDelay:0 }>
-            <View style={{ width }}>
-                <View style={{ display:isVisible?"flex":"none", flex:1 }}>
-                    {child}
-                </View>
-            </View>
-        </Delay>
+      <Delay key={childIndex} delay={lazy && !isVisible?lazyDelay:0 }>
+        <View style={{ width }}>
+          <View style={{ display:isVisible?"flex":"none", flex:1 }}>
+            {(!isVisible && mountOnScroll && !mounted[childIndex]) ? null : child}
+          </View>
+        </View>
+      </Delay>
     )
   }
   render() {
@@ -66,20 +66,20 @@ class LazyTabs extends Component<LazyTabsType> {
     } = this;
     const width = DeviceWidth-padding;
     return (
-        <ScrollView style={{ width }}
-          scrollEnabled={false}
-          decelerationRate="fast"
-          ref={this.onRef}
-          bounces={false}
-          pagingEnabled
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyboardShouldPersistTaps={keyboardShouldPersistTaps}
-        >
-            {
-              children.map(this.renderChild)
-            }
-        </ScrollView>
+      <ScrollView style={{ width }}
+        scrollEnabled={false}
+        decelerationRate="fast"
+        ref={this.onRef}
+        bounces={false}
+        pagingEnabled
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        keyboardShouldPersistTaps={keyboardShouldPersistTaps}
+      >
+        {
+          children.map(this.renderChild)
+        }
+      </ScrollView>
     );
   }
 }

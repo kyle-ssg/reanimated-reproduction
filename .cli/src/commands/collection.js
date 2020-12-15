@@ -14,10 +14,9 @@ class TheCommand extends Command {
         const prefix = await cli.prompt('Where does it get stored in the reducer?', { default: getPrefix(action) });
         const api = await cli.prompt('What\'s the api path?', { default: `/${getPrefix(action)}` });
         const createProvider = await cli.prompt('Do you want to create a provider?', { default: 'yes' });
-        const createExample = createProvider ? await cli.prompt('Do you want to create a web example using it?', { default: 'yes' }) : false;
         const gitAdd = await cli.prompt('git add?', { default: 'no' });
 
-        await controller(action, prefix, api, createProvider === 'yes', createExample === 'yes');
+        await controller(action, prefix, api, createProvider === 'yes');
 
         if(gitAdd !== 'no') {
             execSync('cd ../ && git add .');

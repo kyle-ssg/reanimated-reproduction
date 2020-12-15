@@ -1,4 +1,5 @@
 import { AnyAction } from "redux";
+import { RequestTypes } from './state-type';
 
 const BaseConstants = {
   LOGIN: "LOGIN",
