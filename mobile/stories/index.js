@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "react-native-globals";
-import "../app/style/style_screen";
+import "../app/style/_style_screen";
 import "../app/components/base";
 import StorybookUIRoot, {
   getStory,
@@ -8,7 +8,6 @@ import StorybookUIRoot, {
   withNavbarWrapper,
   setup,
 } from "./setup";
-import SharedElementExample from "../app/screens/examples/SharedElementExample";
 import ErrorMessage from "../app/components/ErrorMessage";
 import ExampleTabs from "./examples/ExampleTabs";
 import Button, {
@@ -17,7 +16,7 @@ import Button, {
 } from "../app/components/base/forms/Button";
 import StackExample from "./examples/StackExample";
 import SegmentedControl from "components/SegmentedControl";
-import WithSetValue from "../../common/providers/WithSetValue";
+import WithSetValue from "../app/project/animation-util/WithSetValue";
 import TextInput from "../app/components/base/forms/TextInput";
 import SelectBox from "../app/components/base/forms/SelectBox";
 import ListItem from "../app/components/base/ListItem";
@@ -222,18 +221,6 @@ setup(() => {
     ));
 
   getStory("Routes").add("all", () => <StackExample />);
-  getStory("SharedElement")
-    .addDecorator(withNavbarWrapper)
-    .add("all", () => (
-      <>
-        <SharedElementExample />
-        <SharedElementExample />
-        <SharedElementExample />
-        <SharedElementExample />
-        <SharedElementExample />
-        <SharedElementExample />
-      </>
-    ));
 
   getStory("Lists")
     .addDecorator(withPaddedContainer)

@@ -11,6 +11,10 @@ end
 
 target 'mobile' do
     shared_pods
+         use_flipper!
+            post_install do |installer|
+              flipper_post_install(installer)
+            end
 end
 
 target 'appcenter-production' do

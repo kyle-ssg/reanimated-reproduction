@@ -1,37 +1,24 @@
-import React, {
-  FunctionComponent,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
-import { Modal } from "react-native";
+import { FunctionComponent, useEffect, useState } from 'react';
 import Animated, {
-  and,
-  block,
-  cond,
-  not,
-  set,
-  useCode,
-  useValue,
-  Value,
-  timing,
-  Easing,
-  startClock,
-  clockRunning,
-  call,
-  stopClock,
-  interpolate,
-} from "react-native-reanimated";
-import { useClock, useConst } from "react-native-redash/src";
-import { easingConfigModal } from "../project/reanimations";
-import { gestureHandlerRootHOC } from "react-native-gesture-handler";
+  runOnJS,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated'; // we need this to make JSX compile
+import { Modal, TouchableOpacity, View, StyleSheet } from 'react-native';
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
+import { modalConfig } from '../project/animation-util/reanimations';
 
+type ComponentType = {};
 export type ModalType = {
-  animatedValue?: Animated.Node<number>;
+  animatedValue?: Animated.SharedValue<number>;
+  controlledValue?: Animated.SharedValue<number>;
   fadeContent?: boolean;
+  controlled?: boolean;
   visible: boolean;
   style: ReactNative.ViewStyle;
   onDismissPress?: () => void;
+  onShow?:()=>void;
   preventDismiss?: boolean;
 };
 
@@ -40,7 +27,7 @@ export type ModalInnerType = {
   style: ReactNative.ViewStyle;
   onDismissPress?: () => void;
   children: React.ReactNode;
-  animation: Animated.Value<number>;
+  opacityStyle: ReactNative.ViewStyle;
 };
 
 const ModalInner = gestureHandlerRootHOC(function GestureExample({
@@ -48,113 +35,71 @@ const ModalInner = gestureHandlerRootHOC(function GestureExample({
   onDismissPress,
   fadeContent,
   children,
-  animation,
+  opacityStyle,
 }: ModalInnerType) {
   // We do this in order to support gestures within the modal
   return (
-    <View style={[style, ReactNative.StyleSheet.absoluteFill]}>
+    <View style={[style, StyleSheet.absoluteFill]}>
       <TouchableOpacity
-        onPress={onDismissPress}
+        onPress={()=>onDismissPress()}
         activeOpacity={1}
-        style={[ReactNative.StyleSheet.absoluteFill]}
+        style={[StyleSheet.absoluteFill]}
       />
       {fadeContent ? (
-        <Animated.View style={{ opacity: animation }}>{children}</Animated.View>
+        <Animated.View style={[style, opacityStyle]}>{children}</Animated.View>
       ) : (
         children
       )}
     </View>
   );
 });
-
-export const CustomModal: FunctionComponent<ModalType> = ({
+const CustomModal: FunctionComponent<ModalType> = ({
   animatedValue: _animatedValue,
+  controlledValue,
   children,
   fadeContent = true,
   onDismissPress,
   preventDismiss,
   style,
   visible,
+  controlled,
+  onShow
 }) => {
-  const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const $clock = useClock();
-
-  const $trigger = useValue<number>(0);
-  const $on = useValue<number>(visible ? 1 : 0);
-  const state = useConst({
-    finished: new Value(0),
-    position: new Value(0),
-    time: new Value(0),
-    frameTime: new Value(0),
-  });
-
+  const [modalVisible, setModalVisible] = useState(false);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const animationValue = controlledValue || useSharedValue(0);
   useEffect(() => {
-    if (_animatedValue) {
-      setModalVisible(visible);
-    } else {
-      if (visible) {
-        setModalVisible(true);
+    if (!controlled) {
+      if(visible) setModalVisible(true);
+      animationValue.value = withTiming(visible ? 1 : 0, modalConfig, () => {
+        !visible && runOnJS(setModalVisible)(false);
+      });
+      if (_animatedValue) {
+        _animatedValue.value = withTiming(visible ? 1 : 0, modalConfig);
       }
-      $trigger.setValue(1);
-      $on.setValue(visible ? 1 : 0);
     }
-  }, [$on, $trigger, visible, _animatedValue]);
+  }, [visible, _animatedValue, controlled, controlledValue, animationValue]);
 
-  const onComplete = _animatedValue
-    ? null
-    : function ([newValue]: readonly number[]) {
-      if (newValue === 0) {
-        setModalVisible(false);
-      }
-    };
-
-  if (!_animatedValue) {
-    useCode(
-      () =>
-        block([
-          cond($trigger, [
-            // modal has been triggered, reset the clock
-            startClock($clock),
-            set($trigger, 0),
-            set(state.finished, 0),
-            set(state.time, 0),
-            set(state.frameTime, 0),
-          ]),
-          block([
-            // set the current timing function
-            timing($clock, state, {
-              toValue: $on,
-              ...easingConfigModal,
-            }),
-          ]),
-          cond(and(clockRunning($clock), state.finished), [
-            set(state.finished, 0),
-            set(state.time, 0),
-            set(state.frameTime, 0),
-            stopClock($clock),
-            call([state.position], onComplete),
-          ]),
-        ]),
-      [$on, $clock]
-    );
-  } else {
-    useConst(null);
-  }
-
-  const animation = _animatedValue || state.position;
+  const opacityStyle = useAnimatedStyle(() => ({
+    opacity: animationValue.value,
+  }));
+  const opacityStyle2 = useAnimatedStyle(() => ({
+    opacity: animationValue.value,
+  }));
 
   return (
     <Modal
-      visible={modalVisible}
+      onShow={onShow}
+      visible={controlledValue ? visible : modalVisible}
       transparent={true}
       statusBarTranslucent={true}
     >
-      <Animated.View style={[styles.backdrop, { opacity: animation }]} />
+      <Animated.View style={[styles.backdrop, opacityStyle2]} />
       <ModalInner
-        style={style}
         onDismissPress={preventDismiss ? null : onDismissPress}
+        opacityStyle={opacityStyle}
+        style={style}
         fadeContent={fadeContent}
-        animation={animation}
       >
         {children}
       </ModalInner>
@@ -162,11 +107,13 @@ export const CustomModal: FunctionComponent<ModalType> = ({
   );
 };
 
-const styles = ReactNative.StyleSheet.create({
-  backdrop: {
-    ...ReactNative.StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0,0,0,0.25)",
-  },
-});
+type AppType = {};
 
 export default CustomModal;
+
+const styles = StyleSheet.create({
+  backdrop: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,.55)',
+  },
+});

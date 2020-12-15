@@ -38,68 +38,68 @@ cache:
     - styles/**/*
 
 deploy-mobile-android-production:
-    image: ssgluke/gitlab-ci-codepush:v1.5
-    stage: deploy
+  image: ssgluke/gitlab-ci-codepush:v1.5
+  stage: deploy
+  variables:
+    ENV: prod
+  <<: *mobile_deploy_common_before_script
+  script:
+    - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_ANDROID Production master android $CODE_PUSH_NAME_ANDROID
+  only:
+    <<: *mobile_deploy_common_required_changes
+    refs:
+      - master
     variables:
-      ENV: prod
-    <<: *mobile_deploy_common_before_script
-    script:
-        - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_ANDROID Production master android $CODE_PUSH_NAME_ANDROID
-    only:
-      <<: *mobile_deploy_common_required_changes
-      refs:
-        - master
-      variables:
-        - $APPCENTER_ACCESS_TOKEN
-        - $CODE_PUSH_NAME_ANDROID
+      - $APPCENTER_ACCESS_TOKEN
+      - $CODE_PUSH_NAME_ANDROID
 
 deploy-mobile-android-staging:
-    image: ssgluke/gitlab-ci-codepush:v1.5
-    stage: deploy
+  image: ssgluke/gitlab-ci-codepush:v1.5
+  stage: deploy
+  variables:
+    ENV: staging
+  <<: *mobile_deploy_common_before_script
+  script:
+    - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_ANDROID Staging staging android $CODE_PUSH_NAME_ANDROID
+  only:
+    <<: *mobile_deploy_common_required_changes
+    refs:
+      - staging
     variables:
-      ENV: staging
-    <<: *mobile_deploy_common_before_script
-    script:
-        - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_ANDROID Staging staging android $CODE_PUSH_NAME_ANDROID
-    only:
-      <<: *mobile_deploy_common_required_changes
-      refs:
-        - staging
-      variables:
-        - $APPCENTER_ACCESS_TOKEN
-        - $CODE_PUSH_NAME_ANDROID
+      - $APPCENTER_ACCESS_TOKEN
+      - $CODE_PUSH_NAME_ANDROID
 
 deploy-mobile-ios-production:
-    image: ssgluke/gitlab-ci-codepush:v1.5
-    stage: deploy
+  image: ssgluke/gitlab-ci-codepush:v1.5
+  stage: deploy
+  variables:
+    ENV: prod
+  <<: *mobile_deploy_common_before_script
+  script:
+    - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_IOS_PRODUCTION Production master ios $CODE_PUSH_NAME_IOS appcenter-production
+  only:
+    <<: *mobile_deploy_common_required_changes
+    refs:
+      - master
     variables:
-      ENV: prod
-    <<: *mobile_deploy_common_before_script
-    script:
-        - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_IOS_PRODUCTION Production master ios $CODE_PUSH_NAME_IOS appcenter-production
-    only:
-      <<: *mobile_deploy_common_required_changes
-      refs:
-        - master
-      variables:
-        - $APPCENTER_ACCESS_TOKEN
-        - $CODE_PUSH_NAME_IOS
+      - $APPCENTER_ACCESS_TOKEN
+      - $CODE_PUSH_NAME_IOS
 
 deploy-mobile-ios-staging:
-    image: ssgluke/gitlab-ci-codepush:v1.5
-    stage: deploy
+  image: ssgluke/gitlab-ci-codepush:v1.5
+  stage: deploy
+  variables:
+    ENV: staging
+  <<: *mobile_deploy_common_before_script
+  script:
+    - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_IOS_STAGING Staging staging ios $CODE_PUSH_NAME_IOS appcenter-staging
+  only:
+    <<: *mobile_deploy_common_required_changes
+    refs:
+      - staging
     variables:
-      ENV: staging
-    <<: *mobile_deploy_common_before_script
-    script:
-        - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_IOS_STAGING Staging staging ios $CODE_PUSH_NAME_IOS appcenter-staging
-    only:
-      <<: *mobile_deploy_common_required_changes
-      refs:
-        - staging
-      variables:
-        - $APPCENTER_ACCESS_TOKEN
-        - $CODE_PUSH_NAME_IOS
+      - $APPCENTER_ACCESS_TOKEN
+      - $CODE_PUSH_NAME_IOS
 
 .web_deploy_common_script: &web_deploy_common_script
   before_script:

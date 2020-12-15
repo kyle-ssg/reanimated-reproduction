@@ -19,12 +19,11 @@ class TheCommand extends Command {
         const api = await cli.prompt('What\'s the api path? ', { default: `/${getPrefix(`A_${action}`)}/:id` });
         const apiPost = await cli.prompt('What\'s the api path to post? ', { default: `/${getPrefix(`A_${action}`)}` });
         const createProvider = await cli.prompt('Do you want to create a provider?', { default: 'yes' });
-        const createExample = createProvider ? await cli.prompt('Do you want to create a web example using it?', { default: 'yes' }) : false;
         const gitAdd = await cli.prompt('git add?', { default: 'no' });
-        await controller(`CREATE_${action}`, prefix, apiPost, createProvider === 'yes', createExample === 'yes');
-        await controllerRead(`GET_${action}`, prefix, api, createProvider === 'yes', createExample === 'yes');
-        await controllerUpdate(`UPDATE_${action}`, prefix, api, createProvider === 'yes', createExample === 'yes');
-        await controllerDelete(`DELETE_${action}`, prefix, api, createProvider === 'yes', createExample === 'yes');
+        await controller(`CREATE_${action}`, prefix, apiPost, createProvider === 'yes');
+        await controllerRead(`GET_${action}`, prefix, api, createProvider === 'yes');
+        await controllerUpdate(`UPDATE_${action}`, prefix, api, createProvider === 'yes');
+        await controllerDelete(`DELETE_${action}`, prefix, api, createProvider === 'yes');
 
         if(gitAdd === 'yes') {
             exec('cd ../ && git add .');

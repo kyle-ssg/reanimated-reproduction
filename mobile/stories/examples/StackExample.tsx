@@ -3,13 +3,13 @@ import { Provider } from 'react-redux';
 import { FlatList, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
-import defaultNavigationOptions from '../../app/style/style_navs';
+import defaultNavigationOptions from '../../app/style/navigation_styles';
 import { RouteUrls } from '../../app/route-urls';
 import withScreen, { Screen } from '../../app/screens/withScreen';
 import _store from 'common/store';
 import { WebViewProps } from 'react-native-webview';
 
-const { store } = _store({}, true);
+const store = _store({}, true);
 
 const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;

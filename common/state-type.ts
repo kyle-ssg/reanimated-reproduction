@@ -1,5 +1,9 @@
 // Optional but if used means within our providers we can
-import { components } from './swagger-definitions';
+
+export interface RequestTypes {
+// END OF REQUEST_TYPES
+}
+
 
 export interface AppState {
   [extraProps: string]: any; // Means that extra props are fine

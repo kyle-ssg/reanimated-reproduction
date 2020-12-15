@@ -24,6 +24,7 @@ export interface IRouteParams {
 }
 export type Screen = {
   push: (name: string, routeParams?: Partial<IRouteParams>) => void;
+  navigate: (name: string, routeParams?: Partial<IRouteParams>) => void;
   pop: () => void;
   dismissModal: () => void;
   canGoBack: () => boolean;

@@ -1,19 +1,12 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 const Stack = createStackNavigator();
-import useTheme from "common/providers/useTheme";
 
 const BottomNav = ({ state, descriptors, navigation }) => {
-  const theme = useTheme();
-
-  const tint = theme?.primary;
-  const activeFill = tint || palette.primary;
 
   const onPress = (index) => {
     const route = state.routes[index];
-
     const isFocused = state.index === index;
-
     const event = navigation.emit({
       type: "tabPress",
       target: route.key,
@@ -26,56 +19,78 @@ const BottomNav = ({ state, descriptors, navigation }) => {
   };
 
   return (
-    <>
-      <View>
-        <Row style={styles.tabContainer}>
-          <Flex>
-            <Row style={Styles.mr20}>
-              <TouchableOpacity
-                activeOpacity={1}
-                style={[styles.tab, state.index === 0 && styles.activeTab]}
-                onPress={() => onPress(0)}
-              >
-                <Text>Home</Text>
-              </TouchableOpacity>
-            </Row>
-          </Flex>
-        </Row>
-      </View>
-    </>
+    <View style={styles.container}>
+          <Row>
+            <Flex>
+              <Row>
+                <TouchableOpacity
+                  activeOpacity={1}
+                  style={[styles.tab, state.index === 0 && styles.activeTab]}
+                  onPress={() => onPress(0)}
+                >
+                  <Text style={[styles.textInactive, state.index === 0 && styles.textActive]}>
+                    Tab 2
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  activeOpacity={1}
+                  style={[styles.tab, state.index === 1 && styles.activeTab]}
+                  onPress={() => onPress(1)}
+                >
+                  <Text style={[styles.textInactive, state.index === 1 && styles.textActive]}>
+                    Tab 2
+                  </Text>
+                </TouchableOpacity>
+              </Row>
+            </Flex>
+          </Row>
+    </View>
   );
 };
 
-const tabBarHeight = 64 + styleVariables.insets.bottom;
+const tabBarHeight = 40 + styleVariables.insets.bottom;
 
-const styles = {
+const styles = ReactNative.StyleSheet.create({
+  textInactive: {
+    width:26,
+    color: 'rgba(88,115,225,0.5)'
+  },
+  textActive: {
+    width:26,
+    color: palette.primary
+  },
   screen: {
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height - tabBarHeight,
   },
   activeTabText: {
-    fontWeight: styleVariables.boldFontWeight,
   },
-  activeTab: {},
+  activeTab: {
+  },
   tab: {
-    height: 64,
+    overflow:"visible",
     justifyContent: "center",
     alignItems: "center",
     paddingLeft: styleVariables.paddingBase,
     paddingRight: styleVariables.paddingBase,
     flex: 1,
   },
-  tabContainer: {
+  lastTab: {
+    paddingRight:0
+  },
+  container: {
     position: "absolute",
-    bottom: 0,
-    width: "100%",
-    backgroundColor: palette.bottomNavBackground,
+    bottom: 10,
+    left: 10,
+    right: 10,
+  },
+  tabContainer: {
+    borderRadius: 10,
+    width: "95%",
+    alignSelf:'center',
     alignItems: "center",
     justifyContent: "center",
     height: tabBarHeight,
-    paddingBottom: styleVariables.insets.bottom,
-    borderTopLeftRadius: styleVariables.largeRadius,
-    borderTopRightRadius: styleVariables.largeRadius,
     shadowColor: "#201C26",
     shadowOffset: {
       width: 0,
@@ -83,8 +98,10 @@ const styles = {
     },
     shadowOpacity: 0.1,
     shadowRadius: 6,
-    // elevation: 10,
+    elevation: 10,
   },
-};
+
+});
+
 
 export default BottomNav;

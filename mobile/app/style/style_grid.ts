@@ -2,7 +2,7 @@ import { projectStyles } from "./style_variables";
 
 export const paddingBase = 8; // todo: styleVariables.gutterBase should match this ?
 
-import asStyle from "../asStyle";
+import asStyle from "./style-utils/asStyle";
 
 export default asStyle({
 

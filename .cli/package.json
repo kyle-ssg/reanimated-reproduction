@@ -11,6 +11,7 @@
     "@oclif/config": "^1",
     "@oclif/plugin-help": "^2",
     "cli-ux": "^5.4.2",
+    "json-ts": "^1.6.4",
     "lodash": "^4.17.15"
   },
   "devDependencies": {

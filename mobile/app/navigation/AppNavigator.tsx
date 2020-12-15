@@ -5,7 +5,7 @@ import codePush from "react-native-code-push";
 import { AppActions } from "common/app-actions";
 import "../project/api/api";
 import _store from "common/store";
-import defaultNavigationOptions from "../style/style_navs";
+import defaultNavigationOptions from "../style/navigation_styles";
 import { RouteUrls } from "../route-urls";
 import withAuth, { IWithAuth } from "common/providers/withAuth"; // todo: migrate this to functional component and use useAuth
 import Loader from "./../components/base/Loader";
@@ -17,7 +17,9 @@ const Stack = createNativeStackNavigator();
 const Navigator = Stack.Navigator;
 
 const codePushOptions = {
-  checkFrequency: __DEV__ ? codePush.CheckFrequency.MANUAL : codePush.CheckFrequency.ON_APP_RESUME,
+  checkFrequency: __DEV__
+    ? codePush.CheckFrequency.MANUAL
+    : codePush.CheckFrequency.ON_APP_RESUME,
   installMode: codePush.InstallMode.IMMEDIATE,
   updateDialog: true,
 };
