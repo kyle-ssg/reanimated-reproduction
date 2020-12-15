@@ -9,7 +9,9 @@
 # 1 = ">"
 # 2 = "<"
 # i.e. vercomp 2.1 2.2 == "<"
-
+# Test this locally on android  with ./../mobile/.bin/distribute-mobile.sh Solid-State-Group/Frontend-Boilerplate-Android Production master android Solid-State-Group/Frontend-Boilerplate-Android
+# Test this locally on ios with ./../mobile/.bin/distribute-mobile.sh Solid-State-Group/Frontend-Boilerplate-iOS Production master android Solid-State-Group/Frontend-Boilerplate-iOS
+# with export APPCENTER_ACCESS_TOKEN=(CHECKGITLAB)
 vercomp () {
     if [[ $1 == $2 ]]
     then
