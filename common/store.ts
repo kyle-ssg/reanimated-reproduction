@@ -24,6 +24,8 @@ export default function (initialState: AppState = {}, forceNewStore?: boolean) {
   const sagaMiddleware = createSagaMiddleware();
 
   const isClient = typeof window !== 'undefined';
+  const middlewares = API.middlewares ? [sagaMiddleware, ...API.middlewares] : [sagaMiddleware]
+
 
   if (isClient) {
     const { persistReducer } = require('redux-persist');
@@ -34,10 +36,11 @@ export default function (initialState: AppState = {}, forceNewStore?: boolean) {
       storage
     };
 
+
     store = createStore(
       persistReducer(persistConfig, rootReducer),
       initialState,
-      composeWithDevTools(applyMiddleware(sagaMiddleware))
+      composeWithDevTools(applyMiddleware(...middlewares))
     );
 
     store.__PERSISTOR = persistStore(store);

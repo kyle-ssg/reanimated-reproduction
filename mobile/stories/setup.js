@@ -11,9 +11,9 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 import '../app/project/api/api';
 import _store from 'common/store';
-import defaultNavigationOptions from '../app/style/style_navs';
+import defaultNavigationOptions from '../app/style/navigation_styles';
 
-const { store } = _store({}, true);
+const store = _store({}, true);
 
 const StorybookUIRoot = getStorybookUI({
   asyncStorage: null

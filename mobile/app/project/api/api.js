@@ -19,6 +19,8 @@ const analytics = typeof _analytics === "undefined" ? undefined : _analytics();
 global.API = {
   isMobile: () => true,
   reduxStorage:storage,
+  middlewares: __DEV__? [require('redux-flipper').default()] : null,
+
   ajaxHandler(type, e) {
     return { type, error: errorHandler(e) };
   },

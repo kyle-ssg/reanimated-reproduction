@@ -1,17 +1,17 @@
 /// <reference types="./ion.d.ts" />
 /// <reference types="lodash" />
 
-import * as ReactNative from 'react-native';
+import ReactNative, { StyleSheet as _StyleSheet } from 'react-native';
 import { BaseProps as DateTimePickerProps } from '@react-native-community/datetimepicker';
 import { KeyboardAwareScrollViewProps } from 'react-native-keyboard-aware-scroll-view';
 import Button, { ButtonPrimary, ButtonSecondary, ButtonTertiary } from '../app/components/base/forms/Button';
 import Constants from 'common/utils/constants';
 import API from '../app/project/api/api'
 import { AppActions } from 'common/app-actions';
-import { styleTypes } from '../app/style/style_screen';
+import { styleTypes } from '../app/style/_style_screen';
 import { routes, withModalOptions, withPushModalOptions, withFullScreenPushModalOptions } from '../app/routes';
-import { palette,styleVariables } from '../app/style/base/style_variables';
-
+import { projectPalette as palette, projectStyles as styleVariables } from '../app/style/style_variables';
+import Fade from 'components/base/animation/Fade';
 declare global {
   const ReactNative: typeof ReactNative;
   const Animated: typeof ReactNative.Animated;
@@ -35,13 +35,13 @@ declare global {
   declare let H2: React.ComponentType<ReactNative.TextProps>;
   declare let H3: React.ComponentType<ReactNative.TextProps>;
   declare let H4: React.ComponentType<ReactNative.TextProps>;
-  declare let Fade: React.ComponentType<ReactNative.ViewProps& {value:number; autostart:boolean; children: React.ReactNode}>;
+  declare let Fade = Fade;
   declare let ScrollView: React.ComponentType<ReactNative.ScrollViewProps>;
   declare let KeyboardAvoidingView: React.ComponentType<ReactNative.KeyboardAvoidingView>;
   declare let SafeAreaView: React.ComponentType<ReactNative.ViewProps>;
   declare let Platform: ReactNative.PlatformIOSStatic | ReactNative.PlatformAndroidStatic;
   declare let Dimensions: ReactNative.Dimensions;
-  declare let StyleSheet: ReactNative.StyleSheet;
+  declare let StyleSheet: _StyleSheet;
   declare let Styles = styleTypes;
   declare let styleVariables = styleVariables;
   declare let Button = Button;
@@ -69,7 +69,7 @@ declare global {
   declare let ImageBackground: React.ComponentType<ReactNative.ImageBackgroundProps>;
   declare let Utils;
   declare let Loader: React.ComponentType;
-  declare let ErrorMessage: React.ComponentType<{style?: ReactNative.ViewStyle}>;
+  declare let ErrorMessage: React.ComponentType<{style?: ReactNative.ViewStyle|ReactNative.ViewStyle[]}>;
   declare let DateTimePicker: React.ComponentType<DateTimePickerProps>;
   declare let memoizeOne;
   declare let KeyboardAwareScrollView: React.ComponentType<KeyboardAwareScrollViewProps>;

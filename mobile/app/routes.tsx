@@ -4,7 +4,7 @@ import { RouteUrls } from "./route-urls";
 import BottomTabsNavigator from "navigation/BottomTabsNavigator";
 import GenericScreen from "screens/examples/GenericScreen";
 import Login from "screens/GenericScreen";
-import HomeScreen from "screens/GenericScreen";
+import HomeScreen from "screens/HomeScreen";
 import WebScreen from "screens/WebScreen";
 import ModalCloseButton from "components/ModalCloseButton";
 import StorybookUIRoot from "../stories/index";
@@ -100,7 +100,11 @@ export const routes: Record<RouteUrls, IRoute> = {
 
   // END OF SCREENS
 };
+// @ts-ignore
 global.routes = routes;
+// @ts-ignore
 global.withModalOptions = withModalOptions;
+// @ts-ignore
 global.withPushModalOptions = withPushModalOptions;
+// @ts-ignore
 global.withFullScreenPushModalOptions = withFullScreenPushModalOptions;

@@ -27,7 +27,7 @@ export function* handleResponse(
     // API.setStoredToken(data.token);
     _data.setToken(data.token);
   }
-  if (action.data.id && !ignoreId) {
+  if (action.data && action.data.id && !ignoreId) {
     params.index = action.data.id;
   }
   yield put(params);
@@ -38,7 +38,8 @@ export function* handleResponse(
 // GET request with standard response and error handler
 export function* getAction(action, url, prefix, preventSuccess, dto, ignoreId) {
   try {
-    const data = yield _data.get(url);
+    const postfix = action.data && Object.keys(action.data).length ? "?"+Utils.toParam(action.data) :""
+    const data = yield _data.get(`${url}${postfix}`);
     return yield handleResponse(action, prefix, data, preventSuccess, dto, ignoreId);
   } catch (e) {
     yield errorHandler(action, prefix, preventSuccess, e);
@@ -58,6 +59,32 @@ export function* updateAction(
   try {
     const request = yield requestDto ? requestDto(action.data) : action.data;
     const data = yield _data.put(url, request);
+    return yield handleResponse(
+      action,
+      prefix,
+      data,
+      preventSuccess,
+      dto,
+      append
+    );
+  } catch (e) {
+    yield errorHandler(action, prefix, preventSuccess, e);
+  }
+}
+
+// PATCH request with standard response and error handler
+export function* patchAction(
+  action,
+  url,
+  prefix,
+  preventSuccess,
+  dto,
+  requestDto,
+  append = true
+) {
+  try {
+    const request = yield requestDto ? requestDto(action.data) : action.data;
+    const data = yield _data.patch(url, request);
     return yield handleResponse(
       action,
       prefix,

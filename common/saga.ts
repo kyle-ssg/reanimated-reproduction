@@ -18,6 +18,7 @@ import {
   postAction,
 } from "./utils/saga-helpers";
 import { AnyAction } from 'redux';
+import { AppState, RequestTypes } from './state-type';
 
 // Called when the application starts up, if using SSR this is done in the server
 export function* startup(action : IAction) {

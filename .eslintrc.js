@@ -165,6 +165,10 @@ module.exports = {
     palette: true,
     process: true,
     projectOverrides: true,
+    routes: true,
+    withModalOptions: true,
+    withModalPushOptions: true,
+    withFullScreenPushModalOptions: true,
     require: true,
     styleVariables: true,
   }

@@ -35,20 +35,18 @@ class TheCommand extends Command {
               }
             const cliPath = pathKey.replace(reg,":id")
             const skip = (await cli.prompt('Write actions for ' + methodKey + " " + pathKey + "?", { default: 'yes' })).toLowerCase()
-            const writeComponent = (await cli.prompt('Write component?', { default: 'yes' })).toLowerCase()
-            const shouldWriteComponent = writeComponent === 'yes';
             if (skip === "yes" || end) {
               if (methodKey === 'get') {
                 if (cliPath.includes(":")) { // get
-                  await getController(`GET_${prefix.toUpperCase()}`, prefix, cliPath, true, shouldWriteComponent, type);
+                  await getController(`GET_${prefix.toUpperCase()}`, prefix, cliPath, true, type);
                 } else { // collection
-                  await collectionController(`GET_${prefix.toUpperCase()}`, prefix, cliPath, true, shouldWriteComponent, type);
+                  await collectionController(`GET_${prefix.toUpperCase()}`, prefix, cliPath, true, type);
                 }
               } else if (methodKey === 'delete') { // delete
               } else if (methodKey === 'put') {
-                await updateController(`UPDATE_${prefix.toUpperCase()}`, prefix, cliPath, true, shouldWriteComponent, type);
+                await updateController(`UPDATE_${prefix.toUpperCase()}`, prefix, cliPath, true, type);
               } else if (methodKey === 'post') {
-                await updateController(`CREATE_${prefix.toUpperCase()}`, prefix, cliPath, true, shouldWriteComponent, type);
+                await updateController(`CREATE_${prefix.toUpperCase()}`, prefix, cliPath, true, type);
               }
             }
 

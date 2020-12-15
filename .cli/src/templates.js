@@ -46,6 +46,7 @@ module.exports = {
     screenComponent(name) {
         return `import React from "react";
 import { Component } from "react";
+import ScreenContainer from 'components/ScreenContainer';
 import withScreen, { Screen } from "./withScreen";
 
 type ${name} = Screen & {
@@ -53,14 +54,33 @@ type ${name} = Screen & {
 
 const ${name}: React.FC<${name}> = ({ children }) => {
   return (
-      <Flex style={Styles.body}>
-        <Text>I am a generic screen</Text>
-      </Flex>
+      <ScreenContainer style={Styles.body}>
+        <Text>I am the ${name}</Text>
+      </ScreenContainer>
   );
 };
 
 export default withScreen(${name});
 `;
+    },
+    collectionRequestStateTypes(action, prefix, type='any') {
+      return `  ${functionName("GET", prefix)}?: {
+    [extraProps: string]: any;
+  };`
+    },
+    requestStateTypes(action, prefix, type='any') {
+      return `${functionName("GET", prefix)}?: {
+    [extraProps: string]: any;
+  };
+  ${functionName("CREATE", prefix)}?: {
+    [extraProps: string]: any;
+  };
+  ${functionName("UPDATE", prefix)}?: {
+    [extraProps: string]: any;
+  };
+  ${functionName("DELETE", prefix)}?: {
+    [extraProps: string]: any;
+  };`
     },
     stateTypes(action, prefix, type='any') {
         return `${prefix}Loading?: boolean;
@@ -79,7 +99,7 @@ export default withScreen(${name});
     // appactions
     getCollection(action, prefix) {
         return `
-    ${functionName(action, prefix)}(data:Record<string, any>, callbacks:Callbacks={}):AnyAction {
+    ${functionName(action, prefix)}(data:RequestTypes['${functionName(action, prefix)}'], callbacks:Callbacks={}):AnyAction {
         return {
             type: Actions.${action},
             data,
@@ -90,7 +110,7 @@ export default withScreen(${name});
     },
     get(action, prefix) {
         return `
-  ${functionName(action, prefix)}(data:Record<string, any>, callbacks:Callbacks={}):AnyAction {
+  ${functionName(action, prefix)}(data:RequestTypes['${functionName(action, prefix)}'], callbacks:Callbacks={}):AnyAction {
     return {
       type: Actions.${action},
       data,
@@ -101,7 +121,7 @@ export default withScreen(${name});
     },
     delete(action, prefix) {
         return `
-  ${functionName(action, prefix)}(data:Record<string, any>, callbacks:Callbacks={}):AnyAction {
+  ${functionName(action, prefix)}(data:RequestTypes['${functionName(action, prefix)}'], callbacks:Callbacks={}):AnyAction {
     return {
       type: Actions.${action},
       id,
@@ -112,7 +132,7 @@ export default withScreen(${name});
     },
     post(action, prefix) {
         return `
-  ${functionName(action, prefix)}(data:Record<string, any>, callbacks:Callbacks={}):AnyAction {
+  ${functionName(action, prefix)}(data:RequestTypes['${functionName(action, prefix)}'], callbacks:Callbacks={}):AnyAction {
     return {
       type: Actions.${action},
       data,
@@ -123,7 +143,7 @@ export default withScreen(${name});
     },
     update(action, prefix) {
         return `
-  ${functionName(action, prefix)}(data:Record<string, any>, callbacks:Callbacks={}):AnyAction {
+  ${functionName(action, prefix)}(data:RequestTypes['${functionName(action, prefix)}'], callbacks:Callbacks={}):AnyAction {
     return {
       type: Actions.${action},
       data,
@@ -177,6 +197,7 @@ export default withScreen(${name});
     yieldCollection(action, prefix, api) {
         return `
 export function* ${functionName(action, prefix)}(action) {
+  const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
   yield getAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
 }
 `;
@@ -184,24 +205,28 @@ export function* ${functionName(action, prefix)}(action) {
     yieldGet(action, prefix, api) {
         return `
 export function* ${functionName(action, prefix)}(action) {
+  const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
   yield getAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
 }`;
     },
     yieldDelete(action, prefix, api) {
         return `
 export function* ${functionName(action, prefix)}(action) {
+  const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
   yield deleteAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
 }`;
     },
     yieldPost(action, prefix, api) {
         return `
 export function* ${functionName(action, prefix)}(action) {
+  const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
   yield postAction(action, \`\${Project.api}${apiName(api, true)}\`, '${action}');
 }`;
     },
     yieldUpdate(action, prefix, api) {
         return `
 export function* ${functionName(action, prefix)}(action) {
+  const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
   yield updateAction(action, \`\${Project.api}${apiName(api, true)}\`, '${action}');
 }`;
     },
@@ -210,7 +235,7 @@ export function* ${functionName(action, prefix)}(action) {
         return `
 import { useDispatch, useSelector } from 'react-redux';
 import { AppActions, Callbacks } from '../app-actions';
-import { AppState } from "../state-type";
+import { AppState, RequestTypes } from "../state-type";
 import { useCallback } from 'react';
 
 type Use${functionName('', prefix)} = {
@@ -218,10 +243,10 @@ type Use${functionName('', prefix)} = {
   ${prefix}Loading: AppState['${prefix}Loading'],
   ${prefix}Saving: AppState['${prefix}Saving'],
   ${prefix}Error: AppState['${prefix}Error'],
-  ${functionName('GET', prefix)}: (data:Record<string, any>, callbacks?:Callbacks)=>void,
-  ${functionName('CREATE', prefix)}: (data: Record<string, any>, callbacks?:Callbacks)=>void,
-  ${functionName('UPDATE', prefix)}: (data: Record<string, any>, callbacks?:Callbacks)=>void,
-  ${functionName('DELETE', prefix)}: (data:Record<string, any>,, callbacks?:Callbacks)=>void,
+  ${functionName('GET', prefix)}: (data:RequestTypes['${functionName("GET", prefix)}'], callbacks?:Callbacks)=>void,
+  ${functionName('CREATE', prefix)}: (data: RequestTypes['${functionName("CREATE", prefix)}'], callbacks?:Callbacks)=>void,
+  ${functionName('UPDATE', prefix)}: (data: RequestTypes['${functionName("UPDATE", prefix)}'], callbacks?:Callbacks)=>void,
+  ${functionName('DELETE', prefix)}: (data:RequestTypes['${functionName("DELETE", prefix)}'], callbacks?:Callbacks)=>void,
 }
 
 export default function ${functionName('USE', prefix)}():Use${functionName('', prefix)} {
@@ -234,20 +259,20 @@ export default function ${functionName('USE', prefix)}():Use${functionName('', p
   }));
   const dispatch = useDispatch();
   
-  const ${functionName('GET', prefix)} = useCallback((id:string, callbacks?:Callbacks)=>{
-    return dispatch(AppActions.${functionName('GET', prefix)}(id,callbacks))
+  const ${functionName('GET', prefix)} = useCallback((data:RequestTypes['${functionName("GET", prefix)}'], callbacks?:Callbacks)=>{
+    return dispatch(AppActions.${functionName('GET', prefix)}(data,callbacks))
   },[dispatch]);
   
-  const ${functionName('CREATE', prefix)} = useCallback((data: Record<string, any>, callbacks?:Callbacks)=>{
+  const ${functionName('CREATE', prefix)} = useCallback((data: RequestTypes['${functionName("CREATE", prefix)}'], callbacks?:Callbacks)=>{
     return dispatch(AppActions.${functionName('CREATE', prefix)}(data,callbacks))
   },[dispatch]);
   
-  const ${functionName('UPDATE', prefix)} = useCallback((data: Record<string, any>, callbacks?:Callbacks)=>{
+  const ${functionName('UPDATE', prefix)} = useCallback((data:RequestTypes['${functionName("UPDATE", prefix)}'], callbacks?:Callbacks)=>{
     return dispatch(AppActions.${functionName('UPDATE', prefix)}(data,callbacks))
   },[dispatch]);
   
-  const ${functionName('DELETE', prefix)} = useCallback((id:string, callbacks?:Callbacks)=>{
-    return dispatch(AppActions.${functionName('DELETE', prefix)}(id,callbacks))
+  const ${functionName('DELETE', prefix)} = useCallback((data:RequestTypes['${functionName("DELETE", prefix)}'], callbacks?:Callbacks)=>{
+    return dispatch(AppActions.${functionName('DELETE', prefix)}(data,callbacks))
   },[dispatch]);
   
   return {
@@ -267,14 +292,14 @@ export default function ${functionName('USE', prefix)}():Use${functionName('', p
         return`
 import { useDispatch, useSelector } from 'react-redux';
 import { AppActions, Callbacks } from '../app-actions';
-import { AppState } from "../state-type";
+import { AppState, RequestTypes } from "../state-type";
 import { useCallback } from 'react';
 
 type Use${functionName('', prefix)} = {
   ${prefix}: AppState['${prefix}'],
   ${prefix}Loading: AppState['${prefix}Loading'],
   ${prefix}Error: AppState['${prefix}Error'],
-  ${functionName('GET', prefix)}: (callbacks?:Callbacks)=>void,
+  ${functionName('GET', prefix)}: (data:RequestTypes['${functionName("GET", prefix)}'], callbacks?:Callbacks)=>void,
 }
 
 export default function ${functionName('USE', prefix)}():Use${functionName('', prefix)} {
@@ -285,8 +310,8 @@ export default function ${functionName('USE', prefix)}():Use${functionName('', p
     ${prefix}Error: state.${prefix}Error,
   }));
   const dispatch = useDispatch();
-  const ${functionName('GET', prefix)} = useCallback((callbacks?:Callbacks)=>{
-    return dispatch(AppActions.${functionName('GET', prefix)}(callbacks))
+  const ${functionName('GET', prefix)} = useCallback((data:RequestTypes['${functionName("GET", prefix)}'], callbacks?:Callbacks)=>{
+    return dispatch(AppActions.${functionName('GET', prefix)}(data, callbacks))
   },[dispatch])
   return {
     ${prefix},

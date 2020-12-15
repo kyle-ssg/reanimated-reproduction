@@ -1,4 +1,4 @@
-require("../base/style_pxToEm");
+require("./style-utils/style_pxToEm");
 import { StyleSheet } from 'react-native';
 import { initialWindowMetrics } from 'react-native-safe-area-context';
 const deviceH = Dimensions.get('screen').height;
@@ -6,7 +6,7 @@ const windowH = Dimensions.get('window').height;
 const bottomNavBarH = deviceH - windowH;
 
 export const projectPalette = {
-  bodyBackground: "#fff", // General app  background (overriding palette in base/stylevariables)
+  bodyBackground: "#fff", // General app  background (overriding palette)
   primary: "#1AC0C6",
   secondary: "#2C2736",
   text: "#333",
