@@ -44,7 +44,7 @@ deploy-mobile-android-production:
     ENV: prod
   <<: *mobile_deploy_common_before_script
   script:
-    - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_ANDROID Production master android $CODE_PUSH_NAME_ANDROID
+    - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_ANDROID_PRODUCTION Production master android $CODE_PUSH_NAME_ANDROID
   only:
     <<: *mobile_deploy_common_required_changes
     refs:
@@ -60,7 +60,7 @@ deploy-mobile-android-staging:
     ENV: staging
   <<: *mobile_deploy_common_before_script
   script:
-    - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_ANDROID Staging staging android $CODE_PUSH_NAME_ANDROID
+    - ./../mobile/.bin/distribute-mobile.sh $APP_CENTER_NAME_ANDROID_STAGING Staging staging android $CODE_PUSH_NAME_ANDROID
   only:
     <<: *mobile_deploy_common_required_changes
     refs:

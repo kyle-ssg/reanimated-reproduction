@@ -142,6 +142,7 @@ global.API = {
         // todo : handle multiple
         if (i === 0 || i === 1) {
           const options = {
+            includeBase64:true,
             cropping: !!(width || height),
             multiple,
             width,
@@ -152,10 +153,10 @@ global.API = {
           // eslint-disable-next-line no-undef
           const func = i ? ImagePicker.openPicker : ImagePicker.openCamera;
 
-          return func(options).then(({ path }) => {
-            onStart && onStart(path);
+          return func(options).then((res) => {
+            onStart && onStart(res);
 
-            resolve({ path });
+            resolve(res );
           });
         }
       });

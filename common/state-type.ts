@@ -4,6 +4,21 @@ export interface RequestTypes {
 // END OF REQUEST_TYPES
 }
 
+export type ImageFile = {
+  cropRect: {
+    y: number;
+    height: number;
+    width: number;
+    x: number;
+  };
+  modificationDate: string;
+  width: number;
+  size: number;
+  mime: string;
+  data: string;
+  height: number;
+  path: string;
+}
 
 export interface AppState {
   [extraProps: string]: any; // Means that extra props are fine
