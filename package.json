@@ -9,7 +9,7 @@
     "dev": "node server.js",
     "dev:debug": "node server.js --inspect",
     "env_script": "sh .bin/env.sh",
-    "postinstall": "patch-package && cd ./ios && pod install && cd ..",
+    "postinstall": "patch-package",
     "build": "next build ",
     "static": "npm run build && npm run export",
     "export": "next export ",
