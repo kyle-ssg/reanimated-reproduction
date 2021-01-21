@@ -20,42 +20,46 @@ export default asStyle({
     marginRight: styleVariables.marginBaseHorizontal,
   },
 
+  centeredContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
   noPad: {
     marginLeft: -styleVariables.paddingBase,
     marginRight: -styleVariables.paddingBase,
   },
 
-  alignItemsRight: {
+  justifyStart: {
+    justifyContent: 'flex-start'
+  },
+
+  justifyEnd: {
+    justifyContent: 'flex-end'
+  },
+
+  justifyCenter: {
+    justifyContent: 'center'
+  },
+
+  alignStart: {
+    alignItems: "flex-start",
+  },
+
+  alignEnd: {
     alignItems: "flex-end",
-  },
-
-  alignItemsStart: {
-    alignItems: "flex-start",
-  },
-
-  containerLoading: {
-    opacity: 0.8,
-  },
-
-  baseline: {
-    alignItems: "flex-start",
-  },
-
-  centeredContainer: {
-    justifyContent: "center",
-    alignItems: "center",
   },
 
   alignCenter: {
     alignSelf: "center",
   },
 
-  alignStart: {
-    alignSelf: "flex-start",
+  baseline: {
+    alignItems: "flex-start",
   },
 
-  alignRight: {
-    alignSelf: "flex-end",
+  directionColumn: {
+    flexDirection: 'column',
   },
 
   centeredRow: {
@@ -75,6 +79,7 @@ export default asStyle({
     alignItems: "center",
     justifyContent: "space-between",
   },
+
 
   mb0: { marginBottom: 0 },
   mb5: { marginBottom: paddingBase },

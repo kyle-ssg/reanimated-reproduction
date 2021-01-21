@@ -242,10 +242,7 @@ setup(() => {
         >
           <Text>List Item text</Text>
         </ListItem>
-        <ListItem icon={<FA5Pro name="plus" size={20} color={palette.primary}
-          light
-                        />}
-        >
+        <ListItem >
           <Text>List Item text</Text>
         </ListItem>
       </>
