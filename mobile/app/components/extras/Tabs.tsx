@@ -78,7 +78,6 @@ const styles = ReactNative.StyleSheet.create({
   },
   TabText: {
     color: palette.text,
-    fontWeight: "bold",
     fontSize: em(1),
   },
 
@@ -88,7 +87,7 @@ const styles = ReactNative.StyleSheet.create({
 
   TabTextLight: {
     fontSize: 11,
-    color: palette.primaryDark,
+    color: palette.secondary,
   },
   bar: {
     backgroundColor: "white",
@@ -97,8 +96,8 @@ const styles = ReactNative.StyleSheet.create({
     borderRightWidth: StyleSheet.hairlineWidth,
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: palette.divider,
-    borderRightColor: palette.dividerLight,
+    borderColor: palette.secondary,
+    borderRightColor: palette.secondary,
     elevation: 0,
   },
 });

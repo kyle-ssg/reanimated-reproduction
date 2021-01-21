@@ -220,6 +220,15 @@ setup(() => {
       </>
     ));
 
+
+  getStory("Animation")
+    .add("default", () => (
+      <View style={Styles.p10}>
+        <H2 style={Styles.mb15}>Animation</H2>
+        <Loader />
+      </View>
+    ));
+
   getStory("Routes").add("all", () => <StackExample />);
 
   getStory("Lists")
