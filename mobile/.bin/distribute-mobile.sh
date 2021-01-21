@@ -48,6 +48,12 @@ export ios_target
 
 # Checkout last commit to compare the last version number
 commitSHA=$(appcenter build branches list -a $1 | awk "/Branch: +$3/,/Commit SHA: +/" | grep -E -m 1 'Commit SHA: +' | awk '{split($0,a,": "); print a[2]}' | sed 's/^ *//g')
+if [[ -z $commitSHA ]]
+then
+    echo "No native build has ever been created. Queueing new native build on AppCenter"
+    appcenter build queue -a $1 -b $3
+    exit 0
+fi
 git reset --hard HEAD
 git checkout $commitSHA
 
