@@ -20,6 +20,7 @@ const Panel: React.FC<Panel> = ({ className, icon, title, action, children }) =>
                 <Row className="flex-1">
                     {icon && (
                     <span className="panel-icon">
+                      {/*// @ts-ignore*/}
                       <ion className={cn({ icon: true }, icon)} />
                     </span>
           )}

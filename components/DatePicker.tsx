@@ -25,19 +25,17 @@ export const DatePicker: React.FC<Props> = ({
   onChange,
   ...rest
 }) => {
-  useCallback((excludeDates, maxDate, minDate, onChange, rest, selected) => {
-    return (
-      <_DatePicker
-        minDate={getDate(minDate)}
-        maxDate={getDate(maxDate)}
-        // highlightDates={getDates(highlightDates)}
-        excludeDates={getDates(excludeDates)}
-        selected={getDate(selected)}
-        onChange={onChange}
-        {...rest}
-      />
-    );
-  }, []);
+  return (
+    <_DatePicker
+      minDate={getDate(minDate)}
+      maxDate={getDate(maxDate)}
+      // highlightDates={getDates(highlightDates)}
+      excludeDates={getDates(excludeDates)}
+      selected={getDate(selected)}
+      onChange={onChange}
+      {...rest}
+    />
+  );
 };
 
 DatePicker.displayName = "DatePicker";

@@ -6,8 +6,8 @@ const Constants = (global.Constants = {
     REGISTER: { event: "User register", category: "User" },
   },
   defaultLocale: "en",
-  STORYBOOK: true,
-  simulate: {
+  STORYBOOK: __DEV__ && false,
+  simulate: __DEV__ && {
     // CONFIRM_EMAIL: true,
     // FORCE_PAGE: RouteUrls.login,
     FORCE_LANGUAGE: false, // set to "en" etc to specify a language

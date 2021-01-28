@@ -1,6 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import withScreen, { Screen } from "./withScreen";
+import ScreenContainer from 'components/ScreenContainer';
 
 interface GenericScreen {
   text: string;
@@ -11,9 +12,9 @@ interface GenericScreen {
 const GenericScreen: React.FC<GenericScreen> = ({ children }) => {
   return (
     children || (
-      <Flex style={Styles.body}>
+      <ScreenContainer>
         <Text>I am a generic screen</Text>
-      </Flex>
+      </ScreenContainer>
     )
   );
 };

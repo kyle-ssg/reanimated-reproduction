@@ -42,6 +42,7 @@ const _data = {
       .clone()
       .text() // cloned so response body can be used downstream
       .then((err: string) => {
+        // @ts-ignore
         if (global.E2E && document.getElementById("e2e-error")) {
           const error = {
             url: response.url,

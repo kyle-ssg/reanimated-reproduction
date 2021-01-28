@@ -9,6 +9,7 @@ import AppNavigator from "navigation/AppNavigator";
 import { navigationRef } from "navigation/RootNavigation";
 import NeverUpdate from "components/NeverUpdate";
 import useTheme from "common/providers/useTheme";
+import ScreenContainer from 'components/ScreenContainer';
 
 const store = _store();
 
@@ -19,34 +20,20 @@ const linking = {
 type Props = {
   children: React.ReactNode;
 };
-
-const AppContainer: FunctionComponent<Props> = ({ children }) => {
-  const theme = useTheme();
-  return (
-    <Flex
-      style={[
-        Styles.body,
-        theme?.backgroundColour && { backgroundColor: theme.backgroundColour },
-      ]}
-    >
-      {children}
-    </Flex>
-  );
-};
-
 const App: FunctionComponent<Props> = () => (
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={store.__PERSISTOR}>
-      <StatusBar backgroundColor="transparent" translucent />
-      <AppContainer>
+  <ScreenContainer withoutSafeAreaView={true}>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={store.__PERSISTOR}>
+        <StatusBar barStyle="dark-content" backgroundColor="white" />
         <NeverUpdate>
+          {/*// @ts-ignore*/}
           <NavigationContainer linking={linking} ref={navigationRef}>
             <AppNavigator />
           </NavigationContainer>
         </NeverUpdate>
-      </AppContainer>
-    </PersistGate>
-  </Provider>
+      </PersistGate>
+    </Provider>
+  </ScreenContainer>
 );
 
 export default App;

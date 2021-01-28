@@ -8,6 +8,40 @@ export default asStyle({
   buttonPrimary: {
     backgroundColor: palette.primary,
   },
+  buttonOutlinePrimary: {
+    backgroundColor: "transparent",
+    borderWidth: 1.5,
+    borderColor: palette.primaryOutline
+  },
+
+  buttonOutlinePrimaryText: {
+    color: palette.primary
+  },
+
+  buttonOutlinePrimaryPressedText: {
+    color: palette.primaryPressed
+  },
+
+  buttonOutlinePrimaryPressed: {
+    borderColor: palette.primary
+  },
+
+  buttonLink: {
+    backgroundColor: "transparent",
+    height: "auto",
+  },
+
+  buttonLinkText: {
+    color: palette.primary
+  },
+
+  buttonLinkPressedText: {
+    color: palette.primaryPressed
+  },
+
+  buttonLinkPressed: {
+    borderColor: palette.primary
+  },
 
   buttonPrimaryPressed: {
     backgroundColor: palette.primary,
@@ -45,13 +79,15 @@ export default asStyle({
   },
 
   buttonGroup: {
+    overflow:"hidden",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: palette.primary,
+    borderRadius: styleVariables.borderRadius,
     height: styleVariables.buttonHeight,
   },
   buttonGroupPressed: {
-    backgroundColor: palette.secondary,
+    backgroundColor: palette.primaryPressed,
   },
 
   buttonTertiaryText: {

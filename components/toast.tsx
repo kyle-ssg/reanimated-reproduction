@@ -43,13 +43,15 @@ Message.displayName = "Message";
 const Toast: React.FC = () => {
   const [messages, setMessages] = useState([]);
 
-  // Function toast looks on the dead code. We don't use "toast" in this component
-  // const toast = (content: string, expiry: number) => {
-  //   const id = Utils.GUID();
-  //   if (!E2E) {
-  //     setMessages((messages) => [{ content, expiry, id }, ...messages]);
-  //   }
-  // };
+  useEffect(()=>{
+    // @ts-ignore
+    global.toast = (content: string, expiry: number) => {
+      const id = Utils.GUID();
+      if (!E2E) {
+        setMessages((messages) => [{ content, expiry, id }, ...messages]);
+      }
+    };
+  },[])
 
   const remove = (id: number) => {
     const index = messages.findIndex(message => message.id === id);
@@ -82,6 +84,5 @@ const Toast: React.FC = () => {
   );
 };
 
-global.toast = this.toast;
 Toast.displayName = "ToastMessages";
 export default Toast;

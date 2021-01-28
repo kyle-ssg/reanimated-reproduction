@@ -50,10 +50,6 @@ const BottomDrawer: FunctionComponent<ModalType> = ({
       android: height + 80 // for some reason
     })
   );
-
-  const onPanDismiss = ()=> {
-    onDismissPress();
-  }
   useEffect(() => {
     if (visible) {
       visible && runOnJS(setModalVisible)(true);
@@ -120,7 +116,8 @@ const BottomDrawer: FunctionComponent<ModalType> = ({
             clamp: [snapPoints[0], snapPoints[1]],
           },
           () => {
-            runOnJS(onPanDismiss)()
+            runOnJS(setModalVisible)(false);
+            runOnJS(onDismissPress);
           }
         );
       }

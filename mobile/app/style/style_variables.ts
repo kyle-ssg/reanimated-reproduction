@@ -8,6 +8,8 @@ const bottomNavBarH = deviceH - windowH;
 export const projectPalette = {
   bodyBackground: "#fff", // General app  background (overriding palette)
   primary: "#1AC0C6",
+  primaryOutline: "#15a6ac",
+  primaryPressed: "#15a6ac",
   secondary: "#2C2736",
   text: "#333",
   link: "#2e7bf7",
@@ -16,7 +18,7 @@ export const projectPalette = {
 
 //= = Other Variables
 const insets = {
-  ...initialWindowMetrics.insets||{},
+  ...initialWindowMetrics?.insets||{},
   bottom: Platform.select({
     android: initialWindowMetrics?.insets.bottom  - bottomNavBarH,
     ios: initialWindowMetrics?.insets.bottom,

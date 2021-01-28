@@ -90,11 +90,13 @@ const BaseActions = {
   },
 };
 
+// @ts-ignore
 export const Actions = (global.Actions = Object.assign({}, BaseConstants, {
 
 // END OF ACTION_STRINGS
 }));
 
+// @ts-ignore
 export const AppActions = (global.AppActions = Object.assign({}, BaseActions, {
   // END OF APP_ACTIONS
 }));

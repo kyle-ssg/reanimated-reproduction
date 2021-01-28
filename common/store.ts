@@ -15,6 +15,7 @@ export default function (initialState: AppState = {}, forceNewStore?: boolean) {
   // @ts-ignore
   if (
     store &&
+    // @ts-ignore
     (typeof window !== "undefined" || global.__JEST__ !== "undefined") &&
     !forceNewStore
   ) {

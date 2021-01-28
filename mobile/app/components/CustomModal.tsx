@@ -87,12 +87,12 @@ const CustomModal: FunctionComponent<ModalType> = ({
     opacity: animationValue.value,
   }));
 
+  const isVisible = controlledValue ? visible : modalVisible;
   return (
     <Modal
       onShow={onShow}
-      visible={controlledValue ? visible : modalVisible}
+      visible={isVisible}
       transparent={true}
-      statusBarTranslucent={true}
     >
       <Animated.View style={[styles.backdrop, opacityStyle2]} />
       <ModalInner
