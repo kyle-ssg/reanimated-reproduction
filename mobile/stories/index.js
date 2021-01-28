@@ -220,6 +220,15 @@ setup(() => {
       </>
     ));
 
+
+  getStory("Animation")
+    .add("default", () => (
+      <View style={Styles.p10}>
+        <H2 style={Styles.mb15}>Animation</H2>
+        <Loader />
+      </View>
+    ));
+
   getStory("Routes").add("all", () => <StackExample />);
 
   getStory("Lists")
@@ -233,10 +242,7 @@ setup(() => {
         >
           <Text>List Item text</Text>
         </ListItem>
-        <ListItem icon={<FA5Pro name="plus" size={20} color={palette.primary}
-          light
-                        />}
-        >
+        <ListItem >
           <Text>List Item text</Text>
         </ListItem>
       </>

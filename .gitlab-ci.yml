@@ -38,7 +38,7 @@ cache:
     - styles/**/*
 
 deploy-mobile-android-production:
-  image: ssgluke/gitlab-ci-codepush:v1.5
+  image: ssgluke/gitlab-ci-codepush:v1.6
   stage: deploy
   variables:
     ENV: prod
@@ -54,7 +54,7 @@ deploy-mobile-android-production:
       - $CODE_PUSH_NAME_ANDROID
 
 deploy-mobile-android-staging:
-  image: ssgluke/gitlab-ci-codepush:v1.5
+  image: ssgluke/gitlab-ci-codepush:v1.6
   stage: deploy
   variables:
     ENV: staging
@@ -70,7 +70,7 @@ deploy-mobile-android-staging:
       - $CODE_PUSH_NAME_ANDROID
 
 deploy-mobile-ios-production:
-  image: ssgluke/gitlab-ci-codepush:v1.5
+  image: ssgluke/gitlab-ci-codepush:v1.6
   stage: deploy
   variables:
     ENV: prod
@@ -86,7 +86,7 @@ deploy-mobile-ios-production:
       - $CODE_PUSH_NAME_IOS
 
 deploy-mobile-ios-staging:
-  image: ssgluke/gitlab-ci-codepush:v1.5
+  image: ssgluke/gitlab-ci-codepush:v1.6
   stage: deploy
   variables:
     ENV: staging
