@@ -3,7 +3,7 @@ const parseErrorFromAPI = (error) => {
   return _.get(error, "message") || Strings.defaultErrorMessage;
 };
 
-export default (e) => {
+const errorHandler = (e) => {
   const defaultErrorMessage = Strings.defaultErrorMessage;
   if (!e) return defaultErrorMessage;
 
@@ -37,3 +37,5 @@ export default (e) => {
     return defaultErrorMessage;
   }
 };
+
+export default errorHandler

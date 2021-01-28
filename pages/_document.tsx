@@ -3,7 +3,7 @@
 
 // ./pages/_document.js
 import React from "react";
-import Document, { Head, Main, NextScript, DocumentContext } from "next/document";
+import Document, { Head, Html, Main, NextScript, DocumentContext } from "next/document";
 import "../project/api";
 
 class MyDocument extends Document<{ locale:string }> {
@@ -15,13 +15,13 @@ class MyDocument extends Document<{ locale:string }> {
 
   render() {
     return (
-        <html lang={this.props.locale}>
+        <Html lang={this.props.locale}>
             <Head />
             <body>
                 <Main />
                 <NextScript />
             </body>
-        </html>
+        </Html>
     );
   }
 }
