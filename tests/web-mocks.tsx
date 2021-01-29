@@ -9,6 +9,8 @@ export const mockRouter = (initialPath="") => {
   const router: ExtendedRouter  = {
     route: initialPath,
     pathname: "",
+    basePath:"/",
+    isReady:true,
     query: {
 
     },

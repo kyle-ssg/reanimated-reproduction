@@ -61,7 +61,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         vectorDrawables.useSupportLibrary = true
         versionCode 1
-        versionName "1.8"
+        versionName "1.0"
         // REACT_NATIVE_BASELAYOUT - we need multiDex
         multiDexEnabled true
     }

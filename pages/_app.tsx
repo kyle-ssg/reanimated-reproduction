@@ -93,6 +93,7 @@ class MyApp extends App<{ store: Store  }> {
     // }
     return (
         <Provider store={store}>
+          {/*// @ts-ignore*/}
           <PersistGate persistor={store.__PERSISTOR} loading={null}>
             <React.Fragment>
                   <Head>

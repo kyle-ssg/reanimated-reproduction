@@ -1,4 +1,5 @@
-# $APP_CENTER_NAME_ANDROID = The App Center project name for android e.g. Solid-State-Group/Hero-Wellbeing-Android
+# $APP_CENTER_NAME_ANDROID_PRODUCTION = The App Center project name for android e.g. Solid-State-Group/Hero-Wellbeing-Android
+# $APP_CENTER_NAME_ANDROID_STAGING = The App Center project name for android e.g. Solid-State-Group/Hero-Wellbeing-Android
 # $APP_CENTER_NAME_IOS_PRODUCTION = The App Center project name for android e.g. Solid-State-Group/Hero-Wellbeing-iOS
 # $APP_CENTER_NAME_IOS_STAGING = The App Center project name for android e.g. Solid-State-Group/Hero-Wellbeing-iOS-Staging
 # APPCENTER_ACCESS_TOKEN = The token needed in order to use the appcenter cli in distribute-mobile.sh

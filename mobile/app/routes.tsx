@@ -2,7 +2,7 @@ import React from "react";
 import { NativeStackNavigationOptions } from "react-native-screens/native-stack";
 import { RouteUrls } from "./route-urls";
 import BottomTabsNavigator from "navigation/BottomTabsNavigator";
-import GenericScreen from "screens/examples/GenericScreen";
+import GenericScreen from "screens/GenericScreen";
 import Login from "screens/GenericScreen";
 import HomeScreen from "screens/HomeScreen";
 import WebScreen from "screens/WebScreen";
@@ -40,6 +40,7 @@ export const withModalOptions = (
 ): NativeStackNavigationOptions => ({
   ...base,
   headerShown: true,
+  // @ts-ignore
   hideBackButton: true,
   headerHideBackButton: true,
   headerRight: ModalCloseButton,

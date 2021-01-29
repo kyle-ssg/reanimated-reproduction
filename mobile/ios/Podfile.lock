@@ -467,7 +467,7 @@ PODS:
     - React-RCTVibration
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (2.15.0):
+  - RNScreens (2.17.1):
     - React-Core
   - RNSVG (12.1.0):
     - React
@@ -765,7 +765,7 @@ SPEC CHECKSUMS:
   RNFBMessaging: 37ea050803005191f1c42ff02234353225429c07
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNReanimated: 174b2c7890664aeb522640bd5b86b464f0abf0ca
-  RNScreens: 2ad555d4d9fa10b91bb765ca07fe9b29d59573f0
+  RNScreens: b6c9607e6fe47c1b6e2f1910d2acd46dd7ecea3a
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   RNVectorIcons: da6fe858f5a65d7bbc3379540a889b0b12aa5976
   SDWebImage: 9169792e9eec3e45bba2a0c02f74bf8bd922d1ee
@@ -774,6 +774,6 @@ SPEC CHECKSUMS:
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: c14e18ac3fcdf710f2d9f1fcf9a1f98d21100a97
+PODFILE CHECKSUM: b6fa7f1c882fc059c6a2a2086b05719f6ec0f7dc
 
 COCOAPODS: 1.9.3

@@ -16,7 +16,8 @@ module.exports = {
     "/.next/",
   ],
   transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": "ts-jest",
+    '^.+\\.(ts|tsx)?$': 'ts-jest',
+    "^.+\\.(js|jsx)$": "ts-jest",
   },
   verbose: false,
 };

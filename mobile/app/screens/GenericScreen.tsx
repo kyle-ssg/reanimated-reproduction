@@ -12,7 +12,7 @@ interface GenericScreen {
 const GenericScreen: React.FC<GenericScreen> = ({ children }) => {
   return (
     children || (
-      <ScreenContainer>
+      <ScreenContainer testID="welcome">
         <Text>I am a generic screen</Text>
       </ScreenContainer>
     )
