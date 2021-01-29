@@ -35,6 +35,7 @@ export const projectStyles = {
   bottomNavPadding: 80 + (insets.bottom || 0),
 
   //= = Typography
+  defaultStatusBarColour: "dark-content",
   fontSizeBase: em(1), //16px
   fontSizeSmall: em(0.8), //14px
   fontSizeH1: em(2), // 32px
