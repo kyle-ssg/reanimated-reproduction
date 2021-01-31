@@ -1,4 +1,4 @@
-// import messaging from '@react-native-firebase/messaging';
+import messaging from '@react-native-firebase/messaging';
 
 if (typeof messaging === 'undefined') {
   console.log("Install @react-native-firebase/messaging ^7.4.2 for push notification support")
@@ -49,13 +49,8 @@ const PushManager = class {
       return this.token
     }
 
-    await Platform.select({
-      ios: silent ? await messaging().requestPermission() : null,
-      android: null
-    });
-
     if (!silent) {
-      await messaging().requestPermission(); // for iOS
+      const authStatus = await messaging().requestPermission();
     }
 
     const token = await messaging().getToken()
