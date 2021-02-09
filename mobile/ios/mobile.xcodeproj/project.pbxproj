@@ -12,21 +12,24 @@
 		2765AE9024C4781500373166 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AE4D24C3984900373166 /* AppDelegate.m */; };
 		2765AE9224C4781500373166 /* libPods-mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A89AAA531CA23FA3043AB68D /* libPods-mobile.a */; };
 		2765AE9524C4781500373166 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5124C3984A00373166 /* Images.xcassets */; };
-		2765AE9624C4781500373166 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5424C3984A00373166 /* GoogleService-Info.plist */; };
 		2765AE9724C4781500373166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5524C3984A00373166 /* LaunchScreen.storyboard */; };
 		2765AE9824C4781500373166 /* GoogleService-Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE4E24C3984A00373166 /* GoogleService-Info-Staging.plist */; };
 		2765AEE724C4A74900373166 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AE4F24C3984A00373166 /* main.m */; };
 		2765AEE824C4A74900373166 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AE4D24C3984900373166 /* AppDelegate.m */; };
 		2765AEEE24C4A74900373166 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5124C3984A00373166 /* Images.xcassets */; };
-		2765AEEF24C4A74900373166 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5424C3984A00373166 /* GoogleService-Info.plist */; };
 		2765AEF024C4A74900373166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5524C3984A00373166 /* LaunchScreen.storyboard */; };
-		2765AEF124C4A74900373166 /* GoogleService-Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE4E24C3984A00373166 /* GoogleService-Info-Staging.plist */; };
 		2765AEFE24C4A7C500373166 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AE4F24C3984A00373166 /* main.m */; };
 		2765AEFF24C4A7C500373166 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AE4D24C3984900373166 /* AppDelegate.m */; };
 		2765AF0524C4A7C500373166 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5124C3984A00373166 /* Images.xcassets */; };
-		2765AF0624C4A7C500373166 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5424C3984A00373166 /* GoogleService-Info.plist */; };
-		2765AF0724C4A7C500373166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5524C3984A00373166 /* LaunchScreen.storyboard */; };
-		2765AF0824C4A7C500373166 /* GoogleService-Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE4E24C3984A00373166 /* GoogleService-Info-Staging.plist */; };
+		27A6D87725D2B02F00668B71 /* FontAwesome5_Pro_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E370A70F9A494D37A9E1A143 /* FontAwesome5_Pro_Brands.ttf */; };
+		27A6D87825D2B02F00668B71 /* FontAwesome5_Pro_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 462138919F9B4C3D88ED0258 /* FontAwesome5_Pro_Light.ttf */; };
+		27A6D87925D2B02F00668B71 /* FontAwesome5_Pro_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C200711F53C430595F55258 /* FontAwesome5_Pro_Regular.ttf */; };
+		27A6D87A25D2B03000668B71 /* FontAwesome5_Pro_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99863E139B7B47E49141BA60 /* FontAwesome5_Pro_Solid.ttf */; };
+		27A6D87B25D2B04200668B71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5524C3984A00373166 /* LaunchScreen.storyboard */; };
+		27A6D8D425D2B04A00668B71 /* FontAwesome5_Pro_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E370A70F9A494D37A9E1A143 /* FontAwesome5_Pro_Brands.ttf */; };
+		27A6D8D525D2B04A00668B71 /* FontAwesome5_Pro_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 462138919F9B4C3D88ED0258 /* FontAwesome5_Pro_Light.ttf */; };
+		27A6D8D625D2B04A00668B71 /* FontAwesome5_Pro_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C200711F53C430595F55258 /* FontAwesome5_Pro_Regular.ttf */; };
+		27A6D8D725D2B04A00668B71 /* FontAwesome5_Pro_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99863E139B7B47E49141BA60 /* FontAwesome5_Pro_Solid.ttf */; };
 		29EEC43AF3EC4DE1BCB05E84 /* FontAwesome5_Pro_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E370A70F9A494D37A9E1A143 /* FontAwesome5_Pro_Brands.ttf */; };
 		348A0E35058244418D9D0CE5 /* FontAwesome5_Pro_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 462138919F9B4C3D88ED0258 /* FontAwesome5_Pro_Light.ttf */; };
 		365337126E9FDE78D578F5C2 /* libPods-appcenter-staging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C0F034062BCDAD733704E5 /* libPods-appcenter-staging.a */; };
@@ -355,7 +358,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2765AE9524C4781500373166 /* Images.xcassets in Resources */,
-				2765AE9624C4781500373166 /* GoogleService-Info.plist in Resources */,
 				2765AE9724C4781500373166 /* LaunchScreen.storyboard in Resources */,
 				2765AE9824C4781500373166 /* GoogleService-Info-Staging.plist in Resources */,
 				29EEC43AF3EC4DE1BCB05E84 /* FontAwesome5_Pro_Brands.ttf in Resources */,
@@ -369,10 +371,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27A6D87725D2B02F00668B71 /* FontAwesome5_Pro_Brands.ttf in Resources */,
+				27A6D87825D2B02F00668B71 /* FontAwesome5_Pro_Light.ttf in Resources */,
+				27A6D87925D2B02F00668B71 /* FontAwesome5_Pro_Regular.ttf in Resources */,
+				27A6D87A25D2B03000668B71 /* FontAwesome5_Pro_Solid.ttf in Resources */,
 				2765AEEE24C4A74900373166 /* Images.xcassets in Resources */,
-				2765AEEF24C4A74900373166 /* GoogleService-Info.plist in Resources */,
 				2765AEF024C4A74900373166 /* LaunchScreen.storyboard in Resources */,
-				2765AEF124C4A74900373166 /* GoogleService-Info-Staging.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,10 +384,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27A6D8D425D2B04A00668B71 /* FontAwesome5_Pro_Brands.ttf in Resources */,
+				27A6D8D525D2B04A00668B71 /* FontAwesome5_Pro_Light.ttf in Resources */,
+				27A6D8D625D2B04A00668B71 /* FontAwesome5_Pro_Regular.ttf in Resources */,
+				27A6D8D725D2B04A00668B71 /* FontAwesome5_Pro_Solid.ttf in Resources */,
+				27A6D87B25D2B04200668B71 /* LaunchScreen.storyboard in Resources */,
 				2765AF0524C4A7C500373166 /* Images.xcassets in Resources */,
-				2765AF0624C4A7C500373166 /* GoogleService-Info.plist in Resources */,
-				2765AF0724C4A7C500373166 /* LaunchScreen.storyboard in Resources */,
-				2765AF0824C4A7C500373166 /* GoogleService-Info-Staging.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +463,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp \"${PROJECT_DIR}/mobile/GoogleService-Info-Staging.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\"\n";
+			shellScript = "cp \"${PROJECT_DIR}/mobile/GoogleService-Info.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n";
 		};
 		2765AE9924C4781500373166 /* Bundle React Native code and images */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -568,7 +574,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp \"${PROJECT_DIR}/mobile/GoogleService-Info-Staging.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\"\n";
+			shellScript = "cp \"${PROJECT_DIR}/mobile/GoogleService-Info-Staging.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n";
 		};
 		2765AEF224C4A74900373166 /* Bundle React Native code and images */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -619,7 +625,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp \"${PROJECT_DIR}/mobile/GoogleService-Info-Staging.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\"\n";
+			shellScript = "cp \"${PROJECT_DIR}/mobile/GoogleService-Info.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n";
 		};
 		2765AF0924C4A7C500373166 /* Bundle React Native code and images */ = {
 			isa = PBXShellScriptBuildPhase;
