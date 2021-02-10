@@ -1,50 +1,50 @@
 const functionName = function (action, prefix) {
-    const post = prefix.charAt(0).toUpperCase() + prefix.slice(1);
-    const actionParts = action.split('_');
-    return actionParts[0].toLowerCase() + post;
+  const post = prefix.charAt(0).toUpperCase() + prefix.slice(1);
+  const actionParts = action.split('_');
+  return actionParts[0].toLowerCase() + post;
 };
 
 const apiName = function (api, isUpdate) {
-    // eslint-disable-next-line no-template-curly-in-string
-    const replace = '${action.data.id}';
-    if (api.charAt(0) === '/') {
-        return api.slice(1).replace(':id', replace);
-    }
-    // eslint-disable-next-line no-template-curly-in-string
-    return api.replace(':id', replace);
+  // eslint-disable-next-line no-template-curly-in-string
+  const replace = '${action.data.id}';
+  if (api.charAt(0) === '/') {
+    return api.slice(1).replace(':id', replace);
+  }
+  // eslint-disable-next-line no-template-curly-in-string
+  return api.replace(':id', replace);
 };
 
 module.exports = {
-    action(action) {
-        return `  '${action}': '${action}',
+  action(action) {
+    return `  '${action}': '${action}',
   '${action}_LOADED': '${action}_LOADED',
   '${action}_ERROR': '${action}_ERROR',
 `;
-    },
-    screenRouteUrl(key,path) {
-        return `"${key}" = "${path}",`;
-    },
-    screenRoute(name,key) {
-        return `[RouteUrls.${key}]: {
+  },
+  screenRouteUrl(key,path) {
+    return `"${key}" = "${path}",`;
+  },
+  screenRoute(name,key) {
+    return `[RouteUrls.${key}]: {
     options: {
     },
     component: ${name},
   },`;
-    },
-    screenRouteImport(name) {
-        return `import ${name} from "screens/${name}";
+  },
+  screenRouteImport(name) {
+    return `import ${name} from "screens/${name}";
 `;
-    },
-    routeComponent(name) {
-        return `<Stack.Screen
+  },
+  routeComponent(name) {
+    return `<Stack.Screen
           name={RouteUrls.${name}}
           options={routes[RouteUrls.${name}].options}
           component={routes[RouteUrls.${name}].component}
         />
 `;
-    },
-    screenComponent(name) {
-        return `import React from "react";
+  },
+  screenComponent(name) {
+    return `import React from "react";
 import { Component } from "react";
 import ScreenContainer from 'components/ScreenContainer';
 import withScreen, { Screen } from "./withScreen";
@@ -62,14 +62,14 @@ const ${name}: React.FC<${name}> = ({ children }) => {
 
 export default withScreen(${name});
 `;
-    },
-    collectionRequestStateTypes(action, prefix, type='any') {
-      return `  ${functionName("GET", prefix)}?: {
+  },
+  collectionRequestStateTypes(action, prefix, type='any') {
+    return `  ${functionName("GET", prefix)}?: {
     [extraProps: string]: any;
   };`
-    },
-    requestStateTypes(action, prefix, type='any') {
-      return `${functionName("GET", prefix)}?: {
+  },
+  requestStateTypes(action, prefix, type='any') {
+    return `${functionName("GET", prefix)}?: {
     [extraProps: string]: any;
   };
   ${functionName("CREATE", prefix)}?: {
@@ -81,24 +81,24 @@ export default withScreen(${name});
   ${functionName("DELETE", prefix)}?: {
     [extraProps: string]: any;
   };`
-    },
-    stateTypes(action, prefix, type='any') {
-        return `${prefix}Loading?: boolean;
+  },
+  stateTypes(action, prefix, type='any') {
+    return `${prefix}Loading?: boolean;
   ${prefix}Saving?: boolean;
   ${prefix}Error?: string;
   ${prefix}?: ${type === 'any'? `{
     [extraProps: string]: any;
   }` : type },`;
-    },
-    takeLatest(action, prefix) {
-        return `takeLatest(Actions.${action}, ${functionName(action, prefix)}),`;
-    },
-    takeEvery(action, prefix) {
-        return `takeEvery(Actions.${action}, ${functionName(action, prefix)}),`;
-    },
-    // appactions
-    getCollection(action, prefix) {
-        return `
+  },
+  takeLatest(action, prefix) {
+    return `takeLatest(Actions.${action}, ${functionName(action, prefix)}),`;
+  },
+  takeEvery(action, prefix) {
+    return `takeEvery(Actions.${action}, ${functionName(action, prefix)}),`;
+  },
+  // appactions
+  getCollection(action, prefix) {
+    return `
     ${functionName(action, prefix)}(data:RequestTypes['${functionName(action, prefix)}'], callbacks:Callbacks={}):AnyAction {
         return {
             type: Actions.${action},
@@ -107,9 +107,9 @@ export default withScreen(${name});
         };
     },
 `;
-    },
-    get(action, prefix) {
-        return `
+  },
+  get(action, prefix) {
+    return `
   ${functionName(action, prefix)}(data:RequestTypes['${functionName(action, prefix)}'], callbacks:Callbacks={}):AnyAction {
     return {
       type: Actions.${action},
@@ -118,31 +118,20 @@ export default withScreen(${name});
     };
   },
 `;
-    },
-    delete(action, prefix) {
-        return `
+  },
+  delete(action, prefix) {
+    return `
   ${functionName(action, prefix)}(data:RequestTypes['${functionName(action, prefix)}'], callbacks:Callbacks={}):AnyAction {
     return {
       type: Actions.${action},
-      id,
+      id:data.id,
       ...callbacks,
     };
   },
 `;
-    },
-    post(action, prefix) {
-        return `
-  ${functionName(action, prefix)}(data:RequestTypes['${functionName(action, prefix)}'], callbacks:Callbacks={}):AnyAction {
-    return {
-      type: Actions.${action},
-      data,
-      ...callbacks,
-    };
   },
-`;
-    },
-    update(action, prefix) {
-        return `
+  post(action, prefix) {
+    return `
   ${functionName(action, prefix)}(data:RequestTypes['${functionName(action, prefix)}'], callbacks:Callbacks={}):AnyAction {
     return {
       type: Actions.${action},
@@ -151,88 +140,99 @@ export default withScreen(${name});
     };
   },
 `;
-    },
-    // reducer
-    reducerCollection(action, prefix) {
-        return `case Actions.${action}:
+  },
+  update(action, prefix) {
+    return `
+  ${functionName(action, prefix)}(data:RequestTypes['${functionName(action, prefix)}'], callbacks:Callbacks={}):AnyAction {
+    return {
+      type: Actions.${action},
+      data,
+      ...callbacks,
+    };
+  },
+`;
+  },
+  // reducer
+  reducerCollection(action, prefix) {
+    return `case Actions.${action}:
       return itemLoading(state, '${prefix}');
     case Actions.${action}_LOADED:
       return itemLoaded(state, '${prefix}', action);
     case Actions.${action}_ERROR:
       return itemError(state, '${prefix}', action);`;
-    },
-    reducerGet(action, prefix) {
-        return `case Actions.${action}:
+  },
+  reducerGet(action, prefix) {
+    return `case Actions.${action}:
       return itemLoading(state, '${prefix}');
     case Actions.${action}_LOADED:
       return itemLoaded(state, '${prefix}', action);
     case Actions.${action}_ERROR:
       return itemError(state, '${prefix}', action);`;
-    },
-    reducerPost(action, prefix) {
-        return `case Actions.${action}:
+  },
+  reducerPost(action, prefix) {
+    return `case Actions.${action}:
       return itemSaving(state, '${prefix}');
     case Actions.${action}_LOADED:
       return itemSaved(state, '${prefix}', action);
     case Actions.${action}_ERROR:
       return itemError(state, '${prefix}', action);`;
-    },
-    reducerUpdate(action, prefix) {
-        return `case Actions.${action}:
+  },
+  reducerUpdate(action, prefix) {
+    return `case Actions.${action}:
       return itemSaving(state, '${prefix}');
     case Actions.${action}_LOADED:
       return itemSaved(state, '${prefix}', action);
     case Actions.${action}_ERROR:
       return itemError(state, '${prefix}', action);`;
-    },
-    reducerDelete(action, prefix) {
-        return `case Actions.${action}:
+  },
+  reducerDelete(action, prefix) {
+    return `case Actions.${action}:
       return itemSaving(state, '${prefix}');
     case Actions.${action}_LOADED:
       return itemSaved(state, '${prefix}', action);
     case Actions.${action}_ERROR:
       return itemError(state, '${prefix}', action);`;
-    },
-    // yield
-    yieldCollection(action, prefix, api) {
-        return `
+  },
+  // yield
+  yieldCollection(action, prefix, api) {
+    return `
 export function* ${functionName(action, prefix)}(action) {
   const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
   yield getAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
 }
 `;
-    },
-    yieldGet(action, prefix, api) {
-        return `
+  },
+  yieldGet(action, prefix, api) {
+    return `
 export function* ${functionName(action, prefix)}(action) {
   const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
   yield getAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
 }`;
-    },
-    yieldDelete(action, prefix, api) {
-        return `
+  },
+  yieldDelete(action, prefix, api) {
+    return `
 export function* ${functionName(action, prefix)}(action) {
   const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
   yield deleteAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
 }`;
-    },
-    yieldPost(action, prefix, api) {
-        return `
+  },
+  yieldPost(action, prefix, api) {
+    return `
 export function* ${functionName(action, prefix)}(action) {
   const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
   yield postAction(action, \`\${Project.api}${apiName(api, true)}\`, '${action}');
 }`;
-    },
-    yieldUpdate(action, prefix, api) {
-        return `
+  },
+  yieldUpdate(action, prefix, api) {
+    return `
 export function* ${functionName(action, prefix)}(action) {
   const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
   yield updateAction(action, \`\${Project.api}${apiName(api, true)}\`, '${action}');
 }`;
-    },
-    //  provider
-    providerItem(action, prefix) {
-        return `
+  },
+  //  provider
+  providerItem(action, prefix) {
+    return `
 import { useDispatch, useSelector } from 'react-redux';
 import { AppActions, Callbacks } from '../app-actions';
 import { AppState, RequestTypes } from "../state-type";
@@ -287,9 +287,9 @@ export default function ${functionName('USE', prefix)}():Use${functionName('', p
   }
 }
 `;
-    },
-    providerCollection(action, prefix) {
-        return`
+  },
+  providerCollection(action, prefix) {
+    return`
 import { useDispatch, useSelector } from 'react-redux';
 import { AppActions, Callbacks } from '../app-actions';
 import { AppState, RequestTypes } from "../state-type";
@@ -321,10 +321,10 @@ export default function ${functionName('USE', prefix)}():Use${functionName('', p
   }
 }
 `;
-    },
-    webGet(action, prefix) {
-      const prefixCamel = functionName('', prefix);
-      return `
+  },
+  webGet(action, prefix) {
+    const prefixCamel = functionName('', prefix);
+    return `
 import React, { FC,useEffect } from 'react'; // we need this to make JSX compile
 
 import use${prefixCamel} from '../common/providers/${functionName('use', prefix)}';
@@ -355,10 +355,10 @@ const ${prefixCamel}:FC<ComponentType> = ({ id }) => {
 ${prefixCamel}.displayName = "${prefixCamel}"
 export default ${prefixCamel};
 `;
-    },
-    webCollection(action, prefix) {
-        const prefixCamel = functionName('', prefix);
-        return `
+  },
+  webCollection(action, prefix) {
+    const prefixCamel = functionName('', prefix);
+    return `
 import React, { FC,useEffect } from 'react'; // we need this to make JSX compile
 
 import use${prefixCamel} from '../common/providers/${functionName('use', prefix)}';
@@ -391,10 +391,10 @@ const ${prefixCamel}:FC<ComponentType> = ({  }) => {
 ${prefixCamel}.displayName = "${prefixCamel}"
 export default ${prefixCamel};
 `;
-    },
-    webPost(action, prefix) {
-        const prefixCamel = functionName('', prefix);
-        return `
+  },
+  webPost(action, prefix) {
+    const prefixCamel = functionName('', prefix);
+    return `
 import React, { FC, useEffect, useState } from 'react'; // we need this to make JSX compile
 import cloneDeep from 'lodash/cloneDeep';
 
@@ -478,9 +478,9 @@ const ${prefixCamel}:FC<ComponentType> = ({ id }) => {
 
 ${prefixCamel}.displayName = "${prefixCamel}"
 export default ${prefixCamel};`;
-    },
-    component(name) {
-        return `import React, { Component } from 'react';
+  },
+  component(name) {
+    return `import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
 const ${name} = class extends Component {
@@ -502,5 +502,5 @@ const ${name} = class extends Component {
 
 export default ${name};
 `;
-    },
+  },
 };
