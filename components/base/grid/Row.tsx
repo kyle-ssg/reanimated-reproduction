@@ -8,7 +8,7 @@ interface Row {
 }
 
 const Row: React.FC<Row> = ({ className, children, space, ...props }) => (
-    <div {...props} className={cn({ "flex-row": true, space }, className)}/>
+  <div {...props} className={cn({ "flex-row": true, space }, className)}>{children}</div>
 );
 
 Row.displayName = "Row";
