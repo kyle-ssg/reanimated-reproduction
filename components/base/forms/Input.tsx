@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from "react";
 import cn from "classnames";
 
 interface Input {
@@ -11,13 +11,14 @@ interface Input {
   onChange?: (e: React.ChangeEvent) => void;
   onFocus?: (e: React.FocusEvent) => void;
   onBlur?: (e: React.FocusEvent) => void;
+  onKeyDown?: (e: React.KeyboardEvent) => void;
 }
 
-const Input: React.FC<Input> = ({ children, textarea, isValid = true, placeholderChar = " ", inputClassName, className, value, onFocus, onBlur, ...rest }) => {
+const Input: React.FC<Input> = ({ children,onKeyDown, textarea, isValid = true, placeholderChar = " ", inputClassName, className, value, onFocus, onBlur, ...rest }) => {
 
   const [shouldValidate, setShouldValidate] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-
+  const ref = useRef<HTMLInputElement|HTMLTextAreaElement>();
   const focusHandler = (e: React.FocusEvent) => {
     setIsFocused(true);
     onFocus && onFocus(e);
@@ -29,9 +30,9 @@ const Input: React.FC<Input> = ({ children, textarea, isValid = true, placeholde
   // };
 
 
-  const onKeyDown = (e: React.KeyboardEvent) => {
+  const _onKeyDown = (e: React.KeyboardEvent) => {
     if (Utils.keys.isEscape(e)) {
-      // this.input.blur();
+      ref.current.blur();
     }
     onKeyDown && onKeyDown(e);
   };
@@ -49,32 +50,34 @@ const Input: React.FC<Input> = ({ children, textarea, isValid = true, placeholde
   const combinedInputClassName = cn({ input: true }, inputClassName);
 
   return (
-      <div className={classNameHandler}>
-          {textarea ? (
-              <textarea
-                // Is it element important? Should I use UseRef hook?
-                // ref={(c) => (this.input = c)}
-                {...rest}
-                onFocus={focusHandler}
-                onKeyDown={onKeyDown}
-                onBlur={blur}
-                value={value}
-                className={combinedInputClassName}
-              />
-    ) : (
-        <input
-          // Is it element important? Should I use UseRef hook?
-          // ref={(c) => (this.input = c)}
+    <div className={classNameHandler}>
+      {textarea ? (
+        <textarea
+          { /* @ts-ignore*/ }
           {...rest}
+          ref={ref}
           onFocus={focusHandler}
-          onKeyDown={onKeyDown}
+          onKeyDown={_onKeyDown}
           onBlur={blur}
           value={value}
           className={combinedInputClassName}
         />
-    )}
-          {children && children}
-      </div>
+      ) : (
+        <input
+          // Is it element important? Should I use UseRef hook?
+          // ref={(c) => (this.input = c)}
+          {...rest}
+          { /* @ts-ignore*/ }
+          ref={ref}
+          onFocus={focusHandler}
+          onKeyDown={_onKeyDown}
+          onBlur={blur}
+          value={value}
+          className={combinedInputClassName}
+        />
+      )}
+      {children && children}
+    </div>
   )
 }
 
