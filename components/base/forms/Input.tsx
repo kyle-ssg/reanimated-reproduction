@@ -53,8 +53,8 @@ const Input: React.FC<Input> = ({ children,onKeyDown, textarea, isValid = true, 
     <div className={classNameHandler}>
       {textarea ? (
         <textarea
-          { /* @ts-ignore*/ }
           {...rest}
+          // @ts-ignore
           ref={ref}
           onFocus={focusHandler}
           onKeyDown={_onKeyDown}
@@ -67,7 +67,7 @@ const Input: React.FC<Input> = ({ children,onKeyDown, textarea, isValid = true, 
           // Is it element important? Should I use UseRef hook?
           // ref={(c) => (this.input = c)}
           {...rest}
-          { /* @ts-ignore*/ }
+          // @ts-ignore
           ref={ref}
           onFocus={focusHandler}
           onKeyDown={_onKeyDown}
