@@ -1,5 +1,5 @@
 const path = require("path");
-
+const webpack = require("webpack")
 // Export a function. Accept the base config as the only param.
 module.exports = async ({ config, mode }) => {
   // `mode` has a value of 'DEVELOPMENT' or 'PRODUCTION'
@@ -12,6 +12,11 @@ module.exports = async ({ config, mode }) => {
     use: ["style-loader", "css-loader", "sass-loader"],
     include: path.resolve(__dirname, "../"),
   });
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      __DEV__: true,
+    }),
+  )
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
     use: [
