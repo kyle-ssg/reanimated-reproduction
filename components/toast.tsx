@@ -16,10 +16,9 @@ const Message: React.FC<Message> = ({
   children,
   content,
 }) => {
-
   useEffect(() => {
     setTimeout(remove, expiry);
-  });
+  },[]);
 
   const className = cn({
     "toast-message": true,
@@ -64,7 +63,7 @@ const Toast: React.FC = () => {
         newMessages.splice(index, 1);
         setMessages(newMessages);
       }, 500);
-      setMessages(messages);
+      setMessages([...messages]);
     }
   };
 

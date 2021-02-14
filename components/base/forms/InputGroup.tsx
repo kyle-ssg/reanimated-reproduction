@@ -1,14 +1,17 @@
 import React from 'react';
 import Input from './Input';
 
-interface InputGroup {
+export interface InputGroup {
   inputProps?: {name?: string, id?: string, error?: string};
   className?: string;
   title?: string;
-  component?: string;
+  component?: React.ReactNode;
   textarea?: boolean;
   isValid?: boolean;
+  onBlur?: (e: React.FocusEvent) => void;
   disabled?: string;
+  errorMessage?: string;
+  name?:string;
   value?: string;
   defaultValue?: string;
   onChange?: () => void;
@@ -16,7 +19,7 @@ interface InputGroup {
   placeholder?: string;
 }
 
-const InputGroup: React.FC<InputGroup> = ({ inputProps = {}, isValid, className, title, component, textarea, disabled, value, defaultValue, onChange, type, placeholder } ,props) => {
+const InputGroup: React.FC<InputGroup> = ({ name,onBlur,errorMessage,inputProps = {}, isValid, className, title, component, textarea, disabled, value, defaultValue, onChange, type, placeholder } ,props) => {
 //   Should I use useRef to connect focus with input?
 //   const focus = () => {
 //     input.focus();
@@ -45,23 +48,12 @@ const InputGroup: React.FC<InputGroup> = ({ inputProps = {}, isValid, className,
                component
       ) : (
           <div>
-              {textarea ? (
-                  <textarea
-                    // ref={(c) => (this.input = c)}
-                    {...props.inputProps}
-                    isValid={isValid}
-                    disabled={disabled}
-                    value={value}
-                    data-test={["data-test"]}
-                    defaultValue={defaultValue}
-                    onChange={onChange}
-                    type={type || "text"}
-                    id={id}
-                    placeholder={placeholder}
-                  />
-          ) : (
               <Input
                 // ref={(c) => (this.input = c)}
+                name={name}
+                textarea={textarea}
+                onBlur={onBlur}
+                errorMessage={errorMessage}
                 {...props.inputProps}
                 isValid={isValid}
                 disabled={disabled}
@@ -73,7 +65,6 @@ const InputGroup: React.FC<InputGroup> = ({ inputProps = {}, isValid, className,
                 id={id}
                 placeholder={placeholder}
               />
-          )}
           </div>
       )}
           </div>

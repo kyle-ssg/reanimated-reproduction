@@ -2,7 +2,7 @@ import _DatePicker, { ReactDatePickerProps } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import React, { useCallback } from "react";
 
-type Props = Omit<ReactDatePickerProps, "onChange" | "minDate"> & {
+export type DatePickerProps = Omit<ReactDatePickerProps, "onChange" | "minDate"> & {
   onChange?: ReactDatePickerProps["onChange"];
   minDate?: string;
 };
@@ -14,9 +14,9 @@ const getDate = (d: string | Date): Date => {
   return d;
 };
 
-const getDates = (dates: Array<string | Date>): Date[] => dates.map(getDate);
+const getDates = (dates: Array<string | Date>): Date[] => (dates||[]).map(getDate);
 
-export const DatePicker: React.FC<Props> = ({
+export const DatePicker: React.FC<DatePickerProps> = ({
   minDate,
   maxDate,
   selected,

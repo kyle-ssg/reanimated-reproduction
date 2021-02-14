@@ -1,32 +1,33 @@
-import React from 'react';
+import React, { FunctionComponent } from "react"; // we need this to make JSX compile
 
-interface SegmentControl {
-  onChange?: (key: string) => void;
-  options: {
-    key: string;
-    name?: string;
-    selected?: boolean
-  }[];
+type ComponentType = {
+  items: string[],
+  value: number,
+  itemWidth: number,
+  onChange:(index:number) =>void
 }
 
-const SegmentControl: React.FC<SegmentControl> = ({ options, onChange }) => {
-
-  const handleClick = (key: string) => onChange && onChange(key)
-
+const SegmentControl: FunctionComponent<ComponentType> = ({ items,onChange,value,itemWidth }) => {
   return (
-      <div className="segment-control">
-          {options.map((option) => (
-              <button 
-                className={`btn ${option.selected ? "segment-control__selected" : ""}`}
-                type="button"
-                key={option.key}
-                onClick={() => handleClick(option.key)}
-              >
-                  {option.name}
-              </button>
-    ))}
-      </div>);
+    <Row className="flex-row segmented-control__container">
+      <div
+        style={{ left:value*itemWidth, width:itemWidth }}
+        className="segmented-control__button">
+        <div className="segmented-control__button-inner"/>
+      </div>
+      {items.map((item,i)=>(
+        <div
+          key={item}
+          style={{ left:itemWidth*i, width:itemWidth }}
+          onClick={()=>{
+            onChange(i)
+          }}
+          className="segmented-control__item">
+          {item}
+        </div>
+      ))}
+    </Row>
+  );
 };
 
-SegmentControl.displayName = " SegmentControl";
 export default SegmentControl;

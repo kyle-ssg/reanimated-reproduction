@@ -6,7 +6,9 @@ interface Input {
   isValid?: boolean;
   placeholderChar?: string;
   inputClassName?: string;
+  name?: string;
   className?: string;
+  errorMessage?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent) => void;
   onFocus?: (e: React.FocusEvent) => void;
@@ -14,7 +16,7 @@ interface Input {
   onKeyDown?: (e: React.KeyboardEvent) => void;
 }
 
-const Input: React.FC<Input> = ({ children,onKeyDown, textarea, isValid = true, placeholderChar = " ", inputClassName, className, value, onFocus, onBlur, ...rest }) => {
+const Input: React.FC<Input> = ({ children,errorMessage,name,onKeyDown, textarea, isValid = true, placeholderChar = " ", inputClassName, className, value, onFocus, onBlur, ...rest }) => {
 
   const [shouldValidate, setShouldValidate] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -47,25 +49,25 @@ const Input: React.FC<Input> = ({ children,onKeyDown, textarea, isValid = true, 
 
   const classNameHandler = cn({ "input-container": true, focused: isFocused, invalid: shouldValidate && !isValid }, className);
 
-  const combinedInputClassName = cn({ input: true }, inputClassName);
+  const combinedInputClassName = cn({ input: true, error: !!errorMessage }, inputClassName);
 
   return (
-    <div className={classNameHandler}>
-      {textarea ? (
-        <textarea
-          {...rest}
-          // @ts-ignore
-          ref={ref}
-          onFocus={focusHandler}
-          onKeyDown={_onKeyDown}
-          onBlur={blur}
-          value={value}
-          className={combinedInputClassName}
-        />
-      ) : (
+      <div className={classNameHandler}>
+          {textarea ? (
+              <textarea
+                name={name}
+                {...rest}
+                // @ts-ignore
+                ref={ref}
+                onFocus={focusHandler}
+                onKeyDown={_onKeyDown}
+                onBlur={blur}
+                value={value}
+                className={combinedInputClassName}
+              />
+    ) : (
         <input
-          // Is it element important? Should I use UseRef hook?
-          // ref={(c) => (this.input = c)}
+          name={name}
           {...rest}
           // @ts-ignore
           ref={ref}
@@ -75,9 +77,9 @@ const Input: React.FC<Input> = ({ children,onKeyDown, textarea, isValid = true, 
           value={value}
           className={combinedInputClassName}
         />
-      )}
-      {children && children}
-    </div>
+    )}
+          {children && children}
+      </div>
   )
 }
 

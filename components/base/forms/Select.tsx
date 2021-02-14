@@ -1,15 +1,24 @@
 import { PropsType } from "ionicons/dist/types/stencil.core";
 import React from "react";
-
-interface Select {
-  title: string,
-  children?: React.ReactChildren,
+import cx from 'classnames'
+export type Select = React.SelectHTMLAttributes<any> & {
+  title?: string,
+  children?: React.ReactNode,
+  errorMessage?: string,
+  label?:string
 }
 
-const Select: React.FC<Select> = ({ title, children, ...props }) => (
+const Select: React.FC<Select> = ({ title, label, children, errorMessage, ...props }) => (
     <div className="select">
-        <span className="select__text">{title}</span>
-        <select {...props}>{children}</select>
+        {title && (
+          <span className="select__text">{title}</span>
+        )}
+        <select {...props} className={cx(`${props.className||""}`,{ error:!!errorMessage })}>
+          <option value={null}>
+            {label||"Please select"}
+          </option>
+          {children}
+        </select>
     </div>
 );
 
