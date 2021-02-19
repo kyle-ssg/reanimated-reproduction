@@ -1,23 +1,25 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+IS_CI = ENV['APPCENTER_BUILD_ID']
 
-platform :ios, '10.0'
+platform :ios, '12.0'
 
 def shared_pods
   config = use_native_modules!
   use_react_native!(:path => config["reactNativePath"])
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+  pod 'GoogleSignIn', '~> 5.0.2'
+  if not IS_CI
+    use_flipper!({ 'Flipper' => '0.74.0' })
+  end
 end
 
 target 'mobile' do
     shared_pods
-         use_flipper!
-            post_install do |installer|
-              flipper_post_install(installer)
-                installer.pods_project.build_configurations.each do |config|
-                  config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
-                end
-            end
+end
+
+target 'mobile-staging' do
+    shared_pods
 end
 
 target 'appcenter-production' do
@@ -26,4 +28,13 @@ end
 
 target 'appcenter-staging' do
     shared_pods
+end
+
+post_install do |installer|
+    if not IS_CI
+        flipper_post_install(installer)
+    end
+    installer.pods_project.build_configurations.each do |config|
+        config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+    end
 end

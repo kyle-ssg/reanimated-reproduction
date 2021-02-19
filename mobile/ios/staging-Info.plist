@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>$(PRODUCT_NAME)</string>
+	<string>TheAppp Staging</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
@@ -39,6 +39,8 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CodePushDeploymentKey</key>
 	<string>wP_hi3rhZrahFSetndAeBt2FAuLe-gzABtKys</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<string>NO</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -62,6 +64,8 @@
 	<string>We use geolocation for personalisation and localisation</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use geolocation for personalisation and localisation</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We use the photo library to allow you to upload an avatar</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
