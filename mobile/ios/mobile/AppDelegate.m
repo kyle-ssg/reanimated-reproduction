@@ -5,7 +5,7 @@
 #import <React/RCTRootView.h>
 #import <React/RCTLinkingManager.h>
 
-//#ifdef FB_SONARKIT_ENABLED
+#if DEBUG
 #import <FlipperKit/FlipperClient.h>
 #import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
 #import <FlipperKitUserDefaultsPlugin/FKUserDefaultsPlugin.h>
@@ -23,7 +23,7 @@ static void InitializeFlipper(UIApplication *application) {
  [client start];
 }
 
-//#endif
+#endif
 
 #import <Firebase.h> // REACT_NATIVE_FIREBASE
 #import <CodePush/CodePush.h> // REACT_NATIVE_CODEPUSH
