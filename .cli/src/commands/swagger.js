@@ -54,7 +54,7 @@ class TheCommand extends Command {
         }
       }
 
-      const gitAdd = await cli.prompt('git add?', { default: 'no' });
+      const gitAdd = await cli.prompt('git add?', { default: 'yes' });
       if(gitAdd !== 'no') {
         execSync('cd ../ && git add .');
       }

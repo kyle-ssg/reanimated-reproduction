@@ -82,6 +82,11 @@ export default withScreen(${name});
     [extraProps: string]: any;
   };`
   },
+  requestStateTypesPost(action, prefix, type='any') {
+    return `${functionName("CREATE", prefix)}?: {
+    [extraProps: string]: any;
+  };`
+  },
   stateTypes(action, prefix, type='any') {
     return `${prefix}Loading?: boolean;
   ${prefix}Saving?: boolean;
@@ -124,7 +129,7 @@ export default withScreen(${name});
   ${functionName(action, prefix)}(data:RequestTypes['${functionName(action, prefix)}'], callbacks:Callbacks={}):AnyAction {
     return {
       type: Actions.${action},
-      id:data.id,
+      data,
       ...callbacks,
     };
   },
@@ -284,6 +289,45 @@ export default function ${functionName('USE', prefix)}():Use${functionName('', p
     ${functionName('CREATE', prefix)},
     ${functionName('UPDATE', prefix)},
     ${functionName('DELETE', prefix)},
+  }
+}
+`;
+  },
+  providerPost(action, prefix) {
+    return `
+import { useDispatch, useSelector } from 'react-redux';
+import { AppActions, Callbacks } from '../app-actions';
+import { AppState, RequestTypes } from "../state-type";
+import { useCallback } from 'react';
+
+type Use${functionName('', prefix)} = {
+  ${prefix}: AppState['${prefix}'],
+  ${prefix}Loading: AppState['${prefix}Loading'],
+  ${prefix}Saving: AppState['${prefix}Saving'],
+  ${prefix}Error: AppState['${prefix}Error'],
+  ${functionName('CREATE', prefix)}: (data: RequestTypes['${functionName("CREATE", prefix)}'], callbacks?:Callbacks)=>void,
+}
+
+export default function ${functionName('USE', prefix)}():Use${functionName('', prefix)} {
+  const {
+    ${prefix}, ${prefix}Loading, ${prefix}Saving, ${prefix}Error } = useSelector((state:AppState)=>({
+    ${prefix}: state.${prefix},
+    ${prefix}Loading: state.${prefix}Loading,
+    ${prefix}Saving: state.${prefix}Saving,
+    ${prefix}Error: state.${prefix}Error,
+  }));
+  const dispatch = useDispatch();
+
+  const ${functionName('CREATE', prefix)} = useCallback((data: RequestTypes['${functionName("CREATE", prefix)}'], callbacks?:Callbacks)=>{
+    return dispatch(AppActions.${functionName('CREATE', prefix)}(data,callbacks))
+  },[dispatch]);
+  
+  return {
+    ${prefix},
+    ${prefix}Loading,
+    ${prefix}Saving,
+    ${prefix}Error,
+    ${functionName('CREATE', prefix)},
   }
 }
 `;

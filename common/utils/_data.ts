@@ -76,7 +76,7 @@ const _data = {
     return _data._request(RequestMethod.delete, url, data, headers);
   },
 
-  _request(
+  async _request(
     method: RequestMethod,
     url: string,
     data: any,
@@ -84,7 +84,8 @@ const _data = {
   ): Promise<any> {
     const prom = Promise.resolve();
 
-    return prom.then(() => {
+    const skipAuthHeader = Object.keys(headers).length >0;
+    return prom.then(async () => {
       const options: RequestOptions = {
         timeout: 5000,
         method,
@@ -108,6 +109,8 @@ const _data = {
           url += url.indexOf("?") !== -1 ? `&${qs}` : `?${qs}`;
         } else if (options.headers["content-type"] === "application/json") {
           options.body = JSON.stringify(data);
+        } else {
+          options.body = data;
         }
       } else if (
         method === RequestMethod.post ||

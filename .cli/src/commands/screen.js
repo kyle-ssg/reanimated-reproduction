@@ -10,7 +10,7 @@ class TheCommand extends Command {
         const name = await cli.prompt('What is the screen called?', { default: args.name || "TheScreen" });
         const suggestion = name.split(/(?=[A-Z])/).join("-").toLowerCase().replace("-screen","")
         const path = await cli.prompt('What is the path?', { default: `/${suggestion}` });
-        const gitAdd = await cli.prompt('git add?', { default: 'no' });
+        const gitAdd = await cli.prompt('git add?', { default: 'yes' });
 
         await controller(name,path,name);
         if(gitAdd !== 'no') {

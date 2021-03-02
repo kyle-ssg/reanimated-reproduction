@@ -10,7 +10,7 @@ import { AppState } from "./state-type";
 
 let store;
 
-export default function (initialState: AppState = {}, forceNewStore?: boolean) {
+const generateStore = function (initialState: AppState = {}, forceNewStore?: boolean) {
   // It's very important to only return the cached store on the client, otherwise SSR will return the previous request state
   // @ts-ignore
   if (
@@ -58,3 +58,5 @@ export default function (initialState: AppState = {}, forceNewStore?: boolean) {
   return store;
 
 }
+
+export default generateStore

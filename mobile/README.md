@@ -13,6 +13,7 @@ Manual changes from a vanilla react-native setup
 - added pre-build/post-build step sh files for appcenter 
 - added react-native-reanimated and turbo module support, see babel.config 
 - using hermes engine, mainly due to react-native-reanimated
+- added detox, adjusts build.gradle's, added network_security.xml
 
 ** iOS Changes **
 - added Swift Bridging Header

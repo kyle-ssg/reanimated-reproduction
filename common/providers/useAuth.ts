@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { AppActions, Callbacks } from '../app-actions';
-import { AppState } from "../state-type";
+import { AppState, RequestTypes } from "../state-type";
 import { useCallback } from 'react';
 
 type UseAuthType = {
-  register: (data:Record<string, any>, callbacks?:Callbacks)=>void,
-  login: (data:Record<string, any>, callbacks?:Callbacks)=>void,
+  register: (data:RequestTypes['register'], callbacks?:Callbacks)=>void,
+  login: (data:RequestTypes['login'], callbacks?:Callbacks)=>void,
   logout: (callbacks?:Callbacks)=>void,
   confirmEmail: (data:Record<string, any>, callbacks?:Callbacks)=>void,
   updateUser: (data:Record<string, any>, callbacks?:Callbacks)=>void,

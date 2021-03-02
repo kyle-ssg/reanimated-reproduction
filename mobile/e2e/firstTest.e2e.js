@@ -1,22 +1,52 @@
+
 import { by, device, expect, element, waitFor } from 'detox';
 
 const waitById = (id)=> waitFor(element(by.id(id))).toBeVisible().withTimeout(30000);
-describe('Example', () => {
+const waitByType = (theType)=> waitFor(element(by.type(theType))).toBeVisible().withTimeout(30000);
+const platformSelect = (obj)=> {
+  return device.getPlatform() === 'ios' ? obj.ios : obj.android
+}
+const isIOS = device.getPlatform() === 'ios';
+const pressById = async (id)=> {
+  await waitById(id);
+  await element(by.id(id)).tap();
+}
+const pressByType = async (theType)=> {
+  await waitByType(theType);
+  await element(by.type(theType)).tap();
+}
+
+const goBack = async ()=> {
+  return platformSelect({
+    android: await device.pressBack(),
+    ios: await pressByType('_UIButtonBarButton')
+  })
+}
+
+// describe('It Lives', () => {
+//   beforeAll(async () => {
+//     await device.terminateApp();
+//     await device.launchApp();
+//   });
+//   it('should have welcome screen', async () => {
+//     await waitById('welcome');
+//   });
+// });
+
+describe('It Navigates', () => {
   beforeAll(async () => {
+    await device.terminateApp();
     await device.launchApp();
   });
-
-  beforeEach(async () => {
-    await device.reloadReactNative();
+  it('should navigate to the test screen', async () => {
+    await pressById('goTest');
+    await waitById('testScreen');
   });
-
-  it('should have welcome screen', async () => {
+  it('should navigate back', async () => {
+    await platformSelect({
+      ios:()=>pressByType('_UIButtonBarButton'), //iOS class name
+      android: ()=>device.pressBack()
+    })()
     await waitById('welcome');
   });
-
-  // it('should show hello screen after tap', async () => {
-  // await element(by.id('hello_button')).tap();
-  // await expect(element(by.text('Hello!!!'))).toBeVisible();
-  // });
-
 });

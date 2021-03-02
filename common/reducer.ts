@@ -13,7 +13,7 @@ import {
   itemSaved,
   itemSaving,
 } from "./utils/reducer-helpers";
-import { AppState } from "./state-type";
+import { AppState, RequestTypes } from "./state-type";
 
 const defaultReducer = produce((state: AppState, action): AppState | void => {
   if (typeof window === "undefined") {
