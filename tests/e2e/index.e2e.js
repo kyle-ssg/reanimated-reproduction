@@ -2,27 +2,25 @@
 // All tests are run from this file, that way we can ensure ordering
 // of tests (without needing to resort to alphabetical filenaming)
 global.window = global;
-require('dotenv').config();
-const fork = require('child_process').fork;
 const path = require('path');
-
-const slackUpload = require('./slack-upload.test');
 
 const SLACK_TOKEN = process.env.SLACK_TOKEN;
 const slackUpload = SLACK_TOKEN && require('./slack-upload.test');
 const slackMessage = false && require('../server/slack-client'); // to enable e2e slack messages change to SLACK_TOKEN && require
 const fork = require('child_process').fork;
 
-process.env.PORT = 8081;
+process.env.PORT = 3000;
 const E2E_SLACK_CHANNEL = process.env.E2E_SLACK_CHANNEL;
 const E2E_SLACK_CHANNEL_NAME = process.env.E2E_SLACK_CHANNEL_NAME;
 const CI_COMMIT_MESSAGE = process.env.CI_COMMIT_MESSAGE && process.env.CI_COMMIT_MESSAGE.replace(/\n/g, '');
 const CI_COMMIT_REF_NAME = process.env.CI_COMMIT_REF_NAME;
 let server;
 
-const Project = require('../common/project');
+const Project = require('../../common/project');
+require("dotenv").config({path:Project.dotEnv})
+
 const fetch = require('node-fetch');
-global.testHelpers = require('./helpers');
+global.testHelpers = require('./helpers.e2e');
 
 const formatCommit = function () {
   if (CI_COMMIT_MESSAGE) {
@@ -47,38 +45,41 @@ const sendFailure = (browser, done, request, error) => {
   const lastError = error && error.value ? JSON.parse(error.value) : 'No last error';
   console.log('Last request:', lastRequest);
   console.log('Last error:', lastError);
-  browser.getLog('browser', (logEntries) => {
-    logEntries.forEach((log) => {
-      console.log(`[${log.level}] ${log.message}`);
-    });
-    browser
-      .source((result) => {
-        // Source will be stored in result.value
-        console.log(result && result.value);
-        if (SLACK_TOKEN && E2E_SLACK_CHANNEL && slackMessage) {
-          const uri = path.join(__dirname, 'screenshot.png');
-          browser.saveScreenshot(uri, () => {
-            slackUpload(uri, `E2E for Bullet Train Failed. ${formatCommit()}\n\`\`\`${JSON.stringify({
-              request: lastRequest,
-              error: lastError,
-            }, null, 2).replace(/\\/g, '')}\`\`\``, E2E_SLACK_CHANNEL, 'Screenshot')
-              .then(done);
-          });
-          return;
-        }
-        done();
-      });
-  });
+  // browser.getLog('browser', (logEntries) => {
+  //   logEntries.forEach((log) => {
+  //     console.log(`[${log.level}] ${log.message}`);
+  //   });
+  //   browser
+  //     .source((result) => {
+  //       // Source will be stored in result.value
+  //       console.log(result && result.value);
+  //       if (SLACK_TOKEN && E2E_SLACK_CHANNEL && slackMessage) {
+  //         const uri = path.join(__dirname, 'screenshot.png');
+  //         browser.saveScreenshot(uri, () => {
+  //           slackUpload(uri, `E2E for Bullet Train Failed. ${formatCommit()}\n\`\`\`${JSON.stringify({
+  //             request: lastRequest,
+  //             error: lastError,
+  //           }, null, 2).replace(/\\/g, '')}\`\`\``, E2E_SLACK_CHANNEL, 'Screenshot')
+  //             .then(done);
+  //         });
+  //         return;
+  //       }
+  //       done();
+  //     });
+  // });
 };
 
 let testsFailed;
 
 const exitTests = (browser, done) => {
   if (process.env.BRK) return;
-  browser.end();
-  done();
-  server.kill('SIGINT');
-  process.exit(testsFailed ? 1 : 0);
+  browser.end(() => {
+    done();
+    process.exit(testsFailed ? 1 : 0);
+  });
+  if (server) {
+    server.kill('SIGINT');
+  }
 };
 
 // Tests unexpected terminated i.e. Ctrl+c
@@ -93,10 +94,15 @@ module.exports = Object.assign(
       if (slackMessage) {
         slackMessage(`Running tests.${formatCommit()}`, E2E_SLACK_CHANNEL_NAME);
       }
-      server = fork('./server');
-      server.on('message', () => {
+      if (process.NODE_ENV === "production") {
+        server = fork('./server');
+        server.on('message', () => {
+          clearDown(browser, process.env.PAUSE ? null : done);
+        });
+      } else {
         clearDown(browser, process.env.PAUSE ? null : done);
-      });
+      }
+
     },
     afterEach: (browser, done) => {
       if (browser.currentTest.results.errors || browser.currentTest.results.failed) {
