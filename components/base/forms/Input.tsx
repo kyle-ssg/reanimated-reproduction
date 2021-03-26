@@ -1,5 +1,8 @@
 import React, { useRef, useState } from "react";
 import cn from "classnames";
+import Button, {
+  ButtonText,
+} from "../../../components/base/forms/Button";
 
 interface Input {
   textarea?: boolean;
@@ -7,6 +10,10 @@ interface Input {
   placeholderChar?: string;
   inputClassName?: string;
   name?: string;
+  label?: string;
+  icon?: string;
+  type?: string;
+  textButton: string;
   className?: string;
   errorMessage?: string;
   value?: string;
@@ -16,7 +23,7 @@ interface Input {
   onKeyDown?: (e: React.KeyboardEvent) => void;
 }
 
-const Input: React.FC<Input> = ({ children,errorMessage,name,onKeyDown, textarea, isValid = true, placeholderChar = " ", inputClassName, className, value, onFocus, onBlur, ...rest }) => {
+const Input: React.FC<Input> = ({ children,type,errorMessage,name, label, icon, textButton, onKeyDown, textarea, isValid = true, placeholderChar = " ", inputClassName, className, value, onFocus, onBlur, ...rest }) => {
 
   const [shouldValidate, setShouldValidate] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -50,9 +57,9 @@ const Input: React.FC<Input> = ({ children,errorMessage,name,onKeyDown, textarea
   const classNameHandler = cn({ "input-container": true, focused: isFocused, invalid: shouldValidate && !isValid }, className);
 
   const combinedInputClassName = cn({ input: true, error: !!errorMessage }, inputClassName);
-
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   return (
-      <div className={classNameHandler}>
+      <div data-test={name} className={classNameHandler}>
           {textarea ? (
               <textarea
                 name={name}
@@ -66,8 +73,27 @@ const Input: React.FC<Input> = ({ children,errorMessage,name,onKeyDown, textarea
                 className={combinedInputClassName}
               />
     ) : (
+
+        <>
+        <div className="row">
+          <div className="col">
+            {label ? (
+            <label htmlFor={name}>{label}</label>
+            ) : (
+            null
+            )}
+          </div>
+          <div className="text-right mr-3">
+            {textButton ? (
+              <ButtonText className="btn__small">{textButton}</ButtonText>
+            ) : (
+              null
+            )}
+          </div>
+        </div>
         <input
           name={name}
+          type={type === "password" && showPassword?"":type}
           {...rest}
           // @ts-ignore
           ref={ref}
@@ -75,8 +101,24 @@ const Input: React.FC<Input> = ({ children,errorMessage,name,onKeyDown, textarea
           onKeyDown={_onKeyDown}
           onBlur={blur}
           value={value}
+          placeholder={placeholderChar}
           className={combinedInputClassName}
         />
+        {icon || type == "password" ? (
+          <i onClick={()=>{
+            if(type==="password") {
+              setShowPassword(!showPassword)
+            }
+          }} style={{ position: 'absolute', right: 10, bottom: 10, color: '#F7A400', cursor: 'pointer' }} className={cn({ icon: true,
+            "fas fa-eye":type==="password" && !showPassword,
+            "fas fa-eye-slash":type==="password" && showPassword,
+          }, icon )}
+          />
+        ) : (
+          null
+        )}
+
+        </>
     )}
           {children && children}
       </div>

@@ -26,6 +26,10 @@ $brand-secondary: #D8315B;
 $link-color: #05499b;
 
 
+// Border Radius
+$base-border-radius: 6px;
+
+
 //Input component variables
 $alert-danger-border: #c70000;
 $input-line-height: 25px;
@@ -62,10 +66,10 @@ $toast-color:white;
 
 //Scaffolding
 $breakpoints: (
-    mobile-small: 320px,
-    mobile: 375px,
-    handheld-device: 576px,
-    tablet: 768px,
-    tablet-large: 992px,
-    desktop: 1200px
+        mobile-small: 320px,
+        mobile: 375px,
+        handheld-device: 576px,
+        tablet: 768px,
+        tablet-large: 992px,
+        desktop: 1200px
 )

@@ -8,16 +8,26 @@ interface Button {
   onMouseUp?: () => void,
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
+  icon?: string;
 }
 
 //Default Button without any styles
-export const Button: React.FC<Button> = ({ className, children, onMouseUp, ...rest }) => (
+export const Button: React.FC<Button> = ({ icon, className, children, onMouseUp, ...rest }) => (
     <button
       type="button" {...rest}
       onMouseUp={onMouseUp}
       className={cn({ btn: true }, className)}
     >
         {children}
+
+      {icon ? (
+        <div className="btn__icon">
+          <i className={cn({ icon: true }, icon)} />
+        </div>
+      ) : (
+        null
+      )}
+
     </button>
 );
 
@@ -25,6 +35,8 @@ global.Button = Button;
 Button.displayName = "Button"
 export default Button;
 
+export const ButtonText: React.FC<Button> = ({ className, ...props }) => <Button {...props} className={cn(className, "btn btn-text")} />
+global.ButtonText = ButtonText;
 
 /** Default button added btn-primary * */
 export const ButtonPrimary: React.FC<Button> = ({ className, ...props }) => <Button {...props} className={cn(className, "btn btn-primary")} />
