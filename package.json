@@ -35,7 +35,7 @@
     "bootstrap": "4.4.1",
     "cacheable-response": "^1.9.1",
     "classnames": "2.2.6",
-    "cookie": "0.4.0",
+    "cookie": "0.4.1",
     "date-fns": "^2.0.1",
     "express": "^4.17.1",
     "formik": "^2.1.4",
