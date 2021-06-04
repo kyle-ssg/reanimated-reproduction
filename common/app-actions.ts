@@ -19,6 +19,14 @@ const BaseConstants = {
   CLEAR_USER: "CLEAR_USER",
   REFRESH: "REFRESH",
 
+  'GET_PROFILE': 'GET_PROFILE',
+  'GET_PROFILE_LOADED': 'GET_PROFILE_LOADED',
+  'GET_PROFILE_ERROR': 'GET_PROFILE_ERROR',
+
+  'UPDATE_PROFILE': 'UPDATE_PROFILE',
+  'UPDATE_PROFILE_LOADED': 'UPDATE_PROFILE_LOADED',
+  'UPDATE_PROFILE_ERROR': 'UPDATE_PROFILE_ERROR',
+
   CONFIRM_EMAIL: "CONFIRM_EMAIL",
   CONFIRM_EMAIL_ERROR: "CONFIRM_EMAIL_ERROR",
   CONFIRM_EMAIL_LOADED: "CONFIRM_EMAIL_LOADED",
@@ -31,7 +39,7 @@ const BaseConstants = {
 };
 export interface Callbacks {
   onSuccess?: (data: any) => void;
-  onError?: (data: any) => void;
+  onError?: (data: any, originalError?:any) => void;
 }
 
 const BaseActions = {
@@ -78,6 +86,22 @@ const BaseActions = {
   logout(callbacks: Callbacks = {}): AnyAction {
     return {
       type: Actions.LOGOUT,
+      ...callbacks,
+    };
+  },
+
+  getProfile(data:RequestTypes['getProfile'], callbacks:Callbacks={}):AnyAction {
+    return {
+      type: Actions.GET_PROFILE,
+      data,
+      ...callbacks,
+    };
+  },
+
+  updateProfile(data:RequestTypes['updateProfile'], callbacks:Callbacks={}):AnyAction {
+    return {
+      type: Actions.UPDATE_PROFILE,
+      data,
       ...callbacks,
     };
   },

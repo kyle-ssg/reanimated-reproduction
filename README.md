@@ -1,6 +1,5 @@
 <img src="http://g.recordit.co/TY8wciTsQH.gif"/>
 
-
 ## Prerequisites
 
 What things you need to install the software and how to install them
@@ -47,6 +46,25 @@ requires dependencies listed in tests/e2e/readme.md
 
 ```
 npm run test:e2e
+```
+
+### Run a specific test suite
+
+Edit a test suite to include a **tag**, e.g.:
+
+```js
+module.exports = {
+  tags: ['wip'], // <-- this
+  '<test name>': function (browser) {
+    // ...
+  },
+};
+```
+
+Then:
+
+```
+npm run test:e2e -- --tag wip
 ```
 
 ## Generating pact tests files
@@ -108,3 +126,9 @@ If you have any questions about our projects you can email <a href="mailto:proje
     "react-autocomplete": "^1.8.1", for a suitable autocomplete
     "react-autolinker": "^1.0.7", converting @ # etc to html
     "react-json-tree": "^0.11.2", debugging json in UI
+
+## E2E
+- To run e2e locally run ``npm run test:e2e``
+- Make sure you have an env file at the root of the repository that has login credentials, or set them via env variables.
+- If there is a CI image that has java/chrome installed you can run ``npm run test:e2e:prod``
+

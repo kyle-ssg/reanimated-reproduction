@@ -13,6 +13,9 @@
       ],
       "common/": [
         "./common/*"
+      ],
+      "project/": [
+        "./project/*"
       ]
     },
     "allowJs": true,

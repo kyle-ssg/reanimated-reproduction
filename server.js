@@ -7,6 +7,7 @@ const next = require("next");
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
+console.log("Running NEXTJS Dev:", dev)
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -70,6 +71,10 @@ Promise.all([app.prepare()]).then(() => {
   }
 
   server.get("*", (req, res) => handle(req, res));
+  server.post("*", (req, res) => handle(req, res));
+  server.delete("*", (req, res) => handle(req, res));
+  server.patch("*", (req, res) => handle(req, res));
+  server.put("*", (req, res) => handle(req, res));
 
   server.listen(port, (err) => {
     if (err) throw err;

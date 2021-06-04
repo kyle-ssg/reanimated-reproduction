@@ -1,6 +1,6 @@
 const parseErrorFromAPI = (error) => {
   // Write code for handling errors from API here.
-  return _.get(error, "message") || Strings.defaultErrorMessage;
+  return error?.message || error?.error || Strings.defaultErrorMessage;
 };
 
 const errorHandler = (e) => {
@@ -34,7 +34,7 @@ const errorHandler = (e) => {
     }
     return defaultErrorMessage;
   } catch (err) {
-    return defaultErrorMessage;
+    return e._bodyText || defaultErrorMessage;
   }
 };
 

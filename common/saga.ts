@@ -1,7 +1,7 @@
 import { put, all, takeLatest, takeEvery, select } from "redux-saga/effects";
 import _data from "./utils/_data";
 import { Actions, Callbacks } from './app-actions';
-import Project from "./project";
+import "./project";
 
 type IAction = Callbacks & AnyAction &{
   data?: any
@@ -51,36 +51,44 @@ export function* startup(action : IAction) {
 
 export function* onToken(action, result) {
   //  If you need to refresh a user profile, do it here
-  yield handleResponse(action, "LOGIN", result, false);
-}
-
-export function* login(action) {
-  try {
-    // const res = yield _data.post(`${Project.api}auth/login/`, action.data);
-    const res = { token:"token" }
-    API.trackEvent(Constants.events.LOGIN);
-    API.identify(action.data.email);
-    // _data.setToken(res.token);
-    API.setStoredToken(res.token);
-    yield onToken(action, res);
-  } catch (e) {
-    yield put(API.ajaxHandler(Actions.LOGIN_ERROR, e));
-    action.onError && action.onError();
+  if(result?.id) {
+    yield handleResponse(action, "LOGIN", result, false);
   }
 }
 
-export function* register(action) {
-  yield postAction(action, `${Project.api}user/register`, "REGISTER");
+export function* login(action) {
+  // try {
+  //   const data: RequestTypes["login"] = action.data;
+  //   const token = yield API.auth.Cognito.login(data.username, data.password);
+  //   _data.setToken(token);
+  //   yield getAction({
+  //     ...action,
+  //     data:{}
+  //   }, `${Project.api}users/me`, 'LOGIN');
+  // } catch (e) {
+  //   yield errorHandler(action, "LOGIN", false, e);
+  // }
 }
 
+export function* register(action) {
+  try {
+    // const data:RequestTypes['register'] = action.data;
+    // yield API.auth.Cognito.signUp(data.username, data.password);
+    // yield action.onSuccess();
+    // yield put({ type: Actions.REGISTER_LOADED });
+  } catch (e) {
+    // yield errorHandler(action, "REGISTER", false, e);
+  }
+}
 export function* logout(action) {
-  yield API.setStoredToken(null);
-  yield API.storage.removeItem("user");
-  yield API.setStoredRefreshToken(null);
-  _data.setToken(null);
-  _data.setRefreshToken(null);
-  API.logout();
+  // yield API.setStoredToken(null);
+  // yield API.storage.removeItem("user");
+  // yield API.setStoredRefreshToken(null);
+  // _data.setToken(null);
+  // _data.setRefreshToken(null);
+  // // API.auth.Cognito.logout();
   yield put({ type: Actions.CLEAR_USER });
+  API.logout();
   action.onSuccess && action.onSuccess();
 }
 

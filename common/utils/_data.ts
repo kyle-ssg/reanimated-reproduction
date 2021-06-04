@@ -1,7 +1,4 @@
-// import jwt from 'jwt-decode';
-// import Constants from './constants';
-// import _store  from '../store';
-// import AppActions from '../app-actions';
+import Constants from './constants';
 
 const getQueryString = (params: any): string => {
   const esc = encodeURIComponent;
@@ -23,11 +20,14 @@ interface RequestOptions {
   headers: any;
   body?: string;
 }
+const generateE2EURL = (url) => {
+  return  url.includes("/media/upload")||url.includes("siteassist-media")? url:`http://localhost:5000?url=${encodeURIComponent(url)}&namespace=${Constants.E2E_NAMESPACE||"default"}&baseUrl=${encodeURIComponent(Project.api)}`
+}
 const _data = {
   token: "",
   refreshToken: "",
   type: "",
-
+  E2E: Constants.E2E,
   status(response: any): Promise<any> {
     // handle ajax requests
     // console.debug(response);
@@ -43,7 +43,7 @@ const _data = {
       .text() // cloned so response body can be used downstream
       .then((err: string) => {
         // @ts-ignore
-        if (global.E2E && document.getElementById("e2e-error")) {
+        if (typeof E2E !== "undefined" && E2E && document.getElementById("e2e-error")) {
           const error = {
             url: response.url,
             status: response.status,
@@ -80,29 +80,36 @@ const _data = {
     method: RequestMethod,
     url: string,
     data: any,
-    headers: any = {}
+    headers: any = {},
+    proxied?:boolean
   ): Promise<any> {
     const prom = Promise.resolve();
 
     const skipAuthHeader = Object.keys(headers).length >0;
     return prom.then(async () => {
       const options: RequestOptions = {
-        timeout: 5000,
+        timeout: 60000,
         method,
         headers: {
           ...headers,
         },
       };
+      if (Constants.E2E) {
+        options.headers['E2E-Test'] = "1"
+      }
       let qs = "";
 
       if (method !== RequestMethod.get && !options.headers["content-type"])
         options.headers["content-type"] = "application/json";
 
-      if (_data.token) {
+      const session = await API.auth.Cognito.getSession()
+      if (session && session.accessToken) {
+        _data.token = session.accessToken.jwtToken;
+      }
+      if (_data.token && !skipAuthHeader) {
         // add auth tokens to headers of all requests
         options.headers.AUTHORIZATION = `Bearer ${_data.token}`;
       }
-
       if (data) {
         if (method === RequestMethod.get) {
           qs = getQueryString(data);
@@ -119,7 +126,7 @@ const _data = {
         options.body = "{}";
       }
 
-      if (global.E2E && document.getElementById("e2e-request")) {
+      if (Constants.E2E && typeof document !== 'undefined' && document.getElementById("e2e-request")) {
         const payload = {
           url,
           options,
@@ -131,7 +138,8 @@ const _data = {
 
       API.log("API", "REQUEST", method, url, data, headers);
 
-      const req = fetch(url, options);
+
+      const req = fetch(Constants.E2E && !proxied ?generateE2EURL(url): url, options);
       return req
         .then(_data.status)
         .then((response) => {

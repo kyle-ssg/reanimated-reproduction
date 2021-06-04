@@ -22,5 +22,11 @@ const HomePage = () => {
 HomePage.displayName = "HomePage";
 // Do server rendered actions such as fetching data here
 // HomePage.getInitialProps = async({ Component, ctx }) => {};
-
+HomePage.getLayout = ({ page, router })=> {
+  return (
+    <>
+      {page}
+    </>
+  )
+}
 export default HomePage;

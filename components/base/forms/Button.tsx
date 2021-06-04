@@ -51,6 +51,9 @@ export const ButtonSecondary: React.FC<Button> = ({ className ,...props }) => <B
 global.ButtonSecondary = ButtonSecondary;
 ButtonSecondary.displayName = "ButtonSecondary";
 
+export const ButtonDanger: React.FC<Button> = ({ className, ...props }) => <Button {...props} className={cn(className, "btn btn-danger")}/>
+global.ButtonDanger = ButtonDanger;
+ButtonDanger.displayName = "ButtonDanger";
 
 /** Default button added btn-outline-primary * */
 export const ButtonTertiary: React.FC<Button> = ({ className, ...props }) => <Button {...props} className={cn(className, "btn btn-outline-primary")}/>

@@ -30,6 +30,7 @@ module.exports = {
         alias: {
           components: "./components/",
           common: "./common/",
+          project: "./project/",
         },
       },
     ],

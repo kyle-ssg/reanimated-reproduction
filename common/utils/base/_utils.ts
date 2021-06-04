@@ -34,6 +34,22 @@ const Utils = {
     return date;
   },
 
+  arrayMove(arr, old_index, new_index) {
+    if (new_index >= arr.length) {
+      let k = new_index - arr.length + 1;
+      while (k--) {
+        arr.push(undefined);
+      }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr; // for testing
+  },
+
+  arrayRemoveIndex(arr, index) {
+    arr.splice(index, 1);
+    return arr; // for testing
+  },
+
   mapEnum(enumerable: any, fn: (data:any)=>void): any[] {
     const enumMembers: any[] = Object.keys(enumerable).map(key => enumerable[key]);
     const enumValues: number[] = enumMembers.filter(v => typeof v === "number");
@@ -127,6 +143,7 @@ const Utils = {
   },
 
   preventDefault /* istanbul ignore next */(e?: Event): void {
+    e?.stopPropagation();
     if (e && e.preventDefault) {
       e.preventDefault();
     }

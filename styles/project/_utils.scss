@@ -1,3 +1,40 @@
+.primary {
+    color: $brand-primary !important;
+}
+.pointer-none {
+    pointer-events: none !important;
+}
+.border-radius {
+    &__base {
+        border-radius: $base-border-radius !important;
+    }
+}
+
+.width {
+    &__100 {
+        width: 100%;
+    }
+}
+
+.opacity {
+    &__600 {
+        opacity: 0.6;
+    }
+}
+
+.text-left{
+    text-align: left;
+}
+
+
+.float-right{
+    float:right;
+}
+
+.float-left{
+    float:left;
+}
+
 .clearfix:after {
     visibility: hidden;
     display: block;
@@ -10,32 +47,3 @@
 /* start commented backslash hack \*/
 * html .clearfix { height: 1%; }
 .clearfix { display: block; }
-/* close commented backslash hack */
-
-.float-right{
-    float:right;
-}
-
-.float-left{
-    float:left;
-}
-
-.margin-top{
-    margin-top:20px;
-}
-
-.margin-bottom{
-    margin-bottom:20px;
-}
-
-.no-mb{
-    margin-bottom:0;
-}
-
-.text-left{
-    text-align: left;
-}
-
-.link-style{
-    text-decoration: underline;
-}
