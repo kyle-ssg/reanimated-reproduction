@@ -10,3 +10,5 @@ export enum RouteUrls {
 
   // END OF SCREENS
 }
+
+global.RouteUrls = RouteUrls;

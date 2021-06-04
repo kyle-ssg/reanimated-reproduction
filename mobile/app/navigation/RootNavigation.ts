@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CommonActions } from '@react-navigation/native';
-
-export const navigationRef = React.createRef();
+import { NavigationContainerRef } from '@react-navigation/native';
+export const navigationRef = React.createRef<NavigationContainerRef>();
 
 type MenuType = {
   setShowMenu: (show:boolean)=>void,

@@ -33,15 +33,15 @@ const insets = {
 export const projectStyles = {
   insets,
   bottomNavPadding: 80 + (insets.bottom || 0),
-
-  //= = Typography
   defaultStatusBarColour: "dark-content",
+  //= = Typography
   fontSizeBase: em(1), //16px
   fontSizeSmall: em(0.8), //14px
   fontSizeH1: em(2), // 32px
-  fontSizeH2: em(1.5), // 24px
+  fontSizeH2: em(1.45), // 24px
   fontSizeH3: em(1.25), // 20px
   fontSizeH4: em(1), // 16px
+  fontSizeH5: em(0.8),
 
   normalFontFamily: Platform.select({ ios: "System", android: "System" }),
   italicFontFamily: Platform.select({ ios: "System", android: "System" }),
@@ -49,7 +49,11 @@ export const projectStyles = {
   buttonFontFamily: Platform.select({ ios: "System", android: "System" }),
 
   // Buttons
-  buttonHeight: 44,
+  buttonHeight: 48,
+
+  // Border Radius
+  baseBorderRadius: 6,
+  BorderRadiusXL: 18,
 
   // Grid
   marginBaseVertical: 15,

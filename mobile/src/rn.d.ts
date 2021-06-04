@@ -1,10 +1,15 @@
-/// <reference types="./ion.d.ts" />
 /// <reference types="lodash" />
 
 import ReactNative, { StyleSheet as _StyleSheet } from 'react-native';
 import { BaseProps as DateTimePickerProps } from '@react-native-community/datetimepicker';
 import { KeyboardAwareScrollViewProps } from 'react-native-keyboard-aware-scroll-view';
-import Button, { ButtonPrimary, ButtonLink, ButtonSecondary, ButtonTertiary } from '../app/components/base/forms/Button';
+import Button, {
+  ButtonPrimary,
+  ButtonLink,
+  ButtonSecondary,
+  ButtonTertiary,
+  ButtonType
+} from "../app/components/base/forms/Button";
 import Constants from 'common/utils/constants';
 import API from '../app/project/api/api'
 import { AppActions } from 'common/app-actions';
@@ -12,9 +17,12 @@ import { styleTypes } from '../app/style/_style_screen';
 import { routes, withModalOptions, withPushModalOptions, withFullScreenPushModalOptions } from '../app/routes';
 import { projectPalette as palette, projectStyles as styleVariables } from '../app/style/style_variables';
 
-import { en as Strings } from 'common/strings';
+import Strings from 'common/strings';
 
 import Fade from 'components/base/animation/Fade';
+import ProjectType from "common/project-type";
+import { RouteUrls } from "../app/route-urls";import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro';
+
 declare global {
   const ReactNative: typeof ReactNative;
   const Animated: typeof ReactNative.Animated;
@@ -32,35 +40,51 @@ declare global {
   let Column: React.ComponentType<{style?:ReactNative.ViewStyle | ReactNative.ViewStyle[]}>;
   let TouchableOpacity: React.ComponentType<ReactNative.TouchableOpacityProps>;
   let Text: React.ComponentType<ReactNative.TextProps>;
-  let TextInput: React.ComponentType<ReactNative.TextInputProps & {invalid?: boolean, title?:React.ReactNode, disabled?:boolean}>;
+  let TextInput: React.ComponentType<ReactNative.TextInputProps & {icon?:string; isLight?:boolean;isValid?:boolean; invalid?: boolean, title?:React.ReactNode, disabled?:boolean}>;
   let H1: React.ComponentType<ReactNative.TextProps>;
   let H2: React.ComponentType<ReactNative.TextProps>;
   let H3: React.ComponentType<ReactNative.TextProps>;
   let H4: React.ComponentType<ReactNative.TextProps>;
+  // @ts-ignore
   let Fade = Fade;
   let ScrollView: React.ComponentType<ReactNative.ScrollViewProps>;
   let KeyboardAvoidingView: React.ComponentType<ReactNative.KeyboardAvoidingView>;
   let SafeAreaView: React.ComponentType<ReactNative.ViewProps>;
   let Platform: ReactNative.PlatformIOSStatic | ReactNative.PlatformAndroidStatic;
   let Dimensions: ReactNative.Dimensions;
+  // @ts-ignore
   let StyleSheet: _StyleSheet;
+  // @ts-ignore
+  let RouteUrls = RouteUrls;
+  // @ts-ignore
   let Styles = styleTypes;
+  let Project: ProjectType;
+  // @ts-ignore
   let styleVariables = styleVariables;
-  let Button = Button;
-  let API = API;
+  let Button: React.ComponentType<ButtonType>;
+  // @ts-ignore
+  let API: typeof API;
+  // @ts-ignore
   let ButtonPrimary = ButtonPrimary;
+  // @ts-ignore
+  let FA5Pro = FA5Pro;
+  // @ts-ignore
   let ButtonLink = ButtonLink;
   let Switch: React.ComponentType<ReactNative.SwitchProps>;
+  // @ts-ignore
   let ButtonSecondary = ButtonSecondary;
+  // @ts-ignore
   let ButtonTertiary = ButtonTertiary;
+  // @ts-ignore
   let routes = routes;
-  let withModalOptions = withModalOptions;
-  let withPushModalOptions = withPushModalOptions;
-  let withFullScreenPushModalOptions = withFullScreenPushModalOptions;
+  // @ts-ignore
   let Constants = Constants;
+  // @ts-ignore
   let palette = palette;
+  // @ts-ignore
   let AppActions = AppActions;
-  let Strings = Strings;
+  // @ts-ignore
+  let Strings = Strings.en;
   let colour;
   let DeviceWidth:number;
   let DeviceHeight:number;
@@ -73,7 +97,7 @@ declare global {
   let ImageBackground: React.ComponentType<ReactNative.ImageBackgroundProps>;
   let Utils;
   let Loader: React.ComponentType;
-  let ErrorMessage: React.ComponentType<{style?: ReactNative.ViewStyle|ReactNative.ViewStyle[]}>;
+  let ErrorMessage: React.ComponentType<{ testID?:string, style?: ReactNative.ViewStyle|ReactNative.ViewStyle[]}>;
   let DateTimePicker: React.ComponentType<DateTimePickerProps>;
   let memoizeOne;
   let KeyboardAwareScrollView: React.ComponentType<KeyboardAwareScrollViewProps>;

@@ -19,7 +19,6 @@ import { CommonActions } from '@react-navigation/native';
 export interface IRouteParams {
   [extraProps: string]: any; // Means that extra props are fine
   statusBar: ReactNative.StatusBarProps;
-  ignoreTheme: boolean;
   screenOptions: Partial<NativeStackNavigationOptions>;
 }
 export type Screen = {
@@ -49,8 +48,7 @@ export type ScreenProps = {
 const withScreen = (Component: React.ComponentType, isChild = false) => {
   return function withScreen(props: ScreenProps): React.ReactNode {
     // @ts-ignore
-    const statusColour = useRef(
-      route?.params?.statusBar?.barStyle ||
+    const statusColour = useRef(route?.params?.statusBar?.barStyle ||
       styleVariables.defaultStatusBarColour
     );
     const navigation = useNavigation();
@@ -59,13 +57,10 @@ const withScreen = (Component: React.ComponentType, isChild = false) => {
     const theme = useTheme();
     useEffect(() => {
       // @ts-ignore
-      if (
-        (route?.params?.statusBar?.barStyle ||
+      if ((route?.params?.statusBar?.barStyle ||
           styleVariables.defaultStatusBarColour) !== statusColour.current
-      ) {
-        // @ts-ignore
-        statusColour.current =
-          route?.params?.statusBar?.barStyle ||
+      ) {// @ts-ignore
+        statusColour.current = route?.params?.statusBar?.barStyle ||
           styleVariables.defaultStatusBarColour;
         ReactNative.StatusBar.setBarStyle(statusColour.current, true);
       }
@@ -86,7 +81,6 @@ const withScreen = (Component: React.ComponentType, isChild = false) => {
     }
 
     const setNavOptions = navigation.setOptions;
-    const ignoreTheme = route.params?.ignoreTheme;
 
     const resetTo = useCallback(
       (name, params) => {
@@ -109,14 +103,11 @@ const withScreen = (Component: React.ComponentType, isChild = false) => {
     }, []);
 
     useEffect(() => {
-      // @ts-ignore
       const options: Partial<NativeStackNavigationOptions> = {
+        // @ts-ignore
         ...(route.params?.screenOptions || {}),
       };
 
-      if (!ignoreTheme && theme) {
-        // set theme options here e.g. options.headerTintColor = theme.tintColor
-      }
 
       if (Platform.OS === "android") {
         setTimeout(() => {
@@ -128,7 +119,7 @@ const withScreen = (Component: React.ComponentType, isChild = false) => {
 
       // @ts-ignore
       setNavOptions(options);
-    }, [setNavOptions, ignoreTheme, setStatusBar, route, theme]);
+    }, [setNavOptions, setStatusBar, route, theme]);
 
     const push = useCallback(
       (name, params) => {

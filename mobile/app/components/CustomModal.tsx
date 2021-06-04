@@ -60,6 +60,8 @@ const CustomModal: FunctionComponent<ModalType> = ({
   fadeContent = true,
   onDismissPress,
   preventDismiss,
+  outsideChildren,
+  backdropStyle,
   style,
   visible,
   controlled,
@@ -94,7 +96,7 @@ const CustomModal: FunctionComponent<ModalType> = ({
       visible={isVisible}
       transparent={true}
     >
-      <Animated.View style={[styles.backdrop, opacityStyle2]} />
+      <Animated.View style={[styles.backdrop,  opacityStyle2, backdropStyle,]} />
       <ModalInner
         onDismissPress={preventDismiss ? null : onDismissPress}
         opacityStyle={opacityStyle}
@@ -103,6 +105,9 @@ const CustomModal: FunctionComponent<ModalType> = ({
       >
         {children}
       </ModalInner>
+
+      {outsideChildren}
+
     </Modal>
   );
 };
@@ -114,6 +119,6 @@ export default CustomModal;
 const styles = StyleSheet.create({
   backdrop: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0,0,0,.55)',
+    backgroundColor: palette.oxfordBlue700,
   },
 });

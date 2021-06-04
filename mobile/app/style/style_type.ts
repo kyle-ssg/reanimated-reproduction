@@ -12,8 +12,7 @@ export default asStyle({
 
   h2: {
     fontSize: styleVariables.fontSizeH2,
-    lineHeight: styleVariables.fontSizeH2,
-    fontFamily: styleVariables.boldFontFamily,
+    // lineHeight: styleVariables.fontSizeH2,
   },
 
   h3: {
@@ -28,28 +27,42 @@ export default asStyle({
     fontFamily: styleVariables.boldFontFamily,
   },
 
+  textMedium: {
+    fontSize: styleVariables.fontSizeH4,
+  },
+
+  textSmall: {
+    fontSize: 12,
+  },
+
+  textBold: {
+    fontFamily: styleVariables.boldFontFamily,
+  },
+
   text: {
     backgroundColor: "transparent",
     color: palette.text,
     fontFamily: styleVariables.normalFontFamily,
     fontSize: styleVariables.fontSizeBase,
-    lineHeight: styleVariables.lineHeightBase,
-    fontWeight: styleVariables.normalFontWeight,
   },
 
   textCenter: {
-    textAlign: "center",
+    textAlign: "center"
   },
 
   textLeft: {
-    textAlign: 'left',
+    textAlign: "left"
   },
 
   textRight: {
-    textAlign: 'right',
+    textAlign: "right"
   },
 
   textBottom: {
-    textAlignVertical: "bottom",
+    textAlignVertical: "bottom"
+  },
+
+  textWhite: {
+    color: "white"
   },
 });

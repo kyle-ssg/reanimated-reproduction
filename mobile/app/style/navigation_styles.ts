@@ -5,7 +5,7 @@ const defaultNavigationOptions: NativeStackNavigationOptions = {
   // backButtonImage: undefined,
   // headerBackTitle: "",
   // headerBackTitleVisible: true, // iOS only
-  // headerShown: true,
+  headerShown: false,
   // backButtonInCustomView: false,
   // headerTranslucent: false,
   // headerLargeTitle: false,

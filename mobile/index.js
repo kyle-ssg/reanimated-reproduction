@@ -3,6 +3,7 @@
  */
 
 import { AppRegistry } from "react-native";
+import "./app/route-urls"
 import "react-native-globals";
 import "./app/style/_style_screen";
 import './app/project/globals';

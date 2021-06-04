@@ -46,6 +46,18 @@ export default asStyle({
     alignItems: "flex-start",
   },
 
+  alignSelfStart: {
+    alignSelf: "flex-start",
+  },
+
+  alignSelfCenter: {
+    alignSelf: "center",
+  },
+
+  alignSelfEnd: {
+    alignSelf: "flex-end",
+  },
+
   alignEnd: {
     alignItems: "flex-end",
   },

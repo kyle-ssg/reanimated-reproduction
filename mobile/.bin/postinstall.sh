@@ -1,11 +1,8 @@
 #!/bin/bash
-
-if [[ -z "$APPCENTER_ACCESS_TOKEN" ]]
+if [ -z "$APPCENTER_BUILD_ID" ]
 then
-    cd ./ios && pod install && cd ..
+    echo "APPCENTER_BUILD_ID not defined"
+    cd ./ios && arch -x86_64 pod install --repo-update && cd ..
 else
-    if [[ -n "$APPCENTER_XCODE_PROJECT" ]]
-    then
-        cd ./ios && pod install && cd ..
-    fi
+    echo "APPCENTER_BUILD_ID is defined"
 fi

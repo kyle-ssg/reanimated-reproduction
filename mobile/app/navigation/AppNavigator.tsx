@@ -9,7 +9,9 @@ import defaultNavigationOptions from "../style/navigation_styles";
 import { RouteUrls } from "../route-urls";
 import withAuth, { IWithAuth } from "common/providers/withAuth"; // todo: migrate this to functional component and use useAuth
 import Loader from "./../components/base/Loader";
+// import Cognito from "common/cognito";
 
+// API.auth.Cognito.init(Project.cognitoMobile)
 const store = _store();
 
 enableScreens();
@@ -39,8 +41,8 @@ class AppNavigator extends Component<ComponentType> {
     let user, token;
 
     try {
-      user = await API.auth.Cognito.getSession();
-      token = user.accessToken?.jwtToken;
+      // user = await API.auth.Cognito.getSession();
+      // token = user.accessToken?.jwtToken;
     } catch (e) {}
 
     if (token) {
@@ -96,6 +98,7 @@ class AppNavigator extends Component<ComponentType> {
         />
         <Stack.Screen
           name={RouteUrls.onboarding}
+          initialParams={routes[RouteUrls.onboarding].params}
           options={routes[RouteUrls.onboarding].options}
           component={routes[RouteUrls.onboarding].component}
         />
@@ -103,6 +106,11 @@ class AppNavigator extends Component<ComponentType> {
           name={RouteUrls.login}
           options={routes[RouteUrls.login].options}
           component={routes[RouteUrls.login].component}
+        />
+        <Stack.Screen
+          name={RouteUrls.home}
+          options={routes[RouteUrls.home].options}
+          component={routes[RouteUrls.home].component}
         />
         <Stack.Screen
           name={RouteUrls.storybook}
