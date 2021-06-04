@@ -6,24 +6,26 @@ export default asStyle({
   // --------------------------------------------------
   h1: {
     fontSize: styleVariables.fontSizeH1,
-    lineHeight: styleVariables.fontSizeH1,
     fontFamily: styleVariables.boldFontFamily,
   },
 
   h2: {
     fontSize: styleVariables.fontSizeH2,
-    // lineHeight: styleVariables.fontSizeH2,
+    fontFamily: styleVariables.boldFontFamily,
   },
 
   h3: {
     fontSize: styleVariables.fontSizeH3,
-    lineHeight: styleVariables.lineHeightH3,
     fontFamily: styleVariables.boldFontFamily,
   },
 
   h4: {
     fontSize: styleVariables.fontSizeH4,
-    lineHeight: styleVariables.lineHeightH4,
+    fontFamily: styleVariables.boldFontFamily,
+  },
+
+  h5: {
+    fontSize: styleVariables.fontSizeH5,
     fontFamily: styleVariables.boldFontFamily,
   },
 
