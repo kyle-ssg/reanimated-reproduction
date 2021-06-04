@@ -33,10 +33,7 @@ const Tabs: React.FC<Tabs> = ({ className = "", value = 0, children, tabLabels, 
                     );
                     })}
         </div>
-        <div
-          className="tab-line"
-          style={{ width: `${100 / children.length}%`,left: `${(100 / children.length) * value}%` }}
-        />
+
         <div className="tabs-content">
             {children.map((child, i) => {
                 const isSelected = value === i;

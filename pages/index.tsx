@@ -12,7 +12,7 @@ const HomePage = () => {
 
   return (
     <div className="container">
-      <Button>Click me!</Button>
+      <ButtonPrimary>Click me!</ButtonPrimary>
       <Loader/>
       <p>Good morning</p>
     </div>

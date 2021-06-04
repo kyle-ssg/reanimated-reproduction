@@ -28,29 +28,29 @@ interface Input {
 }
 
 const Input: React.FC<Input> = ({
-                                  children,
-                                  className,
-                                  deleteLabel,
-                                  disabled,
-                                  errorMessage,
-                                  icon,
-                                  iconColour,
-                                  inputClassName,
-                                  isValid = true,
-                                  label,
-                                  name,
-                                  onBlur,
-                                  onFocus,
-                                  onIconClick,
-                                  onKeyDown,
-                                  placeholderChar = " ",
-                                  textButton,
-                                  textarea,
-                                  touched,
-                                  type,
-                                  value,
-                                  ...rest
-                                }) => {
+  children,
+  className,
+  deleteLabel,
+  disabled,
+  errorMessage,
+  icon,
+  iconColour,
+  inputClassName,
+  isValid = true,
+  label,
+  name,
+  onBlur,
+  onFocus,
+  onIconClick,
+  onKeyDown,
+  placeholderChar = " ",
+  textButton,
+  textarea,
+  touched,
+  type,
+  value,
+  ...rest
+}) => {
 
   const [shouldValidate, setShouldValidate] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
