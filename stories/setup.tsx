@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { withInfo } from "@storybook/addon-info/dist/index";
 import { storiesOf } from "@storybook/react";
 import { withKnobs } from "@storybook/addon-knobs";
-import "../styles/styles.scss";
+import "../styles/Global.scss";
 import "../project/polyfill";
 import _store from "../common/store";
 
