@@ -1,6 +1,7 @@
 .btn {
     border-radius: $base-border-radius;
     font-weight: 600;
+    color: $brand-primary;
     &__small {
         font-size: 13px;
     }
@@ -51,6 +52,7 @@
     align-items: center;
     background-color: $brand-primary;
     border-color: $brand-primary;
+    color: white;
     &:disabled, &:disabled:hover {
         border-color: $brand-primary;
         background-color: $brand-primary;
@@ -127,6 +129,7 @@
 .btn-secondary {
     background-color: $brand-secondary;
     border-color: $brand-secondary;
+    color: white;
     &:hover {
         background-color: darken($brand-secondary, 5);
     }
