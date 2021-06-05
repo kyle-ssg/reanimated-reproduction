@@ -102,10 +102,10 @@ const _data = {
       if (method !== RequestMethod.get && !options.headers["content-type"])
         options.headers["content-type"] = "application/json";
 
-      const session = await API.auth.Cognito.getSession()
-      if (session && session.accessToken) {
-        _data.token = session.accessToken.jwtToken;
-      }
+      // const session = await API.auth.Cognito.getSession()
+      // if (session && session.accessToken) {
+      //   _data.token = session.accessToken.jwtToken;
+      // }
       if (_data.token && !skipAuthHeader) {
         // add auth tokens to headers of all requests
         options.headers.AUTHORIZATION = `Bearer ${_data.token}`;
