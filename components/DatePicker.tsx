@@ -3,7 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import React, { useCallback } from "react";
 
 export type DatePickerProps = Omit<ReactDatePickerProps, "value" | "onChange" | "minDate"> & {
-  value: string;
+  value?: string;
   onChange?: (newDate:Date)=>void;
   minDate?: string;
 };

@@ -1,10 +1,7 @@
 import React, { useRef, useState } from "react";
 import cn from "classnames";
-import Button, {
+import {
   ButtonText,
-  ButtonTertiary,
-  ButtonPrimary,
-  ButtonSecondary
 } from "components/base/forms/Button";
 
 interface Input {
@@ -16,10 +13,14 @@ interface Input {
   label?: string;
   icon?: string;
   type?: string;
-  textButton: string;
+  textButton?: string;
   className?: string;
   errorMessage?: string;
+  iconColour?: string;
+  touched?: boolean;
   value?: string;
+  onIconClick?: () => void;
+  deleteLabel?: React.ReactNode;
   onChange?: (e: React.ChangeEvent) => void;
   onFocus?: (e: React.FocusEvent) => void;
   onBlur?: (e: React.FocusEvent) => void;
@@ -73,8 +74,6 @@ const Input: React.FC<Input> = ({
     onKeyDown && onKeyDown(e);
   };
 
-  const validate = () => setShouldValidate(true);
-
   const blur = (e: React.FocusEvent) => {
     setShouldValidate(true);
     setIsFocused(false);
@@ -115,17 +114,13 @@ const Input: React.FC<Input> = ({
         <>
           <div className="row">
             <div className="col">
-              {label ? (
+              {!!label && (
                 <label htmlFor={name}>{label}</label>
-              ) : (
-                null
               )}
             </div>
             <div className="text-right mr-3">
-              {textButton ? (
+              {!!textButton && (
                 <ButtonText className="btn__small">{textButton}</ButtonText>
-              ) : (
-                null
               )}
             </div>
           </div>
@@ -143,7 +138,7 @@ const Input: React.FC<Input> = ({
             placeholder={placeholderChar}
             className={combinedInputClassName}
           />
-          {icon || type == "password" ? (
+          {icon || type == "password" && (
             <i
               data-test={rest["data-test"] + "-icon"}
               onClick={() => {
@@ -160,8 +155,6 @@ const Input: React.FC<Input> = ({
                 "fas fa-eye-slash": type === "password" && showPassword
               }, icon)}
             />
-          ) : (
-            null
           )}
 
         </>

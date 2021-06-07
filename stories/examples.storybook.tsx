@@ -45,7 +45,7 @@ export const ButtonExamples = ({ text }) => (
     </>
 );
 
-export const FormExamples = ({ text }) => (
+export const FormExamples = ({ }) => (
   <>
     <div className="col mb-3">
       <h5>Input</h5>

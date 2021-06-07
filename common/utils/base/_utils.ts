@@ -1,6 +1,6 @@
 import omit from "lodash/omit";
 import filter from "lodash/filter";
-import { SyntheticEvent } from "react";
+import React, { SyntheticEvent } from "react";
 import moment from 'moment';
 const KEY_Y = 89;
 const KEY_Z = 90;
@@ -63,54 +63,54 @@ const Utils = {
         (e.ctrlKey || e.metaKey) && e.keyCode === (e.shiftKey ? KEY_Y : KEY_Z)
       );
     },
-    isEscape /* istanbul ignore next */(e: KeyboardEvent): boolean {
+    isEscape /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
       if (!e) return;
       const code = e.keyCode ? e.keyCode : e.which;
       return code === 27 && !e.shiftKey && !e.ctrlKey;
     },
-    isRedo /* istanbul ignore next */(e: KeyboardEvent): boolean {
+    isRedo /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
       if (!e) return;
       return (
         (e.ctrlKey || e.metaKey) && e.keyCode === (e.shiftKey ? KEY_Z : KEY_Y)
       );
     },
-    isBackspace /* istanbul ignore next */(e: KeyboardEvent): boolean {
+    isBackspace /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
       // returns bool
       if (!e) return;
       const code = e.keyCode ? e.keyCode : e.which;
       return code === 8 && !e.shiftKey && !e.ctrlKey;
     },
-    isUp /* istanbul ignore next */(e: KeyboardEvent): boolean {
+    isUp /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
       // returns bool
       if (!e) return;
       const code = e.keyCode ? e.keyCode : e.which;
       return code === 38 && !e.shiftKey && !e.ctrlKey;
     },
-    isDown /* istanbul ignore next */(e: KeyboardEvent): boolean {
+    isDown /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
       // returns bool
       if (!e) return;
       const code = e.keyCode ? e.keyCode : e.which;
       return code === 40 && !e.shiftKey && !e.ctrlKey;
     },
-    isLeft /* istanbul ignore next */(e: KeyboardEvent): boolean {
+    isLeft /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
       // returns bool
       if (!e) return;
       const code = e.keyCode ? e.keyCode : e.which;
       return code === 37 && !e.shiftKey && !e.ctrlKey;
     },
-    isRight /* istanbul ignore next */(e: KeyboardEvent): boolean {
+    isRight /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
       // returns bool
       if (!e) return;
       const code = e.keyCode ? e.keyCode : e.which;
       return code === 39 && !e.shiftKey && !e.ctrlKey;
     },
-    isTab /* istanbul ignore next */(e: KeyboardEvent): boolean {
+    isTab /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
       // returns bool
       if (!e) return;
       const code = e.keyCode ? e.keyCode : e.which;
       return code === 9 && !e.shiftKey && !e.ctrlKey;
     },
-    isEnter /* istanbul ignore next */(e: KeyboardEvent): boolean {
+    isEnter /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
       // returns bool
       if (!e) return;
       const code = e.keyCode ? e.keyCode : e.which;
@@ -224,7 +224,7 @@ const Utils = {
     const target = e.target as HTMLFormElement;
 
     if (target.getAttribute) {
-      return target.type === "checkbox" || target.type === "radio"
+      return target.getAttribute("type") === "checkbox" || target.getAttribute("type") === "radio"
         ? target.getAttribute("checked")
         : typeof target.value === "string"
           ? target.value

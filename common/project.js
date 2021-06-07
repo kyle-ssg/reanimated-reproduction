@@ -1,15 +1,4 @@
-
-const Project = global.Project = {
-    cognito: {
-        region: "",
-        userPoolId: "",
-        userPoolWebClientId: "",
-    },
-    cognitoMobile: {
-        region: "",
-        userPoolId: "",
-        userPoolWebClientId: "",
-    },
+var Project = global.Project = {
     debug: false,
     api: 'http://localhost:4000/',
     ga: '',
@@ -21,12 +10,12 @@ const Project = global.Project = {
         SERVER: true,
     },
     grecaptcher: "6Lc1mf4UAAAAAC6uZ0HaGJ3ufgwCXY4GFoNhMeBD",
-    formly:"boilerplate",
+    formly: "boilerplate",
     mobile: {
         // Enabling secured storage for mobile requires installation of https://www.npmjs.com/package/react-native-secured-storage. See README for further instructions on installation
         useSecuredStorage: false,
     },
 };
-module.exports = Project;
+export default Project;
 // if (typeof ENV_NAME !== 'undefined' && typeof ENV_TYPE !== 'undefined') {
 // }
