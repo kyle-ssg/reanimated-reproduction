@@ -34,14 +34,14 @@ export type ModalType = {
 };
 
 const BottomDrawer: FunctionComponent<ModalType> = ({
-  animatedValue: _animatedValue,
-  style,
-  onDismissPress,
-  visible,
-  preventDismiss,
-  height = Dimensions.get('window').height / 2,
-  children,
-}) => {
+                                                      animatedValue: _animatedValue,
+                                                      style,
+                                                      onDismissPress,
+                                                      visible,
+                                                      preventDismiss,
+                                                      height = Dimensions.get('window').height / 2,
+                                                      children,
+                                                    }) => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const snapPoints = [0, height];
   const translateY = useSharedValue<number>(
