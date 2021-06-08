@@ -23,7 +23,7 @@ const CustomNavbar: React.FC<Props> = ({ style, title, titleStyle }) => {
       )}
 
       <View style={styles.titleContainer}>
-        <Text style={[styles.title, titleStyle]}>{title}</Text>
+        <H4 style={[styles.title, titleStyle]}>{title}</H4>
       </View>
     </Row>
   );

@@ -12,7 +12,7 @@ const HomePage = () => {
 
   return (
     <div className="container">
-      <Button>Click me!</Button>
+      <ButtonPrimary>Click me!</ButtonPrimary>
       <Loader/>
       <p>Good morning</p>
     </div>
@@ -22,5 +22,11 @@ const HomePage = () => {
 HomePage.displayName = "HomePage";
 // Do server rendered actions such as fetching data here
 // HomePage.getInitialProps = async({ Component, ctx }) => {};
-
+HomePage.getLayout = ({ page, router })=> {
+  return (
+    <>
+      {page}
+    </>
+  )
+}
 export default HomePage;

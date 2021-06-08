@@ -6,12 +6,13 @@ import Button, {
   ButtonSecondary,
 } from "../components/base/forms/Button";
 import {
-  ButtonExamples,
+  ButtonExamples, FormExamples,
   MessagesExamples,
-  TextExamples,
+  TextExamples
 } from "./examples.storybook";
 import Panel from "../components/base/forms/Panel";
 import Tabs from "../components/base/forms/Tabs";
+import Input from "../components/base/forms/Input";
 import "ionicons/dist/css/ionicons.css";
 import {
   Modal,
@@ -24,7 +25,24 @@ import ModalAlert from "../components/ModalAlert";
 import Message, { ErrorMessage, SuccessMessage } from "../components/Messages";
 import Header from "../components/Header";
 import DatePicker from "../components/DatePicker";
+import Loader from "../components/Loader";
 import moment from "moment/min/moment.min";
+
+getStory("Forms")
+  .addDecorator(withPaddedContainer)
+  .add("all", () => <FormExamples />)
+  // .add("default", () => <Button>A Button</Button>)
+  // .add("primary", () => <ButtonPrimary>A Button</ButtonPrimary>)
+  // .add("secondary", () => <ButtonSecondary>A Button</ButtonSecondary>)
+  // .add("tertiary", () => <ButtonTertiary>A Button</ButtonTertiary>);
+
+getStory("Animation")
+  .addDecorator(withPaddedContainer)
+  .add("Loader", () => <Loader />)
+// .add("default", () => <Button>A Button</Button>)
+// .add("primary", () => <ButtonPrimary>A Button</ButtonPrimary>)
+// .add("secondary", () => <ButtonSecondary>A Button</ButtonSecondary>)
+// .add("tertiary", () => <ButtonTertiary>A Button</ButtonTertiary>);
 
 getStory("Buttons")
   .addDecorator(withPaddedContainer)

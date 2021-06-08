@@ -21,9 +21,10 @@
 //}
 
 // COLORS
-$brand-primary: #0d65df;
-$brand-secondary: #D8315B;
-$link-color: #05499b;
+$brand-primary: #1AC0C6;
+$brand-secondary: #2C2733;
+$link-color: #1AC0C6;
+$text: #333;
 
 
 // Border Radius
@@ -50,14 +51,14 @@ $panel-icon-border-color: #ddd;
 $panel-icon-background-color: #fff;
 $panel-alt-heading-bg: #36a39c;
 $panel-alt-heading-color: #fff;
-
+$large-border-radius:12px;
 //Tab component styles
 $tab-background: transparent;
 $tab-background-hover: transparent;
-$tab-background-active: transparent;
+$tab-background-active: #1AC0C6;
 $tab-active-background: transparent;
 $tab-inactive-color: lighten(black, 20);
-$tab-active-color: black;
+$tab-active-color: white;
 $tab-line-color: $brand-primary;
 
 //Toast component styles

@@ -1,6 +1,28 @@
 import fetch from "isomorphic-unfetch"; // we do this here instead of _data.js as it intereferes with react-native
 global.fetch = fetch;
+import './ie11'
 
+
+if (typeof window!=='undefined' && !HTMLCanvasElement.prototype.toBlob) {
+  Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {
+    value: function (callback, type, quality) {
+      let canvas = this;
+      setTimeout(function() {
+
+        let binStr = atob( canvas.toDataURL(type, quality).split(',')[1] ),
+          len = binStr.length,
+          arr = new Uint8Array(len);
+
+        for (let i = 0; i < len; i++ ) {
+          arr[i] = binStr.charCodeAt(i);
+        }
+
+        callback( new Blob( [arr], { type: type || 'image/png' } ) );
+
+      });
+    }
+  });
+}
 if (typeof projectOverrides !== "undefined") {
   global.Project = {
     ...global.Project,
@@ -28,9 +50,6 @@ global.Clipboard = Clipboard;
 global.AsyncStorage = AsyncStorage;
 global.Link = Link;
 
-if (typeof E2E === 'undefined') {
-  global.E2E = false;
-}
 
 // For debugging reasons for re-rendering components we use whyDidYouRender in dev mode
 if (

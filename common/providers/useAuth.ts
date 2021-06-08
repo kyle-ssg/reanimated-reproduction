@@ -17,9 +17,9 @@ type UseAuthType = {
 export function useAuth():UseAuthType {
   const { user, userLoading, userError } = useSelector((state:AppState)=>{
     return {
-      user: state.user,
-      userLoading: state.userLoading,
-      userError: state.userError,
+      user: state.profile,
+      userLoading: state.userLoading|| state.profileLoading,
+      userError: state.userError || state.profileError,
     }
   });
   const dispatch = useDispatch()

@@ -6,10 +6,12 @@ interface Props {
   space?: boolean;
   noWrap?: boolean;
   style?: ReactNative.ViewStyle;
+  testID?: string;
 }
 
-const Row: React.FC<Props> = ({ space, style, children }) => (
+const Row: React.FC<Props> = ({ testID,space, style, children }) => (
   <View
+    testID={testID}
     style={[styles.row, space && { justifyContent: "space-between" }, style]}
   >
     {children}

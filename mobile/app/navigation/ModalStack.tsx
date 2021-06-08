@@ -1,32 +1,33 @@
 import React, { FunctionComponent } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import defaultNavigationOptions from "../style/navigation_styles";
+import { routes } from "../routes";
 import { RouteUrls } from "../route-urls";
 import {
   createNativeStackNavigator,
   NativeStackNavigationOptions,
 } from "react-native-screens/native-stack";
 
-export default function (TheScreen: React.Component, url: RouteUrls, hideHeader, children) {
+export default function (TheScreen: any, url: RouteUrls, hideHeader, children) {
   const Stack = createNativeStackNavigator();
   const Navigator = Stack.Navigator;
 
   const StackScreen: FunctionComponent = () => {
     return (
-      <Navigator
-        independent
-        screenOptions={defaultNavigationOptions}
-        initialRouteName={"/"}
-      >
-        <>
+        <Navigator
+          independent
+          screenOptions={defaultNavigationOptions}
+          initialRouteName={Constants.simulate.FORCE_SUB_PAGE || "/"}
+        >
+          <>
           <Stack.Screen
             name={"/"}
             options={{ ...routes[url].options, headerShown: !hideHeader }}
             component={TheScreen}
           />
-          {children && children(Stack)}
-        </>
-      </Navigator>
+            {children && children(Stack)}
+          </>
+        </Navigator>
     );
   };
 

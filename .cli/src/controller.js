@@ -23,6 +23,24 @@ module.exports = {
             await writer.writeProvider(provider, prefix);
         }
     },
+    async writeAction(action,prefix) {
+        const actionStrings = templates.singleAction(action, prefix);
+        const appAction = templates.getCollection(action, prefix);
+        const stateTypes = templates.stateTypesSingle(action, prefix);
+        const requestStateTypes = templates.singleRequestTypes(action, prefix, null);
+        const reducer = templates.reducerSingle(action, prefix);
+        const provider = templates.providerSingle(action, prefix);
+
+        await writer.writeActions(actionStrings, appAction);
+        await writer.writeReducer(reducer, stateTypes, requestStateTypes);
+        await writer.writeProvider(provider, prefix);
+        // console.log(actionStrings)
+        // console.log(appAction)
+        // console.log(requestStateTypes)
+        // console.log(reducer)
+        // console.log(stateTypes)
+
+    },
     async writeComponent(name) {
         const componentString = templates.component(name);
         await writer.writeComponent(componentString, name);

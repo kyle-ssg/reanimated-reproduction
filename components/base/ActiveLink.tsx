@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 interface ActiveLink {
   href?: string,
   activeClassName?: string,
-  children?: React.ReactChildren, 
+  children?: React.ReactChildren,
 }
 
 const ActiveLink = ({ match, href="", as, activeClassName="", children }) => {
@@ -14,7 +14,7 @@ const ActiveLink = ({ match, href="", as, activeClassName="", children }) => {
   let className = child.props.className || "";
 
   if (
-    (!match && router.pathname === href && activeClassName) ||
+    (!match && router.asPath === href && activeClassName) ||
     (match && (router.asPath || router.pathname).match(match))
   ) {
     className = `${className} ${activeClassName}`.trim();

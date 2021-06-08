@@ -60,18 +60,38 @@ export default asStyle({
     borderColor: palette.primary,
     borderWidth: 1,
   },
+
+
+  buttonDanger: {
+    borderColor: palette.danger,
+    borderRadius: styleVariables.baseBorderRadius,
+    borderWidth: 1,
+  },
+
+  buttonDangerText: {
+    color: palette.danger,
+    fontSize: styleVariables.fontSizeH2
+  },
+
   buttonTertiaryPressed: {
     backgroundColor: '#eaeaea',
   },
 
   buttonText: {
-    fontFamily: styleVariables.buttonFontFamily,
+    fontFamily: styleVariables.normalFontFamily,
     backgroundColor: "transparent",
     color: "white",
   },
 
   buttonTextText: {
-    color: palette.primary
+    color: palette.primary,
+    fontSize: styleVariables.fontSizeH2
+  },
+
+  buttonSmallText: {
+    fontSize: styleVariables.fontSizeH4,
+    alignSelf: 'flex-start',
+    marginLeft: 20
   },
 
   buttonDisabled: {
@@ -95,6 +115,8 @@ export default asStyle({
   },
   buttonPrimaryText: {
     color: 'white',
+    fontSize: styleVariables.fontSizeH2
   },
+
 
 });

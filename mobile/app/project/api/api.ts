@@ -13,20 +13,24 @@ import push from "./push-notifications-api";
 import auth from "./auth";
 import * as RootNavigation from 'navigation/RootNavigation';
 import { RouteUrls } from "../../route-urls";
+import "common/project";
 
 const analytics = typeof _analytics === "undefined" ? undefined : _analytics();
+// import ImagePicker from 'react-native-image-crop-picker';
 
 global.API = {
   isMobile: () => true,
   reduxStorage:storage,
-  middlewares: __DEV__? [require('redux-flipper').default()] : null,
+  middlewares: __DEV__? [require('redux-middleware-flipper').default({})] : null,
 
   ajaxHandler(type, e) {
     return { type, error: errorHandler(e) };
   },
-  log(...args) {
-    // eslint-disable-next-line no-console
-    console.log(...args);
+  log(namespace: string, ...args: any[]) {
+    if (Project.logs[namespace]) {
+      // eslint-disable-next-line no-console
+      console.log.apply(this, [namespace, ...args]);
+    }
   },
   loggedIn: () => null,
   logout: () => {
@@ -127,7 +131,7 @@ global.API = {
     multiple,
     width,
     height,
-    compressImageQuality = 0.8,
+    compressImageQuality = 1,
     onStart
   ) =>
     new Promise((resolve) => {
@@ -142,12 +146,19 @@ global.API = {
         // todo : handle multiple
         if (i === 0 || i === 1) {
           const options = {
-            includeBase64:true,
+            includeBase64:false,
             cropping: !!(width || height),
             multiple,
             width,
             height,
+            // cropperActiveWidgetColor:  palette.primary,
+            // cropperStatusBarColor: palette.primary,
+            // cropperToolbarColor: palette.primary,
+            // cropperToolbarWidgetColor: palette.textMediumDark,
+            // cropperToolbarTitle: Strings.editPhoto,
+            // cropperCancelText: Strings.cancelEdit,
             compressImageQuality,
+            useFrontCamera:true,
           };
 
           // eslint-disable-next-line no-undef

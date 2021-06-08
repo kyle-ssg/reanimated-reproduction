@@ -13,6 +13,12 @@ const textInputPropTypes = {
     propTypes.node,
   ]).isRequired,
   style: propTypes.any,
+  textStyle: propTypes.any,
+  icon: propTypes.any,
+  multiline: propTypes.any,
+  textAlignVertical: propTypes.any,
+  isLight: propTypes.any,
+  iconColour: propTypes.any,
 };
 
 const TextInput = class extends Component {
@@ -22,6 +28,9 @@ const TextInput = class extends Component {
 
   constructor(props, context) {
     super(props, context);
+    this.state = {
+      secureTextEntry: props.secureTextEntry
+    }
   }
 
   clear = () => {
@@ -42,6 +51,8 @@ const TextInput = class extends Component {
     }
   };
 
+
+
   onBlur = (e) => {
     if (this.props.onBlur) {
       this.props.onBlur(e);
@@ -61,23 +72,64 @@ const TextInput = class extends Component {
         <>
             {this.props.title && (
             <FormGroup>
-                <Text>{this.props.title}</Text>
+
+              {this.props.isLight ? (
+                <>
+                  <Text style={[Styles.textInputTitleLight, this.props.textStyle]}>{this.props.title}</Text>
+                </>
+              ) : (
+                <Text style={[Styles.textInputTitleDark, this.props.textStyle]}>{this.props.title}</Text>
+              )
+              }
             </FormGroup>
             )}
-            <ReactNative.TextInput
-              {...this.props}
-              onFocus={this.onFocus}
-              editable={!this.props.disabled}
-              onBlur={this.onBlur}
-              onChangeText={this.onChangeText}
-              style={[Styles.textInput, this.props.style]}
-              value={this.props.value}
-              testID={this.props.testID}
-              ref={(ref) => this.inputRef = ref}
-              blurOnSubmit={Platform.OS === 'ios' && !this.props.multiline}
-              placeholderTextColor={this.props.placeholderTextColor}
-              selectionColor={this.props.selectionColor}
-            />
+            <View>
+              <ReactNative.TextInput
+                {...this.props}
+                secureTextEntry={this.state.secureTextEntry}
+                onFocus={this.onFocus}
+                editable={!this.props.disabled}
+                onBlur={this.onBlur}
+                onChangeText={this.onChangeText}
+                style={[Styles.textInput, this.props.style, this.props.invalid && Styles.textInputError]}
+                value={this.props.value}
+                testID={this.props.testID}
+                ref={(ref) => this.inputRef = ref}
+                blurOnSubmit={Platform.OS === 'ios' && !this.props.multiline}
+                placeholderTextColor={this.props.invalid?palette.danger:'rgba(11,16,46,0.5)'}
+                selectionColor={palette.primary}
+                icon={this.props.icon}
+                iconColour={this.props.icon}
+                multiline={this.props.multiline}
+                textAlignVertical={this.props.textAlignVertical}
+              />
+              {this.props.icon ? (
+                <>
+                  <FA5Pro solid style={Styles.textInputIcon} name={this.props.icon}
+                    size={20} color={this.props.iconColour || palette.primary}
+                  />
+                </>
+              ) : (
+                null
+              )
+              }
+
+              {this.props.secureTextEntry ? (
+              <TouchableOpacity
+                onPress={()=>this.setState({ secureTextEntry:!this.state.secureTextEntry })}
+                style={[{ position: 'absolute', width: 50, right: 0,  height: 50 }]}
+              >
+                <FA5Pro style={Styles.textInputIcon} name={this.state.secureTextEntry?"eye":"eye-slash"} size={20}
+                  color={palette.primary}
+                />
+              </TouchableOpacity>
+              ) : (
+                null
+              )
+              }
+
+            </View>
+
         </>
     );
   }

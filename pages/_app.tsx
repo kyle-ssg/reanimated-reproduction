@@ -1,19 +1,20 @@
+import "../project/polyfill";
 import App from "next/app";
 import React from "react";
 import { Provider } from "react-redux";
 import withRedux, { MakeStore } from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
-import "../project/polyfill";
 import "../project/project-components";
 import createStore from "../common/store";
-import Header from "../components/Header";
 import ReactDOM from "react-dom";
 import Toast from "../components/toast";
 import _data from "../common/utils/_data";
 import "ionicons/dist/css/ionicons.css";
-import "../styles/styles.scss";
+
+import "../styles/Global.scss";
 import { Store } from "redux";
 import { PersistGate } from 'redux-persist/integration/react';
+import LanguageHandler from "../common/LanguageHandler";
 
 let initialRender = false;
 
@@ -71,12 +72,33 @@ class MyApp extends App<{ store: Store  }> {
   }
 
   onFirstRender = () => {
+    if(this.props.router.asPath.includes("E2E=1")||Constants.E2E) { // to force web app into e2e mode, the e2e tests append a get param
+      if(this.props.router.asPath.includes("E2E_NAMESPACE")){
+        Constants.E2E_NAMESPACE = Utils.fromParam(this.props.router.asPath).E2E_NAMESPACE;
+      }
+      Constants.E2E = true;
+      if (typeof window !== 'undefined'){
+        document.body.classList.add("e2e")
+      }
+    }
+    // API.auth.Cognito.init(Project.cognito)
+
     const { store } = this.props;
     initialRender = true;
     const locale = store.getState().locale;
     if (locale) {
       Strings.setLanguage(locale);
     }
+    setTimeout(()=>{
+      if (store.getState().profile) {
+        store.dispatch(AppActions.getProfile({
+
+        }, {
+          onError: ()=> store.dispatch(AppActions.logout())
+        }))
+      }
+    },1000)
+
   };
 
   render() {
@@ -90,29 +112,36 @@ class MyApp extends App<{ store: Store  }> {
     // if (!store.getState().clientLoaded) {
     //
     // }
+
+    // @ts-ignore
+    const getLayout = (page)=>Component.getLayout? <Component.getLayout page={page} router={this.props.router}/> : page
+
     return (
         <Provider store={store}>
           {/*// @ts-ignore*/}
           <PersistGate persistor={store.__PERSISTOR} loading={null}>
-            <React.Fragment>
-                  <Header />
-                   <Component {...pageProps} />
-                  <div id="modal" />
-                  <div id="confirm" />
-                  <div id="alert" />
-                  <div id="toast" />
-                  {E2E && (
+            <LanguageHandler>
+              <React.Fragment>
+                {/*<Header />*/}
+                {getLayout(<Component {...pageProps}></Component>)}
+                <div id="modal" />
+                <div id="confirm" />
+                <div id="alert" />
+                <div id="toast">
+                  <Toast/>
+                </div>
+                {E2E && (
                   <React.Fragment>
-                      <div className="e2e" id="e2e-request" />
-                      <div className="e2e" id="e2e-error" />
+                    <div className="e2e" id="e2e-request" />
+                    <div className="e2e" id="e2e-error" />
                   </React.Fragment>
-            )}
-            </React.Fragment>
+                )}
+              </React.Fragment>
+            </LanguageHandler>
           </PersistGate>
         </Provider>
     );
   }
 }
 
-//
 export default global.__JEST__ ? null : withRedux(createStore as unknown as MakeStore)(withReduxSaga(MyApp));

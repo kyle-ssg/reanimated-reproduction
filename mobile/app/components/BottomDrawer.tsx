@@ -12,7 +12,7 @@ import Animated, {
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import CustomModal from './CustomModal';
 import { drawerSlideInConfig, drawerSlideOutConfig } from '../project/animation-util/reanimations';
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions, KeyboardAvoidingView, StyleSheet } from "react-native";
 import { clamp } from '../project/animation-util/clamp';
 import ScreenContainer from 'components/ScreenContainer';
 import LinearGradient from "react-native-linear-gradient";
@@ -27,21 +27,21 @@ export const closest = (value, values) => {
 export type ModalType = {
   animatedValue?: Animated.SharedValue<number>;
   visible: boolean;
-  preventDismiss: boolean;
+  preventDismiss?: boolean;
   height: number;
   style: ReactNative.ViewStyle;
   onDismissPress?: () => void;
 };
 
 const BottomDrawer: FunctionComponent<ModalType> = ({
-  animatedValue: _animatedValue,
-  style,
-  onDismissPress,
-  visible,
-  preventDismiss,
-  height = Dimensions.get('window').height / 2,
-  children,
-}) => {
+                                                      animatedValue: _animatedValue,
+                                                      style,
+                                                      onDismissPress,
+                                                      visible,
+                                                      preventDismiss,
+                                                      height = Dimensions.get('window').height / 2,
+                                                      children,
+                                                    }) => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const snapPoints = [0, height];
   const translateY = useSharedValue<number>(
@@ -116,8 +116,8 @@ const BottomDrawer: FunctionComponent<ModalType> = ({
             clamp: [snapPoints[0], snapPoints[1]],
           },
           () => {
+            runOnJS(onDismissPress)();
             runOnJS(setModalVisible)(false);
-            runOnJS(onDismissPress);
           }
         );
       }
@@ -134,15 +134,17 @@ const BottomDrawer: FunctionComponent<ModalType> = ({
       controlledValue={animatedValue}
       visible={modalVisible}
     >
-      <PanGestureHandler enabled={!preventDismiss} {...{ onGestureEvent }}>
-        <Animated.View
-          style={[animatedStyle, { height }]}
-        >
-          <View style={[styles.drawer, style]}>
-            {children}
-          </View>
-        </Animated.View>
-      </PanGestureHandler>
+      <KeyboardAvoidingView behavior="padding">
+        <PanGestureHandler enabled={!preventDismiss} {...{ onGestureEvent }}>
+          <Animated.View
+            style={[animatedStyle, { height }]}
+          >
+            <View style={[styles.drawer, style]}>
+              {children}
+            </View>
+          </Animated.View>
+        </PanGestureHandler>
+      </KeyboardAvoidingView>
     </CustomModal>
   );
 };

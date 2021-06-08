@@ -4,9 +4,13 @@ import { put } from "redux-saga/effects";
 import _data from "./_data";
 
 export function* errorHandler(action, prefix, preventSuccess, e) {
+  let originalError;
   const error = API.ajaxHandler(Actions[`${prefix}_ERROR`], e);
   yield put(error);
-  action.onError && action.onError(error.error);
+  try {
+    originalError = JSON.parse(e._bodyText)
+  } catch(e){}
+  action.onError && action.onError(error.error,originalError);
   if (preventSuccess) {
     throw e;
   }
@@ -122,7 +126,11 @@ export function* postAction(
       append
     );
   } catch (e) {
-    yield errorHandler(action, prefix, preventSuccess, e);
+    if(preventSuccess) {
+      throw (e)
+    } else {
+      yield errorHandler(action, prefix, preventSuccess, e);
+    }
   }
 }
 

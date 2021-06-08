@@ -4,9 +4,12 @@ import cookie from "cookie";
 import cookies from "js-cookie";
 import Constants from "common/utils/constants";
 import errorHandler from "common/utils/errorHandler";
-import Project from "common/project";
+import "common/project";
 import storage from "./async-storage-api";
-import { IncomingMessage } from 'http';
+import { IncomingMessage } from "http";
+// import _store from "common/store"store;
+// import Cognito from "common/cognito";
+
 const API = {
   isMobile: () => false,
   storage,
@@ -17,8 +20,9 @@ const API = {
     cookies.remove("token");
     Router.replace(Project.logoutRedirect || "/");
   },
-  loginRedirect() {
+  loginRedirect(forceRedirect?:boolean) {
     const params = Router.query;
+    // const profile:AppState['profile'] = _store().getState().profile;
     params.redirect = params.redirect || Project.loginRedirect || "/";
     // @ts-ignore
     Router.replace(params.redirect, params.as || params.redirect, {
@@ -140,6 +144,9 @@ const API = {
       console.log.apply(this, [namespace, ...args]);
     }
   },
+  auth: {
+    // Cognito
+  }
 };
 global.API = API;
 export default API;

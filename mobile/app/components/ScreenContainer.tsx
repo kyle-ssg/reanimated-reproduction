@@ -7,24 +7,20 @@ const ScreenContainer: FunctionComponent<ComponentType> = ({ children, withoutSa
   // Note: if we use a transparent status bar we need to add StatusBar.currentHeight to padding top for android
   return !withoutSafeAreaView ?
     (
-      <View style={Styles.body} {...props}>
-        <ReactNative.SafeAreaView style={safeAreaStyles}>
+        <ReactNative.SafeAreaView {...props} style={safeAreaStyles}>
           {children}
         </ReactNative.SafeAreaView>
-      </View>
     )
     : (
-      <View style={Styles.body} {...props}>
-        <View style={Styles.body}>
+      <Flex {...props}>
           {children}
-        </View>
-      </View>
+      </Flex>
     )
   ;
 };
 const styles = ReactNative.StyleSheet.create({
   padTop:{ paddingTop: styleVariables.insets.top }
 });
-const safeAreaStyles = [Styles.body, styles.padTop ];
+const safeAreaStyles = [{ flex:1 }, styles.padTop ];
 
 export default ScreenContainer;

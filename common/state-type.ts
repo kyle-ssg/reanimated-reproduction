@@ -28,6 +28,14 @@ export interface RequestTypes {
   login?: {
     [extraProps: string]: any;
   },
+  getProjects?: PageRequest<{
+  }>;
+  getProfile?: {
+    id:number
+  };
+  updateProfile?: {
+
+  };
   register?: {
     [extraProps: string]: any;
   },
@@ -60,21 +68,11 @@ export interface AppState {
     lastName: string;
     [extraProps: string]: any;
   };
-  uploadFileLoading?: boolean;
-  uploadFileSaving?: boolean;
-  uploadFileError?: string;
-  uploadFile?: {
+  profileLoading?: boolean;
+  profileError?: string;
+  profile?: {
     [extraProps: string]: any;
-  },
-  organisationLoading?: boolean;
-  organisationSaving?: boolean;
-  organisationError?: string;
-  organisation?: Record<string, Organisation>,
-  organisationUsersLoading?: boolean;
-  organisationUsersSaving?: boolean;
-  organisationUsersError?: string;
-  organisationUsers?: Record<string, PageResponse<{
+  };
 
-  }>>,
   // END OF STATE_TYPES
 }
