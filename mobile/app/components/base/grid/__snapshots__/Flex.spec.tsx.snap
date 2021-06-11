@@ -13,17 +13,3 @@ exports[`<Flex /> renders correctly 1`] = `
   }
 />
 `;
-
-exports[`<FormGroup /> renders correctly 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "paddingBottom": 8,
-        "paddingTop": 8,
-      },
-      undefined,
-    ]
-  }
-/>
-`;

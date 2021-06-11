@@ -1,5 +1,6 @@
 import React from "react";
-import { Platform, TouchableNativeFeedback } from "react-native";
+import { Platform, TouchableNativeFeedback, View } from "react-native";
+import Row from "./grid/Row";
 
 interface Props {
   accessible?: boolean;

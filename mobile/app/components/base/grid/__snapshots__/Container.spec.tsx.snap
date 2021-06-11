@@ -23,17 +23,3 @@ exports[`<Container /> renders correctly 1`] = `
   }
 />
 `;
-
-exports[`<Flex /> renders correctly 1`] = `
-<View
-  style={
-    Array [
-      undefined,
-      Object {
-        "flex": 1,
-      },
-      undefined,
-    ]
-  }
-/>
-`;

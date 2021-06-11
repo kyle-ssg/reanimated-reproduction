@@ -13,19 +13,3 @@ exports[`<FormGroup /> renders correctly 1`] = `
   }
 />
 `;
-
-exports[`<Row /> renders correctly 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "alignSelf": "stretch",
-        "flexDirection": "row",
-      },
-      undefined,
-      undefined,
-    ]
-  }
-/>
-`;

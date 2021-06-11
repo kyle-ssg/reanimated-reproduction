@@ -4,7 +4,9 @@ import ReactNative, {
   RippleBackgroundPropType,
   StyleSheet,
   TouchableNativeFeedback,
-  TouchableOpacity
+  TouchableOpacity,
+  Text,
+  View,
 } from "react-native";
 
 import Utils from "common/utils/base/_utils";

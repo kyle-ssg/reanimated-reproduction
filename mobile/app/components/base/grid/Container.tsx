@@ -1,5 +1,5 @@
 import React from "react";
-import ReactNative from "react-native";
+import ReactNative, { View } from "react-native";
 
 interface Props {
   children?: React.ReactNode;
