@@ -1,6 +1,7 @@
 /**
  * Created by kylejohnson on 07/09/15.
  */
+import {StyleSheet} from 'react-native';
 // eslint-disable-next-line
 import './style_variables';
 import projectBase from './style_base';
@@ -20,7 +21,7 @@ export const styleTypes =  {
   ...projectType,
 }
 
-const Styles = ReactNative.StyleSheet.create(styleTypes);
+const Styles = StyleSheet.create(styleTypes);
 // @ts-ignore
 global.Styles = Styles;
 export default Styles

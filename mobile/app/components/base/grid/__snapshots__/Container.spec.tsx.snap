@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Container /> renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "marginLeft": 16,
+      },
+      Object {
+        "marginRight": 16,
+      },
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+    ]
+  }
+/>
+`;
+
+exports[`<Flex /> renders correctly 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+      Object {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+/>
+`;

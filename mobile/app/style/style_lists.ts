@@ -1,3 +1,4 @@
+import { StyleSheet } from 'react-native';
 import asStyle from './style-utils/asStyle';
 
 export default asStyle({

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { FlatList } from "react-native";
+import { Text, FlatList } from "react-native";
 import FormGroup from "../grid/FormGroup";
 import TextInput from "./TextInput";
+import Flex from '../grid/Flex';
 
 interface Props {
   onChange?: (argument: any) => void;

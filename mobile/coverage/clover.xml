@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1623399779887" clover="3.2.0">
+  <project timestamp="1623399779887" name="All files">
+    <metrics statements="40" coveredstatements="40" conditionals="35" coveredconditionals="22" methods="10" coveredmethods="10" elements="85" coveredelements="72" complexity="0" loc="40" ncloc="40" packages="4" files="18" classes="18"/>
+    <package name="components.base.grid">
+      <metrics statements="10" coveredstatements="10" conditionals="27" coveredconditionals="17" methods="4" coveredmethods="4"/>
+      <file name="Container.tsx" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/components/base/grid/Container.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="22" coveredconditionals="14" methods="1" coveredmethods="1"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+      </file>
+      <file name="Flex.tsx" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/components/base/grid/Flex.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+      </file>
+      <file name="FormGroup.tsx" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/components/base/grid/FormGroup.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+      <file name="Row.tsx" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/components/base/grid/Row.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.base.type">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="H1.tsx" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/components/base/type/H1.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
+      <file name="H2.tsx" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/components/base/type/H2.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
+      <file name="H3.tsx" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/components/base/type/H3.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
+      <file name="H4.tsx" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/components/base/type/H4.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="style">
+      <metrics statements="13" coveredstatements="13" conditionals="4" coveredconditionals="4" methods="0" coveredmethods="0"/>
+      <file name="_style_screen.ts" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/style/_style_screen.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="14" count="9" type="stmt"/>
+        <line num="24" count="9" type="stmt"/>
+        <line num="26" count="9" type="stmt"/>
+      </file>
+      <file name="style_base.ts" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/style/style_base.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="style_buttons.ts" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/style/style_buttons.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="style_forms.ts" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/style/style_forms.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="style_grid.ts" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/style/style_grid.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="9" type="stmt"/>
+      </file>
+      <file name="style_lists.ts" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/style/style_lists.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="style_type.ts" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/style/style_type.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="style_variables.ts" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/style/style_variables.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="4" methods="0" coveredmethods="0"/>
+        <line num="1" count="9" type="stmt"/>
+        <line num="4" count="9" type="stmt"/>
+        <line num="5" count="9" type="stmt"/>
+        <line num="6" count="9" type="stmt"/>
+        <line num="8" count="9" type="stmt"/>
+        <line num="20" count="9" type="stmt"/>
+        <line num="33" count="9" type="stmt"/>
+        <line num="70" count="9" type="stmt"/>
+        <line num="71" count="9" type="stmt"/>
+      </file>
+    </package>
+    <package name="style.style-utils">
+      <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="asStyle.ts" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/style/style-utils/asStyle.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="54" type="stmt"/>
+      </file>
+      <file name="style_pxToEm.ts" path="/Users/jai/Code/solid-state-group/ssg-frontend-boilerplate/mobile/app/style/style-utils/style_pxToEm.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="3" count="9" type="stmt"/>
+        <line num="6" count="9" type="cond" truecount="1" falsecount="3"/>
+        <line num="9" count="9" type="stmt"/>
+        <line num="11" count="9" type="stmt"/>
+        <line num="14" count="9" type="stmt"/>
+        <line num="15" count="72" type="stmt"/>
+        <line num="17" count="9" type="stmt"/>
+        <line num="19" count="9" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

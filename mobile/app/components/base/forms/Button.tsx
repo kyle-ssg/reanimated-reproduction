@@ -1,4 +1,4 @@
-import {
+import ReactNative, {
   Platform,
   Pressable,
   RippleBackgroundPropType,

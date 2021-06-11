@@ -1,10 +1,12 @@
 import React from "react";
+import { Text, TextStyle } from 'react-native';
+import Styles from '../../../style/_style_screen';
 
 interface Props {
   accessible?: boolean;
   accessibilityLabel?: string;
   testID?: string;
-  style?: ReactNative.TextStyle;
+  style?: TextStyle;
   children?: React.ReactNode;
   numberOfLines?: number;
 }
