@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/base/grid/Container.tsx</title>
+    <title>Code coverage report for components/base/ListItem.tsx</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">components/base/grid</a> Container.tsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/base</a> ListItem.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.64% </span>
+                <span class="strong">37.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>14/22</span>
+                <span class='fraction'>6/16</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -109,7 +109,23 @@
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -139,9 +155,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -162,57 +194,73 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
-import ReactNative, { View } from "react-native";
+import { Platform, TouchableNativeFeedback, View } from "react-native";
+import Row from "./grid/Row";
 &nbsp;
 interface Props {
-  children?: React.ReactNode;
-  ml0?: boolean;
-  ml5?: boolean;
-  ml10?: boolean;
-  ml15?: boolean;
-  ml20?: boolean;
-  mr0?: boolean;
-  mr5?: boolean;
-  mr10?: boolean;
-  mr15?: boolean;
-  mr20?: boolean;
-  style?: ReactNative.ViewStyle;
+  accessible?: boolean;
+  accessibilityLabel?: string;
+  icon?: React.ReactNode;
+  testID?:string;
+  children: [React.ReactNode] | React.ReactNode;
+  delay?: number;
+  index?: number;
+  onPress?: () =&gt; void;
+  style?: any;
+  disabled?: boolean;
+  isEditable?: boolean;
 }
 &nbsp;
-const Container: React.FC&lt;Props&gt; = ({
-  ml0,
-  ml5,
-  ml10 = true,
-  ml15,
-  ml20,
-  mr0,
-  mr5,
-  mr10 = true,
-  mr15,
-  mr20,
+const ListItem: React.FC&lt;Props&gt; = ({
+  accessible,
+  testID,
+  accessibilityLabel,
   style,
+  icon,
+  disabled,
   children,
-}) =&gt; (
-  &lt;View
-    style={[
-      ml10 &amp;&amp; Styles.ml10,
-      mr10 &amp;&amp; Styles.mr10,
-      ml0 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >Styles.ml0,</span>
-      ml5 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >Styles.ml5,</span>
-      ml15 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >Styles.ml15,</span>
-      ml20 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >Styles.ml20,</span>
-      mr0 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >Styles.mr0,</span>
-      mr5 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >Styles.mr5,</span>
-      mr15 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >Styles.mr15,</span>
-      mr20 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >Styles.mr20,</span>
-      style,
-    ]}
-  &gt;
-    {children}
-  &lt;/View&gt;
-);
+  onPress = null,
+  delay = 0,
+}) =&gt; {
+  const content = (
+    &lt;View style={[Styles.ph5, style]}&gt;
+      &lt;Row&gt;
+        &lt;View style={Styles.pr5}&gt;{icon}&lt;/View&gt;
+        &lt;View style={[disabled &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >Styles.listItemDisabled]</span>}&gt;{children}&lt;/View&gt;
+      &lt;/Row&gt;
+    &lt;/View&gt;
+  );
 &nbsp;
-export default Container;
+  return onPress ? (
+<span class="branch-0 cbranch-no" title="branch not covered" >    &lt;View style={style || Styles.listItem}&gt;</span>
+      {Platform.OS === "android" ? (
+        &lt;TouchableNativeFeedback
+          testID={testID}
+          accessible={accessible}
+          accessibilityLabel={accessibilityLabel}
+          onPress={disabled ? null : onPress}
+          background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
+        &gt;
+          {content}
+        &lt;/TouchableNativeFeedback&gt;
+      ) : (
+        &lt;TouchableOpacity
+          testID={testID}
+          accessible={accessible}
+          accessibilityLabel={accessibilityLabel}
+          activeOpacity={0.8}
+          onPress={disabled ? null : onPress}
+        &gt;
+          {content}
+        &lt;/TouchableOpacity&gt;
+      )}
+    &lt;/View&gt;
+  ) : (
+    &lt;View style={[style || Styles.listItem]}&gt;{content}&lt;/View&gt;
+  );
+};
+&nbsp;
+export default ListItem;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -223,14 +271,14 @@ export default Container;
                 at Fri Jun 11 2021 16:39:28 GMT+0100 (British Summer Time)
             </div>
         </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
