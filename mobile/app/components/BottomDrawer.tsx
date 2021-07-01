@@ -134,7 +134,7 @@ const BottomDrawer: FunctionComponent<ModalType> = ({
       controlledValue={animatedValue}
       visible={modalVisible}
     >
-      <KeyboardAvoidingView behavior="padding">
+      <KeyboardAvoidingView behavior={Platform.select({ ios:"padding",android:null })}>
         <PanGestureHandler enabled={!preventDismiss} {...{ onGestureEvent }}>
           <Animated.View
             style={[animatedStyle, { height }]}
