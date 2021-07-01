@@ -3,7 +3,7 @@
  */
 
 import propTypes from 'prop-types';
-import ReactNative, { Animated, Easing } from 'react-native';
+import ReactNative, { View, Platform } from 'react-native';
 import React, { Component } from 'react';
 
 const textInputPropTypes = {

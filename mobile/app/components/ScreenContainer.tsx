@@ -1,6 +1,9 @@
 import React, { FunctionComponent } from 'react'; // we need this to make JSX compile
 import LinearGradient, { LinearGradientProps } from 'react-native-linear-gradient';
 import * as ReactNative from 'react-native';
+import '../style/style_variables';
+import Flex from 'components/base/grid/Flex';
+
 type ComponentType = ReactNative.ViewProps & { withoutSafeAreaView? : boolean };
 
 const ScreenContainer: FunctionComponent<ComponentType> = ({ children, withoutSafeAreaView, ...props }) => {

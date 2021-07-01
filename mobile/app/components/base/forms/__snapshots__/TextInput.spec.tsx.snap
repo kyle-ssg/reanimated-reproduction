@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextInput /> renders correctly 1`] = `
+<View>
+  <TextInput
+    allowFontScaling={true}
+    blurOnSubmit={true}
+    editable={true}
+    onBlur={[Function]}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    placeholderTextColor="rgba(11,16,46,0.5)"
+    rejectResponderTermination={true}
+    selectionColor="#1AC0C6"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "white",
+          "fontFamily": "System",
+          "fontSize": 20,
+          "height": 48,
+          "paddingLeft": 10,
+        },
+        undefined,
+        undefined,
+      ]
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;

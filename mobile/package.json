@@ -21,6 +21,11 @@
     "lint": "eslint .. || exit 0",
     "lint:fix": "eslint .. --fix || exit 0",
     "postinstall": ".bin/postinstall.sh && patch-package",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:updateSnapshots": "jest --updateSnapshot",
+    "test:coverage": "jest --coverage",
+    "test:cs": "jest --coverage --updateSnapshot",
     "test:android:build": "detox build --configuration android28",
     "test:android:all": "npm run test:android28 & npm run test:android30",
     "test:ios:all": "npm run test:ios & npm run test:ios12 & npm run test:ipad",
@@ -109,6 +114,7 @@
     "@storybook/addon-ondevice-knobs": "^5.3.19",
     "@storybook/addons": "^6.0.0-rc.14",
     "@storybook/react-native": "^5.3.19",
+    "@testing-library/react-native": "^7.2.0",
     "@types/detox": "^17.14.0",
     "@types/jasmine": "^3.6.3",
     "@types/jest": "^26.0.20",
@@ -121,7 +127,6 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
-    "node-fetch": "^2.6.0",
     "core-js": "^3.0.1",
     "detox": "^18.15.0",
     "eslint": "7.14.0",
@@ -132,6 +137,7 @@
     "jest": "^26.6.3",
     "jest-circus": "^26.6.3",
     "metro-react-native-babel-preset": "^0.64.0",
+    "node-fetch": "^2.6.0",
     "patch-package": "^6.2.2",
     "prop-types": "^15.7.2",
     "react-dom": "^16.13.1",
@@ -140,6 +146,7 @@
     "typescript": "^3.9.7"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupFiles": ["./setupTests.ts"]
   }
 }

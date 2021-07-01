@@ -30,20 +30,6 @@ type Props = {
 };
 const App: FunctionComponent<Props> = () => (
   <ScreenContainer withoutSafeAreaView={true}>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={store.__PERSISTOR}>
-        <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
-        <NeverUpdate>
-          {/*// @ts-ignore*/}
-          <LanguageHandler>
-            <NavigationContainer linking={linking} ref={navigationRef}>
-              <AppNavigator />
-            </NavigationContainer>
-          </LanguageHandler>
-          <LinkHandler/>
-        </NeverUpdate>
-      </PersistGate>
-    </Provider>
   </ScreenContainer>
 );
 export default App;

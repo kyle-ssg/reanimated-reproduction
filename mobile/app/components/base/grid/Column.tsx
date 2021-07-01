@@ -1,9 +1,10 @@
 import React from "react";
+import { View, ViewStyle } from "react-native";
 import Flex from "./Flex";
 
 interface Props {
   flexStyle?: any;
-  style?: ReactNative.ViewStyle;
+  style?: ViewStyle;
   children?: React.ReactNode;
 }
 

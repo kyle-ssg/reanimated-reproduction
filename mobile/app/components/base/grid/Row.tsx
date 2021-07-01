@@ -1,11 +1,11 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, ViewStyle, StyleSheet } from "react-native";
 
 interface Props {
   children?: React.ReactNode;
   space?: boolean;
   noWrap?: boolean;
-  style?: ReactNative.ViewStyle;
+  style?: ViewStyle;
   testID?: string;
 }
 
@@ -18,7 +18,7 @@ const Row: React.FC<Props> = ({ testID,space, style, children }) => (
   </View>
 );
 
-const styles = ReactNative.StyleSheet.create({
+const styles = StyleSheet.create({
   row: {
     alignSelf: "stretch",
     flexDirection: "row",

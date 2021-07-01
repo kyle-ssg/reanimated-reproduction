@@ -1,5 +1,5 @@
 require("./style-utils/style_pxToEm");
-import { StyleSheet } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
 import { initialWindowMetrics } from 'react-native-safe-area-context';
 const deviceH = Dimensions.get('screen').height;
 const windowH = Dimensions.get('window').height;
