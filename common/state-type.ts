@@ -39,7 +39,10 @@ export interface RequestTypes {
   register?: {
     [extraProps: string]: any;
   },
-// END OF REQUEST_TYPES
+  newPasswordRequired?: {
+    [extraProps: string]: any;
+  };
+  // END OF REQUEST_TYPES
 }
 
 export type ImageFile = {
@@ -74,5 +77,8 @@ export interface AppState {
     [extraProps: string]: any;
   };
 
+  passwordRequired?: {
+    [extraProps: string]: any;
+  },
   // END OF STATE_TYPES
 }

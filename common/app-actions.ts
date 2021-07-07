@@ -117,10 +117,21 @@ const BaseActions = {
 // @ts-ignore
 export const Actions = (global.Actions = Object.assign({}, BaseConstants, {
 
+  'NEW_PASSWORD_REQUIRED': 'NEW_PASSWORD_REQUIRED',
+
 // END OF ACTION_STRINGS
 }));
 
 // @ts-ignore
 export const AppActions = (global.AppActions = Object.assign({}, BaseActions, {
-  // END OF APP_ACTIONS
+  
+    newPasswordRequired(data:RequestTypes['newPasswordRequired'], callbacks:Callbacks={}):AnyAction {
+        return {
+            type: Actions.NEW_PASSWORD_REQUIRED,
+            data,
+            ...callbacks,
+        };
+    },
+
+// END OF APP_ACTIONS
 }));

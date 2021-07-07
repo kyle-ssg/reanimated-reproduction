@@ -1,6 +1,6 @@
+import { APIType } from 'common/api-type';
 import _Project, { ProjectType } from 'common/project';
 import { AppActions, Actions } from 'common/app-actions';
-import API from '../project/api';
 import Strings from "common/strings";
 declare global {
   namespace NodeJS {
@@ -10,7 +10,7 @@ declare global {
       _data: any;
       Actions: Actions;
       AppActions: AppActions;
-      API: API;
+      API: APIType;
       Project: ProjectType;
       AsyncStorage: any;
       Button: any;
@@ -54,7 +54,7 @@ declare global {
 }
 
 declare global {
-  declare let API: API;
+  declare let API: APIType;
   declare let closeModal: Function;
   declare let openModal: (title: string, body: React.ReactChildren) => void;
   declare let Actions = AppActions;

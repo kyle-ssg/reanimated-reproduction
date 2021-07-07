@@ -68,6 +68,10 @@ const defaultReducer = produce((state: AppState, action): AppState | void => {
     case Actions.SET_ACTIVE_SCREEN:
       itemLoaded(state, "activeScreen", action, true);
       break;
+    case Actions.NEW_PASSWORD_REQUIRED:
+        const actionData:RequestTypes['newPasswordRequired'] = action.data;
+        state['passwordRequired'] = actionData;
+      return state;
     // END OF REDUCER
     // KEEP THE ABOVE LINE IN, IT IS USED BY OUR CLI
     default:

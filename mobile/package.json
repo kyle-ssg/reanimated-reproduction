@@ -147,6 +147,8 @@
   },
   "jest": {
     "preset": "react-native",
-    "setupFiles": ["./setupTests.ts"]
+    "setupFiles": [
+      "./setupTests.ts"
+    ]
   }
 }

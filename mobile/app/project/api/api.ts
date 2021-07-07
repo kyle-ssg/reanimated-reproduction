@@ -1,10 +1,11 @@
 //Anything that provides functionality that would benefit from being accessed by common
 
-// import Contacts from 'react-native-contacts';
+import Contacts from 'react-native-contacts';
 import BottomSheet from "react-native-bottomsheet";
-// import _analytics from "@react-native-firebase/analytics";  // ^7.3.1
+import _analytics from "@react-native-firebase/analytics";  // ^7.3.1
 import errorHandler from "common/utils/errorHandler";
 import getStoreDangerous from "common/store";
+import branch from 'react-native-branch'
 
 import ReactNative from "react-native";
 import storage from "./async-storage-api";
@@ -14,11 +15,12 @@ import auth from "./auth";
 import * as RootNavigation from 'navigation/RootNavigation';
 import { RouteUrls } from "../../route-urls";
 import "common/project";
+import { APIType } from '../../../../common/api-type';
+import ImagePicker from 'react-native-image-crop-picker';
 
 const analytics = typeof _analytics === "undefined" ? undefined : _analytics();
-// import ImagePicker from 'react-native-image-crop-picker';
 
-global.API = {
+const API: APIType = {
   isMobile: () => true,
   reduxStorage:storage,
   middlewares: __DEV__? [require('redux-middleware-flipper').default({})] : null,
@@ -252,5 +254,7 @@ if (typeof branch !== "undefined") {
     checkedInitialLink = true;
   });
 }
+
+global.API = API
 
 export default API;

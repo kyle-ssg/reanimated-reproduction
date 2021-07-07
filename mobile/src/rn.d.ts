@@ -1,3 +1,4 @@
+import { APIType } from '../../common/api-type';
 /// <reference types="lodash" />
 
 import ReactNative, { StyleSheet as _StyleSheet } from 'react-native';
@@ -63,7 +64,7 @@ declare global {
   let styleVariables = styleVariables;
   let Button: React.ComponentType<ButtonType>;
   // @ts-ignore
-  let API: typeof API;
+  let API: APIType;
   // @ts-ignore
   let ButtonPrimary = ButtonPrimary;
   // @ts-ignore
