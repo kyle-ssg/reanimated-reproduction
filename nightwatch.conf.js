@@ -202,7 +202,6 @@ module.exports = {
             prom1,
             prom2
           ]).then(()=>{
-            console.log("HEASDAS")
             done()
           })
         },
