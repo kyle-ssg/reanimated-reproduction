@@ -1,7 +1,9 @@
-import { APIType } from 'common/api-type';
 import _Project, { ProjectType } from 'common/project';
 import { AppActions, Actions } from 'common/app-actions';
 import Strings from "common/strings";
+import { APIType } from "../common/api-type";
+type API = APIType & {
+};
 declare global {
   namespace NodeJS {
     interface Global {
@@ -10,7 +12,7 @@ declare global {
       _data: any;
       Actions: Actions;
       AppActions: AppActions;
-      API: APIType;
+      API: API
       Project: ProjectType;
       AsyncStorage: any;
       Button: any;

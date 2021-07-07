@@ -1,4 +1,3 @@
-import { APIType } from '../../common/api-type';
 /// <reference types="lodash" />
 
 import ReactNative, { StyleSheet as _StyleSheet } from 'react-native';
@@ -12,7 +11,6 @@ import Button, {
   ButtonType
 } from "../app/components/base/forms/Button";
 import Constants from 'common/utils/constants';
-import API from '../app/project/api/api'
 import { AppActions } from 'common/app-actions';
 import { styleTypes } from '../app/style/_style_screen';
 import { routes, withModalOptions, withPushModalOptions, withFullScreenPushModalOptions } from '../app/routes';
@@ -23,7 +21,8 @@ import Strings from 'common/strings';
 import Fade from 'components/base/animation/Fade';
 import ProjectType from "common/project-type";
 import { RouteUrls } from "../app/route-urls";import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro';
-
+import { APIType } from 'common/api-type'
+import { FirebaseMessagingTypes } from "@react-native-firebase/messaging";
 declare global {
   const ReactNative: typeof ReactNative;
   const Animated: typeof ReactNative.Animated;
@@ -41,7 +40,7 @@ declare global {
   let Column: React.ComponentType<{style?:ReactNative.ViewStyle | ReactNative.ViewStyle[]}>;
   let TouchableOpacity: React.ComponentType<ReactNative.TouchableOpacityProps>;
   let Text: React.ComponentType<ReactNative.TextProps>;
-  let TextInput: React.ComponentType<ReactNative.TextInputProps & {icon?:string; isLight?:boolean;isValid?:boolean; invalid?: boolean, title?:React.ReactNode, disabled?:boolean}>;
+  let TextInput: React.ComponentType<ReactNative.TextInputProps & {textStyle?:ReactNative.TextStyle,icon?:string; isLight?:boolean;isValid?:boolean; invalid?: boolean, title?:React.ReactNode, disabled?:boolean}>;
   let H1: React.ComponentType<ReactNative.TextProps>;
   let H2: React.ComponentType<ReactNative.TextProps>;
   let H3: React.ComponentType<ReactNative.TextProps>;
@@ -64,7 +63,9 @@ declare global {
   let styleVariables = styleVariables;
   let Button: React.ComponentType<ButtonType>;
   // @ts-ignore
-  let API: APIType;
+  let API: APIType & {
+
+  };
   // @ts-ignore
   let ButtonPrimary = ButtonPrimary;
   // @ts-ignore
