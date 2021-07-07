@@ -36,6 +36,7 @@ export type APIType = {
     resolveCancel?: (boolean) => Promise<number>
   },
   push?: {
+    //todo - cant use Remote message directly
     getInitialNotification: () => Promise<FirebaseMessagingTypes.RemoteMessage | null>
     subscribe: (topic: string) => Promise<void>
     unsubscribe: (topic: string) => Promise<void>
