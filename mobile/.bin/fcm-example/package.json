@@ -11,8 +11,8 @@
   "author": "Solid State Group",
   "license": "MIT",
   "engines": {
-    "node": "7.1.x",
-    "npm": "7.8.x"
+    "node": "7.10.x",
+    "npm": "3.10.x"
   },
   "dependencies": {
     "fcm-push": "^1.1.2",
