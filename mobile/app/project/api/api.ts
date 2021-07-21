@@ -14,6 +14,7 @@ import auth from './auth'
 import * as RootNavigation from 'navigation/RootNavigation'
 import { RouteUrls } from '../../route-urls'
 import 'common/project'
+import { APIType } from 'common/api-type'
 // import _analytics from '@react-native-firebase/analytics'
 const analytics = typeof _analytics === 'undefined' ? undefined : _analytics
 // import ImagePicker from 'react-native-image-crop-picker';
@@ -259,4 +260,4 @@ if (typeof branch !== 'undefined') {
 
 global.API = API
 
-export default API;
+export default API
