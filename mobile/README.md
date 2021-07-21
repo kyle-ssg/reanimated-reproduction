@@ -13,7 +13,6 @@ Manual changes from a vanilla react-native setup
 - added pre-build/post-build step sh files for appcenter 
 - added react-native-reanimated and turbo module support, see babel.config 
 - using hermes engine, mainly due to react-native-reanimated
-- added detox, adjusts build.gradle's, added network_security.xml
 
 ** iOS Changes **
 - added Swift Bridging Header
@@ -85,4 +84,13 @@ Disabled optional functionality
 - Branch.io (AndroidManifest, MainApplication) (info.plist, production_appcenter.plist and AppDelegate) 
 - api.js uses some libraries that may or may not be installed, you'll generally get an alert if something is missing
 
+
+
+**Detox** 
+Detox is used for end to end testing, to use install applesimutils
+
+```
+brew tap wix/brew
+brew install applesimutils
+```
 

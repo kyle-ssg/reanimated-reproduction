@@ -1,19 +1,19 @@
 // import propTypes from 'prop-types';
-import React from "react";
-import { TabBar, TabView } from "react-native-tab-view";
+import React from 'react'
+import { TabBar, TabView } from 'react-native-tab-view'
 
 interface Props {
-  tabBarRow?: boolean;
-  navigationState?: {};
-  tabBarStyle?: any;
-  renderScene?: () => void;
-  onIndexChange?: () => void;
-  scrollEnabled?: boolean;
-  lazy?: boolean;
-  tabStyle?: {};
-  indicatorStyle?: {};
-  labelStyle?: {};
-  renderLabel?: () => void;
+  tabBarRow?: boolean
+  navigationState?: {}
+  tabBarStyle?: any
+  renderScene?: () => void
+  onIndexChange?: () => void
+  scrollEnabled?: boolean
+  lazy?: boolean
+  tabStyle?: {}
+  indicatorStyle?: {}
+  labelStyle?: {}
+  renderLabel?: () => void
 }
 
 export const Tabs = ({
@@ -44,7 +44,7 @@ export const Tabs = ({
       renderIcon={({ route }) => route.icon || null}
       renderLabel={renderLabel}
     />
-  );
+  )
 
   return (
     <TabView
@@ -56,16 +56,16 @@ export const Tabs = ({
       timingConfig={{ duration: 100 }}
       onIndexChange={(index) => onIndexChange(index)}
       initialLayout={{
-        width: Dimensions.get("window").width,
-        height: Dimensions.get("window").height,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
       }}
     />
-  );
-};
+  )
+}
 
 const styles = ReactNative.StyleSheet.create({
   tabPrimary: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderTopWidth: 0,
     borderBottomWidth: 0,
     borderColor: palette.primary,
@@ -90,7 +90,7 @@ const styles = ReactNative.StyleSheet.create({
     color: palette.secondary,
   },
   bar: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
   },
   tab: {
     borderRightWidth: StyleSheet.hairlineWidth,
@@ -100,4 +100,4 @@ const styles = ReactNative.StyleSheet.create({
     borderRightColor: palette.secondary,
     elevation: 0,
   },
-});
+})

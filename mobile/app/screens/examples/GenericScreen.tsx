@@ -1,16 +1,22 @@
-import React from 'react';
-import { Component } from 'react';
-import withScreen, { Screen } from '../withScreen';
+import React from 'react'
+import { Component } from 'react'
+import withScreen, { Screen } from '../withScreen'
 
 type ComponentType = Screen & {
-  text: string;
-  style: ReactNative.ViewStyle,
+  text: string
+  style: ReactNative.ViewStyle
 }
 
 class GenericScreen extends Component<ComponentType> {
   state = {}
   render() {
-    return this.props.children || <Flex ><Text>I am a generic screen</Text></Flex>
+    return (
+      this.props.children || (
+        <Flex>
+          <Text>I am a generic screen</Text>
+        </Flex>
+      )
+    )
   }
 }
 

@@ -10,6 +10,9 @@ apply from: "../../node_modules/react-native/react.gradle"
 // REACT_NATIVE_CODEPUSH
 apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
+// REACT_NATIVE_CONFIG
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
 /**
  * Set this to true to create two separate APKs instead of one:
  *   - An APK that only works on ARM devices
@@ -49,7 +52,7 @@ def enableHermes = project.ext.react.get("enableHermes", false);
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    ndkVersion = "22.0.7026061"
+    ndkVersion = "22.1.7171670"
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -59,16 +62,23 @@ android {
         applicationId "com.mobile.project"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        vectorDrawables.useSupportLibrary = true
         versionCode 1
-        versionName "1.0"
+        versionName "1.16.0"
         // REACT_NATIVE_BASELAYOUT - we need multiDex
         multiDexEnabled true
-        // REACT_NATIVE_DETOX
         testBuildType System.getProperty('testBuildType', 'debug')  // This will later be used to control the test apk build type
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-
+        resValue 'string', "CODE_PUSH_APK_BUILD_TIME", String.format("\"%d\"", System.currentTimeMillis()) // https://github.com/microsoft/react-native-code-push/issues/1961
     }
+//     todo: research
+//     splits {
+//         abi {
+//             reset()
+//             enable enableSeparateBuildPerCPUArchitecture
+//             universalApk false  // If true, also generate a universal APK
+//             include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+//         }
+//     }
     // REACT_NATIVE_BASELAYOUT we set flavours to create uat / prod builds
     signingConfigs {
         release {
@@ -96,9 +106,11 @@ android {
           signingConfig signingConfigs.debug
         }
         release {
-//           signingConfig signingConfigs.debug
-           minifyEnabled enableProguardInReleaseBuilds
-           proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            // Caution! In production, you need to generate your own keystore file.
+            // see https://reactnative.dev/docs/signed-apk-android.
+            //signingConfig signingConfigs.debug
+            minifyEnabled enableProguardInReleaseBuilds
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
     // applicationVariants are e.g. debug, release
@@ -142,14 +154,14 @@ dependencies {
     // REACT_NATIVE_BASELAYOUT For this project we need multidex
     implementation 'androidx.multidex:multidex:2.0.1'
 
-    if (enableHermes) {
+  if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
         debugImplementation files(hermesPath + "hermes-debug.aar")
         releaseImplementation files(hermesPath + "hermes-release.aar")
+        debugImplementation jscFlavor // Adding this remove the error
     } else {
         implementation jscFlavor
     }
-    //REACT_NATIVE_DETOX
     androidTestImplementation('com.wix:detox:+')
 }
 

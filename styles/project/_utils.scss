@@ -1,41 +1,14 @@
-.clearfix:after {
-    visibility: hidden;
-    display: block;
-    font-size: 0;
-    content: " ";
-    clear: both;
-    height: 0;
+.pointer-none {
+    pointer-events: none !important;
 }
-.clearfix { display: inline-block; }
-/* start commented backslash hack \*/
-* html .clearfix { height: 1%; }
-.clearfix { display: block; }
-/* close commented backslash hack */
-
-.float-right{
-    float:right;
+.border-radius {
+    &__base {
+        border-radius: $base-border-radius !important;
+    }
 }
 
-.float-left{
-    float:left;
-}
-
-.margin-top{
-    margin-top:20px;
-}
-
-.margin-bottom{
-    margin-bottom:20px;
-}
-
-.no-mb{
-    margin-bottom:0;
-}
-
-.text-left{
-    text-align: left;
-}
-
-.link-style{
-    text-decoration: underline;
+.opacity {
+    &__600 {
+        opacity: 0.6;
+    }
 }

@@ -1,14 +1,14 @@
-import React from "react";
-import { View } from "react-native";
+import React from 'react'
+import { View } from 'react-native'
 
 interface Props {
-  accessible?: boolean;
-  accessibilityLabel?: string;
-  value?: number;
-  children?: React.ReactNode;
-  style?: ReactNative.ViewStyle;
-  testID?: string;
-  space?: boolean;
+  accessible?: boolean
+  accessibilityLabel?: string
+  value?: number
+  children?: React.ReactNode
+  style?: ReactNative.ViewStyle
+  testID?: string
+  space?: boolean
 }
 
 const Flex: React.FC<Props> = ({
@@ -26,12 +26,12 @@ const Flex: React.FC<Props> = ({
     style={[
       style,
       { flex: value },
-      space && { justifyContent: "space-between" },
+      space && { justifyContent: 'space-between' },
     ]}
     testID={testID}
   >
     {children}
   </View>
-);
+)
 
-export default Flex;
+export default Flex

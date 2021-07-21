@@ -1,14 +1,20 @@
 // Error handler for a CRUD redux action
-import { Actions } from "../app-actions";
-import { put } from "redux-saga/effects";
-import _data from "./_data";
+import { Actions } from '../app-actions'
+import { put } from 'redux-saga/effects'
+import _data from './_data'
 
 export function* errorHandler(action, prefix, preventSuccess, e) {
-  const error = API.ajaxHandler(Actions[`${prefix}_ERROR`], e);
-  yield put(error);
-  action.onError && action.onError(error.error);
+  let originalError
+  const error = API.ajaxHandler(Actions[`${prefix}_ERROR`], e)
+  yield put(error)
+  try {
+    originalError = JSON.parse(e._bodyText)
+  } catch (e) {
+    // console.log(e)
+  }
+  action.onError && action.onError(error.error, originalError)
   if (preventSuccess) {
-    throw e;
+    throw e
   }
 }
 
@@ -21,28 +27,42 @@ export function* handleResponse(
   dto,
   ignoreId,
 ) {
-  const data = yield dto ? dto(apiResult) : apiResult;
-  const params = { type: Actions[`${prefix}_LOADED`], data, originalAction:action };
+  const data = yield dto ? dto(apiResult) : apiResult
+  const params = {
+    type: Actions[`${prefix}_LOADED`],
+    data,
+    originalAction: action,
+  }
   if (data?.token) {
     // API.setStoredToken(data.token);
-    _data.setToken(data.token);
+    _data.setToken(data.token)
   }
   if (action.data && action.data.id && !ignoreId) {
-    params.index = action.data.id;
+    params.index = action.data.id
   }
-  yield put(params);
-  action.onSuccess && !preventSuccess && action.onSuccess(data);
-  return data;
+  yield put(params)
+  action.onSuccess && !preventSuccess && action.onSuccess(data)
+  return data
 }
 
 // GET request with standard response and error handler
 export function* getAction(action, url, prefix, preventSuccess, dto, ignoreId) {
   try {
-    const postfix = action.data && Object.keys(action.data).length ? "?"+Utils.toParam(action.data) :""
-    const data = yield _data.get(`${url}${postfix}`);
-    return yield handleResponse(action, prefix, data, preventSuccess, dto, ignoreId);
+    const postfix =
+      action.data && Object.keys(action.data).length
+        ? '?' + Utils.toParam(action.data)
+        : ''
+    const data = yield _data.get(`${url}${postfix}`)
+    return yield handleResponse(
+      action,
+      prefix,
+      data,
+      preventSuccess,
+      dto,
+      ignoreId,
+    )
   } catch (e) {
-    yield errorHandler(action, prefix, preventSuccess, e);
+    yield errorHandler(action, prefix, preventSuccess, e)
   }
 }
 
@@ -54,21 +74,21 @@ export function* updateAction(
   preventSuccess,
   dto,
   requestDto,
-  append = true
+  append = true,
 ) {
   try {
-    const request = yield requestDto ? requestDto(action.data) : action.data;
-    const data = yield _data.put(url, request);
+    const request = yield requestDto ? requestDto(action.data) : action.data
+    const data = yield _data.put(url, request)
     return yield handleResponse(
       action,
       prefix,
       data,
       preventSuccess,
       dto,
-      append
-    );
+      append,
+    )
   } catch (e) {
-    yield errorHandler(action, prefix, preventSuccess, e);
+    yield errorHandler(action, prefix, preventSuccess, e)
   }
 }
 
@@ -80,21 +100,21 @@ export function* patchAction(
   preventSuccess,
   dto,
   requestDto,
-  append = true
+  append = true,
 ) {
   try {
-    const request = yield requestDto ? requestDto(action.data) : action.data;
-    const data = yield _data.patch(url, request);
+    const request = yield requestDto ? requestDto(action.data) : action.data
+    const data = yield _data.patch(url, request)
     return yield handleResponse(
       action,
       prefix,
       data,
       preventSuccess,
       dto,
-      append
-    );
+      append,
+    )
   } catch (e) {
-    yield errorHandler(action, prefix, preventSuccess, e);
+    yield errorHandler(action, prefix, preventSuccess, e)
   }
 }
 
@@ -106,31 +126,35 @@ export function* postAction(
   preventSuccess,
   dto,
   requestDto,
-  append = true
+  append = true,
 ) {
   try {
     const data = yield _data.post(
       url,
-      requestDto ? requestDto(action.data) : action.data
-    );
+      requestDto ? requestDto(action.data) : action.data,
+    )
     return yield handleResponse(
       action,
       prefix,
       data,
       preventSuccess,
       dto,
-      append
-    );
+      append,
+    )
   } catch (e) {
-    yield errorHandler(action, prefix, preventSuccess, e);
+    if (preventSuccess) {
+      throw e
+    } else {
+      yield errorHandler(action, prefix, preventSuccess, e)
+    }
   }
 }
 
 export function* deleteAction(action, url, prefix, preventSuccess) {
   try {
-    const data = yield _data.delete(url, {});
-    return yield handleResponse(action, prefix, data, preventSuccess);
+    const data = yield _data.delete(url, {})
+    return yield handleResponse(action, prefix, data, preventSuccess)
   } catch (e) {
-    yield errorHandler(action, prefix, preventSuccess, e);
+    yield errorHandler(action, prefix, preventSuccess, e)
   }
 }

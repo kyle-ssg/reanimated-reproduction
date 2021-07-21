@@ -1,21 +1,24 @@
-import React from "react";
+import React from 'react'
 
 interface Props {
-  accessible?: boolean;
-  accessibilityLabel?: string;
-  style?: ReactNative.TextStyle;
-  children?: React.ReactNode;
-  numberOfLines?: number;
+  accessible?: boolean
+  accessibilityLabel?: string
+  testID?: string
+  style?: ReactNative.TextStyle
+  children?: React.ReactNode
+  numberOfLines?: number
 }
 
 const H4: React.FC<Props> = ({
   accessible,
   accessibilityLabel,
+  testID,
   numberOfLines,
   style,
   children,
 }) => (
   <Text
+    testID={testID}
     accessible={accessible}
     accessibilityLabel={accessibilityLabel}
     numberOfLines={numberOfLines}
@@ -23,6 +26,6 @@ const H4: React.FC<Props> = ({
   >
     {children}
   </Text>
-);
+)
 
-export default H4;
+export default H4

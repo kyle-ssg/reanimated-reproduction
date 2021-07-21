@@ -1,30 +1,30 @@
-import { FunctionComponent } from 'react'; // we need this to make JSX compile
+import { FunctionComponent } from 'react' // we need this to make JSX compile
 import Animated, {
   interpolate,
   useAnimatedStyle,
   useSharedValue,
-} from 'react-native-reanimated';
-import { interpolateColor } from 'react-native-redash';
+} from 'react-native-reanimated'
+import { interpolateColor } from 'react-native-redash'
 type ComponentType = {
-  animatedValue: Animated.SharedValue<number>;
-  min?: number;
-  max?: number;
-};
-import { StyleSheet } from 'react-native';
+  animatedValue: Animated.SharedValue<number>
+  min?: number
+  max?: number
+}
+import { StyleSheet } from 'react-native'
 
 const AnimationTester: FunctionComponent<ComponentType> = ({
   animatedValue,
   min = 0,
   max = 1,
 }) => {
-  const $min = useSharedValue(min);
-  const $max = useSharedValue(max);
+  const $min = useSharedValue(min)
+  const $max = useSharedValue(max)
   const style = useAnimatedStyle(() => {
     return {
       opacity: interpolate(
         animatedValue.value,
         [$min.value, $max.value],
-        [0, 1]
+        [0, 1],
       ),
       transform: [
         {
@@ -32,14 +32,14 @@ const AnimationTester: FunctionComponent<ComponentType> = ({
             interpolate(
               animatedValue.value,
               [min, (max - min) / 2, max],
-              [0, 180, 360]
+              [0, 180, 360],
             ) + 'deg',
         },
       ],
-    };
-  });
-  return <Animated.View style={[styles.box, style]} />;
-};
+    }
+  })
+  return <Animated.View style={[styles.box, style]} />
+}
 
 const styles = StyleSheet.create({
   box: {
@@ -50,6 +50,6 @@ const styles = StyleSheet.create({
     bottom: 50,
     backgroundColor: 'green',
   },
-});
+})
 
-export default AnimationTester;
+export default AnimationTester

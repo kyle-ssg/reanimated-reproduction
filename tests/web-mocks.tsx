@@ -7,6 +7,8 @@ interface ExtendedRouter extends NextRouter{
 
 export const mockRouter = (initialPath="") => {
   const router: ExtendedRouter  = {
+    isLocaleDomain:true,
+    isPreview:false,
     route: initialPath,
     pathname: "",
     basePath:"/",

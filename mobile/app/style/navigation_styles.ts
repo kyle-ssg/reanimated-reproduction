@@ -1,11 +1,11 @@
-import { NativeStackNavigationOptions } from "react-native-screens/native-stack";
+import { NativeStackNavigationOptions } from 'react-native-screens/native-stack'
 
 const defaultNavigationOptions: NativeStackNavigationOptions = {
   // title: "Boilerplate",
   // backButtonImage: undefined,
   // headerBackTitle: "",
   // headerBackTitleVisible: true, // iOS only
-  // headerShown: true,
+  headerShown: false,
   // backButtonInCustomView: false,
   // headerTranslucent: false,
   // headerLargeTitle: false,
@@ -43,6 +43,6 @@ const defaultNavigationOptions: NativeStackNavigationOptions = {
   // gestureEnabled: true,
   // stackPresentation: "push",
   // stackAnimation: "default"
-};
+}
 
-export default defaultNavigationOptions;
+export default defaultNavigationOptions

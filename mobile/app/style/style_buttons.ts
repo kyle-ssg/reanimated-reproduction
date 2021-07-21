@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import asStyle from './style-utils/asStyle';
+import asStyle from './style-utils/asStyle'
 export default asStyle({
   button: {
     height: styleVariables.buttonHeight,
@@ -9,38 +9,38 @@ export default asStyle({
     backgroundColor: palette.primary,
   },
   buttonOutlinePrimary: {
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
     borderWidth: 1.5,
-    borderColor: palette.primaryOutline
+    borderColor: palette.primaryOutline,
   },
 
   buttonOutlinePrimaryText: {
-    color: palette.primary
+    color: palette.primary,
   },
 
   buttonOutlinePrimaryPressedText: {
-    color: palette.primaryPressed
+    color: palette.primaryPressed,
   },
 
   buttonOutlinePrimaryPressed: {
-    borderColor: palette.primary
+    borderColor: palette.primary,
   },
 
   buttonLink: {
-    backgroundColor: "transparent",
-    height: "auto",
+    backgroundColor: 'transparent',
+    height: 'auto',
   },
 
   buttonLinkText: {
-    color: palette.primary
+    color: palette.primary,
   },
 
   buttonLinkPressedText: {
-    color: palette.primaryPressed
+    color: palette.primaryPressed,
   },
 
   buttonLinkPressed: {
-    borderColor: palette.primary
+    borderColor: palette.primary,
   },
 
   buttonPrimaryPressed: {
@@ -60,18 +60,37 @@ export default asStyle({
     borderColor: palette.primary,
     borderWidth: 1,
   },
+
+  buttonDanger: {
+    borderColor: palette.danger,
+    borderRadius: styleVariables.baseBorderRadius,
+    borderWidth: 1,
+  },
+
+  buttonDangerText: {
+    color: palette.danger,
+    fontSize: styleVariables.fontSizeH2,
+  },
+
   buttonTertiaryPressed: {
     backgroundColor: '#eaeaea',
   },
 
   buttonText: {
-    fontFamily: styleVariables.buttonFontFamily,
-    backgroundColor: "transparent",
-    color: "white",
+    fontFamily: styleVariables.normalFontFamily,
+    backgroundColor: 'transparent',
+    color: 'white',
   },
 
   buttonTextText: {
-    color: palette.primary
+    color: palette.primary,
+    fontSize: styleVariables.fontSizeH2,
+  },
+
+  buttonSmallText: {
+    fontSize: styleVariables.fontSizeH4,
+    alignSelf: 'flex-start',
+    marginLeft: 20,
   },
 
   buttonDisabled: {
@@ -79,9 +98,9 @@ export default asStyle({
   },
 
   buttonGroup: {
-    overflow:"hidden",
-    alignItems: "center",
-    justifyContent: "center",
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: palette.primary,
     borderRadius: styleVariables.borderRadius,
     height: styleVariables.buttonHeight,
@@ -95,6 +114,6 @@ export default asStyle({
   },
   buttonPrimaryText: {
     color: 'white',
+    fontSize: styleVariables.fontSizeH2,
   },
-
-});
+})
