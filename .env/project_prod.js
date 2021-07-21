@@ -1,6 +1,15 @@
-import ProjectType from 'common/project-type';
 
-const Project:ProjectType = global.Project = {
+const Project = global.Project = {
+    cognito: {
+        region: "",
+        userPoolId: "",
+        userPoolWebClientId: "",
+    },
+    cognitoMobile: {
+        region: "",
+        userPoolId: "",
+        userPoolWebClientId: "",
+    },
     debug: false,
     api: 'http://localhost:4000/',
     ga: '',
@@ -18,6 +27,6 @@ const Project:ProjectType = global.Project = {
         useSecuredStorage: false,
     },
 };
-export default Project;
+module.exports = Project;
 // if (typeof ENV_NAME !== 'undefined' && typeof ENV_TYPE !== 'undefined') {
 // }

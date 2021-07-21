@@ -1,19 +1,20 @@
-import React, { useState } from "react";
-import { FlatList } from "react-native";
-import FormGroup from "../grid/FormGroup";
-import TextInput from "./TextInput";
+import React, { useState } from 'react'
+import { Text, FlatList } from 'react-native'
+import FormGroup from '../grid/FormGroup'
+import TextInput from './TextInput'
+import Flex from '../grid/Flex'
 
 interface Props {
-  onChange?: (argument: any) => void;
-  renderNoResults?: () => void;
-  items?: any;
-  multiple?: boolean;
-  style?: ReactNative.ViewStyle;
-  value?: any;
-  filterItem?: (item: any) => void;
-  renderRow?: (item: any, isSelected: boolean, toggleItem: () => void) => void;
-  placeholder?: string;
-  searchTestID?: string;
+  onChange?: (argument: any) => void
+  renderNoResults?: () => void
+  items?: any
+  multiple?: boolean
+  style?: ReactNative.ViewStyle
+  value?: any
+  filterItem?: (item: any) => void
+  renderRow?: (item: any, isSelected: boolean, toggleItem: () => void) => void
+  placeholder?: string
+  searchTestID?: string
 }
 
 const Select: React.FC<Props> = ({
@@ -28,35 +29,35 @@ const Select: React.FC<Props> = ({
   renderRow,
   items,
 }) => {
-  const [search, setSearch] = useState({});
+  const [search, setSearch] = useState({})
 
   const isSelectedHandler = (i) =>
-    multiple ? value.indexOf(i) !== -1 : value === i;
+    multiple ? value.indexOf(i) !== -1 : value === i
 
   const setItem = (i, selected) => {
     if (multiple) {
       if (selected) {
-        onChange((value || []).concat(i));
+        onChange((value || []).concat(i))
       } else {
-        const index = value.findIndex((value) => value === i);
-        value.splice(index, 1);
-        onChange(value);
+        const index = value.findIndex((value) => value === i)
+        value.splice(index, 1)
+        onChange(value)
       }
     } else if (selected) {
-      onChange(i);
+      onChange(i)
     } else {
-      onChange(null);
+      onChange(null)
     }
-  };
+  }
 
   const data = filterItem
     ? items.filter((item) => item !== search || filterItem(item))
-    : items;
+    : items
 
   return (
     <Flex style={[Styles.body, { style }]}>
       {filterItem && (
-        <FormGroup style={{ backgroundColor: "#FCF8F5" }}>
+        <FormGroup style={{ backgroundColor: '#FCF8F5' }}>
           <Container>
             <TextInput
               style={{
@@ -74,11 +75,11 @@ const Select: React.FC<Props> = ({
         <FlatList
           data={data}
           renderItem={({ item }) => {
-            const isSelected = isSelectedHandler(item);
+            const isSelected = isSelectedHandler(item)
             const toggleItem = () => {
-              setItem(item, !isSelected);
-            };
-            return renderRow(item, isSelected, toggleItem);
+              setItem(item, !isSelected)
+            }
+            return renderRow(item, isSelected, toggleItem)
           }}
         />
       ) : renderNoResults ? (
@@ -90,7 +91,7 @@ const Select: React.FC<Props> = ({
         </Text>
       )}
     </Flex>
-  );
-};
+  )
+}
 
-export default Select;
+export default Select

@@ -15,6 +15,10 @@ const apiName = function (api, isUpdate) {
 };
 
 module.exports = {
+  singleAction(action) {
+    return `  '${action}': '${action}',
+`;
+  },
   action(action) {
     return `  '${action}': '${action}',
   '${action}_LOADED': '${action}_LOADED',
@@ -68,6 +72,11 @@ export default withScreen(${name});
     [extraProps: string]: any;
   };`
   },
+  singleRequestTypes(action, prefix, type='any') {
+    return `  ${functionName(action, prefix)}?: {
+    [extraProps: string]: any;
+  };`
+  },
   requestStateTypes(action, prefix, type='any') {
     return `${functionName("GET", prefix)}?: {
     [extraProps: string]: any;
@@ -112,6 +121,11 @@ export default withScreen(${name});
         };
     },
 `;
+  },
+  stateTypesSingle(action, prefix, type='any') {
+    return `${prefix}?: ${type === 'any'? `{
+    [extraProps: string]: any;
+  }` : type },`;
   },
   get(action, prefix) {
     return `
@@ -158,6 +172,12 @@ export default withScreen(${name});
 `;
   },
   // reducer
+  reducerSingle(action, prefix) {
+    return `case Actions.${action}:
+        const actionData:RequestTypes['${functionName(action, prefix)}'] = action.data;
+        state['${prefix}'] = actionData;
+      return state;`
+  },
   reducerCollection(action, prefix) {
     return `case Actions.${action}:
       return itemLoading(state, '${prefix}');
@@ -206,38 +226,38 @@ export function* ${functionName(action, prefix)}(action) {
   yield getAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
 }
 `;
-  },
-  yieldGet(action, prefix, api) {
-    return `
+    },
+    yieldGet(action, prefix, api) {
+        return `
 export function* ${functionName(action, prefix)}(action) {
   const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
   yield getAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
 }`;
-  },
-  yieldDelete(action, prefix, api) {
-    return `
+    },
+    yieldDelete(action, prefix, api) {
+        return `
 export function* ${functionName(action, prefix)}(action) {
   const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
   yield deleteAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
 }`;
-  },
-  yieldPost(action, prefix, api) {
-    return `
+    },
+    yieldPost(action, prefix, api) {
+        return `
 export function* ${functionName(action, prefix)}(action) {
   const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
   yield postAction(action, \`\${Project.api}${apiName(api, true)}\`, '${action}');
 }`;
-  },
-  yieldUpdate(action, prefix, api) {
-    return `
+    },
+    yieldUpdate(action, prefix, api) {
+        return `
 export function* ${functionName(action, prefix)}(action) {
   const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
   yield updateAction(action, \`\${Project.api}${apiName(api, true)}\`, '${action}');
 }`;
-  },
-  //  provider
-  providerItem(action, prefix) {
-    return `
+    },
+    //  provider
+    providerItem(action, prefix) {
+        return `
 import { useDispatch, useSelector } from 'react-redux';
 import { AppActions, Callbacks } from '../app-actions';
 import { AppState, RequestTypes } from "../state-type";
@@ -362,6 +382,34 @@ export default function ${functionName('USE', prefix)}():Use${functionName('', p
     ${prefix}Loading,
     ${prefix}Error,
     ${functionName('GET', prefix)},
+  }
+}
+`;
+  },
+  providerSingle(action, prefix) {
+    return`
+import { useDispatch, useSelector } from 'react-redux';
+import { AppActions, Callbacks } from '../app-actions';
+import { AppState, RequestTypes } from "../state-type";
+import { useCallback } from 'react';
+
+type Use${functionName('', prefix)} = {
+  ${prefix}: AppState['${prefix}'],
+  ${functionName(action, prefix)}: (data:RequestTypes['${functionName(action, prefix)}'], callbacks?:Callbacks)=>void,
+}
+
+export default function ${functionName('USE', prefix)}():Use${functionName('', prefix)} {
+  const {
+    ${prefix}, } = useSelector((state:AppState)=>({
+    ${prefix}: state.${prefix},
+  }));
+  const dispatch = useDispatch();
+  const ${functionName(action, prefix)} = useCallback((data:RequestTypes['${functionName(action, prefix)}'], callbacks?:Callbacks)=>{
+    return dispatch(AppActions.${functionName(action, prefix)}(data, callbacks))
+  },[dispatch])
+  return {
+    ${prefix},
+    ${functionName(action, prefix)},
   }
 }
 `;

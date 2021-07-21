@@ -1,62 +1,60 @@
-import { createStore, applyMiddleware } from "redux";
-import createSagaMiddleware from "redux-saga";
-import promiseMiddleware from "redux-promise-middleware";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { persistStore, persistReducer } from "redux-persist";
-import "./app-actions";
-import rootSaga from "./saga";
+import { createStore, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import { persistStore, persistReducer } from 'redux-persist'
+import './app-actions'
+import rootSaga from './saga'
 import rootReducer from './reducer'
-import { AppState } from "./state-type";
+import { AppState } from './state-type'
+import { PersistConfig } from 'redux-persist/es/types'
 
-let store;
+let store
 
-const generateStore = function (initialState: AppState = {}, forceNewStore?: boolean) {
+export default function (initialState: AppState = {}, forceNewStore?: boolean) {
   // It's very important to only return the cached store on the client, otherwise SSR will return the previous request state
   // @ts-ignore
   if (
     store &&
-    // @ts-ignore
-    (typeof window !== "undefined" || global.__JEST__ !== "undefined") &&
+    (typeof window !== 'undefined' || global.__JEST__ !== 'undefined') &&
     !forceNewStore
   ) {
-    return store;
+    return store
   }
 
-  const sagaMiddleware = createSagaMiddleware();
+  const sagaMiddleware = createSagaMiddleware()
 
-  const isClient = typeof window !== 'undefined';
-  const middlewares = API.middlewares ? [sagaMiddleware, ...API.middlewares] : [sagaMiddleware]
-
+  const isClient = typeof window !== 'undefined'
+  const middlewares = API.middlewares
+    ? [sagaMiddleware, ...API.middlewares]
+    : [sagaMiddleware]
 
   if (isClient) {
-    const { persistReducer } = require('redux-persist');
-    const storage = API.reduxStorage || require('redux-persist/lib/storage').default;
+    const { persistReducer } = require('redux-persist')
+    const storage =
+      API.reduxStorage || require('redux-persist/lib/storage').default
 
-    const persistConfig = {
+    const persistConfig: PersistConfig<any, any, any> = {
       key: 'root',
-      storage
-    };
-
+      whitelist: ['profile'],
+      storage,
+    }
 
     store = createStore(
       persistReducer(persistConfig, rootReducer),
       initialState,
-      composeWithDevTools(applyMiddleware(...middlewares))
-    );
+      composeWithDevTools(applyMiddleware(...middlewares)),
+    )
 
-    store.__PERSISTOR = persistStore(store);
+    store.__PERSISTOR = persistStore(store)
   } else {
     store = createStore(
       rootReducer,
       initialState,
-      applyMiddleware(sagaMiddleware)
-    );
+      applyMiddleware(sagaMiddleware),
+    )
   }
 
-  store.sagaTask = sagaMiddleware.run(rootSaga);
+  store.sagaTask = sagaMiddleware.run(rootSaga)
 
-  return store;
-
+  return store
 }
-
-export default generateStore

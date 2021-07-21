@@ -1,18 +1,18 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-const Profiler = React.Profiler;
+const Profiler = React.Profiler
 
 export default (
   WrappedComponent,
   _id,
   remote,
-  events = ["mount", "update"]
+  events = ['mount', 'update'],
 ) => {
   class HOC extends Component {
-    static displayName = "withPerformance";
+    static displayName = 'withPerformance'
 
     constructor(props) {
-      super(props);
+      super(props)
     }
 
     // id, // the "id" prop of the Profiler tree that has just committed
@@ -26,31 +26,31 @@ export default (
     logMeasurement = async (id, phase, actualDuration) => {
       // see output during DEV
       if (!events.includes(phase)) {
-        return;
+        return
       }
       if (actualDuration < 1) {
-        return;
+        return
       }
 
       if (remote) {
         fetch(remote, {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({ value: actualDuration }),
-        });
+        })
       }
-    };
+    }
 
     render() {
       return (
-          <Profiler id={_id} onRender={this.logMeasurement}>
-              <WrappedComponent {...this.props} {...this.state} />
-          </Profiler>
-      );
+        <Profiler id={_id} onRender={this.logMeasurement}>
+          <WrappedComponent {...this.props} {...this.state} />
+        </Profiler>
+      )
     }
   }
 
-  return HOC;
-};
+  return HOC
+}

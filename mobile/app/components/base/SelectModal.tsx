@@ -1,19 +1,22 @@
-import React, { useState } from "react";
-import { Loader } from "./Loader";
-import Select from "./forms/Select";
-import FormGroup from "./grid/FormGroup";
+import React, { useState } from 'react'
+import { Loader } from './Loader'
+import Select from './forms/Select'
+import FormGroup from './grid/FormGroup'
+import Column from './grid/Column'
+import Flex from './grid/Flex'
+import Button from './forms/Button'
 
 interface Props {
-  componentId?: string;
-  value?: {};
-  isLoading?: boolean;
-  multiple?: boolean;
-  items?: any;
-  onChange: (value: {}) => void;
-  placeholder?: string;
-  filterItem?: () => void;
-  renderRow?: (item, isSelected, toggleItem) => void;
-  autoclose?: boolean;
+  componentId?: string
+  value?: {}
+  isLoading?: boolean
+  multiple?: boolean
+  items?: any
+  onChange: (value: {}) => void
+  placeholder?: string
+  filterItem?: () => void
+  renderRow?: (item, isSelected, toggleItem) => void
+  autoclose?: boolean
 }
 
 const NativeModal: React.FC<Props> = ({
@@ -30,20 +33,20 @@ const NativeModal: React.FC<Props> = ({
   const [modalStatus, setModalStatus] = useState({
     isLoading: true,
     value: value,
-  });
+  })
 
-  const onDone = () => onChange(modalStatus.value);
+  const onDone = () => onChange(modalStatus.value)
 
   const onChangeHandler = (value: {}) => {
     if (autoclose) {
-      onChange(value);
+      onChange(value)
     } else {
       setModalStatus((prevState) => ({
         ...prevState,
         value: value,
-      }));
+      }))
     }
-  };
+  }
 
   return (
     <Flex style={[Styles.body]}>
@@ -55,12 +58,12 @@ const NativeModal: React.FC<Props> = ({
       {items && (
         <Fade style={{ flex: 1 }} autostart value={1}>
           <Select
-            placeholder={placeholder || "Search"}
+            placeholder={placeholder || 'Search'}
             items={items}
             value={value}
             onChange={onChangeHandler}
             multiple={multiple}
-            style={{ backgroundColor: "black" }}
+            style={{ backgroundColor: 'black' }}
             renderRow={(item, isSelected, toggleItem) =>
               renderRow(item, isSelected, toggleItem)
             }
@@ -76,7 +79,7 @@ const NativeModal: React.FC<Props> = ({
         </Column>
       </FormGroup>
     </Flex>
-  );
-};
+  )
+}
 
-export default NativeModal;
+export default NativeModal

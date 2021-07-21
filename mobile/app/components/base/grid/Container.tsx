@@ -1,18 +1,19 @@
-import React from "react";
+import React from 'react'
+import ReactNative, { View } from 'react-native'
 
 interface Props {
-  children?: React.ReactNode;
-  ml0?: boolean;
-  ml5?: boolean;
-  ml10?: boolean;
-  ml15?: boolean;
-  ml20?: boolean;
-  mr0?: boolean;
-  mr5?: boolean;
-  mr10?: boolean;
-  mr15?: boolean;
-  mr20?: boolean;
-  style?: ReactNative.ViewStyle;
+  children?: React.ReactNode
+  ml0?: boolean
+  ml5?: boolean
+  ml10?: boolean
+  ml15?: boolean
+  ml20?: boolean
+  mr0?: boolean
+  mr5?: boolean
+  mr10?: boolean
+  mr15?: boolean
+  mr20?: boolean
+  style?: ReactNative.ViewStyle
 }
 
 const Container: React.FC<Props> = ({
@@ -46,6 +47,6 @@ const Container: React.FC<Props> = ({
   >
     {children}
   </View>
-);
+)
 
-export default Container;
+export default Container

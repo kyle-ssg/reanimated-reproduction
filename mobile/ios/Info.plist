@@ -58,6 +58,8 @@
 	</dict>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>We use bluetooth to</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We use your camera to allow you to scan your card</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Enabling Face ID allows you quick and secure access to your account.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -66,6 +68,8 @@
 	<string>We use geolocation for personalisation and localisation</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We use the photo library to allow you to upload an avatar</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>We use analytics tracking to help improve our product.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
@@ -101,6 +105,8 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>branch_app_domain</key>

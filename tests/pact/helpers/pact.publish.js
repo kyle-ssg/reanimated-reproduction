@@ -1,7 +1,7 @@
 /* eslint no-console: 0 */
 const path = require('path');
 const pact = require('@pact-foundation/pact-node');
-require('dotenv').config();
+require('`dotenv').config();
 
 if (process.env.PACT_BROKER) {
   const version = process.env.CI_COMMIT_REF_NAME.replace(/\//g, '-');

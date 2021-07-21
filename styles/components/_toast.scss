@@ -1,0 +1,38 @@
+@import "../variables";
+
+#toast {
+  display: inline-block;
+  position: fixed;
+  right: 15px;
+  top: 50px;
+  z-index: 100000;
+  transition: all 1s ease-in;
+
+  button{
+    box-shadow: none;
+    color:black
+  }
+}
+
+.toast {
+  &__icon {
+    font-size: 1.5em;
+  }
+}
+
+.alert.toast-message {
+  position: relative;
+  right: 15px;
+  width: 250px;
+  color: white;
+  border:none;
+  border-radius: $base-border-radius;
+  padding: 1em;
+  background: $brand-primary;
+  font-weight: 200;
+  box-shadow: 0 11px 15px -7px rgba(0,0,0,0.05), 0 9px 46px 8px rgba(0,0,0,0.03), 0 24px 38px 3px rgba(0,0,0,0.04);
+}
+
+.toast-message.fade.show {
+  top: 0;
+}

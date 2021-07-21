@@ -1,30 +1,30 @@
-import React, { Component } from "react";
-import { Tabs } from "components/extras/Tabs";
+import React, { Component } from 'react'
+import { Tabs } from 'components/extras/Tabs'
 
 export default class extends Component {
-  static displayName = "TheComponent";
+  static displayName = 'TheComponent'
 
   constructor(props, context) {
-    super(props, context);
-    this.state = {};
+    super(props, context)
+    this.state = {}
   }
 
-  onTabChange = (index) => this.setState({ activeButton: index });
+  onTabChange = (index) => this.setState({ activeButton: index })
 
   renderScene = (scene) => {
-    const { i } = scene.route.data;
-    const label = `Tab ${i}`;
+    const { i } = scene.route.data
+    const label = `Tab ${i}`
     return (
       <Flex>
         <Text>{label}</Text>
       </Flex>
-    );
-  };
+    )
+  }
 
   render() {
     const {
       state: { activeButton },
-    } = this;
+    } = this
     return (
       <Tabs
         scrollEnabled={this.props.scrollEnabled}
@@ -33,11 +33,11 @@ export default class extends Component {
           backgroundColor: palette.primary,
         }}
         labelStyle={{
-          textAlign: "center",
-          color: "white",
+          textAlign: 'center',
+          color: 'white',
         }}
         indicatorStyle={{
-          backgroundColor: "white",
+          backgroundColor: 'white',
         }}
         navigationState={{
           index: activeButton || 0,
@@ -50,6 +50,6 @@ export default class extends Component {
         onIndexChange={this.onTabChange}
         renderScene={this.renderScene}
       />
-    );
+    )
   }
 }

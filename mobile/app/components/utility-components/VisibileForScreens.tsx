@@ -1,20 +1,15 @@
-import React, {
-  FunctionComponent,
-  ReactNode,
-  useEffect,
-  useState,
-} from "react"; // we need this to make JSX compile
-import { connect } from "react-redux";
+import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react' // we need this to make JSX compile
+import { connect } from 'react-redux'
 // eslint-disable-next-line no-unused-vars
-import { AppState } from "common/state-type";
-import { RouteUrls } from "../../route-urls";
+import { AppState } from 'common/state-type'
+import { RouteUrls } from '../../route-urls'
 
 interface Props {
-  activeScreen: AppState["activeScreen"];
-  target: RouteUrls[];
-  navigator?: string;
-  style: ReactNative.ViewStyle;
-  children: ReactNode;
+  activeScreen: AppState['activeScreen']
+  target: RouteUrls[]
+  navigator?: string
+  style: ReactNative.ViewStyle
+  children: ReactNode
 }
 
 //Use this to make an absolute view persist across multiple native screens
@@ -24,24 +19,24 @@ const VisibleForScreens: React.FC<Props> = ({
   activeScreen,
   style,
   target,
-  navigator = "root",
+  navigator = 'root',
 }) => {
-  const [isActive, setIsActive] = useState<boolean>(false);
+  const [isActive, setIsActive] = useState<boolean>(false)
   useEffect(() => {
     if (activeScreen) {
-      setIsActive(target.includes(activeScreen[navigator]));
+      setIsActive(target.includes(activeScreen[navigator]))
     }
-  }, [activeScreen, navigator, target]);
+  }, [activeScreen, navigator, target])
   return (
     <Fade style={style} value={isActive}>
       {children}
     </Fade>
-  );
-};
-
-function mapStateToProps(state: AppState) {
-  const { activeScreen } = state;
-  return { activeScreen };
+  )
 }
 
-export default connect(mapStateToProps)(VisibleForScreens);
+function mapStateToProps(state: AppState) {
+  const { activeScreen } = state
+  return { activeScreen }
+}
+
+export default connect(mapStateToProps)(VisibleForScreens)

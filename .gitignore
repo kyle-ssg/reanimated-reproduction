@@ -3,6 +3,7 @@
 *.iml
 node_modules/
 build/
+tests_output/
 *.log*
 npm-debug.log
 mobile/common-mobile/
@@ -27,7 +28,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+env.production
+env

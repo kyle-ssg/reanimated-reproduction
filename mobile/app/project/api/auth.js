@@ -1,3 +1,6 @@
+import Cognito from 'common/cognito'
+export default { Cognito }
+
 // import { FBLoginManager } from 'react-native-facebook-login';
 // import { GoogleSignin } from 'react-native-google-signin';
 // import Project from '../../../../common/project';

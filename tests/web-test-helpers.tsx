@@ -6,7 +6,7 @@ import { mockRequest, renderWithStore } from '../common/tests/test-helpers';
 import { Store } from 'redux';
 import { RenderResult } from '@testing-library/react';
 import _data from '../common/utils/_data';
-import { getInitialProps } from '../pages/_app';
+// import { getInitialProps } from '../pages/_app';
 
 // Renders with nextjs router support
 export async function renderWithRouter(
@@ -14,7 +14,7 @@ export async function renderWithRouter(
   children,
   store
 ) {
-  await getInitialProps({ Component:null,  ctx: {  query:null, AppTree:null, isServer: true, store: store, pathname: "/" } })
+  // await getInitialProps({ Component:null,  ctx: {  query:null, AppTree:null, isServer: true, store: store, pathname: "/" } })
   return (
       <RouterContext.Provider
         value={router}
