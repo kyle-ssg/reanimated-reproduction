@@ -1,12 +1,12 @@
 import React from 'react'
-import { View, ViewStyle } from 'react-native'
+import { View } from 'react-native'
 
 interface Props {
   accessible?: boolean
   accessibilityLabel?: string
   value?: number
   children?: React.ReactNode
-  style?: ViewStyle
+  style?: ReactNative.ViewStyle
   testID?: string
   space?: boolean
 }

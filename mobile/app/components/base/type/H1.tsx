@@ -1,11 +1,8 @@
 import React from 'react'
-import { Text, TextStyle } from 'react-native'
-import Styles from '../../../style/_style_screen'
-
 interface Props {
   accessible?: boolean
   accessibilityLabel?: string
-  style?: TextStyle
+  style?: ReactNative.TextStyle
   children?: React.ReactNode
 }
 

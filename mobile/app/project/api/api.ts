@@ -14,8 +14,8 @@ import auth from './auth'
 import * as RootNavigation from 'navigation/RootNavigation'
 import { RouteUrls } from '../../route-urls'
 import 'common/project'
-
-const analytics = typeof _analytics === 'undefined' ? undefined : _analytics()
+// import _analytics from '@react-native-firebase/analytics'
+const analytics = typeof _analytics === 'undefined' ? undefined : _analytics
 // import ImagePicker from 'react-native-image-crop-picker';
 
 global.API = {
@@ -63,7 +63,7 @@ global.API = {
   },
   trackPage(name) {
     if (analytics) {
-      analytics().setCurrentScreen(name, name)
+      analytics().logScreenView({ screen_name: name })
     }
   },
   share: (uri, message, title, subject, excludedActivityTypes) => {

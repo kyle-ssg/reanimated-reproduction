@@ -45,6 +45,10 @@ export default asStyle({
     alignItems: 'flex-start',
   },
 
+  alignStretch: {
+    alignItems: 'stretch',
+  },
+
   alignSelfStart: {
     alignSelf: 'flex-start',
   },
@@ -57,12 +61,38 @@ export default asStyle({
     alignSelf: 'flex-end',
   },
 
+  alignItemsEnd: {
+    alignItems: 'flex-end',
+  },
+
+  alignItemsStart: {
+    alignItems: 'flex-start',
+  },
+
   alignEnd: {
     alignItems: 'flex-end',
   },
 
   alignCenter: {
     alignSelf: 'center',
+  },
+
+  alignItemsCenter: {
+    alignItems: 'center',
+  },
+
+  stretchCol: {
+    flex: 1,
+  },
+
+  stretchCol2: {
+    flexDirection: 'column',
+    flex: 2,
+  },
+
+  stretchCol3: {
+    flexDirection: 'column',
+    flex: 3,
   },
 
   baseline: {
