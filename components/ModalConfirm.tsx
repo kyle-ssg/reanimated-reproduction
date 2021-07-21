@@ -59,7 +59,6 @@ const Confirm: React.FC<Confirm> = ({
           <ButtonPrimary
             data-test='confirm-yes'
             disabled={disabled || disabledYes}
-            icon='fas fa-save'
             onClick={yes}
           >
             {yesText}
