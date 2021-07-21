@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import asStyle from './style-utils/asStyle';
+import { StyleSheet } from 'react-native'
+import asStyle from './style-utils/asStyle'
 
 export default asStyle({
   listItem: {
@@ -11,4 +11,4 @@ export default asStyle({
     paddingTop: styleVariables.paddingBase,
     paddingBottom: styleVariables.paddingBase,
   },
-});
+})

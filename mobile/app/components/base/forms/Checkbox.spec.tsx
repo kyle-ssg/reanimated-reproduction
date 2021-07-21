@@ -1,11 +1,10 @@
-import * as React from "react";
-// import Checkbox from "./Checkbox";
-import renderer from "react-test-renderer";
+import * as React from 'react'
+import Checkbox from './Checkbox'
+import renderer from 'react-test-renderer'
 
-
-describe.skip("<Checkbox />", () => {
+describe.skip('<Checkbox />', () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<Checkbox />);
-    expect(tree).toMatchSnapshot();
-  });
-});
+    const tree = renderer.create(<Checkbox />)
+    expect(tree).toMatchSnapshot()
+  })
+})

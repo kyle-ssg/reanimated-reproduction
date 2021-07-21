@@ -1,11 +1,10 @@
-import * as React from "react";
-import Column from "./Column";
-import renderer from "react-test-renderer";
+import * as React from 'react'
+import Column from './Column'
+import renderer from 'react-test-renderer'
 
-
-describe("<Column />", () => {
+describe('<Column />', () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<Column />);
-    expect(tree).toMatchSnapshot();
-  });
-});
+    const tree = renderer.create(<Column />)
+    expect(tree).toMatchSnapshot()
+  })
+})

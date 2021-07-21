@@ -1,11 +1,10 @@
-import * as React from "react";
-import Row from "./Row";
-import renderer from "react-test-renderer";
+import * as React from 'react'
+import Row from './Row'
+import renderer from 'react-test-renderer'
 
-
-describe("<Row />", () => {
+describe('<Row />', () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<Row />);
-    expect(tree).toMatchSnapshot();
-  });
-});
+    const tree = renderer.create(<Row />)
+    expect(tree).toMatchSnapshot()
+  })
+})

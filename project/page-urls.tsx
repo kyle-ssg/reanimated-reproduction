@@ -1,13 +1,12 @@
 export const PageUrls = {
-  home:``,
+  home: ``,
 }
-
 
 export const Breadcrumbs = {
   profile: [
     {
-      text:`Profile`,
-      href:`/profile`
-    }
+      text: `Profile`,
+      href: `/profile`,
+    },
   ],
 }

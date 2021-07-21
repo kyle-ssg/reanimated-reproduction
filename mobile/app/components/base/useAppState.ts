@@ -1,22 +1,26 @@
 import { useEffect, useCallback } from 'react'
-import { AppState } from "react-native";
+import { AppState } from 'react-native'
 
-export default function useAppState(onActive:()=>void, onInactive?:()=>void) {
-  const handleChange = useCallback((newState) => {
-    if (newState === "active") {
-      onActive();
-    } else {
-      !!onInactive && onInactive()
-    }
-  },[onActive, onInactive])
+export default function useAppState(
+  onActive: () => void,
+  onInactive?: () => void,
+) {
+  const handleChange = useCallback(
+    (newState) => {
+      if (newState === 'active') {
+        onActive()
+      } else {
+        !!onInactive && onInactive()
+      }
+    },
+    [onActive, onInactive],
+  )
 
   useEffect(() => {
-    AppState.addEventListener('change', handleChange);
+    AppState.addEventListener('change', handleChange)
 
     return () => {
-      AppState.removeEventListener('change', handleChange);
+      AppState.removeEventListener('change', handleChange)
     }
-  }, [handleChange]);
-
-
+  }, [handleChange])
 }

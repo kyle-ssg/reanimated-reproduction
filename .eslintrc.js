@@ -1,91 +1,65 @@
 module.exports = {
   env: {
     es6: true,
-    browser: true
+    browser: true,
   },
   extends: [
-    "plugin:jest/recommended",
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
+    'plugin:jest/recommended',
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
   ],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 6,
-    sourceType: "module",
+    sourceType: 'module',
     ecmaFeatures: {
       legacyDecorators: true,
-      modules: true
+      modules: true,
     },
-    parser: "typescript-eslint"
+    parser: 'typescript-eslint',
   },
-  plugins: ["react", "react-hooks", "jest"],
+  plugins: ['react', 'react-hooks', 'jest'],
   rules: {
-    "react/jsx-no-undef": ["error", { allowGlobals: true }],
-    "default-case": "error",
-    "dot-notation": "error",
-    "@typescript-eslint/ban-ts-comment": 0,
-    "guard-for-in": "error",
-    "no-caller": "error",
-    "react/react-in-jsx-scope": 0,
-    "no-empty-parameters": 0,
-    "@typescript-eslint/no-explicit-any": 0,
-    "react/display-name": 0,
-    "no-case-declarations": 0,
-    "@typescript-eslint/no-unused-vars": 0,
-    "@typescript-eslint/ban-types": 0,
-    "@typescript-eslint/no-var-requires": 0,
-    "@typescript-eslint/explicit-module-boundary-types": 0,
-    "no-shadow": 0,
-    "no-empty-pattern": 0,
-    "no-var": "error",
-    "@typescript-eslint/no-empty-function": 0,
-    "object-curly-spacing": ["error", "always"],
+    'react/jsx-no-undef': ['error', { allowGlobals: true }],
+    'default-case': 'error',
+    'dot-notation': 'error',
+    '@typescript-eslint/ban-ts-comment': 0,
+    'guard-for-in': 'error',
+    'no-caller': 'error',
+    'react/react-in-jsx-scope': 0,
+    'no-empty-parameters': 0,
+    '@typescript-eslint/no-explicit-any': 0,
+    'react/display-name': 0,
+    'no-case-declarations': 0,
+    '@typescript-eslint/no-unused-vars': 0,
+    '@typescript-eslint/ban-types': 0,
+    '@typescript-eslint/no-var-requires': 0,
+    '@typescript-eslint/explicit-module-boundary-types': 0,
+    'no-shadow': 0,
+    'no-empty-pattern': 0,
+    'no-var': 'error',
+    '@typescript-eslint/no-empty-function': 0,
+    'object-curly-spacing': ['error', 'always'],
     radix: 0,
-    "react/prop-types": "off",
-    "react-hooks/exhaustive-deps": 'error',
-    "@typescript-eslint/indent": [
-      "error",
-      2,
-      {
-        SwitchCase: 1,
-        ignoredNodes: [
-          "JSXAttribute",
-          "JSXIdentifier",
-          "JSXOpeningFragment",
-          "JSXClosingFragment",
-          "JSXClosingElement",
-          "JSXClosingElement",
-          "JSXElement *",
-          "JSXElement",
-          "JSXElement > *",
-          "JSXEmptyExpression",
-          "JSXExpressionContainer",
-          "JSXMemberExpression",
-          "JSXNamespacedName",
-          "JSXOpeningElement",
-          "JSXSpreadAttribute",
-          "JSXSpreadChild",
-          "JSXText",
-          "TemplateLiteral"
-        ]
-      }
-    ],
+    'react/prop-types': 'off',
+    'react-hooks/exhaustive-deps': 'error',
     // "react/jsx-indent": ["error", 4],
-    "react/jsx-indent-props": ["error", 2],
-    "react/jsx-closing-bracket-location": 1,
-    "react/jsx-max-props-per-line": [
+    'react/jsx-indent-props': ['error', 2],
+    'react/jsx-closing-bracket-location': 1,
+    'react/jsx-max-props-per-line': [
       1,
       {
-        maximum: 3
-      }
-    ]
+        maximum: 3,
+      },
+    ],
   },
   settings: {
     react: {
-      version: "detect"
-    }
+      version: 'detect',
+    },
   },
   globals: {
     API: true,
@@ -173,5 +147,5 @@ module.exports = {
     withFullScreenPushModalOptions: true,
     require: true,
     styleVariables: true,
-  }
-};
+  },
+}

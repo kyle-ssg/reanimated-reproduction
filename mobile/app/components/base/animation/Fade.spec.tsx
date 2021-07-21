@@ -1,11 +1,10 @@
-import * as React from "react";
+import * as React from 'react'
 // import Fade from "./Fade";
-import renderer from "react-test-renderer";
+import renderer from 'react-test-renderer'
 
-
-describe.skip("<Fade />", () => {
+describe.skip('<Fade />', () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<Fade />);
-    expect(tree).toMatchSnapshot();
-  });
-});
+    const tree = renderer.create(<Fade />)
+    expect(tree).toMatchSnapshot()
+  })
+})

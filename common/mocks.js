@@ -1,8 +1,8 @@
 module.exports = {
-  generatePagination(values){
+  generatePagination(values) {
     return {
       content: [],
-      pageable: "",
+      pageable: '',
       totalPages: 10,
       numberOfElements: 10,
       totalElements: 100,
@@ -10,13 +10,13 @@ module.exports = {
       sort: {
         unsorted: false,
         sorted: false,
-        empty: false
+        empty: false,
       },
       first: false,
       size: 10,
       number: 1,
       empty: false,
-      ...values
+      ...values,
     }
   },
 }

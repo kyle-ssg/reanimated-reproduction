@@ -3,60 +3,60 @@ import React, {
   useState,
   useEffect,
   useCallback,
-} from "react"; // we need this to make JSX compile
-import DateTimePickerModal from "react-native-modal-datetime-picker";
-import SelectBox from "components/base/forms/SelectBox";
-import Icon from "react-native-vector-icons/Ionicons";
+} from 'react' // we need this to make JSX compile
+import DateTimePickerModal from 'react-native-modal-datetime-picker'
+import SelectBox from 'components/base/forms/SelectBox'
+import Icon from 'react-native-vector-icons/Ionicons'
 
-import moment from "moment";
+import moment from 'moment'
 type Props = {
-  value: Date;
-  format?: string;
-  title?: string;
-  onChange: (date: Date) => void;
-};
+  value: Date
+  format?: string
+  title?: string
+  onChange: (date: Date) => void
+}
 
 const DateSelect: React.FC<Props> = ({
   value,
-  format = "Do MMMM YYYY",
+  format = 'Do MMMM YYYY',
   onChange,
-  title = "Date",
+  title = 'Date',
 }) => {
   const [formattedDate, setFormattedDate] = useState<string>(
-    moment(value).format(format)
-  );
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+    moment(value).format(format),
+  )
+  const [isVisible, setIsVisible] = useState<boolean>(false)
   const toggleVisible = useCallback(() => {
-    setIsVisible(!isVisible);
-  }, [isVisible]);
+    setIsVisible(!isVisible)
+  }, [isVisible])
   const onConfirm = useCallback(
     (value) => {
-      toggleVisible();
-      onChange(value);
+      toggleVisible()
+      onChange(value)
     },
-    [onChange, value]
-  );
+    [onChange, toggleVisible],
+  )
   useEffect(() => {
-    setFormattedDate(moment(value).format(format));
-  }, [value, format]);
+    setFormattedDate(moment(value).format(format))
+  }, [value, format])
   return (
     <>
       <SelectBox
         onPress={toggleVisible}
         title={title}
-        icon={<Icon name="calendar" size={20} light />}
+        icon={<Icon name='calendar' size={20} light />}
       >
         {formattedDate}
       </SelectBox>
       <DateTimePickerModal
         isVisible={isVisible}
-        mode="date"
-        display="compact"
+        mode='date'
+        display='compact'
         onConfirm={onConfirm}
         onCancel={toggleVisible}
       />
     </>
-  );
-};
+  )
+}
 
-export default DateSelect;
+export default DateSelect

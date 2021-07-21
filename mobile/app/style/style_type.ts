@@ -1,4 +1,4 @@
-import asStyle from "./style-utils/asStyle";
+import asStyle from './style-utils/asStyle'
 
 export default asStyle({
   //
@@ -42,29 +42,29 @@ export default asStyle({
   },
 
   text: {
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
     color: palette.text,
     fontFamily: styleVariables.normalFontFamily,
     fontSize: styleVariables.fontSizeBase,
   },
 
   textCenter: {
-    textAlign: "center"
+    textAlign: 'center',
   },
 
   textLeft: {
-    textAlign: "left"
+    textAlign: 'left',
   },
 
   textRight: {
-    textAlign: "right"
+    textAlign: 'right',
   },
 
   textBottom: {
-    textAlignVertical: "bottom"
+    textAlignVertical: 'bottom',
   },
 
   textWhite: {
-    color: "white"
+    color: 'white',
   },
-});
+})
