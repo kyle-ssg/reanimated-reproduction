@@ -2,6 +2,8 @@ import _Project, { ProjectType } from 'common/project'
 import { AppActions, Actions } from 'common/app-actions'
 import API from '../project/api'
 import Strings from 'common/strings'
+import { APIType } from '../common/api-type'
+type API = APIType & {}
 declare global {
   namespace NodeJS {
     interface Global {
@@ -54,7 +56,7 @@ declare global {
 }
 
 declare global {
-  declare let API: API
+  declare let API: APIType
   declare let closeModal: Function
   declare let openModal: (title: string, body: React.ReactChildren) => void
   declare let Actions = AppActions
