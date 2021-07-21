@@ -1,11 +1,10 @@
-import * as React from "react";
-import TextInput from "./TextInput";
-import renderer from "react-test-renderer";
+import * as React from 'react'
+import TextInput from './TextInput'
+import renderer from 'react-test-renderer'
 
-
-describe("<TextInput />", () => {
+describe('<TextInput />', () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<TextInput />);
-    expect(tree).toMatchSnapshot();
-  });
-});
+    const tree = renderer.create(<TextInput />)
+    expect(tree).toMatchSnapshot()
+  })
+})

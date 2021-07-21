@@ -1,11 +1,10 @@
-import * as React from "react";
-import FormGroup from "./FormGroup";
-import renderer from "react-test-renderer";
+import * as React from 'react'
+import FormGroup from './FormGroup'
+import renderer from 'react-test-renderer'
 
-
-describe("<FormGroup />", () => {
+describe('<FormGroup />', () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<FormGroup></FormGroup>);
-    expect(tree).toMatchSnapshot();
-  });
-});
+    const tree = renderer.create(<FormGroup></FormGroup>)
+    expect(tree).toMatchSnapshot()
+  })
+})

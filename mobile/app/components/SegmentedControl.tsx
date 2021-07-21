@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useCallback, useEffect, useRef } from 'react'; // we need this to make JSX compile
-import { useMeasure } from '../project/animation-util/useMeasure';
+import React, { FunctionComponent, useCallback, useEffect, useRef } from 'react' // we need this to make JSX compile
+import { useMeasure } from '../project/animation-util/useMeasure'
 import {
   Pressable,
   Text,
@@ -7,8 +7,8 @@ import {
   View,
   StyleSheet,
   ViewStyle,
-} from 'react-native';
-import { PanGestureHandler } from 'react-native-gesture-handler';
+} from 'react-native'
+import { PanGestureHandler } from 'react-native-gesture-handler'
 import Animated, {
   runOnJS,
   interpolate,
@@ -16,14 +16,14 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
-} from 'react-native-reanimated';
-import { easingConfigSlide } from '../project/animation-util/reanimations';
-import { clamp } from '../project/animation-util/clamp';
+} from 'react-native-reanimated'
+import { easingConfigSlide } from '../project/animation-util/reanimations'
+import { clamp } from '../project/animation-util/clamp'
 
-const CONTAINER_PADDING_Y = 6;
-const CONTAINER_PADDING_X = 6;
-const CONTAINER_HEIGHT = 44;
-const CONTAINER_RADIUS = 8;
+const CONTAINER_PADDING_Y = 6
+const CONTAINER_PADDING_X = 6
+const CONTAINER_HEIGHT = 44
+const CONTAINER_RADIUS = 8
 
 const SegmentText: FunctionComponent<SegmentItemType> = ({
   isActive,
@@ -35,8 +35,8 @@ const SegmentText: FunctionComponent<SegmentItemType> = ({
   textActiveStyle,
 }) => {
   const onPress = useCallback(() => {
-    onChange(item);
-  }, [onChange, item]);
+    onChange(item)
+  }, [onChange, item])
 
   return (
     <View style={styles.labelContainer}>
@@ -61,8 +61,8 @@ const SegmentText: FunctionComponent<SegmentItemType> = ({
         )}
       </Pressable>
     </View>
-  );
-};
+  )
+}
 
 const SegmentedControl: FunctionComponent<SegmentControlType> = ({
   items,
@@ -78,73 +78,80 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
   value,
   onChange,
 }) => {
-  const initialised = useRef(false);
-  const $containerWidth = useSharedValue(0);
-  const $itemsLength = useSharedValue(0);
-  const $sliderWidth = useSharedValue(0);
+  const initialised = useRef(false)
+  const $containerWidth = useSharedValue(0)
+  const $itemsLength = useSharedValue(0)
+  const $sliderWidth = useSharedValue(0)
   const [size, onLayout] = useMeasure((initialSize) => {
     const initialWidth =
-      size && (initialSize.width - paddingX * 2) * (1 / items.length);
-    const index = items.findIndex((item) => item.value === value.value);
-    const safeIndex = index === -1 ? 0 : index;
-    sliderPosition.value = initialWidth * safeIndex;
+      size && (initialSize.width - paddingX * 2) * (1 / items.length)
+    const index = items.findIndex((item) => item.value === value.value)
+    const safeIndex = index === -1 ? 0 : index
+    sliderPosition.value = initialWidth * safeIndex
     if (animatedValue) {
       animatedValue.value = interpolate(
         safeIndex,
         [0, items.length - 1],
-        [0, 1]
-      );
+        [0, 1],
+      )
     }
-    initialised.current = true;
-    $containerWidth.value = initialSize.width;
-    $itemsLength.value = items.length;
+    initialised.current = true
+    $containerWidth.value = initialSize.width
+    $itemsLength.value = items.length
     $sliderWidth.value =
-      initialSize && (initialSize.width - paddingX * 2) * (1 / items.length);
-  });
-  const sliderPosition = useSharedValue(-1);
-  const sliderWidth = size && (size.width - paddingX * 2) * (1 / items.length);
-  const index = items.findIndex((item) => item.value === value.value);
+      initialSize && (initialSize.width - paddingX * 2) * (1 / items.length)
+  })
+  const sliderPosition = useSharedValue(-1)
+  const sliderWidth = size && (size.width - paddingX * 2) * (1 / items.length)
+  const index = items.findIndex((item) => item.value === value.value)
   useEffect(() => {
-    const safeIndex = index === -1 ? 0 : index;
-    const pos = sliderWidth * safeIndex;
+    const safeIndex = index === -1 ? 0 : index
+    const pos = sliderWidth * safeIndex
 
     if (!sliderWidth) {
-      return;
+      return
     }
 
     if (initialised.current) {
-      sliderPosition.value = withTiming(pos, easingConfigSlide);
+      sliderPosition.value = withTiming(pos, easingConfigSlide)
       if (animatedValue) {
         animatedValue.value = withTiming(
           interpolate(safeIndex, [0, items.length - 1], [0, 1]),
-          easingConfigSlide
-        );
+          easingConfigSlide,
+        )
       }
     } else {
-      initialised.current = true;
-      sliderPosition.value = pos;
+      initialised.current = true
+      sliderPosition.value = pos
     }
-  }, [index,items.length, animatedValue, initialised, sliderPosition, sliderWidth]);
+  }, [
+    index,
+    items.length,
+    animatedValue,
+    initialised,
+    sliderPosition,
+    sliderWidth,
+  ])
 
   const slideStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: sliderPosition.value }],
-  }));
+  }))
 
   const onGestureEvent = useAnimatedGestureHandler({
     onActive: (event) => {
       const calculatedIndex = clamp(
         Math.floor((event.x / $containerWidth.value) * $itemsLength.value),
         0,
-        $itemsLength.value - 1
-      );
+        $itemsLength.value - 1,
+      )
 
       const pos =
-        $sliderWidth.value * (calculatedIndex === -1 ? 0 : calculatedIndex);
+        $sliderWidth.value * (calculatedIndex === -1 ? 0 : calculatedIndex)
       if (pos !== sliderPosition.value) {
-        runOnJS(onChange)(items[calculatedIndex]);
+        runOnJS(onChange)(items[calculatedIndex])
       }
     },
-  });
+  })
 
   return (
     <View
@@ -190,8 +197,8 @@ const SegmentedControl: FunctionComponent<SegmentControlType> = ({
         </Animated.View>
       </PanGestureHandler>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   flex: {
@@ -247,34 +254,34 @@ const styles = StyleSheet.create({
     color: palette.textHighlight,
     opacity: 1,
   },
-});
+})
 
-export default SegmentedControl;
+export default SegmentedControl
 
-type SegmentOption = { value: any; label: string };
+type SegmentOption = { value: any; label: string }
 type SegmentItemType = {
-  isActive: boolean;
-  value: any;
-  item: any;
-  disabled: boolean;
-  textStyle?: TextStyle;
-  textActiveStyle?: TextStyle;
-  textPressedStyle?: TextStyle;
-  onChange: (item: any) => any;
-};
+  isActive: boolean
+  value: any
+  item: any
+  disabled: boolean
+  textStyle?: TextStyle
+  textActiveStyle?: TextStyle
+  textPressedStyle?: TextStyle
+  onChange: (item: any) => any
+}
 type BaseType = {
-  value: any;
-  onChange: (item: any) => void;
-  disabled?: boolean;
-  trackStyle?: ViewStyle;
-  barStyle?: ViewStyle;
-  textStyle?: TextStyle;
-  textActiveStyle?: TextStyle;
-  textPressedStyle?: TextStyle;
-  paddingX?: number;
-  paddingY?: number;
-};
+  value: any
+  onChange: (item: any) => void
+  disabled?: boolean
+  trackStyle?: ViewStyle
+  barStyle?: ViewStyle
+  textStyle?: TextStyle
+  textActiveStyle?: TextStyle
+  textPressedStyle?: TextStyle
+  paddingX?: number
+  paddingY?: number
+}
 type SegmentControlType = BaseType & {
-  items: SegmentOption[];
-  animatedValue?: Animated.SharedValue<number>;
-};
+  items: SegmentOption[]
+  animatedValue?: Animated.SharedValue<number>
+}

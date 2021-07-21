@@ -1,34 +1,34 @@
-import { FunctionComponent, useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react'
 import Animated, {
   runOnJS,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
-} from 'react-native-reanimated'; // we need this to make JSX compile
-import { Modal, TouchableOpacity, View, StyleSheet } from 'react-native';
-import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
-import { modalConfig } from '../project/animation-util/reanimations';
+} from 'react-native-reanimated' // we need this to make JSX compile
+import { Modal, TouchableOpacity, View, StyleSheet } from 'react-native'
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
+import { modalConfig } from '../project/animation-util/reanimations'
 
-type ComponentType = {};
+type ComponentType = {}
 export type ModalType = {
-  animatedValue?: Animated.SharedValue<number>;
-  controlledValue?: Animated.SharedValue<number>;
-  fadeContent?: boolean;
-  controlled?: boolean;
-  visible: boolean;
-  style: ReactNative.ViewStyle;
-  onDismissPress?: () => void;
-  onShow?:()=>void;
-  preventDismiss?: boolean;
-};
+  animatedValue?: Animated.SharedValue<number>
+  controlledValue?: Animated.SharedValue<number>
+  fadeContent?: boolean
+  controlled?: boolean
+  visible: boolean
+  style: ReactNative.ViewStyle
+  onDismissPress?: () => void
+  onShow?: () => void
+  preventDismiss?: boolean
+}
 
 export type ModalInnerType = {
-  fadeContent?: boolean;
-  style: ReactNative.ViewStyle;
-  onDismissPress?: () => void;
-  children: React.ReactNode;
-  opacityStyle: ReactNative.ViewStyle;
-};
+  fadeContent?: boolean
+  style: ReactNative.ViewStyle
+  onDismissPress?: () => void
+  children: React.ReactNode
+  opacityStyle: ReactNative.ViewStyle
+}
 
 const ModalInner = gestureHandlerRootHOC(function GestureExample({
   style,
@@ -41,7 +41,7 @@ const ModalInner = gestureHandlerRootHOC(function GestureExample({
   return (
     <View style={[style, StyleSheet.absoluteFill]}>
       <TouchableOpacity
-        onPress={()=>onDismissPress()}
+        onPress={() => onDismissPress()}
         activeOpacity={1}
         style={[StyleSheet.absoluteFill]}
       />
@@ -51,8 +51,8 @@ const ModalInner = gestureHandlerRootHOC(function GestureExample({
         children
       )}
     </View>
-  );
-});
+  )
+})
 const CustomModal: FunctionComponent<ModalType> = ({
   animatedValue: _animatedValue,
   controlledValue,
@@ -65,38 +65,34 @@ const CustomModal: FunctionComponent<ModalType> = ({
   style,
   visible,
   controlled,
-  onShow
+  onShow,
 }) => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false)
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const animationValue = controlledValue || useSharedValue(0);
+  const animationValue = controlledValue || useSharedValue(0)
   useEffect(() => {
     if (!controlled) {
-      if(visible) setModalVisible(true);
+      if (visible) setModalVisible(true)
       animationValue.value = withTiming(visible ? 1 : 0, modalConfig, () => {
-        !visible && runOnJS(setModalVisible)(false);
-      });
+        !visible && runOnJS(setModalVisible)(false)
+      })
       if (_animatedValue) {
-        _animatedValue.value = withTiming(visible ? 1 : 0, modalConfig);
+        _animatedValue.value = withTiming(visible ? 1 : 0, modalConfig)
       }
     }
-  }, [visible, _animatedValue, controlled, controlledValue, animationValue]);
+  }, [visible, _animatedValue, controlled, controlledValue, animationValue])
 
   const opacityStyle = useAnimatedStyle(() => ({
     opacity: animationValue.value,
-  }));
+  }))
   const opacityStyle2 = useAnimatedStyle(() => ({
     opacity: animationValue.value,
-  }));
+  }))
 
-  const isVisible = controlledValue ? visible : modalVisible;
+  const isVisible = controlledValue ? visible : modalVisible
   return (
-    <Modal
-      onShow={onShow}
-      visible={isVisible}
-      transparent={true}
-    >
-      <Animated.View style={[styles.backdrop,  opacityStyle2, backdropStyle,]} />
+    <Modal onShow={onShow} visible={isVisible} transparent={true}>
+      <Animated.View style={[styles.backdrop, opacityStyle2, backdropStyle]} />
       <ModalInner
         onDismissPress={preventDismiss ? null : onDismissPress}
         opacityStyle={opacityStyle}
@@ -107,18 +103,17 @@ const CustomModal: FunctionComponent<ModalType> = ({
       </ModalInner>
 
       {outsideChildren}
-
     </Modal>
-  );
-};
+  )
+}
 
-type AppType = {};
+type AppType = {}
 
-export default CustomModal;
+export default CustomModal
 
 const styles = StyleSheet.create({
   backdrop: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: palette.oxfordBlue700,
   },
-});
+})

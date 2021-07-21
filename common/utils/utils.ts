@@ -1,6 +1,6 @@
-import "../project";
-import BaseUtils from "./base/_utils";
+import '../project'
+import BaseUtils from './base/_utils'
 
-const Utils = (global.Utils = Object.assign({}, BaseUtils, {}));
+const Utils = (global.Utils = Object.assign({}, BaseUtils, {}))
 
-export default Utils;
+export default Utils

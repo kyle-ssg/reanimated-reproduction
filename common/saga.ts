@@ -1,11 +1,12 @@
-import { put, all, takeLatest, takeEvery, select } from "redux-saga/effects";
-import _data from "./utils/_data";
-import { Actions, Callbacks } from './app-actions';
-import "./project";
+import { put, all, takeLatest, takeEvery, select } from 'redux-saga/effects'
+import _data from './utils/_data'
+import { Actions, Callbacks } from './app-actions'
+import './project'
 
-type IAction = Callbacks & AnyAction &{
-  data?: any
-}
+type IAction = Callbacks &
+  AnyAction & {
+    data?: any
+  }
 import {
   handleResponse,
   updateAction,
@@ -16,43 +17,43 @@ import {
   // eslint-disable-next-line no-unused-vars
   getAction,
   postAction,
-} from "./utils/saga-helpers";
-import { AnyAction } from 'redux';
-import { AppState, RequestTypes } from './state-type';
+} from './utils/saga-helpers'
+import { AnyAction } from 'redux'
+import { AppState, RequestTypes } from './state-type'
 
 // Called when the application starts up, if using SSR this is done in the server
-export function* startup(action : IAction) {
+export function* startup(action: IAction) {
   try {
-    const { ...rest } = action.data || {};
-    const token = action.data?.token;
+    const { ...rest } = action.data || {}
+    const token = action.data?.token
 
     if (token) {
-      _data.setToken(token);
+      _data.setToken(token)
       // set the user
-      yield onToken(action, {  } );
+      yield onToken(action, {})
     }
 
-    const isOnline = typeof navigator === "undefined" ? true : navigator.onLine;
-    const data =  { ready: true, isOnline, ...rest };
+    const isOnline = typeof navigator === 'undefined' ? true : navigator.onLine
+    const data = { ready: true, isOnline, ...rest }
     yield put({
       type: Actions.STARTUP_LOADED,
       data: { ready: true, isOnline, ...rest },
-    });
+    })
     if (action.onSuccess) {
-      action.onSuccess(data);
+      action.onSuccess(data)
     }
   } catch (e) {
-    yield put(API.ajaxHandler(Actions.STARTUP_ERROR, e));
+    yield put(API.ajaxHandler(Actions.STARTUP_ERROR, e))
     if (action?.onError) {
-      action.onError({ error:e });
+      action.onError({ error: e })
     }
   }
 }
 
 export function* onToken(action, result) {
   //  If you need to refresh a user profile, do it here
-  if(result?.id) {
-    yield handleResponse(action, "LOGIN", result, false);
+  if (result?.id) {
+    yield handleResponse(action, 'LOGIN', result, false)
   }
 }
 
@@ -70,6 +71,7 @@ export function* login(action) {
   // }
 }
 
+// eslint-disable-next-line require-yield
 export function* register(action) {
   try {
     // const data:RequestTypes['register'] = action.data;
@@ -87,21 +89,21 @@ export function* logout(action) {
   // _data.setToken(null);
   // _data.setRefreshToken(null);
   // // API.auth.Cognito.logout();
-  yield put({ type: Actions.CLEAR_USER });
-  API.logout();
-  action.onSuccess && action.onSuccess();
+  yield put({ type: Actions.CLEAR_USER })
+  API.logout()
+  action.onSuccess && action.onSuccess()
 }
 
 export function* confirmEmail(action) {
-  yield postAction(action, `${Project.api}user/verify/email`, "CONFIRM_EMAIL");
+  yield postAction(action, `${Project.api}user/verify/email`, 'CONFIRM_EMAIL')
 }
 
 export function* updateUser(action) {
   yield updateAction(
     action,
     `${Project.api}user/${action.data.id}`,
-    "UPDATE_USER"
-  );
+    'UPDATE_USER',
+  )
 }
 
 // END OF YIELDS
@@ -116,7 +118,7 @@ function* rootSaga() {
     takeLatest(Actions.STARTUP, startup),
     // END OF TAKE_LATEST
     // KEEP THE ABOVE LINE IN, IT IS USED BY OUR CLI
-  ]);
+  ])
 }
 
-export default rootSaga;
+export default rootSaga
