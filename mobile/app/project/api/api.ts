@@ -14,11 +14,12 @@ import auth from './auth'
 import * as RootNavigation from 'navigation/RootNavigation'
 import { RouteUrls } from '../../route-urls'
 import 'common/project'
+import { APIType } from 'common/api-type'
 // import _analytics from '@react-native-firebase/analytics'
 const analytics = typeof _analytics === 'undefined' ? undefined : _analytics
 // import ImagePicker from 'react-native-image-crop-picker';
 
-global.API = {
+const API: APIType = {
   isMobile: () => true,
   reduxStorage: storage,
   middlewares: __DEV__
@@ -256,5 +257,7 @@ if (typeof branch !== 'undefined') {
     checkedInitialLink = true
   })
 }
+
+global.API = API
 
 export default API

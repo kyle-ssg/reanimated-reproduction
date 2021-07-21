@@ -30,6 +30,7 @@ import Strings from 'common/strings'
 import Fade from 'components/base/animation/Fade'
 import ProjectType from 'common/project-type'
 import { RouteUrls } from '../app/route-urls'
+import { APIType } from 'common/api-type'
 import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro'
 
 declare global {
@@ -3778,7 +3779,9 @@ declare global {
   let styleVariables = styleVariables
   let Button: React.ComponentType<ButtonType>
   // @ts-ignore
-  let API: typeof API
+  let API: APIType & {
+
+  };
   // @ts-ignore
   let ButtonPrimary = ButtonPrimary
   // @ts-ignore
