@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactNative, { View } from 'react-native'
 
 interface Props {
   children?: React.ReactNode

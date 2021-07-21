@@ -10,7 +10,10 @@ import { PersistConfig } from 'redux-persist/es/types'
 
 let store
 
-export default function (initialState: AppState = {}, forceNewStore?: boolean) {
+export default function createAppStore(
+  initialState: AppState = {},
+  forceNewStore?: boolean,
+) {
   // It's very important to only return the cached store on the client, otherwise SSR will return the previous request state
   // @ts-ignore
   if (

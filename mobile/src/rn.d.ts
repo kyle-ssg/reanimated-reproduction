@@ -6106,7 +6106,6 @@ declare global {
   }>
   let ImageBackground: React.ComponentType<ReactNative.ImageBackgroundProps>
   let Utils
-  let Loader: React.ComponentType
   let ErrorMessage: React.ComponentType<{
     testID?: string
     style?: ReactNative.ViewStyle | ReactNative.ViewStyle[]

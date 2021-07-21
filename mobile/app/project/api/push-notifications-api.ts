@@ -1,4 +1,6 @@
-import messaging from '@react-native-firebase/messaging'
+import messaging, {
+  FirebaseMessagingTypes,
+} from '@react-native-firebase/messaging'
 
 if (typeof messaging === 'undefined') {
   console.log(
@@ -8,7 +10,6 @@ if (typeof messaging === 'undefined') {
 const PushManager = class {
   token = null
   onNotification = null
-  notificationListener = null
   refreshTokenListener = null
 
   getInitialNotification = () => messaging().getInitialNotification()
@@ -28,31 +29,35 @@ const PushManager = class {
     this.notificationListener = null
   } // remove old listener
 
+  notificationListener = (
+    notification: FirebaseMessagingTypes.RemoteMessage,
+    foreground?: boolean,
+  ) => {
+    // Callback if notification is valid
+    if (notification._notificationType === 'will_present_notification') return // these notifications are duplicate and pointless
+    this.onNotification && this.onNotification(notification, foreground)
+  }
+
   init = async (onNotification, silent) => {
     this.onNotification = onNotification
+    messaging().onNotificationOpenedApp((notification) => {
+      if (this.notificationListener) {
+        this.notificationListener(notification)
+      }
+    })
+    messaging().onMessage((notification) => {
+      if (this.notificationListener) {
+        this.notificationListener(notification, true)
+      }
+    })
 
-    if (!this.notificationListener) {
-      messaging().onMessage((notification) => {
-        if (this.notificationListener) {
-          this.notificationListener(notification)
+    messaging()
+      .getInitialNotification()
+      .then((res) => {
+        if (res) {
+          this.notificationListener(res)
         }
       })
-    }
-
-    this.notificationListener = (notification) => {
-      // Callback if notification is valid
-
-      if (notification._notificationType === 'will_present_notification') return // these notifications are duplicate and pointless
-
-      this.onNotification &&
-        this.onNotification(
-          Object.assign({}, notification, {
-            fromClick:
-              notification._notificationType === 'notification_response',
-          }),
-        )
-    }
-
     if (this.token) {
       return this.token
     }

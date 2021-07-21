@@ -1,22 +1,21 @@
-import ReactNative, {
+import {
   Platform,
   Pressable,
   RippleBackgroundPropType,
   StyleSheet,
   TouchableNativeFeedback,
   TouchableOpacity,
-  Text,
-  View,
 } from 'react-native'
 
 import Utils from 'common/utils/base/_utils'
 import throttle from 'lodash/debounce'
-import React, { FunctionComponent, useMemo } from 'react'
+import React, { FC, FunctionComponent, useMemo } from 'react'
 import useTheme from 'common/providers/useTheme'
 
 export type ButtonType = ReactNative.PressableProps & {
   children: React.ReactNode
   icon?: boolean
+  iconColour?: string
   textStyle?: ReactNative.TextStyle | ReactNative.TextStyle[]
   pressedStyle?: ReactNative.ViewStyle | ReactNative.ViewStyle[]
   containerStyle?: ReactNative.ViewStyle | ReactNative.ViewStyle[]
@@ -50,6 +49,7 @@ const Button: FunctionComponent<ButtonType> = ({
   containerStyle,
   textStyle,
   icon,
+  iconColour,
   onPress,
   throttle: _throttle = 500,
   ...rest
@@ -123,7 +123,8 @@ const Button: FunctionComponent<ButtonType> = ({
             alignItems: 'center',
           }}
         >
-          <FA5Pro solid name={icon} size={18} color={palette.white} />
+          <FA5Pro solid name={icon} size={18}
+color={iconColour || 'white'} />
         </View>
       ) : null}
     </View>
@@ -139,6 +140,19 @@ export const ButtonPrimary: FunctionComponent<ButtonType> = (props) => {
       pressedStyle={[Styles.buttonPrimaryPressed, props.pressedStyle]}
       // @ts-ignore
       textStyle={[Styles.buttonPrimaryText, props.textStyle]}
+    />
+  )
+}
+
+export const ButtonSecondary: FunctionComponent<ButtonType> = (props) => {
+  return (
+    <Button
+      {...props}
+      style={[Styles.buttonSecondary, props.style]}
+      // @ts-ignore
+      pressedStyle={[Styles.buttonSecondaryPressed, props.pressedStyle]}
+      textStyle={[Styles.buttonSecondaryText, props.textStyle]}
+      pressedTextStyle={Styles.buttonSecondaryTextPressed}
     />
   )
 }
@@ -172,17 +186,6 @@ export const ButtonLink: FunctionComponent<ButtonType> = (props) => {
   )
 }
 
-export const ButtonSecondary: FunctionComponent<ButtonType> = (props) => {
-  return (
-    <Button
-      {...props}
-      style={[Styles.buttonSecondary, props.style]}
-      // @ts-ignore
-      pressedStyle={[Styles.buttonSecondaryPressed, props.pressedStyle]}
-    />
-  )
-}
-
 export const ButtonTertiary: FunctionComponent<ButtonType> = (props) => {
   return (
     <Button
@@ -203,6 +206,7 @@ export const ButtonText: FunctionComponent<ButtonType> = (props) => {
       style={[Styles.buttonText, props.style]}
       // @ts-ignore
       textStyle={[Styles.buttonTextText, props.textStyle]}
+      pressedTextStyle={[Styles.buttonTextPressed, props.pressedTextStyle]}
     />
   )
 }
@@ -212,8 +216,25 @@ export const ButtonNav: FunctionComponent<ButtonType> = (props) => {
     <Button
       {...props}
       android_ripple={circleButtonRipple}
-      style={[props.style, Styles.buttonText]}
+      style={[props.style, Styles.buttonNav]}
     />
+  )
+}
+
+export const ButtonViewAll: FC<ButtonType> = ({ children, style }) => {
+  return (
+    <>
+      <Pressable
+        style={[
+          Styles.buttonCard,
+          Styles.borderBlueGrey3,
+          Styles.cardShadowGrey,
+          style,
+        ]}
+      >
+        {children}
+      </Pressable>
+    </>
   )
 }
 

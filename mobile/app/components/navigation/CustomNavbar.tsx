@@ -29,7 +29,8 @@ const CustomNavbar: React.FC<Props> = ({
               style={{ width: 30, height: 30 }}
               onPress={pop}
             >
-              <FA5Pro name='chevron-left' size={16} color={'white'} light />
+              <FA5Pro name='chevron-left' size={16} color={'white'} light
+              />
             </ButtonPrimary>
           </View>
         )}

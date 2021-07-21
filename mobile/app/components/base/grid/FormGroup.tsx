@@ -1,10 +1,8 @@
 import React from 'react'
-import { View, ViewStyle } from 'react-native'
-import Styles from '../../../style/_style_screen'
 
 interface Props {
   children: React.ReactNode
-  style?: ViewStyle
+  style?: ReactNative.ViewStyle
 }
 
 const FormGroup: React.FC<Props> = ({ style, children }) => (
