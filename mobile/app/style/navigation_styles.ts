@@ -1,4 +1,4 @@
-import { NativeStackNavigationOptions } from "react-native-screens/native-stack";
+import { NativeStackNavigationOptions } from 'react-native-screens/native-stack'
 
 const defaultNavigationOptions: NativeStackNavigationOptions = {
   // title: "Boilerplate",
@@ -43,6 +43,6 @@ const defaultNavigationOptions: NativeStackNavigationOptions = {
   // gestureEnabled: true,
   // stackPresentation: "push",
   // stackAnimation: "default"
-};
+}
 
-export default defaultNavigationOptions;
+export default defaultNavigationOptions

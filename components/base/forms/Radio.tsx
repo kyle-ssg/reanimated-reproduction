@@ -1,50 +1,46 @@
-import React, {
-  createContext,
-  useContext,
-  ReactElement,
-} from "react";
+import React, { createContext, useContext, ReactElement } from 'react'
 
 const RadioContext = createContext<{
-  name: string;
-  selectedValue: any;
-  onChange: (value: any) => void;
-}>(null);
+  name: string
+  selectedValue: any
+  onChange: (value: any) => void
+}>(null)
 interface RadioProps {
-  value: any;
-  renderWrapper: (data: object) => ReactElement;
-  label: string;
+  value: any
+  renderWrapper: (data: object) => ReactElement
+  label: string
 }
 export const Radio: React.FC<RadioProps> = (props) => {
-  const { name, selectedValue, onChange } = useContext(RadioContext);
-  const { value, renderWrapper, label, ...inputProps } = props;
+  const { name, selectedValue, onChange } = useContext(RadioContext)
+  const { value, renderWrapper, label, ...inputProps } = props
   const optional = {
     checked: value === selectedValue ? true : undefined,
     onChange: () => onChange(value),
-  };
+  }
   const input = (
-      <input
-        {...inputProps}
-        aria-checked={optional.checked}
-        type="radio"
-        name={name}
-        {...optional}
-      />
-  );
+    <input
+      {...inputProps}
+      aria-checked={optional.checked}
+      type='radio'
+      name={name}
+      {...optional}
+    />
+  )
 
   return renderWrapper
     ? renderWrapper({
-      ...props,
-      onChange: optional.onChange,
-      radio: input,
-      checked: optional.checked,
-    })
-    : input;
-};
+        ...props,
+        onChange: optional.onChange,
+        radio: input,
+        checked: optional.checked,
+      })
+    : input
+}
 interface RadioGroupProps {
-  name: string;
-  selectedValue: any;
-  onChange: (value: any) => void;
-  Component: React.ComponentClass<{ role: string }>;
+  name: string
+  selectedValue: any
+  onChange: (value: any) => void
+  Component: React.ComponentClass<{ role: string }>
 }
 export const RadioGroup: React.FC<RadioGroupProps> = (props) => {
   const {
@@ -57,12 +53,12 @@ export const RadioGroup: React.FC<RadioGroupProps> = (props) => {
     onChange,
     children,
     ...rest
-  } = props;
+  } = props
   return (
-      <Component role="radiogroup" {...rest}>
-          <RadioContext.Provider value={{ name, selectedValue, onChange }}>
-              {children}
-          </RadioContext.Provider>
-      </Component>
-  );
-};
+    <Component role='radiogroup' {...rest}>
+      <RadioContext.Provider value={{ name, selectedValue, onChange }}>
+        {children}
+      </RadioContext.Provider>
+    </Component>
+  )
+}

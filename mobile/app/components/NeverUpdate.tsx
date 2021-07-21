@@ -1,24 +1,24 @@
-import React from "react";
-import { Component } from "react";
+import React from 'react'
+import { Component } from 'react'
 
 type Props = {
-  children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 class NeverUpdate extends Component<Props> {
-  state = {};
+  state = {}
 
   shouldComponentUpdate(
     nextProps: Readonly<Props>,
     nextState: Readonly<{}>,
-    nextContext: any
+    nextContext: any,
   ): boolean {
-    return false;
+    return false
   }
 
   render() {
-    return this.props.children;
+    return this.props.children
   }
 }
 
-export default NeverUpdate;
+export default NeverUpdate

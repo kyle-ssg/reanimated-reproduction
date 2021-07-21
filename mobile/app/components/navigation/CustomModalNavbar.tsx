@@ -1,40 +1,43 @@
-import React, { FunctionComponent, useCallback } from "react";
-import { useNavigation } from "@react-navigation/native";
+import React, { FunctionComponent, useCallback } from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 type Props = {
-  style?: ReactNative.ViewStyle;
-  titleStyle?: ReactNative.ViewStyle;
-  title: string;
-  textButtonText?: string;
-  onPress?: React.ReactNode,
-  onTextButtonPressed?: React.ReactNode,
-};
+  style?: ReactNative.ViewStyle
+  titleStyle?: ReactNative.ViewStyle
+  title: string
+  textButtonText?: string
+  onPress?: React.ReactNode
+  onTextButtonPressed?: React.ReactNode
+}
 
 const CustomModalNavbar: React.FC<Props> = ({ style, title, titleStyle }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation()
   const pop = useCallback(() => {
-    navigation.pop();
-  }, [navigation]);
+    navigation.pop()
+  }, [navigation])
 
   return (
     <>
-    <Row style={[Styles.modalNavbar, style]}>
-      <View style={Styles.titleContainer}>
-        <H4 style={[Styles.textCenter, titleStyle]}>{title}</H4>
-      </View>
-      {navigation.canGoBack() && (
-        <View style={Styles.modalRightContainer}>
-          <ButtonText onPress={pop}>
-            <FA5Pro name="times-circle" size={24} color={palette.lightSteelBlue}
-              solid
-            />
-          </ButtonText>
+      <Row style={[Styles.modalNavbar, style]}>
+        <View style={Styles.titleContainer}>
+          <H4 style={[Styles.textCenter, titleStyle]}>{title}</H4>
         </View>
-      )}
-    </Row>
+        {navigation.canGoBack() && (
+          <View style={Styles.modalRightContainer}>
+            <ButtonText onPress={pop}>
+              <FA5Pro
+                name='times-circle'
+                size={24}
+                color={palette.lightSteelBlue}
+                solid
+              />
+            </ButtonText>
+          </View>
+        )}
+      </Row>
     </>
-  );
-};
+  )
+}
 
 // export const ConfirmationModalNavbar: React.FC<Props> = ({ style, title, onPress, onTextButtonPressed, textButtonText }) => {
 //   const navigation = useNavigation();
@@ -61,8 +64,14 @@ const CustomModalNavbar: React.FC<Props> = ({ style, title, titleStyle }) => {
 //   );
 // };
 
-export const CustomActionSheetNavbar: FunctionComponent<Props> = ( { style, titleStyle, title, onPress, onTextButtonPressed, textButtonText }) => {
-
+export const CustomActionSheetNavbar: FunctionComponent<Props> = ({
+  style,
+  titleStyle,
+  title,
+  onPress,
+  onTextButtonPressed,
+  textButtonText,
+}) => {
   return (
     <>
       <Row style={[Styles.m10, Styles.mt15, style]}>
@@ -71,19 +80,19 @@ export const CustomActionSheetNavbar: FunctionComponent<Props> = ( { style, titl
         </Flex>
         <View style={[Styles.actionSheetRightContainer]}>
           <ButtonText>
-            <FA5Pro name="times-circle" size={24} color={palette.lightSteelBlue}
+            <FA5Pro
+              name='times-circle'
+              size={24}
+              color={palette.lightSteelBlue}
               solid
             />
           </ButtonText>
         </View>
       </Row>
     </>
-  );
-};
+  )
+}
 
+const styles = ReactNative.StyleSheet.create({})
 
-const styles = ReactNative.StyleSheet.create({
-
-});
-
-export default CustomModalNavbar;
+export default CustomModalNavbar

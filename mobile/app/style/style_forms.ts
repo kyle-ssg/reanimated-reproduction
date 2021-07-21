@@ -1,4 +1,4 @@
-import asStyle from './style-utils/asStyle';
+import asStyle from './style-utils/asStyle'
 
 export default asStyle({
   textInput: {
@@ -9,17 +9,15 @@ export default asStyle({
     paddingLeft: styleVariables.gutterBase,
   },
 
-  textInputGrey: {
-  },
+  textInputGrey: {},
 
   textArea: {
     height: 90,
   },
 
   textInputError: {
-    borderColor: palette.danger
+    borderColor: palette.danger,
   },
-
 
   textInputText: {
     color: palette.text,
@@ -31,7 +29,7 @@ export default asStyle({
     padding: 10,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: "#eaeaea",
+    borderColor: '#eaeaea',
   },
   textInputIcon: {
     position: 'absolute',
@@ -42,9 +40,9 @@ export default asStyle({
     position: 'absolute',
     right: 0,
     width: 50,
-    height: 48
+    height: 48,
   },
   textInputContainer: {
     position: 'relative',
-  }
-});
+  },
+})

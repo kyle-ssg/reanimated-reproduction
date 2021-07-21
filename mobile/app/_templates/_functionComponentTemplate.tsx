@@ -1,10 +1,10 @@
-import React, { FC } from "react"; // we need this to make JSX compile
+import React, { FC } from 'react' // we need this to make JSX compile
 
-type ComponentType = {};
+type ComponentType = {}
 
 const TheComponent: FC<ComponentType> = ({}) => {
-  return <></>;
-};
+  return <></>
+}
 
-TheComponent.displayName = "TheComponent";
-export default TheComponent;
+TheComponent.displayName = 'TheComponent'
+export default TheComponent

@@ -1,31 +1,31 @@
-import React, { Component } from "react";
-import "react-native-globals";
-import "../app/style/_style_screen";
-import "../app/components/base";
+import React, { Component } from 'react'
+import 'react-native-globals'
+import '../app/style/_style_screen'
+import '../app/components/base'
 import StorybookUIRoot, {
   getStory,
   withPaddedContainer,
   withNavbarWrapper,
   setup,
-} from "./setup";
-import ErrorMessage from "../app/components/ErrorMessage";
-import ExampleTabs from "./examples/ExampleTabs";
+} from './setup'
+import ErrorMessage from '../app/components/ErrorMessage'
+import ExampleTabs from './examples/ExampleTabs'
 import Button, {
   ButtonNav,
   ButtonPrimary,
-} from "../app/components/base/forms/Button";
-import StackExample from "./examples/StackExample";
-import SegmentedControl from "components/SegmentedControl";
-import WithSetValue from "../app/project/animation-util/WithSetValue";
-import TextInput from "../app/components/base/forms/TextInput";
-import SelectBox from "../app/components/base/forms/SelectBox";
-import ListItem from "../app/components/base/ListItem";
-import CustomModal from "components/CustomModal";
-import BottomDrawer from "components/BottomDrawer";
+} from '../app/components/base/forms/Button'
+import StackExample from './examples/StackExample'
+import SegmentedControl from 'components/SegmentedControl'
+import WithSetValue from '../app/project/animation-util/WithSetValue'
+import TextInput from '../app/components/base/forms/TextInput'
+import SelectBox from '../app/components/base/forms/SelectBox'
+import ListItem from '../app/components/base/ListItem'
+import CustomModal from 'components/CustomModal'
+import BottomDrawer from 'components/BottomDrawer'
 
 setup(() => {
-  getStory("Bottom Drawer")
-    .add("default", () => (
+  getStory('Bottom Drawer')
+    .add('default', () => (
       <WithSetValue defaultValue={false}>
         {({ value, setValue }) => (
           <View style={Styles.p10}>
@@ -44,7 +44,7 @@ setup(() => {
         )}
       </WithSetValue>
     ))
-    .add("disable manual dismissing", () => (
+    .add('disable manual dismissing', () => (
       <WithSetValue defaultValue={false}>
         {({ value, setValue }) => (
           <View style={Styles.p10}>
@@ -64,9 +64,9 @@ setup(() => {
           </View>
         )}
       </WithSetValue>
-    ));
-  getStory("Modal")
-    .add("default", () => (
+    ))
+  getStory('Modal')
+    .add('default', () => (
       <WithSetValue defaultValue={false}>
         {({ value, setValue }) => (
           <View style={Styles.p10}>
@@ -77,7 +77,7 @@ setup(() => {
               visible={value}
             >
               <View
-                style={{ width: 200, height: 100, backgroundColor: "white" }}
+                style={{ width: 200, height: 100, backgroundColor: 'white' }}
               >
                 <Text>Modal content</Text>
               </View>
@@ -89,7 +89,7 @@ setup(() => {
         )}
       </WithSetValue>
     ))
-    .add("dont fade children with backdrop", () => (
+    .add('dont fade children with backdrop', () => (
       <WithSetValue defaultValue={false}>
         {({ value, setValue }) => (
           <View style={Styles.p10}>
@@ -101,7 +101,7 @@ setup(() => {
               visible={value}
             >
               <View
-                style={{ width: 200, height: 100, backgroundColor: "white" }}
+                style={{ width: 200, height: 100, backgroundColor: 'white' }}
               >
                 <Text>Modal content</Text>
               </View>
@@ -112,15 +112,15 @@ setup(() => {
           </View>
         )}
       </WithSetValue>
-    ));
-  getStory("SegmentedControl").add("all", () => {
+    ))
+  getStory('SegmentedControl').add('all', () => {
     const items = [
-      { label: "First", value: 1 },
-      { label: "Second", value: 2 },
-      { label: "Third", value: 3 },
-    ];
+      { label: 'First', value: 1 },
+      { label: 'Second', value: 2 },
+      { label: 'Third', value: 3 },
+    ]
     return (
-      <Flex style={{ backgroundColor: "white", padding: 20 }}>
+      <Flex style={{ backgroundColor: 'white', padding: 20 }}>
         <WithSetValue defaultValue={items[1]}>
           {({ value, setValue }) => (
             <SegmentedControl onChange={setValue} value={value} items={items} />
@@ -133,14 +133,14 @@ setup(() => {
                 paddingX={20}
                 trackStyle={{
                   paddingHorizontal: 20,
-                  backgroundColor: "#222",
+                  backgroundColor: '#222',
                   height: 64,
                   paddingVertical: 10,
                 }}
-                textStyle={{ color: "#ccc" }}
-                textPressedStyle={{ color: "white" }}
-                textActiveStyle={{ color: "white" }}
-                barStyle={{ backgroundColor: "#333" }}
+                textStyle={{ color: '#ccc' }}
+                textPressedStyle={{ color: 'white' }}
+                textActiveStyle={{ color: 'white' }}
+                barStyle={{ backgroundColor: '#333' }}
                 onChange={setValue}
                 value={value}
                 items={items}
@@ -151,13 +151,13 @@ setup(() => {
 
         <SegmentedControl disabled items={items} value={items[1]} />
       </Flex>
-    );
-  });
+    )
+  })
 
-  getStory("Type")
+  getStory('Type')
     .addDecorator(withPaddedContainer)
     .addDecorator(withNavbarWrapper)
-    .add("all", () => (
+    .add('all', () => (
       <>
         <H1 style={Styles.mb5}>Header 1</H1>
         <H2 style={Styles.mb5}>Header 2</H2>
@@ -165,37 +165,42 @@ setup(() => {
         <H4 style={Styles.mb5}>Header 4</H4>
         <ErrorMessage style={Styles.mb5}>Error Text</ErrorMessage>
       </>
-    ));
+    ))
 
-  getStory("Button")
+  getStory('Button')
     .addDecorator(withPaddedContainer)
     .addDecorator(withNavbarWrapper)
-    .add("all", () => (
+    .add('all', () => (
       <>
         <ButtonPrimary style={Styles.mb5}>Primary</ButtonPrimary>
         <ButtonSecondary style={Styles.mb5}>Button Secondary</ButtonSecondary>
         <ButtonTertiary style={Styles.mb5}>Button Tertiary</ButtonTertiary>
         <ButtonText style={Styles.mb5}>Text Button</ButtonText>
         <ButtonNav>
-          <FA5Pro name="times" size={20} color={palette.primary}
-            light
-          />
+          <FA5Pro name='times' size={20} color={palette.primary} light />
         </ButtonNav>
       </>
-    ));
+    ))
 
-  getStory("Forms").add("all", () => {
+  getStory('Forms').add('all', () => {
     return (
-      <Flex style={[{ backgroundColor: "white" }, Styles.p10]}>
+      <Flex style={[{ backgroundColor: 'white' }, Styles.p10]}>
         <TextInput
           selectionColor={palette.primary}
-          placeholder={"Enter Name"}
-          placeholderTextColor={"lightgrey"}
-          title={"Name"}
+          placeholder={'Enter Name'}
+          placeholderTextColor={'lightgrey'}
+          title={'Name'}
         />
-        <SelectBox title="Date" icon={ <FA5Pro name="calendar-alt" size={20} color={palette.primary}
-          light
-                                       />}
+        <SelectBox
+          title='Date'
+          icon={
+            <FA5Pro
+              name='calendar-alt'
+              size={20}
+              color={palette.primary}
+              light
+            />
+          }
         >
           12 July
         </SelectBox>
@@ -206,47 +211,44 @@ setup(() => {
           {({ value, setValue }) => <Switch />}
         </WithSetValue>
       </Flex>
-    );
-  });
-  getStory("Tabs")
-    .add("default", () => (
+    )
+  })
+  getStory('Tabs')
+    .add('default', () => (
       <>
         <ExampleTabs />
       </>
     ))
-    .add("scrolled", () => (
+    .add('scrolled', () => (
       <>
         <ExampleTabs scrollEnabled />
       </>
-    ));
+    ))
 
+  getStory('Animation').add('default', () => (
+    <View style={Styles.p10}>
+      <H2 style={Styles.mb15}>Animation</H2>
+      <Loader />
+    </View>
+  ))
 
-  getStory("Animation")
-    .add("default", () => (
-      <View style={Styles.p10}>
-        <H2 style={Styles.mb15}>Animation</H2>
-        <Loader />
-      </View>
-    ));
+  getStory('Routes').add('all', () => <StackExample />)
 
-  getStory("Routes").add("all", () => <StackExample />);
-
-  getStory("Lists")
+  getStory('Lists')
     .addDecorator(withPaddedContainer)
     .addDecorator(withNavbarWrapper)
-    .add("all", () => (
+    .add('all', () => (
       <>
-        <ListItem icon={ <FA5Pro name="plus" size={20} color={palette.primary}
-          light
-                         />}
+        <ListItem
+          icon={<FA5Pro name='plus' size={20} color={palette.primary} light />}
         >
           <Text>List Item text</Text>
         </ListItem>
-        <ListItem >
+        <ListItem>
           <Text>List Item text</Text>
         </ListItem>
       </>
-    ));
-});
+    ))
+})
 
-export default StorybookUIRoot;
+export default StorybookUIRoot

@@ -1,11 +1,10 @@
-import { projectStyles } from "./style_variables";
+import { projectStyles } from './style_variables'
 
-export const paddingBase = 8; // todo: styleVariables.gutterBase should match this ?
+export const paddingBase = 8 // todo: styleVariables.gutterBase should match this ?
 
-import asStyle from "./style-utils/asStyle";
+import asStyle from './style-utils/asStyle'
 
 export default asStyle({
-
   //
   // Grid system / Rows
   // --------------------------------------------------
@@ -21,8 +20,8 @@ export default asStyle({
   },
 
   centeredContainer: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   noPad: {
@@ -31,43 +30,73 @@ export default asStyle({
   },
 
   justifyStart: {
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
   },
 
   justifyEnd: {
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
 
   justifyCenter: {
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
   alignStart: {
-    alignItems: "flex-start",
+    alignItems: 'flex-start',
+  },
+
+  alignStretch: {
+    alignItems: 'stretch',
   },
 
   alignSelfStart: {
-    alignSelf: "flex-start",
+    alignSelf: 'flex-start',
   },
 
   alignSelfCenter: {
-    alignSelf: "center",
+    alignSelf: 'center',
   },
 
   alignSelfEnd: {
-    alignSelf: "flex-end",
+    alignSelf: 'flex-end',
+  },
+
+  alignItemsEnd: {
+    alignItems: 'flex-end',
+  },
+
+  alignItemsStart: {
+    alignItems: 'flex-start',
   },
 
   alignEnd: {
-    alignItems: "flex-end",
+    alignItems: 'flex-end',
   },
 
   alignCenter: {
-    alignSelf: "center",
+    alignSelf: 'center',
+  },
+
+  alignItemsCenter: {
+    alignItems: 'center',
+  },
+
+  stretchCol: {
+    flex: 1,
+  },
+
+  stretchCol2: {
+    flexDirection: 'column',
+    flex: 2,
+  },
+
+  stretchCol3: {
+    flexDirection: 'column',
+    flex: 3,
   },
 
   baseline: {
-    alignItems: "flex-start",
+    alignItems: 'flex-start',
   },
 
   directionColumn: {
@@ -75,23 +104,22 @@ export default asStyle({
   },
 
   centeredRow: {
-    flexDirection: "row",
-    justifyContent: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 
   row: {
-    alignSelf: "stretch",
-    flexWrap: "wrap",
-    flexDirection: "row",
-    alignItems: "center",
+    alignSelf: 'stretch',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 
   spacedRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
-
 
   mb0: { marginBottom: 0 },
   mb5: { marginBottom: paddingBase },
@@ -199,4 +227,4 @@ export default asStyle({
   bottomNavPadding: {
     paddingBottom: styleVariables.bottomNavPadding,
   },
-});
+})

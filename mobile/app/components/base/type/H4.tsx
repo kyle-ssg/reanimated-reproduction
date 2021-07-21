@@ -1,14 +1,12 @@
-import React from "react";
-import { Text, TextStyle } from 'react-native';
-import Styles from '../../../style/_style_screen';
+import React from 'react'
 
 interface Props {
-  accessible?: boolean;
-  accessibilityLabel?: string;
-  testID?: string;
-  style?: TextStyle;
-  children?: React.ReactNode;
-  numberOfLines?: number;
+  accessible?: boolean
+  accessibilityLabel?: string
+  testID?: string
+  style?: ReactNative.TextStyle
+  children?: React.ReactNode
+  numberOfLines?: number
 }
 
 const H4: React.FC<Props> = ({
@@ -28,6 +26,6 @@ const H4: React.FC<Props> = ({
   >
     {children}
   </Text>
-);
+)
 
-export default H4;
+export default H4

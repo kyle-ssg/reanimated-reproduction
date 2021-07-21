@@ -1,25 +1,30 @@
+import { by, device, expect, element, waitFor } from 'detox'
 
-import { by, device, expect, element, waitFor } from 'detox';
-
-const waitById = (id)=> waitFor(element(by.id(id))).toBeVisible().withTimeout(30000);
-const waitByType = (theType)=> waitFor(element(by.type(theType))).toBeVisible().withTimeout(30000);
-const platformSelect = (obj)=> {
+const waitById = (id) =>
+  waitFor(element(by.id(id)))
+    .toBeVisible()
+    .withTimeout(30000)
+const waitByType = (theType) =>
+  waitFor(element(by.type(theType)))
+    .toBeVisible()
+    .withTimeout(30000)
+const platformSelect = (obj) => {
   return device.getPlatform() === 'ios' ? obj.ios : obj.android
 }
-const isIOS = device.getPlatform() === 'ios';
-const pressById = async (id)=> {
-  await waitById(id);
-  await element(by.id(id)).tap();
+const isIOS = device.getPlatform() === 'ios'
+const pressById = async (id) => {
+  await waitById(id)
+  await element(by.id(id)).tap()
 }
-const pressByType = async (theType)=> {
-  await waitByType(theType);
-  await element(by.type(theType)).tap();
+const pressByType = async (theType) => {
+  await waitByType(theType)
+  await element(by.type(theType)).tap()
 }
 
-const goBack = async ()=> {
+const goBack = async () => {
   return platformSelect({
     android: await device.pressBack(),
-    ios: await pressByType('_UIButtonBarButton')
+    ios: await pressByType('_UIButtonBarButton'),
   })
 }
 
@@ -35,18 +40,18 @@ const goBack = async ()=> {
 
 describe('It Navigates', () => {
   beforeAll(async () => {
-    await device.terminateApp();
-    await device.launchApp();
-  });
+    await device.terminateApp()
+    await device.launchApp()
+  })
   it('should navigate to the test screen', async () => {
-    await pressById('goTest');
-    await waitById('testScreen');
-  });
+    await pressById('goTest')
+    await waitById('testScreen')
+  })
   it('should navigate back', async () => {
     await platformSelect({
-      ios:()=>pressByType('_UIButtonBarButton'), //iOS class name
-      android: ()=>device.pressBack()
+      ios: () => pressByType('_UIButtonBarButton'), //iOS class name
+      android: () => device.pressBack(),
     })()
-    await waitById('welcome');
-  });
-});
+    await waitById('welcome')
+  })
+})

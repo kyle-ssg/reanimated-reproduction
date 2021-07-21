@@ -1,12 +1,9 @@
-import React from "react";
-import { Text, TextStyle } from 'react-native';
-import Styles from '../../../style/_style_screen';
-
+import React from 'react'
 interface Props {
-  accessible?: boolean;
-  accessibilityLabel?: string;
-  style?: TextStyle;
-  children?: React.ReactNode;
+  accessible?: boolean
+  accessibilityLabel?: string
+  style?: ReactNative.TextStyle
+  children?: React.ReactNode
 }
 
 const h1: React.FC<Props> = ({
@@ -22,6 +19,6 @@ const h1: React.FC<Props> = ({
   >
     {children}
   </Text>
-);
+)
 
-export default h1;
+export default h1

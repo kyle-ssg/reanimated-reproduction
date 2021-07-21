@@ -1,14 +1,14 @@
-import React, { FunctionComponent, useState, useCallback } from "react"; // we need this to make JSX compile
-import DateTimePickerModal from "react-native-modal-datetime-picker";
+import React, { FunctionComponent, useState, useCallback } from 'react' // we need this to make JSX compile
+import DateTimePickerModal from 'react-native-modal-datetime-picker'
 
 type Props = {
-  value: Date;
-  format?: string;
-  text: string;
-  textStyle?: ReactNative.TextStyle[];
-  style?: ReactNative.ViewStyle;
-  onChange: (date: Date) => void;
-};
+  value: Date
+  format?: string
+  text: string
+  textStyle?: ReactNative.TextStyle[]
+  style?: ReactNative.ViewStyle
+  onChange: (date: Date) => void
+}
 
 const DateSelectText: React.FC<Props> = ({
   value,
@@ -17,17 +17,17 @@ const DateSelectText: React.FC<Props> = ({
   style,
   textStyle,
 }) => {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false)
   const toggleVisible = useCallback(() => {
-    setIsVisible(!isVisible);
-  }, [isVisible]);
+    setIsVisible(!isVisible)
+  }, [isVisible])
   const onConfirm = useCallback(
     (value) => {
-      setIsVisible(false);
-      onChange(value);
+      setIsVisible(false)
+      onChange(value)
     },
-    [onChange]
-  );
+    [onChange],
+  )
   return (
     <>
       <TouchableOpacity onPress={toggleVisible} style={style}>
@@ -35,12 +35,12 @@ const DateSelectText: React.FC<Props> = ({
       </TouchableOpacity>
       <DateTimePickerModal
         isVisible={isVisible}
-        mode="date"
+        mode='date'
         onConfirm={onConfirm}
         onCancel={toggleVisible}
       />
     </>
-  );
-};
+  )
+}
 
-export default DateSelectText;
+export default DateSelectText

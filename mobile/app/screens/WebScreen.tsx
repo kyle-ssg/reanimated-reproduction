@@ -1,40 +1,43 @@
-import React from "react";
-import { Component, FunctionComponent } from "react";
-import withScreen, { Screen } from "./withScreen";
-import { WebView, WebViewProps } from "react-native-webview";
-import { NavigationContainer } from "@react-navigation/native";
-import defaultNavigationOptions from "../style/navigation_styles";
-import { routes, withModalOptions } from "../routes";
-import { createNativeStackNavigator } from "react-native-screens/native-stack";
-import { RouteUrls } from "../route-urls";
+import React from 'react'
+import { Component, FunctionComponent } from 'react'
+import withScreen, { Screen } from './withScreen'
+import { WebView, WebViewProps } from 'react-native-webview'
+import { NavigationContainer } from '@react-navigation/native'
+import defaultNavigationOptions from '../style/navigation_styles'
+import { routes, withModalOptions } from '../routes'
+import { createNativeStackNavigator } from 'react-native-screens/native-stack'
+import { RouteUrls } from '../route-urls'
 
 type Props = Screen & {
-  webViewProps: Partial<WebViewProps>;
-};
+  webViewProps: Partial<WebViewProps>
+}
 
 class _WebScreen extends Component<Props> {
-  state = {};
-  webview = null;
+  state = {}
+  webview = null
   onNavigationStateChange = (navState) => {
     this.props.setOptions({
       headerLeft: () =>
         navState.canGoBack ? (
           <TouchableOpacity onPress={() => this.webview?.goBack()}>
-            <ION style={styles.icon} name="ios-close" size={20}
+            <ION
+              style={styles.icon}
+              name='ios-close'
+              size={20}
               color={palette.navy}
             />
           </TouchableOpacity>
         ) : (
           <View />
         ),
-    });
+    })
     this.props.webViewProps.onNavigationStateChange &&
-    this.props.webViewProps.onNavigationStateChange(navState);
-  };
+      this.props.webViewProps.onNavigationStateChange(navState)
+  }
 
   render() {
     return (
-      <ReactNative.SafeAreaView style={[Styles.bodyBackground, { flex:1 }]}>
+      <ReactNative.SafeAreaView style={[Styles.bodyBackground, { flex: 1 }]}>
         <WebView
           ref={(webview) => (this.webview = webview)}
           renderLoading={() => (
@@ -52,14 +55,14 @@ class _WebScreen extends Component<Props> {
           onNavigationStateChange={this.onNavigationStateChange}
         />
       </ReactNative.SafeAreaView>
-    );
+    )
   }
 }
 
-export const ConnectedWebScreen = withScreen(_WebScreen);
+export const ConnectedWebScreen = withScreen(_WebScreen)
 
-const Stack = createNativeStackNavigator();
-const Navigator = Stack.Navigator;
+const Stack = createNativeStackNavigator()
+const Navigator = Stack.Navigator
 
 const TheComponent: FunctionComponent<Props> = ({ webViewProps }) => {
   return (
@@ -76,13 +79,13 @@ const TheComponent: FunctionComponent<Props> = ({ webViewProps }) => {
         />
       </Navigator>
     </NavigationContainer>
-  );
-};
+  )
+}
 
-export default withScreen(TheComponent);
+export default withScreen(TheComponent)
 
 const styles = ReactNative.StyleSheet.create({
   icon: {
-    fontSize: 24
-  }
-});
+    fontSize: 24,
+  },
+})
