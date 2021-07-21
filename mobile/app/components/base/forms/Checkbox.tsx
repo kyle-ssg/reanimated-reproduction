@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import propTypes from 'prop-types'
-import { Animated, Easing } from 'react-native'
+import { Animated, Easing, Pressable } from 'react-native'
 import Animation from 'lottie-react-native'
 
 const json = require('./checkbox.json')
 
 interface Checkbox {
   value?: number
+  onPress: () => null
 }
 
-const Checkbox: React.FC<Checkbox> = ({ value }) => {
+const Checkbox: React.FC<Checkbox> = ({ value, onPress }) => {
   const [animatedValue, setAnimatedValue] = useState(null)
 
   useEffect(() => {
@@ -24,7 +25,13 @@ const Checkbox: React.FC<Checkbox> = ({ value }) => {
   }, [value, animatedValue])
 
   return (
-    <Animation progress={animatedValue} style={styles.checkbox} source={json} />
+    <Pressable onPress={onPress}>
+      <Animation
+        progress={animatedValue}
+        style={styles.checkbox}
+        source={json}
+      />
+    </Pressable>
   )
 }
 

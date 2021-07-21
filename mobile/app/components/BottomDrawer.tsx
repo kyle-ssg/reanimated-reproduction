@@ -16,10 +16,13 @@ import {
   drawerSlideInConfig,
   drawerSlideOutConfig,
 } from '../project/animation-util/reanimations'
-import { Dimensions, KeyboardAvoidingView, StyleSheet } from 'react-native'
+import {
+  Dimensions,
+  KeyboardAvoidingView,
+  StyleProp,
+  ViewStyle,
+} from 'react-native'
 import { clamp } from '../project/animation-util/clamp'
-import ScreenContainer from 'components/ScreenContainer'
-import LinearGradient from 'react-native-linear-gradient'
 
 export const closest = (value, values) => {
   'worklet'
@@ -33,7 +36,7 @@ export type ModalType = {
   visible: boolean
   preventDismiss?: boolean
   height: number
-  style: ReactNative.ViewStyle
+  style?: StyleProp<ViewStyle>
   onDismissPress?: () => void
 }
 
@@ -137,9 +140,7 @@ const BottomDrawer: FunctionComponent<ModalType> = ({
       controlledValue={animatedValue}
       visible={modalVisible}
     >
-      <KeyboardAvoidingView
-        behavior={Platform.select({ ios: 'padding', android: null })}
-      >
+      <KeyboardAvoidingView behavior='padding'>
         <PanGestureHandler enabled={!preventDismiss} {...{ onGestureEvent }}>
           <Animated.View style={[animatedStyle, { height }]}>
             <View style={[styles.drawer, style]}>{children}</View>

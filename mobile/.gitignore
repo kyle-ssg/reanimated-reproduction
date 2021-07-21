@@ -4,6 +4,7 @@
 
 # Xcode
 #
+.env
 build/
 *.pbxuser
 !default.pbxuser
@@ -21,7 +22,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
-lcov-report
+
 # Android/IntelliJ
 #
 build/

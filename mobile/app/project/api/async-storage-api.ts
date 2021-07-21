@@ -7,10 +7,7 @@ const StorageManager = class {
       return MMKV
     }
     API.log('STORAGE', 'INIT')
-    MMKV = new MMKVStorage.Loader()
-      // uncommenting this breaks the app
-      // .withEncryption()
-      .initialize()
+    MMKV = new MMKVStorage.Loader().withEncryption().initialize()
 
     API.log('STORAGE', 'INIT DONE')
     return MMKV

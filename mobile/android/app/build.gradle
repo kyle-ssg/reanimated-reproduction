@@ -10,6 +10,9 @@ apply from: "../../node_modules/react-native/react.gradle"
 // REACT_NATIVE_CODEPUSH
 apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
+// REACT_NATIVE_CONFIG
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
 /**
  * Set this to true to create two separate APKs instead of one:
  *   - An APK that only works on ARM devices
@@ -60,12 +63,12 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.15.0"
+        versionName "1.16.0"
         // REACT_NATIVE_BASELAYOUT - we need multiDex
         multiDexEnabled true
         testBuildType System.getProperty('testBuildType', 'debug')  // This will later be used to control the test apk build type
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-
+        resValue 'string', "CODE_PUSH_APK_BUILD_TIME", String.format("\"%d\"", System.currentTimeMillis()) // https://github.com/microsoft/react-native-code-push/issues/1961
     }
 //     todo: research
 //     splits {
