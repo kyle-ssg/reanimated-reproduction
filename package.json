@@ -28,7 +28,7 @@
     "test:pact": "cross-env NODE_ENV=pactTest node_modules/mocha/bin/mocha --timeout 50000 --require @babel/register \"**/*.pact.js\"",
     "test:pact:server": "cross-env MOCK_SERVER=true node_modules/.bin/nodemon --watch tests --exec node ./tests/pact/helpers/pact.mock-server.js",
     "test:pact:publish": "node tests/pact/helpers/pact.publish.js",
-    "storybook": "start-storybook -p 6006 -s ./public",
+    "storybook": "start-storybook -p 4000 -s ./public",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
