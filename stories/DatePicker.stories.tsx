@@ -2,8 +2,7 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import '../styles/Global.scss'
 import DatePicker from '../components/DatePicker'
-import moment from 'moment/moment'
-global.moment = moment
+
 export default {
   title: 'DatePicker',
   component: DatePicker,
@@ -17,7 +16,7 @@ export const MinMax: ComponentStory<typeof DatePicker> = (args) => {
   return (
     <DatePicker
       minDate={new Date().toISOString()}
-      maxDate={new Date(new Date().valueOf() + 864000 * 5)._d}
+      maxDate={new Date(new Date().valueOf() + 864000 * 5)}
     />
   )
 }
@@ -27,9 +26,7 @@ export const Time: ComponentStory<typeof DatePicker> = (args) => {
 }
 
 export const TimeOnly: ComponentStory<typeof DatePicker> = (args) => {
-  return (
-    <DatePicker timeFormat='HH:mm' showTimeSelectOnly showTimeSelect />
-  )
+  return <DatePicker timeFormat='HH:mm' showTimeSelectOnly showTimeSelect />
 }
 
 export const TimeInterval: ComponentStory<typeof DatePicker> = (args) => {

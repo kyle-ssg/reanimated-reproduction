@@ -1,10 +1,6 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentStory } from '@storybook/react'
 import '../styles/Global.scss'
-import Loader from '../components/Loader'
-import { Provider } from 'react-redux'
-import { createStore } from '../common/store'
-import { PersistGate } from 'redux-persist/integration/react'
 import { Modal, ModalBody, ModalFooter, ModalHeader } from '../components/Modal'
 import Button from '../components/base/forms/Button'
 
@@ -27,8 +23,7 @@ export const Default: ComponentStory<typeof Modal> = (args) => {
         mollit anim id est laborum.
       </ModalBody>
       <ModalFooter>
-        <Button color='primary'>Do Something</Button>{' '}
-        <Button color='secondary'>Cancel</Button>
+        <Button>Do Something</Button> <Button>Cancel</Button>
       </ModalFooter>
     </Modal>
   )
