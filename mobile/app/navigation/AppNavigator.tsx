@@ -115,19 +115,25 @@ class AppNavigator extends Component<ComponentType> {
           component={routes[RouteUrls.HomeScreen].component}
         />
 
-  <Stack.Screen
+        <Stack.Screen
           name={RouteUrls.Tab1Screen}
           options={routes[RouteUrls.Tab1Screen].options}
           component={routes[RouteUrls.Tab1Screen].component}
         />
 
-  <Stack.Screen
+        <Stack.Screen
           name={RouteUrls.Tab2Screen}
           options={routes[RouteUrls.Tab2Screen].options}
           component={routes[RouteUrls.Tab2Screen].component}
         />
 
-  {/* END OF ROUTES*/}
+        <Stack.Screen
+          name={RouteUrls.ModalScreen}
+          options={routes[RouteUrls.ModalScreen].options}
+          component={routes[RouteUrls.ModalScreen].component}
+        />
+
+        {/* END OF ROUTES*/}
       </Navigator>
     )
   }

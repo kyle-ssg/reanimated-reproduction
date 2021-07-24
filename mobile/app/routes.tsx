@@ -6,9 +6,13 @@ import HomeScreen from 'screens/HomeScreen'
 import WebScreen from 'screens/WebScreen'
 import StorybookUIRoot from '../stories/index'
 
-import Tab1Screen from "screens/Tab1Screen";
+import Tab1Screen from 'screens/Tab1Screen'
 
-import Tab2Screen from "screens/Tab2Screen";
+import Tab2Screen from 'screens/Tab2Screen'
+
+import ModalScreen from 'screens/ModalScreen'
+
+import ModalScreen2 from "screens/ModalScreen2";
 
 // END OF IMPORT
 
@@ -48,13 +52,28 @@ export const routes: Record<RouteUrls, IRoute> = {
   },
   [RouteUrls.Tab1Screen]: {
     options: {
+      headerShown: false,
     },
     component: Tab1Screen,
   },
   [RouteUrls.Tab2Screen]: {
     options: {
+      headerShown: false,
     },
     component: Tab2Screen,
+  },
+  [RouteUrls.ModalScreen]: {
+    options: {
+      stackPresentation: 'containedModal',
+      headerShown: false,
+    },
+    params: {},
+    component: ModalScreen,
+  },
+  [RouteUrls.ModalScreen2]: {
+    options: {
+    },
+    component: ModalScreen2,
   },
   // END OF SCREENS
 }
