@@ -37,7 +37,7 @@ const API: APIType = {
   },
   loggedIn: () => null,
   logout: () => {
-    RootNavigation.resetTo(0, [{ name: RouteUrls.onboarding }])
+    RootNavigation.resetTo(0, [{ name: RouteUrls.HomeScreen }])
   },
   logoutComplete: () => {
     const store = getStoreDangerous()

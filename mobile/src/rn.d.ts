@@ -15,12 +15,6 @@ import API from '../app/project/api/api'
 import { AppActions } from 'common/app-actions'
 import { styleTypes } from '../app/style/_style_screen'
 import {
-  routes,
-  withModalOptions,
-  withPushModalOptions,
-  withFullScreenPushModalOptions,
-} from '../app/routes'
-import {
   projectPalette as palette,
   projectStyles as styleVariables,
 } from '../app/style/style_variables'
@@ -3793,8 +3787,6 @@ declare global {
   let ButtonSecondary = ButtonSecondary
   // @ts-ignore
   let ButtonTertiary = ButtonTertiary
-  // @ts-ignore
-  let routes = routes
   // @ts-ignore
   let Constants = Constants
   // @ts-ignore

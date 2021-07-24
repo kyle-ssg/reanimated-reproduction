@@ -2,16 +2,15 @@ import React from 'react'
 import { NativeStackNavigationOptions } from 'react-native-screens/native-stack'
 import { RouteUrls } from './route-urls'
 import BottomTabsNavigator from 'navigation/BottomTabsNavigator'
-import GenericScreen from 'screens/GenericScreen'
-import Login from 'screens/GenericScreen'
 import HomeScreen from 'screens/HomeScreen'
 import WebScreen from 'screens/WebScreen'
-import ModalCloseButton from 'components/ModalCloseButton'
 import StorybookUIRoot from '../stories/index'
 
-// END OF IMPORT
+import Tab1Screen from "screens/Tab1Screen";
 
-type functionComponent = (props: any) => React.ReactNode
+import Tab2Screen from "screens/Tab2Screen";
+
+// END OF IMPORT
 
 export interface IRoute {
   options?: Partial<NativeStackNavigationOptions>
@@ -19,32 +18,6 @@ export interface IRoute {
   params?: Record<string, any>
 }
 
-export const withPushModalOptions = (
-  base: Partial<NativeStackNavigationOptions>,
-): NativeStackNavigationOptions => ({
-  ...base,
-  headerShown: false,
-  stackPresentation: 'modal',
-})
-
-export const withFullScreenPushModalOptions = (
-  base: Partial<NativeStackNavigationOptions>,
-): NativeStackNavigationOptions => ({
-  ...base,
-  headerShown: false,
-  stackPresentation: 'fullScreenModal',
-})
-
-export const withModalOptions = (
-  base: Partial<NativeStackNavigationOptions>,
-): NativeStackNavigationOptions => ({
-  ...base,
-  headerShown: true,
-  // @ts-ignore
-  hideBackButton: true,
-  headerHideBackButton: true,
-  headerRight: ModalCloseButton,
-})
 // Contains default route config and components
 export const routes: Record<RouteUrls, IRoute> = {
   [RouteUrls.mainApp]: {
@@ -62,36 +35,6 @@ export const routes: Record<RouteUrls, IRoute> = {
     component: WebScreen,
   },
 
-  [RouteUrls.home]: {
-    options: {
-      title: '',
-    },
-    component: HomeScreen,
-  },
-
-  [RouteUrls.login]: {
-    options: {
-      headerShown: false,
-    },
-    component: Login,
-  },
-
-  [RouteUrls.onboarding]: {
-    options: {
-      // headerShown: false,
-      title: 'About',
-    },
-    component: GenericScreen,
-  },
-
-  [RouteUrls.generic]: {
-    options: {
-      headerShown: false,
-      title: 'About',
-    },
-    component: GenericScreen,
-  },
-
   [RouteUrls.storybook]: {
     options: {
       headerShown: false,
@@ -99,13 +42,19 @@ export const routes: Record<RouteUrls, IRoute> = {
     component: StorybookUIRoot,
   },
 
+  [RouteUrls.HomeScreen]: {
+    options: {},
+    component: HomeScreen,
+  },
+  [RouteUrls.Tab1Screen]: {
+    options: {
+    },
+    component: Tab1Screen,
+  },
+  [RouteUrls.Tab2Screen]: {
+    options: {
+    },
+    component: Tab2Screen,
+  },
   // END OF SCREENS
 }
-// @ts-ignore
-global.routes = routes
-// @ts-ignore
-global.withModalOptions = withModalOptions
-// @ts-ignore
-global.withPushModalOptions = withPushModalOptions
-// @ts-ignore
-global.withFullScreenPushModalOptions = withFullScreenPushModalOptions

@@ -51,11 +51,13 @@ export ios_target
 echo "APPCENTER version"
 appcenter -v
 
-# appcenter build branches list -a Weeteep/WeTeep-Android
+# Store original sha to checkout later
+originalSHA=$(git rev-parse --verify HEAD)
+
 # Checkout last commit to compare the last version number
 echo running appcenter build branches list -a $1 grep -A10 -E "Branch: +$3"
 commitSHA=$(appcenter build branches list -a $1 | grep -A10 -E "Branch: +$3" | grep -E -m 1 'Commit SHA: +' | awk '{split($0,a,": "); print a[2]}' | sed 's/^ *//g')
-git reset --hard HEAD
+
 git checkout $commitSHA
 
 if [[ $4 == "ios" ]]
@@ -70,10 +72,9 @@ fi
 echo $lastVersion version found at $commitSHA
 
 
-git checkout $3
-git pull
-
+git checkout $originalSHA
 npm run env_script
+
 if [[ $4 == "ios" ]]
 then
     currentVersion=$(awk "/\/\* Pods-appcenter-production.release.xcconfig \*\/;/,0" ios/mobile.xcodeproj/project.pbxproj | grep "MARKETING_VERSION" | head -1 | awk '{split($0,a,"= "); print a[2]}' | sed 's/;$//')

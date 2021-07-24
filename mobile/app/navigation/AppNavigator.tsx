@@ -9,6 +9,7 @@ import defaultNavigationOptions from '../style/navigation_styles'
 import { RouteUrls } from '../route-urls'
 import withAuth, { IWithAuth } from 'common/providers/withAuth' // todo: migrate this to functional component and use useAuth
 import Loader from './../components/base/Loader'
+import { routes } from '../routes'
 // import Cognito from "common/cognito";
 
 // API.auth.Cognito.init(Project.cognitoMobile)
@@ -76,12 +77,10 @@ class AppNavigator extends Component<ComponentType> {
     if (isLoading)
       return <Flex style={Styles.centeredContainer}>{<Loader />}</Flex>
 
-    let initialRoute = user ? RouteUrls.mainApp : RouteUrls.onboarding
+    let initialRoute = user ? RouteUrls.mainApp : RouteUrls.HomeScreen
 
     if (Constants.STORYBOOK) {
       initialRoute = RouteUrls.storybook
-    } else if (Constants.simulate.SKIP_ONBOARDING) {
-      initialRoute = RouteUrls.login
     }
 
     if (Constants.simulate.FORCE_PAGE) {
@@ -99,22 +98,6 @@ class AppNavigator extends Component<ComponentType> {
           component={routes[RouteUrls.mainApp].component}
         />
         <Stack.Screen
-          name={RouteUrls.onboarding}
-          initialParams={routes[RouteUrls.onboarding].params}
-          options={routes[RouteUrls.onboarding].options}
-          component={routes[RouteUrls.onboarding].component}
-        />
-        <Stack.Screen
-          name={RouteUrls.login}
-          options={routes[RouteUrls.login].options}
-          component={routes[RouteUrls.login].component}
-        />
-        <Stack.Screen
-          name={RouteUrls.home}
-          options={routes[RouteUrls.home].options}
-          component={routes[RouteUrls.home].component}
-        />
-        <Stack.Screen
           name={RouteUrls.storybook}
           options={routes[RouteUrls.storybook].options}
           component={routes[RouteUrls.storybook].component}
@@ -122,11 +105,29 @@ class AppNavigator extends Component<ComponentType> {
         {/*Modals*/}
         <Stack.Screen
           name={RouteUrls.web}
-          options={withPushModalOptions(routes[RouteUrls.web].options)}
+          options={{ stackPresentation: 'modal', headerShown: false }}
           component={routes[RouteUrls.web].component}
         />
 
-        {/* END OF ROUTES*/}
+        <Stack.Screen
+          name={RouteUrls.HomeScreen}
+          options={routes[RouteUrls.HomeScreen].options}
+          component={routes[RouteUrls.HomeScreen].component}
+        />
+
+  <Stack.Screen
+          name={RouteUrls.Tab1Screen}
+          options={routes[RouteUrls.Tab1Screen].options}
+          component={routes[RouteUrls.Tab1Screen].component}
+        />
+
+  <Stack.Screen
+          name={RouteUrls.Tab2Screen}
+          options={routes[RouteUrls.Tab2Screen].options}
+          component={routes[RouteUrls.Tab2Screen].component}
+        />
+
+  {/* END OF ROUTES*/}
       </Navigator>
     )
   }

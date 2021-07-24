@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import withScreen, { Screen } from './withScreen'
 import { RouteUrls } from '../route-urls'
 import { IRouteParams } from './withScreen'
+import ScreenContainer from "components/ScreenContainer";
 
 interface HomeScreen {
   modalVisible: boolean
@@ -11,12 +12,12 @@ interface HomeScreen {
 const HomeScreen: React.FC<HomeScreen> = ({ push }) => {
   const [isVisible, setIsVisible] = useState(false)
 
-  const goGeneric = () => push(RouteUrls.generic, {})
+  const goGeneric = () => push(RouteUrls.mainApp, {})
 
   return (
-    <Flex style={[Styles.body]}>
+    <ScreenContainer style={[Styles.body]}>
       <Button onPress={goGeneric}>Go to a generic page</Button>
-    </Flex>
+    </ScreenContainer>
   )
 }
 

@@ -8,7 +8,7 @@ const Constants = (global.Constants = {
   E2E: __DEV__ && false,
   E2E_NAMESPACE: null,
   defaultLocale: 'en',
-  STORYBOOK: __DEV__ && true,
+  STORYBOOK: __DEV__ && false,
   simulate: __DEV__ && {
     user: {
       email: '',
