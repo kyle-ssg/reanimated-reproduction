@@ -1,0 +1,32 @@
+diff --git a/node_modules/typescript/lib/lib.dom.d.ts b/node_modules/typescript/lib/lib.dom.d.ts
+index bb2e999..4e7eb90 100644
+--- a/node_modules/typescript/lib/lib.dom.d.ts
++++ b/node_modules/typescript/lib/lib.dom.d.ts
+@@ -15292,11 +15292,6 @@ interface Text extends CharacterData, Slottable {
+     splitText(offset: number): Text;
+ }
+ 
+-declare var Text: {
+-    prototype: Text;
+-    new(data?: string): Text;
+-};
+-
+ /** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
+ interface TextDecoder extends TextDecoderCommon {
+     /**
+@@ -19224,15 +19219,6 @@ interface SVGElementTagNameMap {
+ /** @deprecated Directly use HTMLElementTagNameMap or SVGElementTagNameMap as appropriate, instead. */
+ type ElementTagNameMap = HTMLElementTagNameMap & Pick<SVGElementTagNameMap, Exclude<keyof SVGElementTagNameMap, keyof HTMLElementTagNameMap>>;
+ 
+-declare var Audio: {
+-    new(src?: string): HTMLAudioElement;
+-};
+-declare var Image: {
+-    new(width?: number, height?: number): HTMLImageElement;
+-};
+-declare var Option: {
+-    new(text?: string, value?: string, defaultSelected?: boolean, selected?: boolean): HTMLOptionElement;
+-};
+ declare var applicationCache: ApplicationCache;
+ declare var clientInformation: Navigator;
+ declare var closed: boolean;
