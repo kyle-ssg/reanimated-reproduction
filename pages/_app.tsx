@@ -15,6 +15,7 @@ import '../styles/Global.scss'
 import { Store } from 'redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import LanguageHandler from '../common/LanguageHandler'
+import Head from "next/head";
 
 let initialRender = false
 
@@ -131,29 +132,36 @@ class MyApp extends App<{ store: Store }> {
       )
 
     return (
-      <Provider store={store}>
-        {/*// @ts-ignore*/}
-        <PersistGate persistor={store.__PERSISTOR} loading={null}>
-          <LanguageHandler>
-            <React.Fragment>
-              {/*<Header />*/}
-              {getLayout(<Component {...pageProps}></Component>)}
-              <div id='modal' />
-              <div id='confirm' />
-              <div id='alert' />
-              <div id='toast'>
-                <Toast />
-              </div>
-              {E2E && (
-                <React.Fragment>
-                  <div className='e2e' id='e2e-request' />
-                  <div className='e2e' id='e2e-error' />
-                </React.Fragment>
-              )}
-            </React.Fragment>
-          </LanguageHandler>
-        </PersistGate>
-      </Provider>
+
+      <>
+        <Head>
+          <title>The Project</title>
+        </Head>
+        <Provider store={store}>
+          {/*// @ts-ignore*/}
+          <PersistGate persistor={store.__PERSISTOR} loading={null}>
+            <LanguageHandler>
+              <React.Fragment>
+                {/*<Header />*/}
+                {getLayout(<Component {...pageProps}></Component>)}
+                <div id='modal' />
+                <div id='confirm' />
+                <div id='alert' />
+                <div id='toast'>
+                  <Toast />
+                </div>
+                {E2E && (
+                  <React.Fragment>
+                    <div className='e2e' id='e2e-request' />
+                    <div className='e2e' id='e2e-error' />
+                  </React.Fragment>
+                )}
+              </React.Fragment>
+            </LanguageHandler>
+          </PersistGate>
+        </Provider>
+      </>
+
     )
   }
 }

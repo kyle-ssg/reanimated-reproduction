@@ -66,7 +66,6 @@ class MyDocument extends Document<{ locale: string }> {
           {/*/>*/}
           {/*See https://www.google.com/recaptcha/admin*/}
           {/*<script src="https://www.google.com/recaptcha/api.js" />*/}
-          <title>The Project</title>
         </Head>
         <body>
           <Main />
