@@ -33,7 +33,7 @@ const BottomNav = ({ state, descriptors, navigation }) => {
                   state.index === 0 && styles.textActive,
                 ]}
               >
-                Tab 2
+                Tab 1
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -58,14 +58,13 @@ const BottomNav = ({ state, descriptors, navigation }) => {
 }
 
 const tabBarHeight = 40 + styleVariables.insets.bottom
-
-const styles = ReactNative.StyleSheet.create({
+const styles = StyleSheet.create({
   textInactive: {
-    width: 26,
+    width: 50,
     color: 'rgba(88,115,225,0.5)',
   },
   textActive: {
-    width: 26,
+    width: 50,
     color: palette.primary,
   },
   screen: {
@@ -75,6 +74,7 @@ const styles = ReactNative.StyleSheet.create({
   activeTabText: {},
   activeTab: {},
   tab: {
+    height: 55,
     overflow: 'visible',
     justifyContent: 'center',
     alignItems: 'center',
@@ -86,10 +86,13 @@ const styles = ReactNative.StyleSheet.create({
     paddingRight: 0,
   },
   container: {
+    borderTopWidth: 1,
+    borderColor: '#aaa',
+    backgroundColor: '#eaeaea',
     position: 'absolute',
-    bottom: 10,
-    left: 10,
-    right: 10,
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   tabContainer: {
     borderRadius: 10,
