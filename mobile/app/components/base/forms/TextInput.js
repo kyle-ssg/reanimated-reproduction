@@ -2,29 +2,11 @@
  * Created by kylejohnson on 14/11/2015.
  */
 
-import propTypes from 'prop-types'
 import ReactNative, { Animated, Easing } from 'react-native'
 import React, { Component } from 'react'
 
-const textInputPropTypes = {
-  onBlur: propTypes.func,
-  title: propTypes.oneOfType([
-    propTypes.arrayOf(propTypes.node),
-    propTypes.node,
-  ]).isRequired,
-  style: propTypes.any,
-  textStyle: propTypes.any,
-  icon: propTypes.any,
-  multiline: propTypes.any,
-  textAlignVertical: propTypes.any,
-  isLight: propTypes.any,
-  iconColour: propTypes.any,
-}
-
 const TextInput = class extends Component {
   static displayName = 'TextInput'
-
-  static propTypes = textInputPropTypes
 
   constructor(props, context) {
     super(props, context)
@@ -146,28 +128,6 @@ const TextInput = class extends Component {
   }
 }
 
-TextInput.propTypes = {}
-
-TextInput.propTypes = {
-  value: propTypes.string,
-  placeholder: propTypes.string,
-  editable: propTypes.bool,
-  multiline: propTypes.bool,
-  maxLines: propTypes.number,
-  minLines: propTypes.number,
-  onChangeText: propTypes.func,
-  height: propTypes.number,
-  style: propTypes.any,
-  secureTextEntry: propTypes.bool,
-  disabled: propTypes.bool,
-  keyboardType: propTypes.string,
-  onSubmit: propTypes.func,
-  onFocus: propTypes.func,
-  testID: propTypes.string,
-  placeholderTextColor: propTypes.string,
-  selectionColor: propTypes.string,
-}
-
 // const styles = ReactNative.StyleSheet.create({
 //
 // });
@@ -176,4 +136,3 @@ export default TextInput
 export const FlatInput = (props) => (
   <TextInput {...props} style={[Styles.flatInput, props.style]} />
 )
-FlatInput.propTypes = textInputPropTypes

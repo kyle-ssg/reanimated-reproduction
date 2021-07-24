@@ -2,26 +2,14 @@
  * Created by kylejohnson on 14/11/2015.
  */
 
-import propTypes from 'prop-types'
 import ReactNative, { Animated, Easing } from 'react-native'
 import React, { PureComponent } from 'react'
 import Animations from '../project/animations'
 // import InputMask from 'inputmask-core';
 const InputMask = () => Alert.alert('Please install input-mask-core')
 
-const textInputPropTypes = {
-  onBlur: propTypes.func,
-  title: propTypes.oneOfType([
-    propTypes.arrayOf(propTypes.node),
-    propTypes.node,
-  ]).isRequired,
-  style: propTypes.any,
-}
-
 const TextInput = class extends PureComponent {
   static displayName = 'TextInput'
-
-  static propTypes = textInputPropTypes
 
   constructor(props, context) {
     super(props, context)
@@ -202,27 +190,6 @@ const TextInput = class extends PureComponent {
   }
 }
 
-TextInput.propTypes = {}
-
-TextInput.propTypes = {
-  value: propTypes.string,
-  placeholder: propTypes.string,
-  editable: propTypes.bool,
-  multiline: propTypes.bool,
-  maxLines: propTypes.number,
-  minLines: propTypes.number,
-  mask: propTypes.string,
-  onChangeText: propTypes.func,
-  height: propTypes.number,
-  style: propTypes.any,
-  secureTextEntry: propTypes.bool,
-  disabled: propTypes.bool,
-  keyboardType: propTypes.string,
-  onSubmit: propTypes.func,
-  onFocus: propTypes.func,
-  textStyle: propTypes.any,
-  testID: propTypes.string,
-}
 
 // const styles = ReactNative.StyleSheet.create({
 //
@@ -232,4 +199,3 @@ export default TextInput
 export const FlatInput = (props) => (
   <TextInput {...props} style={[Styles.flatInput, props.style]} />
 )
-FlatInput.propTypes = textInputPropTypes

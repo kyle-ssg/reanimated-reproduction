@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import propTypes from 'prop-types'
 import { Animated, Easing, Pressable } from 'react-native'
 import Animation from 'lottie-react-native'
 
@@ -35,7 +34,6 @@ const Checkbox: React.FC<Checkbox> = ({ value, onPress }) => {
   )
 }
 
-Checkbox.propTypes = {}
 const styles = ReactNative.StyleSheet.create({
   checkbox: { width: 54, height: 54 },
 })

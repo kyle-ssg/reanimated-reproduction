@@ -142,15 +142,6 @@ module.exports = {
         }
         fs.writeFileSync(mobileRoutes, res, 'utf8')
     },
-    async writeComponent(reducerString, prefix) {
-        const providerPath = path.join(providers, `${functionName('USE', prefix)}.tsx`);
-        const res = fs.existsSync(providerPath);
-        if (res) {
-            console.log('Skipping provider, already exists');
-        } else {
-            return fs.writeFileSync(providerPath, reducerString, 'utf8');
-        }
-    },
     async writeTypes(string) {
         const webPath = path.join(common, `swagger-definitions.ts`);
         const res = fs.existsSync(webPath);

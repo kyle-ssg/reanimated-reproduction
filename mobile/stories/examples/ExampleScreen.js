@@ -3,7 +3,6 @@
 //  */
 // todo: deprecated
 // import React, { Component } from 'react';
-// import propTypes from 'prop-types';
 // import AutoHeightImage from 'react-native-auto-height-image';
 // import DateTimePicker from 'react-native-modal-datetime-picker';
 // import Svg, { } from 'react-native-svg';

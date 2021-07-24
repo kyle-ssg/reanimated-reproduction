@@ -1,8 +1,5 @@
 /* eslint-disable */
-import propTypes from 'prop-types';
 import '../common/lodash';
-
-global.propTypes = propTypes;
 
 // Analytics
 if (Project.ga && typeof window !== 'undefined') {

@@ -1,4 +1,3 @@
-// import propTypes from 'prop-types';
 import React from 'react'
 import { TabBar, TabView } from 'react-native-tab-view'
 

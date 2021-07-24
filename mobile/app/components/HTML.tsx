@@ -1,4 +1,3 @@
-// import propTypes from 'prop-types';
 import React, { FunctionComponent } from 'react' // we need this to make JSX compile
 import _HTML from 'react-native-render-html'
 import { useNavigation } from '@react-navigation/native'

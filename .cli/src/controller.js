@@ -41,10 +41,6 @@ module.exports = {
         // console.log(stateTypes)
 
     },
-    async writeComponent(name) {
-        const componentString = templates.component(name);
-        await writer.writeComponent(componentString, name);
-    },
     async writePost(action, prefix, api, createProvider, type='any', crud) {
         const actionStrings = templates.action(action, prefix);
         const appAction = templates.post(action, prefix);

@@ -1,22 +1,8 @@
 import React, { Component } from 'react'
 import Paging from '../Paging'
 import Panel from './Panel'
-import propTypes from 'prop-types'
 const PanelSearch = class extends Component {
   static displayName = 'PanelSearch'
-
-  static propTypes = {
-    title: propTypes.string,
-    items: propTypes.any,
-    search: propTypes.string,
-    renderRow: propTypes.func,
-    renderNoResults: propTypes.any,
-    filterRow: propTypes.func,
-    paging: propTypes.object,
-    nextPage: propTypes.func,
-    goToPage: propTypes.func,
-    isLoading: propTypes.bool,
-  }
 
   constructor(props, context) {
     super(props, context)

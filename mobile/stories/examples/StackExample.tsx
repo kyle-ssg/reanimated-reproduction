@@ -78,7 +78,6 @@ class StackExample extends Component {
   state = {
     name: new Date().valueOf() + '',
   }
-  static propTypes = {}
 
   render() {
     // const { props } = this

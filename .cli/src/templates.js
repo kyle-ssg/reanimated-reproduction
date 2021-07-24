@@ -571,28 +571,4 @@ const ${prefixCamel}:FC<ComponentType> = ({ id }) => {
 ${prefixCamel}.displayName = "${prefixCamel}"
 export default ${prefixCamel};`;
   },
-  component(name) {
-    return `import React, { Component } from 'react';
-import propTypes from 'prop-types';
-
-const ${name} = class extends Component {
-    static displayName = '${name}';
-
-    static propTypes = {};
-
-    constructor(props, context) {
-        super(props, context);
-        this.state = {};
-    }
-
-    render() {
-        return (
-            <div>Hi</div>
-        );
-    }
-};
-
-export default ${name};
-`;
-  },
 };

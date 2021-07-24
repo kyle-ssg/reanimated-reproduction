@@ -1,5 +1,4 @@
 // Anything that web has that's common, import here
-import propTypes from 'prop-types'
 import moment from 'moment'
 
 // Lodash
@@ -31,4 +30,3 @@ global._ = {
   keyBy,
   get,
 }
-global.propTypes = propTypes

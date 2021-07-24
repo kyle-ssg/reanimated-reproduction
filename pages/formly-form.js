@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'next/router'
 import { withFormik } from 'formik'
-import { formikPropTypes } from 'common/utils/formik'
 import * as yup from 'yup'
 import withGrecaptcher from '../components/extras/withGracecaptcher'
 
@@ -20,10 +19,6 @@ const schema = yup.object().shape({
 
 class FormPage extends Component {
   static displayName = 'FormPage'
-
-  static propTypes = {
-    ...formikPropTypes,
-  }
 
   componentDidMount() {
     API.trackPage('FormPage')
