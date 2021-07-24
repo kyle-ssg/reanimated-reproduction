@@ -18,18 +18,18 @@ export const projectPalette = {
 
 //= = Other Variables
 const insets = {
-  ...(initialWindowMetrics?.insets || {}),
+  ...initialWindowMetrics?.insets||{},
+  frame: initialWindowMetrics.frame,
   bottom: Platform.select({
-    android: initialWindowMetrics?.insets.bottom - bottomNavBarH,
+    android: (initialWindowMetrics?.insets.bottom||0)  - bottomNavBarH,
     ios: initialWindowMetrics?.insets.bottom,
   }),
   top: Platform.select({
     // android: initialWindowMetrics.insets.top  - StatusBar.currentHeight, // if you don't use a transparent status bar the height gets included
-    android: initialWindowMetrics?.insets.top,
+    android: Math.max(initialWindowMetrics?.insets.top||0,ReactNative.StatusBar.currentHeight),
     ios: initialWindowMetrics?.insets.top,
   }),
-}
-
+};
 export const projectStyles = {
   insets,
   bottomNavPadding: 80 + (insets.bottom || 0),

@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from 'react-native-screens/native-stack'
 import { RouteUrls } from '../route-urls'
 import BottomNav from 'components/BottomNav'
 import { routes } from '../routes'
-import ScreenContainer from "components/ScreenContainer";
+import ScreenContainer from 'components/ScreenContainer'
 
 type ComponentType = {}
 
@@ -43,7 +43,7 @@ const Stack2 = () => (
 
 const MainAppNavigator = ({ route }) => {
   return (
-    <ScreenContainer style={[Styles.body]}>
+    <Flex style={[Styles.body, styles.topInset]}>
       <Tab.Navigator
         lazy={false}
         initialRouteName={RouteUrls.HomeScreen}
@@ -52,8 +52,13 @@ const MainAppNavigator = ({ route }) => {
         <Tab.Screen name={RouteUrls.Tab1Screen} component={Stack1} />
         <Tab.Screen name={RouteUrls.Tab2Screen} component={Stack2} />
       </Tab.Navigator>
-    </ScreenContainer>
+    </Flex>
   )
 }
+const styles = ReactNative.StyleSheet.create({
+  topInset: {
+    paddingTop: styleVariables.insets.top,
+  },
+})
 
 export default MainAppNavigator
