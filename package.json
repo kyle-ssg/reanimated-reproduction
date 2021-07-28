@@ -104,6 +104,7 @@
     "chromedriver": "90.0.0",
     "cors": "2.8.5",
     "cross-env": "7.0.3",
+    "postcss": "^8.3.0",
     "dotenv": "10.0.0",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
