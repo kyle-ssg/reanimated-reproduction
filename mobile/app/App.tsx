@@ -18,7 +18,7 @@ if (launchArgs.namespace) {
   Constants.E2E = true
   Constants.E2E_NAMESPACE = launchArgs.namespace
 }
-const store = _store() 
+const store = _store()
 console.log("1"+1)
 const linking = {
   prefixes: ['mobile://'],
