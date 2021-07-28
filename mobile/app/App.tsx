@@ -20,6 +20,7 @@ if (launchArgs.namespace) {
 }
 const store = _store()
 console.log("1"+1)
+console.log("1"+1)
 const linking = {
   prefixes: ['mobile://'],
 }
