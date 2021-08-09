@@ -6,6 +6,7 @@ const defaultNavigationOptions: NativeStackNavigationOptions = {
   // headerBackTitle: "",
   // headerBackTitleVisible: true, // iOS only
   headerShown: false,
+  screenOrientation: 'portrait_up',
   // backButtonInCustomView: false,
   // headerTranslucent: false,
   // headerLargeTitle: false,
