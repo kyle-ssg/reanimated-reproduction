@@ -29,6 +29,7 @@ const nextConfig = {
 
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
+      'lottie-react-native': 'react-native-web-lottie',
       // Transform all direct `react-native` imports to `react-native-web`
       'react-native$': 'react-native-web',
     }

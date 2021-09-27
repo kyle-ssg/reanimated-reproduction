@@ -6,35 +6,24 @@ import Button, {
   ButtonSecondary,
   ButtonNav,
   ButtonTertiary,
-} from './forms/Button'
+} from '../../../../common/components/forms/Button'
 
-import TextInput, { FlatInput } from './forms/TextInput'
-import Select from './forms/Select'
-import './forms/SelectBox'
-import Checkbox from './forms/Checkbox'
-import TextComponent from './forms/Text'
+import TextInput, {
+  FlatInput,
+} from '../../../../common/components/forms/TextInput'
+import Select from '../../../../common/components/forms/Select'
+import '../../../../common/components/forms/SelectBox'
+import Checkbox from '../../../../common/components/forms/Checkbox'
 
 // Grid
 import 'common/components/grid'
 //Type
-import H1 from './type/H1'
-import H2 from './type/H2'
-import H3 from './type/H3'
-import H4 from './type/H4'
-
+import 'common/components/type'
 //Base
-import Loader from './../base/Loader.tsx'
+import Loader from 'common/components/Loader.tsx'
 
 // Animation
-global.Fade = require('../../../../common/components/animation/Fade')
-
-// Typography
-global.Text = TextComponent
-
-global.H1 = H1
-global.H2 = H2
-global.H3 = H3
-global.H4 = H4
+global.Fade = require('common/components/animation/Fade')
 
 global.Button = Button
 global.ButtonPrimary = ButtonPrimary

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback } from 'react'
-import { ButtonNav } from 'components/base/forms/Button' // we need this to make JSX compile
+import { ButtonNav } from 'components/../../../common/components/forms/Button' // we need this to make JSX compile
 import { useNavigation } from '@react-navigation/native'
 type ComponentType = { tintColor?: string }
 

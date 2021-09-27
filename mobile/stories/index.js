@@ -13,12 +13,12 @@ import ExampleTabs from './examples/ExampleTabs'
 import Button, {
   ButtonNav,
   ButtonPrimary,
-} from '../app/components/base/forms/Button'
+} from '../../common/components/forms/Button'
 import StackExample from './examples/StackExample'
 import SegmentedControl from 'components/SegmentedControl'
 import WithSetValue from '../../common/animation-util/WithSetValue'
-import TextInput from '../app/components/base/forms/TextInput'
-import SelectBox from '../app/components/base/forms/SelectBox'
+import TextInput from '../../common/components/forms/TextInput'
+import SelectBox from '../../common/components/forms/SelectBox'
 import ListItem from '../app/components/base/ListItem'
 import CustomModal from 'components/CustomModal'
 import BottomDrawer from 'components/BottomDrawer'

@@ -123,8 +123,7 @@ const Button: FunctionComponent<ButtonType> = ({
             alignItems: 'center',
           }}
         >
-          <FA5Pro solid name={icon} size={18}
-color={iconColour || 'white'} />
+          <FA5Pro solid name={icon} size={18} color={iconColour || 'white'} />
         </View>
       ) : null}
     </View>

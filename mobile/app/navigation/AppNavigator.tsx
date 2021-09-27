@@ -8,7 +8,7 @@ import _store from 'common/store'
 import defaultNavigationOptions from '../style/navigation_styles'
 import { RouteUrls } from '../route-urls'
 import withAuth, { IWithAuth } from 'common/providers/withAuth' // todo: migrate this to functional component and use useAuth
-import Loader from './../components/base/Loader'
+import Loader from 'common/components/Loader'
 import { routes } from '../routes'
 // import Cognito from "common/cognito";
 

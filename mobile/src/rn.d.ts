@@ -9,7 +9,7 @@ import Button, {
   ButtonSecondary,
   ButtonTertiary,
   ButtonType,
-} from '../app/components/base/forms/Button'
+} from '../../common/components/forms/Button'
 import Constants from 'common/utils/constants'
 import API from '../app/project/api/api'
 import { AppActions } from 'common/app-actions'

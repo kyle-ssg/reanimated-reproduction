@@ -2,7 +2,7 @@
 global.React = require('react')
 global.ReactNative = require('react-native-web')
 import { View } from 'react-native'
-
+import Text from 'common/components/forms'
 //React native components
 global.ActivityIndicator = ReactNative.ActivityIndicator
 global.Button = ReactNative.Button
