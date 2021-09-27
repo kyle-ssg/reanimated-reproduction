@@ -17,7 +17,7 @@ import { styleTypes } from '../app/style/_style_screen'
 import {
   projectPalette as palette,
   projectStyles as styleVariables,
-} from '../app/style/style_variables'
+} from 'common/style/style_variables'
 
 import Strings from 'common/strings'
 
