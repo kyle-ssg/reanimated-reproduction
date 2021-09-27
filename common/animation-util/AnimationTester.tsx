@@ -4,7 +4,6 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated'
-import { interpolateColor } from 'react-native-redash'
 type ComponentType = {
   animatedValue: Animated.SharedValue<number>
   min?: number

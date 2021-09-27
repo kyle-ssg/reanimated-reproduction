@@ -1,8 +1,12 @@
 import fetch from 'isomorphic-unfetch' // we do this here instead of _data.js as it intereferes with react-native
-import 'react-native-globals/web'
-import 'common/style/_style_screen'
-global.fetch = fetch
+
 import './ie11'
+import 'common/global-rn'
+import 'common/components/grid/'
+import Fade from 'common/components/animation/Fade'
+import 'common/style/_style_screen'
+global.Fade = Fade
+global.fetch = fetch
 
 if (typeof window !== 'undefined' && !HTMLCanvasElement.prototype.toBlob) {
   Object.defineProperty(HTMLCanvasElement.prototype, 'toBlob', {

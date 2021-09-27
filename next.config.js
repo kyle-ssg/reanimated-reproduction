@@ -2,6 +2,7 @@ const withPlugins = require('next-compose-plugins')
 const withTM = require('next-transpile-modules')([
   'react-native-safe-area-context',
   'react-native-svg',
+  'react-native-reanimated',
 ])
 const withOffline = require('next-offline')
 const withFonts = require('next-fonts')

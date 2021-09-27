@@ -24,10 +24,9 @@ const Flex: React.FC<Props> = ({
     accessible={accessible}
     accessibilityLabel={accessibilityLabel}
     style={[
-      style,
       { flex: value },
       space && { justifyContent: 'space-between' },
-    ]}
+    ].concat(style)}
     testID={testID}
   >
     {children}

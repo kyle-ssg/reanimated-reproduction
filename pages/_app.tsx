@@ -15,7 +15,7 @@ import '../styles/Global.scss'
 import { Store } from 'redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import LanguageHandler from '../common/LanguageHandler'
-import Head from "next/head";
+import Head from 'next/head'
 
 let initialRender = false
 
@@ -132,7 +132,6 @@ class MyApp extends App<{ store: Store }> {
       )
 
     return (
-
       <>
         <Head>
           <title>The Project</title>
@@ -161,7 +160,6 @@ class MyApp extends App<{ store: Store }> {
           </PersistGate>
         </Provider>
       </>
-
     )
   }
 }

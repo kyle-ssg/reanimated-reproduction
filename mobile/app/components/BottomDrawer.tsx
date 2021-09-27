@@ -15,14 +15,14 @@ import CustomModal from './CustomModal'
 import {
   drawerSlideInConfig,
   drawerSlideOutConfig,
-} from '../project/animation-util/reanimations'
+} from '../../../common/animation-util/reanimations'
 import {
   Dimensions,
   KeyboardAvoidingView,
   StyleProp,
   ViewStyle,
 } from 'react-native'
-import { clamp } from '../project/animation-util/clamp'
+import { clamp } from '../../../common/animation-util/clamp'
 
 export const closest = (value, values) => {
   'worklet'

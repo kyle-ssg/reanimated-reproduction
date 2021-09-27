@@ -2,11 +2,10 @@ import React, { FunctionComponent, useEffect, useRef } from 'react'
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
-  withDelay,
   withTiming,
 } from 'react-native-reanimated'
 import useIsMount from 'common/providers/useIsMount'
-import { easingFade } from '../../../project/animation-util/reanimations'
+import { easingFade } from 'common/animation-util/reanimations'
 
 type ComponentType = ReactNative.ViewProps & {
   value: number // between 0 and 1

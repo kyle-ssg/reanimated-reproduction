@@ -15,13 +15,7 @@ import Checkbox from './forms/Checkbox'
 import TextComponent from './forms/Text'
 
 // Grid
-import Flex from './grid/Flex'
-import Row from './grid/Row'
-import FormGroup from './grid/FormGroup'
-import ListItem from './ListItem'
-import Column from './grid/Column'
-import Container from './grid/Container'
-
+import 'common/components/grid'
 //Type
 import H1 from './type/H1'
 import H2 from './type/H2'
@@ -32,7 +26,7 @@ import H4 from './type/H4'
 import Loader from './../base/Loader.tsx'
 
 // Animation
-global.Fade = require('./animation/Fade')
+global.Fade = require('../../../../common/components/animation/Fade')
 
 // Typography
 global.Text = TextComponent
@@ -41,14 +35,6 @@ global.H1 = H1
 global.H2 = H2
 global.H3 = H3
 global.H4 = H4
-
-global.Flex = Flex
-global.Container = Container
-global.FormGroup = FormGroup
-
-global.Column = Column
-
-global.Row = Row
 
 global.Button = Button
 global.ButtonPrimary = ButtonPrimary

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import 'react-native-globals'
-import '../app/style/_style_screen'
+import 'common/style/_style_screen'
 import '../app/components/base'
 import StorybookUIRoot, {
   getStory,
@@ -16,7 +16,7 @@ import Button, {
 } from '../app/components/base/forms/Button'
 import StackExample from './examples/StackExample'
 import SegmentedControl from 'components/SegmentedControl'
-import WithSetValue from '../app/project/animation-util/WithSetValue'
+import WithSetValue from '../../common/animation-util/WithSetValue'
 import TextInput from '../app/components/base/forms/TextInput'
 import SelectBox from '../app/components/base/forms/SelectBox'
 import ListItem from '../app/components/base/ListItem'

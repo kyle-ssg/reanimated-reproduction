@@ -18,6 +18,7 @@ module.exports = {
     },
   },
   plugins: [
+    'react-native-reanimated/plugin',
     ['react-native-web', { commonjs: true }],
     ['@babel/proposal-class-properties'],
     [

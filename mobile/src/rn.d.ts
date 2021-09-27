@@ -21,7 +21,7 @@ import {
 
 import Strings from 'common/strings'
 
-import Fade from 'components/base/animation/Fade'
+import Fade from 'components/../../common/components/animation/Fade'
 import ProjectType from 'common/project-type'
 import { RouteUrls } from '../app/route-urls'
 import { APIType } from 'common/api-type'
@@ -3773,9 +3773,7 @@ declare global {
   let styleVariables = styleVariables
   let Button: React.ComponentType<ButtonType>
   // @ts-ignore
-  let API: APIType & {
-
-  };
+  let API: APIType & {}
   // @ts-ignore
   let ButtonPrimary = ButtonPrimary
   // @ts-ignore
