@@ -1,11 +1,11 @@
 import React from 'react'
 import { Component } from 'react'
 import withScreen, { Screen } from '../withScreen'
-
-type ComponentType = Screen & {
+export type GenericScreenType = {
   text: string
   style: ReactNative.ViewStyle
 }
+type ComponentType = Screen & GenericScreenType
 
 class GenericScreen extends Component<ComponentType> {
   state = {}
