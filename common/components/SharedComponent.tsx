@@ -1,6 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import 'project/polyfill'
-import Fade from './animation/Fade'
 type ComponentType = {}
 const SharedComponent: FunctionComponent<ComponentType> = ({}) => {
   return (

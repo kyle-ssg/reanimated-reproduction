@@ -14,6 +14,17 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const withSourceMaps = require('@zeit/next-source-maps')
 
 const nextConfig = {
+  eslint: {
+    // Warning: Dangerously allow production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+  },
+  // next-offline options
+  typescript: {
+    ignoreDevErrors: true,
+    ignoreBuildErrors: true,
+  },
+  // buildId, dev, isServer, defaultLoaders, webpack
   webpack: (config, { dev }) => {
     const base = dev
       ? require('./.webpack/webpack.config.dev')
