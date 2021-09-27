@@ -3,6 +3,7 @@ import { AppActions, Actions } from 'common/app-actions'
 import API from '../project/api'
 import Strings from 'common/strings'
 import { APIType } from '../common/api-type'
+import ReactNative from 'react-native'
 type API = APIType & {}
 declare global {
   namespace NodeJS {
@@ -86,6 +87,7 @@ declare global {
   declare let SuccessMessage: any
   declare let Utils: any
   declare let _data: any
+  let Text: React.ComponentType<ReactNative.TextProps>
   declare let _: any
   declare let __DEV__: any
   declare let __dirname: any

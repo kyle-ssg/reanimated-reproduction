@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-unfetch' // we do this here instead of _data.js as it intereferes with react-native
+import 'react-native-globals/web'
 global.fetch = fetch
 import './ie11'
 

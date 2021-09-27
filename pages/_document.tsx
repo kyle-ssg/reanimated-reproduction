@@ -13,9 +13,11 @@ import Document, {
   DocumentContext,
 } from 'next/document'
 import '../project/api'
+import { AppRegistry } from 'react-native'
 
 class MyDocument extends Document<{ locale: string }> {
   static async getInitialProps(ctx: DocumentContext) {
+    AppRegistry.registerComponent('app', () => Main)
     const initialProps = await Document.getInitialProps(ctx)
     const locale = API.getStoredLocale(ctx.req)
     return { ...initialProps, locale }

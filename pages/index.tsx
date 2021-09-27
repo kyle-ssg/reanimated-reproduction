@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Button from '../components/base/forms/Button'
 import { useAuth } from '../common/providers/useAuth'
+import SharedComponent from '../common/components/SharedComponent'
 
 const HomePage = () => {
   const router = useRouter()
@@ -17,6 +18,7 @@ const HomePage = () => {
       <ButtonPrimary>Click me!</ButtonPrimary>
       <Loader />
       <p>Good morning</p>
+      <SharedComponent />
     </div>
   )
 }
