@@ -26,6 +26,7 @@ module.exports = {
       {
         alias: {
           'react-native$': 'react-native-web',
+          'lottie-react-native$': 'react-native-web-lottie',
           components: './components/',
           common: './common/',
           project: './project/',
