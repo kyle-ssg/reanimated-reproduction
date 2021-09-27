@@ -24,6 +24,7 @@ module.exports = {
       'module-resolver',
       {
         alias: {
+          'react-native$': 'react-native-web',
           components: './components/',
           common: './common/',
           project: './project/',

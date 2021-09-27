@@ -15,10 +15,15 @@ const HomePage = () => {
 
   return (
     <div className='container'>
-      <ButtonPrimary>Click me!</ButtonPrimary>
-      <Loader />
-      <p>Good morning</p>
-      <SharedComponent />
+      <div>
+        <ButtonPrimary>Click me!</ButtonPrimary>
+        <Loader />
+        <p>Good morning</p>
+      </div>
+
+      <div>
+        <SharedComponent />
+      </div>
     </div>
   )
 }

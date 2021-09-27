@@ -1,3 +1,8 @@
+const withPlugins = require('next-compose-plugins')
+const withTM = require('next-transpile-modules')([
+  'react-native-safe-area-context',
+  'react-native-svg',
+])
 const withOffline = require('next-offline')
 const withFonts = require('next-fonts')
 const withImages = require('next-images')
@@ -8,17 +13,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const withSourceMaps = require('@zeit/next-source-maps')
 
 const nextConfig = {
-  eslint: {
-    // Warning: Dangerously allow production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
-  },
-  // next-offline options
-  typescript: {
-    ignoreDevErrors: true,
-    ignoreBuildErrors: true,
-  },
-  // buildId, dev, isServer, defaultLoaders, webpack
   webpack: (config, { dev }) => {
     const base = dev
       ? require('./.webpack/webpack.config.dev')
@@ -32,10 +26,23 @@ const nextConfig = {
       use: 'raw-loader',
     })
 
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      // Transform all direct `react-native` imports to `react-native-web`
+      'react-native$': 'react-native-web',
+    }
+    config.resolve.extensions = [
+      '.web.js',
+      '.web.ts',
+      '.web.tsx',
+      ...config.resolve.extensions,
+    ]
+
     return config
   },
 }
 
-module.exports = withFonts(
-  withSourceMaps(withImages(withBundleAnalyzer(nextConfig))),
+module.exports = withPlugins(
+  [withTM, withFonts, withSourceMaps, withBundleAnalyzer],
+  nextConfig,
 )

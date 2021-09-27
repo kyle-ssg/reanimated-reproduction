@@ -18,7 +18,7 @@ const Row: React.FC<Props> = ({ testID, space, style, children }) => (
   </View>
 )
 
-const styles = ReactNative.StyleSheet.create({
+const styles = StyleSheet.create({
   row: {
     alignSelf: 'stretch',
     flexDirection: 'row',
