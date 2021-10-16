@@ -5,7 +5,7 @@ import React, {
   useCallback,
 } from 'react' // we need this to make JSX compile
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
-import SelectBox from 'components/../../../common/components/forms/SelectBox'
+import SelectBox from 'components/./base/forms/SelectBox'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import moment from 'moment'

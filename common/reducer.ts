@@ -60,6 +60,7 @@ const defaultReducer = produce((state: AppState, action): AppState | void => {
       break
     case Actions.CLEAR_USER:
       if (state.profile.id) {
+        // @ts-ignore
         API.push?.unsubscribe(`${state.profile.id}`)
       }
       state.profile = null

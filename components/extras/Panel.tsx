@@ -4,7 +4,7 @@ interface Panel {
   title?: React.ReactNode
   icon?: string
   className?: React.ReactNode
-  children?: React.ReactNode
+  children?: string | React.ReactNode
   action?: React.ReactNode
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Loader } from 'common/components/Loader'
-import Select from '../../../../common/components/forms/Select'
+import Select from './forms/Select'
 import FormGroup from './grid/FormGroup'
 
 interface Props {

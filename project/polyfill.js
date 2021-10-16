@@ -2,10 +2,10 @@ import fetch from 'isomorphic-unfetch' // we do this here instead of _data.js as
 
 import './ie11'
 import 'common/global-rn'
-import 'common/components/grid/'
-import Fade from 'common/components/animation/Fade'
-import 'common/style/_style_screen'
-import 'common/components/type'
+import 'mobile/app/components/base/grid/'
+import Fade from 'mobile/app/components/base/animation/Fade'
+import 'mobile/app/style/_style_screen'
+import 'mobile/app/components/base/type'
 global.Fade = Fade
 global.fetch = fetch
 

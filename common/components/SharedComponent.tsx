@@ -6,7 +6,7 @@ const SharedComponent: FunctionComponent<ComponentType> = ({}) => {
       <Row>
         <Text style={Styles.mr5}>Hi</Text>
         <Text style={Styles.mr5}>Hi2</Text>
-        <View style={[{ flex: 1, height: 10, backgroundColor: 'red' }]}></View>
+        <View style={[{ flex: 1, height: 10, backgroundColor: 'red' }]} />
       </Row>
     </Fade>
   )

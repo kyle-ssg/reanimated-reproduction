@@ -23,7 +23,7 @@
       "build": "xcodebuild -workspace ./ios/mobile.xcworkspace -scheme mobile -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
       "type": "ios.simulator",
       "device": {
-        "type": "iPhone 5s"
+        "type": "iPhone 12"
       }
     },
     "ipad": {

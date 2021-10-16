@@ -6,24 +6,23 @@ import Button, {
   ButtonSecondary,
   ButtonNav,
   ButtonTertiary,
-} from '../../../../common/components/forms/Button'
+} from './forms/Button'
 
-import TextInput, {
-  FlatInput,
-} from '../../../../common/components/forms/TextInput'
-import Select from '../../../../common/components/forms/Select'
-import '../../../../common/components/forms/SelectBox'
-import Checkbox from '../../../../common/components/forms/Checkbox'
+import TextInput from './forms/TextInput'
+import Select from './forms/Select'
+import './forms/SelectBox'
+import Checkbox from './forms/Checkbox'
 
 // Grid
-import 'common/components/grid'
+import './grid'
 //Type
-import 'common/components/type'
+import './type'
 //Base
-import Loader from 'common/components/Loader.tsx'
+import Loader from 'components/base/Loader.tsx'
 
+import ListItem from 'components/base/ListItem'
 // Animation
-global.Fade = require('common/components/animation/Fade')
+global.Fade = require('./animation/Fade')
 
 global.Button = Button
 global.ButtonPrimary = ButtonPrimary
@@ -36,7 +35,6 @@ global.ButtonNav = ButtonNav
 global.Checkbox = Checkbox
 
 global.TextInput = TextInput
-global.FlatInput = FlatInput
 global.Loader = Loader
 global.Select = Select
 

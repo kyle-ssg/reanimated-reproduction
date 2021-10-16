@@ -58,6 +58,7 @@ originalSHA=$(git rev-parse --verify HEAD)
 echo running appcenter build branches list -a $1 grep -A10 -E "Branch: +$3"
 commitSHA=$(appcenter build branches list -a $1 | grep -A10 -E "Branch: +$3" | grep -E -m 1 'Commit SHA: +' | awk '{split($0,a,": "); print a[2]}' | sed 's/^ *//g')
 
+git stash
 git checkout $commitSHA
 
 if [[ $4 == "ios" ]]

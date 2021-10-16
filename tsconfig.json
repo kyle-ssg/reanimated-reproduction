@@ -48,6 +48,6 @@
     "common/providers/WithSetValue.js",
     "common/providers/_hocTemplate.js",
     "components/extras/withGracecaptcher.ts",
-    "common/components/forms/Select.tsx"
+    "mobile/app/components/base/forms/Select.tsx"
   ]
 }

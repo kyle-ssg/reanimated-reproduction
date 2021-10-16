@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import 'react-native-globals'
-import 'common/style/_style_screen'
+import '../app/style/_style_screen'
 import '../app/components/base'
 import StorybookUIRoot, {
   getStory,
@@ -10,15 +10,12 @@ import StorybookUIRoot, {
 } from './setup'
 import ErrorMessage from '../app/components/ErrorMessage'
 import ExampleTabs from './examples/ExampleTabs'
-import Button, {
-  ButtonNav,
-  ButtonPrimary,
-} from '../../common/components/forms/Button'
+import Button, { ButtonNav, ButtonPrimary } from 'components/base/forms/Button'
 import StackExample from './examples/StackExample'
 import SegmentedControl from 'components/SegmentedControl'
 import WithSetValue from '../../common/animation-util/WithSetValue'
-import TextInput from '../../common/components/forms/TextInput'
-import SelectBox from '../../common/components/forms/SelectBox'
+import TextInput from 'components/base/forms/TextInput'
+import SelectBox from 'components/base/forms/SelectBox'
 import ListItem from '../app/components/base/ListItem'
 import CustomModal from 'components/CustomModal'
 import BottomDrawer from 'components/BottomDrawer'

@@ -190,12 +190,8 @@ const TextInput = class extends PureComponent {
   }
 }
 
-
 // const styles = ReactNative.StyleSheet.create({
 //
 // });
 
 export default TextInput
-export const FlatInput = (props) => (
-  <TextInput {...props} style={[Styles.flatInput, props.style]} />
-)

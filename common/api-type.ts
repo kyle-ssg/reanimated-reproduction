@@ -13,11 +13,8 @@ export interface Storage {
     key: string,
     value: string,
     req?: IncomingMessage,
-  ) => undefined | Promise<unknown>
-  removeItem: (
-    key: string,
-    req?: IncomingMessage,
-  ) => undefined | Promise<unknown>
+  ) => undefined | Promise<any>
+  removeItem: (key: string, req?: IncomingMessage) => undefined | Promise<any>
 }
 
 export type APIType = {
@@ -32,7 +29,6 @@ export type APIType = {
   setStoredToken: (val: string) => Promise<void>
   setStoredRefreshToken: (val: string) => Promise<void>
   storage: Storage
-  noPicksAvailable: any
   getPixelRatio: () => number
   auth: { Cognito: any } // todo
   trackEvent: (data) => void // TODO

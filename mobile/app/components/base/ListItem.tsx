@@ -1,7 +1,7 @@
 import React from 'react'
 import { Platform, TouchableNativeFeedback } from 'react-native'
 
-interface Props {
+export type ListItemType = {
   accessible?: boolean
   accessibilityLabel?: string
   active?: boolean
@@ -10,7 +10,7 @@ interface Props {
     | React.ComponentType<any>
     | React.ReactElement<any, string | React.JSXElementConstructor<any>>
   testID?: string
-  children: [React.ReactNode] | React.ReactNode
+  children?: [React.ReactNode] | React.ReactNode
   delay?: number
   index?: number
   onPress?: () => void
@@ -19,7 +19,7 @@ interface Props {
   isEditable?: boolean
 }
 
-export const ListItem: React.FC<Props> = ({
+export const ListItem: React.FC<ListItemType> = ({
   accessible,
   active,
   testID,
@@ -34,11 +34,11 @@ export const ListItem: React.FC<Props> = ({
 }) => {
   const content = (
     <View style={[disabled && Styles.listItemDisabled]}>
-      <Container style={[Styles.listItemBorder, Styles.pb10]}>
+      <Container style={Styles.pb10}>
         <Row>
           {icon ? <View style={[Styles.pr10]}>{icon}</View> : null}
           <View>{children}</View>
-          <Flex style={[Styles.alignItemsEnd]}>{rightElement}</Flex>
+          <Flex style={Styles.alignItemsEnd}>{rightElement}</Flex>
         </Row>
       </Container>
     </View>

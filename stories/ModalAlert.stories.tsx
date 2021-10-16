@@ -11,7 +11,7 @@ export default {
 export const Default: ComponentStory<typeof ModalAlert> = (args) => {
   return (
     <>
-      <ModalAlert isOpen title='Alert'>
+      <ModalAlert isOpen title='Alert' {...args}>
         Test
       </ModalAlert>
     </>

@@ -2,6 +2,7 @@
 import { Actions } from '../app-actions'
 import { put } from 'redux-saga/effects'
 import _data from './_data'
+import { logout } from 'common/saga'
 
 export function* errorHandler(action, prefix, preventSuccess, e) {
   let originalError
@@ -9,12 +10,15 @@ export function* errorHandler(action, prefix, preventSuccess, e) {
   yield put(error)
   try {
     originalError = JSON.parse(e._bodyText)
-  } catch (e) {
-    // console.log(e)
-  }
+  } catch (e) {}
   action.onError && action.onError(error.error, originalError)
+
+  if (error.error === 'UNAUTHORIZED') {
+    yield logout({})
+  }
+
   if (preventSuccess) {
-    throw e
+    // throw e; this causes the rootSaga to crash... not good.
   }
 }
 
@@ -46,13 +50,23 @@ export function* handleResponse(
 }
 
 // GET request with standard response and error handler
-export function* getAction(action, url, prefix, preventSuccess, dto, ignoreId) {
+export function* getAction(
+  action,
+  url,
+  prefix,
+  preventSuccess,
+  dto,
+  ignoreId,
+  noPostFix,
+  headers,
+) {
   try {
     const postfix =
       action.data && Object.keys(action.data).length
-        ? '?' + Utils.toParam(action.data)
+        ? `?${Utils.toParam(action.data)}`
         : ''
-    const data = yield _data.get(`${url}${postfix}`)
+    const uri = noPostFix ? `${url}` : `${url}${postfix}`
+    const data = yield _data.get(uri, null, headers)
     return yield handleResponse(
       action,
       prefix,

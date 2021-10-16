@@ -15,12 +15,41 @@ import * as RootNavigation from 'navigation/RootNavigation'
 import { RouteUrls } from '../../route-urls'
 import 'common/project'
 import { APIType } from 'common/api-type'
+import { FirebaseMessagingTypes } from '@react-native-firebase/messaging'
 // import _analytics from '@react-native-firebase/analytics'
+// @ts-ignore
 const analytics = typeof _analytics === 'undefined' ? undefined : _analytics
 // import ImagePicker from 'react-native-image-crop-picker';
 
-const API: APIType = {
+export type MobileAPIType = APIType & {
+  [extraProps: string]: any
+  showOptions: (
+    title: string,
+    _options: string[],
+    cancelButton?: boolean,
+    dark?: boolean,
+    destructiveOption?: boolean,
+    resolveCancel?: (boolean) => Promise<number>,
+  ) => Promise<unknown>
+  push: {
+    getInitialNotification: () => Promise<FirebaseMessagingTypes.RemoteMessage | null>
+    subscribe: (topic: string) => Promise<void>
+    unsubscribe: (topic: string) => Promise<void>
+    stop: () => void
+    init: (
+      onNotification?: (
+        res: FirebaseMessagingTypes.RemoteMessage,
+        isForeground: boolean,
+      ) => void,
+      silent?: boolean,
+    ) => Promise<string>
+    getToken: () => Promise<string>
+  }
+}
+
+const API: MobileAPIType = {
   isMobile: () => true,
+  getPixelRatio: () => ReactNative.PixelRatio.get(),
   reduxStorage: storage,
   middlewares: __DEV__ ? [require('redux-flipper').default({})] : null,
 
@@ -86,6 +115,7 @@ const API: APIType = {
           options,
           title,
           dark,
+          // @ts-ignore
           destructiveButtonIndex:
             destructiveOption && cancelButton
               ? options.length - 2
@@ -102,6 +132,7 @@ const API: APIType = {
       )
     }),
   getContacts: (includePhotos) => {
+    // @ts-ignore
     if (typeof Contacts === 'undefined') {
       return Promise.reject(
         new Error(
@@ -112,6 +143,7 @@ const API: APIType = {
     return includePhotos
       ? new Promise((resolve) =>
           // eslint-disable-next-line no-undef
+          // @ts-ignore
           Contacts.getAll((error, contacts) =>
             resolve({
               error,
@@ -121,6 +153,7 @@ const API: APIType = {
         )
       : new Promise((resolve) =>
           // eslint-disable-next-line no-undef
+          // @ts-ignore
           Contacts.getAllWithoutPhotos((error, contacts) =>
             resolve({
               error,
@@ -139,8 +172,10 @@ const API: APIType = {
   ) =>
     new Promise((resolve) => {
       API.showOptions(title, ['Camera', 'Upload a Photo']).then((i) => {
+        // @ts-ignore
         if (typeof ImagePicker === 'undefined') {
           // eslint-disable-next-line
+          // @ts-ignore
           alert(
             'You need to link react-native-image-crop-picker to use this function',
           )
@@ -165,6 +200,7 @@ const API: APIType = {
           }
 
           // eslint-disable-next-line no-undef
+          // @ts-ignore
           const func = i ? ImagePicker.openPicker : ImagePicker.openCamera
 
           return func(options).then((res) => {
@@ -175,33 +211,6 @@ const API: APIType = {
         }
       })
     }),
-  generateLink: (title, customMetadata) => {
-    if (typeof branch === 'undefined') {
-      // eslint-disable-next-line
-      alert('You need to link react-native-branch to use this function')
-      return Promise.reject()
-    }
-    // eslint-disable-next-line no-undef
-    return branch
-      .createBranchUniversalObject('share', {
-        title,
-        contentMetadata: {
-          customMetadata,
-        },
-      })
-      .then((branchUniversalObject) => {
-        const controlParams = {}
-        return branchUniversalObject
-          .generateShortUrl({}, controlParams)
-          .then(({ url }) => url)
-      })
-  },
-  getInitialLink: (cb) => {
-    // eslint-disable-next-line
-    initialLinkCb = cb
-    // eslint-disable-next-line
-    return initialLink ? cb(link) : null
-  },
 
   setStoredToken(val) {
     if (!val) {
@@ -220,40 +229,6 @@ const API: APIType = {
   push,
   auth,
   storage,
-}
-
-if (typeof branch !== 'undefined') {
-  let linkCb = null
-  // eslint-disable-next-line
-  var initialLinkCb = null
-  // eslint-disable-next-line
-  var link = null
-  // eslint-disable-next-line
-  var checkedInitialLink = null
-  // eslint-disable-next-line
-  var initialLink = null
-
-  API.onLink = (cb) => (linkCb = cb)
-  // eslint-disable-next-line no-undef
-  branch.subscribe(({ error, params }) => {
-    if (error) {
-      // eslint-disable-next-line no-console
-      console.error(`Error from Branch: ${error}`)
-      return
-    }
-
-    if (params['+clicked_branch_link']) {
-      link = params
-
-      if (!checkedInitialLink) {
-        initialLink = params
-        if (initialLinkCb) initialLinkCb(params)
-      } else if (linkCb) {
-        linkCb(params)
-      }
-    }
-    checkedInitialLink = true
-  })
 }
 
 global.API = API
