@@ -8,7 +8,6 @@ import AppNavigator from 'navigation/AppNavigator'
 import { navigationRef } from 'navigation/RootNavigation'
 import NeverUpdate from 'components/NeverUpdate'
 import ScreenContainer from 'components/ScreenContainer'
-import LinkHandler from 'components/LinkHandler'
 import LanguageHandler from 'common/LanguageHandler'
 import 'common/utils/_data'
 import { LaunchArguments } from 'react-native-launch-arguments'
@@ -45,7 +44,6 @@ const App: FunctionComponent<Props> = () => (
                 <AppNavigator />
               </NavigationContainer>
             </LanguageHandler>
-            <LinkHandler />
           </NeverUpdate>
         </PersistGate>
       </Provider>

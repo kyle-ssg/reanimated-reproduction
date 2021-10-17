@@ -50,7 +50,7 @@ const PanelSearch = class extends Component {
               />
               <span
                 style={{ marginLeft: 10, position: 'absolute' }}
-                className='icon ion-ios-search'
+                className='icon fa fa-search'
               />
             </Row>
           ) : null

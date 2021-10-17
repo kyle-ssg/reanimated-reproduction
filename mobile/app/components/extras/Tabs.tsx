@@ -1,12 +1,13 @@
 import React from 'react'
-import { TabBar, TabView } from 'react-native-tab-view'
+
+// import { TabBar, TabView } from 'react-native-tab-view'
 
 interface Props {
   tabBarRow?: boolean
   navigationState?: {}
   tabBarStyle?: any
   renderScene?: () => void
-  onIndexChange?: () => void
+  onIndexChange?: (index: number) => void
   scrollEnabled?: boolean
   lazy?: boolean
   tabStyle?: {}
@@ -15,37 +16,50 @@ interface Props {
   renderLabel?: () => void
 }
 
-export const Tabs = ({
+export const Tabs: React.FC<Props> = ({
   tabBarRow,
   navigationState,
   tabBarStyle,
   renderScene,
   onIndexChange,
   scrollEnabled,
-  tabStyle = {},
-  labelStyle = {},
-  indicatorStyle,
   lazy,
+  tabStyle = {},
+  indicatorStyle,
+  labelStyle = {},
   renderLabel,
+  ...props
 }) => {
-  const renderTabBar = (props) => (
-    <TabBar
-      {...props}
-      scrollEnabled={scrollEnabled}
-      labelStyle={[styles.TabText, labelStyle]}
-      getLabelText={({ route: { title } }) => title}
-      style={{ ...styles.tabPrimary, ...tabBarStyle }}
-      tabStyle={tabBarRow ? { ...Styles.row, ...tabStyle } : tabStyle}
-      indicatorStyle={{
-        ...styles.indicatorPrimary,
-        ...indicatorStyle,
-      }}
-      renderIcon={({ route }) => route.icon || null}
-      renderLabel={renderLabel}
-    />
-  )
+  // @ts-ignore
+  if (typeof TabBar === 'undefined') {
+    // @ts-ignore
+    alert('Install react-native-tab-view')
+    return null
+  }
+  const renderTabBar = (props) => {
+    return (
+      //@ts-ignore
+      // eslint-disable-next-line react/jsx-no-undef
+      <TabBar
+        {...props}
+        scrollEnabled={scrollEnabled}
+        labelStyle={[styles.TabText, labelStyle]}
+        getLabelText={({ route: { title } }) => title}
+        style={{ ...styles.tabPrimary, ...tabBarStyle }}
+        tabStyle={tabBarRow ? { ...Styles.row, ...tabStyle } : tabStyle}
+        indicatorStyle={{
+          ...styles.indicatorPrimary,
+          ...indicatorStyle,
+        }}
+        renderIcon={({ route }) => route.icon || null}
+        renderLabel={renderLabel}
+      />
+    )
+  }
 
   return (
+    //@ts-ignore
+    // eslint-disable-next-line react/jsx-no-undef
     <TabView
       useNativeDriver
       lazy={lazy}

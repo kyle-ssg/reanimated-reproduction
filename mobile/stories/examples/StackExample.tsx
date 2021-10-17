@@ -8,9 +8,9 @@ import { RouteUrls } from '../../app/route-urls'
 import withScreen, { Screen } from '../../app/screens/withScreen'
 import _store from 'common/store'
 import { WebViewProps } from 'react-native-webview'
+import { routes } from '../../app/routes'
 
 const store = _store({}, true)
-
 const Stack = createNativeStackNavigator()
 const Navigator = Stack.Navigator
 
@@ -22,6 +22,7 @@ type ComponentType = Screen & {
 class _GenericScreen extends Component<ComponentType> {
   state = {}
   goScreen = (url: RouteUrls) => {
+    console.log(url)
     this.props.push(url, {
       screenOptions: {
         headerShown: true,
@@ -36,6 +37,7 @@ class _GenericScreen extends Component<ComponentType> {
           uri: 'https://google.com',
         },
       }
+      // @ts-ignore
       params.webViewProps = props
     }
     this.props.push(url, {
@@ -76,7 +78,7 @@ const GenericScreen = withScreen(_GenericScreen)
 class StackExample extends Component {
   static displayName = 'TheComponent'
   state = {
-    name: new Date().valueOf() + '',
+    name: `${new Date().valueOf()}`,
   }
 
   render() {

@@ -8,7 +8,6 @@ import '../project/project-components'
 import createStore from '../common/store'
 import Toast from '../components/toast'
 import _data from '../common/utils/_data'
-import 'ionicons/dist/css/ionicons.css'
 
 import '../styles/Global.scss'
 import { Store } from 'redux'

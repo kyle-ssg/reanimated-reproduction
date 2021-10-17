@@ -1,7 +1,7 @@
 /// <reference types="lodash" />
 
 import ReactNative, { StyleSheet as _StyleSheet } from 'react-native'
-import { BaseProps as DateTimePickerProps } from '@react-native-community/datetimepicker'
+// import { BaseProps as DateTimePickerProps } from '@react-native-community/datetimepicker'
 import { KeyboardAwareScrollViewProps } from 'react-native-keyboard-aware-scroll-view'
 import { ButtonLink, ButtonType } from '../app/components/base/forms/Button'
 import Constants from 'common/utils/constants'
@@ -2394,6 +2394,7 @@ declare global {
       | ReactNative.StyleProp<ReactNative.ViewStyle>
       | ReactNative.ViewStyle[]
   }>
+  // @ts-ignore
   let DateTimePicker: React.ComponentType<DateTimePickerProps>
   let KeyboardAwareScrollView: React.ComponentType<KeyboardAwareScrollViewProps>
 

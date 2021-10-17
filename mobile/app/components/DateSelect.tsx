@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react' // we need this to make JSX compile
-import DateTimePickerModal from 'react-native-modal-datetime-picker'
+// import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import SelectBox from 'components/./base/forms/SelectBox'
 import Icon from 'react-native-vector-icons/Ionicons'
 
@@ -18,6 +18,12 @@ const DateSelect: React.FC<Props> = ({
   onChange,
   title = 'Date',
 }) => {
+  // @ts-ignore
+  if (typeof DateTimePickerModal === 'undefined') {
+    // @ts-ignore
+    alert('install react-native-modal-datetime-picker')
+    return null
+  }
   const [formattedDate, setFormattedDate] = useState<string>(
     moment(value).format(format),
   )

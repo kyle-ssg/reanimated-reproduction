@@ -35,7 +35,7 @@ class MyDocument extends Document<{ locale: string }> {
             href='https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&display=swap'
             rel='stylesheet'
           />
-          <meta name='description' content='SiteAssist' />
+          <meta name='description' content='TheApp' />
           <meta name='theme-color' content='#317EFB' />
           <meta
             name='viewport'

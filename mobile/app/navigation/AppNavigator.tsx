@@ -9,6 +9,7 @@ import defaultNavigationOptions from '../style/navigation_styles'
 import { RouteUrls } from '../route-urls'
 import withAuth, { IWithAuth } from 'common/providers/withAuth' // todo: migrate this to functional component and use useAuth
 import { routes } from '../routes'
+import LinkHandler from 'components/LinkHandler'
 // import Cognito from "common/cognito";
 
 // API.auth.Cognito.init(Project.cognitoMobile)
@@ -87,53 +88,56 @@ class AppNavigator extends Component<ComponentType> {
     }
 
     return (
-      <Navigator
-        screenOptions={defaultNavigationOptions}
-        initialRouteName={initialRoute}
-      >
-        <Stack.Screen
-          name={RouteUrls.mainApp}
-          options={routes[RouteUrls.mainApp].options}
-          component={routes[RouteUrls.mainApp].component}
-        />
-        <Stack.Screen
-          name={RouteUrls.storybook}
-          options={routes[RouteUrls.storybook].options}
-          component={routes[RouteUrls.storybook].component}
-        />
-        {/*Modals*/}
-        <Stack.Screen
-          name={RouteUrls.web}
-          options={{ stackPresentation: 'modal', headerShown: false }}
-          component={routes[RouteUrls.web].component}
-        />
+      <>
+        <Navigator
+          screenOptions={defaultNavigationOptions}
+          initialRouteName={initialRoute}
+        >
+          <Stack.Screen
+            name={RouteUrls.mainApp}
+            options={routes[RouteUrls.mainApp].options}
+            component={routes[RouteUrls.mainApp].component}
+          />
+          <Stack.Screen
+            name={RouteUrls.storybook}
+            options={routes[RouteUrls.storybook].options}
+            component={routes[RouteUrls.storybook].component}
+          />
+          {/*Modals*/}
+          <Stack.Screen
+            name={RouteUrls.web}
+            options={{ stackPresentation: 'modal', headerShown: false }}
+            component={routes[RouteUrls.web].component}
+          />
 
-        <Stack.Screen
-          name={RouteUrls.HomeScreen}
-          options={routes[RouteUrls.HomeScreen].options}
-          component={routes[RouteUrls.HomeScreen].component}
-        />
+          <Stack.Screen
+            name={RouteUrls.HomeScreen}
+            options={routes[RouteUrls.HomeScreen].options}
+            component={routes[RouteUrls.HomeScreen].component}
+          />
 
-        <Stack.Screen
-          name={RouteUrls.Tab1Screen}
-          options={routes[RouteUrls.Tab1Screen].options}
-          component={routes[RouteUrls.Tab1Screen].component}
-        />
+          <Stack.Screen
+            name={RouteUrls.Tab1Screen}
+            options={routes[RouteUrls.Tab1Screen].options}
+            component={routes[RouteUrls.Tab1Screen].component}
+          />
 
-        <Stack.Screen
-          name={RouteUrls.Tab2Screen}
-          options={routes[RouteUrls.Tab2Screen].options}
-          component={routes[RouteUrls.Tab2Screen].component}
-        />
+          <Stack.Screen
+            name={RouteUrls.Tab2Screen}
+            options={routes[RouteUrls.Tab2Screen].options}
+            component={routes[RouteUrls.Tab2Screen].component}
+          />
 
-        <Stack.Screen
-          name={RouteUrls.ModalScreen}
-          options={routes[RouteUrls.ModalScreen].options}
-          component={routes[RouteUrls.ModalScreen].component}
-        />
+          <Stack.Screen
+            name={RouteUrls.ModalScreen}
+            options={routes[RouteUrls.ModalScreen].options}
+            component={routes[RouteUrls.ModalScreen].component}
+          />
 
-        {/* END OF ROUTES*/}
-      </Navigator>
+          {/* END OF ROUTES*/}
+        </Navigator>
+        <LinkHandler />
+      </>
     )
   }
 }

@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react' // we need this to make JSX compile
-import DateTimePickerModal from 'react-native-modal-datetime-picker'
+// import DateTimePickerModal from 'react-native-modal-datetime-picker'
 
 type Props = {
   value: Date
@@ -17,6 +17,12 @@ const DateSelectText: React.FC<Props> = ({
   style,
   textStyle,
 }) => {
+  // @ts-ignore
+  if (typeof DateTimePickerModal === 'undefined') {
+    // @ts-ignore
+    alert('install react-native-modal-datetime-picker')
+    return null
+  }
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const toggleVisible = useCallback(() => {
     setIsVisible(!isVisible)

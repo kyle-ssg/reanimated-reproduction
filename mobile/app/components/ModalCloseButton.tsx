@@ -12,12 +12,12 @@ const ModalCloseButton: FunctionComponent<ComponentType> = ({}) => {
   }, [navigation])
   return (
     <ButtonNav onPress={pop}>
-      <ION
+      <FA5Pro
         style={{
           color: palette.primary,
           fontSize: styleVariables.fontSizeH1,
         }}
-        name='ios-close'
+        name='times'
       />
     </ButtonNav>
   )

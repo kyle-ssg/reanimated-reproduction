@@ -1,7 +1,7 @@
 //Anything that provides functionality that would benefit from being accessed by common
 
 // import Contacts from 'react-native-contacts';
-import BottomSheet from 'react-native-bottomsheet'
+// import BottomSheet from 'react-native-bottomsheet'
 // import _analytics from "@react-native-firebase/analytics";  // ^7.3.1
 import errorHandler from 'common/utils/errorHandler'
 import getStoreDangerous from 'common/store'
@@ -16,6 +16,7 @@ import { RouteUrls } from '../../route-urls'
 import 'common/project'
 import { APIType } from 'common/api-type'
 import { FirebaseMessagingTypes } from '@react-native-firebase/messaging'
+// import BottomSheet from 'react-native-bottomsheet'
 // import _analytics from '@react-native-firebase/analytics'
 // @ts-ignore
 const analytics = typeof _analytics === 'undefined' ? undefined : _analytics
@@ -110,6 +111,13 @@ const API: MobileAPIType = {
   ) =>
     new Promise((resolve) => {
       const options = cancelButton ? _options.concat(['Cancel']) : _options
+      // @ts-ignore
+      if (typeof BottomSheet === 'undefined') {
+        // @ts-ignore
+        alert('Please install react-native-bottomsheet')
+        return
+      }
+      // @ts-ignore
       BottomSheet.showBottomSheetWithOptions(
         {
           options,

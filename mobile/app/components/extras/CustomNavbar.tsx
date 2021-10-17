@@ -48,7 +48,7 @@ const CustomNavbar: FunctionComponent<Props> = ({
           }}
         >
           <TouchableOpacity style={styles.buttonContainer} onPress={pop}>
-            <ION style={styles.icon} name='ios-chevron-back' />
+            <FA5Pro style={styles.icon} name='chevron-back' />
           </TouchableOpacity>
         </View>
       )}

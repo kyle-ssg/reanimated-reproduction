@@ -58,17 +58,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props) => {
     <>
       {props.title && (
         <FormGroup>
-          {props.isLight ? (
-            <>
-              <Text style={[Styles.textInputTitleLight, props.textStyle]}>
-                {props.title}
-              </Text>
-            </>
-          ) : (
-            <Text style={[Styles.textInputTitleDark, props.textStyle]}>
-              {props.title}
-            </Text>
-          )}
+          <Text style={[Styles.textBold, props.textStyle]}>{props.title}</Text>
         </FormGroup>
       )}
       <View>
@@ -92,8 +82,6 @@ const TextInput: FunctionComponent<TextInputProps> = (props) => {
             props.invalid ? palette.danger : 'rgba(11,16,46,0.5)'
           }
           selectionColor={palette.primary}
-          icon={props.icon}
-          iconColour={props.icon}
           multiline={props.multiline}
           textAlignVertical={props.textAlignVertical}
         />
