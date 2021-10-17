@@ -6,7 +6,7 @@ type Props = {
   format?: string
   text: string
   textStyle?: ReactNative.TextStyle[]
-  style?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
   onChange: (date: Date) => void
 }
 

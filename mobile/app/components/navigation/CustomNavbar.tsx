@@ -3,8 +3,8 @@ import { useNavigation } from '@react-navigation/native'
 import useInsets from 'components/base/useInset'
 
 type Props = {
-  style?: ReactNative.ViewStyle
-  titleStyle?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
+  titleStyle?: ReactNative.StyleProp<ReactNative.ViewStyle>
   hideBack?: boolean
   title: string
 }
@@ -17,21 +17,22 @@ const CustomNavbar: React.FC<Props> = ({
 }) => {
   const navigation = useNavigation()
   const pop = useCallback(() => {
+    // @ts-ignore
     navigation.pop()
   }, [navigation])
   const insets = useInsets()
 
+  // @ts-ignore
+  const _styles: ReactNative.ViewStyle = [
+    {
+      paddingTop: insets.top + 20,
+      backgroundColor: 'transparent',
+    },
+    style,
+  ]
   return (
     <>
-      <Row
-        style={[
-          {
-            paddingTop: insets.top + 20,
-            backgroundColor: 'transparent',
-          },
-          style,
-        ]}
-      >
+      <Row style={_styles}>
         {navigation.canGoBack() && !hideBack && (
           <View style={styles.leftContainer}>
             <ButtonPrimary

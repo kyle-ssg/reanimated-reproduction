@@ -5,8 +5,8 @@ import useInsets from 'components/base/useInset'
 // This will be cross platform when the following is merged https://github.com/software-mansion/react-native-screens/pull/575
 
 type Props = {
-  style?: ReactNative.ViewStyle
-  navbarStyle?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
+  navbarstyle?: ReactNative.StyleProp<ReactNative.ViewStyle>
 }
 
 const NavBackgroundHelper: React.FC<Props> = ({ navbarStyle, children }) => {

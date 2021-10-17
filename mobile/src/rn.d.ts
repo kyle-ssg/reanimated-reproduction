@@ -50,6 +50,7 @@ declare global {
   let SafeAreaView: React.ComponentType<ReactNative.ViewProps>
   let ScrollView: React.ComponentType<ReactNative.ScrollViewProps>
   let Text: React.ComponentType<ReactNative.TextProps>
+  let ION: React.ComponentType<ReactNative.TextProps & { name: string }>
   let TextInput: React.ComponentType<TextInputProps>
   let TouchableOpacity: React.ComponentType<ReactNative.TouchableOpacityProps>
   let View: React.ComponentType<ReactNative.ViewProps>
@@ -2389,7 +2390,9 @@ declare global {
   let Loader: React.ComponentType
   let ErrorMessage: React.ComponentType<{
     testID?: string
-    style?: ReactNative.ViewStyle | ReactNative.ViewStyle[]
+    style?:
+      | ReactNative.StyleProp<ReactNative.ViewStyle>
+      | ReactNative.ViewStyle[]
   }>
   let DateTimePicker: React.ComponentType<DateTimePickerProps>
   let KeyboardAwareScrollView: React.ComponentType<KeyboardAwareScrollViewProps>

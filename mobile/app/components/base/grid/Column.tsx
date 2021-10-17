@@ -2,7 +2,7 @@ import React from 'react'
 
 export type ColumnType = {
   flexStyle?: any
-  style?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
   children?: React.ReactNode
 }
 

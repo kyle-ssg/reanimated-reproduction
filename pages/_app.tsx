@@ -122,13 +122,15 @@ class MyApp extends App<{ store: Store }> {
     //
     // }
 
-    // @ts-ignore
-    const getLayout = (page) =>
-      Component.getLayout ? (
+    const getLayout = (page) => {
+      // @ts-ignore
+      return Component.getLayout ? (
+        // @ts-ignore
         <Component.getLayout page={page} router={this.props.router} />
       ) : (
         page
       )
+    }
 
     return (
       <>

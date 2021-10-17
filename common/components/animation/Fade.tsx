@@ -8,9 +8,9 @@ import useIsMount from 'common/providers/useIsMount'
 import { easingFade } from 'common/animation-util/reanimations'
 
 export type FadeType = ReactNative.ViewProps & {
-  value: number // between 0 and 1
+  value?: number // between 0 and 1
   startValue?: number
-  autostart: boolean
+  autostart?: boolean
   delay?: number
   duration?: number
   animatedValue?: number

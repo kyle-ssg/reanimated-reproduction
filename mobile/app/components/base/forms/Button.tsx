@@ -9,11 +9,17 @@ export type ButtonType = ReactNative.PressableProps & {
   children: React.ReactNode
   icon?: boolean
   iconColour?: string
-  textStyle?: ReactNative.TextStyle | ReactNative.TextStyle[]
-  pressedStyle?: ReactNative.ViewStyle | ReactNative.ViewStyle[]
-  containerStyle?: ReactNative.ViewStyle | ReactNative.ViewStyle[]
+  textStyle?: ReactNative.StyleProp<
+    ReactNative.TextStyle | ReactNative.TextStyle[]
+  >
+  pressedStyle?:
+    | ReactNative.StyleProp<ReactNative.ViewStyle>
+    | ReactNative.ViewStyle[]
+  containerStyle?:
+    | ReactNative.StyleProp<ReactNative.ViewStyle>
+    | ReactNative.ViewStyle[]
   pressedTextStyle?: ReactNative.TextStyle | ReactNative.TextStyle[]
-  style?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
   throttle?: number
 }
 
@@ -63,7 +69,8 @@ const Button: FunctionComponent<ButtonType> = ({
     [pressedStyle, style],
   )
 
-  const textStyles = useMemo(() => {
+  // @ts-ignore
+  const textStyles: ReactNative.TextStyle[] = useMemo(() => {
     // @ts-ignore
     const additionalTextStyles =
       // @ts-ignore

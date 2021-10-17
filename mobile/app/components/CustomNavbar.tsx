@@ -1,34 +1,36 @@
 import React, { useCallback } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import useInsets from 'components/base/useInset'
+import { ViewStyle } from 'react-native'
 
 type Props = {
-  style?: ReactNative.ViewStyle
-  titleStyle?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
+  titleStyle?: ReactNative.StyleProp<ReactNative.ViewStyle>
   title: string
 }
 
 const CustomNavbar: React.FC<Props> = ({ style, title, titleStyle }) => {
   const navigation = useNavigation()
   const pop = useCallback(() => {
+    // @ts-ignore
     navigation.pop()
   }, [navigation])
   const insets = useInsets()
   const navHeight = insets.top + 44
+  //@ts-ignore
+  const _styles: ViewStyle = [
+    {
+      position: 'relative',
+      paddingTop: insets.top,
+      justifyContent: 'center',
+      alignItems: 'flex-end',
+      height: navHeight,
+      backgroundColor: 'transparent',
+    },
+    style,
+  ]
   return (
-    <Row
-      style={[
-        {
-          position: 'relative',
-          paddingTop: insets.top,
-          justifyContent: 'center',
-          alignItems: 'flex-end',
-          height: navHeight,
-          backgroundColor: 'transparent',
-        },
-        style,
-      ]}
-    >
+    <Row style={_styles}>
       {navigation.canGoBack() && (
         <View
           style={{

@@ -148,5 +148,6 @@ const API = {
     // Cognito
   },
 }
+
 global.API = API
 export default API

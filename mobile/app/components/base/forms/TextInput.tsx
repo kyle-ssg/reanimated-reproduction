@@ -8,7 +8,7 @@ import React, { FunctionComponent, useRef, useState } from 'react' // we need th
 
 export type TextInputProps = ReactNative.TextInputProps & {
   title?: string
-  style?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
   invalid?: boolean
   disabled?: boolean
   textStyle?: ReactNative.TextStyle

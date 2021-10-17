@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react' // we need this to make JSX com
 import _HTML, { defaultSystemFonts } from 'react-native-render-html'
 import { useWindowDimensions } from 'react-native'
 import { paddingBase } from '../style/style_grid'
+import { MixedStyleDeclaration } from '@native-html/transient-render-engine'
 
 type ComponentType = {
   children: string
@@ -37,6 +38,14 @@ const HTML: FunctionComponent<ComponentType> = ({
     styleVariables.displayFontFamily,
   ]
 
+  //@ts-ignore
+  const baseStyle: MixedStyleDeclaration = {
+    backgroundColor: 'transparent',
+    color: palette.blueGrey800,
+    fontFamily: styleVariables.normalFontFamily,
+    fontWeight: 'normal',
+    ...(textStyle || {}),
+  }
   return (
     <_HTML
       contentWidth={width}
@@ -73,13 +82,7 @@ const HTML: FunctionComponent<ComponentType> = ({
         h6: { fontFamily: styleVariables.boldFontFamily, fontWeight: 'bold' },
         img: { maxWidth: width - paddingBase * 4, alignSelf: 'center' },
       }}
-      baseStyle={{
-        backgroundColor: 'transparent',
-        color: palette.blueGrey800,
-        fontFamily: styleVariables.normalFontFamily,
-        fontWeight: 'normal',
-        ...(textStyle || {}),
-      }}
+      baseStyle={baseStyle}
       source={{ html }}
       renderersProps={{
         a: {

@@ -2,8 +2,8 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
 type Props = {
-  style?: ReactNative.ViewStyle
-  titleStyle?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
+  titlestyle?: ReactNative.StyleProp<ReactNative.ViewStyle>
   title: string
   textButtonText?: string
   onPress?: React.ReactNode

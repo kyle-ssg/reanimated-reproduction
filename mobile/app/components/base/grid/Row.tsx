@@ -5,7 +5,7 @@ export type RowType = {
   children?: React.ReactNode
   space?: boolean
   noWrap?: boolean
-  style?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
   testID?: string
 }
 

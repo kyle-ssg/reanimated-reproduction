@@ -7,7 +7,7 @@ interface Props {
   hideIcon?: boolean
   onPress?: () => void
   textStyle?: ReactNative.TextStyle
-  containerStyle?: ReactNative.ViewStyle
+  containerstyle?: ReactNative.StyleProp<ReactNative.ViewStyle>
   iconStyle?: {}
   children?: React.ReactNode
   options?: string[]
@@ -16,7 +16,7 @@ interface Props {
   onBlur?: () => void
   titleStyle?: ReactNative.TextStyle
   destructiveButton?: boolean
-  style?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
   icon?: React.ReactNode
   dropIcon?: React.ReactNode
   hideSeparator?: boolean

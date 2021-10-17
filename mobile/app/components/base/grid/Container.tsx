@@ -12,7 +12,7 @@ export type ContainerType = {
   mr10?: boolean
   mr15?: boolean
   mr20?: boolean
-  style?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
 }
 
 const Container: React.FC<ContainerType> = ({

@@ -8,7 +8,7 @@ interface Props {
   renderNoResults?: () => void
   items?: any
   multiple?: boolean
-  style?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
   value?: any
   filterItem?: (item: any) => void
   renderRow?: (item: any, isSelected: boolean, toggleItem: () => void) => void
