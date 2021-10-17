@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useCallback } from 'react' // we need this to make JSX compile
+import React, { useCallback, useState } from 'react' // we need this to make JSX compile
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 
 type Props = {

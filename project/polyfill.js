@@ -1,11 +1,24 @@
 import fetch from 'isomorphic-unfetch' // we do this here instead of _data.js as it intereferes with react-native
-
 import './ie11'
 import 'common/global-rn'
 import 'mobile/app/components/base/grid/'
-import Fade from 'mobile/app/components/base/animation/Fade'
+import Fade from 'common/components/animation/Fade'
 import 'mobile/app/style/_style_screen'
 import 'mobile/app/components/base/type'
+import {
+  AppState,
+  AsyncStorage,
+  Clipboard,
+  NetInfo,
+} from 'polyfill-react-native'
+import './localization'
+import '../common/utils'
+import './api'
+import './libs'
+
+import React from 'react'
+import Link from 'next/link'
+
 global.Fade = Fade
 global.fetch = fetch
 
@@ -34,20 +47,6 @@ if (typeof projectOverrides !== 'undefined') {
     ...projectOverrides, // environment.js (also app.yaml if using app engine)
   }
 }
-
-import {
-  AsyncStorage,
-  AppState,
-  NetInfo,
-  Clipboard,
-} from 'polyfill-react-native'
-import './localization'
-import '../common/utils'
-import './api'
-import './libs'
-
-import React from 'react'
-import Link from 'next/link'
 
 global.AppState = AppState
 global.NetInfo = NetInfo

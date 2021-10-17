@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import 'react-native-globals'
 import '../app/style/_style_screen'
 import '../app/components/base'
 import StorybookUIRoot, {
   getStory,
-  withPaddedContainer,
-  withNavbarWrapper,
   setup,
+  withNavbarWrapper,
+  withPaddedContainer,
 } from './setup'
 import ErrorMessage from '../app/components/ErrorMessage'
 import ExampleTabs from './examples/ExampleTabs'

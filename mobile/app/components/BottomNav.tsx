@@ -1,6 +1,4 @@
 import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack'
-const Stack = createStackNavigator()
 
 const BottomNav = ({ state, descriptors, navigation }) => {
   const onPress = (index) => {
@@ -57,7 +55,6 @@ const BottomNav = ({ state, descriptors, navigation }) => {
   )
 }
 
-const tabBarHeight = 40 + styleVariables.insets.bottom
 const styles = StyleSheet.create({
   textInactive: {
     width: 50,
@@ -66,10 +63,6 @@ const styles = StyleSheet.create({
   textActive: {
     width: 50,
     color: palette.primary,
-  },
-  screen: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height - tabBarHeight,
   },
   activeTabText: {},
   activeTab: {},
@@ -93,22 +86,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-  },
-  tabContainer: {
-    borderRadius: 10,
-    width: '95%',
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: tabBarHeight,
-    shadowColor: '#201C26',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 6,
-    elevation: 10,
   },
 })
 

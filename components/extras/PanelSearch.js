@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Paging from '../Paging'
 import Panel from './Panel'
+
 const PanelSearch = class extends Component {
   static displayName = 'PanelSearch'
 

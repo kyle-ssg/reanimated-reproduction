@@ -1,16 +1,9 @@
-import {
-  Platform,
-  Pressable,
-  RippleBackgroundPropType,
-  StyleSheet,
-  TouchableNativeFeedback,
-  TouchableOpacity,
-} from 'react-native'
+;``
+import { Pressable } from 'react-native'
 
 import Utils from 'common/utils/base/_utils'
 import throttle from 'lodash/debounce'
-import React, { FC, FunctionComponent, useMemo } from 'react'
-import useTheme from 'common/providers/useTheme'
+import React, { FunctionComponent, useMemo } from 'react'
 
 export type ButtonType = ReactNative.PressableProps & {
   children: React.ReactNode

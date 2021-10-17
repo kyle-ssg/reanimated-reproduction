@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentStory } from '@storybook/react'
 import '../styles/Global.scss'
 import Message, { ErrorMessage, SuccessMessage } from '../components/Messages'
 

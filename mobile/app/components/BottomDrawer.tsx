@@ -1,14 +1,14 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import Animated, {
-  useSharedValue,
-  useAnimatedGestureHandler,
-  withTiming,
-  useAnimatedStyle,
-  interpolate,
   Extrapolate,
-  useDerivedValue,
-  withDecay,
+  interpolate,
   runOnJS,
+  useAnimatedGestureHandler,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+  withDecay,
+  withTiming,
 } from 'react-native-reanimated'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import CustomModal from './CustomModal'

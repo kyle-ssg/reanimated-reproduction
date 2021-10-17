@@ -1,6 +1,6 @@
 import useProfile from './providers/useProfile'
 import { FunctionComponent, useEffect } from 'react'
-import moment from 'moment'
+
 Strings.setLanguage('en-GB')
 
 const LanguageHandler: FunctionComponent<any> = ({ children }) => {

@@ -1,6 +1,6 @@
-import React, { Component, FunctionComponent, useCallback } from 'react'
-import { StyleSheet } from 'react-native'
+import React, { FunctionComponent, useCallback } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import useInsets from 'components/base/useInset'
 
 type Props = {
   style?: ReactNative.ViewStyle
@@ -19,10 +19,33 @@ const CustomNavbar: FunctionComponent<Props> = ({
   const pop = useCallback(() => {
     navigation.pop()
   }, [navigation])
+  const insets = useInsets()
+  const navHeight = insets.top + 44
+
   return (
-    <Row style={[styles.navbar, style]}>
+    <Row
+      style={[
+        {
+          position: 'relative',
+          paddingTop: insets.top,
+          justifyContent: 'center',
+          alignItems: 'flex-end',
+          height: navHeight,
+          backgroundColor: 'transparent',
+        },
+        style,
+      ]}
+    >
       {navigation.canGoBack() && (
-        <View style={styles.leftContainer}>
+        <View
+          style={{
+            justifyContent: 'center',
+            position: 'absolute',
+            left: 20,
+            top: insets.top,
+            bottom: 0,
+          }}
+        >
           <TouchableOpacity style={styles.buttonContainer} onPress={pop}>
             <ION style={styles.icon} name='ios-chevron-back' />
           </TouchableOpacity>
@@ -36,7 +59,6 @@ const CustomNavbar: FunctionComponent<Props> = ({
   )
 }
 
-const navHeight = styleVariables.insets.top + 44
 const styles = ReactNative.StyleSheet.create({
   titleContainer: {
     height: 44,
@@ -52,23 +74,8 @@ const styles = ReactNative.StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  leftContainer: {
-    justifyContent: 'center',
-    position: 'absolute',
-    left: 20,
-    top: styleVariables.insets.top,
-    bottom: 0,
-  },
   icon: {
     fontSize: 24,
-  },
-  navbar: {
-    position: 'relative',
-    paddingTop: styleVariables.insets.top,
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    height: navHeight,
-    backgroundColor: 'transparent',
   },
 })
 

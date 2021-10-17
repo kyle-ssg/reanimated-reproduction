@@ -1,5 +1,6 @@
 import { Middleware } from 'redux'
 import { IncomingMessage } from 'http'
+
 type CallbackType = (err: any, data: any) => void
 
 export interface Storage {

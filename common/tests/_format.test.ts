@@ -3,7 +3,8 @@
  */
 
 // Application
-import Format from '../utils/base/_format';
+import Format from '../utils/base/_format'
+
 describe('format', ()=>{
   it('format - `enumeration.get`', () => {
     const { enumeration: { get } } = Format;

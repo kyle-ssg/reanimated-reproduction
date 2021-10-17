@@ -1,5 +1,6 @@
-import React, { Component, FunctionComponent } from 'react'
+import React, { Component } from 'react'
 import Delay from 'components/utility-components/Delay'
+
 type LazyTabsType = {
   padding?: number
   lazy?: boolean

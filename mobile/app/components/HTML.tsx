@@ -1,7 +1,6 @@
 // import propTypes from 'prop-types';
 import React, { FunctionComponent } from 'react' // we need this to make JSX compile
 import _HTML, { defaultSystemFonts } from 'react-native-render-html'
-import { useNavigation } from '@react-navigation/native'
 import { useWindowDimensions } from 'react-native'
 import { paddingBase } from '../style/style_grid'
 

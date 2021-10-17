@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+
 type ComponentType = {}
 const SharedComponent: FunctionComponent<ComponentType> = ({}) => {
   return (

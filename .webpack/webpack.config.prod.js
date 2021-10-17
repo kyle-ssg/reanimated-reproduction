@@ -5,7 +5,7 @@ const webpack = require('webpack');
 module.exports = {
     plugins: require('./plugins').concat([
         new webpack.DefinePlugin({
-            __DEV__: false,
+            __DEV__: JSON.stringify(false),
         }),
     ]),
     module: {

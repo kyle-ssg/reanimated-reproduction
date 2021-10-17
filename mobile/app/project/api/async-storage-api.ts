@@ -1,6 +1,7 @@
 // import SecuredStorage from 'react-native-secured-storage';
 import MMKVStorage from 'react-native-mmkv-storage'
 import { Storage } from 'common/api-type'
+
 const MMKV = new MMKVStorage.Loader().withEncryption().initialize()
 
 type CallbackType = (err: any, data: any) => void

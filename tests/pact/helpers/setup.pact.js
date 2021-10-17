@@ -1,10 +1,10 @@
 // /* eslint no-console: 0 */
-import fetch from 'isomorphic-unfetch';
-import { Pact } from '@pact-foundation/pact';
-import path from 'path';
-import map from 'lodash/map';
-import configs from '../config.pact';
-import executeTests from './initialise-tests';
+import fetch from 'isomorphic-unfetch'
+import { Pact } from '@pact-foundation/pact'
+import path from 'path'
+import map from 'lodash/map'
+import configs from '../config.pact'
+import executeTests from './initialise-tests'
 
 const mocha = require('mocha');
 

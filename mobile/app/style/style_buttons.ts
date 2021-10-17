@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import asStyle from './style-utils/asStyle'
+
 export default asStyle({
   button: {
     height: styleVariables.buttonHeight,

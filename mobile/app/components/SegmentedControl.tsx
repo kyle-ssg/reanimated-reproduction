@@ -2,16 +2,16 @@ import React, { FunctionComponent, useCallback, useEffect, useRef } from 'react'
 import { useMeasure } from '../../../common/animation-util/useMeasure'
 import {
   Pressable,
+  StyleSheet,
   Text,
   TextStyle,
   View,
-  StyleSheet,
   ViewStyle,
 } from 'react-native'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import Animated, {
-  runOnJS,
   interpolate,
+  runOnJS,
   useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,

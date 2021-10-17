@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useCallback } from 'react' // we need this to make JSX compile
+import React, { FunctionComponent, useCallback, useState } from 'react' // we need this to make JSX compile
 type RenderProps = {
   value: any
   setValue: (any) => void

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react' // we need this to make JSX compile
+import React, { ReactNode, useEffect, useState } from 'react' // we need this to make JSX compile
 
 type Props = {
   delay?: number

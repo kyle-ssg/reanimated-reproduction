@@ -32,8 +32,7 @@
     "isolatedModules": true
   },
   "exclude": [
-    "node_modules",
-    "mobile"
+    "node_modules"
   ],
   "include": [
     "next-env.d.ts",
@@ -47,7 +46,6 @@
     "common/project.js",
     "common/providers/WithSetValue.js",
     "common/providers/_hocTemplate.js",
-    "components/extras/withGracecaptcher.ts",
-    "mobile/app/components/base/forms/Select.tsx"
+    "components/extras/withGracecaptcher.ts"
   ]
 }

@@ -1,6 +1,6 @@
-import React from 'react'
-import { Component } from 'react'
+import React, { Component } from 'react'
 import withScreen, { Screen } from '../withScreen'
+
 export type GenericScreenType = {
   text: string
   style: ReactNative.ViewStyle

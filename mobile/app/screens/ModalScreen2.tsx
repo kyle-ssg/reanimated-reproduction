@@ -1,5 +1,4 @@
 import React from 'react'
-import { Component } from 'react'
 import ScreenContainer from 'components/ScreenContainer'
 import withScreen, { Screen } from './withScreen'
 import { RouteUrls } from '../route-urls'

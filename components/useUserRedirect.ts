@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useAuth } from '../common/providers/useAuth'
 import { AppState } from '../common/state-type'

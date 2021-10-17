@@ -1,4 +1,4 @@
-import { by, device, expect, element, waitFor } from 'detox'
+import { by, device, element, waitFor } from 'detox'
 
 const waitById = (id) =>
   waitFor(element(by.id(id)))

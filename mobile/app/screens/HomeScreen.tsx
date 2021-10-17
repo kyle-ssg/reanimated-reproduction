@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import withScreen, { Screen } from './withScreen'
+import withScreen, { IRouteParams } from './withScreen'
 import { RouteUrls } from '../route-urls'
-import { IRouteParams } from './withScreen'
 import ScreenContainer from 'components/ScreenContainer'
 
 interface HomeScreen {

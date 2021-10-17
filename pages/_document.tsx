@@ -6,11 +6,11 @@
 import '../project/polyfill'
 import React from 'react'
 import Document, {
+  DocumentContext,
   Head,
   Html,
   Main,
   NextScript,
-  DocumentContext,
 } from 'next/document'
 import '../project/api'
 import { AppRegistry } from 'react-native'

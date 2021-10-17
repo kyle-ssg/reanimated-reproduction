@@ -1,10 +1,8 @@
-import React from 'react'
-import { Component, FunctionComponent } from 'react'
+import React, { Component, FunctionComponent } from 'react'
 import withScreen, { Screen } from './withScreen'
 import { WebView, WebViewProps } from 'react-native-webview'
 import { NavigationContainer } from '@react-navigation/native'
 import defaultNavigationOptions from '../style/navigation_styles'
-import { routes } from '../routes'
 import { createNativeStackNavigator } from 'react-native-screens/native-stack'
 import { RouteUrls } from '../route-urls'
 
@@ -73,7 +71,7 @@ const TheComponent: FunctionComponent<Props> = ({ webViewProps }) => {
       >
         <Stack.Screen
           name={RouteUrls.home}
-          options={{stackPresentation:"modal"}}
+          options={{ stackPresentation: 'modal' }}
           component={ConnectedWebScreen}
           initialParams={{ webViewProps }}
         />

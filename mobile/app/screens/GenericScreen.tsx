@@ -1,6 +1,5 @@
 import React from 'react'
-import { Component } from 'react'
-import withScreen, { Screen } from './withScreen'
+import withScreen from './withScreen'
 import ScreenContainer from 'components/ScreenContainer'
 
 interface GenericScreen {

@@ -1,11 +1,11 @@
 // Forms
 import Button, {
-  ButtonPrimary,
-  ButtonOutlinePrimary,
-  ButtonText,
-  ButtonSecondary,
   ButtonNav,
+  ButtonOutlinePrimary,
+  ButtonPrimary,
+  ButtonSecondary,
   ButtonTertiary,
+  ButtonText,
 } from './forms/Button'
 
 import TextInput from './forms/TextInput'
@@ -22,7 +22,7 @@ import Loader from 'components/base/Loader.tsx'
 
 import ListItem from 'components/base/ListItem'
 // Animation
-global.Fade = require('./animation/Fade')
+global.Fade = require('../../../../common/components/animation/Fade')
 
 global.Button = Button
 global.ButtonPrimary = ButtonPrimary

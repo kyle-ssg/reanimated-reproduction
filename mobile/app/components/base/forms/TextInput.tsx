@@ -2,7 +2,6 @@
  * Created by kylejohnson on 14/11/2015.
  */
 
-import propTypes from 'prop-types'
 import ReactNative from 'react-native'
 
 import React, { FunctionComponent, useRef, useState } from 'react' // we need this to make JSX compile

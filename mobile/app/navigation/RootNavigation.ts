@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { CommonActions } from '@react-navigation/native'
-import { NavigationContainerRef } from '@react-navigation/native'
+import { CommonActions, NavigationContainerRef } from '@react-navigation/native'
+
 export const navigationRef = React.createRef<NavigationContainerRef>()
 
 type MenuType = {

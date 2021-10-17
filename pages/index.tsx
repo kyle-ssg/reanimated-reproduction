@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import Button from '../components/base/forms/Button'
 import { useAuth } from '../common/providers/useAuth'
 import 'project/polyfill'
 import SharedComponent from '../common/components/SharedComponent'

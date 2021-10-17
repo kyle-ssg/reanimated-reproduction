@@ -12,7 +12,7 @@ import Tab2Screen from 'screens/Tab2Screen'
 
 import ModalScreen from 'screens/ModalScreen'
 
-import ModalScreen2 from "screens/ModalScreen2";
+import ModalScreen2 from 'screens/ModalScreen2'
 
 // END OF IMPORT
 
@@ -71,8 +71,7 @@ export const routes: Record<RouteUrls, IRoute> = {
     component: ModalScreen,
   },
   [RouteUrls.ModalScreen2]: {
-    options: {
-    },
+    options: {},
     component: ModalScreen2,
   },
   // END OF SCREENS

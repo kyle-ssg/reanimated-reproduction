@@ -1,6 +1,4 @@
 import Amplify, { Auth } from 'aws-amplify'
-import { CognitoUserSession } from 'amazon-cognito-identity-js'
-import { CognitoHostedUIIdentityProvider } from '@aws-amplify/auth'
 
 // "amazon-cognito-identity-js": "^4.5.11",
 //   "aws-amplify": "^3.3.20",
