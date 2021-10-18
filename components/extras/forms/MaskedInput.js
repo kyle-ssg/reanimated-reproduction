@@ -3,7 +3,8 @@
  */
 import React from 'react'
 import cn from 'classnames'
-import InputMask from 'inputmask-core'
+
+// import InputMask from 'inputmask-core'
 
 export class MaskedInput extends React.Component {
   static displayName = 'MaskedInput'
@@ -165,6 +166,9 @@ export class MaskedInput extends React.Component {
       this.props.inputClassName,
     )
 
+    if (typeof InputMask === 'undefined') {
+      alert('Please install inputmask-core')
+    }
     return (
       <div className={className}>
         <input
