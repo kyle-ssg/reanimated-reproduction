@@ -8,9 +8,16 @@ interface Message {
   id: string
   expires?: number
   isRemoving?: boolean
+  state?: 'isLoading' | 'success' | 'failed'
 }
 
-const Message: React.FC<Message> = ({ expiry, children, expires, remove }) => {
+const Message: React.FC<Message> = ({
+  expiry,
+  children,
+  expires,
+  remove,
+  state = 'success',
+}) => {
   const [isRemoving, setIsRemoving] = useState<boolean>(false)
   useEffect(() => {
     setTimeout(() => {
@@ -19,7 +26,7 @@ const Message: React.FC<Message> = ({ expiry, children, expires, remove }) => {
       }, 500)
     }, expiry)
     // eslint-disable-next-line
-  },[expiry]);
+  }, [expiry])
 
   const hasExpired = expires <= Date.now().valueOf()
   console.log(expires, Date.now().valueOf())
@@ -30,6 +37,21 @@ const Message: React.FC<Message> = ({ expiry, children, expires, remove }) => {
     'removing out': hasExpired || isRemoving,
   })
 
+  let icon
+  switch (state) {
+    default:
+    case 'success':
+      icon = <i className='toast__icon fas fa-check-circle' />
+      break
+    case 'isLoading':
+      icon = <Loader viewBox='0 0 60 60' color='white' />
+      // icon = <i className='fas fa-spinner'></i>
+      break
+    case 'failed':
+      icon = <i className='toast__icon fas fa-exclamation-circle text-red'></i>
+      break
+  }
+
   return (
     <div data-test='toast' className={className}>
       <a
@@ -38,12 +60,10 @@ const Message: React.FC<Message> = ({ expiry, children, expires, remove }) => {
         }}
         className='float-right'
       >
-        <i className='fas fa-times'></i>
+        <i className='fas fa-times' />
       </a>
       <div className='flex-row'>
-        <div className='col-2'>
-          <i className='toast__icon fas fa-check-circle'></i>
-        </div>
+        <div className='col-2'>{icon}</div>
         <div className='col pl-3'>{children}</div>
       </div>
     </div>
@@ -56,25 +76,44 @@ const Toast: React.FC = () => {
   const [messages, setMessages] = useState([])
 
   global.toast = useCallback(
-    (content: string, expiry: number) => {
-      const id = Utils.GUID()
+    (
+      content: string,
+      expiry: number,
+      state: 'isLoading' | 'success' | 'failed',
+      uniqId: number,
+      update: boolean,
+    ) => {
+      const id = uniqId || Utils.GUID()
       if (!E2E) {
         expiry = expiry || (Constants.E2E ? 1000 : 5000)
-        setMessages(
-          [
-            {
-              content,
-              expiry: expiry,
-              expires: Date.now().valueOf() + expiry,
-              id,
-            },
-          ].concat(messages),
-        )
+        update
+          ? setMessages([
+              ...messages,
+              (messages[
+                messages.findIndex((message) => message.id === id)
+              ].content = content),
+              (messages[
+                messages.findIndex((message) => message.id === id)
+              ].expires = Date.now().valueOf() + expiry),
+              (messages[
+                messages.findIndex((message) => message.id === id)
+              ].state = state),
+            ])
+          : setMessages(
+              [
+                {
+                  content,
+                  expiry: expiry,
+                  expires: Date.now().valueOf() + expiry,
+                  id,
+                  state,
+                },
+              ].concat(messages),
+            )
       }
     },
     [messages],
   )
-
   const remove = useCallback(() => {
     setMessages(
       messages.filter((v) => {
@@ -97,6 +136,7 @@ const Toast: React.FC = () => {
             expires={message.expires}
             expiry={message.expiry}
             isRemoving={message.isRemoving}
+            state={message.state}
           >
             {message.content}
           </Message>
