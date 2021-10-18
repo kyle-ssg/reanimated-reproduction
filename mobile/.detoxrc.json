@@ -36,16 +36,18 @@
     },
     "android28": {
       "type": "android.emulator",
-      "build": "cd android && ./gradlew assembleUatDebugAndroidTest -DtestBuildType=debug && cd ..",
-      "binaryPath": "android/app/build/outputs/apk/uat/debug/app-uat-debug.apk",
+      "build": "cd android && ./gradlew assembleProdDebugAndroidTest -DtestBuildType=debug && cd ..",
+      "binaryPath": "android/app/build/outputs/apk/prod/debug/app-prod-debug.apk",
+      "testBinaryPath": "android/app/build/outputs/apk/androidTest/prod/debug/app-prod-debug-androidTest.apk",
       "device": {
         "avdName": "Pixel_XL_API_28"
       }
     },
     "android30": {
       "type": "android.emulator",
-      "build": "cd android && ./gradlew assembleUatDebugAndroidTest -DtestBuildType=debug && cd ..",
-      "binaryPath": "android/app/build/outputs/apk/uat/debug/app-uat-debug.apk",
+      "build": "cd android && ./gradlew assembleProdDebugAndroidTest -DtestBuildType=debug && cd ..",
+      "binaryPath": "android/app/build/outputs/apk/prod/debug/app-prod-debug.apk",
+      "testBinaryPath": "android/app/build/outputs/apk/androidTest/prod/debug/app-prod-debug-androidTest.apk",
       "device": {
         "avdName": "Pixel_XL_API_30"
       }
