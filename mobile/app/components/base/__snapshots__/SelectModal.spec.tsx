@@ -1,5 +1,5 @@
 import * as React from 'react'
-import SelectModal from './SelectModal'
+import SelectModal from '../SelectModal'
 import renderer from 'react-test-renderer'
 
 describe('<SelectModal />', () => {

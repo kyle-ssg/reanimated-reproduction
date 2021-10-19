@@ -1,6 +1,7 @@
 import { by, device, element, waitFor } from 'detox'
 import fetch from 'node-fetch'
 import Project from '../../common/project'
+
 export const waitForElementVisible = async (id) => {
   try {
     expect(element(by.id(id))).toBeVisible()

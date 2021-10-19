@@ -1,6 +1,6 @@
 import _DatePicker, { ReactDatePickerProps } from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import React, { useCallback } from 'react'
+import React from 'react'
 
 export type DatePickerProps = Omit<
   ReactDatePickerProps,

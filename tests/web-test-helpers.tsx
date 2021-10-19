@@ -1,11 +1,9 @@
-
-import React from "react";
-import { NextRouter } from "next/router";
-import { RouterContext } from "next/dist/next-server/lib/router-context";
-import { mockRequest, renderWithStore } from '../common/tests/test-helpers';
-import { Store } from 'redux';
-import { RenderResult } from '@testing-library/react';
-import _data from '../common/utils/_data';
+import React from 'react'
+import { NextRouter } from 'next/router'
+import { RouterContext } from 'next/dist/next-server/lib/router-context'
+import { mockRequest, renderWithStore } from '../common/tests/test-helpers'
+import { Store } from 'redux'
+import { RenderResult } from '@testing-library/react'
 // import { getInitialProps } from '../pages/_app';
 
 // Renders with nextjs router support

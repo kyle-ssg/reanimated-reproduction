@@ -1,28 +1,28 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import Animated, {
-  useSharedValue,
-  useAnimatedGestureHandler,
-  withTiming,
-  useAnimatedStyle,
-  interpolate,
   Extrapolate,
-  useDerivedValue,
-  withDecay,
+  interpolate,
   runOnJS,
+  useAnimatedGestureHandler,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+  withDecay,
+  withTiming,
 } from 'react-native-reanimated'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import CustomModal from './CustomModal'
 import {
   drawerSlideInConfig,
   drawerSlideOutConfig,
-} from '../project/animation-util/reanimations'
+} from '../../../common/animation-util/reanimations'
 import {
   Dimensions,
   KeyboardAvoidingView,
   StyleProp,
   ViewStyle,
 } from 'react-native'
-import { clamp } from '../project/animation-util/clamp'
+import { clamp } from '../../../common/animation-util/clamp'
 
 export const closest = (value, values) => {
   'worklet'

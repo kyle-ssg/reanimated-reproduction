@@ -1,10 +1,10 @@
 import * as React from 'react'
-import TextInput from './TextInput'
+import Column from '../Column'
 import renderer from 'react-test-renderer'
 
-describe('<TextInput />', () => {
+describe('<Column />', () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<TextInput />)
+    const tree = renderer.create(<Column />)
     expect(tree).toMatchSnapshot()
   })
 })

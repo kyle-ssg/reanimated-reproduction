@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface Props {
+export type ContainerType = {
   children?: React.ReactNode
   ml0?: boolean
   ml5?: boolean
@@ -12,10 +12,10 @@ interface Props {
   mr10?: boolean
   mr15?: boolean
   mr20?: boolean
-  style?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
 }
 
-const Container: React.FC<Props> = ({
+const Container: React.FC<ContainerType> = ({
   ml0,
   ml5,
   ml10 = true,

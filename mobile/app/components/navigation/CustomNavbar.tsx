@@ -1,9 +1,10 @@
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import useInsets from 'components/base/useInset'
 
 type Props = {
-  style?: ReactNative.ViewStyle
-  titleStyle?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
+  titleStyle?: ReactNative.StyleProp<ReactNative.ViewStyle>
   hideBack?: boolean
   title: string
 }
@@ -16,12 +17,22 @@ const CustomNavbar: React.FC<Props> = ({
 }) => {
   const navigation = useNavigation()
   const pop = useCallback(() => {
+    // @ts-ignore
     navigation.pop()
   }, [navigation])
+  const insets = useInsets()
 
+  // @ts-ignore
+  const _styles: ReactNative.ViewStyle = [
+    {
+      paddingTop: insets.top + 20,
+      backgroundColor: 'transparent',
+    },
+    style,
+  ]
   return (
     <>
-      <Row style={[styles.navbar, style]}>
+      <Row style={_styles}>
         {navigation.canGoBack() && !hideBack && (
           <View style={styles.leftContainer}>
             <ButtonPrimary
@@ -29,8 +40,7 @@ const CustomNavbar: React.FC<Props> = ({
               style={{ width: 30, height: 30 }}
               onPress={pop}
             >
-              <FA5Pro name='chevron-left' size={16} color={'white'} light
-              />
+              <FA5Pro name='chevron-left' size={16} color={'white'} light />
             </ButtonPrimary>
           </View>
         )}
@@ -55,12 +65,7 @@ const styles = ReactNative.StyleSheet.create({
     position: 'absolute',
     zIndex: 9999999,
     left: 20,
-    // top: styleVariables.insets.top,
     // bottom: 0,
-  },
-  navbar: {
-    paddingTop: styleVariables.insets.top + 20,
-    backgroundColor: 'transparent',
   },
 })
 

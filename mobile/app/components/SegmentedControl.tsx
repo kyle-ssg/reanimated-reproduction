@@ -1,24 +1,24 @@
 import React, { FunctionComponent, useCallback, useEffect, useRef } from 'react' // we need this to make JSX compile
-import { useMeasure } from '../project/animation-util/useMeasure'
+import { useMeasure } from '../../../common/animation-util/useMeasure'
 import {
   Pressable,
+  StyleSheet,
   Text,
   TextStyle,
   View,
-  StyleSheet,
   ViewStyle,
 } from 'react-native'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import Animated, {
-  runOnJS,
   interpolate,
+  runOnJS,
   useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
-import { easingConfigSlide } from '../project/animation-util/reanimations'
-import { clamp } from '../project/animation-util/clamp'
+import { easingConfigSlide } from '../../../common/animation-util/reanimations'
+import { clamp } from '../../../common/animation-util/clamp'
 
 const CONTAINER_PADDING_Y = 6
 const CONTAINER_PADDING_X = 6

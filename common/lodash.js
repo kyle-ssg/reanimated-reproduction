@@ -15,6 +15,7 @@ import range from 'lodash/range'
 import set from 'lodash/set'
 import sortBy from 'lodash/sortBy'
 import throttle from 'lodash/throttle'
+
 export {
   chunk,
   cloneDeep,

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentStory } from '@storybook/react'
 import '../styles/Global.scss'
 import ModalAlert from '../components/ModalAlert'
 
@@ -11,7 +11,7 @@ export default {
 export const Default: ComponentStory<typeof ModalAlert> = (args) => {
   return (
     <>
-      <ModalAlert isOpen title='Alert'>
+      <ModalAlert isOpen title='Alert' {...args}>
         Test
       </ModalAlert>
     </>

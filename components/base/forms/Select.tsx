@@ -1,6 +1,6 @@
-import { PropsType } from 'ionicons/dist/types/stencil.core'
 import React, { useState } from 'react'
 import cx from 'classnames'
+
 export type Select = React.SelectHTMLAttributes<any> & {
   title?: string
   isValid?: boolean

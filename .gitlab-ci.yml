@@ -12,10 +12,15 @@ stages:
   - test
   - deploy
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
+cache: &global_cache
+  key:
+    files:
+      - package-lock.json
   paths:
     - node_modules/
+    - .next/cache/
+  policy: pull-push
+
 
 .mobile_deploy_common_before_script: &mobile_deploy_common_before_script
   before_script:
@@ -53,7 +58,7 @@ deploy-mobile-android-production:
   only:
     <<: *mobile_deploy_common_required_changes
     refs:
-      - master
+      - mobile-release
     variables:
       - $APPCENTER_ACCESS_TOKEN
       - $APPCENTER_NAME_ANDROID_PRODUCTION
@@ -71,6 +76,40 @@ deploy-mobile-ios-production:
   only:
     <<: *mobile_deploy_common_required_changes
     refs:
+      - mobile-release
+    variables:
+      - $APPCENTER_ACCESS_TOKEN
+      - $APPCENTER_NAME_IOS_PRODUCTION
+      - $CODE_PUSH_NAME_IOS
+
+deploy-mobile-android-staging:
+  image: ssgluke/gitlab-ci-codepush:v1.5
+  stage: deploy
+  variables:
+    ENV: prod
+  <<: *mobile_deploy_common_before_script
+  script:
+    - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_ANDROID_PRODUCTION Staging master android $CODE_PUSH_NAME_ANDROID
+  only:
+    <<: *mobile_deploy_common_required_changes
+    refs:
+      - master
+    variables:
+      - $APPCENTER_ACCESS_TOKEN
+      - $APPCENTER_NAME_ANDROID_PRODUCTION
+      - $CODE_PUSH_NAME_ANDROID
+
+deploy-mobile-ios-staging:
+  image: ssgluke/gitlab-ci-codepush:v1.5
+  stage: deploy
+  variables:
+    ENV: prod
+  <<: *mobile_deploy_common_before_script
+  script:
+    - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_IOS_PRODUCTION Staging master ios $CODE_PUSH_NAME_IOS appcenter-production
+  only:
+    <<: *mobile_deploy_common_required_changes
+    refs:
       - master
     variables:
       - $APPCENTER_ACCESS_TOKEN
@@ -83,15 +122,11 @@ deploy-mobile-ios-production:
     - npm run env_script
 
 test:
-  image: selenium/standalone-chrome:90.0
+  cache:
+    <<: *global_cache
+
+  image: solidstategroup/e2e
   stage: test
-  before_script:
-    - sudo apt-get update
-    - sudo apt-get -y install curl dirmngr apt-transport-https lsb-release ca-certificates
-    - curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-    - sudo apt-get update
-    - sudo apt-get -y install nodejs
-    - node --version
   script:
     - npm install
     - npm run test:e2e:prod
@@ -103,6 +138,9 @@ test:
 
 deploy-web-production:
   image: mhart/alpine-node:14
+  cache:
+    <<: *global_cache
+
   stage: deploy
   variables:
     ENV: prod
@@ -116,9 +154,11 @@ deploy-web-production:
     variables:
       - $NOW_TOKEN
       - $NOW_TEAM_NAME
-
 deploy-web-feature:
   image: mhart/alpine-node:14
+  cache:
+    <<: *global_cache
+
   stage: deploy
   variables:
     ENV: dev

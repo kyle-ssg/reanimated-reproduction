@@ -1,7 +1,7 @@
-import { PropsType } from 'ionicons/dist/types/stencil.core'
 import React, { useRef, useState } from 'react'
 import cx from 'classnames'
 import useOnClickOutside from '../useClickOutside'
+
 export type SelectCustomDropdown = React.SelectHTMLAttributes<any> & {
   title?: string
   isValid?: boolean

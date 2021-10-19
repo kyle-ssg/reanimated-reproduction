@@ -1,16 +1,13 @@
-import _store from '../../common/store';
+import _store from '../../common/store'
 import SecuredPage from '../../pages/secured'
-import HomePage from '../../pages/index'
-import React from 'react';
-import { mockRouter } from '../web-mocks';
+import React from 'react'
+import { mockRouter } from '../web-mocks'
 import {
   loginSuccess,
   mockUserLoggedIn,
   renderWithStoreAndRouter,
   reRenderWithStoreAndRouter,
-} from '../web-test-helpers';
-import { Actions } from '../../common/app-actions';
-import { mockRequest } from '../../common/tests/test-helpers';
+} from '../web-test-helpers'
 
 describe('login redirect', function() {
   it('should redirect for a logged out user', async function() {

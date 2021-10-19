@@ -9,6 +9,7 @@ import ModalDefault from './ModalDefault'
 import Alert from './ModalAlert'
 import store from '../common/store'
 import Provider from 'react-redux/lib/components/Provider'
+
 export const ModalHeader = _ModalHeader
 export const ModalFooter = _ModalFooter
 export const Modal = (args) => <_Modal {...args} />
@@ -47,8 +48,7 @@ export const openAlert = (global.openAlert = (title, children, onDismiss) => {
 export const openConfirm = (global.openConfirm = (title, body, onYes, onNo) => {
   ReactDOM.unmountComponentAtNode(document.getElementById('confirm'))
   ReactDOM.render(
-    <_Confirm isOpen onNo={onNo} onYes={onYes} title={title}
-    >
+    <_Confirm isOpen onNo={onNo} onYes={onYes} title={title}>
       {body}
     </_Confirm>,
     document.getElementById('confirm'),

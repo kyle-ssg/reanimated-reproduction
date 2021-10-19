@@ -1,6 +1,6 @@
+import React from 'react'
+import { NextRouter } from 'next/router'
 
-import React from "react";
-import { NextRouter } from "next/router";
 interface ExtendedRouter extends NextRouter{
   history: any,
 }

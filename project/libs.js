@@ -1,5 +1,5 @@
 /* eslint-disable */
-import '../common/lodash';
+import '../common/lodash'
 
 // Analytics
 if (Project.ga && typeof window !== 'undefined') {

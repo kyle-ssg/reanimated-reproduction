@@ -1,11 +1,10 @@
-import React, { Component, ReactNode } from 'react'
+import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import defaultNavigationOptions from '../style/navigation_styles'
 import { createNativeStackNavigator } from 'react-native-screens/native-stack'
 import { RouteUrls } from '../route-urls'
 import BottomNav from 'components/BottomNav'
 import { routes } from '../routes'
-import ScreenContainer from 'components/ScreenContainer'
 
 type ComponentType = {}
 
@@ -43,7 +42,14 @@ const Stack2 = () => (
 
 const MainAppNavigator = ({ route }) => {
   return (
-    <Flex style={[Styles.body, styles.topInset]}>
+    <Flex
+      style={[
+        Styles.body,
+        {
+          paddingTop: styleVariables.insets.top,
+        },
+      ]}
+    >
       <Tab.Navigator
         lazy={false}
         initialRouteName={RouteUrls.HomeScreen}
@@ -55,10 +61,6 @@ const MainAppNavigator = ({ route }) => {
     </Flex>
   )
 }
-const styles = ReactNative.StyleSheet.create({
-  topInset: {
-    paddingTop: styleVariables.insets.top,
-  },
-})
+const styles = ReactNative.StyleSheet.create({})
 
 export default MainAppNavigator

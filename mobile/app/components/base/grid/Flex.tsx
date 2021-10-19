@@ -1,17 +1,17 @@
 import React from 'react'
 import { View } from 'react-native'
 
-interface Props {
+export type FlexType = {
   accessible?: boolean
   accessibilityLabel?: string
   value?: number
   children?: React.ReactNode
-  style?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
   testID?: string
   space?: boolean
 }
 
-const Flex: React.FC<Props> = ({
+const Flex: React.FC<FlexType> = ({
   value = 1,
   accessible,
   accessibilityLabel,
@@ -19,19 +19,24 @@ const Flex: React.FC<Props> = ({
   space,
   testID,
   children,
-}) => (
-  <View
-    accessible={accessible}
-    accessibilityLabel={accessibilityLabel}
-    style={[
-      style,
-      { flex: value },
-      space && { justifyContent: 'space-between' },
-    ]}
-    testID={testID}
-  >
-    {children}
-  </View>
-)
+}) => {
+  // @ts-ignore
+  const _style: ReactNative.ViewStyle = [
+    { flex: value },
+    space && { justifyContent: 'space-between' },
+  ]
+    // @ts-ignore
+    .concat(style)
+  return (
+    <View
+      accessible={accessible}
+      accessibilityLabel={accessibilityLabel}
+      style={_style}
+      testID={testID}
+    >
+      {children}
+    </View>
+  )
+}
 
 export default Flex

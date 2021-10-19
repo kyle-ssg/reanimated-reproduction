@@ -92,7 +92,7 @@ module.exports = {
         'waitForConditionPollInterval': 500, // sometimes internet is slow so wait.
         'waitForConditionTimeout': 20000, // sometimes internet is slow so wait.
         'asyncHookTimeout': 60000,
-        'retryAssertionTimeout': 30000,
+        'retryAssertionTimeout': 60000,
         before: (browser, done) => {
           process.env.NODE_ENV = 'production'
           const server = fork('./node_modules/e2e-proxy/index.js')
@@ -152,7 +152,7 @@ module.exports = {
         'waitForConditionPollInterval': 500, // sometimes internet is slow so wait.
         'waitForConditionTimeout': 20000, // sometimes internet is slow so wait.
         'asyncHookTimeout': 60000,
-        'retryAssertionTimeout': 30000,
+        'retryAssertionTimeout': 60000,
         before: (browser, done) => {
           process.env.NODE_ENV = 'production'
           const server = fork('./node_modules/e2e-proxy/index.js')
@@ -180,9 +180,9 @@ module.exports = {
       extends: 'chrome.template',
       globals: {
         'waitForConditionPollInterval': 500, // sometimes internet is slow so wait.
-        'waitForConditionTimeout': 20000, // sometimes internet is slow so wait.
+        'waitForConditionTimeout': 60000, // sometimes internet is slow so wait.
         'asyncHookTimeout': 60000,
-        'retryAssertionTimeout': 30000,
+        'retryAssertionTimeout': 60000,
         before: (browser, done) => {
           process.env.NODE_ENV = 'production'
           const server = fork('./server')
@@ -198,11 +198,31 @@ module.exports = {
             })
           })
           return Promise.all([prom1, prom2]).then(() => {
-            console.log('HEASDAS')
             done()
           })
         },
 
+        afterEach: function (browser, done) {
+          if (
+            browser.currentTest.results.errors ||
+            browser.currentTest.results.failed
+          ) {
+            browser.getLog('browser', (logEntries) => {
+              logEntries.forEach((log) => {
+                if (log.level === 'SEVERE') {
+                  console.log(`[${log.level}] ${log.message}`)
+                }
+              })
+              browser.source((result) => {
+                // Source will be stored in result.value
+                // console.log(result && result.value)
+                done()
+              })
+            })
+          } else {
+            done()
+          }
+        },
         after: function (browser, done) {
           done()
           process.exit()
@@ -221,27 +241,19 @@ module.exports = {
 }
 
 function loadServices() {
-  try {
-    Services.seleniumServer = require('selenium-server')
-  } catch (err) {
-    console.log(err)
-  }
-
+  // try {
+  //   Services.seleniumServer = require('selenium-server')
+  // } catch (err) {}
+  //
   try {
     Services.chromedriver = require('chromedriver')
-  } catch (err) {
-    console.log(err)
-  }
-
-  try {
-    Services.geckodriver = require('geckodriver')
-  } catch (err) {
-    console.log(err)
-  }
-
-  try {
-    Services.operadriver = require('operadriver')
-  } catch (err) {
-    console.log(err)
-  }
+  } catch (err) {}
+  //
+  // try {
+  //   Services.geckodriver = require('geckodriver')
+  // } catch (err) {}
+  //
+  // try {
+  //   Services.operadriver = require('operadriver')
+  // } catch (err) {}
 }

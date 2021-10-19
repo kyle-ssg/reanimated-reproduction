@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react'
-import { ButtonNav } from 'components/base/forms/Button' // we need this to make JSX compile
+import { ButtonNav } from 'components/./base/forms/Button' // we need this to make JSX compile
 import { useNavigation } from '@react-navigation/native'
+
 type ComponentType = { tintColor?: string }
 
 const ModalCloseButton: FunctionComponent<ComponentType> = ({}) => {
@@ -11,12 +12,12 @@ const ModalCloseButton: FunctionComponent<ComponentType> = ({}) => {
   }, [navigation])
   return (
     <ButtonNav onPress={pop}>
-      <ION
+      <FA5Pro
         style={{
           color: palette.primary,
           fontSize: styleVariables.fontSizeH1,
         }}
-        name='ios-close'
+        name='times'
       />
     </ButtonNav>
   )

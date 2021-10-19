@@ -1,15 +1,15 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View } from 'react-native'
 
-interface Props {
+export type RowType = {
   children?: React.ReactNode
   space?: boolean
   noWrap?: boolean
-  style?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
   testID?: string
 }
 
-const Row: React.FC<Props> = ({ testID, space, style, children }) => (
+const Row: React.FC<RowType> = ({ testID, space, style, children }) => (
   <View
     testID={testID}
     style={[styles.row, space && { justifyContent: 'space-between' }, style]}

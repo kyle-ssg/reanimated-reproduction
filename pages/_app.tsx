@@ -6,16 +6,14 @@ import withRedux, { MakeStore } from 'next-redux-wrapper'
 import withReduxSaga from 'next-redux-saga'
 import '../project/project-components'
 import createStore from '../common/store'
-import ReactDOM from 'react-dom'
 import Toast from '../components/toast'
 import _data from '../common/utils/_data'
-import 'ionicons/dist/css/ionicons.css'
 
 import '../styles/Global.scss'
 import { Store } from 'redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import LanguageHandler from '../common/LanguageHandler'
-import Head from "next/head";
+import Head from 'next/head'
 
 let initialRender = false
 
@@ -123,16 +121,17 @@ class MyApp extends App<{ store: Store }> {
     //
     // }
 
-    // @ts-ignore
-    const getLayout = (page) =>
-      Component.getLayout ? (
+    const getLayout = (page) => {
+      // @ts-ignore
+      return Component.getLayout ? (
+        // @ts-ignore
         <Component.getLayout page={page} router={this.props.router} />
       ) : (
         page
       )
+    }
 
     return (
-
       <>
         <Head>
           <title>The Project</title>
@@ -161,7 +160,6 @@ class MyApp extends App<{ store: Store }> {
           </PersistGate>
         </Provider>
       </>
-
     )
   }
 }

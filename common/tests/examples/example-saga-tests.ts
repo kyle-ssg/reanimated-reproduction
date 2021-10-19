@@ -1,9 +1,7 @@
-import { expectSaga } from 'redux-saga-test-plan';
-import saga from '../../saga';
-import '../../../project/api';
-import reducer from '../../reducer';
-import { AppActions } from '../../app-actions';
-import { mockRequest, sagaWithReducer } from '../test-helpers';
+import saga from '../../saga'
+import '../../../project/api'
+import { AppActions } from '../../app-actions'
+import { mockRequest, sagaWithReducer } from '../test-helpers'
 
 describe('saga with fake REST call and check API.identify is called', ()=> {
   it('sets the correct reducer state', ()=> {

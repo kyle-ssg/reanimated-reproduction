@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Loader } from './Loader'
+import { Loader } from 'common/components/Loader'
 import Select from './forms/Select'
 import FormGroup from './grid/FormGroup'
 

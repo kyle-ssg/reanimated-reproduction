@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import asStyle from './style-utils/asStyle'
+
 export default asStyle({
   button: {
     height: styleVariables.buttonHeight,
@@ -55,6 +56,9 @@ export default asStyle({
     backgroundColor: palette.secondary,
   },
 
+  buttonSecondaryText: {},
+  buttonSecondaryTextPressed: {},
+
   buttonTertiary: {
     backgroundColor: 'white',
     borderColor: palette.primary,
@@ -86,6 +90,10 @@ export default asStyle({
     color: palette.primary,
     fontSize: styleVariables.fontSizeH2,
   },
+
+  buttonTextPressed: {},
+
+  buttonNav: {},
 
   buttonSmallText: {
     fontSize: styleVariables.fontSizeH4,

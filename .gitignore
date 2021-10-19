@@ -6,7 +6,6 @@ build/
 tests_output/
 *.log*
 npm-debug.log
-mobile/common-mobile/
 e2e_screenshots
 reports/
 reports/*

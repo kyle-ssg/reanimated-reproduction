@@ -1,61 +1,49 @@
 import _Project, { ProjectType } from 'common/project'
-import { AppActions, Actions } from 'common/app-actions'
-import API from '../project/api'
+import { AppActions } from 'common/app-actions'
 import Strings from 'common/strings'
 import { APIType } from '../common/api-type'
+import ReactNative from 'react-native'
+import { ButtonType } from '../mobile/app/components/base/forms/Button'
+import { ColumnType } from '../mobile/app/components/base/grid/Column'
+import { ContainerType } from '../mobile/app/components/base/grid/Container'
+import { FadeType } from '../common/components/animation/Fade'
+import { FlexType } from '../mobile/app/components/base/grid/Flex'
+import { ListItemType } from '../mobile/app/components/base/ListItem'
+import { RowType } from '../mobile/app/components/base/grid/Row'
+import { TextInputProps } from '../mobile/app/components/base/forms/TextInput'
+import { styleTypes } from '../mobile/app/style/_style_screen'
+
 type API = APIType & {}
 declare global {
-  namespace NodeJS {
-    interface Global {
-      RouteUrls: {}
-      E2E: any
-      _data: any
-      Actions: Actions
-      AppActions: AppActions
-      API: API
-      Project: ProjectType
-      AsyncStorage: any
-      Button: any
-      ButtonPrimary: any
-      ButtonSecondary: any
-      ButtonTertiary: any
-      Column: any
-      Constants: any
-      ErrorMessage: any
-      FormGroup: any
-      __JEST__: boolean
-      Format: any
-      Flex: any
-      Input: any
-      InputGroup: any
-      Link: any
-      Loader: any
-      MaskedInput: any
-      Row: any
-      Select: any
-      Strings: any
-      SuccessMessage: any
-      Utils: any
-      _: any
-      __DEV__: any
-      __dirname: any
-      ga: any
-      mixpanel: any
-      toast: any
-      module: any
-      openAlert: any
-      openConfirm: any
-      process: any
-      require: any
-      grecaptcha: any
-      closeModal: any
-      openModal: any
-      window?: any
-    }
-  }
+  namespace NodeJS {}
 }
 
 declare global {
+  const Animated: typeof ReactNative.Animated
+  const ReactNative: typeof ReactNative
+  let Button: React.ComponentType<ButtonType>
+  let ButtonPrimary: React.ComponentType<ButtonType>
+  let Column: React.ComponentType<ColumnType>
+  let Container: React.ComponentType<ContainerType>
+  let Dimensions: ReactNative.Dimensions
+  let Easing: ReactNative.Easing
+  let Fade: React.ComponentType<FadeType>
+  let Flex: React.ComponentType<FlexType>
+  let H1: React.ComponentType<ReactNative.TextProps>
+  let H2: React.ComponentType<ReactNative.TextProps>
+  let H3: React.ComponentType<ReactNative.TextProps>
+  let H4: React.ComponentType<ReactNative.TextProps>
+  let KeyboardAvoidingView: React.ComponentType<ReactNative.KeyboardAvoidingView>
+  let ListItem: React.ComponentType<ListItemType>
+  let Row: React.ComponentType<RowType>
+  let SafeAreaView: React.ComponentType<ReactNative.ViewProps>
+  let ScrollView: React.ComponentType<ReactNative.ScrollViewProps>
+  let Text: React.ComponentType<ReactNative.TextProps>
+  let TextInput: React.ComponentType<TextInputProps>
+  let TouchableOpacity: React.ComponentType<ReactNative.TouchableOpacityProps>
+  let View: React.ComponentType<ReactNative.ViewProps>
+  let Styles = styleTypes
+
   declare let API: APIType
   declare let closeModal: Function
   declare let openModal: (title: string, body: React.ReactChildren) => void
@@ -86,6 +74,7 @@ declare global {
   declare let SuccessMessage: any
   declare let Utils: any
   declare let _data: any
+  let Text: React.ComponentType<ReactNative.TextProps>
   declare let _: any
   declare let __DEV__: any
   declare let __dirname: any

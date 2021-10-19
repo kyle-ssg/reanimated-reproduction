@@ -1,11 +1,11 @@
-import React, { useLayoutEffect, useCallback, useRef, useEffect } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import {
   NativeStackNavigationOptions,
   NativeStackNavigationProp,
 } from 'react-native-screens/native-stack'
 import {
+  CommonActions,
   useNavigation,
-  useNavigationState,
   useRoute,
 } from '@react-navigation/native'
 import { useDispatch } from 'react-redux'
@@ -14,7 +14,6 @@ import { AppActions } from 'common/app-actions'
 import { StatusBarStyle } from 'react-native'
 import useTheme from 'common/providers/useTheme'
 import { AppState } from 'common/state-type'
-import { CommonActions } from '@react-navigation/native'
 
 export interface IRouteParams {
   [extraProps: string]: any // Means that extra props are fine

@@ -1,12 +1,9 @@
-import React from 'react'
-import { Component, FunctionComponent } from 'react'
+import React, { Component, FunctionComponent } from 'react'
 import withScreen, { Screen } from './withScreen'
 import { WebView, WebViewProps } from 'react-native-webview'
 import { NavigationContainer } from '@react-navigation/native'
 import defaultNavigationOptions from '../style/navigation_styles'
-import { routes } from '../routes'
 import { createNativeStackNavigator } from 'react-native-screens/native-stack'
-import { RouteUrls } from '../route-urls'
 
 type Props = Screen & {
   webViewProps: Partial<WebViewProps>
@@ -20,9 +17,9 @@ class _WebScreen extends Component<Props> {
       headerLeft: () =>
         navState.canGoBack ? (
           <TouchableOpacity onPress={() => this.webview?.goBack()}>
-            <ION
+            <FA5Pro
               style={styles.icon}
-              name='ios-close'
+              name='times'
               size={20}
               color={palette.navy}
             />
@@ -31,8 +28,8 @@ class _WebScreen extends Component<Props> {
           <View />
         ),
     })
-    this.props.webViewProps.onNavigationStateChange &&
-      this.props.webViewProps.onNavigationStateChange(navState)
+    this.props.webViewProps?.onNavigationStateChange &&
+      this.props.webViewProps?.onNavigationStateChange(navState)
   }
 
   render() {
@@ -69,13 +66,17 @@ const TheComponent: FunctionComponent<Props> = ({ webViewProps }) => {
     <NavigationContainer independent>
       <Navigator
         screenOptions={defaultNavigationOptions}
-        initialRouteName={RouteUrls.home}
+        initialRouteName={'home'}
       >
         <Stack.Screen
-          name={RouteUrls.home}
-          options={{stackPresentation:"modal"}}
+          name={'home'}
+          options={{ stackPresentation: 'modal' }}
           component={ConnectedWebScreen}
-          initialParams={{ webViewProps }}
+          initialParams={{
+            webViewProps: webViewProps || {
+              source: { uri: 'https://google.com' },
+            },
+          }}
         />
       </Navigator>
     </NavigationContainer>

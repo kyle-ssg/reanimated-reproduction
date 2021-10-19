@@ -3,7 +3,7 @@
  */
 
 // Application
-import Utils from '../utils/base/_utils';
+import Utils from '../utils/base/_utils'
 
 describe('utils', ()=>{
   describe('utils - `getTypedValue`', () => {

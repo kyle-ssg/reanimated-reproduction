@@ -133,7 +133,6 @@ module.exports = {
     global: true,
     grecaptcha: true,
     it: true,
-    memoizeOne: true,
     mixpanel: true,
     module: true,
     openAlert: true,

@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import { LayoutRectangle } from 'react-native'
 
 export const useMeasure = (

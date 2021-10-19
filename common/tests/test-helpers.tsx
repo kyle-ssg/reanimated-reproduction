@@ -1,16 +1,12 @@
-import
-React from 'react';
-import { ExpectApi, expectSaga } from 'redux-saga-test-plan';
-import { Provider } from 'react-redux';
-import { Store } from 'redux';
-import { act } from 'react-dom/test-utils';
-import { mount } from 'enzyme';
-import '../../project/polyfill';
-import _data from '../utils/_data';
-import _store from '../store'
-import reducer from '../reducer';
-import { AppState } from '../state-type';
-import { render, RenderResult } from '@testing-library/react';
+import React from 'react'
+import { ExpectApi, expectSaga } from 'redux-saga-test-plan'
+import { Provider } from 'react-redux'
+import { Store } from 'redux'
+import { act } from 'react-dom/test-utils'
+import '../../project/polyfill'
+import _data from '../utils/_data'
+import reducer from '../reducer'
+import { render, RenderResult } from '@testing-library/react'
 
 // Makes it so that the next call to data.get|put|post|delete RESOLVES with <resolved>
 export const mockRequest = (resolved:any) => {

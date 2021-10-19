@@ -5,9 +5,9 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated' // we need this to make JSX compile
-import { Modal, TouchableOpacity, View, StyleSheet } from 'react-native'
+import { Modal, StyleSheet, TouchableOpacity, View } from 'react-native'
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
-import { modalConfig } from '../project/animation-util/reanimations'
+import { modalConfig } from '../../../common/animation-util/reanimations'
 
 type ComponentType = {}
 export type ModalType = {

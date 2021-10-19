@@ -1,10 +1,10 @@
 import * as React from 'react'
-import FormGroup from './FormGroup'
+import Checkbox from '../Checkbox'
 import renderer from 'react-test-renderer'
 
-describe('<FormGroup />', () => {
+describe.skip('<Checkbox />', () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<FormGroup></FormGroup>)
+    const tree = renderer.create(<Checkbox />)
     expect(tree).toMatchSnapshot()
   })
 })

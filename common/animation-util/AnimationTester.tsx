@@ -4,13 +4,13 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated'
-import { interpolateColor } from 'react-native-redash'
+import { StyleSheet } from 'react-native'
+
 type ComponentType = {
   animatedValue: Animated.SharedValue<number>
   min?: number
   max?: number
 }
-import { StyleSheet } from 'react-native'
 
 const AnimationTester: FunctionComponent<ComponentType> = ({
   animatedValue,

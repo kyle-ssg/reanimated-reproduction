@@ -1,4 +1,4 @@
-import React, { Component, FunctionComponent } from 'react'
+import React, { FunctionComponent } from 'react'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
 import { StatusBar } from 'react-native'
@@ -7,12 +7,12 @@ import { NavigationContainer } from '@react-navigation/native'
 import AppNavigator from 'navigation/AppNavigator'
 import { navigationRef } from 'navigation/RootNavigation'
 import NeverUpdate from 'components/NeverUpdate'
-import useTheme from 'common/providers/useTheme'
 import ScreenContainer from 'components/ScreenContainer'
-import LinkHandler from 'components/LinkHandler'
 import LanguageHandler from 'common/LanguageHandler'
 import 'common/utils/_data'
 import { LaunchArguments } from 'react-native-launch-arguments'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+
 const launchArgs = LaunchArguments.value()
 if (launchArgs.namespace) {
   Constants.E2E = true
@@ -28,26 +28,27 @@ type Props = {
   children: React.ReactNode
 }
 const App: FunctionComponent<Props> = () => (
-  <ScreenContainer withoutSafeAreaView={true}>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={store.__PERSISTOR}>
-        <StatusBar
-          barStyle='dark-content'
-          backgroundColor='transparent'
-          translucent
-        />
-        <NeverUpdate>
-          {/*// @ts-ignore*/}
-          <LanguageHandler>
-            <NavigationContainer linking={linking} ref={navigationRef}>
-              <AppNavigator />
-            </NavigationContainer>
-          </LanguageHandler>
-          <LinkHandler />
-        </NeverUpdate>
-      </PersistGate>
-    </Provider>
-  </ScreenContainer>
+  <SafeAreaProvider>
+    <ScreenContainer withoutSafeAreaView={true}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={store.__PERSISTOR}>
+          <StatusBar
+            barStyle='dark-content'
+            backgroundColor='transparent'
+            translucent
+          />
+          <NeverUpdate>
+            {/*// @ts-ignore*/}
+            <LanguageHandler>
+              <NavigationContainer linking={linking} ref={navigationRef}>
+                <AppNavigator />
+              </NavigationContainer>
+            </LanguageHandler>
+          </NeverUpdate>
+        </PersistGate>
+      </Provider>
+    </ScreenContainer>
+  </SafeAreaProvider>
 )
 export default App
 

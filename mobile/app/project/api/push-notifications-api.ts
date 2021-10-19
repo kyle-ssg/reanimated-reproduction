@@ -14,6 +14,13 @@ const PushManager = class {
 
   getInitialNotification = () => messaging().getInitialNotification()
 
+  getToken = async () => {
+    if (Platform.OS === 'ios') {
+      return messaging().getAPNSToken()
+    }
+    return messaging().getToken()
+  }
+
   subscribe = (topic) => {
     API.log('PUSH_NOTIFICATIONS', `Subscribed to ${topic}`)
     return messaging().subscribeToTopic(topic)
@@ -33,8 +40,6 @@ const PushManager = class {
     notification: FirebaseMessagingTypes.RemoteMessage,
     foreground?: boolean,
   ) => {
-    // Callback if notification is valid
-    if (notification._notificationType === 'will_present_notification') return // these notifications are duplicate and pointless
     this.onNotification && this.onNotification(notification, foreground)
   }
 
@@ -61,12 +66,12 @@ const PushManager = class {
     if (this.token) {
       return this.token
     }
-
+    let token
     if (!silent) {
       const authStatus = await messaging().requestPermission()
+      token = await messaging().getToken()
     }
 
-    const token = await messaging().getToken()
     this.refreshTokenListener = messaging().onTokenRefresh((token) => {
       if (token) {
         this.token = token

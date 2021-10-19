@@ -1,10 +1,10 @@
 import * as React from 'react'
-import Column from './Column'
+import Button from '../Button'
 import renderer from 'react-test-renderer'
 
-describe('<Column />', () => {
+describe('<Button />', () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<Column />)
+    const tree = renderer.create(<Button />)
     expect(tree).toMatchSnapshot()
   })
 })

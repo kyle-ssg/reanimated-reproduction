@@ -1,8 +1,6 @@
-import { projectStyles } from './style_variables'
+import asStyle from './style-utils/asStyle'
 
 export const paddingBase = 8 // todo: styleVariables.gutterBase should match this ?
-
-import asStyle from './style-utils/asStyle'
 
 export default asStyle({
   //
@@ -223,8 +221,4 @@ export default asStyle({
   mv10: { marginTop: paddingBase * 2, marginBottom: paddingBase * 2 },
   mv15: { marginTop: paddingBase * 3, marginBottom: paddingBase * 3 },
   mv20: { marginTop: paddingBase * 4, marginBottom: paddingBase * 4 },
-
-  bottomNavPadding: {
-    paddingBottom: styleVariables.bottomNavPadding,
-  },
 })

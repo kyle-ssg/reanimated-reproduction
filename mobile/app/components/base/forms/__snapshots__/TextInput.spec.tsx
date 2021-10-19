@@ -1,10 +1,10 @@
 import * as React from 'react'
-import Flex from './Flex'
+import TextInput from '../TextInput'
 import renderer from 'react-test-renderer'
 
-describe('<Flex />', () => {
+describe('<TextInput />', () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<Flex />)
+    const tree = renderer.create(<TextInput />)
     expect(tree).toMatchSnapshot()
   })
 })

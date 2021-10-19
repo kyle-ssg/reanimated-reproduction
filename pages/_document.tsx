@@ -6,16 +6,18 @@
 import '../project/polyfill'
 import React from 'react'
 import Document, {
+  DocumentContext,
   Head,
   Html,
   Main,
   NextScript,
-  DocumentContext,
 } from 'next/document'
 import '../project/api'
+import { AppRegistry } from 'react-native'
 
 class MyDocument extends Document<{ locale: string }> {
   static async getInitialProps(ctx: DocumentContext) {
+    AppRegistry.registerComponent('app', () => Main)
     const initialProps = await Document.getInitialProps(ctx)
     const locale = API.getStoredLocale(ctx.req)
     return { ...initialProps, locale }
@@ -33,7 +35,7 @@ class MyDocument extends Document<{ locale: string }> {
             href='https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&display=swap'
             rel='stylesheet'
           />
-          <meta name='description' content='SiteAssist' />
+          <meta name='description' content='TheApp' />
           <meta name='theme-color' content='#317EFB' />
           <meta
             name='viewport'

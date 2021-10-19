@@ -1,26 +1,25 @@
-import {
-  Platform,
-  Pressable,
-  RippleBackgroundPropType,
-  StyleSheet,
-  TouchableNativeFeedback,
-  TouchableOpacity,
-} from 'react-native'
+;``
+import { Pressable } from 'react-native'
 
 import Utils from 'common/utils/base/_utils'
 import throttle from 'lodash/debounce'
-import React, { FC, FunctionComponent, useMemo } from 'react'
-import useTheme from 'common/providers/useTheme'
+import React, { FunctionComponent, useMemo } from 'react'
 
 export type ButtonType = ReactNative.PressableProps & {
   children: React.ReactNode
   icon?: boolean
   iconColour?: string
-  textStyle?: ReactNative.TextStyle | ReactNative.TextStyle[]
-  pressedStyle?: ReactNative.ViewStyle | ReactNative.ViewStyle[]
-  containerStyle?: ReactNative.ViewStyle | ReactNative.ViewStyle[]
+  textStyle?: ReactNative.StyleProp<
+    ReactNative.TextStyle | ReactNative.TextStyle[]
+  >
+  pressedStyle?:
+    | ReactNative.StyleProp<ReactNative.ViewStyle>
+    | ReactNative.ViewStyle[]
+  containerStyle?:
+    | ReactNative.StyleProp<ReactNative.ViewStyle>
+    | ReactNative.ViewStyle[]
   pressedTextStyle?: ReactNative.TextStyle | ReactNative.TextStyle[]
-  style?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
   throttle?: number
 }
 
@@ -70,9 +69,11 @@ const Button: FunctionComponent<ButtonType> = ({
     [pressedStyle, style],
   )
 
-  const textStyles = useMemo(() => {
+  // @ts-ignore
+  const textStyles: ReactNative.TextStyle[] = useMemo(() => {
     // @ts-ignore
     const additionalTextStyles =
+      // @ts-ignore
       textStyle && textStyle?.length ? textStyle : [textStyle]
     return textStyle
       ? [
@@ -123,8 +124,7 @@ const Button: FunctionComponent<ButtonType> = ({
             alignItems: 'center',
           }}
         >
-          <FA5Pro solid name={icon} size={18}
-color={iconColour || 'white'} />
+          <FA5Pro solid name={icon} size={18} color={iconColour || 'white'} />
         </View>
       ) : null}
     </View>
@@ -218,23 +218,6 @@ export const ButtonNav: FunctionComponent<ButtonType> = (props) => {
       android_ripple={circleButtonRipple}
       style={[props.style, Styles.buttonNav]}
     />
-  )
-}
-
-export const ButtonViewAll: FC<ButtonType> = ({ children, style }) => {
-  return (
-    <>
-      <Pressable
-        style={[
-          Styles.buttonCard,
-          Styles.borderBlueGrey3,
-          Styles.cardShadowGrey,
-          style,
-        ]}
-      >
-        {children}
-      </Pressable>
-    </>
   )
 }
 

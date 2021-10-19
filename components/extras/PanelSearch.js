@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Paging from '../Paging'
 import Panel from './Panel'
+
 const PanelSearch = class extends Component {
   static displayName = 'PanelSearch'
 
@@ -49,7 +50,7 @@ const PanelSearch = class extends Component {
               />
               <span
                 style={{ marginLeft: 10, position: 'absolute' }}
-                className='icon ion-ios-search'
+                className='icon fa fa-search'
               />
             </Row>
           ) : null

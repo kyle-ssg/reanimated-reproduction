@@ -1,19 +1,11 @@
 import './utils'
 import { Actions } from './app-actions'
 import produce, { enableES5 } from 'immer'
-enableES5() // required for react native hermes
-
 // eslint-disable-next-line no-unused-vars
-import {
-  appendItem,
-  deleteItem,
-  itemError,
-  itemLoaded,
-  itemLoading,
-  itemSaved,
-  itemSaving,
-} from './utils/reducer-helpers'
-import { AppState, RequestTypes } from './state-type'
+import { itemError, itemLoaded, itemLoading } from './utils/reducer-helpers'
+import { AppState } from './state-type'
+
+enableES5() // required for react native hermes
 
 // Adds infinite scroll
 const adjustInfinite = (action, state) => {
@@ -60,6 +52,7 @@ const defaultReducer = produce((state: AppState, action): AppState | void => {
       break
     case Actions.CLEAR_USER:
       if (state.profile.id) {
+        // @ts-ignore
         API.push?.unsubscribe(`${state.profile.id}`)
       }
       state.profile = null

@@ -1,30 +1,54 @@
-import React, { Component, FunctionComponent, useCallback } from 'react'
-import { StyleSheet } from 'react-native'
+import React, { FunctionComponent, useCallback } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import useInsets from 'components/base/useInset'
+import { ViewStyle } from 'react-native'
 
 type Props = {
-  style?: ReactNative.ViewStyle
-  titleStyle?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
+  titleStyle?: ReactNative.StyleProp<ReactNative.ViewStyle>
   title: string
-  navbarStyle?: ReactNative.ViewStyle
 }
 
 const CustomNavbar: FunctionComponent<Props> = ({
   style,
   title,
   titleStyle,
-  navbarStyle,
 }) => {
   const navigation = useNavigation()
   const pop = useCallback(() => {
+    // @ts-ignore
     navigation.pop()
   }, [navigation])
+  const insets = useInsets()
+  const navHeight = insets.top + 44
+
+  // @ts-ignore
+  const _styles: ViewStyle = [
+    {
+      position: 'relative',
+      paddingTop: insets.top,
+      justifyContent: 'center',
+      alignItems: 'flex-end',
+      height: navHeight,
+      backgroundColor: 'transparent',
+    },
+    style,
+  ]
+
   return (
-    <Row style={[styles.navbar, style]}>
+    <Row style={_styles}>
       {navigation.canGoBack() && (
-        <View style={styles.leftContainer}>
+        <View
+          style={{
+            justifyContent: 'center',
+            position: 'absolute',
+            left: 20,
+            top: insets.top,
+            bottom: 0,
+          }}
+        >
           <TouchableOpacity style={styles.buttonContainer} onPress={pop}>
-            <ION style={styles.icon} name='ios-chevron-back' />
+            <FA5Pro style={styles.icon} name='chevron-back' />
           </TouchableOpacity>
         </View>
       )}
@@ -36,7 +60,6 @@ const CustomNavbar: FunctionComponent<Props> = ({
   )
 }
 
-const navHeight = styleVariables.insets.top + 44
 const styles = ReactNative.StyleSheet.create({
   titleContainer: {
     height: 44,
@@ -52,23 +75,8 @@ const styles = ReactNative.StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  leftContainer: {
-    justifyContent: 'center',
-    position: 'absolute',
-    left: 20,
-    top: styleVariables.insets.top,
-    bottom: 0,
-  },
   icon: {
     fontSize: 24,
-  },
-  navbar: {
-    position: 'relative',
-    paddingTop: styleVariables.insets.top,
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    height: navHeight,
-    backgroundColor: 'transparent',
   },
 })
 

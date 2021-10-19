@@ -1,23 +1,22 @@
-import React, { FunctionComponent, useEffect, useRef } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
-  withDelay,
   withTiming,
 } from 'react-native-reanimated'
 import useIsMount from 'common/providers/useIsMount'
-import { easingFade } from '../../../project/animation-util/reanimations'
+import { easingFade } from 'common/animation-util/reanimations'
 
-type ComponentType = ReactNative.ViewProps & {
-  value: number // between 0 and 1
+export type FadeType = ReactNative.ViewProps & {
+  value?: number // between 0 and 1
   startValue?: number
-  autostart: boolean
+  autostart?: boolean
   delay?: number
   duration?: number
   animatedValue?: number
 }
 
-const Fade: FunctionComponent<ComponentType> = ({
+const Fade: FunctionComponent<FadeType> = ({
   value,
   delay = 0,
   autostart,
@@ -26,10 +25,7 @@ const Fade: FunctionComponent<ComponentType> = ({
   ...props
 }) => {
   const isMount = useIsMount()
-  const animationValue = useSharedValue<number>(
-    autostart ? startValue : value,
-    false,
-  )
+  const animationValue = useSharedValue<number>(autostart ? startValue : value)
 
   useEffect(() => {
     if (isMount && !autostart) return // determine whether to start animation on mount
@@ -46,7 +42,15 @@ const Fade: FunctionComponent<ComponentType> = ({
         }) // animate to new value
       }, delay)
     }
-  }, [value, isMount, delay, duration, animationValue.value, autostart])
+  }, [
+    value,
+    isMount,
+    delay,
+    duration,
+    animationValue.value,
+    autostart,
+    animationValue,
+  ])
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
@@ -54,6 +58,7 @@ const Fade: FunctionComponent<ComponentType> = ({
     }
   })
 
+  // @ts-ignore
   return <Animated.View {...props} style={[animatedStyle, props.style]} />
 }
 

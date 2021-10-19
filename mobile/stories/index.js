@@ -1,24 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 import 'react-native-globals'
 import '../app/style/_style_screen'
 import '../app/components/base'
 import StorybookUIRoot, {
   getStory,
-  withPaddedContainer,
-  withNavbarWrapper,
   setup,
+  withNavbarWrapper,
+  withPaddedContainer,
 } from './setup'
 import ErrorMessage from '../app/components/ErrorMessage'
 import ExampleTabs from './examples/ExampleTabs'
-import Button, {
-  ButtonNav,
-  ButtonPrimary,
-} from '../app/components/base/forms/Button'
+import Button, { ButtonNav, ButtonPrimary } from 'components/base/forms/Button'
 import StackExample from './examples/StackExample'
 import SegmentedControl from 'components/SegmentedControl'
-import WithSetValue from '../app/project/animation-util/WithSetValue'
-import TextInput from '../app/components/base/forms/TextInput'
-import SelectBox from '../app/components/base/forms/SelectBox'
+import WithSetValue from '../../common/animation-util/WithSetValue'
+import TextInput from 'components/base/forms/TextInput'
+import SelectBox from 'components/base/forms/SelectBox'
 import ListItem from '../app/components/base/ListItem'
 import CustomModal from 'components/CustomModal'
 import BottomDrawer from 'components/BottomDrawer'

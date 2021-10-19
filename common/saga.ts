@@ -1,25 +1,14 @@
-import { put, all, takeLatest, takeEvery, select } from 'redux-saga/effects'
+import { all, put, takeLatest } from 'redux-saga/effects'
 import _data from './utils/_data'
 import { Actions, Callbacks } from './app-actions'
 import './project'
+import { handleResponse, postAction, updateAction } from './utils/saga-helpers'
+import { AnyAction } from 'redux'
 
 type IAction = Callbacks &
   AnyAction & {
     data?: any
   }
-import {
-  handleResponse,
-  updateAction,
-  // eslint-disable-next-line no-unused-vars
-  deleteAction,
-  // eslint-disable-next-line no-unused-vars
-  errorHandler,
-  // eslint-disable-next-line no-unused-vars
-  getAction,
-  postAction,
-} from './utils/saga-helpers'
-import { AnyAction } from 'redux'
-import { AppState, RequestTypes } from './state-type'
 
 // Called when the application starts up, if using SSR this is done in the server
 export function* startup(action: IAction) {

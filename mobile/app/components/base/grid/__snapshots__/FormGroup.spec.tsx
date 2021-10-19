@@ -1,10 +1,10 @@
 import * as React from 'react'
-import Container from './Container'
+import FormGroup from '../FormGroup'
 import renderer from 'react-test-renderer'
 
-describe('<Container />', () => {
+describe('<FormGroup />', () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<Container />)
+    const tree = renderer.create(<FormGroup></FormGroup>)
     expect(tree).toMatchSnapshot()
   })
 })

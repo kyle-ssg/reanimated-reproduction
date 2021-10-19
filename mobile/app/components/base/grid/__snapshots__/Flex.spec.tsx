@@ -1,10 +1,10 @@
 import * as React from 'react'
-import Checkbox from './Checkbox'
+import Flex from '../Flex'
 import renderer from 'react-test-renderer'
 
-describe.skip('<Checkbox />', () => {
+describe('<Flex />', () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<Checkbox />)
+    const tree = renderer.create(<Flex />)
     expect(tree).toMatchSnapshot()
   })
 })

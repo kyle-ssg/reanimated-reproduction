@@ -1,10 +1,7 @@
 import React from 'react'
-import { Component } from 'react'
 import ScreenContainer from 'components/ScreenContainer'
 import withScreen, { Screen } from './withScreen'
 import { RouteUrls } from '../route-urls'
-import { useNavigation } from '@react-navigation/native'
-import { goBack } from '../../e2e/testHelpers'
 import ModalStack from 'navigation/ModalStack'
 import { routes } from '../routes'
 

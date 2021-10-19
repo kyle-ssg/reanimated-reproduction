@@ -1,10 +1,10 @@
 import * as React from 'react'
-import ListItem from './ListItem'
+import Row from '../Row'
 import renderer from 'react-test-renderer'
 
-describe('<ListItem />', () => {
+describe('<Row />', () => {
   it(`renders correctly`, () => {
-    const tree = renderer.create(<ListItem />)
+    const tree = renderer.create(<Row />)
     expect(tree).toMatchSnapshot()
   })
 })

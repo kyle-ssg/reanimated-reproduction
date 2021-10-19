@@ -1,13 +1,12 @@
 import React from 'react'
-import Flex from './Flex'
 
-interface Props {
+export type ColumnType = {
   flexStyle?: any
-  style?: ReactNative.ViewStyle
+  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
   children?: React.ReactNode
 }
 
-export const Column: React.FC<Props> = ({ style, children }) => (
+export const Column: React.FC<ColumnType> = ({ style, children }) => (
   <View style={[Styles.column, style]}>{children}</View>
 )
 

@@ -1,11 +1,5 @@
 import React, { useRef, useState } from 'react'
 import cn from 'classnames'
-import Button, {
-  ButtonText,
-  ButtonTertiary,
-  ButtonPrimary,
-  ButtonSecondary,
-} from 'components/base/forms/Button'
 import useOnClickOutside from '../useClickOutside'
 
 interface InputDropdown {
