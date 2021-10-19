@@ -1,7 +1,6 @@
 require('@babel/polyfill')
 
 const { join } = require('path')
-const cacheableResponse = require('cacheable-response')
 const express = require('express')
 const next = require('next')
 
@@ -10,26 +9,6 @@ const dev = process.env.NODE_ENV !== 'production'
 console.log('Running NEXTJS Dev:', dev)
 const app = next({ dev })
 const handle = app.getRequestHandler()
-
-const IS_SSR_CACHE_ENABLED = !dev // TODO move to config
-
-/**
- * Creates a request helper function to make a request cacheable for x TTL
- * @param ttl - how long to persist
- * @returns function({req?: *, res?: *, [p: string]: *}): *}
- */
-const ssrCache = (ttl) => {
-  return cacheableResponse({
-    ttl, // 1hour
-    get: async ({ req, res, pagePath, queryParams }) => {
-      console.log('Caching', req.url) // eslint-disable-line no-console
-      return {
-        data: await app.renderToHTML(req, res, pagePath, queryParams),
-      }
-    },
-    send: ({ data, res }) => res.send(data),
-  })
-}
 
 Promise.all([app.prepare()]).then(() => {
   const server = express()
@@ -60,15 +39,6 @@ Promise.all([app.prepare()]).then(() => {
     res.setHeader('Content-Type', 'application/json')
     app.serveStatic(req, res, apple)
   })
-
-  if (IS_SSR_CACHE_ENABLED) {
-    const homeCache = ssrCache(1000 * 60 * 60)
-    server.get('/', (req, res) => {
-      const queryParams = { id: req.params.id }
-      const pagePath = '/'
-      return homeCache({ req, res, pagePath, queryParams })
-    })
-  }
 
   server.get('*', (req, res) => handle(req, res))
   server.post('*', (req, res) => handle(req, res))
