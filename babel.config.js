@@ -30,6 +30,7 @@ module.exports = {
           components: './components/',
           common: './common/',
           project: './project/',
+          mobile: './mobile/',
         },
       },
     ],

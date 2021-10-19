@@ -16,6 +16,9 @@
       ],
       "project/": [
         "./project/*"
+      ],
+      "mobile/": [
+        "./mobile/*"
       ]
     },
     "allowJs": true,
