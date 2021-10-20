@@ -21,9 +21,7 @@ interface RequestOptions {
   body?: string
 }
 const generateE2EURL = (url) => {
-  return url.includes('/media/upload') || url.includes('siteassist-media')
-    ? url
-    : `http://localhost:5000?url=${encodeURIComponent(url)}&namespace=${
+  return `http://localhost:5000?url=${encodeURIComponent(url)}&namespace=${
         Constants.E2E_NAMESPACE || 'default'
       }&baseUrl=${encodeURIComponent(Project.api)}`
 }
