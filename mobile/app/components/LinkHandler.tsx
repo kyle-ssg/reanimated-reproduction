@@ -5,11 +5,6 @@ import { useAppState } from '@react-native-community/hooks'
 import { rootPush } from 'navigation/RootNavigation'
 import { FirebaseMessagingTypes } from '@react-native-firebase/messaging'
 
-const appStoreURL = Platform.select({
-  ios: 'itms-apps://itunes.apple.com/us/app/apple-store/id1554478779?mt=8',
-  android: 'market://details?id=co.siteassist.mobile',
-})
-
 type ComponentType = {}
 const subscribe = async (id) => {
   if (id && !Constants.E2E) {

@@ -56,7 +56,7 @@ class MyDocument extends Document<{ locale: string }> {
             sizes='16x16'
             href='/images/favicon-16x16.png'
           />
-          <meta property='og:title' content='SiteAssist' />
+          <meta property='og:title' content='TheProject' />
           {/*<meta property="og:type" content="video.movie" />*/}
           {/*<meta*/}
           {/*  property="og:url"*/}
