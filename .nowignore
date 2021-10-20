@@ -1,4 +1,5 @@
-mobile
+mobile/ios
+mobile/android
 stories
 docs
 cli
