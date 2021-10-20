@@ -28,7 +28,6 @@ export interface RequestTypes {
   login?: {
     [extraProps: string]: any
   }
-  getProjects?: PageRequest<{}>
   getProfile?: {
     id: number
   }
