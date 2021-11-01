@@ -22,8 +22,8 @@ interface RequestOptions {
 }
 const generateE2EURL = (url) => {
   return `http://localhost:5000?url=${encodeURIComponent(url)}&namespace=${
-        Constants.E2E_NAMESPACE || 'default'
-      }&baseUrl=${encodeURIComponent(Project.api)}`
+    Constants.E2E_NAMESPACE || 'default'
+  }&baseUrl=${encodeURIComponent(Project.api)}`
 }
 const _data = {
   token: '',

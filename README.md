@@ -132,3 +132,6 @@ If you have any questions about our projects you can email <a href="mailto:proje
 - Make sure you have an env file at the root of the repository that has login credentials, or set them via env variables.
 - If there is a CI image that has java/chrome installed you can run ``npm run test:e2e:prod``
 
+# Adding jest / testing library
+
+The following libraries are needed in order to run our set unit tests:

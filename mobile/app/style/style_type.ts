@@ -39,6 +39,7 @@ export default asStyle({
 
   textBold: {
     fontFamily: styleVariables.boldFontFamily,
+    fontWeight: 'bold',
   },
 
   text: {

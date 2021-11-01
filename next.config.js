@@ -4,7 +4,6 @@ const withTM = require('next-transpile-modules')([
   'react-native-svg',
   'react-native-reanimated',
 ])
-const withOffline = require('next-offline')
 const withFonts = require('next-fonts')
 const withImages = require('next-images')
 
@@ -56,6 +55,6 @@ const nextConfig = {
 }
 
 module.exports = withPlugins(
-  [withTM, withFonts, withSourceMaps, withBundleAnalyzer],
+  [withTM, withFonts, withImages, withSourceMaps, withBundleAnalyzer],
   nextConfig,
 )
