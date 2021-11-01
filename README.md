@@ -134,4 +134,18 @@ If you have any questions about our projects you can email <a href="mailto:proje
 
 # Adding jest / testing library
 
-The following libraries are needed in order to run our set unit tests:
+For standard projects we use e2e tests, if you need to add jest / enzyme tests the boilerplate is setup to work with the following in devDependencies:
+
+```
+    "@testing-library/jest-dom": "5.9.0",
+    "@testing-library/react": "9.5.0",
+    "@types/enzyme": "3.10.5",
+    "@types/enzyme-adapter-react-16": "1.0.6",
+    "@types/jest": "26.0.14",
+    "@types/react-test-renderer": "16.9.3",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.2",
+    "jest": "26.0.1",
+    "react-test-renderer": "17.0.2",
+    "ts-jest": "26.1.0",
+```
