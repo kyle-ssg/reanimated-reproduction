@@ -5,12 +5,6 @@ import 'mobile/app/components/base/grid'
 import Fade from 'common/components/animation/Fade'
 import 'mobile/app/style/_style_screen'
 import 'mobile/app/components/base/type'
-import {
-  AppState,
-  AsyncStorage,
-  Clipboard,
-  NetInfo,
-} from 'polyfill-react-native'
 import './localization'
 import '../common/utils'
 import './api'
@@ -48,8 +42,4 @@ if (typeof projectOverrides !== 'undefined') {
   }
 }
 
-global.AppState = AppState
-global.NetInfo = NetInfo
-global.Clipboard = Clipboard
-global.AsyncStorage = AsyncStorage
 global.Link = Link

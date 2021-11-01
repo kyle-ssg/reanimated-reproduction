@@ -132,3 +132,20 @@ If you have any questions about our projects you can email <a href="mailto:proje
 - Make sure you have an env file at the root of the repository that has login credentials, or set them via env variables.
 - If there is a CI image that has java/chrome installed you can run ``npm run test:e2e:prod``
 
+# Adding jest / testing library
+
+For standard projects we use e2e tests, if you need to add jest / enzyme tests the boilerplate is setup to work with the following in devDependencies:
+
+```
+    "@testing-library/jest-dom": "5.9.0",
+    "@testing-library/react": "9.5.0",
+    "@types/enzyme": "3.10.5",
+    "@types/enzyme-adapter-react-16": "1.0.6",
+    "@types/jest": "26.0.14",
+    "@types/react-test-renderer": "16.9.3",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.2",
+    "jest": "26.0.1",
+    "react-test-renderer": "17.0.2",
+    "ts-jest": "26.1.0",
+```

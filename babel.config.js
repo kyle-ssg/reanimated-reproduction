@@ -9,18 +9,9 @@ module.exports = {
       },
     ],
   ],
-  env: {
-    production: {
-      plugins: [],
-    },
-    test: {
-      presets: [['@babel/preset-env'], '@babel/preset-react'],
-    },
-  },
   plugins: [
     'react-native-reanimated/plugin',
     ['react-native-web', { commonjs: true }],
-    ['@babel/proposal-class-properties'],
     [
       'module-resolver',
       {
