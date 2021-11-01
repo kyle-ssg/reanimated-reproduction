@@ -4,6 +4,6 @@ module.exports = {
   '[Main Tests] - Register': (browser) => {
     browser
       .url(url) // visit the url
-      .waitForElementVisible('.container'); // wait for the sign up fields to show
+      .waitForElementVisible('body'); // wait for the sign up fields to show
   },
 };
