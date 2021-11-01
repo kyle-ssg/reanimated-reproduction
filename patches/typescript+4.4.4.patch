@@ -1,11 +1,25 @@
 diff --git a/node_modules/typescript/lib/lib.dom.d.ts b/node_modules/typescript/lib/lib.dom.d.ts
-index bb2e999..4e7eb90 100644
+index fdcbb9f..45011e0 100644
 --- a/node_modules/typescript/lib/lib.dom.d.ts
 +++ b/node_modules/typescript/lib/lib.dom.d.ts
-@@ -15292,11 +15292,6 @@ interface Text extends CharacterData, Slottable {
-     splitText(offset: number): Text;
- }
- 
+@@ -14466,25 +14466,6 @@ declare var SubtleCrypto: {
+     prototype: SubtleCrypto;
+     new(): SubtleCrypto;
+ };
+-
+-/** The textual content of Element or Attr. If an element has no markup within its content, it has a single child implementing Text that contains the element's text. However, if the element contains markup, it is parsed into information items and Text nodes that form its children. */
+-interface Text extends CharacterData, Slottable {
+-    readonly assignedSlot: HTMLSlotElement | null;
+-    /**
+-     * Returns the combined data of all direct Text node siblings.
+-     */
+-    readonly wholeText: string;
+-    /**
+-     * Splits data at the given offset and returns the remainder as Text node.
+-     */
+-    splitText(offset: number): Text;
+-}
+-
 -declare var Text: {
 -    prototype: Text;
 -    new(data?: string): Text;
@@ -14,10 +28,11 @@ index bb2e999..4e7eb90 100644
  /** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
  interface TextDecoder extends TextDecoderCommon {
      /**
-@@ -19224,15 +19219,6 @@ interface SVGElementTagNameMap {
+@@ -18261,16 +18242,6 @@ interface SVGElementTagNameMap {
+ 
  /** @deprecated Directly use HTMLElementTagNameMap or SVGElementTagNameMap as appropriate, instead. */
  type ElementTagNameMap = HTMLElementTagNameMap & Pick<SVGElementTagNameMap, Exclude<keyof SVGElementTagNameMap, keyof HTMLElementTagNameMap>>;
- 
+-
 -declare var Audio: {
 -    new(src?: string): HTMLAudioElement;
 -};
@@ -27,6 +42,6 @@ index bb2e999..4e7eb90 100644
 -declare var Option: {
 -    new(text?: string, value?: string, defaultSelected?: boolean, selected?: boolean): HTMLOptionElement;
 -};
- declare var applicationCache: ApplicationCache;
+ /** @deprecated This is a legacy alias of `navigator`. */
  declare var clientInformation: Navigator;
- declare var closed: boolean;
+ /**
