@@ -1,10 +1,10 @@
 import React from 'react'
 import { ComponentStory } from '@storybook/react'
-import '../styles/Global.scss'
-import ModalAlert from '../components/ModalAlert'
+import '../../styles/Global.scss'
+import ModalAlert from 'components/ModalAlert'
 
 export default {
-  title: 'Modal Alert',
+  title: 'modals/Modal Alert',
   component: ModalAlert,
 }
 

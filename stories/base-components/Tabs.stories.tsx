@@ -1,10 +1,10 @@
 import React from 'react'
 import { ComponentStory } from '@storybook/react'
-import '../styles/Global.scss'
-import Tabs from '../components/base/forms/Tabs'
+import '../../styles/Global.scss'
+import Tabs from 'components/base/forms/Tabs'
 
 export default {
-  title: 'Tabs',
+  title: 'Base/Tabs',
   component: Tabs,
 }
 

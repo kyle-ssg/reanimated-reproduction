@@ -1,10 +1,10 @@
 import React from 'react'
 import { ComponentStory } from '@storybook/react'
-import '../styles/Global.scss'
-import DatePicker from '../components/DatePicker'
+import '../../styles/Global.scss'
+import DatePicker from 'components/DatePicker'
 
 export default {
-  title: 'DatePicker',
+  title: 'forms/DatePicker',
   component: DatePicker,
 }
 

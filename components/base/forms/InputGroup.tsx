@@ -8,6 +8,7 @@ export interface InputGroup {
   component?: React.ReactNode
   textarea?: boolean
   isValid?: boolean
+  id?: string
   onBlur?: (e: React.FocusEvent) => void
   disabled?: string
   errorMessage?: string
@@ -32,6 +33,7 @@ const InputGroup: React.FC<InputGroup> = (
     textarea,
     disabled,
     value,
+    id:_id,
     defaultValue,
     onChange,
     type,
@@ -44,7 +46,7 @@ const InputGroup: React.FC<InputGroup> = (
   //     input.focus();
   //   };
 
-  const id = inputProps.id || inputProps.name || Utils.GUID()
+  const id = _id || inputProps.id || inputProps.name || Utils.GUID()
   return (
     <div className={`form-group ${className}` || ''}>
       <label htmlFor={id} className='cols-sm-2 control-label'>

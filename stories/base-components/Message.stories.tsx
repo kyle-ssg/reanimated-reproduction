@@ -1,10 +1,10 @@
 import React from 'react'
 import { ComponentStory } from '@storybook/react'
-import '../styles/Global.scss'
-import Message, { ErrorMessage, SuccessMessage } from '../components/Messages'
+import '../../styles/Global.scss'
+import Message, { ErrorMessage, SuccessMessage } from 'components/Messages'
 
 export default {
-  title: 'Message',
+  title: 'Base/Message',
   component: React.Component,
 }
 

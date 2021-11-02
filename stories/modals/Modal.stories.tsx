@@ -1,11 +1,11 @@
 import React from 'react'
 import { ComponentStory } from '@storybook/react'
-import '../styles/Global.scss'
-import { Modal, ModalBody, ModalFooter, ModalHeader } from '../components/Modal'
-import Button from '../components/base/forms/Button'
+import '../../styles/Global.scss'
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'components/Modal'
+import Button from 'components/base/forms/Button'
 
 export default {
-  title: 'Modal',
+  title: 'modals/Modal',
   component: Modal,
 }
 

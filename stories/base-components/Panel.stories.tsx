@@ -1,10 +1,10 @@
 import React from 'react'
 import { ComponentStory } from '@storybook/react'
-import '../styles/Global.scss'
-import Panel from '../components/extras/Panel'
+import '../../styles/Global.scss'
+import Panel from 'components/extras/Panel'
 
 export default {
-  title: 'Panel',
+  title: 'Base/Panel',
   component: Panel,
 }
 

@@ -7,6 +7,7 @@ export type Select = React.SelectHTMLAttributes<any> & {
   touched?: boolean
   children?: React.ReactNode
   errorMessage?: string
+  id?:string
   label?: string
 }
 
@@ -17,15 +18,17 @@ const Select: React.FC<Select> = ({
   isValid,
   children,
   errorMessage,
+  id,
   ...props
 }) => {
   const [shouldValidate, setShouldValidate] = useState<boolean>(false)
   return (
     <>
-      {title && <label className='select__text'>{title}</label>}
+      {title && <label htmlFor={id} className='select__text'>{title}</label>}
       <div className='select'>
         <select
           {...props}
+          id={id}
           onBlur={(e) => {
             setShouldValidate(true)
             props.onBlur && props.onBlur(e)

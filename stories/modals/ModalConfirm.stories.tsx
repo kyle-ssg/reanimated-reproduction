@@ -1,10 +1,10 @@
 import React from 'react'
 import { ComponentStory } from '@storybook/react'
-import '../styles/Global.scss'
-import Confirm from '../components/ModalConfirm'
+import '../../styles/Global.scss'
+import Confirm from 'components/ModalConfirm'
 
 export default {
-  title: 'Modal Confirm',
+  title: 'modals/Modal Confirm',
   component: Confirm,
 }
 

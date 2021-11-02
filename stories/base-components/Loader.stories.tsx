@@ -1,10 +1,10 @@
 import React from 'react'
 import { ComponentStory } from '@storybook/react'
-import '../styles/Global.scss'
-import Loader from '../components/Loader'
+import '../../styles/Global.scss'
+import Loader from 'components/Loader'
 
 export default {
-  title: 'Loader',
+  title: 'Base/Loader',
   component: Loader,
 }
 

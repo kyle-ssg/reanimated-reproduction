@@ -5,11 +5,12 @@ import { ButtonText } from 'components/base/forms/Button'
 interface Input {
   textarea?: boolean
   isValid?: boolean
-  placeholderChar?: string
+  placeholder?: string
   inputClassName?: string
   name?: string
   label?: string
   icon?: string
+  id?: string
   type?: string
   textButton?: string
   className?: string
@@ -42,7 +43,8 @@ const Input: React.FC<Input> = ({
   onFocus,
   onIconClick,
   onKeyDown,
-  placeholderChar = ' ',
+  id,
+  placeholder = ' ',
   textButton,
   textarea,
   touched,
@@ -94,11 +96,12 @@ const Input: React.FC<Input> = ({
     <div data-test={`${name}-container`} className={classNameHandler}>
       {textarea ? (
         <>
-          {label && <label htmlFor={name}>{label}</label>}
+          {label && <label htmlFor={id}>{label}</label>}
           <textarea
             name={name}
-            placeholder={placeholderChar}
+            placeholder={placeholder}
             {...rest}
+            id={id}
             // @ts-ignore
             ref={ref}
             onFocus={focusHandler}
@@ -112,7 +115,7 @@ const Input: React.FC<Input> = ({
         <>
           <div className='row'>
             <div className='col'>
-              {!!label && <label htmlFor={name}>{label}</label>}
+              {!!label && <label htmlFor={id}>{label}</label>}
             </div>
             <div className='text-right mr-3'>
               {!!textButton && (
@@ -126,12 +129,13 @@ const Input: React.FC<Input> = ({
             type={type === 'password' && showPassword ? '' : type}
             {...rest}
             // @ts-ignore
+            id={id}
             ref={ref}
             onFocus={focusHandler}
             onKeyDown={_onKeyDown}
             onBlur={blur}
             value={value}
-            placeholder={placeholderChar}
+            placeholder={placeholder}
             className={combinedInputClassName}
           />
           {icon ||
