@@ -4,7 +4,6 @@ module.exports = {
     browser: true,
   },
   extends: [
-    'plugin:jest/recommended',
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
@@ -21,7 +20,7 @@ module.exports = {
     },
     parser: 'typescript-eslint',
   },
-  plugins: ['react', 'react-hooks', 'jest'],
+  plugins: ['react', 'react-hooks'],
   rules: {
     'react/jsx-no-undef': ['error', { allowGlobals: true }],
     'default-case': 'error',

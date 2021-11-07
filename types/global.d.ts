@@ -70,7 +70,7 @@ declare global {
   declare let styleVariables = projectStyles
   declare let Row: any
   declare let Select: any
-  declare let Strings = Strings.en
+  declare let Strings: typeof Strings.en
   declare let SuccessMessage: any
   declare let Utils: any
   declare let _data: any

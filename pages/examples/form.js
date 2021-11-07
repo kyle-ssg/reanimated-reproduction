@@ -2,12 +2,6 @@ import React, { Component } from 'react'
 import { withRouter } from 'next/router'
 import { withFormik } from 'formik'
 import * as yup from 'yup'
-import withGrecaptcher from '../components/extras/withGracecaptcher'
-
-//How does this work ?
-// set formly and grecaptcher in project.js
-// Create a formly project: https://formlyapp.com/
-// Create a grecaptcher project: https://www.google.com/recaptcha/admin/
 
 const schema = yup.object().shape({
   name: yup.string().required('You really need to enter a name'),
@@ -19,6 +13,10 @@ const schema = yup.object().shape({
 
 class FormPage extends Component {
   static displayName = 'FormPage'
+
+  // Do server rendered actions such as fetching data here
+  // static async getInitialProps({ Component, ctx }) {
+  // }
 
   componentDidMount() {
     API.trackPage('FormPage')
@@ -34,19 +32,20 @@ class FormPage extends Component {
     this.props.setFieldValue('alias', `mega${dog}`)
   }
 
+  onSubmit = (e) => {
+    Utils.preventDefault(e)
+
+    // Do anything here that needs doing before form validation and submission
+
+    this.props.submitForm()
+  }
+
   render() {
     const { values, touched, errors, handleChange, handleBlur, setFieldValue } =
       this.props
-    const hasErrors = !!Object.keys(errors).length || !this.props.grecaptcher
-    const url =
-      'https://post.formlyapp.com/' + Project.formly + '?redirect=/?submitted=1'
+    const hasErrors = !!Object.keys(errors).length
     return (
-      <form
-        method='POST'
-        onSubmit={hasErrors ? Utils.preventDefault : undefined}
-        action={url}
-        className='col-md-8 mt-4'
-      >
+      <form onSubmit={hasErrors ? Utils.preventDefault : this.onSubmit}>
         <Column>
           <label htmlFor='name' className='mr-2'>
             Name
@@ -110,13 +109,6 @@ class FormPage extends Component {
             <div id='feedback'>{errors.alias.value}</div>
           )}
         </Column>
-
-        {Project.grecaptcher && (
-          <div className='mt-4 mb-3'>
-            <div id='recaptcha' />
-          </div>
-        )}
-
         <Button disabled={hasErrors} type='submit'>
           Submit
         </Button>
@@ -125,21 +117,19 @@ class FormPage extends Component {
   }
 }
 
-export default withGrecaptcher(
-  withRouter(
-    withFormik({
-      mapPropsToValues: () => ({
-        name: '',
-        dog: '',
-        alias: { value: '' },
-        occupation: '',
-      }),
-      validateOnMount: true,
-      validationSchema: schema,
-      handleSubmit: (values) => {
-        // Call your action with form values
-        console.log('handleSubmit', values)
-      },
-    })(FormPage),
-  ),
+export default withRouter(
+  withFormik({
+    mapPropsToValues: () => ({
+      name: '',
+      dog: '',
+      alias: { value: '' },
+      occupation: '',
+    }),
+    validationSchema: schema,
+    validateOnMount: true,
+    handleSubmit: (values) => {
+      // Call your action with form values
+      console.log('handleSubmit', values)
+    },
+  })(FormPage),
 )
