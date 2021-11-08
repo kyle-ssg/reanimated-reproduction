@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useAuth } from '../common/providers/useAuth'
 import 'project/polyfill'
 import SharedComponent from '../common/components/SharedComponent'
-
+import { toast } from 'react-toastify'
 const HomePage = () => {
   const router = useRouter()
   const { user } = useAuth()
@@ -16,14 +16,14 @@ const HomePage = () => {
   return (
     <div className='container'>
       <div>
-        <ButtonPrimary>Click me!</ButtonPrimary>
+        <ButtonPrimary onClick={() => toast(<div>Hi</div>, { type: 'info' })}>
+          Click me!
+        </ButtonPrimary>
         <Loader />
         <p>Good morning</p>
       </div>
 
-      <div>
-        <SharedComponent />
-      </div>
+      <div></div>
     </div>
   )
 }

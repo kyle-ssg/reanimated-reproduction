@@ -8,6 +8,7 @@ import '../project/project-components'
 import createStore from '../common/store'
 import Toast from '../components/toast'
 import _data from '../common/utils/_data'
+import { ToastContainer, toast } from 'react-toastify'
 
 import '../styles/Global.scss'
 import { Store } from 'redux'
@@ -146,9 +147,7 @@ class MyApp extends App<{ store: Store }> {
                 <div id='modal' />
                 <div id='confirm' />
                 <div id='alert' />
-                <div id='toast'>
-                  <Toast />
-                </div>
+                <ToastContainer />
                 {E2E && (
                   <React.Fragment>
                     <div className='e2e' id='e2e-request' />
