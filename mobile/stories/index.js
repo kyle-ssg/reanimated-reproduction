@@ -32,7 +32,7 @@ setup(() => {
               onDismissPress={() => setValue(false)}
               visible={value}
             >
-              <Text>Content</Text>
+              <Text>2</Text>
             </BottomDrawer>
             <Button onPress={() => setValue(true)}>
               {`Toggle Modal(${value})`}
@@ -44,7 +44,7 @@ setup(() => {
     .add('disable manual dismissing', () => (
       <WithSetValue defaultValue={false}>
         {({ value, setValue }) => (
-          <View style={Styles.p10}>
+          <>
             <BottomDrawer
               preventDismiss
               height={DeviceHeight / 2}
@@ -58,7 +58,7 @@ setup(() => {
             <Button onPress={() => setValue(true)}>
               {`Toggle Modal(${value})`}
             </Button>
-          </View>
+          </>
         )}
       </WithSetValue>
     ))
