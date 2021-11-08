@@ -87,3 +87,5 @@ test-report/
 
 # We don't do yarn
 yarn.lock
+
+*.hprof

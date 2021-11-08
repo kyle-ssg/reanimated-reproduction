@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from 'react-native-screens/native-stack'
 import { RouteUrls } from '../route-urls'
 import BottomNav from 'components/BottomNav'
 import { routes } from '../routes'
+import useInsets from 'components/base/useInset'
 
 type ComponentType = {}
 
@@ -41,12 +42,14 @@ const Stack2 = () => (
 )
 
 const MainAppNavigator = ({ route }) => {
+  const insets = useInsets()
+
   return (
     <Flex
       style={[
         Styles.body,
         {
-          paddingTop: styleVariables.insets.top,
+          paddingTop: insets.top,
         },
       ]}
     >
