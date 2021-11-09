@@ -2,7 +2,7 @@ import fetch from 'isomorphic-unfetch' // we do this here instead of _data.js as
 import './ie11'
 import 'common/global-rn'
 import 'mobile/app/components/base/grid'
-// import Fade from 'common/components/animation/Fade'
+import Fade from 'common/components/animation/Fade'
 import 'mobile/app/style/_style_screen'
 import 'mobile/app/components/base/type'
 import 'mobile/app/components/base/grid'
@@ -14,7 +14,7 @@ import './libs'
 import React from 'react'
 import Link from 'next/link'
 
-// global.Fade = Fade
+global.Fade = Fade
 global.fetch = fetch
 
 if (typeof projectOverrides !== 'undefined') {
