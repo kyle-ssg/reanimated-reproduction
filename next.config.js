@@ -1,4 +1,5 @@
 const withPlugins = require('next-compose-plugins')
+const path = require('path')
 const withTM = require('next-transpile-modules')([
   'react-native-safe-area-context',
   'react-native-svg',
@@ -32,6 +33,7 @@ const nextConfig = {
       config.plugins = config.plugins.concat(base.plugins)
     }
 
+    config.resolve.modules = [path.resolve(__dirname), 'node_modules']
     config.module.rules.push({
       test: /\.md$/,
       use: 'raw-loader',
@@ -42,6 +44,7 @@ const nextConfig = {
       'lottie-react-native': 'react-native-web-lottie',
       // Transform all direct `react-native` imports to `react-native-web`
       'react-native$': 'react-native-web',
+      'react$': path.resolve(path.resolve(__dirname), 'node_modules/react'),
     }
     config.resolve.extensions = [
       '.web.js',

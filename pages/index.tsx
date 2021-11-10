@@ -22,7 +22,7 @@ const HomePage = () => {
         <Loader />
         <p>Good morning</p>
       </div>
-
+      <SharedComponent />
       <div></div>
     </div>
   )
