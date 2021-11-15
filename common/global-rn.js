@@ -2,7 +2,7 @@
 import * as ReactNative from 'react-native'
 global.React = require('react')
 import { View } from 'react-native'
-global.ReactNative = ReactNative;
+global.ReactNative = ReactNative
 //React native components
 global.ActivityIndicator = ReactNative.ActivityIndicator
 global.Button = ReactNative.Button

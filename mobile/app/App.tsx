@@ -12,6 +12,7 @@ import LanguageHandler from 'common/LanguageHandler'
 import 'common/utils/_data'
 import { LaunchArguments } from 'react-native-launch-arguments'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import BreakpointProvider from 'components/base/BreakpointProvider'
 
 const launchArgs = LaunchArguments.value()
 if (launchArgs.namespace) {
@@ -39,11 +40,13 @@ const App: FunctionComponent<Props> = () => (
           />
           <NeverUpdate>
             {/*// @ts-ignore*/}
-            <LanguageHandler>
-              <NavigationContainer linking={linking} ref={navigationRef}>
-                <AppNavigator />
-              </NavigationContainer>
-            </LanguageHandler>
+            <BreakpointProvider>
+              <LanguageHandler>
+                <NavigationContainer linking={linking} ref={navigationRef}>
+                  <AppNavigator />
+                </NavigationContainer>
+              </LanguageHandler>
+            </BreakpointProvider>
           </NeverUpdate>
         </PersistGate>
       </Provider>

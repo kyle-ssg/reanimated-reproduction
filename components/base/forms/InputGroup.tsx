@@ -33,7 +33,7 @@ const InputGroup: React.FC<InputGroup> = (
     textarea,
     disabled,
     value,
-    id:_id,
+    id: _id,
     defaultValue,
     onChange,
     type,

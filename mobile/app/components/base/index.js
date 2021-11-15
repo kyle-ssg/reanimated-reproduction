@@ -22,8 +22,8 @@ import Loader from 'components/base/Loader.tsx'
 
 import ListItem from 'components/base/ListItem'
 // Animation
-global.Fade = require('../../../../common/components/animation/Fade')
-
+import Fade from 'components/base/animation/Fade'
+global.Fade = Fade
 global.Button = Button
 global.ButtonPrimary = ButtonPrimary
 global.ButtonText = ButtonText

@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   presets: [
     [
@@ -17,6 +19,10 @@ module.exports = {
       {
         alias: {
           'react-native$': 'react-native-web',
+          'react-native-reanimated': path.resolve(
+            __dirname,
+            './node_modules/react-native-reanimated',
+          ),
           'lottie-react-native$': 'react-native-web-lottie',
           components: './components/',
           common: './common/',
