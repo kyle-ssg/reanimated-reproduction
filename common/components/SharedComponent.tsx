@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from 'react'
-import Col from './grid/Col.mobile'
+import Col from './grid/Col'
 type ComponentType = {}
 const SharedComponent: FunctionComponent<ComponentType> = ({}) => {
-  // <Fade duration={5000} value={1} autostart> Currently breaks storybook
   return (
     <Fade autostart duration={10000} value={1}>
       <Row style={{ flexWrap: 'wrap' }}>
