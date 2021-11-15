@@ -35,6 +35,10 @@ module.exports = {
               common: './common/',
               project: './project/',
               mobile: './mobile/',
+              'react-native-reanimated': path.resolve(
+                __dirname,
+                '../node_modules/react-native-reanimated',
+              ),
             },
           },
         ],
@@ -54,6 +58,10 @@ module.exports = {
       ...(config.resolve.alias || {}),      // Transform all direct `react-native` imports to `react-native-web`
       'react-native$': 'react-native-web',
       '@storybook/react-native': '@storybook/react',
+      'react-native-reanimated': path.resolve(
+        __dirname,
+        '../node_modules/react-native-reanimated',
+      ),
     }
     config.resolve.extensions = [ '.web.js', '.web.jsx', '.web.tsx', '.mjs', '.js',  '.jsx', '.ts', '.tsx',   '.cjs']
     config.module.rules.map((v)=>{

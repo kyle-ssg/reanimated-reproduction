@@ -7,7 +7,7 @@ export type Select = React.SelectHTMLAttributes<any> & {
   touched?: boolean
   children?: React.ReactNode
   errorMessage?: string
-  id?:string
+  id?: string
   label?: string
 }
 
@@ -24,7 +24,11 @@ const Select: React.FC<Select> = ({
   const [shouldValidate, setShouldValidate] = useState<boolean>(false)
   return (
     <>
-      {title && <label htmlFor={id} className='select__text'>{title}</label>}
+      {title && (
+        <label htmlFor={id} className='select__text'>
+          {title}
+        </label>
+      )}
       <div className='select'>
         <select
           {...props}

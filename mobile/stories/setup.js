@@ -12,6 +12,7 @@ import '../app/project/api/api'
 import _store from 'common/store'
 import defaultNavigationOptions from '../app/style/navigation_styles'
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
+import BreakpointProvider from 'components/base/BreakpointProvider'
 
 const store = _store({}, true)
 
@@ -30,13 +31,15 @@ export const withProvider = (story) => (
   <Provider store={store}>{story()}</Provider>
 )
 export const withSafeArea = (story) => (
-  <BottomSheetModalProvider>
-    <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1, marginBottom: 80 }}>
-        {story()}
-      </SafeAreaView>
-    </SafeAreaProvider>
-  </BottomSheetModalProvider>
+  <BreakpointProvider>
+    <BottomSheetModalProvider>
+      <SafeAreaProvider>
+        <SafeAreaView style={{ flex: 1, marginBottom: 80 }}>
+          {story()}
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </BottomSheetModalProvider>
+  </BreakpointProvider>
 )
 
 export const withPaddedContainer = (story) => (

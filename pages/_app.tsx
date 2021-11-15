@@ -15,6 +15,7 @@ import { Store } from 'redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import LanguageHandler from '../common/LanguageHandler'
 import Head from 'next/head'
+import BreakpointProvider from '../mobile/app/components/base/BreakpointProvider'
 
 let initialRender = false
 
@@ -141,20 +142,22 @@ class MyApp extends App<{ store: Store }> {
           {/*// @ts-ignore*/}
           <PersistGate persistor={store.__PERSISTOR} loading={null}>
             <LanguageHandler>
-              <React.Fragment>
-                {/*<Header />*/}
-                {getLayout(<Component {...pageProps}></Component>)}
-                <div id='modal' />
-                <div id='confirm' />
-                <div id='alert' />
-                <ToastContainer />
-                {E2E && (
-                  <React.Fragment>
-                    <div className='e2e' id='e2e-request' />
-                    <div className='e2e' id='e2e-error' />
-                  </React.Fragment>
-                )}
-              </React.Fragment>
+              <BreakpointProvider>
+                <React.Fragment>
+                  {/*<Header />*/}
+                  {getLayout(<Component {...pageProps}></Component>)}
+                  <div id='modal' />
+                  <div id='confirm' />
+                  <div id='alert' />
+                  <ToastContainer />
+                  {E2E && (
+                    <React.Fragment>
+                      <div className='e2e' id='e2e-request' />
+                      <div className='e2e' id='e2e-error' />
+                    </React.Fragment>
+                  )}
+                </React.Fragment>
+              </BreakpointProvider>
             </LanguageHandler>
           </PersistGate>
         </Provider>

@@ -19,6 +19,7 @@ import SelectBox from 'components/base/forms/SelectBox'
 import ListItem from '../app/components/base/ListItem'
 import CustomModal from 'components/CustomModal'
 import BottomDrawer from 'components/BottomDrawer'
+import SharedComponent from 'common/components/SharedComponent'
 
 setup(() => {
   getStory('Bottom Drawer')
@@ -244,6 +245,14 @@ setup(() => {
         <ListItem>
           <Text>List Item text</Text>
         </ListItem>
+      </>
+    ))
+  getStory('SharedComponent')
+    .addDecorator(withPaddedContainer)
+    .addDecorator(withNavbarWrapper)
+    .add('all', () => (
+      <>
+        <SharedComponent />
       </>
     ))
 })
