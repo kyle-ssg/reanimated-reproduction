@@ -3,7 +3,7 @@ import { ComponentStory } from '@storybook/react'
 import '../../styles/Global.scss'
 import 'project/polyfill'
 import SharedComponent from 'common/components/SharedComponent'
-import BreakpointProvider from '../../mobile/app/components/base/BreakpointProvider'
+import BreakpointProvider from 'mobile/app/components/base/BreakpointProvider'
 export default {
   title: 'shared/SharedComponent',
   component: SharedComponent,

@@ -30,7 +30,6 @@ const TheComponent: FunctionComponent<ColType> = ({
   xlHidden,
 }) => {
   const breakpoint = useContext(BreakpointContext)
-  console.log('Render', breakpoint)
   const styles = useMemo(() => {
     const breakpointValue = breakpointValues[breakpoint]
     const _styles: ViewStyle[] = []
