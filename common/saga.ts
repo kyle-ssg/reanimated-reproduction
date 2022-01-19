@@ -111,7 +111,6 @@ function* rootSaga() {
     takeLatest(Actions.CONFIRM_EMAIL, confirmEmail),
     takeLatest(Actions.UPDATE_USER, updateUser),
     takeLatest(Actions.STARTUP, startup),
-    // test
     // END OF TAKE_LATEST
     // KEEP THE ABOVE LINE IN, IT IS USED BY OUR CLI
   ])

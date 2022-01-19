@@ -24,6 +24,7 @@ cache: &global_cache
 
 .mobile_deploy_common_before_script: &mobile_deploy_common_before_script
   before_script:
+    - echo node -v
     - echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p # - used to increase file watchers limit on Linux
     - cd mobile
     - npm i
@@ -54,7 +55,6 @@ deploy-mobile-android-production:
     ENV: prod
   <<: *mobile_deploy_common_before_script
   script:
-    - node -v
     - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_ANDROID_PRODUCTION Production master android $CODE_PUSH_NAME_ANDROID
   only:
     <<: *mobile_deploy_common_required_changes
