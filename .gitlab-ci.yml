@@ -54,6 +54,7 @@ deploy-mobile-android-production:
     ENV: prod
   <<: *mobile_deploy_common_before_script
   script:
+    - node -v
     - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_ANDROID_PRODUCTION Production master android $CODE_PUSH_NAME_ANDROID
   only:
     <<: *mobile_deploy_common_required_changes
