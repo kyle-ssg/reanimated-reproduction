@@ -6,7 +6,7 @@ import { IncomingMessage } from 'http'
 import acceptLanguageParser from 'accept-language-parser'
 import Strings from './localisation'
 import { APIType } from 'common/types/api-type'
-import { setApi } from 'common/api/api'
+import { setApi } from 'common/api'
 import storage from './async-storage-api'
 interface WebAPI extends APIType {
   getStoredLocale: (req?: IncomingMessage) => Promise<string>

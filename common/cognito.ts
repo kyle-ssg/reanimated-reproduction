@@ -1,5 +1,5 @@
 // import Amplify, { Auth } from 'aws-amplify'
-// import { getApi } from './api/api'
+// import { getApi } from './api'
 
 // "amazon-cognito-identity-js": "^5.2.6",
 //   "aws-amplify": "^4.3.14",

@@ -1,7 +1,7 @@
 // import SecuredStorage from 'react-native-secured-storage';
 import MMKVStorage from 'react-native-mmkv-storage'
 import { StorageType } from 'common/types/api-type'
-import { getApi } from 'common/api/api'
+import { getApi } from 'common/api'
 
 const MMKV = new MMKVStorage.Loader().withEncryption().initialize()
 

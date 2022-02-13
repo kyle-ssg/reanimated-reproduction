@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useAuth } from './useAuth'
 import { AppState } from '../types/state-type'
-import { getApi } from '../api/api'
+import { getApi } from '../api'
 
 export default function useNotLoggedInRedirect(): {
   user: AppState['user']

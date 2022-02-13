@@ -1,6 +1,6 @@
 import Icon from 'react-native-vector-icons/Ionicons'
 import FormGroup from '../grid/FormGroup'
-import { API } from 'project/api/api'
+import { API } from 'project/api'
 import Row from '../grid/Row'
 import { FC, ReactNode } from 'react'
 import { StyleProp, TextStyle, ViewStyle } from 'react-native'

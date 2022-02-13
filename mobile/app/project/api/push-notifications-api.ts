@@ -1,7 +1,7 @@
 import messaging, {
   FirebaseMessagingTypes,
 } from '@react-native-firebase/messaging'
-import { API } from './api'
+import { getApi } from 'common/api'
 import { APIType } from 'common/types/api-type'
 import { Platform } from 'react-native'
 
