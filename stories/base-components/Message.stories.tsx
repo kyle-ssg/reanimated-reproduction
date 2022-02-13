@@ -8,7 +8,7 @@ export default {
   component: Component,
 }
 
-export const Default: ComponentStory<typeof Component> = (
+export const Default: ComponentStory<typeof Message> = (
   args: typeof Default.args,
 ) => (
   <>
