@@ -65,140 +65,140 @@ sync-mobile-staging:
   only:
     refs:
       - master
-
-android-staging-release:
-  image: node:16.13.2
-  stage: deploy
-  cache:
-    <<: *mobile_cache
-  variables:
-    ENV: prod
-  <<: *mobile_deploy_common_before_script
-  script:
-    - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_ANDROID_PRODUCTION Staging $CI_COMMIT_REF_NAME android $CODE_PUSH_NAME_ANDROID
-  only:
-    refs:
-      - /^mobile\/staging\/.*$/
-      - master
-    variables:
-      - $APPCENTER_ACCESS_TOKEN
-      - $APPCENTER_NAME_ANDROID_PRODUCTION
-      - $CODE_PUSH_NAME_ANDROID
-
-ios-staging-release:
-  image: node:16.13.2
-  stage: deploy
-  cache:
-    <<: *mobile_cache
-  variables:
-    ENV: prod
-  <<: *mobile_deploy_common_before_script
-  script:
-    - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_IOS_PRODUCTION Staging $CI_COMMIT_REF_NAME ios $CODE_PUSH_NAME_IOS appcenter-production
-  only:
-    refs:
-      - /^mobile\/staging\/.*$/
-      - master
-    variables:
-      - $APPCENTER_ACCESS_TOKEN
-      - $APPCENTER_NAME_IOS_PRODUCTION
-      - $CODE_PUSH_NAME_IOS
-
-deploy-mobile-ios-production:
-  image: node:16.13.2
-  stage: deploy
-  cache:
-    <<: *mobile_cache
-  variables:
-    ENV: prod
-  <<: *mobile_deploy_common_before_script
-  script:
-    - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_IOS_PRODUCTION Production $CI_COMMIT_REF_NAME ios $CODE_PUSH_NAME_IOS appcenter-production
-  only:
-    refs:
-      - /^mobile\/production\/.*$/
-    variables:
-      - $APPCENTER_ACCESS_TOKEN
-      - $APPCENTER_NAME_IOS_PRODUCTION
-      - $CODE_PUSH_NAME_IOS
-
-deploy-mobile-android-production:
-  image: node:16.13.2
-  stage: deploy
-  cache:
-    <<: *mobile_cache
-  variables:
-    ENV: prod
-  <<: *mobile_deploy_common_before_script
-  script:
-    - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_ANDROID_PRODUCTION Production $CI_COMMIT_REF_NAME android $CODE_PUSH_NAME_ANDROID
-  only:
-    refs:
-      - /^mobile\/production\/.*$/
-    variables:
-      - $APPCENTER_ACCESS_TOKEN
-      - $APPCENTER_NAME_ANDROID_PRODUCTION
-      - $CODE_PUSH_NAME_ANDROID
-
-.web_deploy_common_script: &web_deploy_common_script
-  before_script:
-    - npm i -g now
-    - npm run env_script
-
-test:
-  cache:
-    <<: *web_cache
-
-  image: node:16.13.2
-  stage: test
-  script:
-    - npm install
-    - npm run test:e2e:prod
-  rules:
-    # Run only in merge request.
-    # We don't want the e2e to be trigger for each commit
-    - if: $CI_MERGE_REQUEST_ID
-
-
-deploy-web-production:
-  image: node:16.13.2
-  cache:
-    <<: *web_cache
-
-  stage: deploy
-  variables:
-    ENV: prod
-  <<: *web_deploy_common_script
-  script:
-    - bash
-    - now --target production -e STAGED=false --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --prod --build-env ENV=$ENV --name=$CI_PROJECT_NAME
-  only:
-    refs:
-      - master
-    <<: *web_deploy_common_required_changes
-    variables:
-      - $NOW_TOKEN
-      - $NOW_TEAM_NAME
-deploy-web-feature:
-  image: node:16.13.2
-  cache:
-    <<: *web_cache
-
-  stage: deploy
-  variables:
-    ENV: dev
-  <<: *web_deploy_common_script
-  script:
-    - bash
-    - url=$(now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV --name=$CI_PROJECT_NAME)
-    - now alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url ${CI_PROJECT_NAME}-$CI_COMMIT_REF_SLUG
-  except:
-    refs:
-      - /^mobile\/.*$/
-      - master
-      - staging
-  only:
-    <<: *web_deploy_common_required_changes
-    variables:
-      - $NOW_TOKEN
-      - $NOW_TEAM_NAME
+#
+#android-staging-release:
+#  image: node:16.13.2
+#  stage: deploy
+#  cache:
+#    <<: *mobile_cache
+#  variables:
+#    ENV: prod
+#  <<: *mobile_deploy_common_before_script
+#  script:
+#    - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_ANDROID_PRODUCTION Staging $CI_COMMIT_REF_NAME android $CODE_PUSH_NAME_ANDROID
+#  only:
+#    refs:
+#      - /^mobile\/staging\/.*$/
+#      - master
+#    variables:
+#      - $APPCENTER_ACCESS_TOKEN
+#      - $APPCENTER_NAME_ANDROID_PRODUCTION
+#      - $CODE_PUSH_NAME_ANDROID
+#
+#ios-staging-release:
+#  image: node:16.13.2
+#  stage: deploy
+#  cache:
+#    <<: *mobile_cache
+#  variables:
+#    ENV: prod
+#  <<: *mobile_deploy_common_before_script
+#  script:
+#    - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_IOS_PRODUCTION Staging $CI_COMMIT_REF_NAME ios $CODE_PUSH_NAME_IOS appcenter-production
+#  only:
+#    refs:
+#      - /^mobile\/staging\/.*$/
+#      - master
+#    variables:
+#      - $APPCENTER_ACCESS_TOKEN
+#      - $APPCENTER_NAME_IOS_PRODUCTION
+#      - $CODE_PUSH_NAME_IOS
+#
+#deploy-mobile-ios-production:
+#  image: node:16.13.2
+#  stage: deploy
+#  cache:
+#    <<: *mobile_cache
+#  variables:
+#    ENV: prod
+#  <<: *mobile_deploy_common_before_script
+#  script:
+#    - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_IOS_PRODUCTION Production $CI_COMMIT_REF_NAME ios $CODE_PUSH_NAME_IOS appcenter-production
+#  only:
+#    refs:
+#      - /^mobile\/production\/.*$/
+#    variables:
+#      - $APPCENTER_ACCESS_TOKEN
+#      - $APPCENTER_NAME_IOS_PRODUCTION
+#      - $CODE_PUSH_NAME_IOS
+#
+#deploy-mobile-android-production:
+#  image: node:16.13.2
+#  stage: deploy
+#  cache:
+#    <<: *mobile_cache
+#  variables:
+#    ENV: prod
+#  <<: *mobile_deploy_common_before_script
+#  script:
+#    - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_ANDROID_PRODUCTION Production $CI_COMMIT_REF_NAME android $CODE_PUSH_NAME_ANDROID
+#  only:
+#    refs:
+#      - /^mobile\/production\/.*$/
+#    variables:
+#      - $APPCENTER_ACCESS_TOKEN
+#      - $APPCENTER_NAME_ANDROID_PRODUCTION
+#      - $CODE_PUSH_NAME_ANDROID
+#
+#.web_deploy_common_script: &web_deploy_common_script
+#  before_script:
+#    - npm i -g now
+#    - npm run env_script
+#
+#test:
+#  cache:
+#    <<: *web_cache
+#
+#  image: node:16.13.2
+#  stage: test
+#  script:
+#    - npm install
+#    - npm run test:e2e:prod
+#  rules:
+#    # Run only in merge request.
+#    # We don't want the e2e to be trigger for each commit
+#    - if: $CI_MERGE_REQUEST_ID
+#
+#
+#deploy-web-production:
+#  image: node:16.13.2
+#  cache:
+#    <<: *web_cache
+#
+#  stage: deploy
+#  variables:
+#    ENV: prod
+#  <<: *web_deploy_common_script
+#  script:
+#    - bash
+#    - now --target production -e STAGED=false --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --prod --build-env ENV=$ENV --name=$CI_PROJECT_NAME
+#  only:
+#    refs:
+#      - master
+#    <<: *web_deploy_common_required_changes
+#    variables:
+#      - $NOW_TOKEN
+#      - $NOW_TEAM_NAME
+#deploy-web-feature:
+#  image: node:16.13.2
+#  cache:
+#    <<: *web_cache
+#
+#  stage: deploy
+#  variables:
+#    ENV: dev
+#  <<: *web_deploy_common_script
+#  script:
+#    - bash
+#    - url=$(now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV --name=$CI_PROJECT_NAME)
+#    - now alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url ${CI_PROJECT_NAME}-$CI_COMMIT_REF_SLUG
+#  except:
+#    refs:
+#      - /^mobile\/.*$/
+#      - master
+#      - staging
+#  only:
+#    <<: *web_deploy_common_required_changes
+#    variables:
+#      - $NOW_TOKEN
+#      - $NOW_TEAM_NAME
