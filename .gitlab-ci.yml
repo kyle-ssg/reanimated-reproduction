@@ -142,12 +142,7 @@ deploy-mobile-android-production:
 
 .web_deploy_common_script: &web_deploy_common_script
   before_script:
-    - apk update
-    - apk upgrade
-    - apk add bash
-    - apk add curl
     - npm i -g now
-    - export GIT_HASH=$CI_COMMIT_SHA
     - npm run env_script
 
 test:
