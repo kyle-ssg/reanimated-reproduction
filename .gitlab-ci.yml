@@ -56,7 +56,7 @@ stages:
     - styles/**/*
     - tests/**/*
 
-android-staging-release:
+android-staging:
   image: node:16.13.2
   stage: deploy
   cache:
@@ -74,7 +74,7 @@ android-staging-release:
       - $APPCENTER_NAME_ANDROID_PRODUCTION
       - $CODE_PUSH_NAME_ANDROID
 
-ios-staging-release:
+ios-staging:
   image: node:16.13.2
   stage: deploy
   cache:
@@ -92,7 +92,7 @@ ios-staging-release:
       - $APPCENTER_NAME_IOS_PRODUCTION
       - $CODE_PUSH_NAME_IOS
 
-deploy-mobile-ios-production:
+ios-production:
   image: node:16.13.2
   stage: deploy
   cache:
@@ -111,7 +111,7 @@ deploy-mobile-ios-production:
       - $APPCENTER_NAME_IOS_PRODUCTION
       - $CODE_PUSH_NAME_IOS
 
-deploy-mobile-android-production:
+android-production:
   image: node:16.13.2
   stage: deploy
   cache:
@@ -150,7 +150,7 @@ test:
     - if: $CI_MERGE_REQUEST_ID
 
 
-deploy-web-production:
+web-production:
   image: node:16.13.2
   cache:
     <<: *web_cache
@@ -169,7 +169,7 @@ deploy-web-production:
     variables:
       - $NOW_TOKEN
       - $NOW_TEAM_NAME
-deploy-web-feature:
+web-feature:
   image: node:16.13.2
   cache:
     <<: *web_cache
