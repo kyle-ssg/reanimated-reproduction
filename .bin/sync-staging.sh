@@ -6,5 +6,5 @@ TARGET=mobile/staging/$VERSION
 git checkout -b $TARGET | git checkout $TARGET;
 git merge $SOURCE;
 echo "Merged $SOURCE > $TARGET"
-
+git push --no-verify --force -o ci.skip
 #git push HEAD:$TARGET --no-verify --force -o ci.skip
