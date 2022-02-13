@@ -4,5 +4,7 @@ TARGET=mobile/staging/$VERSION
 
 #This ensures that a staging/$VERSION exists whenever master is pushed to, so that native versions can be patched
 git checkout -b $TARGET | git checkout $TARGET;
-echo "Checked out $TARGET"
+git merge $SOURCE;
+echo "Merged $SOURCE > $TARGET"
+
 #git push HEAD:$TARGET --no-verify --force -o ci.skip
