@@ -9,8 +9,7 @@ import {
 import { ComponentType } from 'react'
 import { styleTypes } from '../app/style/_style_screen'
 import { palette, styleVariables } from '../app/style/style_variables'
-import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro'
-
+import routes from '../app/routes'
 declare global {
   //React Native Globals
   let Text: ComponentType<TextProps>

@@ -25,12 +25,12 @@ const PushManager = class {
   }
 
   subscribe = (topic) => {
-    API.log('PUSH_NOTIFICATIONS', `Subscribed to ${topic}`)
+    getApi()?.log('PUSH_NOTIFICATIONS', `Subscribed to ${topic}`)
     return messaging().subscribeToTopic(topic)
   }
 
   unsubscribe = (topic) => {
-    API.log('PUSH_NOTIFICATIONS', `Unsubscribed to ${topic}`)
+    getApi()?.log('PUSH_NOTIFICATIONS', `Unsubscribed to ${topic}`)
     return messaging().unsubscribeFromTopic(topic)
   }
 

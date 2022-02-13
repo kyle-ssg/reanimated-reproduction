@@ -33,14 +33,14 @@ type Props = {
 }
 const App: FunctionComponent<Props> = () => (
   <SafeAreaProvider>
+    <StatusBar
+      barStyle='dark-content'
+      backgroundColor='transparent'
+      translucent
+    />
     <ScreenContainer withoutSafeAreaView={true}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={store.__PERSISTOR}>
-          <StatusBar
-            barStyle='dark-content'
-            backgroundColor='transparent'
-            translucent
-          />
           <NeverUpdate>
             {/*// @ts-ignore*/}
             <BreakpointProvider>

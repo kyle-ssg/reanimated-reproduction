@@ -7,7 +7,6 @@ import _store from 'common/store'
 import defaultNavigationOptions from '../style/navigation_styles'
 import { RouteUrls } from '../route-urls'
 import withAuth, { IWithAuth } from 'common/providers/withAuth' // todo: migrate this to functional component and use useAuth
-import { routes } from '../routes'
 import LinkHandler from 'components/LinkHandler'
 import { Strings } from 'project/localisation'
 import Flex from 'components/base/grid/Flex'
