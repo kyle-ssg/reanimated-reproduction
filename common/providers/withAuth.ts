@@ -1,7 +1,8 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { AppActions, Callbacks } from '../app-actions'
-import { AppState } from '../state-type'
+import { AppState } from '../types/state-type'
+import { JSXElementConstructor } from 'react'
 
 // todo: this is deprecated, use useAuth hook
 
@@ -16,11 +17,11 @@ export type IWithAuth = {
   userError: AppState['userError']
 }
 
-const withAuth = (WrappedComponent) => {
+const withAuth = (WrappedComponent: JSXElementConstructor<any>) => {
   return connect(mapStateToProps, mapDispatchToProps)(WrappedComponent)
 }
 
-const mapDispatchToProps = (dispatch) =>
+const mapDispatchToProps = (dispatch: any) =>
   bindActionCreators(
     {
       register: AppActions.register,

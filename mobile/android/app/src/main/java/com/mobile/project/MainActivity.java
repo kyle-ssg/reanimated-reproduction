@@ -2,8 +2,6 @@ package com.mobile.project;
 
 import com.facebook.react.ReactActivity;
 
-// import io.branch.rnbranch.*; // REACT_NATIVE_BRANCH
-// import android.content.Intent; // REACT_NATIVE_BRANCH
 // REACT_NATIVE_REANIMATED
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
@@ -36,13 +34,6 @@ public class MainActivity extends ReactActivity {
     };
   }
 
-  // REACT_NATIVE_BRANCH:
-  //         @Override
-  //         protected void onStart() {
-  //             super.onStart();
-  //             RNBranchModule.initSession(getIntent().getData(), this);
-  //         }
-  //
   //         @Override
   //         public void onNewIntent(Intent intent) {
   //             super.onNewIntent(intent);

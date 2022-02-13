@@ -1,7 +1,8 @@
-import React from 'react'
+import { FC, ReactNode } from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
 
 export type ContainerType = {
-  children?: React.ReactNode
+  children?: ReactNode
   ml0?: boolean
   ml5?: boolean
   ml10?: boolean
@@ -12,10 +13,10 @@ export type ContainerType = {
   mr10?: boolean
   mr15?: boolean
   mr20?: boolean
-  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
+  style?: StyleProp<ViewStyle>
 }
 
-const Container: React.FC<ContainerType> = ({
+const Container: FC<ContainerType> = ({
   ml0,
   ml5,
   ml10 = true,

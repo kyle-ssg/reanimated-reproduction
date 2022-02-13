@@ -1,9 +1,9 @@
-import React from 'react'
-import useUserRedirect from '../components/useUserRedirect'
+import useNotLoggedInRedirect from 'common/providers/useNotLoggedInRedirect'
 import { useAuth } from '../common/providers/useAuth'
+import { Button } from 'reactstrap'
 
 const SecuredPage = () => {
-  useUserRedirect()
+  useNotLoggedInRedirect()
   const { logout } = useAuth()
   return (
     <div className='container-fluid'>

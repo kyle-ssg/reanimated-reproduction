@@ -1,15 +1,16 @@
-import React from 'react'
+import { TextStyle } from 'react-native'
+import { FC, ReactNode } from 'react'
 
 interface Props {
   accessible?: boolean
   accessibilityLabel?: string
   testID?: string
-  style?: ReactNative.TextStyle
-  children?: React.ReactNode
+  style?: TextStyle | TextStyle[]
+  children?: ReactNode
   numberOfLines?: number
 }
 
-const H4: React.FC<Props> = ({
+const H4: FC<Props> = ({
   accessible,
   accessibilityLabel,
   testID,

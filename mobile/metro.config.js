@@ -36,6 +36,8 @@ module.exports = {
     }),
   },
   resolver: {
+    resolverMainFields: ['sbmodern', 'react-native', 'browser', 'main'],
+
     extraNodeModules,
     // Allow to process TS files
     sourceExts: ['ts', 'tsx', 'js', 'jsx'],

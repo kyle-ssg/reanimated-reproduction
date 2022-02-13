@@ -1,15 +1,3 @@
-<img src="http://g.recordit.co/TY8wciTsQH.gif"/>
-
-## Prerequisites
-
-What things you need to install the software and how to install them
-
-
-| Location                                                     | Suggested Version       |
-| -------------                                                |:-------------:|
-| <a href="https://nodejs.org/en/">NodeJS</a>                     | >= 6.0.0 |
-| <a href="https://nodejs.org/en/">npm</a>                        | >= 4.0.0 |
-
 # Deployment with Now
 Out the box, this setup supports deploying to https://zeit.co
 ```$xslt
@@ -17,10 +5,8 @@ npm i now -g
 now
 ```
 
-## Installing
-```
-npm i
-```
+## Preinstall - using nvm and .nvmrc
+In order to standardise the node environment of the team, this project uses an .nvmrc. In combination with nvm and the following [.bashrc/.zshrc setup](https://github.com/nvm-sh/nvm#bash) this will ensure the correct node version is used whenever you ``cd`` into the directory. 
 
 ## Running
 **Development**
@@ -39,32 +25,6 @@ Every branch gets deployed with Zeit. See the deployments tab in this GitHub.
 allows component level, unit, saga and reducer testing
 ```
 npm run test
-```
-
-## E2E tests with nightwatch
-requires dependencies listed in tests/e2e/readme.md
-
-```
-npm run test:e2e
-```
-
-### Run a specific test suite
-
-Edit a test suite to include a **tag**, e.g.:
-
-```js
-module.exports = {
-  tags: ['wip'], // <-- this
-  '<test name>': function (browser) {
-    // ...
-  },
-};
-```
-
-Then:
-
-```
-npm run test:e2e -- --tag wip
 ```
 
 ## Generating pact tests files
@@ -109,43 +69,26 @@ There's a standardised Page component which will add any seo meta tags necessary
           </Page>
 ```
 
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/kyle-ssg/c36a03aebe492e45cbd3eefb21cb0486) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Getting Help
-
-If you encounter a bug or feature request we would like to hear about it. Before you submit an issue please search existing issues in order to prevent duplicates.
-
-## Get in touch
-
-If you have any questions about our projects you can email <a href="mailto:projects@solidstategroup.com">projects@solidstategroup.com</a>.
-
-## Libraries of note
-    "react-autocomplete": "^1.8.1", for a suitable autocomplete
-    "react-autolinker": "^1.0.7", converting @ # etc to html
-    "react-json-tree": "^0.11.2", debugging json in UI
-
 ## E2E
 - To run e2e locally run ``npm run test:e2e``
 - Make sure you have an env file at the root of the repository that has login credentials, or set them via env variables.
 - If there is a CI image that has java/chrome installed you can run ``npm run test:e2e:prod``
+- Make sure you have an env file at the root of the repository that has login credentials, or set them via env variables.
+- If there is a CI image that has java/chrome installed you can run ``npm run test:e2e:prod``
 
-# Adding jest / testing library
+## Adding react-native-web
+- In order to not be too proprietary, react-native-web is not installed by default. To do so, look for the "REACT_NATIVE_WEB" comments
 
-For standard projects we use e2e tests, if you need to add jest / enzyme tests the boilerplate is setup to work with the following in devDependencies:
-
+You'll need the following in package.json
 ```
-    "@testing-library/jest-dom": "5.9.0",
-    "@testing-library/react": "9.5.0",
-    "@types/enzyme": "3.10.5",
-    "@types/enzyme-adapter-react-16": "1.0.6",
-    "@types/jest": "26.0.14",
-    "@types/react-test-renderer": "16.9.3",
-    "enzyme": "3.11.0",
-    "enzyme-adapter-react-16": "1.15.2",
-    "jest": "26.0.1",
-    "react-test-renderer": "17.0.2",
-    "ts-jest": "26.1.0",
+    "react-native-globals": "^0.64.0",
+    "react-native-reanimated": "2.2.2",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-svg": "^12.1.1",
+    "react-native-web": "^0.17.1",
+    "react-native-web-lottie": "^1.4.4",
 ```
+
+- add wrap _app with import BreakpointProvider from '../mobile/app/components/base/BreakpointProvider'
+
+

@@ -1,17 +1,13 @@
-import React, { Component } from 'react'
+import { Component, ReactNode } from 'react'
 
 type Props = {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 class NeverUpdate extends Component<Props> {
   state = {}
 
-  shouldComponentUpdate(
-    nextProps: Readonly<Props>,
-    nextState: Readonly<{}>,
-    nextContext: any,
-  ): boolean {
+  shouldComponentUpdate(): boolean {
     return false
   }
 

@@ -1,15 +1,13 @@
-import React from 'react'
 import cn from 'classnames'
+import { FC } from 'react'
 
 interface FormGroup {
   className?: string
-  children?: React.ReactChildren
 }
 
-const FormGroup: React.FC<FormGroup> = ({ className, ...props }) => (
+const FormGroup: FC<FormGroup> = ({ className, ...props }) => (
   //Div with standard vertical padding
   <div {...props} className={cn(className, 'form-group')} />
 )
 
-global.FormGroup = FormGroup
 export default FormGroup

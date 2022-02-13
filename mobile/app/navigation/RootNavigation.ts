@@ -1,13 +1,14 @@
-import * as React from 'react'
 import { CommonActions, NavigationContainerRef } from '@react-navigation/native'
+import { Utils } from 'common/utils'
+import { createRef } from 'react'
 
-export const navigationRef = React.createRef<NavigationContainerRef>()
+export const navigationRef = createRef<NavigationContainerRef<any>>()
 
 type MenuType = {
   setShowMenu: (show: boolean) => void
   setNavigation: (navigation: any) => void
 }
-export const menuRef = React.createRef<MenuType>()
+export const menuRef = createRef<MenuType>()
 
 export function navigate(name, params) {
   navigationRef.current?.navigate(name, params)

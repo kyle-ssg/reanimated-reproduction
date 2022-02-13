@@ -1,11 +1,11 @@
-import React, { ReactNode, useEffect, useState } from 'react' // we need this to make JSX compile
+import { ReactNode, FC, useEffect, useState } from 'react'
 
 type Props = {
   delay?: number
   children: ReactNode
 }
 
-const Delay: React.FC<Props> = ({ children, delay = 500 }) => {
+const Delay: FC<Props> = ({ children, delay = 500 }) => {
   const [isReady, setIsReady] = useState<boolean>(!delay)
   useEffect(() => {
     if (delay) {

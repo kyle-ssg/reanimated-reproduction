@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { Animated, Easing, Pressable } from 'react-native'
 import Animation from 'lottie-react-native'
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const json = require('./checkbox.json')
 
 interface Checkbox {
@@ -9,7 +10,7 @@ interface Checkbox {
   onPress: () => null
 }
 
-const Checkbox: React.FC<Checkbox> = ({ value, onPress }) => {
+const Checkbox: FC<Checkbox> = ({ value, onPress }) => {
   const [animatedValue, setAnimatedValue] = useState(null)
 
   useEffect(() => {
@@ -34,7 +35,7 @@ const Checkbox: React.FC<Checkbox> = ({ value, onPress }) => {
   )
 }
 
-const styles = ReactNative.StyleSheet.create({
+const styles = StyleSheet.create({
   checkbox: { width: 54, height: 54 },
 })
 

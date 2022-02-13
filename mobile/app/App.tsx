@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
-import { StatusBar } from 'react-native'
+import { LogBox, StatusBar } from 'react-native'
 import _store from 'common/store'
 import { NavigationContainer } from '@react-navigation/native'
 import AppNavigator from 'navigation/AppNavigator'
@@ -13,9 +13,12 @@ import 'common/utils/_data'
 import { LaunchArguments } from 'react-native-launch-arguments'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import BreakpointProvider from 'components/base/BreakpointProvider'
+import { Constants } from 'common/utils'
+import CodepushUpdater from 'components/utility-components/CodePushUpdater'
 
 const launchArgs = LaunchArguments.value()
 if (launchArgs.namespace) {
+  // @ts-ignore
   Constants.E2E = true
   Constants.E2E_NAMESPACE = launchArgs.namespace
 }
@@ -26,7 +29,7 @@ const linking = {
 }
 
 type Props = {
-  children: React.ReactNode
+  children: ReactNode
 }
 const App: FunctionComponent<Props> = () => (
   <SafeAreaProvider>
@@ -45,6 +48,7 @@ const App: FunctionComponent<Props> = () => (
                 <NavigationContainer linking={linking} ref={navigationRef}>
                   <AppNavigator />
                 </NavigationContainer>
+                <CodepushUpdater />
               </LanguageHandler>
             </BreakpointProvider>
           </NeverUpdate>
@@ -55,7 +59,7 @@ const App: FunctionComponent<Props> = () => (
 )
 export default App
 
-ReactNative.LogBox.ignoreLogs([
+LogBox.ignoreLogs([
   /Require .*/,
   /Non-seri.*/,
   /AsyncStorage.*/,

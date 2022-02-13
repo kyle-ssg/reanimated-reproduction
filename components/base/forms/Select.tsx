@@ -1,23 +1,21 @@
-import React, { useState } from 'react'
+import { FC, SelectHTMLAttributes, useState } from 'react'
 import cx from 'classnames'
+import Strings from 'project/localisation'
 
-export type Select = React.SelectHTMLAttributes<any> & {
+export type Select = SelectHTMLAttributes<any> & {
   title?: string
   isValid?: boolean
   touched?: boolean
-  children?: React.ReactNode
-  errorMessage?: string
   id?: string
   label?: string
 }
 
-const Select: React.FC<Select> = ({
+const Select: FC<Select> = ({
   title,
   touched,
   label,
   isValid,
   children,
-  errorMessage,
   id,
   ...props
 }) => {
@@ -41,15 +39,14 @@ const Select: React.FC<Select> = ({
             invalid: (touched || shouldValidate) && !isValid,
           })}
         >
-          <option value={null}>{label || Strings.pleaseSelect}</option>
+          <option value={''}>{label || Strings.pleaseSelect}</option>
           {children}
         </select>
-        <i className='select__icon fas fa-caret-down'></i>
+        <i className='select__icon fas fa-caret-down' />
       </div>
     </>
   )
 }
 
 Select.displayName = 'Select'
-global.Select = Select
 export default Select

@@ -1,10 +1,12 @@
-import React, { FunctionComponent, useCallback } from 'react'
-import { ButtonNav } from 'components/./base/forms/Button' // we need this to make JSX compile
+import { FC, useCallback } from 'react'
+import { ButtonNav } from 'components/./base/forms/Button'
 import { useNavigation } from '@react-navigation/native'
+import { palette, styleVariables } from '../style/style_variables'
+import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro'
 
 type ComponentType = { tintColor?: string }
 
-const ModalCloseButton: FunctionComponent<ComponentType> = ({}) => {
+const ModalCloseButton: FC<ComponentType> = ({}) => {
   const navigation = useNavigation()
   const pop = useCallback(() => {
     // @ts-ignore

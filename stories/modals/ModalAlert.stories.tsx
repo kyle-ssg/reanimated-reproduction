@@ -1,4 +1,3 @@
-import React from 'react'
 import { ComponentStory } from '@storybook/react'
 import '../../styles/Global.scss'
 import ModalAlert from 'components/ModalAlert'

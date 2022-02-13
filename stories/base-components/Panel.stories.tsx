@@ -1,7 +1,7 @@
-import React from 'react'
 import { ComponentStory } from '@storybook/react'
 import '../../styles/Global.scss'
 import Panel from 'components/extras/Panel'
+import { ButtonPrimary } from 'components/base/forms/Button'
 
 export default {
   title: 'Base/Panel',

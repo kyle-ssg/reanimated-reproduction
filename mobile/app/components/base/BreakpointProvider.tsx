@@ -1,4 +1,6 @@
 import { createContext, useEffect, useRef, useState } from 'react'
+import { Dimensions } from 'react-native'
+
 const sm = 576
 const md = 720
 const lg = 960
@@ -30,7 +32,7 @@ export const breakpointValues = {
 
 export const BreakpointContext = createContext<string>(getBreakpoint())
 
-import React, { FunctionComponent } from 'react' // we need this to make JSX compile
+import { FunctionComponent } from 'react'
 
 type ComponentType = {}
 
@@ -38,7 +40,7 @@ const TheComponent: FunctionComponent<ComponentType> = ({ children }) => {
   const [breakpoint, setBreakpoint] = useState<string>(getBreakpoint())
   const breakpointRef = useRef<string>(breakpoint)
   useEffect(() => {
-    Dimensions.addEventListener('change', (e) => {
+    Dimensions.addEventListener('change', () => {
       const newBreakpoint = getBreakpoint()
       if (newBreakpoint !== breakpointRef.current) {
         breakpointRef.current = newBreakpoint

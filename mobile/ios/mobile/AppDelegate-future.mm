@@ -45,7 +45,6 @@
 //#endif
 #import <Firebase.h> // REACT_NATIVE_FIREBASE
 #import <CodePush/CodePush.h> // REACT_NATIVE_CODEPUSH
-//#import <RNBranch/RNBranch.h> REACT_NATIVE_BRANCH
 
 @interface AppDelegate() <RCTCxxBridgeDelegate, RCTTurboModuleManagerDelegate> {
     RCTTurboModuleManager *_turboModuleManager;
@@ -62,7 +61,6 @@
 // #endif
 
   [FIRApp configure]; // REACT_NATIVE_FIREBASE
-//  [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES]; // <-- REACT_NATIVE_BRANCH
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
@@ -122,11 +120,6 @@
 //    return YES;
 //  }
 
-// REACT_NATIVE_BRANCH
-//  if ([RNBranch.branch application:application openURL:url sourceApplication:sourceApplication annotation:annotation]) {
-//    return YES;
-//  }
-
   // REACT_NATIVE_FACEBOOK_SIGNIN
 //  if ([[FBSDKApplicationDelegate sharedInstance] application:application
 //                                                     openURL:url
@@ -138,11 +131,6 @@
 
   return [RCTLinkingManager application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
 }
-
-// REACT_NATIVE_BRANCH
-//- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *restorableObjects))restorationHandler {
-//    return [RNBranch continueUserActivity:userActivity];
-//}
 
 - (Class)getModuleClassFromName:(const char *)name
 {

@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
-import { Loader } from 'common/components/Loader'
+import { FC, ReactElement, useState } from 'react'
+import { Loader } from 'components/base/Loader'
 import Select from './forms/Select'
 import FormGroup from './grid/FormGroup'
-
+import Column from './grid/Column'
+import Button from './forms/Button'
+import Flex from 'components/base/grid/Flex'
+import Fade from 'components/base/animation/Fade'
 interface Props {
   componentId?: string
   value?: {}
@@ -12,11 +15,11 @@ interface Props {
   onChange: (value: {}) => void
   placeholder?: string
   filterItem?: () => void
-  renderRow?: (item, isSelected, toggleItem) => void
+  renderRow?: (item, isSelected, toggleItem) => ReactElement
   autoclose?: boolean
 }
 
-const NativeModal: React.FC<Props> = ({
+const NativeModal: FC<Props> = ({
   autoclose,
   value,
   isLoading,

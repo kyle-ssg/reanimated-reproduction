@@ -1,11 +1,16 @@
 import { AnyAction } from 'redux'
-import { RequestTypes } from './state-type'
+import { RequestTypes } from './types/state-type'
+import { HYDRATE } from 'next-redux-wrapper'
 
 const BaseConstants = {
   LOGIN: 'LOGIN',
   LOGIN_LOADED: 'LOGIN_LOADED',
   LOGIN_ERROR: 'LOGIN_ERROR',
   REFRESH_TOKENS: 'REFRESH_TOKENS',
+
+  'GET_USER': 'GET_USER',
+  'GET_USER_LOADED': 'GET_USER_LOADED',
+  'GET_USER_ERROR': 'GET_USER_ERROR',
 
   REGISTER: 'REGISTER',
   REGISTER_LOADED: 'REGISTER_LOADED',
@@ -19,14 +24,6 @@ const BaseConstants = {
   CLEAR_USER: 'CLEAR_USER',
   REFRESH: 'REFRESH',
 
-  'GET_PROFILE': 'GET_PROFILE',
-  'GET_PROFILE_LOADED': 'GET_PROFILE_LOADED',
-  'GET_PROFILE_ERROR': 'GET_PROFILE_ERROR',
-
-  'UPDATE_PROFILE': 'UPDATE_PROFILE',
-  'UPDATE_PROFILE_LOADED': 'UPDATE_PROFILE_LOADED',
-  'UPDATE_PROFILE_ERROR': 'UPDATE_PROFILE_ERROR',
-
   CONFIRM_EMAIL: 'CONFIRM_EMAIL',
   CONFIRM_EMAIL_ERROR: 'CONFIRM_EMAIL_ERROR',
   CONFIRM_EMAIL_LOADED: 'CONFIRM_EMAIL_LOADED',
@@ -36,37 +33,44 @@ const BaseConstants = {
   UPDATE_USER_LOADED: 'UPDATE_USER_LOADED',
 
   SET_ACTIVE_SCREEN: 'SET_ACTIVE_SCREEN',
+  SCREEN_ERROR: 'SCREEN_ERROR',
+
+  NEXTJS_HYDRATE: HYDRATE,
 }
 export interface Callbacks {
-  onSuccess?: (data: any) => void
+  onSuccess?: (data?: any) => void
   onError?: (data: any, originalError?: any) => void
 }
 
 const BaseActions = {
-  login(data: Record<string, any>, callbacks: Callbacks = {}): AnyAction {
+  login(data: RequestTypes['login'], callbacks: Callbacks = {}): AnyAction {
     return {
       type: Actions.LOGIN,
       data,
       ...callbacks,
     }
   },
-  // STARTUP
-  startup(data: Record<string, any>, callbacks: Callbacks = {}): AnyAction {
+  startup(data: RequestTypes['startup'], callbacks: Callbacks = {}): AnyAction {
     return {
       type: Actions.STARTUP,
       data,
       ...callbacks,
     }
   },
-  // REGISTER
-  register(data: Record<string, any>, callbacks: Callbacks = {}): AnyAction {
+  register(
+    data: RequestTypes['register'],
+    callbacks: Callbacks = {},
+  ): AnyAction {
     return {
       type: Actions.REGISTER,
       data,
       ...callbacks,
     }
   },
-  updateUser(data: Record<string, any>, callbacks: Callbacks = {}): AnyAction {
+  updateUser(
+    data: RequestTypes['updateUser'],
+    callbacks: Callbacks = {},
+  ): AnyAction {
     return {
       type: Actions.UPDATE_USER,
       data,
@@ -74,7 +78,7 @@ const BaseActions = {
     }
   },
   confirmEmail(
-    data: Record<string, any>,
+    data: RequestTypes['confirmEmail'],
     callbacks: Callbacks = {},
   ): AnyAction {
     return {
@@ -83,31 +87,16 @@ const BaseActions = {
       ...callbacks,
     }
   },
-  logout(callbacks: Callbacks = {}): AnyAction {
+  getUser(data: RequestTypes['getUser'], callbacks: Callbacks = {}): AnyAction {
+    return {
+      type: Actions.GET_USER,
+      data,
+      ...callbacks,
+    }
+  },
+  logout(data: RequestTypes['logout'], callbacks: Callbacks = {}): AnyAction {
     return {
       type: Actions.LOGOUT,
-      ...callbacks,
-    }
-  },
-
-  getProfile(
-    data: RequestTypes['getProfile'],
-    callbacks: Callbacks = {},
-  ): AnyAction {
-    return {
-      type: Actions.GET_PROFILE,
-      data,
-      ...callbacks,
-    }
-  },
-
-  updateProfile(
-    data: RequestTypes['updateProfile'],
-    callbacks: Callbacks = {},
-  ): AnyAction {
-    return {
-      type: Actions.UPDATE_PROFILE,
-      data,
       ...callbacks,
     }
   },

@@ -1,16 +1,16 @@
-import React from 'react'
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal'
+import { FC, ReactNode } from 'react'
+import Button from 'components/base/forms/Button'
 
 interface ModalAlert {
   okText?: string
-  children?: React.ReactNode
-  title?: React.ReactNode
+  title?: ReactNode
   isOpen?: boolean
   onDismiss?: () => void
   toggle?: () => void
 }
 
-const ModalAlert: React.FC<ModalAlert> = ({
+const ModalAlert: FC<ModalAlert> = ({
   onDismiss,
   toggle,
   children,
@@ -22,16 +22,14 @@ const ModalAlert: React.FC<ModalAlert> = ({
     if (onDismiss) {
       onDismiss()
     }
-    toggle()
+    toggle?.()
   }
   return (
     <Modal unmountOnClose isOpen={isOpen} toggle={onDissmissClick}>
       <ModalHeader toggle={onDissmissClick}>{title}</ModalHeader>
       <ModalBody>{children}</ModalBody>
       <ModalFooter>
-        <Button color='primary' onClick={onDissmissClick}>
-          {okText}
-        </Button>
+        <Button onClick={onDissmissClick}>{okText}</Button>
       </ModalFooter>
     </Modal>
   )

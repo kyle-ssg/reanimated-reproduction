@@ -2,18 +2,20 @@
 import cookie from 'cookie'
 import jsCookie from 'js-cookie'
 import { IncomingMessage } from 'http'
+import { API } from './api'
 
 const StorageManager = class {
   init = async () => {}
   clear = async () => {
     console.error('Web does not support clear cookies')
+    return Promise.resolve(false)
   }
-  getItem = function (key: string, req: IncomingMessage) {
+  getItem = function (key: string, req?: IncomingMessage) {
     API.log('STORAGE', 'GET', key, req)
     if (req && typeof window === 'undefined') {
       return Promise.resolve(cookie.parse(req.headers.cookie || '')[key])
     }
-    return Promise.resolve(jsCookie.get(key))
+    return Promise.resolve(jsCookie.get(key) || '')
   }
   setItem = function (key: string, value: string, req?: IncomingMessage) {
     if (typeof window === 'undefined' && req) {
@@ -29,7 +31,8 @@ const StorageManager = class {
       //todo: should be able to set this in nodejs
       return
     }
-    return Promise.resolve(jsCookie.remove(name))
+    jsCookie.remove(key)
+    return Promise.resolve()
   }
 }
 export default new StorageManager()

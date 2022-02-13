@@ -1,9 +1,10 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import { FC, useEffect } from 'react'
 import { useAuth } from 'common/providers/useAuth'
-import useProfile from 'common/providers/useProfile'
 import { useAppState } from '@react-native-community/hooks'
 import { rootPush } from 'navigation/RootNavigation'
 import { FirebaseMessagingTypes } from '@react-native-firebase/messaging'
+import { API } from 'project/api/api'
+import { Constants } from 'common/utils'
 
 type ComponentType = {}
 const subscribe = async (id) => {
@@ -26,9 +27,8 @@ const subscribe = async (id) => {
     }, 2000)
   }
 }
-const LinkHandler: FunctionComponent<ComponentType> = ({}) => {
-  const { user } = useAuth()
-  const { getProfile, profile } = useProfile()
+const LinkHandler: FC<ComponentType> = ({}) => {
+  const { user, getUser } = useAuth()
   const id = user?.id
   const currentAppState = useAppState()
 
@@ -40,9 +40,9 @@ const LinkHandler: FunctionComponent<ComponentType> = ({}) => {
   useEffect(() => {
     if (id && currentAppState === 'active') {
       subscribe(id)
-      getProfile({ id })
+      getUser({ id })
     }
-  }, [id, getProfile, currentAppState])
+  }, [id, getUser, currentAppState])
 
   return <></>
 }

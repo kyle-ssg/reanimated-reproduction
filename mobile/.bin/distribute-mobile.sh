@@ -9,8 +9,8 @@
 # 1 = ">"
 # 2 = "<"
 # i.e. vercomp 2.1 2.2 == "<"
-# Test this locally on android  with ./../mobile/.bin/distribute-mobile.sh Solid-State-Group/Frontend-Boilerplate-Android Production master android Solid-State-Group/Frontend-Boilerplate-Android
-# Test this locally on ios with ./../mobile/.bin/distribute-mobile.sh Solid-State-Group/Frontend-Boilerplate-iOS Production master android Solid-State-Group/Frontend-Boilerplate-iOS
+# Test this locally on android  with sh ./../mobile/.bin/distribute-mobile.sh SiteAssist/SiteAssist-Android-Production Staging master android SiteAssist/SiteAssist-Android-Production
+# Test this locally on ios  with sh ./../mobile/.bin/distribute-mobile.sh SiteAssist/SiteAssist-iOS-Production Staging master ios SiteAssist/SiteAssist-iOS-Production
 # with export APPCENTER_ACCESS_TOKEN=(CHECKGITLAB)
 vercomp () {
     if [[ $1 == $2 ]]
@@ -42,7 +42,6 @@ vercomp () {
     done
     return 0
 }
-
 npm i appcenter-cli -g
 
 ios_target=$6
@@ -51,55 +50,79 @@ export ios_target
 echo "APPCENTER version"
 appcenter -v
 
-# Store original sha to checkout later
-originalSHA=$(git rev-parse --verify HEAD)
-
-# Checkout last commit to compare the last version number
-echo running appcenter build branches list -a $1 grep -A10 -E "Branch: +$3"
-commitSHA=$(appcenter build branches list -a $1 | grep -A10 -E "Branch: +$3" | grep -E -m 1 'Commit SHA: +' | awk '{split($0,a,": "); print a[2]}' | sed 's/^ *//g')
-
-git stash
-git checkout $commitSHA
-
 if [[ $4 == "ios" ]]
 then
-    lastVersion=$(awk "/\/\* Pods-appcenter-production.release.xcconfig \*\/;/,0" ios/mobile.xcodeproj/project.pbxproj | grep "MARKETING_VERSION" | head -1 | awk '{split($0,a,"= "); print a[2]}' | sed 's/;$//')
+    currentVersion=$(grep -A 2 CFBundleShortVersionString ios/Info.plist | grep string | sed -e "s/string//g" | sed -e "s/[<>\/]//g"| xargs)
 else
-    # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
-    # - currentVersion=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
-    lastVersion=$(grep 'versionName' android/app/build.gradle | grep -o '".*"' | tr -d '"')
-fi
-
-echo $lastVersion version found at $commitSHA
-
-
-git checkout $originalSHA
-npm run env_script
-
-if [[ $4 == "ios" ]]
-then
-    currentVersion=$(awk "/\/\* Pods-appcenter-production.release.xcconfig \*\/;/,0" ios/mobile.xcodeproj/project.pbxproj | grep "MARKETING_VERSION" | head -1 | awk '{split($0,a,"= "); print a[2]}' | sed 's/;$//')
-else
-    # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
-    # - currentVersion=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
     currentVersion=$(grep 'versionName' android/app/build.gradle | grep -o '".*"' | tr -d '"')
 fi
+
+# appcenter build branches list -a Weeteep/WeTeep-Android
+# Checkout last commit to compare the last version number
+# Note: native builds are built off the master branch
+echo running appcenter build branches list -a $1 grep -A10 -E "Branch: +$3"
+commitSHA=$(appcenter build branches list -a $1 | grep -A10 -E "Branch: +$3" | grep -E -m 1 'Commit SHA: +' | awk '{split($0,a,": "); print a[2]}' | sed 's/^ *//g')
+git reset --hard HEAD
+echo "Checking out commitSHA of latest native build"
+if [[ ! -z $commitSHA ]]
+then
+  echo "git checkout $commitSHA"
+  git checkout $commitSHA
+  if [[ $4 == "ios" ]]
+  then
+      lastVersion=$(grep -A 2 CFBundleShortVersionString ios/Info.plist | grep string | sed -e "s/string//g" | sed -e "s/[<>\/]//g"| xargs)
+  else
+      # - // Use this Android alternative and tweak "awk 'NR == 2'" when overriding versionName via product flavors
+      # - currentVersion=$(grep 'versionName' android/app/build.gradle | awk 'NR == 2' | grep -o '".*"' | tr -d '"')
+      lastVersion=$(grep 'versionName' android/app/build.gradle | grep -o '".*"' | tr -d '"')
+  fi
+  echo "git checkout $3"
+  git checkout $3
+  echo "git pull origin $3"
+  git pull origin $3
+else
+  lastVersion="0.0.0"
+fi
+
+
+echo $lastVersion version found at $commitSHA
+npm run env_script
+
 echo "Last version: ${lastVersion:-N/A}. Current version: $currentVersion"
 vercomp $lastVersion $currentVersion
 
 if [[ $? == 2 ]]
 then
     echo "Queueing new native build ($currentVersion) on AppCenter"
-    appcenter build queue -a $1 -b $3
+    sh ./.bin/clone-config.sh
+    appcenter build queue -a $1 -b $CI_COMMIT_REF_NAME
 else
     echo "Code-pushing new bundle to $2 environment on AppCenter $5"
     if [[ $4 == "ios" ]]
     then
-        appcenter codepush release-react -a $5 -d $2 --disable-duplicate-release-error -m -t $currentVersion
+        APPCENTER_DATA=$(appcenter codepush deployment history $2 -a $5 --output json)
+        LABEL=$(node ./.bin/get-codepush-label.js "$APPCENTER_DATA" "$2")
+        appcenter codepush release-react -a $5 -d $2 --disable-duplicate-release-error -m -t $currentVersion --sourcemap-output --output-dir ./build
+
+#        npx bugsnag-source-maps upload-react-native \
+#                --api-key x \
+#                --code-bundle-id $LABEL \
+#                --platform ios \
+#                --source-map build/CodePush/main.jsbundle.map \
+#                --bundle build/CodePush/main.jsbundle
     else
         # - // Use this Android alternative when overriding versionName via product flavors
-        # - appcenter codepush release-react -a $5 --target-binary-version $currentVersion -d $2 --disable-duplicate-release-error
-        appcenter codepush release-react -a $5 -d $2 --disable-duplicate-release-error -m
+        APPCENTER_DATA=$(appcenter codepush deployment history $2 -a $5 --output json)
+        LABEL=$(node ./.bin/get-codepush-label.js "$APPCENTER_DATA" "$2")
+        appcenter codepush release-react -a $5 -d $2 --disable-duplicate-release-error -m -t $currentVersion --sourcemap-output --output-dir ./build
+
+#        npx bugsnag-source-maps upload-react-native \
+#                --api-key x \
+#                --code-bundle-id $LABEL \
+#                --platform android \
+#                --source-map build/CodePush/index.android.bundle.map \
+#                --bundle build/CodePush/index.android.bundle
+
     fi
 fi
 

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import defaultNavigationOptions from '../style/navigation_styles'
 import { createNativeStackNavigator } from 'react-native-screens/native-stack'
@@ -14,17 +14,17 @@ const StackScreen: FunctionComponent<ComponentType> = () => {
     <NavigationContainer independent>
       <Navigator
         screenOptions={defaultNavigationOptions}
-        initialRouteName={RouteUrls.home}
+        initialRouteName={RouteUrls.HomeScreen}
       >
         <Stack.Screen
-          name={RouteUrls.home}
-          options={routes[RouteUrls.home].options}
-          component={routes[RouteUrls.home].component}
+          name={RouteUrls.HomeScreen}
+          options={routes[RouteUrls.HomeScreen].options}
+          component={routes[RouteUrls.HomeScreen].component}
         />
         <Stack.Screen
-          name={RouteUrls.generic}
-          options={routes[RouteUrls.generic].options}
-          component={routes[RouteUrls.generic].component}
+          name={RouteUrls.Tab2Screen}
+          options={routes[RouteUrls.Tab2Screen].options}
+          component={routes[RouteUrls.Tab2Screen].component}
         />
       </Navigator>
     </NavigationContainer>

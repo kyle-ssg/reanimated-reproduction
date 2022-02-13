@@ -1,12 +1,11 @@
-import React from 'react'
+import { FC, MouseEvent } from 'react'
 
 interface Toggle {
   checked: boolean
-  onChange: (event: React.MouseEvent<HTMLElement>) => void
-  children?: React.ReactChildren | Array<string | React.ReactChildren>
+  onChange: (event: MouseEvent<HTMLElement>) => void
 }
 
-const Toggle: React.FC<Toggle> = ({ checked, onChange, children }) => (
+const Toggle: FC<Toggle> = ({ checked, onChange, children }) => (
   <button
     className={`btn toggle-control d-flex justify-content-center align-items-center ${
       checked ? 'selected' : ''

@@ -1,13 +1,12 @@
-import React, { Component } from 'react'
+import { Component, JSXElementConstructor } from 'react'
+import { Project } from 'common/project'
 
-export default (WrappedComponent) => {
+export default (WrappedComponent: JSXElementConstructor<any>) => {
   class HOC extends Component<{}, { grecaptcher?: any }> {
     static displayName = 'withGrecaptcher'
-    constructor(props) {
-      super(props)
-      this.state = {
-        grecaptcher: undefined,
-      }
+
+    state = {
+      grecaptcher: undefined,
     }
 
     renderedGre = false

@@ -1,6 +1,14 @@
-import React, { useRef, useState } from 'react'
+import {
+  ChangeEventHandler,
+  FC,
+  FocusEventHandler,
+  KeyboardEventHandler,
+  useRef,
+  useState,
+} from 'react'
 import cn from 'classnames'
 import { ButtonText } from 'components/base/forms/Button'
+import { Utils } from 'common/utils'
 
 interface Input {
   textarea?: boolean
@@ -19,18 +27,17 @@ interface Input {
   touched?: boolean
   value?: string
   onIconClick?: () => void
-  deleteLabel?: React.ReactNode
-  onChange?: (e: React.ChangeEvent) => void
-  onFocus?: (e: React.FocusEvent) => void
-  onBlur?: (e: React.FocusEvent) => void
-  onKeyDown?: (e: React.KeyboardEvent) => void
+  onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  onFocus?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement | HTMLTextAreaElement>
   disabled?: boolean
+  'data-test'?: string
 }
 
-const Input: React.FC<Input> = ({
+const Input: FC<Input> = ({
   children,
   className,
-  deleteLabel,
   disabled,
   errorMessage,
   icon,
@@ -55,7 +62,9 @@ const Input: React.FC<Input> = ({
   const [shouldValidate, setShouldValidate] = useState(false)
   const [isFocused, setIsFocused] = useState(false)
   const ref = useRef<HTMLInputElement | HTMLTextAreaElement>()
-  const focusHandler = (e: React.FocusEvent) => {
+  const focusHandler: FocusEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  > = (e) => {
     setIsFocused(true)
     onFocus && onFocus(e)
   }
@@ -65,14 +74,18 @@ const Input: React.FC<Input> = ({
   //   this.input.focus();
   // };
 
-  const _onKeyDown = (e: React.KeyboardEvent) => {
+  const _onKeyDown: KeyboardEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  > = (e) => {
     if (Utils.keys.isEscape(e)) {
-      ref.current.blur()
+      ref.current?.blur()
     }
     onKeyDown && onKeyDown(e)
   }
 
-  const blur = (e: React.FocusEvent) => {
+  const blur: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement> = (
+    e,
+  ) => {
     setShouldValidate(true)
     setIsFocused(false)
     onBlur && onBlur(e)
@@ -128,8 +141,8 @@ const Input: React.FC<Input> = ({
             name={name}
             type={type === 'password' && showPassword ? '' : type}
             {...rest}
-            // @ts-ignore
             id={id}
+            // @ts-ignore
             ref={ref}
             onFocus={focusHandler}
             onKeyDown={_onKeyDown}
@@ -141,7 +154,7 @@ const Input: React.FC<Input> = ({
           {icon ||
             (type == 'password' && (
               <i
-                data-test={rest['data-test'] + '-icon'}
+                data-test={`${rest['data-test']}-icon`}
                 onClick={() => {
                   if (type === 'password') {
                     setShowPassword(!showPassword)
@@ -173,6 +186,5 @@ const Input: React.FC<Input> = ({
   )
 }
 
-global.Input = Input
 Input.displayName = 'Input'
 export default Input

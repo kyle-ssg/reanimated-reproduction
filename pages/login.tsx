@@ -1,33 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import { ChangeEventHandler, FC, FormEventHandler, useState } from 'react'
 import { useRouter } from 'next/router'
 import ErrorMessage from 'components/Messages'
 import { ButtonPrimary } from 'components/base/forms/Button'
+import { Utils } from 'common/utils'
+import Input from '../components/base/forms/Input'
+import useLoggedInRedirect from '../common/providers/useLoggedInRedirect'
 import { useAuth } from '../common/providers/useAuth'
 
-const LoginPage: React.FC<{}> = () => {
-  const { user, userLoading, userError, login } = useAuth()
-  const [redirect, setRedirect] = useState<boolean>(false)
+const LoginPage: FC<{}> = () => {
   const router = useRouter()
 
   const [loginData, setLoginData] = useState({
     email: 'a@a.com',
     password: 'password',
   })
+  const { login, userLoading, userError } = useAuth()
+  useLoggedInRedirect()
 
-  useEffect(() => {
-    user && setRedirect(true)
-  }, [user])
-  useEffect(() => {
-    router.replace(Utils.fromParam().redirect || '/')
-  }, [redirect, router])
-
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) =>
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (event) =>
     setLoginData((prevState) => ({
       ...prevState,
-      [event.target.name]: !loginData[event.target.value],
+      [event.target.name]: event.target.value,
     }))
 
-  const handleSubmit: React.FormEventHandler = (event) => {
+  const handleSubmit: FormEventHandler = (event) => {
     Utils.preventDefault(event)
     const callbacks = {
       onSuccess: () => {

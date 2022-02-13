@@ -1,7 +1,6 @@
 export enum RouteUrls {
   'web' = '/web',
   'mainApp' = '/mainApp',
-  'storybook' = '/storybook',
   'HomeScreen' = '/home',
   'Tab1Screen' = '/tab1',
   'Tab2Screen' = '/tab2',
@@ -9,5 +8,3 @@ export enum RouteUrls {
   'ModalScreen2' = '/modal2',
   // END OF SCREENS
 }
-
-global.RouteUrls = RouteUrls

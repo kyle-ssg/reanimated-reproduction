@@ -1,15 +1,18 @@
-import React, { useCallback } from 'react'
+import { FC, useCallback } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import useInsets from 'components/base/useInset'
-import { ViewStyle } from 'react-native'
+import { TextStyle, ViewStyle } from 'react-native'
+import Row from './base/grid/Row'
+import H4 from 'components/base/type/H4'
+import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro'
 
 type Props = {
-  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
-  titleStyle?: ReactNative.StyleProp<ReactNative.ViewStyle>
+  style?: ViewStyle
+  titleStyle?: TextStyle
   title: string
 }
 
-const CustomNavbar: React.FC<Props> = ({ style, title, titleStyle }) => {
+const CustomNavbar: FC<Props> = ({ style, title, titleStyle }) => {
   const navigation = useNavigation()
   const pop = useCallback(() => {
     // @ts-ignore
@@ -54,7 +57,7 @@ const CustomNavbar: React.FC<Props> = ({ style, title, titleStyle }) => {
   )
 }
 
-const styles = ReactNative.StyleSheet.create({
+const styles = StyleSheet.create({
   titleContainer: {
     height: 44,
     justifyContent: 'center',

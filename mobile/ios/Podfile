@@ -12,7 +12,6 @@ def shared_pods
       # to enable hermes on iOS, change `false` to `true` and then install pods
       :hermes_enabled => true
     )
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
   # pod 'GoogleSignIn', '~> 5.0.2'
   if not IS_CI
     use_flipper!()

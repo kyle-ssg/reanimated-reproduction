@@ -1,16 +1,15 @@
-import React from 'react'
 import cn from 'classnames'
+import { FC } from 'react'
 
 interface Messages {
   /** The error message to be displayed, replaces \n */
   className?: string
-  children?: React.ReactNode
   icon?: string
   'data-test'?: string
 }
 
 //Generic error message
-const Message: React.FC<Messages> = ({
+const Message: FC<Messages> = ({
   'data-test': dataTest,
   children,
   className,
@@ -22,11 +21,6 @@ const Message: React.FC<Messages> = ({
 
   return (
     <>
-      {/*<div className={`alert mt-1 mb-1 ${className || ""}`}>*/}
-      {/*    {typeof children === "string"*/}
-      {/*    ? children.replace(/\n/g, "")*/}
-      {/*    : "Error processing request"}*/}
-      {/*</div>*/}
       <div data-test={dataTest} className={`alert ${className || ''}`}>
         <div className='flex-row'>
           {icon && <span className={cn({ icon: true }, 'mr-1', icon)} />}
@@ -42,7 +36,7 @@ const Message: React.FC<Messages> = ({
 }
 
 //Default message added alert-danger
-export const ErrorMessage: React.FC<Messages> = ({ className, ...props }) => (
+export const ErrorMessage: FC<Messages> = ({ className, ...props }) => (
   <Message
     {...props}
     icon={props.icon || 'fas fa-exclamation-circle'}
@@ -51,12 +45,9 @@ export const ErrorMessage: React.FC<Messages> = ({ className, ...props }) => (
 )
 
 // Default message added alert-success
-export const SuccessMessage: React.FC<Messages> = ({ className, ...props }) => (
+export const SuccessMessage: FC<Messages> = ({ className, ...props }) => (
   <Message {...props} className={cn(className, 'alert-success')} />
 )
-
-global.ErrorMessage = ErrorMessage
-global.SuccessMessage = SuccessMessage
 
 Message.displayName = 'ErrorMessage'
 export default Message

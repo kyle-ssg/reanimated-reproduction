@@ -1,22 +1,28 @@
-import React, { useState } from 'react'
-import { FlatList } from 'react-native'
+import { FC, ReactElement, useState } from 'react'
+import { FlatList, StyleProp, ViewStyle } from 'react-native'
+import Flex from '../grid/Flex'
 import FormGroup from '../grid/FormGroup'
 import TextInput from './TextInput'
+import Container from 'components/base/grid/Container'
 
 interface Props {
   onChange?: (argument: any) => void
   renderNoResults?: () => void
   items?: any
   multiple?: boolean
-  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
+  style?: StyleProp<ViewStyle>
   value?: any
   filterItem?: (item: any) => void
-  renderRow?: (item: any, isSelected: boolean, toggleItem: () => void) => void
+  renderRow?: (
+    item: any,
+    isSelected: boolean,
+    toggleItem: () => void,
+  ) => ReactElement | null
   placeholder?: string
   searchTestID?: string
 }
 
-const Select: React.FC<Props> = ({
+const Select: FC<Props> = ({
   onChange,
   renderNoResults,
   style,
@@ -54,7 +60,7 @@ const Select: React.FC<Props> = ({
     : items
 
   return (
-    <Flex style={[Styles.body, { style }]}>
+    <Flex style={[Styles.body, style]}>
       {filterItem && (
         <FormGroup style={{ backgroundColor: '#FCF8F5' }}>
           <Container>

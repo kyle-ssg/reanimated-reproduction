@@ -1,4 +1,3 @@
-import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import defaultNavigationOptions from '../style/navigation_styles'
 import { createNativeStackNavigator } from 'react-native-screens/native-stack'
@@ -6,8 +5,7 @@ import { RouteUrls } from '../route-urls'
 import BottomNav from 'components/BottomNav'
 import { routes } from '../routes'
 import useInsets from 'components/base/useInset'
-
-type ComponentType = {}
+import Flex from 'components/base/grid/Flex'
 
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -41,7 +39,7 @@ const Stack2 = () => (
   </Navigator>
 )
 
-const MainAppNavigator = ({ route }) => {
+const MainAppNavigator = ({}) => {
   const insets = useInsets()
 
   return (
@@ -54,7 +52,6 @@ const MainAppNavigator = ({ route }) => {
       ]}
     >
       <Tab.Navigator
-        lazy={false}
         initialRouteName={RouteUrls.HomeScreen}
         tabBar={(props) => <BottomNav {...props} />}
       >
@@ -64,6 +61,7 @@ const MainAppNavigator = ({ route }) => {
     </Flex>
   )
 }
-const styles = ReactNative.StyleSheet.create({})
+
+// const styles = StyleSheet.create({})
 
 export default MainAppNavigator

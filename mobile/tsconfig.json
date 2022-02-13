@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
+    "types": ["jest"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "esModuleInterop": true,
+    "allowUmdGlobalAccess": true,
     "jsx": "react-native",
-    "lib": ["es6"],
+    "lib": ["es6", "dom"],
     "moduleResolution": "node",
     "noEmit": true,
     "strict": false,
@@ -15,10 +17,20 @@
       "components/*": ["app/components/*"],
       "images/*": ["app/images/*"],
       "screens/*": ["app/screens/*"],
-      "navigation/*": ["app/navigation/*"]
+      "project/*": ["app/project/*"],
+      "navigation/*": ["app/navigation/*"],
+      "lodash": [
+        "node_modules/lodash-es"
+      ]
     },
-    "target": "esnext"
+    "target": "esnext",
+    "skipLibCheck": true
   },
+  "include": [
+    "src/global.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
   "exclude": [
     "babel.config.js",
     "metro.config.js",

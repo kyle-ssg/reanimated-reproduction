@@ -1,6 +1,16 @@
-import React, { useRef, useState } from 'react'
+import {
+  ChangeEvent,
+  FC,
+  ReactChild,
+  ReactChildren,
+  KeyboardEvent,
+  FocusEvent as _FocusEvent,
+  useRef,
+  useState,
+} from 'react'
 import cn from 'classnames'
 import useOnClickOutside from '../useClickOutside'
+import { Utils } from '../../../common/utils'
 
 interface InputDropdown {
   textarea?: boolean
@@ -18,25 +28,22 @@ interface InputDropdown {
   errorMessage?: string
   value?: string
   iconColour?: string
-  onChange?: (e: React.ChangeEvent) => void
-  onFocus?: (e: React.FocusEvent) => void
-  onBlur?: (e: React.FocusEvent) => void
-  onKeyDown?: (e: React.KeyboardEvent) => void
+  onChange?: (e: ChangeEvent) => void
+  onFocus?: (e: _FocusEvent) => void
+  onBlur?: (e: FocusEvent | TouchEvent | MouseEvent) => void
+  onKeyDown?: (e: KeyboardEvent) => void
   disabled?: boolean
-  dropdownItem: (blur: () => void) => React.ReactChildren | React.ReactChild
+  dropdownItem: (blur: () => void) => ReactChildren | ReactChild
 }
 
-const InputDropdown: React.FC<InputDropdown> = ({
+const InputDropdown: FC<InputDropdown> = ({
   children,
   show,
   type,
   errorMessage,
   name,
   label,
-  icon,
-  textButton,
   onKeyDown,
-  textarea,
   isValid = true,
   placeholderChar = ' ',
   inputClassName,
@@ -44,8 +51,6 @@ const InputDropdown: React.FC<InputDropdown> = ({
   value,
   onFocus,
   onBlur,
-  iconColour,
-  deleteLabel,
   disabled,
   dropdownItem,
   ...rest
@@ -53,7 +58,7 @@ const InputDropdown: React.FC<InputDropdown> = ({
   const [shouldValidate, setShouldValidate] = useState(false)
   const [isFocused, setIsFocused] = useState(false)
   const ref = useRef<HTMLInputElement | HTMLTextAreaElement>()
-  const focusHandler = (e: React.FocusEvent) => {
+  const focusHandler = (e: _FocusEvent) => {
     setIsFocused(true)
     onFocus && onFocus(e)
   }
@@ -63,22 +68,20 @@ const InputDropdown: React.FC<InputDropdown> = ({
   //   this.input.focus();
   // };
 
-  const _onKeyDown = (e: React.KeyboardEvent) => {
+  const _onKeyDown = (e: KeyboardEvent) => {
     if (Utils.keys.isEscape(e)) {
-      ref.current.blur()
+      ref.current?.blur()
     }
     onKeyDown && onKeyDown(e)
   }
 
-  const validate = () => setShouldValidate(true)
-
-  const blur = (e: React.FocusEvent) => {
+  const blur = (e: FocusEvent | TouchEvent | MouseEvent) => {
     setShouldValidate(true)
     setIsFocused(false)
     onBlur && onBlur(e)
   }
 
-  const blurRef = useRef()
+  const blurRef = useRef<HTMLDivElement>()
 
   const classNameHandler = cn(
     {
@@ -93,10 +96,10 @@ const InputDropdown: React.FC<InputDropdown> = ({
     { input: true, error: !!errorMessage },
     inputClassName,
   )
-  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const [showPassword] = useState<boolean>(false)
   return (
     <div
-      ref={blurRef}
+      ref={(ref) => ref && (blurRef.current = ref)}
       onFocus={focusHandler}
       data-test={`${name}-container`}
       className={classNameHandler}

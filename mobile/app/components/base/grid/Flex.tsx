@@ -1,17 +1,17 @@
-import React from 'react'
-import { View } from 'react-native'
+import { FC, ReactNode } from 'react'
+import { View, StyleProp, ViewStyle } from 'react-native'
 
 export type FlexType = {
   accessible?: boolean
   accessibilityLabel?: string
   value?: number
-  children?: React.ReactNode
-  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
+  children?: ReactNode
+  style?: StyleProp<ViewStyle>
   testID?: string
   space?: boolean
 }
 
-const Flex: React.FC<FlexType> = ({
+const Flex: FC<FlexType> = ({
   value = 1,
   accessible,
   accessibilityLabel,

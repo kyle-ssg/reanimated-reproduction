@@ -1,4 +1,6 @@
-import React from 'react'
+import { palette } from 'app/style/style_variables'
+import em from '../../style/style-utils/style_pxToEm'
+import { FC } from 'react'
 
 // import { TabBar, TabView } from 'react-native-tab-view'
 
@@ -16,7 +18,7 @@ interface Props {
   renderLabel?: () => void
 }
 
-export const Tabs: React.FC<Props> = ({
+export const Tabs: FC<Props> = ({
   tabBarRow,
   navigationState,
   tabBarStyle,
@@ -28,7 +30,6 @@ export const Tabs: React.FC<Props> = ({
   indicatorStyle,
   labelStyle = {},
   renderLabel,
-  ...props
 }) => {
   // @ts-ignore
   if (typeof TabBar === 'undefined') {
@@ -76,7 +77,7 @@ export const Tabs: React.FC<Props> = ({
   )
 }
 
-const styles = ReactNative.StyleSheet.create({
+const styles = StyleSheet.create({
   tabPrimary: {
     backgroundColor: 'white',
     borderTopWidth: 0,

@@ -1,25 +1,31 @@
-import React from 'react'
 import { Platform, TouchableNativeFeedback } from 'react-native'
+import Flex from './grid/Flex'
+import Container from 'components/base/grid/Container'
+import Row from './grid/Row'
+import {
+  ComponentType,
+  FC,
+  JSXElementConstructor,
+  ReactElement,
+  ReactNode,
+} from 'react'
 
 export type ListItemType = {
   accessible?: boolean
   accessibilityLabel?: string
   active?: boolean
-  icon?: React.ReactNode
+  icon?: ReactNode
   rightElement?:
-    | React.ComponentType<any>
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+    | ComponentType<any>
+    | ReactElement<any, string | JSXElementConstructor<any>>
   testID?: string
-  children?: [React.ReactNode] | React.ReactNode
-  delay?: number
   index?: number
   onPress?: () => void
   style?: any
   disabled?: boolean
-  isEditable?: boolean
 }
 
-export const ListItem: React.FC<ListItemType> = ({
+export const ListItem: FC<ListItemType> = ({
   accessible,
   active,
   testID,
@@ -30,7 +36,6 @@ export const ListItem: React.FC<ListItemType> = ({
   disabled,
   children,
   onPress = null,
-  delay = 0,
 }) => {
   const content = (
     <View style={[disabled && Styles.listItemDisabled]}>

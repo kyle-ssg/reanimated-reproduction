@@ -1,12 +1,14 @@
-import React from 'react'
 // I don't know why we have this import because we didn't use it.
-// import { Interface } from "readline";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal'
-import { ButtonDanger } from './base/forms/Button'
+import {
+  ButtonDanger,
+  ButtonPrimary,
+  ButtonSecondary,
+} from './base/forms/Button'
+import { FC, ReactNode } from 'react'
 
 interface Confirm {
-  children: React.ReactNode
-  title: React.ReactNode
+  title: ReactNode
   isOpen: boolean
   isDanger?: boolean
   onYes?: () => void
@@ -18,7 +20,7 @@ interface Confirm {
   toggle?: () => void
 }
 
-const Confirm: React.FC<Confirm> = ({
+const Confirm: FC<Confirm> = ({
   onNo,
   isDanger,
   disabled,
@@ -31,8 +33,8 @@ const Confirm: React.FC<Confirm> = ({
   yesText = 'OK',
   noText = 'Cancel',
 }) => {
-  const no = () => (onNo ? onNo() : toggle())
-  const yes = () => (onYes ? onYes() : toggle())
+  const no = () => (onNo ? onNo() : toggle?.())
+  const yes = () => (onYes ? onYes() : toggle?.())
 
   return (
     <Modal unmountOnClose isOpen={isOpen} toggle={no}>

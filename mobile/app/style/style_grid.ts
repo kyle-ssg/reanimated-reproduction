@@ -1,4 +1,5 @@
 import asStyle from './style-utils/asStyle'
+import { styleVariables } from './style_variables'
 
 export const paddingBase = 8 // todo: styleVariables.gutterBase should match this ?
 

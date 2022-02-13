@@ -1,21 +1,14 @@
-import React from 'react'
 import Row from '../base/grid/Row'
+import { FC, ReactNode } from 'react'
 
 interface Panel {
-  title?: React.ReactNode
+  title?: ReactNode
   icon?: string
-  className?: React.ReactNode
-  children?: string | React.ReactNode
-  action?: React.ReactNode
+  className?: ReactNode
+  action?: ReactNode
 }
 
-const Panel: React.FC<Panel> = ({
-  title,
-  icon,
-  className,
-  action,
-  children,
-}) => (
+const Panel: FC<Panel> = ({ title, icon, className, action, children }) => (
   <div className={`panel panel-default ${className || ''}`}>
     <div className='panel-heading'>
       <Row space>

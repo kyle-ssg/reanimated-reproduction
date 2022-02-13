@@ -13,7 +13,7 @@ class TheCommand extends Command {
         }
         const prefix = await cli.prompt('Where does it get stored in the reducer?', { default: getPrefix(action) });
         const api = await cli.prompt('What\'s the api path? ', { default: `/${getPrefix(action)}/:id` });
-        const createProvider = await cli.prompt('Do you want to create a provider?', { default: 'yes' });
+        const createProvider = await cli.prompt('Do you want to create a hook?', { default: 'yes' });
         const gitAdd = await cli.prompt('git add?', { default: 'yes' });
         await controller(action, prefix, api, createProvider === 'yes');
         if(gitAdd !== 'no') {

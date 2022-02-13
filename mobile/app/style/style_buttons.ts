@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import asStyle from './style-utils/asStyle'
+import { palette, styleVariables } from './style_variables'
 
 export default asStyle({
   button: {
@@ -110,7 +111,7 @@ export default asStyle({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: palette.primary,
-    borderRadius: styleVariables.borderRadius,
+    borderRadius: styleVariables.baseBorderRadius,
     height: styleVariables.buttonHeight,
   },
   buttonGroupPressed: {

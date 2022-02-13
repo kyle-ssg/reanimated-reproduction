@@ -1,37 +1,24 @@
-import React, { useEffect } from 'react'
-import { useRouter } from 'next/router'
-import { useAuth } from '../common/providers/useAuth'
-import 'project/polyfill'
-import SharedComponent from '../common/components/SharedComponent'
+import { NextPageWithLayout } from 'types/nextPageWithLayout'
+import { ButtonPrimary } from 'components/base/forms/Button'
 import { toast } from 'react-toastify'
-const HomePage = () => {
-  const router = useRouter()
-  const { user } = useAuth()
-  useEffect(() => {
-    if (user) {
-      API.loginRedirect()
-    }
-  }, [user])
+import useLoggedInRedirect from 'common/providers/useLoggedInRedirect'
 
+const HomePage: NextPageWithLayout = () => {
+  useLoggedInRedirect()
   return (
     <div className='container'>
       <div>
         <ButtonPrimary onClick={() => toast(<div>Hi</div>, { type: 'info' })}>
           Click me!
         </ButtonPrimary>
-        <Loader />
-        <p>Good morning</p>
+        <p>Hello world</p>
       </div>
-      <SharedComponent />
-      <div></div>
     </div>
   )
 }
 
-HomePage.displayName = 'HomePage'
-// Do server rendered actions such as fetching data here
-// HomePage.getInitialProps = async({ Component, ctx }) => {};
-HomePage.getLayout = ({ page, router }) => {
+HomePage.getLayout = (page) => {
   return <>{page}</>
 }
+
 export default HomePage

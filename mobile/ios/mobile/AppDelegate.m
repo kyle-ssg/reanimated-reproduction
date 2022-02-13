@@ -17,7 +17,6 @@
 
 #import <Firebase.h> // REACT_NATIVE_FIREBASE
 #import <CodePush/CodePush.h> // REACT_NATIVE_CODEPUSH
-//#import <RNBranch/RNBranch.h> REACT_NATIVE_BRANCH
 
 @implementation AppDelegate
 
@@ -39,7 +38,6 @@
   #endif
 
   [FIRApp configure]; // REACT_NATIVE_FIREBASE
-//  [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES]; // <-- REACT_NATIVE_BRANCH
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
@@ -93,12 +91,8 @@
 //    return YES;
 //  }
 
-// REACT_NATIVE_BRANCH
-//  if ([RNBranch.branch application:application openURL:url sourceApplication:sourceApplication annotation:annotation]) {
-//    return YES;
-//  }
 
-  // REACT_NATIVE_FACEBOOK_SIGNIN
+// REACT_NATIVE_FACEBOOK_SIGNIN
 //  if ([[FBSDKApplicationDelegate sharedInstance] application:application
 //                                                     openURL:url
 //                                           sourceApplication:sourceApplication
@@ -109,10 +103,5 @@
 
   return [RCTLinkingManager application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
 }
-
-// REACT_NATIVE_BRANCH
-//- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *restorableObjects))restorationHandler {
-//    return [RNBranch continueUserActivity:userActivity];
-//}
 
 @end

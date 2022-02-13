@@ -1,12 +1,11 @@
-import React from 'react'
+import { FC } from 'react'
 import cn from 'classnames'
 
 interface Props {
-  className: string
-  children: React.ReactNode
+  className?: string
 }
 
-export const TheComponent: React.FC<Props> = ({ className, children }) => (
+export const TheComponent: FC<Props> = ({ className, children }) => (
   <div className={cn(className, 'some-custom-class')}>{children}</div>
 )
 

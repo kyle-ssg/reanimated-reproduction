@@ -11,9 +11,9 @@ const defaultNavigationOptions: NativeStackNavigationOptions = {
   // headerTranslucent: false,
   // headerLargeTitle: false,
   // headerTintColor: palette.primary,
-  // // headerRight?: (props: { tintColor?: string }) => React.ReactNode;
-  // // headerLeft?: (props: { tintColor?: string }) => React.ReactNode;
-  // // headerCenter?: (props: { tintColor?: string }) => React.ReactNode;
+  // // headerRight?: (props: { tintColor?: string }) => ReactNode;
+  // // headerLeft?: (props: { tintColor?: string }) => ReactNode;
+  // // headerCenter?: (props: { tintColor?: string }) => ReactNode;
   // headerHideBackButton: false,
   // headerHideShadow: false,
   // headerLargeTitleHideShadow: false,

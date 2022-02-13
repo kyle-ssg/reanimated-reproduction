@@ -1,5 +1,5 @@
-import React from 'react'
 import cn from 'classnames'
+import { FC } from 'react'
 
 export type FlexType = {
   className?: string
@@ -8,10 +8,9 @@ export type FlexType = {
 }
 
 //Div with flex
-const Flex: React.FC<FlexType> = ({ className, value = 1, ...props }) => (
+const Flex: FC<FlexType> = ({ className, value = 1, ...props }) => (
   <div {...props} className={cn({ flex: true }, `flex-${value}`, className)} />
 )
 
 Flex.displayName = 'Flex'
-global.Flex = Flex
 export default Flex
