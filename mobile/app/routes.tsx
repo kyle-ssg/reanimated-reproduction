@@ -67,3 +67,6 @@ export const routes: Record<RouteUrls, IRoute> = {
   },
   // END OF SCREENS
 }
+
+// @ts-ignore
+global.routes = routes

@@ -2,7 +2,6 @@ import ScreenContainer from 'components/ScreenContainer'
 import withScreen, { Screen } from './withScreen'
 import { RouteUrls } from '../route-urls'
 import ModalStack from 'navigation/ModalStack'
-import { routes } from '../routes'
 import Button from 'components/base/forms/Button'
 import { FC } from 'react'
 
