@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Loader = () => (
   <svg
     version='1.1'
@@ -27,7 +25,6 @@ const Loader = () => (
   </svg>
 )
 
-global.Loader = Loader
 Loader.displayName = 'Loader'
 
 export default Loader

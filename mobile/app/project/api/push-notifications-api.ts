@@ -1,10 +1,13 @@
 import messaging, {
   FirebaseMessagingTypes,
 } from '@react-native-firebase/messaging'
+import { API } from './api'
+import { APIType } from 'common/types/api-type'
+import { Platform } from 'react-native'
 
 if (typeof messaging === 'undefined') {
-  console.log(
-    'Install @react-native-firebase/messaging ^7.4.2 for push notification support',
+  console.warn(
+    'Install @react-native-firebase/messaging ^12.9.3 for push notification support',
   )
 }
 const PushManager = class {
@@ -33,10 +36,10 @@ const PushManager = class {
 
   stop = () => {
     this.token = null
-    this.notificationListener = null
+    this._notificationListener = null
   } // remove old listener
 
-  notificationListener = (
+  _notificationListener = (
     notification: FirebaseMessagingTypes.RemoteMessage,
     foreground?: boolean,
   ) => {
@@ -46,13 +49,13 @@ const PushManager = class {
   init = async (onNotification, silent) => {
     this.onNotification = onNotification
     messaging().onNotificationOpenedApp((notification) => {
-      if (this.notificationListener) {
-        this.notificationListener(notification)
+      if (this._notificationListener) {
+        this._notificationListener(notification)
       }
     })
     messaging().onMessage((notification) => {
-      if (this.notificationListener) {
-        this.notificationListener(notification, true)
+      if (this._notificationListener) {
+        this._notificationListener(notification, true)
       }
     })
 
@@ -60,7 +63,7 @@ const PushManager = class {
       .getInitialNotification()
       .then((res) => {
         if (res) {
-          this.notificationListener(res)
+          this._notificationListener(res)
         }
       })
     if (this.token) {
@@ -68,7 +71,7 @@ const PushManager = class {
     }
     let token
     if (!silent) {
-      const authStatus = await messaging().requestPermission()
+      await messaging().requestPermission()
       token = await messaging().getToken()
     }
 
@@ -80,5 +83,5 @@ const PushManager = class {
     return token
   }
 }
-
-export default new PushManager()
+const pushManager: APIType['push'] = new PushManager()
+export default pushManager

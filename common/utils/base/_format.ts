@@ -15,9 +15,7 @@ const Format = {
 
   camelCase(val: string | null | undefined): string {
     // hello world > Hello world
-    return val && typeof val === 'string'
-      ? val.charAt(0).toUpperCase() + val.slice(1).toLowerCase()
-      : ''
+    return val ? val.charAt(0).toUpperCase() + val.slice(1).toLowerCase() : ''
   },
 
   cssImage(value: string | null | undefined): string {
@@ -38,7 +36,10 @@ const Format = {
     return value === 1 ? singular : multiple
   },
 
-  truncateText(text: string | null | undefined, numberOfChars: number): string {
+  truncateText(
+    text: string | null | undefined,
+    numberOfChars: number,
+  ): string | null | undefined {
     // lol,1 > l...
     if (text) {
       if (text.length > numberOfChars) {
@@ -49,7 +50,7 @@ const Format = {
   },
 
   removeAccents(str: string | null | undefined): string {
-    // Sergio Agüero > Sergio Aguero
+    // ü > u
     if (!str) {
       return ''
     }

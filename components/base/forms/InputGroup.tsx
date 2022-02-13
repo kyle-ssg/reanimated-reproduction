@@ -1,15 +1,16 @@
-import React from 'react'
 import Input from './Input'
+import { FC, ReactNode } from 'react'
+import { Utils } from '../../../common/utils'
 
 export interface InputGroup {
   inputProps?: { name?: string; id?: string; error?: string }
   className?: string
   title?: string
-  component?: React.ReactNode
+  component?: ReactNode
   textarea?: boolean
   isValid?: boolean
   id?: string
-  onBlur?: (e: React.FocusEvent) => void
+  onBlur?: (e: FocusEvent) => void
   disabled?: string
   errorMessage?: string
   name?: string
@@ -20,7 +21,7 @@ export interface InputGroup {
   placeholder?: string
 }
 
-const InputGroup: React.FC<InputGroup> = (
+const InputGroup: FC<InputGroup> = (
   {
     name,
     onBlur,
@@ -93,6 +94,5 @@ const InputGroup: React.FC<InputGroup> = (
   )
 }
 
-global.InputGroup = InputGroup
 InputGroup.displayName = 'InputGroup'
 export default InputGroup

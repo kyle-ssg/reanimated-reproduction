@@ -1,6 +1,10 @@
-import React from 'react'
+import Flex from './base/grid/Flex'
+import Row from './base/grid/Row'
+import { TouchableOpacity, View } from 'react-native'
+import Text from 'components/base/type/Text'
+import { palette, styleVariables } from '../style/style_variables'
 
-const BottomNav = ({ state, descriptors, navigation }) => {
+const BottomNav = ({ state, navigation }) => {
   const onPress = (index) => {
     const route = state.routes[index]
     const isFocused = state.index === index

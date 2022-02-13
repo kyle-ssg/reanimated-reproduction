@@ -1,10 +1,10 @@
-import React from 'react'
 import ScreenContainer from 'components/ScreenContainer'
 import withScreen, { Screen } from './withScreen'
+import { FC } from 'react'
 
 type Tab2Screen = Screen & {}
 
-const Tab2Screen: React.FC<Tab2Screen> = ({ children }) => {
+const Tab2Screen: FC<Tab2Screen> = ({}) => {
   return (
     <ScreenContainer style={Styles.body}>
       <Text>I am the Tab2Screen</Text>

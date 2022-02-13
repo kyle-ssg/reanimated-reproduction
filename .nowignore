@@ -1,8 +1,7 @@
-mobile/ios
-mobile/android
 stories
 docs
 cli
 .storybook
 pacts
 logs
+mobile

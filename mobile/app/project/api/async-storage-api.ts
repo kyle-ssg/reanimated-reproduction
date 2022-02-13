@@ -1,6 +1,7 @@
 // import SecuredStorage from 'react-native-secured-storage';
 import MMKVStorage from 'react-native-mmkv-storage'
-import { Storage } from 'common/api-type'
+import { StorageType } from 'common/types/api-type'
+import { getApi } from 'common/api/api'
 
 const MMKV = new MMKVStorage.Loader().withEncryption().initialize()
 
@@ -12,28 +13,28 @@ const StorageManager = class {
   }
 
   clear = async () => {
-    API.log('STORAGE', 'CLEAR')
-    await MMKV.clearStore()
+    getApi().log('STORAGE', 'CLEAR')
+    return MMKV.clearStore()
   }
 
-  getItem = async (key, cb: CallbackType) => {
+  getItem = async (key: string, cb: CallbackType) => {
     await this.init()
     const str = MMKV.getString(key)
     cb && cb(null, str)
     return str
   }
 
-  setItem = async (key, value) => {
+  setItem = async (key: string, value) => {
     await this.init()
-    API.log('STORAGE', 'SET STRING', key, value)
+    getApi().log('STORAGE', 'SET STRING', key, value)
     return MMKV.setStringAsync(key, value)
   }
 
-  removeItem = async (key) => {
+  removeItem = async (key: string) => {
     await this.init()
-    API.log('STORAGE', 'REMOVE ITEM', key)
+    getApi().log('STORAGE', 'REMOVE ITEM', key)
     MMKV.removeItem(key)
   }
 }
 
-export default new StorageManager() as Storage
+export default new StorageManager() as StorageType

@@ -1,6 +1,4 @@
-import React, { Component } from 'react'
-
-const Profiler = React.Profiler
+import { Component, Profiler } from 'react'
 
 export default (
   WrappedComponent,

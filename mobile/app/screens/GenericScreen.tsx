@@ -1,14 +1,15 @@
-import React from 'react'
 import withScreen from './withScreen'
 import ScreenContainer from 'components/ScreenContainer'
+import { FC } from 'react'
+import { ViewStyle } from 'react-native'
 
 interface GenericScreen {
   text: string
-  style: ReactNative.ViewStyle
+  style: ViewStyle
   children?: any
 }
 
-const GenericScreen: React.FC<GenericScreen> = ({ children }) => {
+const GenericScreen: FC<GenericScreen> = ({ children }) => {
   return (
     children || (
       <ScreenContainer testID='welcome'>

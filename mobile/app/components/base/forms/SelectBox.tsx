@@ -1,28 +1,30 @@
-import React from 'react'
 import Icon from 'react-native-vector-icons/Ionicons'
 import FormGroup from '../grid/FormGroup'
+import { API } from 'project/api/api'
+import Row from '../grid/Row'
+import { FC, ReactNode } from 'react'
+import { StyleProp, TextStyle, ViewStyle } from 'react-native'
 
 interface Props {
   disabled?: boolean
   hideIcon?: boolean
   onPress?: () => void
-  textStyle?: ReactNative.TextStyle
-  containerstyle?: ReactNative.StyleProp<ReactNative.ViewStyle>
+  textStyle?: TextStyle
+  containerStyle?: ViewStyle
   iconStyle?: {}
-  children?: React.ReactNode
+  children?: ReactNode
   options?: string[]
   title?: string
   onChange?: (index: string, item: number) => void
   onBlur?: () => void
-  titleStyle?: ReactNative.TextStyle
+  titleStyle?: TextStyle
   destructiveButton?: boolean
-  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
-  icon?: React.ReactNode
-  dropIcon?: React.ReactNode
-  hideSeparator?: boolean
+  style?: StyleProp<ViewStyle>
+  icon?: ReactNode
+  dropIcon?: ReactNode
 }
 
-const SelectBox: React.FC<Props> = ({
+const SelectBox: FC<Props> = ({
   options,
   title,
   onChange,
@@ -38,7 +40,6 @@ const SelectBox: React.FC<Props> = ({
   style,
   titleStyle,
   dropIcon,
-  hideSeparator,
 }) => {
   const onPressHandler = () => {
     if (!options || !options.length) return
@@ -72,10 +73,7 @@ const SelectBox: React.FC<Props> = ({
           ) : null}
 
           <View style={Styles.pr15}>
-            <Text
-              numberOfLines={1}
-              style={[Styles.selectBoxText, { top: 2 }, textStyle || {}]}
-            >
+            <Text numberOfLines={1} style={[{ top: 2 }, textStyle || {}]}>
               {children}{' '}
             </Text>
           </View>
@@ -91,7 +89,6 @@ const SelectBox: React.FC<Props> = ({
                   justifyContent: 'center',
                 },
                 Styles.pr5,
-                hideSeparator ? null : Styles.selectSeparator,
               ]}
             >
               {dropIcon ? (

@@ -1,8 +1,9 @@
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import defaultNavigationOptions from '../style/navigation_styles'
 import { routes } from '../routes'
 import { RouteUrls } from '../route-urls'
 import { createNativeStackNavigator } from 'react-native-screens/native-stack'
+import { Constants } from 'common/utils'
 
 export default function (TheScreen: any, url: RouteUrls, hideHeader, children) {
   const Stack = createNativeStackNavigator()
@@ -11,7 +12,6 @@ export default function (TheScreen: any, url: RouteUrls, hideHeader, children) {
   const StackScreen: FunctionComponent = () => {
     return (
       <Navigator
-        independent
         screenOptions={defaultNavigationOptions}
         initialRouteName={Constants.simulate.FORCE_SUB_PAGE || '/'}
       >

@@ -1,8 +1,8 @@
 #!/bin/bash
-if [ -z "$APPCENTER_ACCESS_TOKEN" ]
+if [ -z "$APPCENTER_BUILD_ID" && -z "$CI" ]
 then
-    echo "$APPCENTER_ACCESS_TOKEN not defined"
+    echo "APPCENTER_BUILD_ID and CI not defined"
     cd ./ios && arch -x86_64 pod install --repo-update && cd ..
 else
-    echo "$APPCENTER_ACCESS_TOKEN is defined"
+    echo "APPCENTER_BUILD_ID is defined"
 fi

@@ -1,4 +1,5 @@
 import asStyle from './style-utils/asStyle'
+import { palette, styleVariables } from './style_variables'
 
 export default asStyle({
   textInput: {

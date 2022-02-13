@@ -1,8 +1,8 @@
-import React from 'react'
 import { ComponentStory } from '@storybook/react'
 import '../../styles/Global.scss'
 import Button, {
   ButtonPrimary,
+  ButtonSecondary,
   ButtonTertiary,
 } from 'components/base/forms/Button'
 
@@ -21,6 +21,14 @@ export const Primary: ComponentStory<typeof ButtonPrimary> = (args) => (
   </>
 )
 
+export const Tertiary: ComponentStory<typeof ButtonTertiary> = (args) => (
+  <div className='main pt-5 pb-5 pl-5'>
+    <ButtonTertiary {...args}>
+      Login <i className='fas fa-user ml-1 text-brand-primary'></i>
+    </ButtonTertiary>
+  </div>
+)
+
 export const Secondary: ComponentStory<typeof ButtonSecondary> = (args) => (
   <div className='main pt-5 pb-5 pl-5'>
     <ButtonSecondary {...args}>
@@ -37,6 +45,6 @@ Secondary.args = {
   disabled: false,
 }
 
-// export const Tertiary: ComponentStory<typeof ButtonTertiary> = (args) => (
-//   <ButtonTertiary {...args}>Hi</ButtonTertiary>
-// )
+Tertiary.args = {
+  disabled: false,
+}

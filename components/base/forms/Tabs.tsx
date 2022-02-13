@@ -1,60 +1,70 @@
-import React from 'react'
 import Button from './Button'
+import { FC, useState } from 'react'
 
 interface Tabs {
   value?: any
   onChange?: (i: number) => void
-  children?: { id?: string }[]
+  children?: { id?: string; 'data-test'?: string }[]
   className?: string
   uncontrolled?: boolean
   tabLabels: string[]
 }
 
-const Tabs: React.FC<Tabs> = ({
+const Tabs: FC<Tabs> = ({
   className = '',
   value = 0,
   children,
   tabLabels,
   onChange,
-}) => (
-  <div className={`tabs ${className}`}>
-    <div className='tabs-nav'>
-      {children.map((child, i) => {
-        const isSelected = value === i
-        const tabLabel = tabLabels[i]
-        return (
-          <Button
-            data-test={child['data-test']}
-            id={child.id}
-            key={`button${i}`}
-            onClick={(e: React.MouseEvent) => {
-              e.stopPropagation()
-              e.preventDefault()
-              onChange && onChange(i)
-            }}
-            className={`btn-tab btn-primary${isSelected ? ' tab-active' : ''}`}
-          >
-            {tabLabel || i}
-          </Button>
-        )
-      })}
-    </div>
+  uncontrolled,
+}) => {
+  const [_value, setValue] = useState<number>(value)
+  return (
+    <div className={`tabs ${className}`}>
+      <div className='tabs-nav'>
+        {children?.map((child, i) => {
+          const isSelected = uncontrolled ? _value === i : value === i
+          const tabLabel = tabLabels[i]
+          return (
+            <Button
+              data-test={child['data-test']}
+              id={child.id}
+              key={`button${i}`}
+              onClick={(e) => {
+                e.stopPropagation()
+                e.preventDefault()
+                if (uncontrolled) {
+                  setValue(i)
+                } else {
+                  onChange && onChange(i)
+                }
+              }}
+              className={`btn-tab btn-primary${
+                isSelected ? ' tab-active' : ''
+              }`}
+            >
+              {tabLabel || i}
+            </Button>
+          )
+        })}
+      </div>
 
-    <div className='tabs-content'>
-      {children.map((child, i) => {
-        const isSelected = value === i
-        return (
-          <div
-            key={`content${i}`}
-            className={`tab-item${isSelected ? ' tab-active' : ''}`}
-          >
-            {child}
-          </div>
-        )
-      })}
+      <div className='tabs-content'>
+        {children?.map((child, i) => {
+          const isSelected = uncontrolled ? _value === i : value === i
+          return (
+            <div
+              key={`content${i}`}
+              className={`tab-item${isSelected ? ' tab-active' : ''}`}
+            >
+              {child}
+            </div>
+          )
+        })}
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 Tabs.displayName = 'Tabs'
 export default Tabs

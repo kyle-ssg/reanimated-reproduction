@@ -1,9 +1,14 @@
-import React, { Component, FunctionComponent } from 'react'
+import { Component, FunctionComponent } from 'react'
 import withScreen, { Screen } from './withScreen'
 import { WebView, WebViewProps } from 'react-native-webview'
 import { NavigationContainer } from '@react-navigation/native'
 import defaultNavigationOptions from '../style/navigation_styles'
 import { createNativeStackNavigator } from 'react-native-screens/native-stack'
+import Flex from 'components/base/grid/Flex'
+import { palette } from '../style/style_variables'
+import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro'
+import { SafeAreaView } from 'react-native'
+import Loader from 'components/base/Loader'
 
 type Props = Screen & {
   webViewProps: Partial<WebViewProps>
@@ -21,7 +26,7 @@ class _WebScreen extends Component<Props> {
               style={styles.icon}
               name='times'
               size={20}
-              color={palette.navy}
+              color={palette.primary}
             />
           </TouchableOpacity>
         ) : (
@@ -34,16 +39,11 @@ class _WebScreen extends Component<Props> {
 
   render() {
     return (
-      <ReactNative.SafeAreaView style={[Styles.bodyBackground, { flex: 1 }]}>
+      <SafeAreaView style={[Styles.body, { flex: 1 }]}>
         <WebView
           ref={(webview) => (this.webview = webview)}
           renderLoading={() => (
-            <Flex
-              style={[
-                ReactNative.StyleSheet.absoluteFill,
-                Styles.centeredContainer,
-              ]}
-            >
+            <Flex style={[StyleSheet.absoluteFill, Styles.centeredContainer]}>
               <Loader />
             </Flex>
           )}
@@ -51,7 +51,7 @@ class _WebScreen extends Component<Props> {
           {...this.props.webViewProps}
           onNavigationStateChange={this.onNavigationStateChange}
         />
-      </ReactNative.SafeAreaView>
+      </SafeAreaView>
     )
   }
 }
@@ -85,7 +85,7 @@ const TheComponent: FunctionComponent<Props> = ({ webViewProps }) => {
 
 export default withScreen(TheComponent)
 
-const styles = ReactNative.StyleSheet.create({
+const styles = StyleSheet.create({
   icon: {
     fontSize: 24,
   },

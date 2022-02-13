@@ -1,18 +1,22 @@
-import { applyMiddleware, createStore } from 'redux'
-import createSagaMiddleware from 'redux-saga'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import { persistReducer, persistStore } from 'redux-persist'
-import './app-actions'
-import rootSaga from './saga'
-import rootReducer from './reducer'
-import { AppState } from './state-type'
+import { applyMiddleware, createStore, Store } from 'redux'
+import { persistStore } from 'redux-persist'
 import { PersistConfig } from 'redux-persist/es/types'
+import createSagaMiddleware, { Task } from 'redux-saga'
+import './app-actions'
+import rootReducer from './reducer'
+import rootSaga from './saga'
+import { AppState } from './types/state-type'
+import { getApi } from './api/api'
 
-let store
+let store: Store & {
+  __PERSISTOR?: ReturnType<typeof persistStore>
+  sagaTask?: Task
+}
 
-export default function createAppStore(
+export default function _store(
   initialState: AppState = {},
-  forceNewStore?: boolean,
+  forceNewStore = false,
+  web = false,
 ) {
   // It's very important to only return the cached store on the client, otherwise SSR will return the previous request state
   // @ts-ignore
@@ -26,35 +30,39 @@ export default function createAppStore(
 
   const sagaMiddleware = createSagaMiddleware()
 
-  const isClient = typeof window !== 'undefined'
-  const middlewares = API.middlewares
-    ? [sagaMiddleware, ...API.middlewares]
+  const middlewares = getApi().middlewares
+    ? [sagaMiddleware, ...getApi().middlewares]
     : [sagaMiddleware]
 
-  if (isClient) {
-    const { persistReducer } = require('redux-persist')
+  if (web) {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { composeWithDevTools } = require('redux-devtools-extension')
+    store = createStore(
+      rootReducer,
+      initialState,
+      composeWithDevTools(...[applyMiddleware(...middlewares)]),
+    )
+  } else {
     const storage =
-      API.reduxStorage || require('redux-persist/lib/storage').default
+      getApi().reduxStorage ||
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      require('redux-persist/lib/storage').default
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { persistReducer } = require('redux-persist')
 
     const persistConfig: PersistConfig<any, any, any> = {
       key: 'root',
-      whitelist: ['profile'],
+      whitelist: ['user'],
       storage,
     }
 
     store = createStore(
       persistReducer(persistConfig, rootReducer),
       initialState,
-      composeWithDevTools(applyMiddleware(...middlewares)),
+      applyMiddleware(...middlewares),
     )
 
     store.__PERSISTOR = persistStore(store)
-  } else {
-    store = createStore(
-      rootReducer,
-      initialState,
-      applyMiddleware(sagaMiddleware),
-    )
   }
 
   store.sagaTask = sagaMiddleware.run(rootSaga)

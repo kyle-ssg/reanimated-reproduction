@@ -11,6 +11,7 @@ const waitByType = (theType) =>
 const platformSelect = (obj) => {
   return device.getPlatform() === 'ios' ? obj.ios : obj.android
 }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const isIOS = device.getPlatform() === 'ios'
 const pressById = async (id) => {
   await waitById(id)
@@ -21,6 +22,7 @@ const pressByType = async (theType) => {
   await element(by.type(theType)).tap()
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const goBack = async () => {
   return platformSelect({
     android: await device.pressBack(),

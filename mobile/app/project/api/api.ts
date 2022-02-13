@@ -1,61 +1,51 @@
 //Anything that provides functionality that would benefit from being accessed by common
 
-// import Contacts from 'react-native-contacts';
-// import BottomSheet from 'react-native-bottomsheet'
-// import _analytics from "@react-native-firebase/analytics";  // ^7.3.1
-import errorHandler from 'common/utils/errorHandler'
-import getStoreDangerous from 'common/store'
-
-import ReactNative from 'react-native'
-import storage from './async-storage-api'
-
-import push from './push-notifications-api'
-import auth from './auth'
-import * as RootNavigation from 'navigation/RootNavigation'
-import { RouteUrls } from '../../route-urls'
+import { AppActions } from 'common/app-actions'
 import 'common/project'
-import { APIType } from 'common/api-type'
-import { FirebaseMessagingTypes } from '@react-native-firebase/messaging'
+import { default as getStoreDangerous } from 'common/store'
+// import _analytics from "@react-native-firebase/analytics";  // ^7.3.1
+import { APIType } from 'common/types/api-type'
+import { errorHandler } from 'common/utils/errorHandler'
+import { Alert, PixelRatio, Share } from 'react-native'
 // import BottomSheet from 'react-native-bottomsheet'
-// import _analytics from '@react-native-firebase/analytics'
+import storage from './async-storage-api'
+import auth from './auth'
+// import ImagePicker from 'react-native-image-crop-picker';
+import push from './push-notifications-api'
+import { Strings } from 'project/localisation'
+import { Project } from 'common/project'
+import { FirebaseMessagingTypes } from '@react-native-firebase/messaging'
+import * as RootNavigation from 'navigation/RootNavigation'
+import { setApi } from 'common/api/api'
+import { RouteUrls } from '../../route-urls'
+
 // @ts-ignore
 const analytics = typeof _analytics === 'undefined' ? undefined : _analytics
-// import ImagePicker from 'react-native-image-crop-picker';
 
-export type MobileAPIType = APIType & {
-  [extraProps: string]: any
-  showOptions: (
-    title: string,
-    _options: string[],
-    cancelButton?: boolean,
-    dark?: boolean,
-    destructiveOption?: boolean,
-    resolveCancel?: (boolean) => Promise<number>,
-  ) => Promise<unknown>
-  push: {
-    getInitialNotification: () => Promise<FirebaseMessagingTypes.RemoteMessage | null>
-    subscribe: (topic: string) => Promise<void>
-    unsubscribe: (topic: string) => Promise<void>
-    stop: () => void
-    init: (
-      onNotification?: (
-        res: FirebaseMessagingTypes.RemoteMessage,
-        isForeground: boolean,
-      ) => void,
-      silent?: boolean,
-    ) => Promise<string>
-    getToken: () => Promise<string>
-  }
+const ratio = PixelRatio.get()
+interface MobileAPI extends APIType<FirebaseMessagingTypes.RemoteMessage> {
+  showOptions: any
+  share: any
+  showUpload: any
 }
 
-const API: MobileAPIType = {
+const API: MobileAPI = {
   isMobile: () => true,
-  getPixelRatio: () => ReactNative.PixelRatio.get(),
+  getPixelRatio: () => ratio,
   reduxStorage: storage,
-  middlewares: __DEV__ ? [require('redux-flipper').default({})] : null,
-
+  middlewares:
+    __DEV__ && !process.env.JEST_WORKER_ID
+      ? // eslint-disable-next-line @typescript-eslint/no-var-requires
+        [require('redux-flipper').default({})]
+      : null,
   ajaxHandler(type, e) {
-    return { type, error: errorHandler(e) }
+    return {
+      type,
+      error: errorHandler({
+        defaultErrorMessage: Strings.defaultErrorMessage,
+        gatewayTimeoutError: Strings.gatewayTimeoutError,
+      })(e),
+    }
   },
   log(namespace: string, ...args: any[]) {
     if (Project.logs[namespace]) {
@@ -63,14 +53,13 @@ const API: MobileAPIType = {
       console.log.apply(this, [namespace, ...args])
     }
   },
-  loggedIn: () => null,
-  logout: () => {
+  loginRedirect() {
     RootNavigation.resetTo(0, [{ name: RouteUrls.HomeScreen }])
   },
-  logoutComplete: () => {
+  logout: () => {
     const store = getStoreDangerous()
     if (store.getState().user) {
-      store.dispatch(AppActions.logout())
+      store.dispatch(AppActions.logout({}))
     }
   },
   trackEvent(data) {
@@ -90,13 +79,17 @@ const API: MobileAPIType = {
       analytics().logEvent(event.toLowerCase().replace(/ /g, '_'), rest)
     }
   },
-  trackPage(name) {
+  identify(id: string) {
+    API.log('EVENTS', 'IDENTIFY', id)
+  },
+  trackPage(name, data = {}) {
     if (analytics) {
-      analytics().logScreenView({ screen_name: name })
+      analytics().logEvent(`Screen_${name.replace(/ /g, '_')}`, data)
+      API.log('EVENTS', `Screen_${name}`, data)
     }
   },
   share: (uri, message, title, subject, excludedActivityTypes) => {
-    ReactNative.Share.share(
+    Share.share(
       { message, title, url: uri },
       { subject, excludedActivityTypes },
     )
@@ -106,7 +99,6 @@ const API: MobileAPIType = {
     _options,
     cancelButton = true,
     dark = false,
-    destructiveOption,
     resolveCancel,
   ) =>
     new Promise((resolve) => {
@@ -123,11 +115,6 @@ const API: MobileAPIType = {
           options,
           title,
           dark,
-          // @ts-ignore
-          destructiveButtonIndex:
-            destructiveOption && cancelButton
-              ? options.length - 2
-              : options.length - 1,
           cancelButtonIndex: cancelButton && options.length - 1,
         },
         (value) => {
@@ -139,37 +126,6 @@ const API: MobileAPIType = {
         },
       )
     }),
-  getContacts: (includePhotos) => {
-    // @ts-ignore
-    if (typeof Contacts === 'undefined') {
-      return Promise.reject(
-        new Error(
-          'You need to link react-native-contacts to use this function',
-        ),
-      )
-    }
-    return includePhotos
-      ? new Promise((resolve) =>
-          // eslint-disable-next-line no-undef
-          // @ts-ignore
-          Contacts.getAll((error, contacts) =>
-            resolve({
-              error,
-              contacts: contacts,
-            }),
-          ),
-        )
-      : new Promise((resolve) =>
-          // eslint-disable-next-line no-undef
-          // @ts-ignore
-          Contacts.getAllWithoutPhotos((error, contacts) =>
-            resolve({
-              error,
-              contacts: contacts,
-            }),
-          ),
-        )
-  },
   showUpload: (
     title,
     multiple,
@@ -180,11 +136,9 @@ const API: MobileAPIType = {
   ) =>
     new Promise((resolve) => {
       API.showOptions(title, ['Camera', 'Upload a Photo']).then((i) => {
-        // @ts-ignore
+        // @ts-expect-error
         if (typeof ImagePicker === 'undefined') {
-          // eslint-disable-next-line
-          // @ts-ignore
-          alert(
+          Alert.alert(
             'You need to link react-native-image-crop-picker to use this function',
           )
           return
@@ -207,8 +161,8 @@ const API: MobileAPIType = {
             useFrontCamera: true,
           }
 
+          // @ts-expect-error
           // eslint-disable-next-line no-undef
-          // @ts-ignore
           const func = i ? ImagePicker.openPicker : ImagePicker.openCamera
 
           return func(options).then((res) => {
@@ -220,25 +174,10 @@ const API: MobileAPIType = {
       })
     }),
 
-  setStoredToken(val) {
-    if (!val) {
-      return API.storage.removeItem('token')
-    }
-    API.storage.setItem('token', val)
-  },
-
-  setStoredRefreshToken(val) {
-    if (!val) {
-      return API.storage.removeItem('refreshToken')
-    }
-    API.storage.setItem('refreshToken', val)
-  },
-
   push,
   auth,
   storage,
+  getAPIBaseUrl: () => Project.api,
 }
-
-global.API = API
-
-export default API
+setApi(API)
+export { API }

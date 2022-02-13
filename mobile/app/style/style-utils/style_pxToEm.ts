@@ -15,4 +15,4 @@ const em = (value) => {
   return unit * value
 }
 // @ts-ignore
-global.em = em
+export default em

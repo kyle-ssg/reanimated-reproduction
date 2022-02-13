@@ -1,14 +1,15 @@
-import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { Children, cloneElement, FC } from 'react'
 
-interface ActiveLink {
+interface ActiveLinkType {
   href?: string
+  match: any
+  as: string
   activeClassName?: string
-  children?: React.ReactChildren
 }
 
-const ActiveLink = ({
+const ActiveLink: FC<ActiveLinkType> = ({
   match,
   href = '',
   as,
@@ -16,7 +17,8 @@ const ActiveLink = ({
   children,
 }) => {
   const router = useRouter()
-  const child = React.Children.only(children)
+  const child = Children.only(children)
+  // @ts-ignore
   let className = child.props.className || ''
 
   if (
@@ -28,7 +30,8 @@ const ActiveLink = ({
 
   return (
     <Link as={as} href={href}>
-      {React.cloneElement(child, { className })}
+      {/*@ts-ignore*/}
+      {cloneElement(child, { className })}
     </Link>
   )
 }

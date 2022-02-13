@@ -1,23 +1,23 @@
-require('./style-utils/style_pxToEm')
-import { Dimensions, Platform } from 'react-native'
+import em from './style-utils/style_pxToEm'
+import { Platform } from 'react-native'
 
-const deviceH = Dimensions.get('screen').height
-const windowH = Dimensions.get('window').height
-const bottomNavBarH = deviceH - windowH
-
-export const projectPalette = {
+export const palette = {
   bodyBackground: '#fff', // General app  background (overriding palette)
   primary: '#1AC0C6',
   primaryOutline: '#15a6ac',
   primaryPressed: '#15a6ac',
   secondary: '#2C2736',
   text: '#333',
+  backdrop: 'rgba(0,0,0,.2)',
   link: '#2e7bf7',
+  success: '#1AC0C6',
+  textHighlight: '#1AC0C6',
   danger: '#fe4948',
 }
 
-//= = Other Variables
-export const projectStyles = {
+export type TProjectPalette = typeof palette
+
+export const styleVariables = {
   defaultStatusBarColour: 'dark-content',
   //= = Typography
   fontSizeBase: em(1), //16px
@@ -51,5 +51,7 @@ export const projectStyles = {
   inputHeight: 44,
 }
 
-global.palette = projectPalette
-global.styleVariables = projectStyles
+// @ts-ignore
+global.styleVariables = styleVariables
+// @ts-ignore
+global.palette = palette

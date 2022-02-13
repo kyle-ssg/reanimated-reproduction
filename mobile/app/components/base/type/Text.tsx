@@ -1,7 +1,8 @@
-import { Text } from 'react-native'
-import React from 'react'
+import { Text, TextProps } from 'react-native'
+import { FC } from 'react'
 
-const TextComponent: React.FC<ReactNative.TextProps> = (props) => {
+export type TextType = TextProps & {}
+const TextComponent: FC<TextProps> = (props) => {
   const style = Array.isArray(props.style) ? props.style : [props.style]
 
   return (

@@ -1,39 +1,41 @@
-;``
-import { Pressable } from 'react-native'
-
+import Text from 'components/base/type/Text'
+import {
+  Pressable,
+  PressableAndroidRippleConfig,
+  PressableProps,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
+} from 'react-native'
 import Utils from 'common/utils/base/_utils'
-import throttle from 'lodash/debounce'
-import React, { FunctionComponent, useMemo } from 'react'
+import debounce from 'lodash/debounce'
+import { FunctionComponent, ReactNode, useMemo } from 'react'
+import { styleVariables } from '../../../style/style_variables'
+import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro'
 
-export type ButtonType = ReactNative.PressableProps & {
-  children: React.ReactNode
+export type ButtonType = PressableProps & {
+  children: ReactNode
   icon?: boolean
   iconColour?: string
-  textStyle?: ReactNative.StyleProp<
-    ReactNative.TextStyle | ReactNative.TextStyle[]
-  >
-  pressedStyle?:
-    | ReactNative.StyleProp<ReactNative.ViewStyle>
-    | ReactNative.ViewStyle[]
-  containerStyle?:
-    | ReactNative.StyleProp<ReactNative.ViewStyle>
-    | ReactNative.ViewStyle[]
-  pressedTextStyle?: ReactNative.TextStyle | ReactNative.TextStyle[]
-  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
+  textStyle?: StyleProp<TextStyle | TextStyle[]>
+  pressedStyle?: StyleProp<ViewStyle> | ViewStyle[]
+  containerStyle?: StyleProp<ViewStyle> | ViewStyle[]
+  pressedTextStyle?: TextStyle | TextStyle[]
+  style?: StyleProp<ViewStyle>
   throttle?: number
 }
 
-export const standardAndroidRipple: ReactNative.PressableAndroidRippleConfig = {
+export const standardAndroidRipple: PressableAndroidRippleConfig = {
   color: 'rgba(255,255,255,.25)',
   borderless: false,
 }
 
-const circleButtonRipple: ReactNative.PressableAndroidRippleConfig = {
+const circleButtonRipple: PressableAndroidRippleConfig = {
   color: 'rgba(0,0,0,.15)',
   borderless: true,
 }
 
-export const darkAndroidRipple: ReactNative.PressableAndroidRippleConfig = {
+export const darkAndroidRipple: PressableAndroidRippleConfig = {
   color: 'rgba(0,0,0,.05)',
   borderless: false,
 }
@@ -62,7 +64,7 @@ const Button: FunctionComponent<ButtonType> = ({
   )
 
   const onPressThrottle =
-    onPress && throttle(onPress, _throttle, { leading: true })
+    onPress && debounce(onPress, _throttle, { leading: true })
 
   const pressedStyles = useMemo(
     () => [Styles.buttonGroup, Styles.buttonGroupPressed, style, pressedStyle],
@@ -70,7 +72,7 @@ const Button: FunctionComponent<ButtonType> = ({
   )
 
   // @ts-ignore
-  const textStyles: ReactNative.TextStyle[] = useMemo(() => {
+  const textStyles: TextStyle[] = useMemo(() => {
     // @ts-ignore
     const additionalTextStyles =
       // @ts-ignore
@@ -220,7 +222,5 @@ export const ButtonNav: FunctionComponent<ButtonType> = (props) => {
     />
   )
 }
-
-const styles = ReactNative.StyleSheet.create({})
 
 export default Button

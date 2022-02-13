@@ -1,22 +1,30 @@
-import { FunctionComponent, useEffect, useState } from 'react'
+import { FunctionComponent, ReactNode, useEffect, useState } from 'react'
 import Animated, {
   runOnJS,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
-} from 'react-native-reanimated' // we need this to make JSX compile
-import { Modal, StyleSheet, TouchableOpacity, View } from 'react-native'
+} from 'react-native-reanimated'
+import {
+  Modal,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native'
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
-import { modalConfig } from '../../../common/animation-util/reanimations'
+import { easingConfigModal } from 'project/animation-util/reanimations'
+import { palette } from '../style/style_variables'
 
-type ComponentType = {}
 export type ModalType = {
   animatedValue?: Animated.SharedValue<number>
   controlledValue?: Animated.SharedValue<number>
   fadeContent?: boolean
   controlled?: boolean
+  outsideChildren?: ReactNode
+  backdropStyle?: ViewStyle
   visible: boolean
-  style: ReactNative.ViewStyle
+  style: ViewStyle
   onDismissPress?: () => void
   onShow?: () => void
   preventDismiss?: boolean
@@ -24,10 +32,10 @@ export type ModalType = {
 
 export type ModalInnerType = {
   fadeContent?: boolean
-  style: ReactNative.ViewStyle
+  style: ViewStyle
   onDismissPress?: () => void
-  children: React.ReactNode
-  opacityStyle: ReactNative.ViewStyle
+  children: ReactNode
+  opacityStyle: ViewStyle
 }
 
 const ModalInner = gestureHandlerRootHOC(function GestureExample({
@@ -73,11 +81,15 @@ const CustomModal: FunctionComponent<ModalType> = ({
   useEffect(() => {
     if (!controlled) {
       if (visible) setModalVisible(true)
-      animationValue.value = withTiming(visible ? 1 : 0, modalConfig, () => {
-        !visible && runOnJS(setModalVisible)(false)
-      })
+      animationValue.value = withTiming(
+        visible ? 1 : 0,
+        easingConfigModal,
+        () => {
+          !visible && runOnJS(setModalVisible)(false)
+        },
+      )
       if (_animatedValue) {
-        _animatedValue.value = withTiming(visible ? 1 : 0, modalConfig)
+        _animatedValue.value = withTiming(visible ? 1 : 0, easingConfigModal)
       }
     }
   }, [visible, _animatedValue, controlled, controlledValue, animationValue])
@@ -107,13 +119,11 @@ const CustomModal: FunctionComponent<ModalType> = ({
   )
 }
 
-type AppType = {}
-
 export default CustomModal
 
 const styles = StyleSheet.create({
   backdrop: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: palette.oxfordBlue700,
+    backgroundColor: palette.backdrop,
   },
 })

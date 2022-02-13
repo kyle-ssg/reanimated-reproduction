@@ -1,12 +1,17 @@
-import React from 'react'
+import { StyleSheet } from 'react-native'
+import Row from './base/grid/Row'
+import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro'
+import { Strings } from 'project/localisation'
+import { palette, styleVariables } from 'app/style/style_variables'
+import { FC, ReactNode } from 'react'
 
 interface Props {
-  children?: React.ReactNode
+  children?: ReactNode
   style?: any
   testID?: string
 }
 
-const ErrorMessage: React.FC<Props> = ({ style, testID, children }) => {
+const ErrorMessage: FC<Props> = ({ style, testID, children }) => {
   if (children === null || typeof children === 'undefined' || !children) {
     return null
   }
@@ -16,7 +21,7 @@ const ErrorMessage: React.FC<Props> = ({ style, testID, children }) => {
         name='exclamation-circle'
         style={Styles.pr5}
         size={20}
-        color={palette.red}
+        color={palette.danger}
       />
       <Text style={styles.ErrorMessageText}>
         {typeof children === 'string' ? children : 'Error processing request'}
@@ -25,24 +30,20 @@ const ErrorMessage: React.FC<Props> = ({ style, testID, children }) => {
   )
 }
 
-export const SuccessMessage: React.FC<Props> = ({
-  testID,
-  style,
-  children,
-}) => {
+export const SuccessMessage: FC<Props> = ({ testID, style, children }) => {
   if (children === null || typeof children === 'undefined' || !children) {
     return null
   }
   return (
     <Row testID={testID} style={[style]}>
       <FA5Pro
-        name='exclamation-circle'
+        name='check-circle'
         style={Styles.pr5}
         size={20}
-        color={palette.aquamarine}
+        color={palette.success}
       />
       <Text style={styles.SuccessMessageText}>
-        {typeof children === 'string' ? children : Strings.genericError}
+        {typeof children === 'string' ? children : Strings.defaultErrorMessage}
       </Text>
     </Row>
   )
@@ -50,9 +51,10 @@ export const SuccessMessage: React.FC<Props> = ({
 
 export default ErrorMessage
 
-const styles = ReactNative.StyleSheet.create({
+const styles = StyleSheet.create({
   ErrorMessageText: {
     color: palette.danger,
+    fontFamily: styleVariables.normalFontFamily,
   },
   SuccessMessageText: {
     color: palette.primary,

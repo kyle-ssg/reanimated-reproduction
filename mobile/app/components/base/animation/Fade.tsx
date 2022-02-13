@@ -1,13 +1,14 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import { FunctionComponent, useEffect } from 'react'
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
 import useIsMount from 'common/providers/useIsMount'
-import { easingFade } from 'common/animation-util/reanimations'
+import { easingConfigFade } from 'project/animation-util/reanimations'
+import { ViewProps } from 'react-native'
 
-export type FadeType = ReactNative.ViewProps & {
+export type FadeType = ViewProps & {
   value?: number // between 0 and 1
   startValue?: number
   autostart?: boolean
@@ -20,7 +21,7 @@ const Fade: FunctionComponent<FadeType> = ({
   value,
   delay = 0,
   autostart,
-  duration = easingFade.duration,
+  duration = easingConfigFade.duration,
   startValue = 0,
   ...props
 }) => {
@@ -31,13 +32,13 @@ const Fade: FunctionComponent<FadeType> = ({
     if (isMount && !autostart) return // determine whether to start animation on mount
     if (!delay && value) {
       animationValue.value = withTiming(value, {
-        ...easingFade,
+        ...easingConfigFade,
         duration,
       })
     } else {
       setTimeout(() => {
         animationValue.value = withTiming(value, {
-          ...easingFade,
+          ...easingConfigFade,
           duration,
         }) // animate to new value
       }, delay)

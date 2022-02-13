@@ -1,15 +1,14 @@
-import React from 'react'
 import { Modal, ModalBody, ModalHeader } from './Modal'
+import { FC, ReactNode } from 'react'
 
 interface ModalDefault {
-  children: React.ReactNode
-  title: React.ReactNode
+  title: ReactNode
   isOpen: boolean
   onDismiss: () => void
   toggle: () => void
 }
 
-const ModalDefault: React.FC<ModalDefault> = ({
+const ModalDefault: FC<ModalDefault> = ({
   onDismiss,
   toggle,
   isOpen,

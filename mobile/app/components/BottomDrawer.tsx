@@ -1,11 +1,18 @@
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 import Animated, {
   interpolate,
   useAnimatedStyle,
   useSharedValue,
 } from 'react-native-reanimated'
-import { useCallback, useEffect, useMemo, useRef } from 'react'
+import {
+  FunctionComponent,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+} from 'react'
 import { BottomSheetModal } from '@gorhom/bottom-sheet'
+import Fade from 'components/base/animation/Fade'
 
 export type ModalType = {
   animatedValue?: Animated.SharedValue<number>
@@ -15,23 +22,22 @@ export type ModalType = {
   onDismissPress?: () => void
 }
 
-import React, { FunctionComponent } from 'react' // we need this to make JSX compile
-
 type ComponentType = {
-  children: React.ReactNode
-  height: number
+  children: ReactNode
   onDismissPress: () => void
+  preventDismiss?: boolean
   visible?: boolean
+  snapPoints: (number | string)[] // ['25%', '50%']
 }
 
-const TheComponent: FunctionComponent<ComponentType> = ({
+const BottomDrawer: FunctionComponent<ComponentType> = ({
   children,
-  height,
   visible,
   onDismissPress,
+  preventDismiss,
+  snapPoints,
 }) => {
   const sheetRef = useRef(null)
-  const snapPoints = useMemo(() => ['25%', '50%'], [])
 
   useEffect(() => {
     if (visible) {
@@ -40,45 +46,52 @@ const TheComponent: FunctionComponent<ComponentType> = ({
       sheetRef.current?.dismiss()
     }
   }, [visible])
-  const handleSheetChanges = useCallback((index: number) => {
-    if (index === -1) {
-      onDismissPress()
-    }
-  }, [])
+  const handleSheetChanges = useCallback(
+    (index: number) => {
+      if (index === -1) {
+        onDismissPress()
+      }
+    },
+    [onDismissPress],
+  )
   const animatedIndex = useSharedValue(0)
 
   const containerAnimatedStyle = useAnimatedStyle(() => ({
-    // @ts-ignore
-    opacity: interpolate(animatedIndex.value, [0, 1], [0, 1]),
+    opacity: interpolate(animatedIndex.value, [-1, 1], [0, 1]),
   }))
   return (
     <BottomSheetModal
       backgroundStyle={styles.drawer}
       handleStyle={styles.drawerIndicator}
-      index={1}
-      backdropComponent={() => (
-        <Animated.View
-          autostart
-          value={1}
-          style={[containerAnimatedStyle, styles.modalStyle]}
-        >
-          <TouchableOpacity
-            onPress={() => sheetRef.current?.dismiss()}
-            style={StyleSheet.absoluteFill}
-          ></TouchableOpacity>
-        </Animated.View>
-      )}
+      index={snapPoints.length - 1}
+      enablePanDownToClose={!preventDismiss}
+      backdropComponent={() => {
+        // @ts-ignore
+        return (
+          <Fade
+            autostart
+            value={1}
+            style={[containerAnimatedStyle, styles.modalStyle]}
+          >
+            <TouchableOpacity
+              disabled={preventDismiss}
+              onPress={() => sheetRef.current?.dismiss()}
+              style={StyleSheet.absoluteFill}
+            />
+          </Fade>
+        )
+      }}
       ref={sheetRef}
       contentHeight={500}
       animatedIndex={animatedIndex}
-      snapPoints={snapPoints}
+      snapPoints={snapPoints || ['100%']}
       onChange={handleSheetChanges}
     >
       {children}
     </BottomSheetModal>
   )
 }
-const styles = ReactNative.StyleSheet.create({
+const styles = StyleSheet.create({
   drawerIndicator: {
     backgroundColor: 'white',
     borderTopRightRadius: 20,
@@ -97,4 +110,4 @@ const styles = ReactNative.StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,.5)',
   },
 })
-export default TheComponent
+export default BottomDrawer

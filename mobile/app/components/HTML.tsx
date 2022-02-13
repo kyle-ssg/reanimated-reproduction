@@ -1,13 +1,14 @@
 // import propTypes from 'prop-types';
-import React, { FunctionComponent } from 'react' // we need this to make JSX compile
+import { FunctionComponent } from 'react'
 import _HTML, { defaultSystemFonts } from 'react-native-render-html'
-import { useWindowDimensions } from 'react-native'
+import { useWindowDimensions, Linking, TextStyle } from 'react-native'
 import { paddingBase } from '../style/style_grid'
 import { MixedStyleDeclaration } from '@native-html/transient-render-engine'
+import { palette, styleVariables } from 'app/style/style_variables'
 
 type ComponentType = {
   children: string
-  textStyle?: ReactNative.TextStyle
+  textStyle?: TextStyle
   onLinkPress?: () => void
 }
 
@@ -18,11 +19,11 @@ const HTML: FunctionComponent<ComponentType> = ({
 }) => {
   const _onLinkPress = (e, uri) => {
     if (uri.includes('tel:') || uri.includes('mailto:')) {
-      ReactNative.Linking.openURL(uri)
+      Linking.openURL(uri)
       return
     }
     onLinkPress && onLinkPress()
-    ReactNative.Linking.openURL(uri)
+    Linking.openURL(uri)
   }
 
   const html =
@@ -33,15 +34,13 @@ const HTML: FunctionComponent<ComponentType> = ({
   const systemFonts = [
     ...defaultSystemFonts,
     styleVariables.boldFontFamily,
-    styleVariables.semiboldFontFamily,
     styleVariables.normalFontFamily,
-    styleVariables.displayFontFamily,
   ]
 
   //@ts-ignore
   const baseStyle: MixedStyleDeclaration = {
     backgroundColor: 'transparent',
-    color: palette.blueGrey800,
+    color: palette.text,
     fontFamily: styleVariables.normalFontFamily,
     fontWeight: 'normal',
     ...(textStyle || {}),
@@ -54,7 +53,7 @@ const HTML: FunctionComponent<ComponentType> = ({
       systemFonts={systemFonts}
       tagsStyles={{
         a: {
-          color: palette.blue2,
+          color: palette.primary,
           fontFamily: styleVariables.boldFontFamily,
           fontWeight: 'normal',
         },
@@ -93,7 +92,8 @@ const HTML: FunctionComponent<ComponentType> = ({
   )
 }
 
-const styles = StyleSheet.create({
-  img: {},
-})
+// const styles = StyleSheet.create({
+//   img: {},
+// })
+
 export default HTML

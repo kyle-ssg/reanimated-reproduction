@@ -1,31 +1,28 @@
-import React, { useCallback, useEffect, useState } from 'react' // we need this to make JSX compile
-// import DateTimePickerModal from 'react-native-modal-datetime-picker'
-import SelectBox from 'components/./base/forms/SelectBox'
+import SelectBox from 'components/base/forms/SelectBox'
+import { FC, useCallback, useEffect, useState } from 'react'
+import DateTimePickerModal, {
+  ReactNativeModalDateTimePickerProps,
+} from 'react-native-modal-datetime-picker'
 import Icon from 'react-native-vector-icons/Ionicons'
-
-import moment from 'moment'
+import dayjs from 'dayjs'
 
 type Props = {
   value: Date
   format?: string
   title?: string
   onChange: (date: Date) => void
+  datePickerProps?: ReactNativeModalDateTimePickerProps
 }
 
-const DateSelect: React.FC<Props> = ({
+const DateSelect: FC<Props> = ({
   value,
   format = 'Do MMMM YYYY',
   onChange,
   title = 'Date',
+  datePickerProps = {},
 }) => {
-  // @ts-ignore
-  if (typeof DateTimePickerModal === 'undefined') {
-    // @ts-ignore
-    alert('install react-native-modal-datetime-picker')
-    return null
-  }
   const [formattedDate, setFormattedDate] = useState<string>(
-    moment(value).format(format),
+    dayjs(value).format(format),
   )
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const toggleVisible = useCallback(() => {
@@ -39,7 +36,7 @@ const DateSelect: React.FC<Props> = ({
     [onChange, toggleVisible],
   )
   useEffect(() => {
-    setFormattedDate(moment(value).format(format))
+    setFormattedDate(dayjs(value).format(format))
   }, [value, format])
   return (
     <>
@@ -53,9 +50,10 @@ const DateSelect: React.FC<Props> = ({
       <DateTimePickerModal
         isVisible={isVisible}
         mode='date'
-        display='compact'
+        display='spinner'
         onConfirm={onConfirm}
         onCancel={toggleVisible}
+        {...datePickerProps}
       />
     </>
   )

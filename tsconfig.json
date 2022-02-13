@@ -1,11 +1,15 @@
 {
+  "extends": "@tsconfig/next/tsconfig.json", // https://github.com/tsconfig/bases/blob/main/bases/next.json
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true,
     "baseUrl": ".",
+    "lib": [
+      "dom"
+    ],
+    "skipLibCheck": true,
     "paths": {
-      "components/": [
-        "./components/*"
+      "components/*": [
+        "components/*"
       ],
       "common/": [
         "./common/*"
@@ -13,32 +17,18 @@
       "project/": [
         "./project/*"
       ],
-      "mobile/": [
-        "./mobile/*"
+      "lodash": [
+        "node_modules/lodash-es"
       ]
-    },
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": false,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "jsx": "preserve",
-    "isolatedModules": true,
-    "incremental": true
+    }
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "mobile"
   ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "types/global.d.ts",
-    "./mobile/src/global.d.ts",
+    "**/*.tsx"
   ]
 }

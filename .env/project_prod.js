@@ -1,32 +1,41 @@
-
-const Project = global.Project = {
-    cognito: {
-        region: "",
-        userPoolId: "",
-        userPoolWebClientId: "",
+export const Project = {
+  debug: false,
+  api: 'http://localhost:4000/',
+  apiAuth: '',
+  ga: '',
+  logoutRedirect: '/',
+  loginRedirect: '/account',
+  cognito: {
+    region: '',
+    userPoolId: '',
+    userPoolWebClientId: '',
+  },
+  cognitoMobile: {
+    region: '',
+    userPoolId: '',
+    userPoolWebClientId: '',
+  },
+  codepush: {
+    android: {
+      production: 'yV-yBHA5oN37VcIbK6beYJpxEP5bwLnfxRFlg',
+      staging: 'J0SLIPWal3apmqRASVN4GhKLhpOeRVsIZiemU',
     },
-    cognitoMobile: {
-        region: "",
-        userPoolId: "",
-        userPoolWebClientId: "",
+    ios: {
+      production: 'cphbl2WbvVo3Maa_I8yW97-9W5RryaKklTWhx',
+      staging: 'wP_hi3rhZrahFSetndAeBt2FAuLe-gzABtKys',
     },
-    debug: false,
-    api: 'http://localhost:4000/',
-    ga: '',
-    logs: {
-        DATA: true,
-        STORE: true,
-        DISPATCHER: true,
-        STORAGE: true,
-        SERVER: true,
-    },
-    grecaptcher: "6Lc1mf4UAAAAAC6uZ0HaGJ3ufgwCXY4GFoNhMeBD",
-    formly:"boilerplate",
-    mobile: {
-        // Enabling secured storage for mobile requires installation of https://www.npmjs.com/package/react-native-secured-storage. See README for further instructions on installation
-        useSecuredStorage: false,
-    },
-};
-module.exports = Project;
-// if (typeof ENV_NAME !== 'undefined' && typeof ENV_TYPE !== 'undefined') {
-// }
+  },
+  logs: {
+    EVENTS: true,
+    DATA: false,
+    STORE: false,
+    DISPATCHER: false,
+    COGNITO: false,
+    STORAGE: false,
+    SERVER: false,
+    API: false,
+    PUSH_NOTIFICATIONS: false,
+  },
+  grecaptcher: '6Lc1mf4UAAAAAC6uZ0HaGJ3ufgwCXY4GFoNhMeBD',
+  formly: 'boilerplate',
+}

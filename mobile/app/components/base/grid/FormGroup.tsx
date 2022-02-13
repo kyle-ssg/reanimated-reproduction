@@ -1,11 +1,12 @@
-import React from 'react'
+import { FC, ReactNode } from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
 
 export type FormGroupType = {
-  children: React.ReactNode
-  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
+  children: ReactNode
+  style?: StyleProp<ViewStyle>
 }
 
-const FormGroup: React.FC<FormGroupType> = ({ style, children }) => (
+const FormGroup: FC<FormGroupType> = ({ style, children }) => (
   <View style={[Styles.pv5, style]}>{children}</View>
 )
 

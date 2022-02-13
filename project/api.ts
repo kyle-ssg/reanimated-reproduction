@@ -1,26 +1,26 @@
-/* istanbul ignore next */
 import Router from 'next/router'
-import cookie from 'cookie'
-import cookies from 'js-cookie'
-import Constants from 'common/utils/constants'
-import errorHandler from 'common/utils/errorHandler'
-import 'common/project'
-import storage from './async-storage-api'
+import { Constants } from 'common/utils/constants'
+import { errorHandler } from 'common/utils/errorHandler'
+import { Project } from 'common/project'
 import { IncomingMessage } from 'http'
-// import _store from "common/store"store;
-// import Cognito from "common/cognito";
+import acceptLanguageParser from 'accept-language-parser'
+import Strings from './localisation'
+import { APIType } from 'common/types/api-type'
+import { setApi } from 'common/api/api'
+import storage from './async-storage-api'
+interface WebAPI extends APIType {
+  getStoredLocale: (req?: IncomingMessage) => Promise<string>
+  logoutRedirect: () => void
+}
 
-const API = {
+const API: WebAPI = {
   isMobile: () => false,
   storage,
-  ajaxHandler(type, e) {
-    return { type, error: errorHandler(e) }
-  },
   logout() {
-    cookies.remove('token')
+    // cookies.remove('token')
     Router.replace(Project.logoutRedirect || '/')
   },
-  loginRedirect(forceRedirect?: boolean) {
+  loginRedirect() {
     const params = Router.query
     // const profile:AppState['profile'] = _store().getState().profile;
     params.redirect = params.redirect || Project.loginRedirect || '/'
@@ -29,53 +29,53 @@ const API = {
       shallow: true,
     })
   },
-  getStoredToken(req?: IncomingMessage) {
-    return API.storage.getItem('token', req)
+  logoutRedirect() {
+    const redirect = encodeURIComponent(Router.route)
+    const as = encodeURIComponent(Router.asPath)
+    let path = `/?redirect=${redirect}`
+    if (redirect !== as) {
+      path += `&as=${as}`
+    }
+    Router.replace(path)
   },
-  getStoredUser(req) {
-    return API.storage.getItem('user', req)
+  ajaxHandler(type: string, e?: { message: string }) {
+    return {
+      type,
+      error: errorHandler({
+        defaultErrorMessage: Strings.defaultErrorMessage,
+        gatewayTimeoutError: Strings.gatewayTimeoutError,
+      })(e),
+    }
   },
-  getStoredRefreshToken(req) {
-    return API.storage.getItem('refreshToken', req)
-  },
-  setStoredRefreshToken(v) {
-    return API.storage.setItem('refreshToken', v)
-  },
-  getStoredLocale(req) {
-    if (req) {
-      // Attempt to get locale saved cookie
-      const parsedCookies = cookie.parse(req.headers.cookie || '')
-      if (parsedCookies.locale) {
-        return parsedCookies.locale
-      }
-      // Attempt to retrieve local from Accept-Language headers
-      if (req.headers && req.headers['accept-language']) {
-        const parsedLocale = req.headers['accept-language'].split(',')[0]
-        if (parsedLocale) {
-          return parsedLocale
-        }
+  middlewares: [],
+  getStoredLocale: async (req?: IncomingMessage) => {
+    if (req?.headers?.['accept-language']) {
+      const acceptLanguages = acceptLanguageParser.parse(
+        req.headers['accept-language'],
+      )
+
+      if (Array.isArray(acceptLanguages)) {
+        return acceptLanguages[0]?.code || Constants.defaultLocale
       }
     }
     return Constants.defaultLocale
   },
-  setStoredToken(v) {
-    return API.storage.setItem('token', v)
-  },
   trackEvent(data) {
     if (__DEV__) {
       // eslint-disable-next-line
-            console.info('track', data);
+      console.info('track', data);
     }
     if (Project.ga) {
       if (!data) {
         // eslint-disable-next-line
-                console.error('GA: Passed null event data');
+        console.error('GA: Passed null event data');
         return
       }
       if ((!data || !data.category || !data.event) && __DEV__) {
         // eslint-disable-next-line
-                console.error('Invalid event provided', data);
+        console.error('Invalid event provided', data);
       }
+      // @ts-ignore
       ga('send', {
         hitType: 'event',
         eventCategory: data.category,
@@ -83,22 +83,26 @@ const API = {
         eventLabel: data.label,
       })
     }
+    // @ts-ignore
     if (Project.mixpanel && typeof mixpanel !== 'undefined') {
       if (!data) {
         // eslint-disable-next-line
-                console.error("MIXPANEL: Passed null event data")
+        console.error("MIXPANEL: Passed null event data")
       }
       if (!data || !data.category || !data.event) {
         // eslint-disable-next-line
-                console.error("MIXPANEL: Invalid event provided", data);
+        console.error("MIXPANEL: Invalid event provided", data);
       }
+      // @ts-ignore
       mixpanel.track(data.event, {
         category: data.category,
       })
     }
   },
   trackPage(title: string) {
+    // @ts-ignore
     if (Project.ga && typeof ga !== 'undefined') {
+      // @ts-ignore
       ga('send', {
         hitType: 'pageview',
         title,
@@ -106,7 +110,9 @@ const API = {
         page: document.location.pathname,
       })
     }
+    // @ts-ignore
     if (Project.mixpanel && typeof mixpanel !== 'undefined') {
+      // @ts-ignore
       mixpanel.track('Page View', {
         title,
         location: document.location.href,
@@ -114,40 +120,21 @@ const API = {
       })
     }
   },
-  alias(id) {
-    if (Project.mixpanel && typeof mixpanel !== 'undefined') {
-      mixpanel.alias(id)
-    }
-  },
   identify(id) {
+    // @ts-ignore
     if (Project.mixpanel && typeof mixpanel !== 'undefined') {
+      // @ts-ignore
       mixpanel.identify(id)
     }
   },
-  register(email, firstName, lastName) {
-    if (Project.mixpanel && typeof mixpanel !== 'undefined') {
-      mixpanel.register({
-        Email: email,
-        'First Name': firstName,
-        'Last Name': lastName,
-      })
-    }
-  },
-  reset() {
-    if (Project.mixpanel && typeof mixpanel !== 'undefined') {
-      mixpanel.reset()
-    }
-  },
-  log(namespace: string, ...args: any[]) {
+  // @ts-ignore
+  log(namespace: keyof typeof Project['logs'], ...args: any[]) {
     if (Project.logs[namespace]) {
       // eslint-disable-next-line no-console
       console.log.apply(this, [namespace, ...args])
     }
   },
-  auth: {
-    // Cognito
-  },
+  getAPIBaseUrl: () => process.env.NEXT_PUBLIC_API_URL || '',
 }
-
-global.API = API
-export default API
+setApi(API)
+export { API }

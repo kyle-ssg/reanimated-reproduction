@@ -23,22 +23,22 @@ module.exports = {
         ],
       ],
       plugins: [
-        'react-native-reanimated/plugin',
-        ['react-native-web', { commonjs: true }],
+        // 'react-native-reanimated/plugin',
+        // ['react-native-web', { commonjs: true }],
         [
           'module-resolver',
           {
             alias: {
-              'react-native$': 'react-native-web',
-              'lottie-react-native$': 'react-native-web-lottie',
+              // 'react-native$': 'react-native-web',
+              // 'lottie-react-native$': 'react-native-web-lottie',
               components: './components/',
               common: './common/',
               project: './project/',
               mobile: './mobile/',
-              'react-native-reanimated': path.resolve(
-                __dirname,
-                '../node_modules/react-native-reanimated',
-              ),
+              // 'react-native-reanimated': path.resolve(
+              //   __dirname,
+              //   '../node_modules/react-native-reanimated',
+              // ),
             },
           },
         ],
@@ -56,21 +56,21 @@ module.exports = {
 
     config.resolve.alias = {
       ...(config.resolve.alias || {}),      // Transform all direct `react-native` imports to `react-native-web`
-      'react-native$': 'react-native-web',
-      '@storybook/react-native': '@storybook/react',
-      'react-native-reanimated': path.resolve(
-        __dirname,
-        '../node_modules/react-native-reanimated',
-      ),
+      // 'react-native$': 'react-native-web',
+      // '@storybook/react-native': '@storybook/react',
+      // 'react-native-reanimated': path.resolve(
+      //   __dirname,
+      //   '../node_modules/react-native-reanimated',
+      // ),
     }
     config.resolve.extensions = [ '.web.js', '.web.jsx', '.web.tsx', '.mjs', '.js',  '.jsx', '.ts', '.tsx',   '.cjs']
-    config.module.rules.map((v)=>{
-      const exclude = v.exclude + ""
-      if (exclude === "/node_modules/") {
-        v.exclude = /node_modules\/(?!(react-native-reanimated|react-native-svg|react-native-safe-area-context)\/).*/
-      }
-      console.log(v.options)
-    })
+    // config.module.rules.map((v)=>{
+    //   const exclude = v.exclude + ""
+    //   if (exclude === "/node_modules/") {
+    //     v.exclude = /node_modules\/(?!(react-native-reanimated|react-native-svg|react-native-safe-area-context)\/).*/
+    //   }
+    //   console.log(v.options)
+    // })
 
     config.plugins.push(new webpack.DefinePlugin({
       __DEV__: true

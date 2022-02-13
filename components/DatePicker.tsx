@@ -1,58 +1,27 @@
 import _DatePicker, { ReactDatePickerProps } from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import React from 'react'
+import { FC } from 'react'
+import { Constants } from '../common/utils'
+import Input from 'components/base/forms/Input'
 
-export type DatePickerProps = Omit<
-  ReactDatePickerProps,
-  'value' | 'onChange' | 'minDate'
-> & {
-  value?: string
-  onChange?: (newDate: Date) => void
-  minDate?: string
-}
+export type DatePickerProps = ReactDatePickerProps & {}
 
-const getDate = (d: string | Date): Date => {
-  if (typeof d === 'string') {
-    return new Date(d)
-  }
-  return d
-}
-
-const getDates = (dates: Array<string | Date>): Date[] =>
-  (dates || []).map(getDate)
-
-export const DatePicker: React.FC<DatePickerProps> = ({
-  minDate,
-  maxDate,
-  selected,
-  highlightDates,
-  excludeDates,
-  onChange,
-  ...rest
-}) => {
+export const DatePicker: FC<DatePickerProps> = ({ onChange, ...rest }) => {
   if (Constants.E2E) {
     return (
       <Input
-        {...rest}
         onChange={(e) => {
           // @ts-ignore
           const date = new Date(Utils.safeParseEventValue(e))
-          if (!isNaN(date.valueOf())) onChange(date)
+          if (!isNaN(date.valueOf())) {
+            // @ts-ignore
+            onChange(date.toISOString())
+          }
         }}
       />
     )
   }
-  return (
-    <_DatePicker
-      minDate={getDate(minDate)}
-      maxDate={getDate(maxDate)}
-      // highlightDates={getDates(highlightDates)}
-      excludeDates={getDates(excludeDates)}
-      selected={getDate(selected)}
-      onChange={onChange}
-      {...rest}
-    />
-  )
+  return <_DatePicker onChange={onChange} {...rest} />
 }
 
 DatePicker.displayName = 'DatePicker'

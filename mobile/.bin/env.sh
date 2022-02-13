@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# $1 = App ID
-# $2 = Code Push Environment
-# $3 - Git branch
-# $4 - iOS/Android
+# Copies env/project_x.js  to common/project.js depending on "ENV"
 _ENV=${ENV:-dev}
 echo "Using project_$_ENV.js"
 cp ../.env/project_$_ENV.js ../common/project.js

@@ -1,9 +1,11 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import withScreen, { Screen } from '../withScreen'
+import Flex from 'components/base/grid/Flex'
+import { ViewStyle } from 'react-native'
 
 export type GenericScreenType = {
   text: string
-  style: ReactNative.ViewStyle
+  style: ViewStyle
 }
 type ComponentType = Screen & GenericScreenType
 

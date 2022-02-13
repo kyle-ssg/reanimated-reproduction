@@ -1,4 +1,3 @@
-import React from 'react'
 import { ComponentStory } from '@storybook/react'
 import '../../styles/Global.scss'
 import Loader from 'components/Loader'
@@ -8,4 +7,4 @@ export default {
   component: Loader,
 }
 
-export const Default: ComponentStory<typeof Loader> = (args) => <Loader />
+export const Default: ComponentStory<typeof Loader> = () => <Loader />

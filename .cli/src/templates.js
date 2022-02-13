@@ -4,7 +4,7 @@ const functionName = function (action, prefix) {
   return actionParts[0].toLowerCase() + post;
 };
 
-const apiName = function (api, isUpdate) {
+const apiName = function (api) {
   // eslint-disable-next-line no-template-curly-in-string
   const replace = '${action.data.id}';
   if (api.charAt(0) === '/') {
@@ -48,15 +48,15 @@ module.exports = {
 `;
   },
   screenComponent(name) {
-    return `import React from "react";
-import { Component } from "react";
-import ScreenContainer from 'components/ScreenContainer';
+    return `import Text from "components/base/forms/Text";
+import ScreenContainer from "components/ScreenContainer";
+import {FC} from "react";
 import withScreen, { Screen } from "./withScreen";
 
 type ${name} = Screen & {
 }
 
-const ${name}: React.FC<${name}> = ({ children }) => {
+const ${name}: FC<${name}> = ({ children }) => {
   return (
       <ScreenContainer style={Styles.body}>
         <Text>I am the ${name}</Text>
@@ -210,49 +210,38 @@ export default withScreen(${name});
     case Actions.${action}_ERROR:
       return itemError(state, '${prefix}', action);`;
   },
-  reducerDelete(action, prefix) {
-    return `case Actions.${action}:
-      return itemSaving(state, '${prefix}');
-    case Actions.${action}_LOADED:
-      return itemSaved(state, '${prefix}', action);
-    case Actions.${action}_ERROR:
-      return itemError(state, '${prefix}', action);`;
-  },
   // yield
   yieldCollection(action, prefix, api) {
-    return `
-export function* ${functionName(action, prefix)}(action) {
-  const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
-  yield getAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
+    return `export function* ${functionName(action, prefix)}(action:IAction<RequestTypes['${functionName(action,prefix)}']>) {
+  yield getAction<RequestTypes['${functionName(action,prefix)}'], AppState['${prefix}']>
+  (action, \`\${getApi().getAPIBaseUrl()}${apiName(api)}\`, '${action}');
 }
 `;
     },
     yieldGet(action, prefix, api) {
-        return `
-export function* ${functionName(action, prefix)}(action) {
-  const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
-  yield getAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
-}`;
+      return `export function* ${functionName(action, prefix)}(action:IAction<RequestTypes['${functionName(action,prefix)}']>) {
+  yield getAction<RequestTypes['${functionName(action,prefix)}'], AppState['${prefix}']>
+  (action, \`\${getApi().getAPIBaseUrl()}${apiName(api)}\`, '${action}');
+}
+`;
     },
     yieldDelete(action, prefix, api) {
-        return `
-export function* ${functionName(action, prefix)}(action) {
-  const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
-  yield deleteAction(action, \`\${Project.api}${apiName(api)}\`, '${action}');
-}`;
+      return `export function* ${functionName(action, prefix)}(action:IAction<RequestTypes['${functionName(action,prefix)}']>) {
+  yield deleteAction<RequestTypes['${functionName(action,prefix)}'], AppState['${prefix}']>
+  (action, \`\${getApi().getAPIBaseUrl()}${apiName(api)}\`, '${action}');
+}
+`;
     },
     yieldPost(action, prefix, api) {
-        return `
-export function* ${functionName(action, prefix)}(action) {
-  const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
-  yield postAction(action, \`\${Project.api}${apiName(api, true)}\`, '${action}');
+      return `export function* ${functionName(action, prefix)}(action:IAction<RequestTypes['${functionName(action,prefix)}']>) {
+  yield postAction<RequestTypes['${functionName(action,prefix)}'], AppState['${prefix}']>
+  (action, \`\${getApi().getAPIBaseUrl()}${apiName(api, true)}\`, '${action}');
 }`;
     },
     yieldUpdate(action, prefix, api) {
-        return `
-export function* ${functionName(action, prefix)}(action) {
-  const data: RequestTypes['${functionName(action, prefix)}'] = action.data;
-  yield updateAction(action, \`\${Project.api}${apiName(api, true)}\`, '${action}');
+      return `export function* ${functionName(action, prefix)}(action:IAction<RequestTypes['${functionName(action,prefix)}']>) {
+  yield updateAction<RequestTypes['${functionName(action,prefix)}'], AppState['${prefix}']>
+  (action, \`\${getApi().getAPIBaseUrl()}${apiName(api, true)}\`, '${action}');
 }`;
     },
     //  provider
@@ -413,162 +402,5 @@ export default function ${functionName('USE', prefix)}():Use${functionName('', p
   }
 }
 `;
-  },
-  webGet(action, prefix) {
-    const prefixCamel = functionName('', prefix);
-    return `
-import React, { FC,useEffect } from 'react'; // we need this to make JSX compile
-
-import use${prefixCamel} from '../common/providers/${functionName('use', prefix)}';
-
-type ComponentType = {
-  id:string
-}
-
-const ${prefixCamel}:FC<ComponentType> = ({ id }) => {
-  const { ${prefix}, get${prefixCamel}, ${prefix}Loading, ${prefix}Error } = use${prefixCamel}()
-  useEffect(()=>{
-    get${prefixCamel}({ id })
-  }, [get${prefixCamel}, id])
-  return (
-      <>
-        <h2>${prefix}</h2>
-            {!${prefix} && ${prefix}Loading && <Loader/>}
-            { ${prefix} &&
-             <div>{JSON.stringify(${prefix})}</div>
-            }
-            {${prefix}Error && (
-                <ErrorMessage>{${prefix}Error}</ErrorMessage>
-            )}
-      </>
-  )
-}
-
-${prefixCamel}.displayName = "${prefixCamel}"
-export default ${prefixCamel};
-`;
-  },
-  webCollection(action, prefix) {
-    const prefixCamel = functionName('', prefix);
-    return `
-import React, { FC,useEffect } from 'react'; // we need this to make JSX compile
-
-import use${prefixCamel} from '../common/providers/${functionName('use', prefix)}';
-
-type ComponentType = {
-
-}
-
-const ${prefixCamel}:FC<ComponentType> = ({  }) => {
-  const { ${prefix}, get${prefixCamel}, ${prefix}Loading, ${prefix}Error } = use${prefixCamel}();
-  useEffect(()=>{
-    get${prefixCamel}()
-  },[get${prefixCamel}])
-  return (
-      <>
-        <h2>${prefix}</h2>
-            {!${prefix} && ${prefix}Loading && <Loader/>}
-            {
-                ${prefix} && ${prefix}.map((item, i)=>(
-                    <div key={item.id || i}>{JSON.stringify(item)}</div>
-                ))
-            }
-            {${prefix}Error && (
-                <ErrorMessage>{${prefix}Error}</ErrorMessage>
-            )}
-      </>
-  )
-}
-
-${prefixCamel}.displayName = "${prefixCamel}"
-export default ${prefixCamel};
-`;
-  },
-  webPost(action, prefix) {
-    const prefixCamel = functionName('', prefix);
-    return `
-import React, { FC, useEffect, useState } from 'react'; // we need this to make JSX compile
-import cloneDeep from 'lodash/cloneDeep';
-
-import use${prefixCamel} from '../common/providers/${functionName('use', prefix)}';
-
-type ComponentType = {
-  id: string
-}
-
-const ${prefixCamel}:FC<ComponentType> = ({ id }) => {
-  const [${prefix}Edit, set${prefixCamel}Edit] = useState<any>({})
-  const [${prefix}Success, set${prefixCamel}Success] = useState<boolean>(false)
-  const { ${prefix}Loading, ${prefix}Saving, ${prefix}Error, create${prefixCamel}, get${prefixCamel}, update${prefixCamel} } = use${prefixCamel}()
-  
-  const onRetrieved${prefixCamel} = (${prefix}) => { // Create a copy of the item once retrieved for edit
-    set${prefixCamel}Edit(cloneDeep(${prefix}));
-  }
-  
-  const submit = (e) => {
-    Utils.preventDefault(e);
-    set${prefixCamel}Success(false);
-    if (id) {
-      update${prefixCamel}(${prefix}Edit, {
-        onSuccess: () => {
-          set${prefixCamel}Success(true)
-        },
-      });
-    } else {
-      create${prefixCamel}(this.state.${prefix}Edit, {
-        onSuccess: () => {
-          set${prefixCamel}Success(true)
-        },
-      });
-    }
-  }
-  
-  useEffect(()=>{
-    if (id) {
-      ${functionName('GET', prefix)}({ id }, {
-        onSuccess: onRetrieved${prefixCamel},
-      });     
-    }
-
-  }, [id, ${functionName('GET', prefix)}]);
-  
-  const { name } = ${prefix}Edit || {};
-  const update = this.update${prefixCamel};
-  const isEdit = !!this.props.id;
-  return <>
-      {isEdit ? <h2>Edit ${prefix}</h2> : <h2>Create ${prefix}</h2> }
-      {!${prefix}Edit && ${prefix}Loading && <Loader/>}
-      {${prefix}Edit ? (
-      <form onSubmit={submit}>
-          <InputGroup
-            className="mb-2"
-            title="Name"
-            placeholder=""
-            value={name}
-            onChange={v => update('name', v)}
-          />
-          {${prefix}Error && (
-              <ErrorMessage>{${prefix}Error}</ErrorMessage>
-          )}
-          {${prefix}Success && !${prefix}Error && (
-              <SuccessMessage>Saved</SuccessMessage>
-          )}
-          { JSON.stringify(${prefix}Edit) }
-          {isEdit && <ButtonPrimary disabled={${prefix}Saving} onClick={this.delete}>Delete</ButtonPrimary>}
-          <div className="text-right pb-2">
-              <ButtonPrimary disabled={${prefix}Saving} type="submit">
-                  Save
-               </ButtonPrimary>
-          </div>
-       </form>
-      ) : (
-        ${prefix}Error && (
-             <ErrorMessage>{${prefix}Error}</ErrorMessage>
-        ))}
-      </>;
-}
-
-${prefixCamel}.displayName = "${prefixCamel}"
-export default ${prefixCamel};`;
   },
 };

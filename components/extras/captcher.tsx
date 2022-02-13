@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
+import { Component, JSXElementConstructor } from 'react'
+import { Project } from 'common/project'
 
-export default (WrappedComponent) => {
+export default (WrappedComponent: JSXElementConstructor<any>) => {
   class HOC extends Component<{}, { grecaptcher?: any }> {
     static displayName = 'withGrecaptcher'
-    constructor(props) {
-      super(props)
-      this.state = {
-        grecaptcher: undefined,
-      }
+    state = {
+      grecaptcher: undefined,
     }
 
     renderedGre = false
@@ -19,6 +17,7 @@ export default (WrappedComponent) => {
           alert(
             'Grecaptcha not found, add https://www.google.com/recaptcha/api.js to _app.js',
           )
+          return
         }
         this.interval = window.setInterval(() => {
           // See https://www.google.com/recaptcha/admin

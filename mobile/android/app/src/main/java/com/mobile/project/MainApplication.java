@@ -17,8 +17,6 @@ import java.util.List;
   import com.facebook.react.bridge.JSIModulePackage; // <- add
   import com.swmansion.reanimated.ReanimatedJSIModulePackage; // <- add
 
-
-// import io.branch.referral.Branch; //REACT_NATIVE_BRANCH
 import com.microsoft.codepush.react.CodePush; // REACT_NATIVE_CODEPUSH
 
 public class MainApplication extends Application implements ReactApplication {
@@ -67,8 +65,6 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
-//     REACT_NATIVE_BRANCH
-//     RNBranchModule.getAutoInstance(this);
   }
 
   /**

@@ -1,41 +1,17 @@
 import omit from 'lodash/omit'
 import filter from 'lodash/filter'
-import React, { SyntheticEvent } from 'react'
-import moment from 'moment'
+import { SyntheticEvent, KeyboardEvent, FormEvent } from 'react'
 
 const KEY_Y = 89
 const KEY_Z = 90
-const Utils = {
+const BaseUtils = {
   // eslint-disable-next-line
-    emailRegex: /^([\w-+]+(?:\.[\w-+]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
+  emailRegex: /^([\w-+]+(?:\.[\w-+]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
   // eslint-disable-next-line
-    urlRegex: /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]+(:[0-9]{1,5})?(\/.*)?$/,
+  urlRegex: /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]+(:[0-9]{1,5})?(\/.*)?$/,
 
-  todayUtc(local = moment()) {
-    return Utils.convertToUtc()
-  },
 
-  convertToUtc(local = moment()) {
-    const date = moment.utc().startOf('day').set({
-      days: local.day(),
-      months: local.month(),
-      years: local.year(),
-    })
-    return date
-  },
-
-  convertToUtcWithHours(local = moment()) {
-    const date = moment.utc().startOf('day').set({
-      days: local.day(),
-      months: local.month(),
-      years: local.year(),
-      hours: local.hour(),
-      minutes: local.minute(),
-    })
-    return date
-  },
-
-  arrayMove(arr, old_index, new_index) {
+  arrayMove(arr: any[], old_index: number, new_index: number) {
     if (new_index >= arr.length) {
       let k = new_index - arr.length + 1
       while (k--) {
@@ -46,7 +22,7 @@ const Utils = {
     return arr // for testing
   },
 
-  arrayRemoveIndex(arr, index) {
+  arrayRemoveIndex(arr: any[], index: number) {
     arr.splice(index, 1)
     return arr // for testing
   },
@@ -63,61 +39,61 @@ const Utils = {
 
   keys: {
     isUndo /* istanbul ignore next */(e: KeyboardEvent): boolean {
-      if (!e) return
+      if (!e) return false
       return (
         (e.ctrlKey || e.metaKey) && e.keyCode === (e.shiftKey ? KEY_Y : KEY_Z)
       )
     },
-    isEscape /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
-      if (!e) return
+    isEscape /* istanbul ignore next */(e: KeyboardEvent): boolean {
+      if (!e) return false
       const code = e.keyCode ? e.keyCode : e.which
       return code === 27 && !e.shiftKey && !e.ctrlKey
     },
-    isRedo /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
-      if (!e) return
+    isRedo /* istanbul ignore next */(e: KeyboardEvent): boolean {
+      if (!e) return false
       return (
         (e.ctrlKey || e.metaKey) && e.keyCode === (e.shiftKey ? KEY_Z : KEY_Y)
       )
     },
-    isBackspace /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
+    isBackspace /* istanbul ignore next */(e: KeyboardEvent): boolean {
       // returns bool
-      if (!e) return
+      if (!e) return false
       const code = e.keyCode ? e.keyCode : e.which
       return code === 8 && !e.shiftKey && !e.ctrlKey
     },
-    isUp /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
+    isUp /* istanbul ignore next */(e: KeyboardEvent): boolean {
       // returns bool
-      if (!e) return
+      if (!e) return false
       const code = e.keyCode ? e.keyCode : e.which
       return code === 38 && !e.shiftKey && !e.ctrlKey
     },
-    isDown /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
+    isDown /* istanbul ignore next */(e: KeyboardEvent): boolean {
       // returns bool
-      if (!e) return
+      if (!e) return false
       const code = e.keyCode ? e.keyCode : e.which
       return code === 40 && !e.shiftKey && !e.ctrlKey
     },
-    isLeft /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
+    isLeft /* istanbul ignore next */(e: KeyboardEvent): boolean {
       // returns bool
-      if (!e) return
+      if (!e) return false
       const code = e.keyCode ? e.keyCode : e.which
       return code === 37 && !e.shiftKey && !e.ctrlKey
     },
-    isRight /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
+    isRight /* istanbul ignore next */(e: KeyboardEvent): boolean {
       // returns bool
-      if (!e) return
+      if (!e) return false
       const code = e.keyCode ? e.keyCode : e.which
       return code === 39 && !e.shiftKey && !e.ctrlKey
     },
-    isTab /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
+    isTab /* istanbul ignore next */(e: KeyboardEvent): boolean {
       // returns bool
-      if (!e) return
+      if (!e) return false
       const code = e.keyCode ? e.keyCode : e.which
       return code === 9 && !e.shiftKey && !e.ctrlKey
     },
-    isEnter /* istanbul ignore next */(e: React.KeyboardEvent): boolean {
+    isEnter /* istanbul ignore next */(e: KeyboardEvent): boolean {
       // returns bool
-      if (!e) return
+      if (!e) return false
       const code = e.keyCode ? e.keyCode : e.which
       return code === 13 && !e.shiftKey && !e.ctrlKey
     },
@@ -147,7 +123,7 @@ const Utils = {
     return str
   },
 
-  preventDefault /* istanbul ignore next */(e?: Event): void {
+  preventDefault /* istanbul ignore next */(e?: FormEvent): void {
     e?.stopPropagation()
     if (e && e.preventDefault) {
       e.preventDefault()
@@ -191,7 +167,7 @@ const Utils = {
       return {}
     }
     // eslint-disable-next-line
-        const urlString= (str || documentSearch).replace(/(^\?)/, '');
+    const urlString = (str || documentSearch).replace(/(^\?)/, '');
     return JSON.parse(
       `{"${urlString.replace(/&/g, '","').replace(/=/g, '":"')}"}`,
       (key, value) => (key === '' ? value : decodeURIComponent(value)),
@@ -202,13 +178,13 @@ const Utils = {
     if (!number) {
       return 0
     }
-    // @ts-ignore
     return Number(
-      Math.round(number + 'e' + decimalPlaces) + 'e-' + decimalPlaces,
+      // @ts-ignore
+      `${Math.round(`${number}e${decimalPlaces}`)}e-${decimalPlaces}`,
     )
   },
 
-  roundToStep(value, step) {
+  roundToStep(value: number, step: number) {
     step || (step = 1.0)
     const inv = 1.0 / step
     return Math.round(value * inv) / inv
@@ -246,28 +222,31 @@ const Utils = {
   },
 
   isValidEmail(text?: string): boolean {
-    // returns bool
-    return text && Utils.emailRegex.test(text)
+    if (!text) {
+      return false
+    }
+    return BaseUtils.emailRegex.test(text)
   },
 
   GUID(append = ''): string {
     let d = new Date().getTime()
     const uuid = 'xxxx-xxxx-xxxx'.replace(/[xy]/g, (c) => {
       // eslint-disable-next-line
-            const r = (d + Math.random() * 16) % 16 | 0;
+      const r = (d + Math.random() * 16) % 16 | 0;
       d = Math.floor(d / 16)
       // eslint-disable-next-line
-            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+      return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
     })
 
     return append ? `${uuid}-${append}` : uuid
   },
 
-  reactChildIsString(children): boolean {
+  reactChildIsString(children: string | any): boolean {
     return (
       typeof children === 'string' ||
       (children && children.length === 1 && typeof children[0] === 'string')
     )
   },
 }
-export default Utils
+
+export default BaseUtils

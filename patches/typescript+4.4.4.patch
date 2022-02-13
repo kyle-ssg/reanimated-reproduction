@@ -1,8 +1,29 @@
 diff --git a/node_modules/typescript/lib/lib.dom.d.ts b/node_modules/typescript/lib/lib.dom.d.ts
-index fdcbb9f..45011e0 100644
+index fdcbb9f..4d99d3a 100644
 --- a/node_modules/typescript/lib/lib.dom.d.ts
 +++ b/node_modules/typescript/lib/lib.dom.d.ts
-@@ -14466,25 +14466,6 @@ declare var SubtleCrypto: {
+@@ -14403,20 +14403,7 @@ interface StyleMedia {
+ }
+ 
+ /** A single style sheet. CSS style sheets will further implement the more specialized CSSStyleSheet interface. */
+-interface StyleSheet {
+-    disabled: boolean;
+-    readonly href: string | null;
+-    readonly media: MediaList;
+-    readonly ownerNode: Element | ProcessingInstruction | null;
+-    readonly parentStyleSheet: CSSStyleSheet | null;
+-    readonly title: string | null;
+-    readonly type: string;
+-}
+ 
+-declare var StyleSheet: {
+-    prototype: StyleSheet;
+-    new(): StyleSheet;
+-};
+ 
+ /** A list of StyleSheet. */
+ interface StyleSheetList {
+@@ -14466,25 +14453,6 @@ declare var SubtleCrypto: {
      prototype: SubtleCrypto;
      new(): SubtleCrypto;
  };
@@ -28,7 +49,7 @@ index fdcbb9f..45011e0 100644
  /** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
  interface TextDecoder extends TextDecoderCommon {
      /**
-@@ -18261,16 +18242,6 @@ interface SVGElementTagNameMap {
+@@ -18261,16 +18229,6 @@ interface SVGElementTagNameMap {
  
  /** @deprecated Directly use HTMLElementTagNameMap or SVGElementTagNameMap as appropriate, instead. */
  type ElementTagNameMap = HTMLElementTagNameMap & Pick<SVGElementTagNameMap, Exclude<keyof SVGElementTagNameMap, keyof HTMLElementTagNameMap>>;

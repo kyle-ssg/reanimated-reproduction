@@ -1,10 +1,8 @@
-import React from 'react'
 import { NativeStackNavigationOptions } from 'react-native-screens/native-stack'
 import { RouteUrls } from './route-urls'
 import BottomTabsNavigator from 'navigation/BottomTabsNavigator'
 import HomeScreen from 'screens/HomeScreen'
 import WebScreen from 'screens/WebScreen'
-import StorybookUIRoot from '../stories/index'
 
 import Tab1Screen from 'screens/Tab1Screen'
 
@@ -37,13 +35,6 @@ export const routes: Record<RouteUrls, IRoute> = {
       title: '',
     },
     component: WebScreen,
-  },
-
-  [RouteUrls.storybook]: {
-    options: {
-      headerShown: false,
-    },
-    component: StorybookUIRoot,
   },
 
   [RouteUrls.HomeScreen]: {

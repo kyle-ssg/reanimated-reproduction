@@ -1,9 +1,8 @@
+import { ImageStyle, TextStyle, ViewStyle } from 'react-native'
+
 export default function asStyle<
   T extends {
-    [key: string]:
-      | ReactNative.ViewStyle
-      | ReactNative.ImageStyle
-      | ReactNative.TextStyle
+    [key: string]: ViewStyle | ImageStyle | TextStyle
   },
 >(arg: T): T {
   return arg

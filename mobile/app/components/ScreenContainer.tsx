@@ -1,12 +1,12 @@
-import React, { FunctionComponent } from 'react' // we need this to make JSX compile
-import * as ReactNative from 'react-native'
+import React, { FC } from 'react'
 import '../style/style_variables'
 import Flex from 'components/base/grid/Flex'
 import useInsets from 'components/base/useInset'
+import { SafeAreaView, ViewProps } from 'react-native'
 
-type ComponentType = ReactNative.ViewProps & { withoutSafeAreaView?: boolean }
+type ComponentType = ViewProps & { withoutSafeAreaView?: boolean }
 
-const ScreenContainer: FunctionComponent<ComponentType> = ({
+const ScreenContainer: FC<ComponentType> = ({
   children,
   withoutSafeAreaView,
   ...props
@@ -14,12 +14,9 @@ const ScreenContainer: FunctionComponent<ComponentType> = ({
   const insets = useInsets()
   // Note: if we use a transparent status bar we need to add StatusBar.currentHeight to padding top for android
   return !withoutSafeAreaView ? (
-    <ReactNative.SafeAreaView
-      {...props}
-      style={[{ flex: 1 }, { paddingTop: insets.top }]}
-    >
+    <SafeAreaView {...props} style={[{ flex: 1 }, { paddingTop: insets.top }]}>
       {children}
-    </ReactNative.SafeAreaView>
+    </SafeAreaView>
   ) : (
     <Flex {...props}>{children}</Flex>
   )

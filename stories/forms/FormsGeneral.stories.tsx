@@ -1,7 +1,5 @@
-import React from 'react'
 import { ComponentStory } from '@storybook/react'
 import '../../styles/Global.scss'
-import Message from 'components/Messages'
 import Input from 'components/base/forms/Input'
 import Select from 'components/base/forms/Select'
 import InputGroup from 'components/base/forms/InputGroup'

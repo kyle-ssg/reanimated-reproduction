@@ -1,4 +1,5 @@
-import React, { FunctionComponent } from 'react' // we need this to make JSX compile
+import Row from '../grid/Row'
+import { FunctionComponent } from 'react'
 
 type ComponentType = {
   items: string[]

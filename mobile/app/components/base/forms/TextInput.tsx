@@ -2,38 +2,35 @@
  * Created by kylejohnson on 14/11/2015.
  */
 
-import * as ReactNative from 'react-native'
+import { FunctionComponent, useRef, useState } from 'react'
+import FormGroup from 'components/base/grid/FormGroup'
+import { palette } from 'app/style/style_variables'
+import {
+  Platform,
+  TextInputProps as _TextInputProps,
+  TextInput as _TextInput,
+  StyleProp,
+  ViewStyle,
+  TextStyle,
+} from 'react-native'
+import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro'
 
-import React, { FunctionComponent, useRef, useState } from 'react' // we need this to make JSX compile
-
-export type TextInputProps = ReactNative.TextInputProps & {
+export type TextInputProps = _TextInputProps & {
   title?: string
-  style?: ReactNative.StyleProp<ReactNative.ViewStyle>
+  style?: StyleProp<ViewStyle>
   invalid?: boolean
   disabled?: boolean
-  textStyle?: ReactNative.TextStyle
+  textStyle?: TextStyle
   isLight?: boolean
   icon?: string
   iconColour?: string
 }
 
 const TextInput: FunctionComponent<TextInputProps> = (props) => {
-  const inputRef = useRef<ReactNative.TextInput>()
+  const inputRef = useRef<_TextInput>()
   const [isSecureTextEntry, setIsSecureTextEntry] = useState<boolean>(
     props.secureTextEntry,
   )
-
-  const clear = () => {
-    inputRef.current.clear()
-  }
-
-  const blur = () => {
-    inputRef.current.blur()
-  }
-
-  const focus = () => {
-    inputRef.current.focus()
-  }
 
   const onFocus = (e) => {
     if (props.onFocus) {
@@ -62,7 +59,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props) => {
         </FormGroup>
       )}
       <View>
-        <ReactNative.TextInput
+        <_TextInput
           {...props}
           secureTextEntry={isSecureTextEntry}
           onFocus={onFocus}

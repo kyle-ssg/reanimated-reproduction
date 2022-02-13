@@ -15,7 +15,8 @@ export const waitByType = (theType) =>
   waitFor(element(by.type(theType)))
     .toBeVisible()
     .withTimeout(30000)
-const { getText } = require('detox-getprops')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+import { getText } from 'detox-getprops'
 
 const platformSelect = (obj) => {
   return device.getPlatform() === 'ios' ? obj.ios : obj.android

@@ -1,6 +1,10 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import Paging from '../Paging'
 import Panel from './Panel'
+import Row from '../base/grid/Row'
+import { Utils } from 'common/utils'
+import Column from '../base/grid/Column'
+import { filter } from 'lodash'
 
 const PanelSearch = class extends Component {
   static displayName = 'PanelSearch'
@@ -14,7 +18,7 @@ const PanelSearch = class extends Component {
     const { search } = this.state
     const { items, filterRow } = this.props
     if (filterRow && search) {
-      return _.filter(items, (i) => filterRow(i, search.toLowerCase()))
+      return filter(items, (i) => filterRow(i, search.toLowerCase()))
     }
     return items
   }

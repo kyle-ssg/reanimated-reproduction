@@ -1,34 +1,32 @@
-import React, { useRef, useState } from 'react'
+import { FC, SelectHTMLAttributes, useRef, useState } from 'react'
 import cx from 'classnames'
 import useOnClickOutside from '../useClickOutside'
+import Strings from 'project/localisation'
 
-export type SelectCustomDropdown = React.SelectHTMLAttributes<any> & {
+export type SelectCustomDropdown = SelectHTMLAttributes<any> & {
   title?: string
   isValid?: boolean
-  children?: React.ReactNode
-  errorMessage?: string
   onClick: (index: number) => void
   label?: string
 }
 
-const SelectCustomDropdown: React.FC<SelectCustomDropdown> = ({
+const SelectCustomDropdown: FC<SelectCustomDropdown> = ({
   title,
   onClick,
   label,
   isValid,
   children,
-  errorMessage,
   ...props
 }) => {
   const [shouldValidate, setShouldValidate] = useState<boolean>(false)
   const [isActive, setIsActive] = useState<boolean>(false)
-  const show = () => setIsActive(true)
   const hide = () => setIsActive(false)
   const ref = useRef()
   useOnClickOutside(ref, hide)
   return (
     <>
       {title && <label className='select__text'>{title}</label>}
+      {/* @ts-ignore*/}
       <div ref={ref} className='dropdown'>
         <div onClick={() => setIsActive(true)} className='select'>
           <select
@@ -41,9 +39,9 @@ const SelectCustomDropdown: React.FC<SelectCustomDropdown> = ({
               invalid: shouldValidate && !isValid,
             })}
           >
-            <option value={null}>{label || Strings.pleaseSelect}</option>
+            <option value={''}>{label || Strings.pleaseSelect}</option>
           </select>
-          <i className='select__icon fas fa-caret-down'></i>
+          <i className='select__icon fas fa-caret-down' />
         </div>
         <div
           className={cx('dropdown-menu dropdown-menu-right', {
@@ -51,19 +49,25 @@ const SelectCustomDropdown: React.FC<SelectCustomDropdown> = ({
           })}
           aria-labelledby='dropdownMenuButton'
         >
-          {children.map((child, i) => (
-            <a
-              key={i}
-              onClick={() => {
-                hide()
-                onClick(i)
-              }}
-              className='dropdown-item'
-              href='#'
-            >
-              {child}
-            </a>
-          ))}
+          {
+            //@ts-ignore
+            children?.length
+              ? //@ts-ignore
+                children.map((child, i) => (
+                  <a
+                    key={i}
+                    onClick={() => {
+                      hide()
+                      onClick(i)
+                    }}
+                    className='dropdown-item'
+                    href='#'
+                  >
+                    {child}
+                  </a>
+                ))
+              : children
+          }
         </div>
       </div>
     </>

@@ -1,14 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { AppActions, Callbacks } from '../app-actions'
-import { AppState, RequestTypes } from '../state-type'
+import { AppState, RequestTypes } from '../types/state-type'
 import { useCallback } from 'react'
 
 type UseAuthType = {
   register: (data: RequestTypes['register'], callbacks?: Callbacks) => void
   login: (data: RequestTypes['login'], callbacks?: Callbacks) => void
   logout: (callbacks?: Callbacks) => void
-  confirmEmail: (data: Record<string, any>, callbacks?: Callbacks) => void
-  updateUser: (data: Record<string, any>, callbacks?: Callbacks) => void
+  confirmEmail: (
+    data: RequestTypes['confirmEmail'],
+    callbacks?: Callbacks,
+  ) => void
+  updateUser: (data: RequestTypes['updateUser'], callbacks?: Callbacks) => void
+  getUser: (data: RequestTypes['getUser'], callbacks?: Callbacks) => void
   user: AppState['user']
   userLoading: AppState['userLoading']
   userError: AppState['userError']
@@ -17,7 +21,7 @@ type UseAuthType = {
 export function useAuth(): UseAuthType {
   const { user, userLoading, userError } = useSelector((state: AppState) => {
     return {
-      user: state.profile,
+      user: state.user,
       userLoading: state.userLoading || state.profileLoading,
       userError: state.userError || state.profileError,
     }
@@ -47,6 +51,12 @@ export function useAuth(): UseAuthType {
     },
     [dispatch],
   )
+  const getUser = useCallback(
+    (data, callbacks) => {
+      return dispatch(AppActions.getUser(data, callbacks))
+    },
+    [dispatch],
+  )
   const updateUser = useCallback(
     (data, callbacks) => {
       return dispatch(AppActions.updateUser(data, callbacks))
@@ -63,5 +73,6 @@ export function useAuth(): UseAuthType {
     register,
     updateUser,
     confirmEmail,
+    getUser,
   }
 }

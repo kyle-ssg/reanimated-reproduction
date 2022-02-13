@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import { enableScreens } from 'react-native-screens'
 import { createNativeStackNavigator } from 'react-native-screens/native-stack'
-import codePush from 'react-native-code-push'
 import { AppActions } from 'common/app-actions'
 import '../project/api/api'
 import _store from 'common/store'
@@ -10,6 +9,13 @@ import { RouteUrls } from '../route-urls'
 import withAuth, { IWithAuth } from 'common/providers/withAuth' // todo: migrate this to functional component and use useAuth
 import { routes } from '../routes'
 import LinkHandler from 'components/LinkHandler'
+import { Strings } from 'project/localisation'
+import Flex from 'components/base/grid/Flex'
+import { Constants } from 'common/utils'
+import Loader from 'components/base/Loader'
+import { DevSettings } from 'react-native'
+import { API } from '../project/api/api'
+import StorybookUIRoot from '../../.storybook/Storybook'
 // import Cognito from "common/cognito";
 
 // API.auth.Cognito.init(Project.cognitoMobile)
@@ -19,23 +25,24 @@ enableScreens()
 const Stack = createNativeStackNavigator()
 const Navigator = Stack.Navigator
 
-const codePushOptions = {
-  checkFrequency: __DEV__
-    ? codePush.CheckFrequency.MANUAL
-    : codePush.CheckFrequency.ON_APP_RESUME,
-  installMode: codePush.InstallMode.IMMEDIATE,
-  updateDialog: true,
-}
-
 type ComponentType = IWithAuth & {}
 
 class AppNavigator extends Component<ComponentType> {
   state = {
     isLoading: true,
+    showStorybook: false,
   }
+
+  initialRoute = null
 
   componentDidMount() {
     this._bootstrapAsync()
+
+    DevSettings.addMenuItem('Toggle Storybook', () => {
+      this.setState({ showStorybook: !this.state.showStorybook }, () => {
+        API.storage.setItem('storybook', `${this.state.showStorybook}`)
+      })
+    })
   }
 
   _bootstrapAsync = async () => {
@@ -52,7 +59,7 @@ class AppNavigator extends Component<ComponentType> {
       await new Promise((resolve) => {
         store.dispatch(
           AppActions.startup(
-            { token, user },
+            { token, user, locale: user?.locale || Strings.getLanguage() },
             {
               onSuccess: () => {
                 resolve(user)
@@ -66,26 +73,31 @@ class AppNavigator extends Component<ComponentType> {
       })
     }
 
-    this.setState({ isLoading: false })
+    const showStorybook = await API.storage.getItem('storybook')
+    this.setState({
+      isLoading: false,
+      showStorybook: showStorybook === 'true',
+    })
   }
   render() {
     const {
       props: { user },
-      state: { isLoading },
+      state: { isLoading, showStorybook },
     } = this
 
     if (isLoading)
       return <Flex style={Styles.centeredContainer}>{<Loader />}</Flex>
 
-    let initialRoute = user ? RouteUrls.mainApp : RouteUrls.HomeScreen
-
-    if (Constants.STORYBOOK) {
-      initialRoute = RouteUrls.storybook
+    if (showStorybook) {
+      return <StorybookUIRoot />
     }
+
+    let initialRoute = user ? RouteUrls.mainApp : RouteUrls.HomeScreen
 
     if (Constants.simulate.FORCE_PAGE) {
       initialRoute = Constants.simulate.FORCE_PAGE
     }
+    this.initialRoute = initialRoute
 
     return (
       <>
@@ -97,11 +109,6 @@ class AppNavigator extends Component<ComponentType> {
             name={RouteUrls.mainApp}
             options={routes[RouteUrls.mainApp].options}
             component={routes[RouteUrls.mainApp].component}
-          />
-          <Stack.Screen
-            name={RouteUrls.storybook}
-            options={routes[RouteUrls.storybook].options}
-            component={routes[RouteUrls.storybook].component}
           />
           {/*Modals*/}
           <Stack.Screen
@@ -142,4 +149,5 @@ class AppNavigator extends Component<ComponentType> {
   }
 }
 
-export default withAuth(codePush(codePushOptions)(AppNavigator))
+//todo: I think this should not use withAuth
+export default withAuth(AppNavigator)
