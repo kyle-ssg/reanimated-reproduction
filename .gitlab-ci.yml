@@ -69,7 +69,6 @@ android-staging-release:
   only:
     refs:
       - /^mobile\/staging\/.*$/
-      - master
     variables:
       - $APPCENTER_ACCESS_TOKEN
       - $APPCENTER_NAME_ANDROID_PRODUCTION
@@ -88,7 +87,6 @@ ios-staging-release:
   only:
     refs:
       - /^mobile\/staging\/.*$/
-      - master
     variables:
       - $APPCENTER_ACCESS_TOKEN
       - $APPCENTER_NAME_IOS_PRODUCTION
@@ -106,6 +104,7 @@ deploy-mobile-ios-production:
     - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_IOS_PRODUCTION Production $CI_COMMIT_REF_NAME ios $CODE_PUSH_NAME_IOS appcenter-production
   only:
     refs:
+      - master
       - /^mobile\/production\/.*$/
     variables:
       - $APPCENTER_ACCESS_TOKEN
@@ -124,6 +123,7 @@ deploy-mobile-android-production:
     - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_ANDROID_PRODUCTION Production $CI_COMMIT_REF_NAME android $CODE_PUSH_NAME_ANDROID
   only:
     refs:
+      - master
       - /^mobile\/production\/.*$/
     variables:
       - $APPCENTER_ACCESS_TOKEN
