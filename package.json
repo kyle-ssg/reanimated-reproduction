@@ -7,7 +7,7 @@
     "dev": "next",
     "env_script": "sh .bin/env.sh",
     "preinstall": "npm run env_script",
-    "postinstall": "patch-package && cd .. && husky install .husky",
+    "postinstall": "patch-package && husky install .husky",
     "build": "next build",
     "update_version": "export CI_COMMIT_REF_NAME=\"$(git rev-parse --abbrev-ref HEAD)\"\ncd ./mobile && npm run set_native_version && cd .. ",
     "static": "npm run build && npm run export",
