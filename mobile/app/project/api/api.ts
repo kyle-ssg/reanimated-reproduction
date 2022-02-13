@@ -16,7 +16,7 @@ import { Strings } from 'project/localisation'
 import { Project } from 'common/project'
 import { FirebaseMessagingTypes } from '@react-native-firebase/messaging'
 import * as RootNavigation from 'navigation/RootNavigation'
-import { setApi } from 'common/api/api'
+import { setApi } from 'common/api'
 import { RouteUrls } from '../../route-urls'
 
 // @ts-ignore

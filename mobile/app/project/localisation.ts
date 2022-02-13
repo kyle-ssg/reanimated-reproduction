@@ -1,5 +1,5 @@
 import LocalizedStrings from 'react-native-localization'
-import 'project/api/api'
+import 'project/api'
 import { stringRecords, setStrings } from 'common/strings'
 
 const strings = new LocalizedStrings(stringRecords)

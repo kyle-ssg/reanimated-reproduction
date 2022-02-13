@@ -3,7 +3,7 @@ import { useAuth } from 'common/providers/useAuth'
 import { useAppState } from '@react-native-community/hooks'
 import { rootPush } from 'navigation/RootNavigation'
 import { FirebaseMessagingTypes } from '@react-native-firebase/messaging'
-import { API } from 'project/api/api'
+import { API } from 'project/api'
 import { Constants } from 'common/utils'
 
 type ComponentType = {}

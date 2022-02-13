@@ -1,6 +1,6 @@
 import { Project } from '../project'
 import { Constants } from './constants'
-import { getApi } from '../api/api'
+import { getApi } from '../api'
 import { getStrings } from '../strings'
 
 const getQueryString = (params: any): string => {

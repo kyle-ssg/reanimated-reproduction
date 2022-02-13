@@ -2,7 +2,7 @@ import produce, { enableES5 } from 'immer'
 import { Actions } from './app-actions'
 import { AppState } from './types/state-type'
 import './utils'
-import { getApi } from './api/api'
+import { getApi } from './api'
 // eslint-disable-next-line no-unused-vars
 import { itemError, itemLoaded, itemLoading } from './utils/reducer-helpers'
 enableES5() // required for react native hermes

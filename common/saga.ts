@@ -1,6 +1,6 @@
 import { all, put, takeLatest } from 'redux-saga/effects'
 import { Actions } from './app-actions'
-import { getApi } from './api/api'
+import { getApi } from './api'
 import {
   errorHandler,
   getAction,

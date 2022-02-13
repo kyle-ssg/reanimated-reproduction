@@ -1,5 +1,5 @@
 // In order to support vanilla JS local times
-import './api/api'
+import './api'
 // If you require timezones
 // "date-time-format-timezone": "^1.0.22",
 // require('date-time-format-timezone')

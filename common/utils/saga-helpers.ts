@@ -5,7 +5,7 @@ import _data from './_data'
 import { Utils } from './utils'
 import { AnyAction } from 'redux'
 import { PutEffect } from '@redux-saga/core/effects'
-import { getApi } from '../api/api'
+import { getApi } from '../api'
 
 export type IAction<ActionData = any> = Callbacks &
   AnyAction & {

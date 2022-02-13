@@ -6,7 +6,7 @@ import './app-actions'
 import rootReducer from './reducer'
 import rootSaga from './saga'
 import { AppState } from './types/state-type'
-import { getApi } from './api/api'
+import { getApi } from './api'
 
 let store: Store & {
   __PERSISTOR?: ReturnType<typeof persistStore>
