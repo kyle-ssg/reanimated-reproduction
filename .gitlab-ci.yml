@@ -139,11 +139,10 @@ test:
   cache:
     <<: *web_cache
 
-  image: testcafe/testcafe:1.18.2
+  image: solidstategroup/e2e
   stage: test
   script:
     - npm install
-    - npx testcafe --list-browsers
     - npm run test:e2e:prod
   rules:
     # Run only in merge request.
