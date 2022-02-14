@@ -139,7 +139,7 @@ test:
   cache:
     <<: *web_cache
 
-  image: markhobson/node-chrome:latest
+  image: testcafe/testcafe:1.18.3
   stage: test
   script:
     - npm install
