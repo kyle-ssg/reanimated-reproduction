@@ -143,6 +143,7 @@ test:
   stage: test
   script:
     - npm install
+    - npx testcafe --list-browsers
     - npm run test:e2e:prod
   rules:
     # Run only in merge request.
