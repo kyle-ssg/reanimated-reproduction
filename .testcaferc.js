@@ -1,5 +1,6 @@
 const isDev = process.env.E2E_DEV;
 module.exports = {
+    "browsers": "chrome:headless",
     "port1": 8080,
     "port2": 8081,
     "hostname": "localhost",
