@@ -139,7 +139,7 @@ test:
   cache:
     <<: *web_cache
 
-  image: testcafe/testcafe:1.18.3
+  image: testcafe/testcafe:1.18.2
   stage: test
   script:
     - npm install
