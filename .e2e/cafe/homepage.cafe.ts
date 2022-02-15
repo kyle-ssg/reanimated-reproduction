@@ -4,5 +4,5 @@ fixture`Homepage Tests`
     .page`http://localhost:3000/`;
 
 test('Submit a Form', async () => {
-    await waitForElementVisible("body432423")
+    await waitForElementVisible("body")
 });
