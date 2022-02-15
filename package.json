@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "boilerplate",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -16,7 +16,9 @@
     "lint": "eslint . --ext .tsx,.ts",
     "lint:fix": "eslint . --ext .tsx,.ts --fix --quiet",
     "typecheck": "tsc",
-    "test:e2e:prod": "echo implement testcafe",
+    "test:e2e:bundle": "cross-env E2E=1 npm run build",
+    "test:e2e:local": "ts-node-transpile-only ./.e2e/index.cafe",
+    "test:e2e:prod": "npm run test:e2e:bundle && cross-env NODE_ENV=production E2E=true npm run test:e2e:local",
     "storybook": "start-storybook -p 4000 -s ./public",
     "build-storybook": "build-storybook"
   },
@@ -51,6 +53,7 @@
   },
   "devDependencies": {
     "@babel/polyfill": "7.12.1",
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@next/bundle-analyzer": "12.0.10",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
@@ -61,6 +64,7 @@
     "@tsconfig/next": "^1.0.2",
     "@types/accept-language-parser": "^1.5.3",
     "@types/cookie": "^0.4.1",
+    "@types/express": "^4.17.13",
     "@types/js-cookie": "^3.0.1",
     "@types/next-redux-saga": "^3.0.2",
     "@types/node": "17.0.17",
@@ -81,10 +85,11 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "7.28.0",
     "eslint-plugin-react-hooks": "4.3.0",
-    "next-transpile-modules": "^9.0.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.4",
     "next-compose-plugins": "2.2.1",
+    "next-transpile-modules": "^9.0.0",
+    "nodejslack": "^1.4.0",
     "patch-package": "6.4.7",
     "postcss": "^8.3.0",
     "prettier": "^2.5.1",
@@ -92,6 +97,8 @@
     "sass": "1.32.13",
     "sass-loader": "10.2.0",
     "suppress-exit-code": "^1.0.0",
+    "testcafe": "^1.18.3",
+    "ts-node": "^10.5.0",
     "typescript": "4.5.5"
   },
   "lint-staged": {
