@@ -166,7 +166,7 @@ web-production:
   script:
     - bash
     - npm i
-    - npm run test
+    - npm run test:e2e:prod
     - now --target production -e STAGED=false --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --prod --build-env ENV=$ENV --name=$CI_PROJECT_NAME
   only:
     refs:
