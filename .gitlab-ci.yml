@@ -155,7 +155,7 @@ test:
 
 
 web-production:
-  image: node:16.13.2
+  image: solidstategroup/testcafe:16.98
   cache:
     <<: *web_cache
 
