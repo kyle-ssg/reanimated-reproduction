@@ -67,6 +67,7 @@ android-staging:
   script:
     - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_ANDROID_PRODUCTION Staging $CI_COMMIT_REF_NAME android $CODE_PUSH_NAME_ANDROID
   only:
+    <<: *mobile_deploy_common_required_changes
     refs:
       - /^mobile\/staging\/.*$/
     variables:
@@ -85,6 +86,7 @@ ios-staging:
   script:
     - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_IOS_PRODUCTION Staging $CI_COMMIT_REF_NAME ios $CODE_PUSH_NAME_IOS appcenter-production
   only:
+    <<: *mobile_deploy_common_required_changes
     refs:
       - /^mobile\/staging\/.*$/
     variables:
@@ -103,6 +105,7 @@ ios-production:
   script:
     - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_IOS_PRODUCTION Production $CI_COMMIT_REF_NAME ios $CODE_PUSH_NAME_IOS appcenter-production
   only:
+    <<: *mobile_deploy_common_required_changes
     refs:
       - master
       - /^mobile\/production\/.*$/
@@ -122,6 +125,7 @@ android-production:
   script:
     - ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME_ANDROID_PRODUCTION Production $CI_COMMIT_REF_NAME android $CODE_PUSH_NAME_ANDROID
   only:
+    <<: *mobile_deploy_common_required_changes
     refs:
       - master
       - /^mobile\/production\/.*$/
