@@ -161,6 +161,8 @@ web-production:
   <<: *web_deploy_common_script
   script:
     - bash
+    - npm i
+    - npm run test
     - now --target production -e STAGED=false --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --prod --build-env ENV=$ENV --name=$CI_PROJECT_NAME
   only:
     refs:
