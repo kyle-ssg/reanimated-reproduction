@@ -3,7 +3,7 @@ import { AppActions, Callbacks } from '../app-actions'
 import { AppState, RequestTypes } from '../types/state-type'
 import { useCallback } from 'react'
 
-type UseAuthType = {
+type UseAuthActionsType = {
   register: (data: RequestTypes['register'], callbacks?: Callbacks) => void
   login: (data: RequestTypes['login'], callbacks?: Callbacks) => void
   logout: (callbacks?: Callbacks) => void
@@ -13,19 +13,15 @@ type UseAuthType = {
   ) => void
   updateUser: (data: RequestTypes['updateUser'], callbacks?: Callbacks) => void
   getUser: (data: RequestTypes['getUser'], callbacks?: Callbacks) => void
+}
+
+type UseAuthType = UseAuthActionsType & {
   user: AppState['user']
   userLoading: AppState['userLoading']
   userError: AppState['userError']
 }
 
-export function useAuth(): UseAuthType {
-  const { user, userLoading, userError } = useSelector((state: AppState) => {
-    return {
-      user: state.user,
-      userLoading: state.userLoading || state.profileLoading,
-      userError: state.userError || state.profileError,
-    }
-  })
+export function useAuthActions(): UseAuthActionsType {
   const dispatch = useDispatch()
   const login = useCallback(
     (data, callbacks) => {
@@ -63,16 +59,35 @@ export function useAuth(): UseAuthType {
     },
     [dispatch],
   )
-
   return {
-    user,
-    userLoading,
-    userError,
+    confirmEmail,
+    getUser,
     login,
     logout,
     register,
     updateUser,
+  }
+}
+export function useAuth(): UseAuthType {
+  const { login, logout, register, updateUser, confirmEmail, getUser } =
+    useAuthActions()
+  const { user, userLoading, userError } = useSelector((state: AppState) => {
+    return {
+      user: state.user,
+      userLoading: state.userLoading || state.profileLoading,
+      userError: state.userError || state.profileError,
+    }
+  })
+
+  return {
     confirmEmail,
     getUser,
+    login,
+    logout,
+    register,
+    updateUser,
+    user,
+    userError,
+    userLoading,
   }
 }

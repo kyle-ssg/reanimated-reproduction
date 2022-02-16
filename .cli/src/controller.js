@@ -41,23 +41,6 @@ module.exports = {
         // console.log(stateTypes)
 
     },
-    async writePost(action, prefix, api, createProvider, type='any', crud) {
-        const actionStrings = templates.action(action, prefix);
-        const appAction = templates.post(action, prefix);
-        const yieldString = templates.yieldPost(action, prefix, api);
-        const takeLatest = templates.takeEvery(action, prefix, api);
-        const reducer = templates.reducerPost(action, prefix, api);
-        const stateTypes = templates.stateTypes(action, prefix, type);
-        const requestStateTypes = templates.requestStateTypesPost(action, prefix, type);
-        const provider = crud ? templates.providerItem(action, prefix, api) : templates.providerPost(action, prefix, api);
-        // const reactNativeExample = templates.reactNativeGPost(action, prefix, api)
-        await writer.writeActions(actionStrings, appAction);
-        await writer.writeSaga(yieldString, takeLatest);
-        await writer.writeReducer(reducer, stateTypes, requestStateTypes);
-        if (createProvider) {
-            await writer.writeProvider(provider, prefix);
-        }
-    },
     async writeGet(action, prefix, api, createProvider, type='any') {
         const actionStrings = templates.action(action, prefix);
         const appAction = templates.get(action, prefix);
@@ -66,7 +49,24 @@ module.exports = {
         const reducer = templates.reducerGet(action, prefix, api);
         const stateTypes = templates.stateTypes(action, prefix, type);
         const requestStateTypes = templates.requestStateTypes(action, prefix, type);
-        const provider = templates.providerItem(action, prefix, api);
+        const provider = templates.providerCrud(action, prefix, api);
+        await writer.writeActions(actionStrings, appAction);
+        await writer.writeSaga(yieldString, takeLatest);
+        await writer.writeReducer(reducer, stateTypes, requestStateTypes);
+        if (createProvider) {
+            await writer.writeProvider(provider, prefix);
+        }
+    },
+    async writePost(action, prefix, api, createProvider, type='any', crud) {
+        const actionStrings = templates.action(action, prefix);
+        const appAction = templates.post(action, prefix);
+        const yieldString = templates.yieldPost(action, prefix, api);
+        const takeLatest = templates.takeEvery(action, prefix, api);
+        const reducer = templates.reducerPost(action, prefix, api);
+        const stateTypes = templates.stateTypes(action, prefix, type);
+        const requestStateTypes = templates.requestStateTypesPost(action, prefix, type);
+        const provider = crud ? templates.providerCrud(action, prefix, api) : templates.providerPost(action, prefix, api);
+        // const reactNativeExample = templates.reactNativeGPost(action, prefix, api)
         await writer.writeActions(actionStrings, appAction);
         await writer.writeSaga(yieldString, takeLatest);
         await writer.writeReducer(reducer, stateTypes, requestStateTypes);
@@ -82,7 +82,7 @@ module.exports = {
         const reducer = templates.reducerUpdate(action, prefix, api);
         const stateTypes = templates.stateTypes(action, prefix, type);
         const requestStateTypes = templates.requestStateTypes(action, prefix, type);
-        const provider = templates.providerItem(action, prefix, api);
+        const provider = templates.providerCrud(action, prefix, api);
         console.log('Writing delete', action, prefix, api);
         await writer.writeActions(actionStrings, appAction);
         await writer.writeSaga(yieldString, takeLatest);
@@ -100,7 +100,7 @@ module.exports = {
         const reducer = templates.reducerUpdate(action, prefix, api);
         const stateTypes = templates.stateTypes(action, prefix, type);
         const requestStateTypes = templates.requestStateTypes(action, prefix, type);
-        const provider = templates.providerItem(action, prefix, api);
+        const provider = templates.providerCrud(action, prefix, api);
         console.log('Writing update', action, prefix, api);
         await writer.writeActions(actionStrings, appAction);
         await writer.writeSaga(yieldString, takeLatest);
