@@ -1,49 +1,7 @@
-import { NativeStackNavigationOptions } from 'react-native-screens/native-stack'
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 
 const defaultNavigationOptions: NativeStackNavigationOptions = {
-  // title: "Boilerplate",
-  // backButtonImage: undefined,
-  // headerBackTitle: "",
-  // headerBackTitleVisible: true, // iOS only
   headerShown: false,
-  // screenOrientation: 'portrait_up',
-  // backButtonInCustomView: false,
-  // headerTranslucent: false,
-  // headerLargeTitle: false,
-  // headerTintColor: palette.primary,
-  // // headerRight?: (props: { tintColor?: string }) => ReactNode;
-  // // headerLeft?: (props: { tintColor?: string }) => ReactNode;
-  // // headerCenter?: (props: { tintColor?: string }) => ReactNode;
-  // headerHideBackButton: false,
-  // headerHideShadow: false,
-  // headerLargeTitleHideShadow: false,
-  // // headerStyle: {
-  // //     backgroundColor: "white",
-  // // },
-  // // headerLargeStyle: {
-  // //     backgroundColor: "white",
-  // // },
-  // headerTitleStyle: {
-  //     // fontFamily: "System",
-  //     // // fontSize: number
-  //     color: "black"
-  // },
-  // contentStyle: {
-  //     backgroundColor:'white'
-  // },
-  // headerLargeTitleStyle: {
-  //     // fontFamily?: string;
-  //     // fontSize?: number;
-  //     color: "black"
-  // },
-  // headerBackTitleStyle: {
-  //     // fontFamil?: string;
-  //     // fontSize?: number;
-  // },
-  headerTopInsetEnabled: false,
-  // gestureEnabled: true,
-  // stackPresentation: "push",
-  // stackAnimation: "default"
 }
 
 export default defaultNavigationOptions

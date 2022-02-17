@@ -9,7 +9,8 @@ import {
   updateAction,
 } from './utils/saga-helpers'
 import _data from './utils/_data'
-import { RequestTypes } from './types/state-type'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { AppState, RequestTypes } from './types/state-type'
 
 // Called when the application starts up, if using SSR this is done in the server
 export function* startup(action: IAction<RequestTypes['startup']>) {

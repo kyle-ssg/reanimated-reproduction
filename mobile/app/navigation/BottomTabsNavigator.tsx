@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import defaultNavigationOptions from '../style/navigation_styles'
-import { createNativeStackNavigator } from 'react-native-screens/native-stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { RouteUrls } from '../route-urls'
 import BottomNav from 'components/BottomNav'
 import useInsets from 'components/base/useInset'

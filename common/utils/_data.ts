@@ -101,101 +101,113 @@ const _data = {
     headers: any = {},
     proxied?: boolean,
   ): Promise<any> {
-    const prom = Promise.resolve()
-
     const skipAuthHeader = Object.keys(headers).length > 0
-    return prom.then(async () => {
-      const options: RequestOptions = {
-        timeout: 60000,
-        method,
-        headers: {
-          'Accept-Language': getStrings().getLanguage(),
-          ...headers,
-        },
-      }
-      if (Constants.E2E) {
-        options.headers['E2E-Test'] = '1'
-      }
-      let qs = ''
+    const controller =
+      typeof AbortController !== 'undefined' ? new AbortController() : null
+    const signal = controller?.signal
 
-      if (method !== RequestMethod.get && !options.headers['content-type'])
-        options.headers['content-type'] = 'application/json'
+    const options: RequestOptions = {
+      timeout: 60000,
+      method,
+      // @ts-ignore
+      signal,
+      headers: {
+        'Accept-Language': getStrings().getLanguage(),
+        ...headers,
+      },
+    }
+    if (Constants.E2E) {
+      options.headers['E2E-Test'] = '1'
+    }
+    let qs = ''
 
-      // const session = await getApi().auth.Cognito.getSession()
-      // if (session && session.accessToken) {
-      //   _data.token = session.accessToken.jwtToken;
-      // }
-      if (_data.token && !skipAuthHeader) {
-        // add auth tokens to headers of all requests
-        options.headers.AUTHORIZATION = `Bearer ${_data.token}`
-      } else if (Project.apiAuth) {
-        options.headers.AUTHORIZATION = Project.apiAuth
+    if (method !== RequestMethod.get && !options.headers['content-type'])
+      options.headers['content-type'] = 'application/json'
+
+    // const session = await getApi().auth.Cognito.getSession()
+    // if (session && session.accessToken) {
+    //   _data.token = session.accessToken.jwtToken;
+    // }
+    if (_data.token && !skipAuthHeader) {
+      // add auth tokens to headers of all requests
+      options.headers.AUTHORIZATION = `Bearer ${_data.token}`
+    } else if (Project.apiAuth) {
+      options.headers.AUTHORIZATION = Project.apiAuth
+    }
+    if (data) {
+      if (method === RequestMethod.get) {
+        qs = getQueryString(data)
+        url += url.indexOf('?') !== -1 ? `&${qs}` : `?${qs}`
+      } else if (options.headers['content-type'] === 'application/json') {
+        options.body = JSON.stringify(data)
+      } else {
+        options.body = data
       }
-      if (data) {
-        if (method === RequestMethod.get) {
-          qs = getQueryString(data)
-          url += url.indexOf('?') !== -1 ? `&${qs}` : `?${qs}`
-        } else if (options.headers['content-type'] === 'application/json') {
-          options.body = JSON.stringify(data)
-        } else {
-          options.body = data
-        }
-      } else if (
-        method === RequestMethod.post ||
-        method === RequestMethod.put
-      ) {
-        options.body = '{}'
-      }
+    } else if (method === RequestMethod.post || method === RequestMethod.put) {
+      options.body = '{}'
+    }
 
-      if (
-        Constants.E2E &&
-        typeof document !== 'undefined' &&
-        document?.getElementById('e2e-request')
-      ) {
-        const payload = {
-          url,
-          options,
-        }
-        if (document.getElementById('e2e-request')) {
-          // @ts-ignore
-          document.getElementById('e2e-request').innerText =
-            JSON.stringify(payload)
-        }
-      }
-
-      getApi().log('API', 'REQUEST', method, url, data, headers)
-
-      const req = fetch(
-        Constants.E2E && !proxied ? generateE2EURL(url) : url,
+    if (
+      Constants.E2E &&
+      typeof document !== 'undefined' &&
+      document?.getElementById('e2e-request')
+    ) {
+      const payload = {
+        url,
         options,
-      )
-      return req
-        .then((res) => _data.status(res))
-        .then((response) => {
-          // always return json
-          let contentType = response.headers.get('content-type')
-          if (!contentType) {
-            contentType = response.headers.get('Content-Type')
-          }
-          if (contentType && contentType.indexOf('application/json') !== -1) {
-            return response.json()
-          }
-          return {}
-        })
-        .then((response) => {
-          getApi().log(
-            'API',
-            'RESPONSE',
-            method,
-            url,
-            'Response body',
-            response,
-            'Original request',
-            options,
-          )
-          return response
-        })
-    })
+      }
+      if (document.getElementById('e2e-request')) {
+        // @ts-ignore
+        document.getElementById('e2e-request').innerText =
+          JSON.stringify(payload)
+      }
+    }
+
+    getApi().log('API', 'REQUEST', method, url, data, headers)
+
+    const req = fetch(
+      Constants.E2E && !proxied ? generateE2EURL(url) : url,
+      options,
+    )
+    let handled = false
+    setTimeout(() => {
+      if (!handled) {
+        controller?.abort()
+      }
+    }, Constants.REQUEST_TIMEOUT)
+
+    return req
+      .then((res) => {
+        handled = true
+        return _data.status(res)
+      })
+      .then((response) => {
+        // always return json
+        let contentType = response.headers.get('content-type')
+        if (!contentType) {
+          contentType = response.headers.get('Content-Type')
+        }
+        if (contentType && contentType.indexOf('application/json') !== -1) {
+          return response.json()
+        }
+        return {}
+      })
+      .then((response) => {
+        getApi().log(
+          'API',
+          'RESPONSE',
+          method,
+          url,
+          'Response body',
+          response,
+          'Original request',
+          options,
+        )
+        return response
+      })
+      .catch((e) => {
+        throw e
+      })
   },
 
   setToken: (_token?: string): void => {

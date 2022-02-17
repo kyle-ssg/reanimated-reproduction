@@ -1,4 +1,4 @@
-import { NativeStackNavigationOptions } from 'react-native-screens/native-stack'
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import { RouteUrls } from './route-urls'
 import BottomTabsNavigator from 'navigation/BottomTabsNavigator'
 import HomeScreen from 'screens/HomeScreen'
@@ -55,7 +55,7 @@ export const routes: Record<RouteUrls, IRoute> = {
   },
   [RouteUrls.ModalScreen]: {
     options: {
-      stackPresentation: 'containedModal',
+      presentation: 'modal',
       headerShown: false,
     },
     params: {},

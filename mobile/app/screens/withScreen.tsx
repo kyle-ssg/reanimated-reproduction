@@ -24,7 +24,7 @@ import {
 import {
   NativeStackNavigationOptions,
   NativeStackNavigationProp,
-} from 'react-native-screens/native-stack'
+} from '@react-navigation/native-stack'
 import { useDispatch } from 'react-redux'
 import { ScreenErrorBoundary } from 'screens/ScreenErrorBoundary'
 

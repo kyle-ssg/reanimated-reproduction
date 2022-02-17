@@ -3,7 +3,7 @@ import withScreen, { Screen } from './withScreen'
 import { WebView, WebViewProps } from 'react-native-webview'
 import { NavigationContainer } from '@react-navigation/native'
 import defaultNavigationOptions from '../style/navigation_styles'
-import { createNativeStackNavigator } from 'react-native-screens/native-stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Flex from 'components/base/grid/Flex'
 import { palette } from '../style/style_variables'
 import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro'
@@ -70,7 +70,7 @@ const TheComponent: FunctionComponent<Props> = ({ webViewProps }) => {
       >
         <Stack.Screen
           name={'home'}
-          options={{ stackPresentation: 'modal' }}
+          options={{ presentation: 'modal' }}
           component={ConnectedWebScreen}
           initialParams={{
             webViewProps: webViewProps || {
