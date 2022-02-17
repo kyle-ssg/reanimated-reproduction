@@ -1,8 +1,9 @@
 import { Component } from 'react'
 import { enableScreens } from 'react-native-screens'
-import { createNativeStackNavigator } from 'react-native-screens/native-stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AppActions } from 'common/app-actions'
 import '../project/api'
+import '../routes'
 import _store from 'common/store'
 import defaultNavigationOptions from '../style/navigation_styles'
 import { RouteUrls } from '../route-urls'
@@ -112,7 +113,7 @@ class AppNavigator extends Component<ComponentType> {
           {/*Modals*/}
           <Stack.Screen
             name={RouteUrls.web}
-            options={{ stackPresentation: 'modal', headerShown: false }}
+            options={{ presentation: 'modal', headerShown: false }}
             component={routes[RouteUrls.web].component}
           />
 

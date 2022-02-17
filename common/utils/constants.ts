@@ -8,6 +8,7 @@ const DEV = global.__DEV__
 
 export const Constants = {
   E2E: DEV && false,
+  REQUEST_TIMEOUT: 10000,
   E2E_NAMESPACE: null,
   simulate: !DEV
     ? {}

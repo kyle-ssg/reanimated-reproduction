@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
 import defaultNavigationOptions from '../style/navigation_styles'
 import { RouteUrls } from '../route-urls'
-import { createNativeStackNavigator } from 'react-native-screens/native-stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Constants } from 'common/utils'
 
 export default function (TheScreen: any, url: RouteUrls, hideHeader, children) {
