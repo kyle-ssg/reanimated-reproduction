@@ -51,7 +51,7 @@ const MainAppNavigator = ({}) => {
       ]}
     >
       <Tab.Navigator
-        initialRouteName={RouteUrls.HomeScreen}
+        initialRouteName={RouteUrls.Tab1Screen}
         tabBar={(props) => <BottomNav {...props} />}
       >
         <Tab.Screen name={RouteUrls.Tab1Screen} component={Stack1} />
