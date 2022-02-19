@@ -12,6 +12,7 @@ import {
   ReactChildren,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
 } from 'react'
 import {
@@ -117,22 +118,12 @@ const withScreen = (Component: ComponentType, isChild = false) => {
       StatusBar.setBarStyle(statusColour.current as StatusBarStyle, true)
     }, [])
 
-    useEffect(() => {
-      const options: Partial<NativeStackNavigationOptions> = {
-        // @ts-ignore
-        ...(route.params?.screenOptions || {}),
+    const screenOptions = route?.params?.screenOptions
+    useLayoutEffect(() => {
+      if (screenOptions) {
+        navigation.setOptions(route?.params?.screenOptions)
       }
-
-      if (Platform.OS === 'android') {
-        setTimeout(() => {
-          setNavOptions(options)
-        })
-      } else {
-        setNavOptions(options)
-      }
-
-      setNavOptions(options)
-    }, [setNavOptions, setStatusBar, route])
+    }, [navigation, screenOptions])
 
     const push = useCallback(
       (name, params) => {

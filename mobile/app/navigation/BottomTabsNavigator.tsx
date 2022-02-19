@@ -5,6 +5,7 @@ import { RouteUrls } from '../route-urls'
 import BottomNav from 'components/BottomNav'
 import useInsets from 'components/base/useInset'
 import Flex from 'components/base/grid/Flex'
+import { useMemo } from 'react'
 
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -40,17 +41,18 @@ const Stack2 = () => (
 
 const MainAppNavigator = ({}) => {
   const insets = useInsets()
-
+  const navStyle = useMemo(() => {
+    return [
+      Styles.body,
+      {
+        paddingTop: insets.top,
+      },
+    ]
+  }, [insets])
   return (
-    <Flex
-      style={[
-        Styles.body,
-        {
-          paddingTop: insets.top,
-        },
-      ]}
-    >
+    <Flex style={navStyle}>
       <Tab.Navigator
+        screenOptions={defaultNavigationOptions as any}
         initialRouteName={RouteUrls.Tab1Screen}
         tabBar={(props) => <BottomNav {...props} />}
       >
