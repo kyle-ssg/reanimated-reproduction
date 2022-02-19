@@ -1,5 +1,5 @@
 diff --git a/node_modules/typescript/lib/lib.dom.d.ts b/node_modules/typescript/lib/lib.dom.d.ts
-index 47bb467..2a14426 100644
+index 47bb467..cb7173c 100644
 --- a/node_modules/typescript/lib/lib.dom.d.ts
 +++ b/node_modules/typescript/lib/lib.dom.d.ts
 @@ -2444,10 +2444,6 @@ declare var ByteLengthQueuingStrategy: {

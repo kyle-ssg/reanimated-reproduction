@@ -17,13 +17,6 @@ const ModalScreen: FC<ModalScreen> = ({ push, pop }) => {
       >
         Close
       </Button>
-      <Button
-        onPress={() => {
-          push(RouteUrls.ModalScreen2)
-        }}
-      >
-        Nested Modal Screen
-      </Button>
     </ScreenContainer>
   )
 }
@@ -35,9 +28,9 @@ export default ModalStack(
   (Stack) => (
     <>
       <Stack.Screen
-        name={RouteUrls.ModalScreen2}
-        options={routes[RouteUrls.ModalScreen2].options}
-        component={routes[RouteUrls.ModalScreen2].component}
+        name={RouteUrls.ModalScreen}
+        options={routes[RouteUrls.ModalScreen].options}
+        component={routes[RouteUrls.ModalScreen].component}
       />
     </>
   ),

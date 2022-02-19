@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import Utils from 'common/utils/base/_utils'
 import debounce from 'lodash/debounce'
-import { FunctionComponent, ReactNode, useMemo } from 'react'
+import { FunctionComponent, ReactNode, useCallback, useMemo } from 'react'
 import { styleVariables } from '../../../style/style_variables'
 import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro'
 
@@ -86,14 +86,17 @@ const Button: FunctionComponent<ButtonType> = ({
       : Styles.buttonText
   }, [textStyle])
 
+  const pressableStyle = useCallback(
+    ({ pressed }) => (pressed ? pressedStyles : groupStyles),
+    [pressedStyles, groupStyles],
+  )
+
   return (
-    <View
-      style={[{ overflow: 'hidden', position: 'relative' }, containerStyle]}
-    >
+    <View style={Styles.buttonContainer}>
       <Pressable
         {...rest}
         onPress={onPressThrottle}
-        style={({ pressed }) => (pressed ? pressedStyles : groupStyles)}
+        style={pressableStyle}
         disabled={disabled}
         android_ripple={android_ripple || darkAndroidRipple}
       >
@@ -104,7 +107,9 @@ const Button: FunctionComponent<ButtonType> = ({
                 style={
                   !pressed || !pressedTextStyle
                     ? textStyles
-                    : [...textStyles, pressedTextStyle]
+                    : pressedTextStyle
+                    ? [...textStyles, pressedTextStyle]
+                    : textStyles
                 }
               >
                 {/*@ts-ignore*/}
@@ -114,18 +119,7 @@ const Button: FunctionComponent<ButtonType> = ({
           : children}
       </Pressable>
       {icon ? (
-        <View
-          style={{
-            position: 'absolute',
-            right: 10,
-            width: 30,
-            height: 30,
-            top: 10,
-            borderRadius: styleVariables.baseBorderRadius,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
+        <View style={Styles.buttonIcon}>
           <FA5Pro solid name={icon} size={18} color={iconColour || 'white'} />
         </View>
       ) : null}
