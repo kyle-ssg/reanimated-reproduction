@@ -10,7 +10,6 @@ import {
 import Utils from 'common/utils/base/_utils'
 import debounce from 'lodash/debounce'
 import { FunctionComponent, ReactNode, useCallback, useMemo } from 'react'
-import { styleVariables } from '../../../style/style_variables'
 import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro'
 
 export type ButtonType = PressableProps & {
