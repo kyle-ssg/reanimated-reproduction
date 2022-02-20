@@ -106,6 +106,20 @@ export default asStyle({
     opacity: 0.5,
   },
 
+  buttonContainer: {
+    overflow: 'hidden',
+    position: 'relative',
+  },
+  buttonIcon: {
+    position: 'absolute',
+    right: 10,
+    width: 30,
+    height: 30,
+    top: 10,
+    borderRadius: styleVariables.baseBorderRadius,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   buttonGroup: {
     overflow: 'hidden',
     alignItems: 'center',

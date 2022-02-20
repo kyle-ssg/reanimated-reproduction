@@ -6,7 +6,7 @@ const TextComponent: FC<TextProps> = (props) => {
   const style = Array.isArray(props.style) ? props.style : [props.style]
 
   return (
-    <Text {...props} style={[Styles.text, ...style]}>
+    <Text {...props} style={style ? [Styles.text, ...style] : Styles.text}>
       {props.children}
     </Text>
   )

@@ -1,24 +1,27 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import withScreen, { IRouteParams } from './withScreen'
-import { RouteUrls } from '../route-urls'
 import ScreenContainer from 'components/ScreenContainer'
 import Button from 'components/base/forms/Button'
 import Fade from 'components/base/animation/Fade'
 import Styles from '../style/_style_screen'
-
+import { RouteUrls } from '../route-urls'
 interface HomeScreen {
   modalVisible: boolean
   push: (name: string, routeParams?: Partial<IRouteParams>) => void
 }
 
 const HomeScreen: FC<HomeScreen> = ({ push }) => {
-  const goGeneric = () => push(RouteUrls.mainApp, {})
+  const [count, setCount] = useState<number>(0)
+  // const goGeneric = () => push(RouteUrls.mainApp, {})
+  const click = () => {
+    push(RouteUrls.mainApp)
+  }
   return (
     <ScreenContainer style={[Styles.body]}>
       <Fade>
-        <Text>Hi</Text>
+        <Text>{count}</Text>
       </Fade>
-      <Button onPress={goGeneric}>Go to a generic page</Button>
+      <Button onPress={click}>re-render</Button>
     </ScreenContainer>
   )
 }
