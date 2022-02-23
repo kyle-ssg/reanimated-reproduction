@@ -33,6 +33,7 @@ const API: MobileAPI = {
   isMobile: () => true,
   getPixelRatio: () => ratio,
   reduxStorage: storage,
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   middlewares: [require('redux-flipper-colorized').default()],
   ajaxHandler(type, e) {
     return {

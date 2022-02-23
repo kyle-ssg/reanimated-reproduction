@@ -34,6 +34,7 @@
   "exclude": [
     "babel.config.js",
     "metro.config.js",
+    "env/environment-variables.js",
     "jest.config.js"
   ]
 }

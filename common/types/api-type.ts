@@ -1,7 +1,5 @@
 import { Middleware } from 'redux'
-import { IncomingMessage } from 'http'
 import { Project } from '../project'
-type CallbackType = (err: any, data: any) => void
 
 export interface StorageType {
   init: () => Promise<any>

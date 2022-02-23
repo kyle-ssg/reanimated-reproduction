@@ -18,7 +18,6 @@ export type ButtonType = PressableProps & {
   iconColour?: string
   textStyle?: StyleProp<TextStyle | TextStyle[]>
   pressedStyle?: StyleProp<ViewStyle> | ViewStyle[]
-  containerStyle?: StyleProp<ViewStyle> | ViewStyle[]
   pressedTextStyle?: TextStyle | TextStyle[]
   style?: StyleProp<ViewStyle>
   throttle?: number
@@ -46,7 +45,6 @@ const Button: FunctionComponent<ButtonType> = ({
   style,
   pressedStyle,
   pressedTextStyle,
-  containerStyle,
   textStyle,
   icon,
   iconColour,

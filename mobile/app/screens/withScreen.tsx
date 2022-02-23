@@ -16,7 +16,6 @@ import {
   useRef,
 } from 'react'
 import {
-  Platform,
   StatusBar,
   StatusBarProps,
   StatusBarStyle,
@@ -98,8 +97,6 @@ const withScreen = (Component: ComponentType, isChild = false) => {
       }, [navigation, dispatch, route])
     }
 
-    const setNavOptions = navigation.setOptions
-
     const resetTo = useCallback(
       (name, params) => {
         // @ts-ignore
@@ -121,7 +118,7 @@ const withScreen = (Component: ComponentType, isChild = false) => {
     const screenOptions = route?.params?.screenOptions
     useLayoutEffect(() => {
       if (screenOptions) {
-        navigation.setOptions(route?.params?.screenOptions)
+        navigation.setOptions(screenOptions)
       }
     }, [navigation, screenOptions])
 

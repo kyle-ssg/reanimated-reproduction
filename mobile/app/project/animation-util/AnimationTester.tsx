@@ -5,7 +5,6 @@ import Animated, {
   useSharedValue,
   // @ts-ignore
 } from 'react-native-reanimated'
-import { StyleSheet } from 'react-native'
 
 type ComponentType = {
   animatedValue: Animated.SharedValue<number>

@@ -3,6 +3,7 @@ import {
   ImageProps,
   Dimensions,
   ScrollViewProps,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   StyleSheet,
   TextProps,
   ViewProps,
@@ -10,6 +11,7 @@ import {
 import { ComponentType } from 'react'
 import { styleTypes } from '../app/style/_style_screen'
 import { palette, styleVariables } from '../app/style/style_variables'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import routes from '../app/routes'
 declare global {
   //React Native Globals
