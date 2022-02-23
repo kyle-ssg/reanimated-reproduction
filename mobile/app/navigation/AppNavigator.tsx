@@ -24,10 +24,15 @@ const Stack = createNativeStackNavigator()
 const Navigator = Stack.Navigator
 
 import { FC } from 'react'
+import StorybookUIRoot from '../../.storybook/Storybook'
 
 type ComponentType = {}
-const _bootstrapAsync = async (): Promise<boolean> => {
+const _bootstrapAsync = async (): Promise<{
+  user: boolean
+  showStorybook: boolean
+}> => {
   let user, token
+  const showStorybook = !!(await API.storage.getItem('storybook'))
 
   try {
     // user = await API.auth.Cognito.getSession();
@@ -43,17 +48,20 @@ const _bootstrapAsync = async (): Promise<boolean> => {
           { token, user, locale: user?.locale || Strings.getLanguage() },
           {
             onSuccess: () => {
-              resolve(true)
+              resolve({ user: true, showStorybook })
             },
             onError: () => {
-              resolve(false)
+              resolve({ user: false, showStorybook })
             },
           },
         ),
       )
     })
   }
-  return false
+  return {
+    user: false,
+    showStorybook,
+  }
 }
 
 const AppNavigator: FC<ComponentType> = ({}) => {
@@ -65,13 +73,19 @@ const AppNavigator: FC<ComponentType> = ({}) => {
   }
 
   useEffect(() => {
-    _bootstrapAsync().then((user) => {
+    _bootstrapAsync().then(({ user, showStorybook }) => {
+      if (showStorybook) {
+        setShowStorybook(true)
+      }
       setUser(user)
     })
     DevSettings.addMenuItem('Toggle Storybook', toggleStorybook)
     // eslint-disable-next-line
   }, [])
 
+  if (showStorybook) {
+    return <StorybookUIRoot />
+  }
   if (user === null)
     // app is loading
     return <Flex style={Styles.centeredContainer}>{<Loader />}</Flex>
