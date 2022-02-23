@@ -13,7 +13,8 @@ import Loader from 'components/base/Loader'
 type Props = Screen & {
   webViewProps: Partial<WebViewProps>
 }
-
+const safeAreaStyles = [Styles.body, Styles.flex]
+const webScreenStyles = [StyleSheet.absoluteFill, Styles.centeredContainer]
 class _WebScreen extends Component<Props> {
   state = {}
   webview = null
@@ -39,11 +40,11 @@ class _WebScreen extends Component<Props> {
 
   render() {
     return (
-      <SafeAreaView style={[Styles.body, { flex: 1 }]}>
+      <SafeAreaView style={safeAreaStyles}>
         <WebView
           ref={(webview) => (this.webview = webview)}
           renderLoading={() => (
-            <Flex style={[StyleSheet.absoluteFill, Styles.centeredContainer]}>
+            <Flex style={webScreenStyles}>
               <Loader />
             </Flex>
           )}

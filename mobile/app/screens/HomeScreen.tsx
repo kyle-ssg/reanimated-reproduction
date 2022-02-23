@@ -1,8 +1,7 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import withScreen, { IRouteParams } from './withScreen'
 import ScreenContainer from 'components/ScreenContainer'
 import Button from 'components/base/forms/Button'
-import Fade from 'components/base/animation/Fade'
 import Styles from '../style/_style_screen'
 import { RouteUrls } from '../route-urls'
 interface HomeScreen {
@@ -11,17 +10,13 @@ interface HomeScreen {
 }
 
 const HomeScreen: FC<HomeScreen> = ({ push }) => {
-  const [count, setCount] = useState<number>(0)
   // const goGeneric = () => push(RouteUrls.mainApp, {})
   const click = () => {
     push(RouteUrls.mainApp)
   }
   return (
-    <ScreenContainer style={[Styles.body]}>
-      <Fade>
-        <Text>{count}</Text>
-      </Fade>
-      <Button onPress={click}>re-render</Button>
+    <ScreenContainer style={Styles.body}>
+      <Button onPress={click}>Push</Button>
     </ScreenContainer>
   )
 }

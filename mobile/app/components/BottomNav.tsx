@@ -3,6 +3,30 @@ import Row from './base/grid/Row'
 import { TouchableOpacity, View } from 'react-native'
 import Text from 'components/base/type/Text'
 import { palette, styleVariables } from '../style/style_variables'
+import { FC } from 'react'
+
+type TabItemType = {
+  isActive: boolean
+  index: number
+  onPress: (index: number) => void
+}
+
+const TabItem: FC<TabItemType> = ({ children, isActive, index, onPress }) => {
+  const handlePress = () => {
+    onPress(index)
+  }
+  return (
+    <TouchableOpacity
+      activeOpacity={1}
+      style={isActive ? [styles.tab, styles.activeTab] : styles.tab}
+      onPress={handlePress}
+    >
+      <Text style={isActive ? styles.textActive : styles.textInactive}>
+        {children}
+      </Text>
+    </TouchableOpacity>
+  )
+}
 
 const BottomNav = ({ state, navigation }) => {
   const onPress = (index) => {
@@ -24,34 +48,12 @@ const BottomNav = ({ state, navigation }) => {
       <Row>
         <Flex>
           <Row>
-            <TouchableOpacity
-              activeOpacity={1}
-              style={[styles.tab, state.index === 0 && styles.activeTab]}
-              onPress={() => onPress(0)}
-            >
-              <Text
-                style={[
-                  styles.textInactive,
-                  state.index === 0 && styles.textActive,
-                ]}
-              >
-                Tab 1
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              activeOpacity={1}
-              style={[styles.tab, state.index === 1 && styles.activeTab]}
-              onPress={() => onPress(1)}
-            >
-              <Text
-                style={[
-                  styles.textInactive,
-                  state.index === 1 && styles.textActive,
-                ]}
-              >
-                Tab 2
-              </Text>
-            </TouchableOpacity>
+            <TabItem onPress={onPress} index={0} isActive={state.index === 0}>
+              Tab 1
+            </TabItem>
+            <TabItem onPress={onPress} index={1} isActive={state.index === 1}>
+              Tab 2
+            </TabItem>
           </Row>
         </Flex>
       </Row>

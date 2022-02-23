@@ -41,7 +41,7 @@ export const ListItem: FC<ListItemType> = ({
     <View style={[disabled && Styles.listItemDisabled]}>
       <Container style={Styles.pb10}>
         <Row>
-          {icon ? <View style={[Styles.pr10]}>{icon}</View> : null}
+          {icon ? <View style={Styles.pr10}>{icon}</View> : null}
           <View>{children}</View>
           <Flex style={Styles.alignItemsEnd}>{rightElement}</Flex>
         </Row>

@@ -12,7 +12,7 @@ const h3: FC<Props> = ({ accessible, accessibilityLabel, style, children }) => (
   <Text
     accessible={accessible}
     accessibilityLabel={accessibilityLabel}
-    style={[Styles.h3, style]}
+    style={style ? [Styles.h3, style] : Styles.h3}
   >
     {children}
   </Text>

@@ -1,6 +1,6 @@
 import useInsets from 'components/base/useInset'
 import Flex from 'components/base/grid/Flex'
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 import { ViewStyle } from 'react-native'
 
 //This component, for iOS, lets you draw a custom view where the navbar is, use with a backgroundColor:"transparent"
@@ -13,9 +13,13 @@ type Props = {
 
 const NavBackgroundHelper: FC<Props> = ({ navbarStyle, children }) => {
   const insets = useInsets()
+  const style = useMemo(
+    () => [{ minHeight: insets.top + 44 }, navbarStyle],
+    [navbarStyle, insets],
+  )
   return (
     <Flex>
-      <View style={[{ minHeight: insets.top + 44 }, navbarStyle]} />
+      <View style={style} />
       {children}
     </Flex>
   )

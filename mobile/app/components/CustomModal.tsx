@@ -47,14 +47,18 @@ const ModalInner = gestureHandlerRootHOC(function GestureExample({
 }: ModalInnerType) {
   // We do this in order to support gestures within the modal
   return (
-    <View style={[style, StyleSheet.absoluteFill]}>
+    <View
+      style={style ? [style, StyleSheet.absoluteFill] : StyleSheet.absoluteFill}
+    >
       <TouchableOpacity
         onPress={() => onDismissPress()}
         activeOpacity={1}
-        style={[StyleSheet.absoluteFill]}
+        style={StyleSheet.absoluteFill}
       />
       {fadeContent ? (
-        <Animated.View style={[style, opacityStyle]}>{children}</Animated.View>
+        <Animated.View style={style ? [style, opacityStyle] : opacityStyle}>
+          {children}
+        </Animated.View>
       ) : (
         children
       )}

@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react'
+import { FC, useCallback, useMemo } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import useInsets from 'components/base/useInset'
 import { TextStyle, ViewStyle } from 'react-native'
@@ -32,18 +32,19 @@ const CustomNavbar: FC<Props> = ({ style, title, titleStyle }) => {
     },
     style,
   ]
+  const backContainerStyle = useMemo(() => {
+    return {
+      justifyContent: 'center',
+      position: 'absolute',
+      left: 20,
+      top: insets.top,
+      bottom: 0,
+    }
+  }, [insets])
   return (
     <Row style={_styles}>
       {navigation.canGoBack() && (
-        <View
-          style={{
-            justifyContent: 'center',
-            position: 'absolute',
-            left: 20,
-            top: insets.top,
-            bottom: 0,
-          }}
-        >
+        <View style={backContainerStyle as ViewStyle}>
           <TouchableOpacity style={styles.buttonContainer} onPress={pop}>
             <FA5Pro style={styles.icon} name='chevron-back' />
           </TouchableOpacity>

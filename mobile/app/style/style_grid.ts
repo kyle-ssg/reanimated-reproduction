@@ -7,7 +7,9 @@ export default asStyle({
   //
   // Grid system / Rows
   // --------------------------------------------------
-
+  flex: {
+    flex: 1,
+  },
   column: {
     marginLeft: styleVariables.gutterBase,
     marginRight: styleVariables.gutterBase,
@@ -112,12 +114,6 @@ export default asStyle({
     flexWrap: 'wrap',
     flexDirection: 'row',
     alignItems: 'center',
-  },
-
-  spacedRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
   },
 
   mb0: { marginBottom: 0 },

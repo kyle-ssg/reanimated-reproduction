@@ -12,7 +12,7 @@ export interface LoaderProps {
 }
 
 export const Loader: FC<LoaderProps> = ({ size = 2.25, style }) => (
-  <View style={{ opacity: 0.75 }}>
+  <View style={styles.loader}>
     <Animation
       autoPlay
       style={[
@@ -27,5 +27,8 @@ export const Loader: FC<LoaderProps> = ({ size = 2.25, style }) => (
     />
   </View>
 )
+const styles = StyleSheet.create({
+  loader: { opacity: 0.75 },
+})
 
 export default Loader

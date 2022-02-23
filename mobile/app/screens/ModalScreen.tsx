@@ -7,7 +7,7 @@ import { FC } from 'react'
 
 type ModalScreen = Screen & {}
 
-const ModalScreen: FC<ModalScreen> = ({ push, pop }) => {
+const ModalScreen: FC<ModalScreen> = ({ pop }) => {
   return (
     <ScreenContainer style={Styles.body}>
       <Button

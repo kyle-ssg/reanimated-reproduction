@@ -3,6 +3,7 @@ import {
   ImageProps,
   Dimensions,
   ScrollViewProps,
+  StyleSheet,
   TextProps,
   ViewProps,
 } from 'react-native'
@@ -25,7 +26,7 @@ declare global {
   const routes = routes
 
   //Base
-  let StyleSheet: StyleSheet
+  let StyleSheet: typeof StyleSheet
   const Styles = styleTypes
 
   const FA5Pro: ComponentType<

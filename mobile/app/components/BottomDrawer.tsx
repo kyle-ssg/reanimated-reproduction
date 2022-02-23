@@ -57,6 +57,12 @@ const BottomDrawer: FunctionComponent<ComponentType> = ({
   const animatedIndex = useSharedValue(0)
 
   const containerAnimatedStyle = useAnimatedStyle(() => ({
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0,0,0,.5)',
     opacity: interpolate(animatedIndex.value, [-1, 1], [0, 1]),
   }))
   return (
@@ -68,11 +74,7 @@ const BottomDrawer: FunctionComponent<ComponentType> = ({
       backdropComponent={() => {
         // @ts-ignore
         return (
-          <Fade
-            autostart
-            value={1}
-            style={[containerAnimatedStyle, styles.modalStyle]}
-          >
+          <Fade autostart value={1} style={containerAnimatedStyle}>
             <TouchableOpacity
               disabled={preventDismiss}
               onPress={() => sheetRef.current?.dismiss()}
@@ -100,14 +102,6 @@ const styles = StyleSheet.create({
   drawer: {
     flex: 1,
     backgroundColor: 'white',
-  },
-  modalStyle: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: 'rgba(0,0,0,.5)',
   },
 })
 export default BottomDrawer

@@ -22,6 +22,12 @@ const AnimationTester: FunctionComponent<ComponentType> = ({
   const $max = useSharedValue(max)
   const style = useAnimatedStyle(() => {
     return {
+      width: 50,
+      height: 50,
+      position: 'absolute',
+      right: 50,
+      bottom: 50,
+      backgroundColor: 'green',
       opacity: interpolate(
         animatedValue.value,
         [$min.value, $max.value],
@@ -38,18 +44,7 @@ const AnimationTester: FunctionComponent<ComponentType> = ({
       ],
     }
   })
-  return <Animated.View style={[styles.box, style]} />
+  return <Animated.View style={style} />
 }
-
-const styles = StyleSheet.create({
-  box: {
-    width: 50,
-    height: 50,
-    position: 'absolute',
-    right: 50,
-    bottom: 50,
-    backgroundColor: 'green',
-  },
-})
 
 export default AnimationTester

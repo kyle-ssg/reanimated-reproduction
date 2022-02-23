@@ -23,7 +23,7 @@ const H4: FC<Props> = ({
     accessible={accessible}
     accessibilityLabel={accessibilityLabel}
     numberOfLines={numberOfLines}
-    style={[Styles.h4, style]}
+    style={style ? [Styles.h4, style] : Styles.h4}
   >
     {children}
   </Text>
