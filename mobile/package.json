@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "reset-cache": "react-native start --reset-cache",
     "android": "react-native run-android --variant=uatDebug --appIdSuffix 'uat'",
     "android:prod": "react-native run-android --variant=prodDebug",
     "android:release": "react-native run-android --variant=prodRelease",
@@ -16,7 +15,6 @@
     "android:hash:dev": "keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64\n",
     "android:keystore": "keytool -genkeypair -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000",
     "android:menu": "adb shell input keyevent 82",
-    "upload:sourcemaps": "sh ./.bin/upload-sourcemaps.sh",
     "env_script": "sh .bin/env.sh",
     "lint": "cd .. && npm run lint || exit 0",
     "lint:fix": "cd .. && npm run lint:fix || exit 0",
