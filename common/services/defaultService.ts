@@ -12,7 +12,7 @@ export const defaultService = createApi({
   endpoints: (builder) => ({
     getTodo: builder.query<Res['todo'], Req['getTodo']>({
       query: (query: Req['getTodo']) => ({ url: `todos/${query.id}` }),
-      providesTags: (r) => [{ type: 'Todo', id: r?.id }], // cached under Todo/x
+      providesTags: (r) => [{ type: 'Todo', id: r?.id }], // adds cache to Todo/id
     }),
     createTodo: builder.mutation<Res['todo'], Req['createTodo']>({
       query: (query: Req['createTodo']) => ({
@@ -27,7 +27,7 @@ export const defaultService = createApi({
         method: 'PUT',
         body: query,
       }),
-      invalidatesTags: (x) => [{ type: 'Todo', id: x?.id }],
+      invalidatesTags: (x) => [{ type: 'Todo', id: x?.id }], // triggers getTodo(id)
     }),
     // END OF ENDPOINTS
   }),
