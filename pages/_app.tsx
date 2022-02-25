@@ -10,8 +10,6 @@ import { nextPromiseAction } from 'project/nextPromiseAction'
 import Strings from 'project/localisation'
 import { ToastContainer } from 'react-toastify'
 import Head from 'next/head'
-import { defaultService } from '../common/services/defaultService'
-
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
