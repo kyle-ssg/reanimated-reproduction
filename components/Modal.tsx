@@ -7,7 +7,7 @@ import { unmountComponentAtNode, render } from 'react-dom'
 import Confirm from './ModalConfirm'
 import ModalDefault from './ModalDefault'
 import Alert from './ModalAlert'
-import store from '../common/store'
+import store from 'common/store'
 import { Provider } from 'react-redux'
 
 export const ModalHeader = _ModalHeader

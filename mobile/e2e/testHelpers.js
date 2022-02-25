@@ -1,6 +1,6 @@
 import { by, device, element, waitFor } from 'detox'
 import fetch from 'node-fetch'
-import Project from '../../common/project'
+import { Project } from 'common/project'
 
 export const waitForElementVisible = async (id) => {
   try {

@@ -4,7 +4,7 @@ export default { Cognito }
 
 // import { FBLoginManager } from 'react-native-facebook-login';
 // import { GoogleSignin } from 'react-native-google-signin';
-// import Project from '../../../../common/project';
+// import Project from 'common/project';
 //
 // const Facebook = {
 //     login: permissions => new Promise((resolve, reject) => {
