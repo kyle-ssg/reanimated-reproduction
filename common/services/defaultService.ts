@@ -40,3 +40,6 @@ export const {
   useUpdateTodoMutation,
   // END OF API_EXPORTS
 } = defaultService
+
+// const { data, isLoading } = useGetTodoQuery({ id: 2 }, {})
+// const [createTodo, { isLoading, data: createResponse, isSuccess }] = useCreateTodoMutation()
