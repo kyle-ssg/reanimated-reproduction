@@ -3,6 +3,7 @@ import { AppState } from '../../types/state-type'
 import { getStrings } from '../../strings'
 import { Constants } from '../../utils'
 
+// every endpoint goes through this
 export default fetchBaseQuery({
   baseUrl: 'https://jsonplaceholder.typicode.com/',
   prepareHeaders: (headers, { getState }) => {
