@@ -1,7 +1,7 @@
 import _DatePicker, { ReactDatePickerProps } from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { FC } from 'react'
-import { Constants } from '../common/utils'
+import { Constants } from 'common/utils'
 import Input from 'components/base/forms/Input'
 
 export type DatePickerProps = ReactDatePickerProps & {}

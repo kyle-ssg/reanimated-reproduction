@@ -10,7 +10,7 @@ import {
 } from 'react'
 import cn from 'classnames'
 import useOnClickOutside from '../useClickOutside'
-import { Utils } from '../../../common/utils'
+import { Utils } from 'common/utils'
 
 interface InputDropdown {
   textarea?: boolean

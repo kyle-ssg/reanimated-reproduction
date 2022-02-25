@@ -1,6 +1,6 @@
 import Input from './Input'
 import { FC, ReactNode } from 'react'
-import { Utils } from '../../../common/utils'
+import { Utils } from 'common/utils'
 
 export interface InputGroup {
   inputProps?: { name?: string; id?: string; error?: string }
