@@ -22,19 +22,12 @@ class WrappedApp extends App<AppInitialProps> {
       async ({ ctx }) => {
         try {
           const locale = await API.getStoredLocale(ctx.req)
-          store.dispatch<any>(
-            defaultService.endpoints.getTodo.initiate({
-              id: 2,
-            }),
-          )
-
           if (!store.getState().locale) {
             Strings.setLanguage(locale)
             await nextPromiseAction<'startup'>(store, 'startup', {
               locale,
             })
           }
-          await Promise.all(defaultService.util.getRunningOperationPromises())
         } catch (e) {
           console.error(e)
         }

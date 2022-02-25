@@ -3,13 +3,17 @@ import { ButtonPrimary } from 'components/base/forms/Button'
 import { toast } from 'react-toastify'
 import useLoggedInRedirect from 'common/hooks/useLoggedInRedirect'
 import {
+  defaultService,
   useCreateTodoMutation,
   useGetTodoQuery,
   useUpdateTodoMutation,
 } from '../common/services/defaultService'
 import { useEffect } from 'react'
+import { nextReduxWrapper } from 'components/util/nextReduxWrapper'
+import { ServerSidePageProps } from '../types/serversidePageProps'
 
-const HomePage: NextPageWithLayout = () => {
+export type HomePageType = {}
+const HomePage: NextPageWithLayout<HomePageType> = () => {
   useLoggedInRedirect()
   const { data } = useGetTodoQuery({ id: 2 }, {})
   const [createTodo, { isLoading, data: createResponse, isSuccess }] =
@@ -66,5 +70,20 @@ const HomePage: NextPageWithLayout = () => {
 HomePage.getLayout = (page) => {
   return <>{page}</>
 }
+
+//serverside fetching
+export const getServerSideProps = nextReduxWrapper.getServerSideProps(
+  (store) => async (): Promise<ServerSidePageProps<HomePageType>> => {
+    store.dispatch<any>(
+      defaultService.endpoints.getTodo.initiate({
+        id: 2,
+      }),
+    )
+    await Promise.all(defaultService.util.getRunningOperationPromises())
+    return {
+      props: {},
+    }
+  },
+)
 
 export default HomePage
