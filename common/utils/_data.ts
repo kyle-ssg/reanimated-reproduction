@@ -3,7 +3,7 @@ import { Constants } from './constants'
 import { getApi } from '../api'
 import { getStrings } from '../strings'
 
-const getQueryString = (params: any): string => {
+export const getQueryString = (params: any): string => {
   const esc = encodeURIComponent
   return Object.keys(params)
     .map((k) => `${esc(k)}=${esc(params[k])}`)
