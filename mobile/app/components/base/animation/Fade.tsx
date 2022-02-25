@@ -4,7 +4,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
-import useIsMount from 'common/providers/useIsMount'
+import useIsMount from 'common/hooks/useIsMount'
 import { easingConfigFade } from 'project/animation-util/reanimations'
 import { ViewProps } from 'react-native'
 

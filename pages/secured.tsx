@@ -1,5 +1,5 @@
-import useNotLoggedInRedirect from 'common/providers/useNotLoggedInRedirect'
-import { useAuth } from '../common/providers/useAuth'
+import useNotLoggedInRedirect from 'common/hooks/useNotLoggedInRedirect'
+import { useAuth } from '../common/hooks/useAuth'
 import { Button } from 'reactstrap'
 
 const SecuredPage = () => {

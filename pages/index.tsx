@@ -1,7 +1,7 @@
 import { NextPageWithLayout } from 'types/nextPageWithLayout'
 import { ButtonPrimary } from 'components/base/forms/Button'
 import { toast } from 'react-toastify'
-import useLoggedInRedirect from 'common/providers/useLoggedInRedirect'
+import useLoggedInRedirect from 'common/hooks/useLoggedInRedirect'
 
 const HomePage: NextPageWithLayout = () => {
   useLoggedInRedirect()

@@ -1,4 +1,4 @@
-import { APIType } from '../types/api-type'
+import { APIType } from './types/api-type'
 
 type APISingleton<T extends APIType = APIType> = {
   instance: T | undefined
