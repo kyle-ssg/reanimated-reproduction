@@ -1,9 +1,10 @@
 import { Todo } from './types'
 
-export type Requests = {
+export type Req = {
   getTodo: {
     id: number
   }
   createTodo: Omit<Todo, 'id'>
+  updateTodo: Todo
   // END OF REQUEST_TYPES
 }

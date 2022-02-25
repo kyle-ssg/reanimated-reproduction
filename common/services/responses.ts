@@ -1,6 +1,6 @@
 import { Todo } from './types'
 
-export interface Responses {
+export interface Res {
   todo: Todo
   // END OF RESPONSE_TYPES
 }

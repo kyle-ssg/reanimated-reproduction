@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react'
-import { useAuth } from 'common/providers/useAuth'
+import { useAuth } from 'common/hooks/useAuth'
 import { useAppState } from '@react-native-community/hooks'
 import { rootPush } from 'navigation/RootNavigation'
 import { FirebaseMessagingTypes } from '@react-native-firebase/messaging'

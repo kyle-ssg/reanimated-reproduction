@@ -4,8 +4,8 @@ import ErrorMessage from 'components/Messages'
 import { ButtonPrimary } from 'components/base/forms/Button'
 import { Utils } from 'common/utils'
 import Input from '../components/base/forms/Input'
-import useLoggedInRedirect from '../common/providers/useLoggedInRedirect'
-import { useAuth } from '../common/providers/useAuth'
+import useLoggedInRedirect from '../common/hooks/useLoggedInRedirect'
+import { useAuth } from '../common/hooks/useAuth'
 
 const LoginPage: FC<{}> = () => {
   const router = useRouter()

@@ -1,4 +1,4 @@
-import { useAuth } from './providers/useAuth'
+import { useAuth } from './hooks/useAuth'
 import { FunctionComponent, useEffect } from 'react'
 import { Constants } from './utils/constants'
 import { getStrings } from './strings'

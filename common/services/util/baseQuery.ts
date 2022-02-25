@@ -1,7 +1,7 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
-import { AppState } from '../../../types/state-type'
-import { getStrings } from '../../../strings'
-import { Constants } from '../../../utils'
+import { AppState } from '../../types/state-type'
+import { getStrings } from '../../strings'
+import { Constants } from '../../utils'
 
 export default fetchBaseQuery({
   baseUrl: 'https://jsonplaceholder.typicode.com/',

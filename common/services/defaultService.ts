@@ -1,0 +1,42 @@
+import { createApi } from '@reduxjs/toolkit/query/react'
+import baseQuery from './util/baseQuery'
+import extractRehydrationInfo from './util/extractRehydrationInfo'
+import { Res } from './responses'
+import { Req } from './requests'
+
+export const defaultService = createApi({
+  reducerPath: 'default',
+  baseQuery,
+  refetchOnFocus: true,
+  tagTypes: ['Todo'],
+  endpoints: (builder) => ({
+    getTodo: builder.query<Res['todo'], Req['getTodo']>({
+      query: (query: Req['getTodo']) => ({ url: `todos/${query.id}` }),
+      providesTags: (r) => [{ type: 'Todo', id: r?.id }], // cached under Todo/x
+    }),
+    createTodo: builder.mutation<Res['todo'], Req['createTodo']>({
+      query: (query: Req['createTodo']) => ({
+        url: `todos`,
+        method: 'POST',
+        body: query,
+      }),
+    }),
+    updateTodo: builder.mutation<Res['todo'], Req['updateTodo']>({
+      query: (query: Req['updateTodo']) => ({
+        url: `todos/${query.id}`,
+        method: 'PUT',
+        body: query,
+      }),
+      invalidatesTags: (x) => [{ type: 'Todo', id: x?.id }],
+    }),
+    // END OF ENDPOINTS
+  }),
+  extractRehydrationInfo,
+})
+
+export const {
+  useGetTodoQuery,
+  useCreateTodoMutation,
+  useUpdateTodoMutation,
+  // END OF API_EXPORTS
+} = defaultService
