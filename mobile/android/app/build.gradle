@@ -67,7 +67,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 118003
-        versionName "1.18.1"
+        versionName "1.18.2"
         // REACT_NATIVE_BASELAYOUT - we need multiDex
         multiDexEnabled true
         testBuildType System.getProperty('testBuildType', 'debug')  // This will later be used to control the test apk build type
