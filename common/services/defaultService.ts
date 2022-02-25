@@ -41,5 +41,6 @@ export const {
   // END OF API_EXPORTS
 } = defaultService
 
-// const { data, isLoading } = useGetTodoQuery({ id: 2 }, {})
-// const [createTodo, { isLoading, data: createResponse, isSuccess }] = useCreateTodoMutation()
+// const { data, isLoading } = useGetTodoQuery({ id: 2 }, {}) get hook
+// const [createTodo, { isLoading, data: createResponse, isSuccess }] = useCreateTodoMutation() create hook
+// defaultService.endpoints.getSports.getTodo.select(1)(store.getState()) access data from any function
