@@ -76,7 +76,7 @@ export async function writeGetQuery(name:string, url:string, providesItem:boolea
 export async function writeCollectionQuery(name:string, url:string, providesCollection:boolean) {
   const func = functionName("get", name)
   await writeGeneric(service,`  ${func}: builder.query<Res['${name}'], Req['${func}']>({
-      query: (query) => ({
+      query: () => ({
         url: \`${apiName(url)}\`,
       }),
       providesTags:[${providesCollection&&`{ type: '${capitalize(singular(name))}', id: 'LIST' },`}],
