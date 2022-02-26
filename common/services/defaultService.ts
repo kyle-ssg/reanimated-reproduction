@@ -38,7 +38,7 @@ export const {
   useGetTodoQuery,
   useCreateTodoMutation,
   useUpdateTodoMutation,
-  // END OF API_EXPORTS
+  // END OF EXPORTS
 } = defaultService
 
 // const { data, isLoading } = useGetTodoQuery({ id: 2 }, {}) get hook

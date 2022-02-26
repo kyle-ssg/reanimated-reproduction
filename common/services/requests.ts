@@ -6,5 +6,5 @@ export type Req = {
   }
   createTodo: Omit<Todo, 'id'>
   updateTodo: Todo
-  // END OF REQUEST_TYPES
+  // END OF TYPES
 }
