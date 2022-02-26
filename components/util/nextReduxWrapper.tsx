@@ -5,7 +5,7 @@ import { AppState } from 'common/types/state-type'
 import { Project } from 'common/project'
 
 const makeStore = () => {
-  return createStore(undefined, true, true)
+  return createStore()
 }
 
 export const nextReduxWrapper = createWrapper<Store<AppState>>(makeStore, {
