@@ -10,34 +10,12 @@ export const defaultService = createApi({
   refetchOnFocus: true,
   tagTypes: ['Todo'],
   endpoints: (builder) => ({
-    getTodo: builder.query<Res['todo'], Req['getTodo']>({
-      query: (query: Req['getTodo']) => ({ url: `todos/${query.id}` }),
-      providesTags: (r) => [{ type: 'Todo', id: r?.id }], // adds cache to Todo/id
-    }),
-    createTodo: builder.mutation<Res['todo'], Req['createTodo']>({
-      query: (query: Req['createTodo']) => ({
-        url: `todos`,
-        method: 'POST',
-        body: query,
-      }),
-    }),
-    updateTodo: builder.mutation<Res['todo'], Req['updateTodo']>({
-      query: (query: Req['updateTodo']) => ({
-        url: `todos/${query.id}`,
-        method: 'PUT',
-        body: query,
-      }),
-      invalidatesTags: (x) => [{ type: 'Todo', id: x?.id }], // triggers getTodo(id)
-    }),
     // END OF ENDPOINTS
   }),
   extractRehydrationInfo,
 })
 
 export const {
-  useGetTodoQuery,
-  useCreateTodoMutation,
-  useUpdateTodoMutation,
   // END OF EXPORTS
 } = defaultService
 

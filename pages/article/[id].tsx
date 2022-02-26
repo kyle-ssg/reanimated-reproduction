@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { API } from 'project/api'
-import { nextReduxWrapper } from 'components/util/nextReduxWrapper'
 
 const ArticlePage = () => {
   const {
@@ -15,22 +14,27 @@ const ArticlePage = () => {
   return <div className='container'>Article {id}</div>
 }
 
-export const getStaticPaths = async () => {
-  return {
-    paths: [{ params: { id: '1' } }],
-    fallback: 'blocking', // builds page that is not compiled
-  }
-}
+// Static compilation
+// export const getStaticPaths = async () => {
+//   return {
+//     paths: [{ params: { id: '1' } }],
+//     fallback: 'blocking', // builds page that is not compiled
+//   }
+// }
 
-export const getStaticProps = nextReduxWrapper.getStaticProps(
-  () => async () => {
-    // await nextPromiseAction<'getArticle'>(store, 'getArticle', {
-    //   id: ctx.params.id,
-    // })
-    return {
-      props: {},
-    }
-  },
-)
+//serverside fetching
+// export const getServerSideProps = nextReduxWrapper.getServerSideProps(
+//   (store) => async (context): Promise<ServerSidePageProps<HomePageType>> => {
+// store.dispatch<any>(
+//   defaultService.endpoints.getArticle.initiate({
+//     id: ${context.params.id},
+//   }),
+// )
+// await Promise.all(defaultService.util.getRunningOperationPromises())
+// return {
+//   props: {},
+// }
+// },
+// )
 
 export default ArticlePage
