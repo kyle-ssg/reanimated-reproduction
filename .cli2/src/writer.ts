@@ -1,6 +1,5 @@
-import { plural, singular } from "./helpers/plural";
+import { singular } from "./helpers/plural";
 import { capitalize } from "./helpers/capitalize";
-import { inc } from "nprogress";
 
 const fs = require('fs');
 const path = require('path');
@@ -16,6 +15,7 @@ const exportPointer = '// END OF EXPORTS';
 
 const importPointer = '// END OF IMPORTS';
 const middlewarePointer = '// END OF MIDDLEWARE';
+const functionPointer = '// END OF FUNCTION_EXPORTS';
 const reducerPointer = '// END OF REDUCERS';
 const capitlizeFirst =  function(str:string) {
   // checks for null, undefined and empty string
@@ -61,9 +61,13 @@ const apiName = function (url:string) {
   // eslint-disable-next-line no-template-curly-in-string
   return url.replace(':id', replace);
 };
-export async function writeExport(name:string, functionName:string) {
+export async function writeExport(name:string, functionName:string, queryFunctionName:string) {
   const hookPath = await getServicePath(name)
-  await writeGeneric(hookPath, functionName+",", exportPointer, "Exports",functionName+",")
+  await writeGeneric(hookPath, queryFunctionName+",", exportPointer, "Exports",queryFunctionName+",")
+  await writeGeneric(hookPath, `export async function ${functionName}(store: any, data: Req['${functionName}']) {
+  store.dispatch(${name}Service.endpoints.${functionName}.initiate(data))
+  return todoService.util.getRunningOperationPromises();
+}`,functionPointer,'Function export')
 }
 
 export async function getServicePath(name:string) {
@@ -87,6 +91,8 @@ export const ${name}Service = createApi({
     // END OF ENDPOINTS
   }),
 })
+
+// END OF FUNCTION_EXPORTS
 
 export const {
   // END OF EXPORTS
@@ -114,7 +120,7 @@ export async function writeGetQuery(name:string, url:string, providesItem:boolea
       }),
       providesTags:(res)=>[${providesItem&&`{ type: '${singular(capitalize(name))}', id: res?.id },`}],
     }),`, servicePointer, "Query", `${func}:`)
-  await writeExport(name,functionName("use","Get"+ capitlizeFirst(name+"Query")))
+  await writeExport(name,"get"+ capitlizeFirst(name), "useGet"+ capitlizeFirst(name+"Query"))
   await writeStoreService(name)
 }
 
@@ -128,7 +134,7 @@ export async function writeCollectionQuery(name:string, url:string, providesColl
       }),
       providesTags:[${providesCollection&&`{ type: '${capitalize(singular(name))}', id: 'LIST' },`}],
     }),`, servicePointer, "Query", `${func}:`)
-  await writeExport(name, functionName("use", "Get"+capitlizeFirst(name+"Query")))
+  await writeExport(name,"get"+ capitlizeFirst(name), "useGet"+ capitlizeFirst(name+"Query"))
   await writeStoreService(name)
 }
 
@@ -144,7 +150,7 @@ export async function writeCreateQuery(name:string, url:string, invalidatesColle
       }),
       invalidatesTags: [${invalidatesCollection&&`{ type: '${singular(capitalize(name))}', id: 'LIST' }`}],
     }),`, servicePointer, "Query", `${func}:`)
-  await writeExport(name,functionName("use","Create"+ capitlizeFirst(name+"Mutation")))
+  await writeExport(name,"create"+ capitlizeFirst(name), "useCreate"+ capitlizeFirst(name+"Mutation"))
   await writeStoreService(name)
 }
 
@@ -159,7 +165,7 @@ export async function writeDeleteQuery(name:string, url:string, invalidatesColle
       }),
       invalidatesTags: [${invalidatesCollection&&`{ type: '${singular(capitalize(name))}', id: 'LIST' },`}],
     }),`, servicePointer, "Query", `${func}:`)
-  await writeExport(name,functionName("use","Delete"+ capitlizeFirst(name+"Mutation")))
+  await writeExport(name,"delete"+ capitlizeFirst(name), "useDelete"+ capitlizeFirst(name+"Mutation"))
   await writeStoreService(name)
 }
 
@@ -174,7 +180,7 @@ export async function writeUpdateQuery(name:string, url:string, invalidatesColle
       }),
       invalidatesTags:(res)=>[${invalidatesCollection&&`{ type: '${singular(capitalize(name))}', id: 'LIST' },`}${invalidatesItem&&`{ type: '${singular(capitalize(name))}', id: res?.id },`}],
     }),`, servicePointer, "Query", `${func}:`)
-  await writeExport(name,functionName("use","Update"+ capitlizeFirst(name+"Mutation")))
+  await writeExport(name,"update"+ capitlizeFirst(name), "useUpdate"+ capitlizeFirst(name+"Mutation"))
   await writeStoreService(name)
 }
 
@@ -189,6 +195,6 @@ export async function writePatchQuery(name:string, url:string, invalidatesCollec
       }),
       invalidatesTags:(res:Res['${name}'])=>[${invalidatesCollection&&`{ type: '${singular(capitalize(name))}', id: 'LIST' },`}${invalidatesItem&&`{ type: '${singular(capitalize(name))}', id: res.id },`}],
     }),`, servicePointer, "Query", `${func}:`)
-  await writeExport(name,functionName("use","Patch"+ capitlizeFirst(name+"Mutation")))
+  await writeExport(name,"update"+ capitlizeFirst(name), "useUpdate"+ capitlizeFirst(name+"Mutation"))
   await writeStoreService(name)
 }
