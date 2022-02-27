@@ -79,7 +79,8 @@ import { Res } from '../types/responses'
 import { Req } from '../types/requests'
 
 export const ${name}Service = createApi({
-  ...baseApiOptions,
+  ...baseApiOptions(),
+  reducerPath: '${name}Service',
   tagTypes: ['${capitalize(name)}'],
   endpoints: (builder) => ({
 
@@ -89,7 +90,7 @@ export const ${name}Service = createApi({
 
 export const {
   // END OF EXPORTS
-} = ${name}
+} = ${name}Service
 
 // const { data, isLoading } = useGet${capitalize(name)}Query({ id: 2 }, {}) get hook
 // const [create${capitalize(name)}, { isLoading, data, isSuccess }] = useCreate${capitalize(name)}Mutation() create hook
