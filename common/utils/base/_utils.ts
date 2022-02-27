@@ -1,15 +1,21 @@
-import omit from 'lodash/omit'
-import filter from 'lodash/filter'
 import { SyntheticEvent, KeyboardEvent, FormEvent } from 'react'
 
 const KEY_Y = 89
 const KEY_Z = 90
+export const omit = (obj: any, keys: string[]) => {
+  const output = []
+  for (const [key, value] of Object.entries(obj)) {
+    if (!keys.includes(key)) {
+      output.push([key, value])
+    }
+  }
+  return Object.fromEntries(output)
+}
 const BaseUtils = {
   // eslint-disable-next-line
   emailRegex: /^([\w-+]+(?:\.[\w-+]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
   // eslint-disable-next-line
   urlRegex: /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]+(:[0-9]{1,5})?(\/.*)?$/,
-
 
   arrayMove(arr: any[], old_index: number, new_index: number) {
     if (new_index >= arr.length) {
@@ -141,8 +147,7 @@ const BaseUtils = {
     if (!obj) return ''
     const allDefined = omit(
       obj,
-      filter(
-        Object.keys(obj),
+      Object.keys(obj).filter(
         (key) => typeof obj[key] === 'undefined' || obj[key] === null,
       ),
     )

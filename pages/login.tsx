@@ -1,11 +1,17 @@
-import { ChangeEventHandler, FC, FormEventHandler, useState } from 'react'
+import {
+  ChangeEventHandler,
+  FC,
+  FormEventHandler,
+  useEffect,
+  useState,
+} from 'react'
 import { useRouter } from 'next/router'
 import ErrorMessage from 'components/Messages'
 import { ButtonPrimary } from 'components/base/forms/Button'
 import { Utils } from 'common/utils'
 import Input from '../components/base/forms/Input'
 import useLoggedInRedirect from 'common/hooks/useLoggedInRedirect'
-import { useAuth } from 'common/hooks/useAuth'
+import { useUser } from 'common/hooks/useUser'
 
 const LoginPage: FC<{}> = () => {
   const router = useRouter()
@@ -14,7 +20,8 @@ const LoginPage: FC<{}> = () => {
     email: 'a@a.com',
     password: 'password',
   })
-  const { login, userLoading, userError } = useAuth()
+
+  const { login, userLoading, userError, loginSuccess } = useUser()
   useLoggedInRedirect()
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) =>
@@ -23,15 +30,17 @@ const LoginPage: FC<{}> = () => {
       [event.target.name]: event.target.value,
     }))
 
+  const replace = router.replace
+  useEffect(() => {
+    if (loginSuccess) {
+      const redir = Utils.fromParam().redirect
+      replace(redir || '/')
+    }
+  }, [loginSuccess, replace])
+
   const handleSubmit: FormEventHandler = (event) => {
     Utils.preventDefault(event)
-    const callbacks = {
-      onSuccess: () => {
-        const redir = Utils.fromParam().redirect
-        router.replace(redir || '/')
-      },
-    }
-    login(loginData, callbacks)
+    login(loginData)
   }
 
   return (

@@ -2,14 +2,13 @@ import Router from 'next/router'
 import { Constants } from 'common/utils/constants'
 import { errorHandler } from 'common/utils/errorHandler'
 import { Project } from 'common/project'
-import { IncomingMessage } from 'http'
-import acceptLanguageParser from 'accept-language-parser'
 import Strings from './localisation'
-import { APIType } from 'common/types/api-type'
+import { ApiTypes } from 'common/api/types/api-types'
 import { setApi } from 'common/api'
 import storage from './async-storage-api'
-interface WebAPI extends APIType {
-  getStoredLocale: (req?: IncomingMessage) => Promise<string>
+
+interface WebAPI extends ApiTypes {
+  getStoredLocale: (requestedLocale?: string) => string
   logoutRedirect: () => void
 }
 
@@ -48,17 +47,12 @@ const API: WebAPI = {
     }
   },
   middlewares: [],
-  getStoredLocale: async (req?: IncomingMessage) => {
-    if (req?.headers?.['accept-language']) {
-      const acceptLanguages = acceptLanguageParser.parse(
-        req.headers['accept-language'],
-      )
-
-      if (Array.isArray(acceptLanguages)) {
-        return acceptLanguages[0]?.code || Constants.defaultLocale
-      }
-    }
-    return Constants.defaultLocale
+  getStoredLocale: (requestedLocale?: string) => {
+    return (
+      Constants.simulate.FORCE_LANGUAGE ||
+      requestedLocale ||
+      Constants.defaultLocale
+    )
   },
   trackEvent(data) {
     if (__DEV__) {

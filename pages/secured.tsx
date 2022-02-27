@@ -1,10 +1,10 @@
 import useNotLoggedInRedirect from 'common/hooks/useNotLoggedInRedirect'
-import { useAuth } from 'common/hooks/useAuth'
+import { useUser } from 'common/hooks/useUser'
 import { Button } from 'reactstrap'
 
 const SecuredPage = () => {
   useNotLoggedInRedirect()
-  const { logout } = useAuth()
+  const { logout } = useUser()
   return (
     <div className='container-fluid'>
       Secret page

@@ -1,30 +1,27 @@
-import createSagaMiddleware from 'redux-saga'
-import './app-actions'
-import rootReducer from './reducer'
-import rootSaga from './saga'
-import { getApi } from './api'
-import { defaultService } from './services/defaultService'
 import { configureStore } from '@reduxjs/toolkit'
+import useUser, { userService } from './hooks/useUser'
+import useStartup from './hooks/useStartup'
+import { getApi } from './api'
 
-export default function createStore() {
-  const sagaMiddleware = createSagaMiddleware()
-  const webStore = configureStore({
+let _store: any = null
+export const store = () => {
+  if (_store) return _store
+  _store = configureStore({
     reducer: {
-      root: rootReducer,
-      [defaultService.reducerPath]: defaultService.reducer,
+      user: useUser,
+      startup: useStartup,
+      [userService.reducerPath]: userService.reducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: false,
       })
-        .concat(sagaMiddleware)
-        .concat(defaultService.middleware)
+        .concat(userService.middleware)
         .concat(getApi().middlewares || []),
   })
-
-  sagaMiddleware.run(rootSaga)
-
-  return webStore
+  return _store
 }
 
-export type StoreType = ReturnType<typeof createStore>
+export type StoreType = ReturnType<ReturnType<typeof store>['getState']>
+export type DispatchType = ReturnType<ReturnType<typeof store>['dispatch']>
+export type StoreStateType = ReturnType<ReturnType<typeof store>['getState']>

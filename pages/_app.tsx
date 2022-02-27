@@ -2,39 +2,40 @@ import { API } from 'project/api'
 import 'project/polyfill'
 import App, { AppInitialProps, AppProps } from 'next/app'
 import '../styles/Global.scss'
-import LanguageHandler from 'common/LanguageHandler'
+import LanguageHandler from 'common/components/LanguageHandler'
 import { NextPageWithLayout } from 'types/nextPageWithLayout'
 import { nextReduxWrapper } from 'components/util/nextReduxWrapper'
 import NProgress from 'components/util/NProgress'
-import { nextPromiseAction } from 'project/nextPromiseAction'
 import Strings from 'project/localisation'
-import { ToastContainer } from 'react-toastify'
+// import { ToastContainer } from 'react-toastify'
 import Head from 'next/head'
+import { startupActions } from '../common/hooks/useStartup'
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
+Strings.setLanguage(API.getStoredLocale(''))
+
 //@ts-ignore
 class WrappedApp extends App<AppInitialProps> {
-  public static getInitialProps = nextReduxWrapper.getInitialAppProps(
-    (store) =>
-      async ({ ctx }) => {
-        try {
-          const locale = await API.getStoredLocale(ctx.req)
-          if (!store.getState().locale) {
-            Strings.setLanguage(locale)
-            await nextPromiseAction<'startup'>(store, 'startup', {
-              locale,
-            })
-          }
-        } catch (e) {
-          console.error(e)
+  public static getInitialProps = nextReduxWrapper.getStaticProps(
+    (store) => async (ctx) => {
+      try {
+        const locale = API.getStoredLocale(ctx.locale)
+        if (!store.getState().startup?.locale) {
+          Strings.setLanguage(locale)
+          await store.dispatch(startupActions.startup)
         }
-        return {
-          pageProps: {},
-        }
-      },
+      } catch (e) {
+        console.error(e)
+      }
+      return {
+        props: {},
+      }
+    },
   )
-
+  constructor(props: any) {
+    super(props)
+  }
   public render() {
     const { Component, pageProps }: AppPropsWithLayout = this.props
     const getLayout = Component.getLayout || ((page) => page)
@@ -77,7 +78,6 @@ class WrappedApp extends App<AppInitialProps> {
         <div id='modal' />
         <div id='confirm' />
         <div id='alert' />
-        <ToastContainer />
       </LanguageHandler>
     )
   }

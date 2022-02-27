@@ -1,5 +1,4 @@
-import { each } from 'lodash'
-import { Constants } from './utils/constants'
+import { Constants } from '../utils/constants'
 import { LocalizedStringsMethods } from './types/string-types'
 
 export type LanguageContent = typeof defaultContent
@@ -11,6 +10,8 @@ type StringsSingleton = {
 }
 
 const defaultContent = {
+  hello: 'Hello',
+  login: 'Login',
   pleaseSelect: 'Please Select',
   defaultErrorMessage: 'An unexpected error has occurred',
   gatewayTimeoutError: 'API is unreachable right now',
@@ -36,22 +37,29 @@ const setStrings = (stringsParam: LocalizedStrings) => {
 
 const stringRecords: Record<string, LanguageContent> = {
   en: defaultContent,
-  blobby: defaultContent,
 }
 
 const initBlobby = () => {
   if (Constants.simulate.FORCE_LANGUAGE === 'blobby') {
     const blobby = {} as LanguageContent
-    each(stringRecords.en, (val, key) => {
+    Object.keys(defaultContent).map((key) => {
+      // @ts-ignore
+      const val = defaultContent[key]
       const words = val.split(' ')
-      const newWordsBlobby = words.map((word: string) => {
+      let idx = 0
+      const newWordsBlobby = words.map((word: string, index: number) => {
         const arr = ['eeeee', 'blob', 'blobby', 'wuueeeeh']
-        const random = Math.floor(Math.random() * (1 + (arr.length - 1)))
+
+        if (idx === arr.length - 1) {
+          idx = 0
+        } else {
+          idx++
+        }
         if (word.indexOf('{') !== -1) {
           // reserve params
           return word
         }
-        return arr[random]
+        return arr[index]
       })
       blobby[key as keyof LanguageContent] = `${newWordsBlobby
         .join(' ')

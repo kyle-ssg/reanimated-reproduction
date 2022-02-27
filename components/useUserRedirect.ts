@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { useAuth } from 'common/hooks/useAuth'
-import { AppState } from 'common/types/state-type'
+import { useUser } from 'common/hooks/useUser'
+import { StoreStateType } from '../common/store'
 
 export default function useUserRedirect(): {
-  user: AppState['user']
+  user: StoreStateType['user']
   isReady: boolean
 } {
   const router = useRouter()
-  const { user } = useAuth()
+  const { user } = useUser()
   const [isReady, setIsReady] = useState<boolean>(!!user)
   useEffect(() => {
     if (isReady) return

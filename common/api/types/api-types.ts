@@ -1,5 +1,5 @@
 import { Middleware } from 'redux'
-import { Project } from '../project'
+import { Project } from '../../project'
 
 export interface StorageType {
   init: () => Promise<any>
@@ -34,7 +34,7 @@ export interface PushType<NotificationType> {
   stop: () => Promise<void> | void
   refreshTokenListener?: (token: string) => string
 }
-export interface APIType<NotificationType = any> {
+export interface ApiTypes<NotificationType = any> {
   isMobile: () => boolean
   reduxStorage?: StorageType
   middlewares: Middleware[] | []

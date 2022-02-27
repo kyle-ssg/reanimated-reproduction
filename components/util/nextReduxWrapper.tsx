@@ -1,13 +1,8 @@
 import { createWrapper } from 'next-redux-wrapper'
-import createStore from 'common/store'
+import { store, StoreStateType } from 'common/store'
 import { Store } from 'redux'
-import { AppState } from 'common/types/state-type'
 import { Project } from 'common/project'
 
-const makeStore = () => {
-  return createStore()
-}
-
-export const nextReduxWrapper = createWrapper<Store<AppState>>(makeStore, {
+export const nextReduxWrapper = createWrapper<Store<StoreStateType>>(store, {
   debug: Project.logs.DISPATCHER,
 })

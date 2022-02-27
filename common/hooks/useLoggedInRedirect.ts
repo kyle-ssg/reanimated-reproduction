@@ -1,9 +1,9 @@
-import { useAuth } from './useAuth'
+import { useUser } from './useUser'
 import { useEffect } from 'react'
 import { API } from '../../project/api'
 
 export default function () {
-  const { user } = useAuth()
+  const { user } = useUser()
   useEffect(() => {
     if (user) {
       API.loginRedirect()
