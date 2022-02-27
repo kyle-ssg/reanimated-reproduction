@@ -6,10 +6,11 @@ import { StoreStateType } from '../store'
 import { createApi } from '@reduxjs/toolkit/dist/query/react'
 import { baseApiOptions } from '../utils/serviceUtils'
 import { Req } from '../types/requests'
+
 type UserState = Res['user'] | null
 
 const initialState = null as UserState
-const slice = createSlice({
+export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
@@ -32,7 +33,7 @@ const selectUser = (state: StoreStateType) => state.user
 
 export const userService = createApi({
   ...baseApiOptions,
-  reducerPath: 'user',
+  reducerPath: 'userService',
   tagTypes: [],
   endpoints: (builder) => ({
     login: builder.mutation<Res['user'], Req['login']>({
@@ -54,7 +55,7 @@ export const {
 export const useUserActions = () => {
   const dispatch = useDispatch()
   const logout = useCallback(() => {
-    return dispatch(slice.actions.logout())
+    return dispatch(userSlice.actions.logout())
   }, [dispatch])
   return { logout }
 }
@@ -71,5 +72,3 @@ export const useUser = () => {
     [user, logout, userLoading, userError, login, loginSuccess],
   )
 }
-
-export default slice.reducer

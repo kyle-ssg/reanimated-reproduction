@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { userService } from './hooks/useUser'
+import { userService, userSlice } from './hooks/useUser'
 import { startupSlice } from './hooks/useStartup'
 import { getApi } from './api'
 //END OF STORE_IMPORTS
@@ -10,12 +10,11 @@ export const store = () => {
   _store = configureStore({
     reducer: {
       [userService.reducerPath]: userService.reducer,
+      user: userSlice.reducer,
       startup: startupSlice.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        serializableCheck: false,
-      })
+      getDefaultMiddleware()
         .concat(userService.middleware)
         //END OF STORE_MIDDLEWARE
         .concat(getApi().middlewares || []),

@@ -23,7 +23,7 @@ class WrappedApp extends App<AppInitialProps> {
         const locale = API.getStoredLocale(ctx.locale)
         if (!store.getState().startup?.locale) {
           Strings.setLanguage(locale)
-          await store.dispatch(startupActions.startup)
+          await store.dispatch(startupActions.startup({ locale }))
         }
       } catch (e) {
         console.error(e)

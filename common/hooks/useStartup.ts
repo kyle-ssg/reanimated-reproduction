@@ -12,20 +12,11 @@ export const startupSlice = createSlice({
   initialState,
   reducers: {
     startup(state, action: PayloadAction<Res['startup']>) {
-      state = action.payload
       return state
     },
   },
-  extraReducers: (builder) => {
-    builder.addMatcher(
-      (a: AnyAction) => a.type.includes('logout'),
-      (state) => {
-        state = initialState
-        return state
-      },
-    )
-  },
 })
+
 export const startupActions = startupSlice.actions
 export const useStartupActions = () => {
   const dispatch = useDispatch()
