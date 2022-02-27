@@ -32,7 +32,7 @@ export const userSlice = createSlice({
 const selectUser = (state: StoreStateType) => state.user
 
 export const userService = createApi({
-  ...baseApiOptions,
+  ...baseApiOptions(),
   reducerPath: 'userService',
   tagTypes: [],
   endpoints: (builder) => ({
