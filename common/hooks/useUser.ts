@@ -32,6 +32,7 @@ const selectUser = (state: StoreStateType) => state.user
 
 export const userService = createApi({
   ...baseApiOptions,
+  reducerPath: 'user',
   tagTypes: [],
   endpoints: (builder) => ({
     login: builder.mutation<Res['user'], Req['login']>({

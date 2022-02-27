@@ -16,7 +16,7 @@ import { API } from 'project/api'
 class MyDocument extends Document {
   static async getStaticProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx)
-    const locale = API.getStoredLocale(ctx.req)
+    const locale = API.getStoredLocale(ctx.locale)
     return { ...initialProps, locale }
   }
 

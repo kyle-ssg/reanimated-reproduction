@@ -1,22 +1,23 @@
 import { configureStore } from '@reduxjs/toolkit'
-import useUser, { userService } from './hooks/useUser'
-import useStartup from './hooks/useStartup'
+import { userService } from './hooks/useUser'
+import { startupSlice } from './hooks/useStartup'
 import { getApi } from './api'
+//END OF STORE_IMPORTS
 
 let _store: any = null
 export const store = () => {
   if (_store) return _store
   _store = configureStore({
     reducer: {
-      user: useUser,
-      startup: useStartup,
       [userService.reducerPath]: userService.reducer,
+      startup: startupSlice.reducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: false,
       })
         .concat(userService.middleware)
+        //END OF STORE_MIDDLEWARE
         .concat(getApi().middlewares || []),
   })
   return _store

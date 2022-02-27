@@ -16,7 +16,6 @@ export function extractRehydrationInfo(
 }
 
 export const baseApiOptions = {
-  reducerPath: 'default',
   baseQuery,
   refetchOnFocus: true,
   extractRehydrationInfo,

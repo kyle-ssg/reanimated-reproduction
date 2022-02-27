@@ -6,7 +6,8 @@ import { Res } from '../types/responses'
 type InitialStateType = Res['startup'] | null
 
 const initialState = null as InitialStateType
-const slice = createSlice({
+
+export const startupSlice = createSlice({
   name: 'startup',
   initialState,
   reducers: {
@@ -25,12 +26,12 @@ const slice = createSlice({
     )
   },
 })
-export const startupActions = slice.actions
+export const startupActions = startupSlice.actions
 export const useStartupActions = () => {
   const dispatch = useDispatch()
   const startup = useCallback(
     (payload: Res['startup']) => {
-      return dispatch(slice.actions.startup(payload))
+      return dispatch(startupSlice.actions.startup(payload))
     },
     [dispatch],
   )
@@ -41,5 +42,3 @@ export const useStartup = () => {
   const { startup } = useStartupActions()
   return useMemo(() => ({ startup }), [startup])
 }
-
-export default slice.reducer
