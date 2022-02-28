@@ -3,19 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.writePatchQuery = exports.writeUpdateQuery = exports.writeDeleteQuery = exports.writeCreateQuery = exports.writeCollectionQuery = exports.writeGetQuery = exports.writeStoreService = exports.getServicePath = exports.writeExport = exports.writeRequestTypes = void 0;
 const plural_1 = require("./helpers/plural");
 const capitalize_1 = require("./helpers/capitalize");
+const findRootPath_1 = require("./helpers/findRootPath");
 const fs = require('fs');
 const path = require('path');
-let rootPath = path.join(__dirname, '../../');
-if (!fs.existsSync(path.join(rootPath, './common/store.ts'))) {
-    rootPath = path.join(__dirname, '../');
-    if (!fs.existsSync(path.join(rootPath, './common/store.ts'))) {
-        rootPath = path.join(__dirname, './');
-        if (!fs.existsSync(path.join(rootPath, './common/store.ts'))) {
-            console.log("Cannot find common/store.ts, are you running this in a project?");
-            process.exit(1);
-        }
-    }
-}
+let rootPath = (0, findRootPath_1.findRootPath)();
 const store = path.join(rootPath, './common/store.ts');
 const requests = path.join(rootPath, './common/types/requests.ts');
 const responses = path.join(rootPath, './common/types/responses.ts');

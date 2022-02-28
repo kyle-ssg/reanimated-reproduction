@@ -1,13 +1,8 @@
-oclif-hello-world
-=================
+# SSG cli
 
-oclif example Hello World CLI
-
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![CircleCI](https://circleci.com/gh/oclif/hello-world/tree/main.svg?style=shield)](https://circleci.com/gh/oclif/hello-world/tree/main)
-[![Downloads/week](https://img.shields.io/npm/dw/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![License](https://img.shields.io/npm/l/oclif-hello-world.svg)](https://github.com/oclif/hello-world/blob/main/package.json)
+```
+npm i ssgrtk -g
+```
 
 <!-- toc -->
 * [Usage](#usage)
@@ -20,7 +15,7 @@ $ npm install -g ssgrtk
 $ ssg COMMAND
 running command...
 $ ssg (--version)
-ssgrtk/0.0.1 darwin-x64 node-v16.13.2
+ssgrtk/0.0.5 darwin-x64 node-v16.13.2
 $ ssg --help [COMMAND]
 USAGE
   $ ssg COMMAND
@@ -51,7 +46,7 @@ USAGE
   $ ssg collection
 ```
 
-_See code: [dist/commands/collection.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.1/dist/commands/collection.ts)_
+_See code: [dist/commands/collection.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.5/dist/commands/collection.ts)_
 
 ## `ssg create`
 
@@ -60,7 +55,7 @@ USAGE
   $ ssg create
 ```
 
-_See code: [dist/commands/create.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.1/dist/commands/create.ts)_
+_See code: [dist/commands/create.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.5/dist/commands/create.ts)_
 
 ## `ssg crud`
 
@@ -69,7 +64,7 @@ USAGE
   $ ssg crud
 ```
 
-_See code: [dist/commands/crud.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.1/dist/commands/crud.ts)_
+_See code: [dist/commands/crud.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.5/dist/commands/crud.ts)_
 
 ## `ssg delete`
 
@@ -78,7 +73,7 @@ USAGE
   $ ssg delete
 ```
 
-_See code: [dist/commands/delete.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.1/dist/commands/delete.ts)_
+_See code: [dist/commands/delete.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.5/dist/commands/delete.ts)_
 
 ## `ssg get`
 
@@ -87,7 +82,7 @@ USAGE
   $ ssg get
 ```
 
-_See code: [dist/commands/get.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.1/dist/commands/get.ts)_
+_See code: [dist/commands/get.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.5/dist/commands/get.ts)_
 
 ## `ssg help [COMMAND]`
 
@@ -116,7 +111,7 @@ USAGE
   $ ssg patch
 ```
 
-_See code: [dist/commands/patch.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.1/dist/commands/patch.ts)_
+_See code: [dist/commands/patch.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.5/dist/commands/patch.ts)_
 
 ## `ssg plugins`
 
@@ -271,5 +266,5 @@ USAGE
   $ ssg update
 ```
 
-_See code: [dist/commands/update.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.1/dist/commands/update.ts)_
+_See code: [dist/commands/update.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.5/dist/commands/update.ts)_
 <!-- commandsstop -->

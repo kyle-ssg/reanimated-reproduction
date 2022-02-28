@@ -1,20 +1,12 @@
 import { singular } from "./helpers/plural";
 import { capitalize } from "./helpers/capitalize";
+import { findRootPath } from "./helpers/findRootPath";
 
 const fs = require('fs');
 const path = require('path');
 
-let rootPath = path.join(__dirname, '../../');
-if(!fs.existsSync(path.join(rootPath, './common/store.ts'))) {
-  rootPath = path.join(__dirname, '../')
-  if (!fs.existsSync(path.join(rootPath, './common/store.ts'))) {
-    rootPath = path.join(__dirname, './')
-    if (!fs.existsSync(path.join(rootPath, './common/store.ts'))) {
-      console.log("Cannot find common/store.ts, are you running this in a project?")
-      process.exit(1)
-    }
-  }
-}
+let rootPath = findRootPath();
+
 const store = path.join(rootPath, './common/store.ts');
 const requests = path.join(rootPath, './common/types/requests.ts');
 const responses = path.join(rootPath, './common/types/responses.ts');
