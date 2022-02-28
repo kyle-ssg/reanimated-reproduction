@@ -5,7 +5,17 @@ const plural_1 = require("./helpers/plural");
 const capitalize_1 = require("./helpers/capitalize");
 const fs = require('fs');
 const path = require('path');
-const rootPath = path.join(__dirname, '../../');
+let rootPath = path.join(__dirname, '../../');
+if (!fs.existsSync(path.join(rootPath, './common/store.ts'))) {
+    rootPath = path.join(__dirname, '../');
+    if (!fs.existsSync(path.join(rootPath, './common/store.ts'))) {
+        rootPath = path.join(__dirname, './');
+        if (!fs.existsSync(path.join(rootPath, './common/store.ts'))) {
+            console.log("Cannot find common/store.ts, are you running this in a project?");
+            process.exit(1);
+        }
+    }
+}
 const store = path.join(rootPath, './common/store.ts');
 const requests = path.join(rootPath, './common/types/requests.ts');
 const responses = path.join(rootPath, './common/types/responses.ts');

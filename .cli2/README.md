@@ -16,11 +16,11 @@ oclif example Hello World CLI
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g ssg
+$ npm install -g ssgrtk
 $ ssg COMMAND
 running command...
 $ ssg (--version)
-ssg/0.0.0 darwin-x64 node-v16.13.2
+ssgrtk/0.0.1 darwin-x64 node-v16.13.2
 $ ssg --help [COMMAND]
 USAGE
   $ ssg COMMAND
@@ -29,55 +29,65 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`ssg hello PERSON`](#ssg-hello-person)
-* [`ssg hello world`](#ssg-hello-world)
+* [`ssg collection`](#ssg-collection)
+* [`ssg create`](#ssg-create)
+* [`ssg crud`](#ssg-crud)
+* [`ssg delete`](#ssg-delete)
+* [`ssg get`](#ssg-get)
 * [`ssg help [COMMAND]`](#ssg-help-command)
+* [`ssg patch`](#ssg-patch)
 * [`ssg plugins`](#ssg-plugins)
 * [`ssg plugins:inspect PLUGIN...`](#ssg-pluginsinspect-plugin)
 * [`ssg plugins:install PLUGIN...`](#ssg-pluginsinstall-plugin)
 * [`ssg plugins:link PLUGIN`](#ssg-pluginslink-plugin)
 * [`ssg plugins:uninstall PLUGIN...`](#ssg-pluginsuninstall-plugin)
 * [`ssg plugins update`](#ssg-plugins-update)
+* [`ssg update`](#ssg-update)
 
-## `ssg hello PERSON`
-
-Say hello
-
-```
-USAGE
-  $ ssg hello [PERSON] -f <value>
-
-ARGUMENTS
-  PERSON  Person to say hello to
-
-FLAGS
-  -f, --from=<value>  (required) Whom is saying hello
-
-DESCRIPTION
-  Say hello
-
-EXAMPLES
-  $ oex hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
-```
-
-_See code: [dist/commands/hello/index.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.0/dist/commands/hello/index.ts)_
-
-## `ssg hello world`
-
-Say hello world
+## `ssg collection`
 
 ```
 USAGE
-  $ ssg hello world
-
-DESCRIPTION
-  Say hello world
-
-EXAMPLES
-  $ oex hello world
-  hello world! (./src/commands/hello/world.ts)
+  $ ssg collection
 ```
+
+_See code: [dist/commands/collection.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.1/dist/commands/collection.ts)_
+
+## `ssg create`
+
+```
+USAGE
+  $ ssg create
+```
+
+_See code: [dist/commands/create.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.1/dist/commands/create.ts)_
+
+## `ssg crud`
+
+```
+USAGE
+  $ ssg crud
+```
+
+_See code: [dist/commands/crud.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.1/dist/commands/crud.ts)_
+
+## `ssg delete`
+
+```
+USAGE
+  $ ssg delete
+```
+
+_See code: [dist/commands/delete.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.1/dist/commands/delete.ts)_
+
+## `ssg get`
+
+```
+USAGE
+  $ ssg get
+```
+
+_See code: [dist/commands/get.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.1/dist/commands/get.ts)_
 
 ## `ssg help [COMMAND]`
 
@@ -98,6 +108,15 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.11/src/commands/help.ts)_
+
+## `ssg patch`
+
+```
+USAGE
+  $ ssg patch
+```
+
+_See code: [dist/commands/patch.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.1/dist/commands/patch.ts)_
 
 ## `ssg plugins`
 
@@ -244,4 +263,13 @@ FLAGS
 DESCRIPTION
   Update installed plugins.
 ```
+
+## `ssg update`
+
+```
+USAGE
+  $ ssg update
+```
+
+_See code: [dist/commands/update.ts](https://github.com/kyle-ssg/hello-world/blob/v0.0.1/dist/commands/update.ts)_
 <!-- commandsstop -->
