@@ -3,17 +3,16 @@ import { userService, userSlice } from './hooks/useUser'
 import { startupSlice } from './hooks/useStartup'
 import { getApi } from './api'
 import { localeSlice } from './hooks/useLocale'
+import { thingSlice } from './hooks/useThing'
 // END OF IMPORTS
-
-let _store: any = null
-export const store = () => {
-  if (_store) return _store
-  _store = configureStore({
+const createStore = () =>
+  configureStore({
     reducer: {
       [userService.reducerPath]: userService.reducer,
       locale: localeSlice.reducer,
       startup: startupSlice.reducer,
       user: userSlice.reducer,
+      thing: thingSlice.reducer,
       // END OF REDUCERS
     },
     middleware: (getDefaultMiddleware) =>
@@ -22,9 +21,14 @@ export const store = () => {
         // END OF MIDDLEWARE
         .concat(getApi().middlewares || []),
   })
+
+type StoreType = ReturnType<typeof createStore>
+let _store: StoreType
+
+export const store = function (): StoreType {
+  if (_store) return _store
+  _store = createStore()
   return _store
 }
 
-export type StoreType = ReturnType<ReturnType<typeof store>['getState']>
-export type DispatchType = ReturnType<ReturnType<typeof store>['dispatch']>
-export type StoreStateType = ReturnType<ReturnType<typeof store>['getState']>
+export type StoreStateType = ReturnType<StoreType['getState']>

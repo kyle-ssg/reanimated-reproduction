@@ -3,5 +3,6 @@ export type Res = {
   startup: { locale: string }
   user: { id: string; locale: string }
   locale: { value: string }
+  thing: { id: string }
   // END OF TYPES
 }
