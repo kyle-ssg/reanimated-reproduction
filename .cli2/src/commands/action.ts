@@ -9,6 +9,7 @@ export const collection = async ()=> {
   const actionType = "get";
   const {prefix,entity,gitAdd} = await actionQuestions()
   await writeRequestTypes(actionType,entity,true)
+  await writeRequestTypes(actionType,entity,true)
   if (gitAdd) {
     add()
   }

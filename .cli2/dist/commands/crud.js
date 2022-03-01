@@ -30,3 +30,4 @@ class Index extends core_1.Command {
     }
 }
 exports.default = Index;
+Index.description = "RTK Service: Create,get,update and delete a thing with an api";

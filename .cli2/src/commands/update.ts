@@ -19,3 +19,4 @@ export default class Index extends Command {
     lint()
   }
 }
+Index.description = "RTK Service: Update a thing with an api"

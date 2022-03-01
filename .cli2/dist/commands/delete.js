@@ -24,3 +24,4 @@ class Index extends core_1.Command {
     }
 }
 exports.default = Index;
+Index.description = "RTK Service: Delete a thing with an api";

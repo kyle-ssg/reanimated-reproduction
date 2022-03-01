@@ -54,6 +54,7 @@ export async function writeRequestTypes(action: "create" | "update" | "patch" | 
   await writeGeneric(responses,`${name}: {${includeIdResponse?"id:string":""}}`, typePointer, "Response Types", `${name}:`)
 }
 
+
 const apiName = function (url:string) {
   // eslint-disable-next-line no-template-curly-in-string
   const replace = '${query.id}';
@@ -72,8 +73,59 @@ export async function writeExport(name:string, functionName:string, queryFunctio
 }`,functionPointer,'Function export')
 }
 
+
+export async function getSlicePath(action:string, name:string) {
+  const location = path.join(rootPath, `./common/hooks/use${capitalize(name)}.ts`);
+  const func = `${action}${capitalize(name)}`
+  if (fs.existsSync(location)){
+    console.log("Slice already exists")
+  } else {
+    fs.writeFileSync(location, `import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { useCallback, useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Res } from '../types/responses'
+import { Req } from '../types/requests'
+import { StoreStateType } from '../store'
+
+type InitialStateType = Res['${name}'] | null
+
+const initialState = null as InitialStateType
+
+export const localeSlice = createSlice({
+  name: '${name}',
+  initialState,
+  reducers: {
+    ${func}(state, action: PayloadAction<Req['${func}']>) {
+      state = action.payload
+    },
+  },
+})
+
+export const ${func}Actions = ${func}Slice.actions
+export const use${capitalize(name)}Actions = () => {
+  const dispatch = useDispatch()
+  const setLocale = useCallback(
+    (payload: Req['${func}']) => {
+      return dispatch(${name}Slice.actions.${func}(payload))
+    },
+    [dispatch],
+  )
+  return { ${func} }
+}
+
+const select${capitalize(name)} = (state: StoreStateType) => state.${name}
+
+export const use${capitalize(name)} = () => {
+  const { ${func} = use${capitalize(name)}Actions()
+  const ${name} = useSelector(select${capitalize(name)})
+  return useMemo(() => ({ ${func}, ${name} }), [${func}, ${name}])
+}
+`)
+  }
+  return location;
+}
+
 export async function getServicePath(name:string) {
-  console.log(name)
   const location = path.join(rootPath, `./common/hooks/use${capitalize(name)}.ts`);
 
   if (fs.existsSync(location)){
