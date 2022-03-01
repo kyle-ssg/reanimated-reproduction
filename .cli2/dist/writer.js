@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writePatchQuery = exports.writeUpdateQuery = exports.writeDeleteQuery = exports.writeCreateQuery = exports.writeCollectionQuery = exports.writeGetQuery = exports.writeStoreService = exports.getServicePath = exports.writeExport = exports.writeRequestTypes = void 0;
+exports.writePatchQuery = exports.writeUpdateQuery = exports.writeDeleteQuery = exports.writeCreateQuery = exports.writeCollectionQuery = exports.writeGetQuery = exports.writeStoreSlice = exports.writeStoreService = exports.getServicePath = exports.getSlicePath = exports.writeAction = exports.writeExport = exports.writeRequestTypes = void 0;
 const plural_1 = require("./helpers/plural");
 const capitalize_1 = require("./helpers/capitalize");
 const findRootPath_1 = require("./helpers/findRootPath");
@@ -68,8 +68,64 @@ async function writeExport(name, functionName, queryFunctionName) {
 }`, functionPointer, 'Function export');
 }
 exports.writeExport = writeExport;
+async function writeAction(action, name) {
+    const path = await getSlicePath(action, name);
+    await writeStoreSlice(name);
+}
+exports.writeAction = writeAction;
+async function getSlicePath(action, name) {
+    const location = path.join(rootPath, `./common/hooks/use${(0, capitalize_1.capitalize)(name)}.ts`);
+    const func = `${action}${(0, capitalize_1.capitalize)(name)}`;
+    if (fs.existsSync(location)) {
+        console.log("Slice already exists");
+    }
+    else {
+        fs.writeFileSync(location, `import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { useCallback, useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Res } from '../types/responses'
+import { Req } from '../types/requests'
+import { StoreStateType } from '../store'
+
+type InitialStateType = Res['${name}'] | null
+
+const initialState = null as InitialStateType
+
+export const ${name}Slice = createSlice({
+  name: '${name}',
+  initialState,
+  reducers: {
+    ${func}(state, action: PayloadAction<Req['${func}']>) {
+      state = action.payload
+    },
+  },
+})
+
+export const ${name}Actions = ${name}Slice.actions
+export const use${(0, capitalize_1.capitalize)(name)}Actions = () => {
+  const dispatch = useDispatch()
+  const ${func} = useCallback(
+    (payload: Req['${func}']) => {
+      return dispatch(${name}Actions.${func}(payload))
+    },
+    [dispatch],
+  )
+  return { ${func} }
+}
+
+const select${(0, capitalize_1.capitalize)(name)} = (state: StoreStateType) => state.${name}
+
+export const use${(0, capitalize_1.capitalize)(name)} = () => {
+  const { ${func} = use${(0, capitalize_1.capitalize)(name)}Actions()
+  const ${name} = useSelector(select${(0, capitalize_1.capitalize)(name)})
+  return useMemo(() => ({ ${func}, ${name} }), [${func}, ${name}])
+}
+`);
+    }
+    return location;
+}
+exports.getSlicePath = getSlicePath;
 async function getServicePath(name) {
-    console.log(name);
     const location = path.join(rootPath, `./common/hooks/use${(0, capitalize_1.capitalize)(name)}.ts`);
     if (fs.existsSync(location)) {
         console.log("Service already exists");
@@ -110,6 +166,11 @@ async function writeStoreService(name) {
     await writeGeneric(store, ` .concat(${name}Service.middleware)`, middlewarePointer, "Middleware import");
 }
 exports.writeStoreService = writeStoreService;
+async function writeStoreSlice(name) {
+    await writeGeneric(store, `import { ${name}Slice } from './hooks/use${(0, capitalize_1.capitalize)(name)}'`, importPointer, "Store import");
+    await writeGeneric(store, `${name}: ${name}Slice.reducer,`, reducerPointer, "Reducer import");
+}
+exports.writeStoreSlice = writeStoreSlice;
 async function writeGetQuery(name, url, providesItem) {
     const func = functionName("get", name);
     const hookPath = await getServicePath(name);

@@ -8,9 +8,9 @@ const writer_1 = require("../writer");
 const lint_1 = (0, tslib_1.__importDefault)(require("../helpers/lint"));
 const actionQuestions_1 = (0, tslib_1.__importDefault)(require("../helpers/actionQuestions"));
 const collection = async () => {
-    const actionType = "get";
     const { prefix, entity, gitAdd } = await (0, actionQuestions_1.default)();
-    await (0, writer_1.writeRequestTypes)(actionType, entity, true);
+    await (0, writer_1.writeRequestTypes)(prefix, entity);
+    await (0, writer_1.writeAction)(prefix, entity);
     if (gitAdd) {
         (0, gitAdd_1.default)();
     }

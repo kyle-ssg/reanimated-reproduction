@@ -74,6 +74,11 @@ export async function writeExport(name:string, functionName:string, queryFunctio
 }
 
 
+export async function writeAction(action:string, name:string) {
+  const path = await getSlicePath(action, name);
+  await writeStoreSlice(name)
+}
+
 export async function getSlicePath(action:string, name:string) {
   const location = path.join(rootPath, `./common/hooks/use${capitalize(name)}.ts`);
   const func = `${action}${capitalize(name)}`
@@ -91,7 +96,7 @@ type InitialStateType = Res['${name}'] | null
 
 const initialState = null as InitialStateType
 
-export const localeSlice = createSlice({
+export const ${name}Slice = createSlice({
   name: '${name}',
   initialState,
   reducers: {
@@ -101,12 +106,12 @@ export const localeSlice = createSlice({
   },
 })
 
-export const ${func}Actions = ${func}Slice.actions
+export const ${name}Actions = ${name}Slice.actions
 export const use${capitalize(name)}Actions = () => {
   const dispatch = useDispatch()
-  const setLocale = useCallback(
+  const ${func} = useCallback(
     (payload: Req['${func}']) => {
-      return dispatch(${name}Slice.actions.${func}(payload))
+      return dispatch(${name}Actions.${func}(payload))
     },
     [dispatch],
   )
@@ -164,6 +169,10 @@ export async function writeStoreService(name:string) {
   await writeGeneric(store,`import { ${name}Service } from './hooks/use${capitalize(name)}'`, importPointer, "Store import")
   await writeGeneric(store,`[${name}Service.reducerPath]: ${name}Service.reducer,`, reducerPointer, "Reducer import")
   await writeGeneric(store,` .concat(${name}Service.middleware)`, middlewarePointer, "Middleware import")
+}
+export async function writeStoreSlice(name:string) {
+  await writeGeneric(store,`import { ${name}Slice } from './hooks/use${capitalize(name)}'`, importPointer, "Store import")
+  await writeGeneric(store,`${name}: ${name}Slice.reducer,`, reducerPointer, "Reducer import")
 }
 export async function writeGetQuery(name:string, url:string, providesItem:boolean) {
   const func = functionName("get", name)
