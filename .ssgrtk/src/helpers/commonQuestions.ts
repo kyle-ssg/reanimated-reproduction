@@ -14,7 +14,7 @@ export default async function(isPlural:boolean, hasId: boolean) {
     {
       name:"entity",
       type: "input",
-      message: `What is entity name? (e.g thing -> createThing)`,
+      message: isPlural? `What is collection name? (e.g todos -> getTodos)`:  `What is entity name? (e.g thing -> createThing)`,
       default: "thing"
     }
   )
@@ -25,7 +25,7 @@ export default async function(isPlural:boolean, hasId: boolean) {
       name:"url",
       type: "input",
       message: `What is the url? (type y for /${plural}${extraUrl})`,
-      default: `/${entity.entity}${extraUrl}`
+      default: `/${isPlural?pluralise(entity.entity):entity.entity}${extraUrl}`
     }
   )
 
@@ -39,7 +39,7 @@ export default async function(isPlural:boolean, hasId: boolean) {
   )
   const resUrl = keywordFor(url.url, 'y',`/${plural}${extraUrl}`, )
   return {
-    entity: entity.entity,
+    entity: isPlural?pluralise(`${entity.entity}`, 2):entity.entity,
     url: resUrl,
     urlWithoutId:`${resUrl.replace("/:id","")}`,
     gitAdd: gitAdd.add === "Yes",

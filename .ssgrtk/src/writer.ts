@@ -67,9 +67,9 @@ export async function writeExport(name:string, functionName:string, queryFunctio
   const hookPath = await getServicePath(name)
   await writeGeneric(hookPath, queryFunctionName+",", exportPointer, "Exports",queryFunctionName+",")
   await writeGeneric(hookPath, `export async function ${functionName}(store: any, data: Req['${functionName}']) {
-  store.dispatch(${name}Service.endpoints.${functionName}.initiate(data))
-  return ${name}Service.util.getRunningOperationPromises();
-}`,functionPointer,'Function export')
+  store.dispatch(${singular(name)}Service.endpoints.${functionName}.initiate(data))
+  return ${singular(name)}Service.util.getRunningOperationPromises();
+}`,functionPointer,'Function export', `export async function ${functionName}`)
 }
 
 
@@ -131,7 +131,7 @@ export const use${capitalize(name)} = () => {
 }
 
 export async function getServicePath(name:string) {
-  const location = path.join(rootPath, `./common/hooks/use${capitalize(name)}.ts`);
+  const location = path.join(rootPath, `./common/hooks/use${capitalize(singular(name))}.ts`);
 
   if (fs.existsSync(location)){
     console.log("Service already exists")
@@ -141,10 +141,10 @@ import { baseApiOptions } from '../utils/serviceUtils'
 import { Res } from '../types/responses'
 import { Req } from '../types/requests'
 
-export const ${name}Service = createApi({
+export const ${singular(name)}Service = createApi({
   ...baseApiOptions(),
-  reducerPath: '${name}Service',
-  tagTypes: ['${capitalize(name)}'],
+  reducerPath: '${singular(name)}Service',
+  tagTypes: ['${capitalize(singular(name))}'],
   endpoints: (builder) => ({
 
     // END OF ENDPOINTS
@@ -155,20 +155,20 @@ export const ${name}Service = createApi({
 
 export const {
   // END OF EXPORTS
-} = ${name}Service
+} = ${singular(name)}Service
 
 // const { data, isLoading } = useGet${capitalize(name)}Query({ id: 2 }, {}) get hook
 // const [create${capitalize(name)}, { isLoading, data, isSuccess }] = useCreate${capitalize(name)}Mutation() create hook
-// ${name}Service.endpoints.get${capitalize(name)}.select({id: 2})(store.getState()) access data from any function
+// ${singular(name)}Service.endpoints.get${capitalize(name)}.select({id: 2})(store.getState()) access data from any function
 `)
   }
   return location;
 }
 
 export async function writeStoreService(name:string) {
-  await writeGeneric(store,`import { ${name}Service } from './hooks/use${capitalize(name)}'`, importPointer, "Store import")
-  await writeGeneric(store,`[${name}Service.reducerPath]: ${name}Service.reducer,`, reducerPointer, "Reducer import")
-  await writeGeneric(store,` .concat(${name}Service.middleware)`, middlewarePointer, "Middleware import")
+  await writeGeneric(store,`import { ${singular(name)}Service } from './hooks/use${capitalize(singular(name))}'`, importPointer, "Store import")
+  await writeGeneric(store,`[${singular(name)}Service.reducerPath]: ${singular(name)}Service.reducer,`, reducerPointer, "Reducer import")
+  await writeGeneric(store,` .concat(${singular(name)}Service.middleware)`, middlewarePointer, "Middleware import")
 }
 export async function writeStoreSlice(name:string) {
   await writeGeneric(store,`import { ${name}Slice } from './hooks/use${capitalize(name)}'`, importPointer, "Store import")
