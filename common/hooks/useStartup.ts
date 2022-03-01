@@ -1,4 +1,4 @@
-import { AnyAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { useCallback, useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 import { Res } from '../types/responses'
@@ -12,7 +12,7 @@ export const startupSlice = createSlice({
   initialState,
   reducers: {
     startup(state, action: PayloadAction<Res['startup']>) {
-      return state
+      state = action.payload
     },
   },
 })

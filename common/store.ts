@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { userService, userSlice } from './hooks/useUser'
 import { startupSlice } from './hooks/useStartup'
 import { getApi } from './api'
+import { localeSlice } from './hooks/useLocale'
 // END OF IMPORTS
 
 let _store: any = null
@@ -10,8 +11,9 @@ export const store = () => {
   _store = configureStore({
     reducer: {
       [userService.reducerPath]: userService.reducer,
-      user: userSlice.reducer,
+      locale: localeSlice.reducer,
       startup: startupSlice.reducer,
+      user: userSlice.reducer,
       // END OF REDUCERS
     },
     middleware: (getDefaultMiddleware) =>

@@ -29,8 +29,6 @@ export const userSlice = createSlice({
   },
 })
 
-const selectUser = (state: StoreStateType) => state.user
-
 export const userService = createApi({
   ...baseApiOptions(),
   reducerPath: 'userService',
@@ -51,6 +49,8 @@ export const {
   useLoginMutation,
   // END OF EXPORTS
 } = userService
+
+const selectUser = (state: StoreStateType) => state.user
 
 export const useUserActions = () => {
   const dispatch = useDispatch()
