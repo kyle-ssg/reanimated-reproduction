@@ -15,6 +15,7 @@ export const thingSlice = createSlice({
   reducers: {
     setThing(state, action: PayloadAction<Req['setThing']>) {
       state = action.payload
+      return state
     },
   },
 })

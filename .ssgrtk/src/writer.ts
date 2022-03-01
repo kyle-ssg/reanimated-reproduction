@@ -101,6 +101,7 @@ export const ${name}Slice = createSlice({
   reducers: {
     ${func}(state, action: PayloadAction<Req['${func}']>) {
       state = action.payload
+      return state
     },
   },
 })
