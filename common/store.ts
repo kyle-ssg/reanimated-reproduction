@@ -3,7 +3,6 @@ import { userService, userSlice } from './hooks/useUser'
 import { startupSlice } from './hooks/useStartup'
 import { getApi } from './api'
 import { localeSlice } from './hooks/useLocale'
-import { thingSlice } from './hooks/useThing'
 // END OF IMPORTS
 const createStore = () =>
   configureStore({
@@ -12,7 +11,6 @@ const createStore = () =>
       locale: localeSlice.reducer,
       startup: startupSlice.reducer,
       user: userSlice.reducer,
-      thing: thingSlice.reducer,
       // END OF REDUCERS
     },
     middleware: (getDefaultMiddleware) =>

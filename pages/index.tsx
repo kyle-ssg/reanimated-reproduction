@@ -6,7 +6,6 @@ import { useEffect } from 'react'
 import Button from 'components/base/forms/Button'
 import { toast, ToastContainer } from 'react-toastify'
 import Strings from '../project/localisation'
-import { useThing } from '../common/hooks/useThing'
 
 export type HomePageType = {}
 const HomePage: NextPageWithLayout<HomePageType> = () => {
@@ -22,15 +21,11 @@ const HomePage: NextPageWithLayout<HomePageType> = () => {
       toast('')
     }
   }, [userError])
-  const { thing, setThing } = useThing()
   return (
     <div className='container'>
       <div>
         <p>{Strings.hello}</p>
-        <Button onClick={() => setThing({ id: 'test' })}>
-          {Strings.login}
-        </Button>
-        {thing?.id}
+        <Button onClick={() => login({})}>{Strings.login}</Button>
       </div>
       <ToastContainer />
     </div>
