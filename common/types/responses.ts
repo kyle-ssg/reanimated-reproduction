@@ -2,6 +2,6 @@
 export type Res = {
   startup: { locale: string }
   user: { id: string; locale: string }
-  setLocale: { value: string }
+  locale: { value: string }
   // END OF TYPES
 }
