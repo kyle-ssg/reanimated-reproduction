@@ -52,7 +52,6 @@ const Input: FC<Input> = ({
   onKeyDown,
   id,
   placeholder = ' ',
-  textButton,
   textarea,
   touched,
   type,
@@ -93,7 +92,6 @@ const Input: FC<Input> = ({
 
   const classNameHandler = cn(
     {
-      'input-container': true,
       focused: isFocused,
       invalid: (shouldValidate || touched) && !isValid,
     },
@@ -101,7 +99,7 @@ const Input: FC<Input> = ({
   )
 
   const combinedInputClassName = cn(
-    { input: true, error: !!errorMessage },
+    { 'form-control': true, error: !!errorMessage },
     inputClassName,
   )
   const [showPassword, setShowPassword] = useState<boolean>(false)
@@ -126,16 +124,7 @@ const Input: FC<Input> = ({
         </>
       ) : (
         <>
-          <div className='row'>
-            <div className='col'>
-              {!!label && <label htmlFor={id}>{label}</label>}
-            </div>
-            <div className='text-right mr-3'>
-              {!!textButton && (
-                <ButtonText className='btn__small'>{textButton}</ButtonText>
-              )}
-            </div>
-          </div>
+          {!!label && <label htmlFor={id}>{label}</label>}
           <input
             disabled={disabled}
             name={name}

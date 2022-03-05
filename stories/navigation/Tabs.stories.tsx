@@ -3,7 +3,7 @@ import '../../styles/Global.scss'
 import Tabs from 'components/base/forms/Tabs'
 
 export default {
-  title: 'Base/Tabs',
+  title: 'Navigation/Tabs',
   component: Tabs,
 }
 

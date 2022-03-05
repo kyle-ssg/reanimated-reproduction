@@ -50,7 +50,7 @@ const InputGroup: FC<InputGroup> = (
   const id = _id || inputProps.id || inputProps.name || Utils.GUID()
   return (
     <div className={`form-group ${className}` || ''}>
-      <label htmlFor={id} className='cols-sm-2 control-label'>
+      <label className='form-label' htmlFor={id}>
         {title}
       </label>
       {inputProps && inputProps.error && (
@@ -65,31 +65,29 @@ const InputGroup: FC<InputGroup> = (
         </span>
       )}
 
-      <div>
+      <>
         {component ? (
           component
         ) : (
-          <div>
-            <Input
-              // ref={(c) => (this.input = c)}
-              name={name}
-              textarea={textarea}
-              onBlur={onBlur}
-              errorMessage={errorMessage}
-              {...props.inputProps}
-              isValid={isValid}
-              disabled={disabled}
-              value={value}
-              data-test={['data-test']}
-              defaultValue={defaultValue}
-              onChange={onChange}
-              type={type || 'text'}
-              id={id}
-              placeholder={placeholder}
-            />
-          </div>
+          <Input
+            // ref={(c) => (this.input = c)}
+            name={name}
+            textarea={textarea}
+            onBlur={onBlur}
+            errorMessage={errorMessage}
+            {...props.inputProps}
+            isValid={isValid}
+            disabled={disabled}
+            value={value}
+            data-test={['data-test']}
+            defaultValue={defaultValue}
+            onChange={onChange}
+            type={type || 'text'}
+            id={id}
+            placeholder={placeholder}
+          />
         )}
-      </div>
+      </>
     </div>
   )
 }
