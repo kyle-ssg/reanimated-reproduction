@@ -4,6 +4,7 @@ import { TouchableOpacity, View } from 'react-native'
 import Text from 'components/base/type/Text'
 import { palette, styleVariables } from '../style/style_variables'
 import { FC } from 'react'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 type TabItemType = {
   isActive: boolean
@@ -42,9 +43,9 @@ const BottomNav = ({ state, navigation }) => {
       navigation.navigate(route.name)
     }
   }
-
+  const insets = useSafeAreaInsets()
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingBottom: insets.bottom / 2 }]}>
       <Row>
         <Flex>
           <Row>

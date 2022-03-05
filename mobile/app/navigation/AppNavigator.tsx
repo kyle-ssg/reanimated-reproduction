@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import { enableScreens } from 'react-native-screens'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import '../project/api'
@@ -30,7 +30,6 @@ const _bootstrapAsync = async (): Promise<{
 }> => {
   let user, token
   const showStorybook = !!(await API.storage.getItem('storybook'))
-
   try {
     // user = await API.auth.Cognito.getSession();
     // token = user.accessToken?.jwtToken;
@@ -55,15 +54,22 @@ const _bootstrapAsync = async (): Promise<{
 const AppNavigator: FC<ComponentType> = ({}) => {
   const [user, setUser] = useState<boolean | null>(null)
   const [showStorybook, setShowStorybook] = useState<boolean>(false)
+  const storybookRef = useRef<boolean>(showStorybook)
   const toggleStorybook = () => {
-    setShowStorybook(!showStorybook)
-    API.storage.setItem('storybook', `${showStorybook}`)
+    setShowStorybook(!storybookRef.current)
+    storybookRef.current = !storybookRef.current
+    if (storybookRef.current) {
+      API.storage.setItem('storybook', `true`)
+    } else {
+      API.storage.removeItem('storybook')
+    }
   }
 
   useEffect(() => {
     _bootstrapAsync().then(({ user, showStorybook }) => {
       if (showStorybook) {
         setShowStorybook(true)
+        storybookRef.current = true
       }
       setUser(user)
     })

@@ -3,7 +3,6 @@ import { FC, useCallback, useEffect, useState } from 'react'
 import DateTimePickerModal, {
   ReactNativeModalDateTimePickerProps,
 } from 'react-native-modal-datetime-picker'
-import Icon from 'react-native-vector-icons/Ionicons'
 import dayjs from 'dayjs'
 
 type Props = {
@@ -43,7 +42,7 @@ const DateSelect: FC<Props> = ({
       <SelectBox
         onPress={toggleVisible}
         title={title}
-        icon={<Icon name='calendar' size={20} light />}
+        icon={<FA5Pro name='calendar' />}
       >
         {formattedDate}
       </SelectBox>

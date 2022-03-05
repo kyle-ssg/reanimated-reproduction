@@ -1,6 +1,7 @@
 /// <reference types="lodash" />
 import {
   Dimensions,
+  TouchableOpacityProps,
   ImageProps,
   ScrollViewProps,
   TextProps,
@@ -17,7 +18,7 @@ declare global {
   let ScrollView: ComponentType<ScrollViewProps>
   let Image: ComponentType<ImageProps>
   let View: ComponentType<ViewProps>
-  let TouchableOpacity: ComponentType<ReactNative.TouchableOpacityProps>
+  let TouchableOpacity: ComponentType<TouchableOpacityProps>
   let Dimensions: Dimensions
   let palette: palette
   let styleVariables: styleVariables
@@ -2328,8 +2329,6 @@ declare global {
   >
   namespace NodeJS {
     interface Global {
-      Text: ComponentType<TextProps>
-
       [extraProps: string]: any
     }
   }

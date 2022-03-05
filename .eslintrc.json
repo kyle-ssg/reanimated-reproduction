@@ -67,6 +67,7 @@
     "globals": {
         "DeviceHeight": true,
         "DeviceWidth": true,
+        "FA5Pro": true,
         "Dimensions": true,
         "Platform": true,
         "ReactNative": true,

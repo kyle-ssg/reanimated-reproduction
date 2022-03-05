@@ -1,9 +1,9 @@
-import Icon from 'react-native-vector-icons/Ionicons'
 import FormGroup from '../grid/FormGroup'
 import { API } from 'project/api'
 import Row from '../grid/Row'
 import { FC, ReactNode } from 'react'
 import { StyleProp, TextStyle, ViewStyle } from 'react-native'
+import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro'
 
 interface Props {
   disabled?: boolean
@@ -84,7 +84,7 @@ const SelectBox: FC<Props> = ({
                   position: 'absolute',
                   right: 0,
                   top: 1,
-                  height: 24,
+                  height: 20,
                   paddingLeft: 15,
                   justifyContent: 'center',
                 },
@@ -95,7 +95,7 @@ const SelectBox: FC<Props> = ({
                 dropIcon
               ) : (
                 <>
-                  <Icon name='chevron-down' />
+                  <FA5Pro name='chevron-down' />
                 </>
               )}
             </View>
