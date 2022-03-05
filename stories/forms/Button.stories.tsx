@@ -1,9 +1,11 @@
 import { ComponentStory } from '@storybook/react'
 import '../../styles/Global.scss'
 import Button, {
+  ButtonDanger,
+  ButtonOutlinePrimary,
   ButtonPrimary,
   ButtonSecondary,
-  ButtonTertiary,
+  ButtonText,
 } from 'components/base/forms/Button'
 
 export default {
@@ -12,29 +14,63 @@ export default {
 }
 
 export const Primary: ComponentStory<typeof ButtonPrimary> = (args) => (
-  <>
-    <div className='main pt-5 pb-5 pl-5'>
-      <ButtonPrimary {...args}>
-        Button <i className='fas fa-arrow-right ml-1' />
-      </ButtonPrimary>
-    </div>
-  </>
-)
-
-export const Tertiary: ComponentStory<typeof ButtonTertiary> = (args) => (
-  <div className='main pt-5 pb-5 pl-5'>
-    <ButtonTertiary {...args}>
-      Login <i className='fas fa-user ml-1 text-brand-primary'></i>
-    </ButtonTertiary>
-  </div>
+  <ButtonPrimary icon='fas fa-arrow-right' {...args}>
+    Button
+  </ButtonPrimary>
 )
 
 export const Secondary: ComponentStory<typeof ButtonSecondary> = (args) => (
-  <div className='main pt-5 pb-5 pl-5'>
-    <ButtonSecondary {...args}>
-      Login <i className='fas fa-user ml-1 text-brand-primary'></i>
+  <ButtonSecondary icon='fas fa-user text-brand-primary' {...args}>
+    Login
+  </ButtonSecondary>
+)
+
+export const All: ComponentStory<typeof ButtonPrimary> = (args) => (
+  <>
+    <ButtonPrimary icon='fas fa-arrow-right' className='mb-3 d-block' {...args}>
+      Button
+    </ButtonPrimary>
+
+    <ButtonOutlinePrimary className='mb-3 d-block' {...args}>
+      Outline Primary
+    </ButtonOutlinePrimary>
+
+    <ButtonSecondary icon='fas fa-arrow-right' className='mb-3' {...args}>
+      Button
     </ButtonSecondary>
-  </div>
+
+    <ButtonDanger className='d-block mb-3' {...args}>
+      Danger
+    </ButtonDanger>
+
+    <ButtonText className='d-block mb-3' {...args}>
+      Link
+    </ButtonText>
+  </>
+)
+
+export const Sizes: ComponentStory<typeof ButtonPrimary> = (args) => (
+  <>
+    <ButtonPrimary
+      icon='fas fa-arrow-right'
+      className='btn-lg mb-3 d-block'
+      {...args}
+    >
+      Button
+    </ButtonPrimary>
+
+    <ButtonPrimary icon='fas fa-arrow-right' className='mb-3 d-block' {...args}>
+      Button
+    </ButtonPrimary>
+
+    <ButtonPrimary
+      icon='fas fa-arrow-right'
+      className='btn-sm d-block'
+      {...args}
+    >
+      Button
+    </ButtonPrimary>
+  </>
 )
 
 Primary.args = {
@@ -45,6 +81,6 @@ Secondary.args = {
   disabled: false,
 }
 
-Tertiary.args = {
+Sizes.args = {
   disabled: false,
 }

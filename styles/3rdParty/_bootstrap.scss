@@ -1,61 +1,51 @@
-/*!
- * Bootstrap v4.1.1 (https://getbootstrap.com/)
- * Copyright 2011-2018 The Bootstrap Authors
- * Copyright 2011-2018 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+// Custom.scss
+// Option B: Include parts of Bootstrap
 
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "~bootstrap/scss/functions";
-@import "../variables";
-@import "~bootstrap/scss/mixins";
-@import "~bootstrap/scss/root";
-@import "~bootstrap/scss/reboot";
+
+// 2. Include any default variable overrides in styles/_variables.scss
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "~bootstrap/scss/variables"; // Required
+@import "~bootstrap/scss/mixins"; // Required
+@import "~bootstrap/scss/root"; // Required
+@import "~bootstrap/scss/reboot"; // Required
+
+// 4. Include any optional Bootstrap CSS as needed
 @import "~bootstrap/scss/type";
 @import "~bootstrap/scss/images";
-//@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/containers";
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
 @import "~bootstrap/scss/buttons";
 @import "~bootstrap/scss/transitions";
 @import "~bootstrap/scss/dropdown";
-//@import "~bootstrap/scss/button-group";
-@import "~bootstrap/scss/input-group";
-//@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/button-group";
 @import "~bootstrap/scss/nav";
-@import "~bootstrap/scss/navbar";
-//@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/navbar"; // Requires nav
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/accordion";
 @import "~bootstrap/scss/breadcrumb";
-//@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/pagination";
 @import "~bootstrap/scss/badge";
-//@import "~bootstrap/scss/jumbotron";
 @import "~bootstrap/scss/alert";
-//@import "~bootstrap/scss/progress";
-@import "~bootstrap/scss/media";
-//@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/list-group";
 @import "~bootstrap/scss/close";
-@import "~bootstrap/scss/modal";
-//@import "~bootstrap/scss/tooltip";
-//@import "~bootstrap/scss/popover";
-//@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/toasts";
+@import "~bootstrap/scss/modal"; // Requires transitions
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/spinners";
+@import "~bootstrap/scss/offcanvas";
+@import "~bootstrap/scss/placeholders";
 @import "~bootstrap/scss/utilities";
-@import "~bootstrap/scss/print";
 
-.dropdown {
-  z-index: 2;
-}
 
-// Responsive visibility utilities
+// 5. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "~bootstrap/scss/utilities/api";
 
-@each $bp in map-keys($grid-breakpoints) {
-  .hidden-#{$bp}-up {
-    @include media-breakpoint-up($bp) {
-      display: none !important;
-    }
-  }
-  .hidden-#{$bp}-down {
-    @include media-breakpoint-down($bp) {
-      display: none !important;
-    }
-  }
-}
+// 6. Add additional custom code here

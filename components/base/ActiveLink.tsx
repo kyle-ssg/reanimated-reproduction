@@ -4,16 +4,16 @@ import { Children, cloneElement, FC } from 'react'
 
 interface ActiveLinkType {
   href?: string
-  match: any
-  as: string
+  match?: any
+  as?: string
   activeClassName?: string
 }
 
 const ActiveLink: FC<ActiveLinkType> = ({
-  match,
   href = '',
-  as,
-  activeClassName = '',
+  match,
+  as = href,
+  activeClassName = 'active',
   children,
 }) => {
   const router = useRouter()

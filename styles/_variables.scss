@@ -2,34 +2,69 @@
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/variables";
 
-// Adding fonts
-//@font-face {
-//  font-family: 'Proxima Nova';
-//  src: url('/static/fonts/Proxima-Nova-Regular.woff');
-//  font-display:swap;
-//}
-//@font-face {
-//  font-family: 'Proxima Nova';
-//  src: url('/static/fonts/Proxima-Nova-Semibold.woff');
-//  font-weight:bold;
-//  font-display:swap;
-//}
-//@font-face {
-//  font-family: 'Proxima Nova Bold';
-//  src: url('/static/fonts/Proxima-Nova-Semibold.woff');
-//  font-display:swap;
-//}
+// Customize some Bootstrap defaults
+//$body-color: #333;
+$body-bg: #fefefe;
+//$border-radius: .4rem;
 
-// COLORS
+// Override some or all of Bootstrap's individual color variables
+
+// Colours
+$primary: #1AC0C6;
+$secondary: #2C2733;
+$success: #3e8d63;
+$info: #13101c;
+$warning: #945707;
+$danger: #d62518;
+$light: #f8f9fa;
+$dark: #343a40;
+//Links
+$link-color: $primary;
+$link-hover-color: shift-color($primary, $link-shade-percentage);
+$btn-link-color: $link-color;
+$btn-link-hover-color: $link-hover-color;
+//Forms
+$component-active-bg: $primary;
+$input-btn-focus-color: rgba($component-active-bg, $input-btn-focus-color-opacity);
+$input-btn-focus-box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width $input-btn-focus-color;
+$form-check-input-focus-border: $input-focus-border-color;
+$form-check-input-focus-box-shadow: $input-btn-focus-box-shadow;
+$form-check-input-checked-bg-color: $primary;
+$form-check-input-checked-border-color: darken($primary, 10);
+//Inputs
+$input-focus-border-color: tint-color($component-active-bg, 50%);
+$input-focus-box-shadow: $input-btn-focus-box-shadow;
+//Select
+$form-select-focus-box-shadow:    0 0 0 $form-select-focus-width $input-btn-focus-color;
+$form-select-focus-border-color:  $input-focus-border-color;
+//Tabs
+$nav-link-color: $link-color;
+$nav-link-hover-color: $link-hover-color;
+$nav-pills-link-active-bg:          $component-active-bg;
+//Buttons
+$btn-focus-box-shadow: $input-btn-focus-box-shadow;
+
+// Then add them to your custom theme-colors map, together with any additional colors you might need
+$theme-colors: (
+        primary: $primary,
+        secondary: $secondary,
+        success: $success,
+        info: $info,
+        warning: $warning,
+        danger: $danger,
+        light: $light,
+        dark: $dark,
+  // add any additional color below
+);
+
+// Colours (old - needs removing)
 $brand-primary: #1AC0C6;
 $brand-secondary: #2C2733;
-$link-color: #1AC0C6;
-$text: #333;
 
+$text: #333;
 
 // Border Radius
 $base-border-radius: 6px;
-
 
 //Input component variables
 $alert-danger-border: #c70000;

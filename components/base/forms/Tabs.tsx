@@ -49,7 +49,7 @@ const Tabs: FC<Tabs> = ({
         })}
       </div>
 
-      <div className='tabs-content'>
+      <div className='tabs-content' id='pills-tabContent'>
         {children?.map((child, i) => {
           const isSelected = uncontrolled ? _value === i : value === i
           return (

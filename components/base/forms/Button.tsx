@@ -24,11 +24,7 @@ export const Button: FC<ButtonType> = ({
   >
     {children}
 
-    {icon ? (
-      <div className='btn__icon'>
-        <i className={cn({ icon: true }, icon)} />
-      </div>
-    ) : null}
+    {icon ? <i className={cn({ icon: true }, 'p-1', icon)} /> : null}
   </button>
 )
 
@@ -36,19 +32,19 @@ Button.displayName = 'Button'
 export default Button
 
 export const ButtonText: FC<ButtonType> = ({ className, ...props }) => (
-  <Button {...props} className={cn(className, 'btn btn-text')} />
+  <Button {...props} className={cn(className, 'btn-link')} />
 )
 
 /** Default button added btn-primary * */
 export const ButtonPrimary: FC<ButtonType> = ({ className, ...props }) => (
-  <Button {...props} className={cn(className, 'btn btn-primary')} />
+  <Button {...props} className={cn(className, 'btn-primary')} />
 )
 
 ButtonPrimary.displayName = 'ButtonPrimary'
 
 /** Default button added btn-secondary * */
 export const ButtonSecondary: FC<ButtonType> = ({ className, ...props }) => (
-  <Button {...props} className={cn(className, 'btn btn-secondary')} />
+  <Button {...props} className={cn(className, 'btn-secondary')} />
 )
 
 ButtonSecondary.displayName = 'ButtonSecondary'
@@ -59,8 +55,9 @@ export const ButtonDanger: FC<ButtonType> = ({ className, ...props }) => (
 ButtonDanger.displayName = 'ButtonDanger'
 
 /** Default button added btn-outline-primary * */
-export const ButtonTertiary: FC<ButtonType> = ({ className, ...props }) => (
-  <Button {...props} className={cn(className, 'btn btn-outline-primary')} />
-)
+export const ButtonOutlinePrimary: FC<ButtonType> = ({
+  className,
+  ...props
+}) => <Button {...props} className={cn(className, 'btn btn-outline-primary')} />
 
-ButtonTertiary.displayName = 'ButtonButtonTertiary'
+ButtonOutlinePrimary.displayName = 'ButtonOutlinePrimary'
