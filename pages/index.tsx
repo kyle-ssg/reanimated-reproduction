@@ -10,7 +10,7 @@ import Strings from '../project/localisation'
 export type HomePageType = {}
 const HomePage: NextPageWithLayout<HomePageType> = () => {
   // useLoggedInRedirect()
-  const { login, logout, user, loginSuccess, userError } = useUser()
+  const { login, loginSuccess, userError } = useUser()
   useEffect(() => {
     if (loginSuccess) {
       toast('')

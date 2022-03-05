@@ -1,10 +1,8 @@
 /// <reference types="lodash" />
 import {
-  ImageProps,
   Dimensions,
+  ImageProps,
   ScrollViewProps,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  StyleSheet,
   TextProps,
   ViewProps,
 } from 'react-native'
@@ -12,7 +10,6 @@ import { ComponentType } from 'react'
 import { styleTypes } from '../app/style/_style_screen'
 import { palette, styleVariables } from '../app/style/style_variables'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import routes from '../app/routes'
 declare global {
   //React Native Globals
   let Text: ComponentType<TextProps>

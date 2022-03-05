@@ -1,4 +1,4 @@
-import { ReactNode, FC, useEffect, useState } from 'react'
+import { FC, ReactNode, useEffect, useState } from 'react'
 
 type Props = {
   delay?: number

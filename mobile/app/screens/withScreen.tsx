@@ -6,7 +6,6 @@ import {
   useRoute,
 } from '@react-navigation/native'
 import { styleVariables } from 'app/style/style_variables'
-import { AppActions } from 'common/app-actions'
 import {
   ComponentType,
   ReactChildren,
@@ -25,7 +24,6 @@ import {
   NativeStackNavigationOptions,
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack'
-import { useDispatch } from 'react-redux'
 import { ScreenErrorBoundary } from 'screens/ScreenErrorBoundary'
 
 export interface IRouteParams {
@@ -61,7 +59,7 @@ export type ScreenProps = {
   }
 }
 
-const withScreen = (Component: ComponentType, isChild = false) => {
+const withScreen = (Component: ComponentType) => {
   return function WithScreen(props: ScreenProps) {
     const route = useRoute<IRouteProps>()
     const statusColour = useRef(
@@ -69,7 +67,6 @@ const withScreen = (Component: ComponentType, isChild = false) => {
         styleVariables.defaultStatusBarColour,
     )
     const navigation = useNavigation<NativeStackNavigationProp<any>>()
-    const dispatch = useDispatch()
     useEffect(() => {
       if (
         (route?.params?.statusBar?.barStyle ||
@@ -81,21 +78,6 @@ const withScreen = (Component: ComponentType, isChild = false) => {
         StatusBar.setBarStyle(statusColour.current as StatusBarStyle, true)
       }
     }, [route])
-
-    if (!isChild) {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      useEffect(() => {
-        // @ts-ignore
-        const unsubscribe = navigation.addListener('focus', () => {
-          dispatch(AppActions.setActiveScreen(route.name))
-          StatusBar.setBarStyle(statusColour.current as StatusBarStyle, true)
-        })
-        return () => {
-          unsubscribe()
-          return
-        }
-      }, [navigation, dispatch, route])
-    }
 
     const resetTo = useCallback(
       (name, params) => {

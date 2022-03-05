@@ -3,11 +3,11 @@ import _ModalBody from 'reactstrap/lib/ModalBody'
 import _Modal, { ModalProps } from 'reactstrap/lib/Modal'
 import _ModalFooter from 'reactstrap/lib/ModalFooter'
 import { JSXElementConstructor, useCallback, useState } from 'react'
-import { unmountComponentAtNode, render } from 'react-dom'
+import { render, unmountComponentAtNode } from 'react-dom'
 import Confirm from './ModalConfirm'
 import ModalDefault from './ModalDefault'
 import Alert from './ModalAlert'
-import { store } from 'common/store'
+import { getStore } from 'common/store'
 import { Provider } from 'react-redux'
 
 export const ModalHeader = _ModalHeader
@@ -24,7 +24,7 @@ const withModal = (WrappedComponent: JSXElementConstructor<any>) => {
     global.closeModal = toggle
 
     return (
-      <Provider store={store()}>
+      <Provider store={getStore()}>
         <WrappedComponent toggle={toggle} {...props} isOpen={isOpen} />
       </Provider>
     )

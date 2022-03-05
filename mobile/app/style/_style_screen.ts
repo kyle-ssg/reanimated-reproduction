@@ -2,7 +2,7 @@
  * Created by kylejohnson on 07/09/15.
  */
 // eslint-disable-next-line
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from "react-native";
 import './style_variables'
 import projectBase from './style_base'
 import projectButtons from './style_buttons'

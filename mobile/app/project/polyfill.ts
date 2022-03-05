@@ -6,5 +6,4 @@ import './api'
 // import 'intl'
 // import 'intl/locale-data/jsonp/en'
 // "intl": "^1.2.5",
-
 import 'common/polyfill-common'

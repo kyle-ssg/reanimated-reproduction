@@ -1,10 +1,11 @@
 import { FC, useEffect } from 'react'
-import { useAuth } from 'common/hooks/useAuth'
 import { useAppState } from '@react-native-community/hooks'
 import { rootPush } from 'navigation/RootNavigation'
 import { FirebaseMessagingTypes } from '@react-native-firebase/messaging'
 import { API } from 'project/api'
 import { Constants } from 'common/utils'
+import { getUser, useUser } from 'common/hooks/useUser'
+import { getStore } from 'common/store'
 
 type ComponentType = {}
 const subscribe = async (id) => {
@@ -28,7 +29,7 @@ const subscribe = async (id) => {
   }
 }
 const LinkHandler: FC<ComponentType> = ({}) => {
-  const { user, getUser } = useAuth()
+  const { user } = useUser()
   const id = user?.id
   const currentAppState = useAppState()
 
@@ -40,9 +41,9 @@ const LinkHandler: FC<ComponentType> = ({}) => {
   useEffect(() => {
     if (id && currentAppState === 'active') {
       subscribe(id)
-      getUser({ id })
+      getUser(getStore(), {})
     }
-  }, [id, getUser, currentAppState])
+  }, [id, currentAppState])
 
   return <></>
 }

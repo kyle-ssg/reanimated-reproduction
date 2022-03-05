@@ -1,8 +1,8 @@
 import { createWrapper } from 'next-redux-wrapper'
-import { store, StoreStateType } from 'common/store'
+import { getStore, StoreStateType } from 'common/store'
 import { Store } from 'redux'
 import { Project } from 'common/project'
 
-export const nextReduxWrapper = createWrapper<Store<StoreStateType>>(store, {
+export const nextReduxWrapper = createWrapper<Store<StoreStateType>>(getStore, {
   debug: Project.logs.DISPATCHER,
 })

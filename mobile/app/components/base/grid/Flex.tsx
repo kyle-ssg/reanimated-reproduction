@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import { View, StyleProp, ViewStyle } from 'react-native'
+import { StyleProp, View, ViewStyle } from 'react-native'
 
 export type FlexType = {
   accessible?: boolean

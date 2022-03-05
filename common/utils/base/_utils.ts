@@ -1,4 +1,4 @@
-import { SyntheticEvent, KeyboardEvent, FormEvent } from 'react'
+import { FormEvent, KeyboardEvent, SyntheticEvent } from 'react'
 
 const KEY_Y = 89
 const KEY_Z = 90

@@ -1,10 +1,8 @@
 //Anything that provides functionality that would benefit from being accessed by common
 
-import { AppActions } from 'common/app-actions'
 import 'common/project'
-import { default as getStoreDangerous } from 'common/store'
 // import _analytics from "@react-native-firebase/analytics";  // ^7.3.1
-import { APIType } from 'common/types/api-type'
+import { ApiTypes } from 'common/api/types/api-types'
 import { errorHandler } from 'common/utils/errorHandler'
 import { Alert, PixelRatio, Share } from 'react-native'
 // import BottomSheet from 'react-native-bottomsheet'
@@ -18,12 +16,14 @@ import { FirebaseMessagingTypes } from '@react-native-firebase/messaging'
 import * as RootNavigation from 'navigation/RootNavigation'
 import { setApi } from 'common/api'
 import { RouteUrls } from '../../route-urls'
+import { logout } from 'common/hooks/useUser'
+import { getStore } from 'common/store'
 
 // @ts-ignore
 const analytics = typeof _analytics === 'undefined' ? undefined : _analytics
 
 const ratio = PixelRatio.get()
-interface MobileAPI extends APIType<FirebaseMessagingTypes.RemoteMessage> {
+interface MobileAPI extends ApiTypes<FirebaseMessagingTypes.RemoteMessage> {
   showOptions: any
   share: any
   showUpload: any
@@ -54,9 +54,9 @@ const API: MobileAPI = {
     RootNavigation.resetTo(0, [{ name: RouteUrls.HomeScreen }])
   },
   logout: () => {
-    const store = getStoreDangerous()
+    const store = getStore()
     if (store.getState().user) {
-      store.dispatch(AppActions.logout({}))
+      logout(store, {})
     }
   },
   trackEvent(data) {

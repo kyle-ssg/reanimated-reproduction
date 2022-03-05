@@ -4,6 +4,7 @@ import ScreenContainer from 'components/ScreenContainer'
 import Button from 'components/base/forms/Button'
 import Styles from '../style/_style_screen'
 import { RouteUrls } from '../route-urls'
+
 interface HomeScreen {
   modalVisible: boolean
   push: (name: string, routeParams?: Partial<IRouteParams>) => void

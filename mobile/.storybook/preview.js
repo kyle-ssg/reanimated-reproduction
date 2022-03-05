@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, StyleSheet, SafeAreaView } from "react-native";
+import React from "react";
+import { SafeAreaView } from "react-native";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { SafeAreaProvider } from "react-native-safe-area-context/src/SafeAreaContext";
 

@@ -1,6 +1,8 @@
 import { by, device, element, waitFor } from 'detox'
 import fetch from 'node-fetch'
 import { Project } from 'common/project'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+import { getText } from 'detox-getprops'
 
 export const waitForElementVisible = async (id) => {
   try {
@@ -15,8 +17,6 @@ export const waitByType = (theType) =>
   waitFor(element(by.type(theType)))
     .toBeVisible()
     .withTimeout(30000)
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-import { getText } from 'detox-getprops'
 
 const platformSelect = (obj) => {
   return device.getPlatform() === 'ios' ? obj.ios : obj.android

@@ -1,4 +1,4 @@
-import { View, StyleProp, ViewStyle } from 'react-native'
+import { StyleProp, View, ViewStyle } from 'react-native'
 import { FC, ReactNode } from 'react'
 
 export type RowType = {

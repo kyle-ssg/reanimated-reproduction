@@ -16,7 +16,7 @@ $ npm install -g ssgrtk
 $ ssg COMMAND
 running command...
 $ ssg (--version)
-ssgrtk/0.1.7 darwin-x64 node-v16.13.2
+ssgrtk/0.1.8 darwin-x64 node-v16.13.2
 $ ssg --help [COMMAND]
 USAGE
   $ ssg COMMAND
@@ -53,7 +53,7 @@ DESCRIPTION
   Reducer Slice: Dispatch an action that stores global state
 ```
 
-_See code: [dist/commands/action.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.7/dist/commands/action.ts)_
+_See code: [dist/commands/action.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/action.ts)_
 
 ## `ssg collection`
 
@@ -67,7 +67,7 @@ DESCRIPTION
   RTK Service: Retrieve a collection of things from an api
 ```
 
-_See code: [dist/commands/collection.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.7/dist/commands/collection.ts)_
+_See code: [dist/commands/collection.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/collection.ts)_
 
 ## `ssg create`
 
@@ -81,7 +81,7 @@ DESCRIPTION
   RTK Service: Create a thing with an api
 ```
 
-_See code: [dist/commands/create.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.7/dist/commands/create.ts)_
+_See code: [dist/commands/create.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/create.ts)_
 
 ## `ssg crud`
 
@@ -95,7 +95,7 @@ DESCRIPTION
   RTK Service: Create,get,update and delete a thing with an api
 ```
 
-_See code: [dist/commands/crud.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.7/dist/commands/crud.ts)_
+_See code: [dist/commands/crud.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/crud.ts)_
 
 ## `ssg delete`
 
@@ -109,7 +109,7 @@ DESCRIPTION
   RTK Service: Delete a thing with an api
 ```
 
-_See code: [dist/commands/delete.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.7/dist/commands/delete.ts)_
+_See code: [dist/commands/delete.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/delete.ts)_
 
 ## `ssg get`
 
@@ -123,7 +123,7 @@ DESCRIPTION
   RTK Service: Get a thing with an api
 ```
 
-_See code: [dist/commands/get.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.7/dist/commands/get.ts)_
+_See code: [dist/commands/get.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/get.ts)_
 
 ## `ssg help [COMMAND]`
 
@@ -157,7 +157,7 @@ DESCRIPTION
   RTK Service: Patch a thing with an api
 ```
 
-_See code: [dist/commands/patch.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.7/dist/commands/patch.ts)_
+_See code: [dist/commands/patch.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/patch.ts)_
 
 ## `ssg plugins`
 
@@ -317,5 +317,5 @@ DESCRIPTION
   RTK Service: Update a thing with an api
 ```
 
-_See code: [dist/commands/update.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.7/dist/commands/update.ts)_
+_See code: [dist/commands/update.ts](https://github.com/kyle-ssg/hello-world/blob/v0.1.8/dist/commands/update.ts)_
 <!-- commandsstop -->

@@ -6,6 +6,7 @@ import Column from './grid/Column'
 import Button from './forms/Button'
 import Flex from 'components/base/grid/Flex'
 import Fade from 'components/base/animation/Fade'
+
 interface Props {
   componentId?: string
   value?: {}

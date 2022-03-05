@@ -1,4 +1,10 @@
-import { createContext, useEffect, useRef, useState } from 'react'
+import {
+  createContext,
+  FunctionComponent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import { Dimensions } from 'react-native'
 
 const sm = 576
@@ -31,8 +37,6 @@ export const breakpointValues = {
 }
 
 export const BreakpointContext = createContext<string>(getBreakpoint())
-
-import { FunctionComponent } from 'react'
 
 type ComponentType = {}
 

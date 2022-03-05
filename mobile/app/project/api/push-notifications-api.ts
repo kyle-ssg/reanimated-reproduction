@@ -2,7 +2,7 @@ import messaging, {
   FirebaseMessagingTypes,
 } from '@react-native-firebase/messaging'
 import { getApi } from 'common/api'
-import { APIType } from 'common/types/api-type'
+import { ApiTypes } from 'common/api/types/api-types'
 import { Platform } from 'react-native'
 
 if (typeof messaging === 'undefined') {
@@ -83,5 +83,5 @@ const PushManager = class {
     return token
   }
 }
-const pushManager: APIType['push'] = new PushManager()
+const pushManager: ApiTypes['push'] = new PushManager()
 export default pushManager

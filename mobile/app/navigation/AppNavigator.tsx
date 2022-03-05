@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { enableScreens } from 'react-native-screens'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { AppActions } from 'common/app-actions'
 import '../project/api'
 import '../routes'
-import _store from 'common/store'
+import { getStore } from 'common/store'
 import defaultNavigationOptions from '../style/navigation_styles'
 import { RouteUrls } from '../route-urls'
 import LinkHandler from 'components/LinkHandler'
@@ -14,17 +13,15 @@ import { Constants } from 'common/utils'
 import Loader from 'components/base/Loader'
 import { DevSettings } from 'react-native'
 import { API } from 'project/api'
+import StorybookUIRoot from '../../.storybook/Storybook'
+import { startup } from 'common/hooks/useStartup'
 // import Cognito from "common/cognito";
 
 // API.auth.Cognito.init(Project.cognitoMobile)
-const store = _store()
 
 enableScreens()
 const Stack = createNativeStackNavigator()
 const Navigator = Stack.Navigator
-
-import { FC } from 'react'
-import StorybookUIRoot from '../../.storybook/Storybook'
 
 type ComponentType = {}
 const _bootstrapAsync = async (): Promise<{
@@ -42,21 +39,12 @@ const _bootstrapAsync = async (): Promise<{
   }
 
   if (token) {
-    return await new Promise((resolve) => {
-      store.dispatch(
-        AppActions.startup(
-          { token, user, locale: user?.locale || Strings.getLanguage() },
-          {
-            onSuccess: () => {
-              resolve({ user: true, showStorybook })
-            },
-            onError: () => {
-              resolve({ user: false, showStorybook })
-            },
-          },
-        ),
-      )
+    await startup(getStore(), {
+      token,
+      // user,
+      locale: user?.locale || Strings.getLanguage(),
     })
+    return { user, showStorybook }
   }
   return {
     user: false,

@@ -1,6 +1,7 @@
 import { FunctionComponent, useState } from 'react'
 // @ts-ignore
 import Animated, { useSharedValue } from 'react-native-reanimated'
+
 type RenderProps = {
   value: any
   setValue: (v: any) => void

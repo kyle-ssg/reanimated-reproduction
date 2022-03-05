@@ -3,7 +3,6 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
   useSharedValue,
-  // @ts-ignore
 } from 'react-native-reanimated'
 
 type ComponentType = {

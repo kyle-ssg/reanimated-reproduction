@@ -1,7 +1,7 @@
 // import propTypes from 'prop-types';
 import { FunctionComponent } from 'react'
 import _HTML, { defaultSystemFonts } from 'react-native-render-html'
-import { useWindowDimensions, Linking, TextStyle } from 'react-native'
+import { Linking, TextStyle, useWindowDimensions } from 'react-native'
 import { paddingBase } from '../style/style_grid'
 import { MixedStyleDeclaration } from '@native-html/transient-render-engine'
 import { palette, styleVariables } from 'app/style/style_variables'

@@ -2,13 +2,13 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
 import { LogBox, StatusBar } from 'react-native'
-import _store from 'common/store'
+import { getPersistor, getStore } from 'common/store'
 import { NavigationContainer } from '@react-navigation/native'
 import AppNavigator from 'navigation/AppNavigator'
 import { navigationRef } from 'navigation/RootNavigation'
 import NeverUpdate from 'components/NeverUpdate'
 import ScreenContainer from 'components/ScreenContainer'
-import LanguageHandler from 'common/LanguageHandler'
+import LanguageHandler from 'common/components/LanguageHandler'
 import 'common/utils/_data'
 import { LaunchArguments } from 'react-native-launch-arguments'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -22,7 +22,7 @@ if (launchArgs.namespace) {
   Constants.E2E = true
   Constants.E2E_NAMESPACE = launchArgs.namespace
 }
-const store = _store()
+const store = getStore()
 
 const linking = {
   prefixes: ['mobile://'],
@@ -40,7 +40,7 @@ const App: FunctionComponent<Props> = () => (
     />
     <ScreenContainer withoutSafeAreaView={true}>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={store.__PERSISTOR}>
+        <PersistGate loading={null} persistor={getPersistor()}>
           <NeverUpdate>
             {/*// @ts-ignore*/}
             <BreakpointProvider>

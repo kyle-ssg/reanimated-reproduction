@@ -23,6 +23,7 @@ import Loader from 'components/base/Loader.tsx'
 import ListItem from 'components/base/ListItem'
 // Animation
 import Fade from 'components/base/animation/Fade'
+
 global.Fade = Fade
 global.Button = Button
 global.ButtonPrimary = ButtonPrimary

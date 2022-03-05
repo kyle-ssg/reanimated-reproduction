@@ -1,10 +1,10 @@
 import {
   ChangeEvent,
   FC,
+  FocusEvent as _FocusEvent,
+  KeyboardEvent,
   ReactChild,
   ReactChildren,
-  KeyboardEvent,
-  FocusEvent as _FocusEvent,
   useRef,
   useState,
 } from 'react'

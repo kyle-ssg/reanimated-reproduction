@@ -8,7 +8,7 @@ const SecuredPage = () => {
   return (
     <div className='container-fluid'>
       Secret page
-      <Button onClick={() => logout()}>Logout</Button>
+      <Button onClick={() => logout({})}>Logout</Button>
     </div>
   )
 }

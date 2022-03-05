@@ -7,11 +7,11 @@ import FormGroup from 'components/base/grid/FormGroup'
 import { palette } from 'app/style/style_variables'
 import {
   Platform,
-  TextInputProps as _TextInputProps,
-  TextInput as _TextInput,
   StyleProp,
-  ViewStyle,
+  TextInput as _TextInput,
+  TextInputProps as _TextInputProps,
   TextStyle,
+  ViewStyle,
 } from 'react-native'
 import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro'
 

@@ -1,5 +1,6 @@
 import { ComponentStory } from '@storybook/react-native'
 import Loader from 'components/base/Loader'
+
 export default {
   title: 'Loader',
   component: Loader,
