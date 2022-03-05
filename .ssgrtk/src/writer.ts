@@ -66,10 +66,10 @@ const apiName = function (url:string) {
 export async function writeExport(name:string, functionName:string, queryFunctionName:string) {
   const hookPath = await getServicePath(name)
   await writeGeneric(hookPath, queryFunctionName+",", exportPointer, "Exports",queryFunctionName+",")
-  await writeGeneric(hookPath, `export async function ${functionName}(store: any, data: Req['${functionName}']) {
-  store.dispatch(${singular(name)}Service.endpoints.${functionName}.initiate(data))
+  await writeGeneric(hookPath, `export async function ${functionName}(store: any, data: Req['${functionName}'], options?: Parameters<typeof ${singular(name)}Service.endpoints.${functionName}.initiate>[1]) {
+  store.dispatch(${singular(name)}Service.endpoints.${functionName}.initiate(data,options))
   return ${singular(name)}Service.util.getRunningOperationPromises();
-}`,functionPointer,'Function export', `export async function ${functionName}`)
+}`,functionPointer,'Function export', `export async function ${functionName}(`)
 }
 
 
