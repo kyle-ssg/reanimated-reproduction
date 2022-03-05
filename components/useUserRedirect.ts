@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useUser } from 'common/hooks/useUser'
-import { StoreStateType } from '../common/store'
+import { StoreStateType } from 'common/store'
 
 export default function useUserRedirect(): {
   user: StoreStateType['user']

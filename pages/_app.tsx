@@ -9,7 +9,7 @@ import NProgress from 'components/util/NProgress'
 import Strings from 'project/localisation'
 // import { ToastContainer } from 'react-toastify'
 import Head from 'next/head'
-import { startupActions } from '../common/hooks/useStartup'
+import { startupActions } from 'common/hooks/useStartup'
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout

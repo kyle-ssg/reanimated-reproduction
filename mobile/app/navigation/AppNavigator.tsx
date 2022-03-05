@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react'
 import { enableScreens } from 'react-native-screens'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import '../project/api'
+import 'project/api'
 import '../routes'
 import { getStore } from 'common/store'
 import defaultNavigationOptions from '../style/navigation_styles'

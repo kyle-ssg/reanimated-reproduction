@@ -1,5 +1,5 @@
 import { FunctionComponent, useCallback, useEffect, useRef } from 'react'
-import { useMeasure } from '../project/animation-util/useMeasure'
+import { useMeasure } from 'project/animation-util/useMeasure'
 import {
   Pressable,
   StyleSheet,

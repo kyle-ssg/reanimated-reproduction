@@ -1,11 +1,11 @@
 import { NextPageWithLayout } from 'types/nextPageWithLayout'
 import { nextReduxWrapper } from 'components/util/nextReduxWrapper'
 import { ServerSidePageProps } from '../types/serversidePageProps'
-import { useUser } from '../common/hooks/useUser'
+import { useUser } from 'common/hooks/useUser'
 import { useEffect } from 'react'
 import Button from 'components/base/forms/Button'
 import { toast, ToastContainer } from 'react-toastify'
-import Strings from '../project/localisation'
+import Strings from 'project/localisation'
 
 export type HomePageType = {}
 const HomePage: NextPageWithLayout<HomePageType> = () => {

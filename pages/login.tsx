@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import ErrorMessage from 'components/Messages'
 import { ButtonPrimary } from 'components/base/forms/Button'
 import { Utils } from 'common/utils'
-import Input from '../components/base/forms/Input'
+import Input from 'components/base/forms/Input'
 import useLoggedInRedirect from 'common/hooks/useLoggedInRedirect'
 import { useUser } from 'common/hooks/useUser'
 

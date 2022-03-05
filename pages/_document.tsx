@@ -3,7 +3,7 @@
 
 // ./pages/_document.js
 
-import '../project/polyfill'
+import 'project/polyfill'
 import Document, {
   DocumentContext,
   Head,
