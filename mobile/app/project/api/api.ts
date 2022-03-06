@@ -35,15 +35,6 @@ const API: MobileAPI = {
   reduxStorage: storage,
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   middlewares: [require('redux-flipper-colorized').default()],
-  ajaxHandler(type, e) {
-    return {
-      type,
-      error: errorHandler({
-        defaultErrorMessage: Strings.defaultErrorMessage,
-        gatewayTimeoutError: Strings.gatewayTimeoutError,
-      })(e),
-    }
-  },
   log(namespace: string, ...args: any[]) {
     if (Project.logs[namespace]) {
       // eslint-disable-next-line no-console
