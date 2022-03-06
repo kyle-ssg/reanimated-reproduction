@@ -38,7 +38,6 @@ export interface ApiTypes<NotificationType = any> {
   isMobile: () => boolean
   reduxStorage?: StorageType
   middlewares: Middleware[] | []
-  ajaxHandler: (type: string, e: any) => { type: string; error: string }
   log: (namespace: keyof typeof Project['logs'], ...args: any[]) => void
   logout: () => void
   loginRedirect: () => void

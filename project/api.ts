@@ -37,15 +37,6 @@ const API: WebAPI = {
     }
     Router.replace(path)
   },
-  ajaxHandler(type: string, e?: { message: string }) {
-    return {
-      type,
-      error: errorHandler({
-        defaultErrorMessage: Strings.defaultErrorMessage,
-        gatewayTimeoutError: Strings.gatewayTimeoutError,
-      })(e),
-    }
-  },
   middlewares: [],
   getStoredLocale: (requestedLocale?: string) => {
     return (

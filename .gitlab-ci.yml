@@ -20,6 +20,7 @@ stages:
   paths:
     - node_modules/
     - .next
+    - .vercel
   policy: pull-push
 
 .mobile_cache: &mobile_cache
@@ -136,7 +137,7 @@ android-production:
 
 .web_deploy_common_script: &web_deploy_common_script
   before_script:
-    - npm i -g now
+    - npm i -g vercel
     - npm run env_script
 
 test:
@@ -167,7 +168,7 @@ web-production:
     - bash
     - npm i
     - npm run test:e2e:prod
-    - now --target production -e STAGED=false --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --prod --build-env ENV=$ENV --name=$CI_PROJECT_NAME
+    - vercel --prod --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --build-env ENV=$ENV --name=$CI_PROJECT_NAME
   only:
     refs:
       - master
@@ -186,8 +187,8 @@ web-feature:
   <<: *web_deploy_common_script
   script:
     - bash
-    - url=$(now --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --local-config now.json --build-env ENV=$ENV --name=$CI_PROJECT_NAME)
-    - now alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url ${CI_PROJECT_NAME}-$CI_COMMIT_REF_SLUG
+    - url=$(vercel --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --build-env ENV=$ENV --name=$CI_PROJECT_NAME)
+    - vercel alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url ${CI_PROJECT_NAME}-$CI_COMMIT_REF_SLUG
   except:
     refs:
       - /^mobile\/.*$/
