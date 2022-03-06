@@ -14,7 +14,7 @@ const defaultContent = {
   login: 'Login',
   pleaseSelect: 'Please Select',
   defaultErrorMessage: 'An unexpected error has occurred',
-  gatewayTimeoutError: 'API is unreachable right now',
+  404: 'Request item not found',
 }
 
 const strings: StringsSingleton = {
