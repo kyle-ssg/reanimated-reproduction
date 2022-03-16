@@ -34,7 +34,6 @@ stages:
 
 .mobile_deploy_common_before_script: &mobile_deploy_common_before_script
   before_script:
-    - echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p # - used to increase file watchers limit on Linux
     - cd mobile
     - npm i
     - npm run env_script
