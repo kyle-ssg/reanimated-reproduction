@@ -24,7 +24,6 @@ steps:
 
 - script: |
     export APPCENTER_ACCESS_TOKEN=$(APPCENTER_ACCESS_TOKEN)
-    echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p # - used to increase file watchers limit on Linux
     cd mobile
     npm i
     npm run env_script
