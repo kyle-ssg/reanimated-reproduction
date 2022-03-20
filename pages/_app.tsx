@@ -43,12 +43,6 @@ class WrappedApp extends App<AppInitialProps> {
         <Head>
           <meta charSet='utf-8' />
           <meta httpEquiv='x-ua-compatible' content='ie=edge' />
-          {/*<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Raleway:100'/>*/}
-          <link rel='preconnect' href='https://fonts.gstatic.com' />
-          <link
-            href='https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&display=swap'
-            rel='stylesheet'
-          />
           <meta name='description' content='TheApp' />
           <meta name='theme-color' content='#317EFB' />
           <meta
