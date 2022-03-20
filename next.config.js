@@ -5,9 +5,9 @@ const withTM = require('next-transpile-modules')([
     // 'react-native-reanimated',
 ])
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-    enabled: process.env.BUNDLE_ANALYZE === 'true',
-})
+const withBundleAnalyzer = process.env.BUNDLE_ANALYZE?  require('@next/bundle-analyzer')({
+    enabled: true,
+}) : ()=> ({})
 
 const nextConfig = async (phase, { defaultConfig }) => {
     const nextConfig = {
