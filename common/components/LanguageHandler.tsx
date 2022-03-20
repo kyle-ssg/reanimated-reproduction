@@ -11,6 +11,9 @@ const LanguageHandler: FunctionComponent<any> = ({ children }) => {
   const { user } = useUser()
   const locale = user?.locale
   const forceLanguage = Constants.simulate.FORCE_LANGUAGE
+  if (forceLanguage) {
+    API.setStoredLocale(forceLanguage)
+  }
   useEffect(() => {
     if (forceLanguage) {
       getStrings().setLanguage(forceLanguage)

@@ -1,14 +1,26 @@
 import Router from 'next/router'
 import { Constants } from 'common/utils/constants'
-import { errorHandler } from 'common/utils/errorHandler'
 import { Project } from 'common/project'
-import Strings from './localisation'
 import { ApiTypes } from 'common/api/types/api-types'
 import { setApi } from 'common/api'
 import storage from './async-storage-api'
 
-interface WebAPI extends ApiTypes {
+interface WebAPI
+  extends ApiTypes<
+    any,
+    {
+      removeItem: (key: string, req?: any) => undefined | unknown
+      getItemSync: (key: string, req?: any) => string
+      setItemSync: (
+        key: string,
+        value: string,
+        req?: any,
+      ) => undefined | unknown
+      removeItemSync: (key: string, req?: any) => undefined | unknown
+    }
+  > {
   getStoredLocale: (requestedLocale?: string) => string
+  setStoredLocale: (requestedLocale: string) => void
   logoutRedirect: () => void
 }
 
@@ -39,11 +51,14 @@ const API: WebAPI = {
   },
   middlewares: [],
   getStoredLocale: (requestedLocale?: string) => {
-    return (
-      Constants.simulate.FORCE_LANGUAGE ||
-      requestedLocale ||
-      Constants.defaultLocale
-    )
+    return API.storage.getItemSync!('NEXT_LOCALE')
+  },
+  setStoredLocale: (locale: string) => {
+    API.storage.setItemSync('NEXT_LOCALE', locale)
+    // @ts-ignore
+    const { pathname, asPath, query } = Router.router.state
+    // @ts-ignore
+    Router.router.push({ pathname, query }, asPath, { locale })
   },
   trackEvent(data) {
     if (__DEV__) {

@@ -10,7 +10,6 @@ export interface StorageType {
     value: string,
     req?: any,
   ) => undefined | Promise<unknown>
-  removeItem: (key: string, req?: any) => undefined | Promise<unknown>
 }
 
 export interface PushType<NotificationType> {
@@ -34,7 +33,7 @@ export interface PushType<NotificationType> {
   stop: () => Promise<void> | void
   refreshTokenListener?: (token: string) => string
 }
-export interface ApiTypes<NotificationType = any> {
+export interface ApiTypes<NotificationType = any, Storage = {}> {
   isMobile: () => boolean
   reduxStorage?: StorageType
   middlewares: Middleware[] | []
@@ -46,7 +45,7 @@ export interface ApiTypes<NotificationType = any> {
   trackPage: (name: string, data?: Record<string, any>) => void
   setStoredToken?: (val: string) => Promise<void>
   setStoredRefreshToken?: (val: string) => Promise<void>
-  storage?: StorageType
+  storage: StorageType & Storage
   getPixelRatio?: () => number
   auth?: { Cognito: any } // todo
   perf?: {

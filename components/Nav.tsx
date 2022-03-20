@@ -31,7 +31,7 @@ const Nav: FC<ComponentType> = ({}) => {
               </ActiveLink>
             </li>
             <li className='nav-item'>
-              <ActiveLink href='/other'>
+              <ActiveLink href='/other/'>
                 <a className='nav-link'>Link</a>
               </ActiveLink>
             </li>
