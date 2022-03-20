@@ -1,16 +1,15 @@
-import { FC } from 'react'
-import ActiveLink from 'components/base/ActiveLink' // we need this to make JSX compile
-
+import { FC, useState } from 'react'
+import ActiveLink from 'components/base/ActiveLink'
+import cx from 'classnames'
 type ComponentType = {}
 
 const Nav: FC<ComponentType> = ({}) => {
+  const [isActive, setIsActive] = useState<boolean>(false)
   return (
     <nav className='navbar navbar-expand-md navbar-dark bg-dark mb-4'>
       <div className='container-fluid'>
-        <a className='navbar-brand' href='#'>
-          Top navbar
-        </a>
         <button
+          onClick={() => setIsActive(!isActive)}
           className='navbar-toggler'
           type='button'
           data-bs-toggle='collapse'
@@ -21,22 +20,25 @@ const Nav: FC<ComponentType> = ({}) => {
         >
           <span className='navbar-toggler-icon'></span>
         </button>
-        <div className='collapse navbar-collapse' id='navbarCollapse'>
+        <div
+          className={cx({ collapse: !isActive }, 'navbar-collapse')}
+          id='navbarCollapse'
+        >
           <ul className='navbar-nav me-auto mb-2 mb-md-0'>
             <li className='nav-item'>
               <ActiveLink href='/'>
-                <a className='nav-link' aria-current='page'>
+                <span className='nav-link cursor-pointer' aria-current='page'>
                   Home
-                </a>
+                </span>
               </ActiveLink>
             </li>
             <li className='nav-item'>
               <ActiveLink href='/other/'>
-                <a className='nav-link'>Link</a>
+                <span className='nav-link cursor-pointer'>Link</span>
               </ActiveLink>
             </li>
             <li className='nav-item'>
-              <a className='nav-link disabled'>Disabled</a>
+              <span className='nav-link disabled'>Disabled</span>
             </li>
           </ul>
           <form onSubmit={(e) => e.preventDefault()} className='d-flex'>
