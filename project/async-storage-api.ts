@@ -15,11 +15,11 @@ const StorageManager = class {
   }
   setItem = function (key: string, value: string, ctx?: NextPageContext) {
     API.log('STORAGE', 'SET', key, value)
-    return Promise.resolve(nookies.set(ctx, key, value))
+    return Promise.resolve(nookies.set(ctx, key, value, { path: '/' }))
   }
   removeItem = function (key: string, ctx?: NextPageContext) {
     API.log('STORAGE', 'REMOVE', key, ctx)
-    return Promise.resolve(nookies.destroy(null, key))
+    return Promise.resolve(nookies.destroy(null, key, { path: '/' }))
   }
   getItemSync = function (key: string, ctx?: NextPageContext) {
     API.log('STORAGE', 'GET', key, ctx)
@@ -27,11 +27,11 @@ const StorageManager = class {
   }
   setItemSync = function (key: string, value: string, ctx?: NextPageContext) {
     API.log('STORAGE', 'SET', key, value)
-    return nookies.set(null, key, value)
+    return nookies.set(null, key, value, { path: '/' })
   }
   removeItemSync = function (key: string, ctx?: NextPageContext) {
     API.log('STORAGE', 'REMOVE', key, ctx)
-    return nookies.destroy(null, key)
+    return nookies.destroy(null, key, { path: '/' })
   }
 }
 export default new StorageManager()
