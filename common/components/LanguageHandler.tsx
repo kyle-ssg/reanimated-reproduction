@@ -2,6 +2,10 @@ import { useUser } from '../hooks/useUser'
 import { FunctionComponent, useEffect } from 'react'
 import { Constants } from '../utils'
 import { getStrings } from '../strings'
+import Strings from '../../project/localisation'
+import { API } from '../../project/api'
+
+Strings.setLanguage(API.getStoredLocale(''))
 
 const LanguageHandler: FunctionComponent<any> = ({ children }) => {
   const { user } = useUser()

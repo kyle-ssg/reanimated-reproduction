@@ -39,4 +39,3 @@ export const Project = {
   grecaptcher: '6Lc1mf4UAAAAAC6uZ0HaGJ3ufgwCXY4GFoNhMeBD',
   formly: 'boilerplate',
 }
-console.log('test')

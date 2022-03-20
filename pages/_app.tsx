@@ -7,14 +7,12 @@ import { NextPageWithLayout } from 'types/nextPageWithLayout'
 import { nextReduxWrapper } from 'components/util/nextReduxWrapper'
 import NProgress from 'components/util/NProgress'
 import Strings from 'project/localisation'
-// import { ToastContainer } from 'react-toastify'
 import Head from 'next/head'
 import { startupActions } from 'common/hooks/useStartup'
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
-Strings.setLanguage(API.getStoredLocale(''))
 
 //@ts-ignore
 class WrappedApp extends App<AppInitialProps> {
