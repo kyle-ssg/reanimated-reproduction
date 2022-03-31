@@ -8,7 +8,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { nextReduxWrapper } from 'components/util/nextReduxWrapper'
-
+import 'react-toastify/dist/ReactToastify.css'
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
