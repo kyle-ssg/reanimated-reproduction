@@ -4,25 +4,12 @@
 // ./pages/_document.js
 
 import 'project/polyfill'
-import Document, {
-  DocumentContext,
-  Head,
-  Html,
-  Main,
-  NextScript,
-} from 'next/document'
-import { API } from 'project/api'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
-  static async getStaticProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx)
-    const locale = API.getStoredLocale(ctx.locale)
-    return { ...initialProps, locale }
-  }
-
   render() {
     return (
-      <Html lang={this.props.locale}>
+      <Html>
         <Head>
           <link rel='preconnect' href='https://fonts.gstatic.com' />
           <link

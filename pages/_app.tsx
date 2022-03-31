@@ -1,15 +1,13 @@
 import 'project/polyfill'
 import { AppProps } from 'next/app'
 import '../styles/Global.scss'
-import LanguageHandler from 'common/components/LanguageHandler'
+import LanguageHandler from 'components/LanguageHandler'
 import { NextPageWithLayout } from 'types/nextPageWithLayout'
 import NProgress from 'components/util/NProgress'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { nextReduxWrapper } from 'components/util/nextReduxWrapper'
-import { startupActions } from '../common/hooks/useStartup'
-import { Constants } from '../common/utils'
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
@@ -24,7 +22,7 @@ const AppComponent: FC<ComponentType> = ({ Component, pageProps }) => {
     return null
   }
   return (
-    <LanguageHandler defaultLocale={router.locale || Constants.defaultLocale}>
+    <LanguageHandler>
       <Head>
         <meta charSet='utf-8' />
         <meta httpEquiv='x-ua-compatible' content='ie=edge' />
@@ -59,23 +57,5 @@ const AppComponent: FC<ComponentType> = ({ Component, pageProps }) => {
     </LanguageHandler>
   )
 }
-
-// @ts-ignore
-AppComponent.getInitialProps = nextReduxWrapper.getStaticProps(
-  (store) => async (ctx) => {
-    try {
-      await store.dispatch(
-        startupActions.startup({
-          locale: ctx.locale || Constants.defaultLocale,
-        }),
-      )
-    } catch (e) {
-      console.error(e)
-    }
-    return {
-      props: {},
-    }
-  },
-)
 
 export default nextReduxWrapper.withRedux(AppComponent)

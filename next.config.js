@@ -1,16 +1,38 @@
 const path = require('path')
+const uniq = require('lodash').uniq
+const withPreact = require('next-plugin-preact')
+
 const withTM = require('next-transpile-modules')([
     // 'react-native-safe-area-context', REACT_NATIVE_WEB
     // 'react-native-svg',
     // 'react-native-reanimated',
 ])
 
-const withBundleAnalyzer = process.env.BUNDLE_ANALYZE?  require('@next/bundle-analyzer')({
-    enabled: true,
-}) : ()=> ({})
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.BUNDLE_ANALYZE === 'true',
+})
 
 const nextConfig = async (phase, { defaultConfig }) => {
+    const localesStart = ['en-gb']
+    const locales = uniq(
+        localesStart
+            .concat(
+                localesStart.map((v) => {
+                    // ensure a base language is set, e.g. en for en-gb
+                    return v.split('-')[0]
+                }),
+            )
+            .filter((v) => !!v),
+    )
     const nextConfig = {
+        i18n: {
+            // These are all the locales you want to support in
+            // your application
+            locales,
+            // This is the default locale you want to be used when visiting
+            // a non-locale prefixed path e.g. `/hello`
+            defaultLocale: locales[0],
+        },
         eslint: {
             // Warning: Dangerously allow production builds to successfully complete even if
             // your project has ESLint errors.
@@ -21,12 +43,12 @@ const nextConfig = async (phase, { defaultConfig }) => {
         productionBrowserSourceMaps: true,
         typescript: {
             ignoreDevErrors: true,
-            ignoreBuildErrors: true
+            ignoreBuildErrors: true,
         },
         webpack: (config, { dev }) => {
             const base = dev
-              ? require('./.bin/.webpack/webpack.config.dev')
-              : require('./.bin/.webpack/webpack.config.prod')
+                ? require('./.bin/.webpack/webpack.config.dev')
+                : require('./.bin/.webpack/webpack.config.prod')
             if (base.plugins) {
                 config.plugins = config.plugins.concat(base.plugins)
             }
@@ -46,17 +68,13 @@ const nextConfig = async (phase, { defaultConfig }) => {
                 // '.web.js', REACT_NATIVE_WEB
                 // '.web.ts',
                 // '.web.tsx',
-                ...config.resolve.extensions
+                ...config.resolve.extensions,
             ]
 
             return config
-        }
+        },
     }
-    return withBundleAnalyzer(
-      withTM(
-        nextConfig
-      )
-    )
+    return withBundleAnalyzer(withPreact(withTM(nextConfig)))
 }
 
 module.exports = nextConfig

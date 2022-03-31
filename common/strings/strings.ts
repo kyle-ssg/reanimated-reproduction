@@ -11,6 +11,9 @@ type StringsSingleton = {
 
 const defaultContent = {
   hello: 'Hello',
+  link: 'Link',
+  disabled: 'Disabled',
+  home: 'Home',
   login: 'Login',
   pleaseSelect: 'Please Select',
   defaultErrorMessage: 'An unexpected error has occurred',
@@ -37,6 +40,16 @@ const setStrings = (stringsParam: LocalizedStrings) => {
 
 const stringRecords: Record<string, LanguageContent> = {
   en: defaultContent,
+  de: {
+    hello: 'Hello(de)',
+    link: 'Link(de)',
+    disabled: 'Disabled(de)',
+    home: 'Home(de)',
+    login: 'Login(de)',
+    pleaseSelect: 'Please Select(de)',
+    defaultErrorMessage: 'An unexpected error has occurred(de)',
+    404: 'Request item not found(de)',
+  },
 }
 
 const initBlobby = () => {

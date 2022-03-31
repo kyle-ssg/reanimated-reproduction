@@ -4,6 +4,7 @@ import { Project } from 'common/project'
 import { ApiTypes } from 'common/api/types/api-types'
 import { setApi } from 'common/api'
 import storage from './async-storage-api'
+import Strings from './localisation'
 
 interface WebAPI
   extends ApiTypes<
@@ -51,14 +52,21 @@ const API: WebAPI = {
   },
   middlewares: [],
   getStoredLocale: (requestedLocale?: string) => {
-    return API.storage.getItemSync!('NEXT_LOCALE')
+    return (
+      API.storage.getItemSync!('NEXT_LOCALE') ||
+      requestedLocale ||
+      Constants.defaultLocale
+    )
   },
   setStoredLocale: (locale: string) => {
+    Strings.setLanguage(locale)
     API.storage.setItemSync('NEXT_LOCALE', locale)
+    // document.location = document.location
     // @ts-ignore
-    const { pathname, asPath, query } = Router.router.state
+    const { pathname, asPath, query } = Router.router?.state || {}
+    // change just the locale and maintain all other route information including href's query
     // @ts-ignore
-    Router.router.push({ pathname, query }, asPath, { locale })
+    Router.router?.push({ pathname, query }, asPath, { locale })
   },
   trackEvent(data) {
     if (__DEV__) {

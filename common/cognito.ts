@@ -83,3 +83,4 @@
 // }
 //
 // export default Cognito
+export default {}
