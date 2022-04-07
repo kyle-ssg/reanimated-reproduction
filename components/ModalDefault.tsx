@@ -15,15 +15,15 @@ const ModalDefault: FC<ModalDefault> = ({
   title,
   children,
 }) => {
-  const onDissmissClick = () => {
+  const onDismissClick = () => {
     if (onDismiss) {
       onDismiss()
     }
     toggle()
   }
   return (
-    <Modal unmountOnClose isOpen={isOpen} toggle={onDissmissClick}>
-      <ModalHeader toggle={onDissmissClick}>{title}</ModalHeader>
+    <Modal unmountOnClose isOpen={isOpen} toggle={onDismissClick}>
+      <ModalHeader toggle={onDismissClick}>{title}</ModalHeader>
       <ModalBody>{children}</ModalBody>
     </Modal>
   )

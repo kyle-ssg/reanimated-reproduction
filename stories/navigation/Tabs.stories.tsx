@@ -1,6 +1,6 @@
 import { ComponentStory } from '@storybook/react'
 import '../../styles/Global.scss'
-import Tabs from 'components/base/forms/Tabs'
+import { Tabs } from 'components/base/forms/Tabs'
 
 export default {
   title: 'Navigation/Tabs',

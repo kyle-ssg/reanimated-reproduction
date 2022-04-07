@@ -1,6 +1,5 @@
 import Button from './Button'
 import { FC, useState } from 'react'
-
 interface Tabs {
   value?: any
   onChange?: (i: number) => void
@@ -10,7 +9,7 @@ interface Tabs {
   tabLabels: string[]
 }
 
-const Tabs: FC<Tabs> = ({
+export const Tabs: FC<Tabs> = ({
   className = '',
   value = 0,
   children,
@@ -22,11 +21,11 @@ const Tabs: FC<Tabs> = ({
   return (
     <div className={`tabs ${className}`}>
       <ul className='nav nav-pills mb-3' id='pills-tab' role='tablist'>
-        {children.map((child, i) => {
-          const isSelected = value === i
+        {children?.map((child, i) => {
+          const isSelected = uncontrolled ? _value === i : value === i
           const tabLabel = tabLabels[i]
           return (
-            <li className='nav-item' role='presentation'>
+            <li key={i} className='nav-item' role='presentation'>
               <Button
                 data-test={child['data-test']}
                 id={child.id}
@@ -34,7 +33,11 @@ const Tabs: FC<Tabs> = ({
                 onClick={(e: React.MouseEvent) => {
                   e.stopPropagation()
                   e.preventDefault()
-                  onChange && onChange(i)
+                  if (uncontrolled) {
+                    setValue(i)
+                  } else {
+                    onChange && onChange(i)
+                  }
                 }}
                 className={`nav-link${isSelected ? ' active' : ''}`}
               >
@@ -45,13 +48,13 @@ const Tabs: FC<Tabs> = ({
         })}
       </ul>
 
-      <div className='tabs-content' id='pills-tabContent'>
+      <div id='pills-tabContent'>
         {children?.map((child, i) => {
           const isSelected = uncontrolled ? _value === i : value === i
           return (
             <div
               key={`content${i}`}
-              className={`tab-item${isSelected ? ' tab-active' : ''}`}
+              className={isSelected ? 'd-block' : 'd-none'}
             >
               {child}
             </div>
@@ -63,7 +66,6 @@ const Tabs: FC<Tabs> = ({
 }
 
 Tabs.displayName = 'Tabs'
-export default Tabs
 
 // Example Usage
 //   <Tabs value={this.state.tab} onChange={this.selectTab}>
