@@ -8,7 +8,7 @@ const findMatchingLocale = (locales: string[]) => {
   if (typeof navigator !== 'undefined') {
     const locale = navigator.language
     // find exact matching locale
-    if (locale.includes(locale)) return locale
+    if (locales.includes(locale.toLowerCase())) return locale.toLowerCase()
     const localeShort = locale.split('-')[0]
     // find first part of locale
     if (locales.includes(localeShort)) return localeShort
@@ -24,14 +24,16 @@ const LanguageHandler: FunctionComponent = ({ children }) => {
   const router = useRouter()
   const defaultLocale =
     router.locale !== router.defaultLocale // if you aren't on a default locale url, presume it's correct
-      ? router.locale
+      ? `${router.locale}`
       : findMatchingLocale(router.locales!) || `${router.locale}`
   const forceLanguage =
     Constants.simulate.FORCE_LANGUAGE || API.getStoredLocale(defaultLocale)
   if (router.locale?.toLowerCase() !== forceLanguage.toLowerCase()) {
-    API.setStoredLocale(forceLanguage.toLowerCase())
+    API.setStoredLocale(
+      router.locales?.includes(forceLanguage) ? forceLanguage : defaultLocale,
+    )
   }
-  Strings.setLanguage(forceLanguage.toLowerCase())
+  Strings.setLanguage(forceLanguage)
   return <>{children}</>
 }
 
