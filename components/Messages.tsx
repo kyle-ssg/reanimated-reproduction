@@ -23,7 +23,7 @@ const Message: FC<Messages> = ({
     <>
       <div data-test={dataTest} className={`alert ${className || ''}`}>
         <div className='flex-row'>
-          {icon && <span className={cn({ icon: true }, 'mr-1', icon)} />}
+          {icon && <span className={cn({ icon: true }, 'me-3', icon)} />}
           <span data-test='message'>
             {typeof children === 'string'
               ? children.replace(/\n/g, '')

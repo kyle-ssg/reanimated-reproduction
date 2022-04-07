@@ -1,6 +1,6 @@
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal'
 import { FC, ReactNode } from 'react'
-import Button from 'components/base/forms/Button'
+import Button, { ButtonPrimary } from 'components/base/forms/Button'
 
 interface ModalAlert {
   okText?: string
@@ -29,7 +29,7 @@ const ModalAlert: FC<ModalAlert> = ({
       <ModalHeader toggle={onDissmissClick}>{title}</ModalHeader>
       <ModalBody>{children}</ModalBody>
       <ModalFooter>
-        <Button onClick={onDissmissClick}>{okText}</Button>
+        <ButtonPrimary onClick={onDissmissClick}>{okText}</ButtonPrimary>
       </ModalFooter>
     </Modal>
   )

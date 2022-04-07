@@ -13,13 +13,9 @@ export const Default: ComponentStory<typeof Select> = (args) => (
 
 export const Sizes: ComponentStory<typeof Select> = (args) => (
   <>
-    <InputGroup
-      component={<Select className='form-select-lg mb-3' {...args} />}
-    />
-    <InputGroup component={<Select className='mb-3' {...args} />} />
-    <InputGroup
-      component={<Select className='form-select-sm mb-3' {...args} />}
-    />
+    <InputGroup component={<Select className='form-select-lg' {...args} />} />
+    <InputGroup component={<Select {...args} />} />
+    <InputGroup component={<Select className='form-select-sm' {...args} />} />
   </>
 )
 

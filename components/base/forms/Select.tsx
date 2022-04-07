@@ -23,27 +23,24 @@ const Select: FC<Select> = ({
   return (
     <>
       {title && (
-        <label htmlFor={id} className='select__text'>
+        <label className='form-label' htmlFor={id}>
           {title}
         </label>
       )}
-      <div className='select'>
-        <select
-          {...props}
-          id={id}
-          onBlur={(e) => {
-            setShouldValidate(true)
-            props.onBlur && props.onBlur(e)
-          }}
-          className={cx(`${props.className || ''}`, {
-            invalid: (touched || shouldValidate) && !isValid,
-          })}
-        >
-          <option value={''}>{label || Strings.pleaseSelect}</option>
-          {children}
-        </select>
-        <i className='select__icon fas fa-caret-down' />
-      </div>
+      <select
+        {...props}
+        id={id}
+        onBlur={(e) => {
+          setShouldValidate(true)
+          props.onBlur && props.onBlur(e)
+        }}
+        className={cx(`${`${props.className} form-select`}`, {
+          invalid: (touched || shouldValidate) && !isValid,
+        })}
+      >
+        <option value={''}>{label || Strings.pleaseSelect}</option>
+        {children}
+      </select>
     </>
   )
 }
