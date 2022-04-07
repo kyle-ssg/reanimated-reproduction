@@ -3,17 +3,19 @@ import { Utils } from '../common/utils'
 import { Component, ReactNode } from 'react'
 import Flex from 'components/base/grid/Flex'
 
-const Message = class extends Component<
+export const ToastMessage = class extends Component<
   {
     title: ReactNode
     className?: string
     isRemoving?: boolean
     remove: () => void
-    expiry: number
+    expiry?: number
+    hideClose?: boolean
+    fade?: boolean
   },
   { isShowing: boolean }
 > {
-  static displayName = 'Message'
+  static displayName = 'ToastMessage'
 
   constructor(props: any) {
     super(props)
@@ -22,11 +24,24 @@ const Message = class extends Component<
     }
   }
 
+  remove = () => {
+    this.setState({ isShowing: true })
+    setTimeout(
+      () => {
+        this.props.remove()
+      },
+      this.props.fade ? 200 : 0,
+    )
+  }
+
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({ isShowing: true })
-      this.props.remove()
-    }, this.props.expiry)
+    if (this.props.expiry) {
+      setTimeout(() => {
+        this.setState({ isShowing: true })
+        this.remove()
+      }, this.props.expiry)
+    }
+
     setTimeout(() => {
       this.setState({ isShowing: false })
     }, 10)
@@ -36,8 +51,8 @@ const Message = class extends Component<
     const className = cn(
       {
         'toast': true,
-        'fade': true,
-        showing: this.state.isShowing,
+        'fade': this.props.fade,
+        showing: this.props.fade && this.state.isShowing,
         show: true,
         'hide': this.props.isRemoving,
       },
@@ -49,13 +64,15 @@ const Message = class extends Component<
         {/* eslint-disable-next-line */}
         <div className="toast-header">
           <Flex>{this.props.title}</Flex>
-          <button
-            onClick={this.props.remove}
-            type='button'
-            className='btn-close'
-            data-bs-dismiss='toast'
-            aria-label='Close'
-          ></button>
+          {!this.props.hideClose && (
+            <button
+              onClick={this.remove}
+              type='button'
+              className='btn-close'
+              data-bs-dismiss='toast'
+              aria-label='Close'
+            ></button>
+          )}
         </div>
         <div className='toast-body'>{this.props.children}</div>
       </div>
@@ -70,7 +87,7 @@ export let toast: (
   expiry?: number,
 ) => void
 
-export const Toast = class extends Component<
+export const ToastContainer = class extends Component<
   {},
   {
     messages: {
@@ -105,27 +122,19 @@ export const Toast = class extends Component<
   }
 
   remove = (id: string) => {
-    const index = this.state.messages.findIndex((v) => v.id === id)
-    const messages = this.state.messages
-
-    if (index > -1) {
-      messages[index].isRemoving = true
-      setTimeout(() => {
-        const newIndex = this.state.messages.findIndex((v) => v.id === id)
-        // eslint-disable-next-line
+    const newIndex = this.state.messages.findIndex((v) => v.id === id)
+    // eslint-disable-next-line
         const newMessages = this.state.messages;
-        newMessages.splice(newIndex, 1)
-        this.setState({ messages: newMessages })
-      }, 500)
-      this.setState({ messages })
-    }
+    newMessages.splice(newIndex, 1)
+    this.setState({ messages: newMessages })
   }
 
   render() {
     return (
       <div className='toast-messages toast-container position-fixed bottom-0 end-0 m-4'>
         {this.state.messages.map((message) => (
-          <Message
+          <ToastMessage
+            fade
             key={message.id}
             title={message.title}
             className={message.className}
@@ -134,7 +143,7 @@ export const Toast = class extends Component<
             expiry={message.expiry}
           >
             {message.content}
-          </Message>
+          </ToastMessage>
         ))}
       </div>
     )
