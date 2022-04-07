@@ -21,33 +21,29 @@ const Tabs: FC<Tabs> = ({
   const [_value, setValue] = useState<number>(value)
   return (
     <div className={`tabs ${className}`}>
-      <div className='tabs-nav'>
-        {children?.map((child, i) => {
-          const isSelected = uncontrolled ? _value === i : value === i
+      <ul className='nav nav-pills mb-3' id='pills-tab' role='tablist'>
+        {children.map((child, i) => {
+          const isSelected = value === i
           const tabLabel = tabLabels[i]
           return (
-            <Button
-              data-test={child['data-test']}
-              id={child.id}
-              key={`button${i}`}
-              onClick={(e) => {
-                e.stopPropagation()
-                e.preventDefault()
-                if (uncontrolled) {
-                  setValue(i)
-                } else {
+            <li className='nav-item' role='presentation'>
+              <Button
+                data-test={child['data-test']}
+                id={child.id}
+                key={`button${i}`}
+                onClick={(e: React.MouseEvent) => {
+                  e.stopPropagation()
+                  e.preventDefault()
                   onChange && onChange(i)
-                }
-              }}
-              className={`btn-tab btn-primary${
-                isSelected ? ' tab-active' : ''
-              }`}
-            >
-              {tabLabel || i}
-            </Button>
+                }}
+                className={`nav-link${isSelected ? ' active' : ''}`}
+              >
+                {tabLabel || i}
+              </Button>
+            </li>
           )
         })}
-      </div>
+      </ul>
 
       <div className='tabs-content' id='pills-tabContent'>
         {children?.map((child, i) => {

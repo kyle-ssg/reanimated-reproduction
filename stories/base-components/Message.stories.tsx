@@ -12,7 +12,7 @@ export const Default: ComponentStory<typeof Message> = (
   args: typeof Default.args,
 ) => (
   <>
-    <Message {...args} />
+    <Message className='alert-primary' {...args} />
     <SuccessMessage {...args} />
     <ErrorMessage {...args} />
   </>

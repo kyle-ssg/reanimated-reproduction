@@ -124,7 +124,11 @@ const Input: FC<Input> = ({
         </>
       ) : (
         <>
-          {!!label && <label htmlFor={id}>{label}</label>}
+          {!!label && (
+            <label className='form-label' htmlFor={id}>
+              {label}
+            </label>
+          )}
           <input
             disabled={disabled}
             name={name}
