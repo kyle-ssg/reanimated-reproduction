@@ -1,12 +1,11 @@
 import React from 'react'
 import 'project/polyfill'
-import { toast, ToastContainer } from 'react-toastify'
 import { ButtonPrimary } from 'components/base/forms/Button'
 import { NextPageWithLayout } from '../types/nextPageWithLayout'
 import { nextReduxWrapper } from 'components/util/nextReduxWrapper'
 import { ServerSidePageProps } from '../types/serversidePageProps'
 import Nav from 'components/Nav'
-
+import { toast } from 'components/toast'
 export type HomePageType = {}
 const HomePage: NextPageWithLayout<HomePageType> = () => {
   return (
@@ -17,12 +16,11 @@ const HomePage: NextPageWithLayout<HomePageType> = () => {
           <p className='lead'>The button below will show a toast message.</p>
           <ButtonPrimary
             className='btn-lg'
-            onClick={() => toast(<div>Hi</div>, { type: 'info' })}
+            onClick={() => toast(<div>Title</div>, <div>Content</div>)}
           >
             Click me!
           </ButtonPrimary>
         </div>
-        <ToastContainer />
       </main>
     </>
   )

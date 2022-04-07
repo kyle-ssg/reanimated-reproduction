@@ -8,6 +8,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { nextReduxWrapper } from 'components/util/nextReduxWrapper'
+import { Toast } from 'components/toast'
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
@@ -50,6 +51,7 @@ const AppComponent: FC<ComponentType> = ({ Component, pageProps }) => {
       </Head>
       <NProgress />
       {getLayout(<Component {...pageProps} />, pageProps)}
+      <Toast />
       <div id='modal' />
       <div id='confirm' />
       <div id='alert' />
