@@ -5,7 +5,7 @@ import { NextPageWithLayout } from '../types/nextPageWithLayout'
 import { nextReduxWrapper } from 'components/util/nextReduxWrapper'
 import { ServerSidePageProps } from '../types/serversidePageProps'
 import Nav from 'components/Nav'
-import { toast } from 'components/toast'
+import { toast } from 'components/Toast'
 export type HomePageType = {}
 const HomePage: NextPageWithLayout<HomePageType> = () => {
   return (

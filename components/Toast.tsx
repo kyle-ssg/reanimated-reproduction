@@ -25,6 +25,7 @@ export const ToastMessage = class extends Component<
   }
 
   remove = () => {
+    return
     this.setState({ isShowing: true })
     setTimeout(
       () => {

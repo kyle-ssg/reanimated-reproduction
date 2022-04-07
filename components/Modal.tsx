@@ -1,7 +1,10 @@
-import _ModalHeader from 'reactstrap/lib/ModalHeader'
-import _ModalBody from 'reactstrap/lib/ModalBody'
-import _Modal, { ModalProps } from 'reactstrap/lib/Modal'
-import _ModalFooter from 'reactstrap/lib/ModalFooter'
+import {
+  ModalHeader as _ModalHeader,
+  ModalBody as _ModalBody,
+  ModalProps,
+  Modal as _Modal,
+  ModalFooter as _ModalFooter,
+} from 'reactstrap'
 import { JSXElementConstructor, useCallback, useState } from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 import Confirm from './ModalConfirm'
@@ -12,7 +15,7 @@ import { Provider } from 'react-redux'
 
 export const ModalHeader = _ModalHeader
 export const ModalFooter = _ModalFooter
-export const Modal = (args: ModalProps) => <_Modal {...args} />
+export const Modal = _Modal
 export const ModalBody = _ModalBody
 
 const withModal = (WrappedComponent: JSXElementConstructor<any>) => {

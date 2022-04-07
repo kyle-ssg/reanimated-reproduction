@@ -1,5 +1,4 @@
-// I don't know why we have this import because we didn't use it.
-import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal'
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
 import {
   ButtonDanger,
   ButtonPrimary,

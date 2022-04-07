@@ -1,4 +1,4 @@
-import { Modal, ModalBody, ModalHeader } from './Modal'
+import { Modal, ModalBody, ModalHeader } from 'reactstrap'
 import { FC, ReactNode } from 'react'
 
 interface ModalDefault {

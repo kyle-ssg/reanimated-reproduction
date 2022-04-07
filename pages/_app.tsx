@@ -8,7 +8,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { nextReduxWrapper } from 'components/util/nextReduxWrapper'
-import { ToastContainer } from 'components/toast'
+import { ToastContainer } from 'components/Toast'
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }

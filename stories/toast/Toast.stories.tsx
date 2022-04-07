@@ -1,7 +1,7 @@
 import { ComponentStory } from '@storybook/react'
 import '../../styles/Global.scss'
 import { ButtonPrimary } from 'components/base/forms/Button'
-import { toast, ToastContainer, ToastMessage } from 'components/toast'
+import { toast, ToastContainer, ToastMessage } from 'components/Toast'
 import { useState } from 'react'
 
 export default {
