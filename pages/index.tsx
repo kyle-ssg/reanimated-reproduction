@@ -6,11 +6,15 @@ import { nextReduxWrapper } from 'components/util/nextReduxWrapper'
 import { ServerSidePageProps } from '../types/serversidePageProps'
 import Nav from 'components/Nav'
 import { toast } from 'components/Toast'
+import Head from 'next/head'
 export type HomePageType = {}
 const HomePage: NextPageWithLayout<HomePageType> = () => {
   return (
     <>
       <main className='container'>
+        <Head>
+          <title>Boilerplate homepage</title>
+        </Head>
         <div className='bg-light p-5 rounded'>
           <h1>Toast example</h1>
           <p className='lead'>The button below will show a toast message.</p>
