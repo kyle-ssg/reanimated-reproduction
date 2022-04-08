@@ -1,6 +1,5 @@
 import { FC, useState } from 'react'
 import ActiveLink from 'components/base/ActiveLink'
-import LanguageSelect from 'components/LanguageSelect'
 import Strings from '../project/localisation' // we need this to make JSX compile
 import cx from 'classnames'
 type ComponentType = {}
@@ -43,9 +42,17 @@ const Nav: FC<ComponentType> = ({}) => {
               <span className='nav-link disabled'>{Strings.disabled}</span>
             </li>
           </ul>
-          <ul className='navbar-nav mb-2 mb-md-0'>
-            <LanguageSelect />
-          </ul>
+          <form onSubmit={(e) => e.preventDefault()} className='d-flex'>
+            <input
+              className='form-control me-2'
+              type='search'
+              placeholder='Search'
+              aria-label='Search'
+            />
+            <button className='btn btn-outline-success' type='submit'>
+              {Strings.search}
+            </button>
+          </form>
         </div>
       </div>
     </nav>
