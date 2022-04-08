@@ -34,7 +34,7 @@
   margin-right: $input-padding-x/2;
 }
 
-/* purgecss ignore */
+/*! purgecss ignore */
 .flex-1 {
   @include flexbox();
   @include flex-value(1);
