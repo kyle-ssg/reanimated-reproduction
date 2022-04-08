@@ -1,6 +1,6 @@
 import useNotLoggedInRedirect from 'common/hooks/useNotLoggedInRedirect'
 import { useUser } from 'common/hooks/useUser'
-import { Button } from 'reactstrap'
+import Button from 'components/base/forms/Button'
 
 const SecuredPage = () => {
   useNotLoggedInRedirect()
