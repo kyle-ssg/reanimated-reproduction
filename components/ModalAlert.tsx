@@ -1,6 +1,6 @@
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
 import { FC, ReactNode } from 'react'
-import Button, { ButtonPrimary } from 'components/base/forms/Button'
+import { ButtonPrimary } from 'components/base/forms/Button'
 
 interface ModalAlert {
   okText?: string

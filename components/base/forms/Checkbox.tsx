@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import cn from 'classnames'
 
 interface Checkbox {
@@ -8,7 +8,7 @@ interface Checkbox {
   id: string
 }
 
-const Checkbox: FC<Checkbox> = ({ label, value, id, className, ...props }) => {
+const Checkbox: FC<Checkbox> = ({ label, value, id, className }) => {
   return (
     <>
       <div className={cn('form-check', className)}>

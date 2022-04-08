@@ -8,7 +8,7 @@ interface Radio {
   id: string
 }
 
-const Radio: FC<Radio> = ({ label, name, id, className, ...props }) => {
+const Radio: FC<Radio> = ({ label, name, id, className }) => {
   return (
     <>
       <div className={cn('form-check', className)}>

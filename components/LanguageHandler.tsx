@@ -25,7 +25,8 @@ const LanguageHandler: FunctionComponent = ({ children }) => {
   const defaultLocale =
     router.locale !== router.defaultLocale // if you aren't on a default locale url, presume it's correct
       ? `${router.locale}`
-      : findMatchingLocale(router.locales!) || `${router.locale}`
+      : // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        findMatchingLocale(router.locales!) || `${router.locale}`
   const forceLanguage =
     Constants.simulate.FORCE_LANGUAGE || API.getStoredLocale(defaultLocale)
   if (router.locale?.toLowerCase() !== forceLanguage.toLowerCase()) {

@@ -7,7 +7,6 @@ import {
   useState,
 } from 'react'
 import cn from 'classnames'
-import { ButtonText } from 'components/base/forms/Button'
 import { Utils } from 'common/utils'
 
 interface Input {

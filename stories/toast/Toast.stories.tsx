@@ -21,7 +21,7 @@ export const Default: ComponentStory<typeof ToastMessage> = () => {
     </>
   )
 }
-export const Static: ComponentStory<typeof ToastMessage> = (args) => {
+export const Static: ComponentStory<typeof ToastMessage> = () => {
   const [isActive, setIsActive] = useState<boolean>(true)
   const [useFade, setUseFade] = useState<boolean>(false)
   return (

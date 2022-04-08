@@ -1,5 +1,7 @@
 import { FC, useState } from 'react'
 import ActiveLink from 'components/base/ActiveLink'
+import LanguageSelect from 'components/LanguageSelect'
+import Strings from '../project/localisation' // we need this to make JSX compile
 import cx from 'classnames'
 type ComponentType = {}
 
@@ -28,30 +30,22 @@ const Nav: FC<ComponentType> = ({}) => {
             <li className='nav-item'>
               <ActiveLink href='/'>
                 <span className='nav-link cursor-pointer' aria-current='page'>
-                  Home
+                  {Strings.home}
                 </span>
               </ActiveLink>
             </li>
             <li className='nav-item'>
               <ActiveLink href='/other/'>
-                <span className='nav-link cursor-pointer'>Link</span>
+                <span className='nav-link cursor-pointer'>{Strings.link}</span>
               </ActiveLink>
             </li>
             <li className='nav-item'>
-              <span className='nav-link disabled'>Disabled</span>
+              <span className='nav-link disabled'>{Strings.disabled}</span>
             </li>
           </ul>
-          <form onSubmit={(e) => e.preventDefault()} className='d-flex'>
-            <input
-              className='form-control me-2'
-              type='search'
-              placeholder='Search'
-              aria-label='Search'
-            />
-            <button className='btn btn-outline-success' type='submit'>
-              Search
-            </button>
-          </form>
+          <ul className='navbar-nav mb-2 mb-md-0'>
+            <LanguageSelect />
+          </ul>
         </div>
       </div>
     </nav>

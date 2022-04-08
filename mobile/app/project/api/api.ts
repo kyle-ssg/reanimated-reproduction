@@ -3,14 +3,12 @@
 import 'common/project'
 // import _analytics from "@react-native-firebase/analytics";  // ^7.3.1
 import { ApiTypes } from 'common/api/types/api-types'
-import { errorHandler } from 'common/utils/errorHandler'
 import { Alert, PixelRatio, Share } from 'react-native'
 // import BottomSheet from 'react-native-bottomsheet'
 import storage from './async-storage-api'
 import auth from './auth'
 // import ImagePicker from 'react-native-image-crop-picker';
 import push from './push-notifications-api'
-import { Strings } from 'project/localisation'
 import { Project } from 'common/project'
 import { FirebaseMessagingTypes } from '@react-native-firebase/messaging'
 import * as RootNavigation from 'navigation/RootNavigation'

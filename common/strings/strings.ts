@@ -13,6 +13,7 @@ const defaultContent = {
   hello: 'Hello',
   link: 'Link',
   disabled: 'Disabled',
+  search: 'Search',
   home: 'Home',
   login: 'Login',
   pleaseSelect: 'Please Select',

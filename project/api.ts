@@ -53,7 +53,7 @@ const API: WebAPI = {
   middlewares: [],
   getStoredLocale: (requestedLocale?: string) => {
     return (
-      API.storage.getItemSync!('NEXT_LOCALE') ||
+      API.storage.getItemSync('NEXT_LOCALE') ||
       requestedLocale ||
       Constants.defaultLocale
     )
