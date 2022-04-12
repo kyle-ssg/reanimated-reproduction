@@ -1,63 +1,60 @@
 import cn from 'classnames'
-import { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react'
-
-export type ButtonType = DetailedHTMLProps<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
-> & {
-  icon?: string
+import { FC, ButtonHTMLAttributes } from 'react'
+export type ButtonType = ButtonHTMLAttributes<HTMLButtonElement> & {
+  iconRight?: string
+  iconLeft?: string
+  theme?:
+    | 'primary'
+    | 'secondary'
+    | 'tertiary'
+    | 'text'
+    | 'danger'
+    | 'outlinePrimary'
+  size?: 'large' | 'default'
 }
 
-//Default Button without any styles
+export const themeClassNames = {
+  primary: 'btn-primary',
+  secondary: 'btn-secondary',
+  tertiary: 'btn-tertiary',
+  text: 'btn-link',
+  danger: 'btn btn-danger',
+  outlinePrimary: 'btn btn-outline-primary',
+}
+
+export const sizeClassNames = {
+  large: 'btn-lg',
+  default: '',
+}
+
 export const Button: FC<ButtonType> = ({
-  icon,
+  iconLeft,
+  iconRight,
   className,
+  theme = 'primary',
+  size = 'default',
   children,
   onMouseUp,
   ...rest
-}) => (
-  <button
-    type='button'
-    {...rest}
-    onMouseUp={onMouseUp}
-    className={cn({ btn: true }, className)}
-  >
-    {children}
-
-    {icon ? <i className={cn({ icon: true }, 'p-1', icon)} /> : null}
-  </button>
-)
+}) => {
+  return (
+    <button
+      type='button'
+      {...rest}
+      onMouseUp={onMouseUp}
+      className={cn(
+        { btn: true },
+        className,
+        themeClassNames[theme],
+        sizeClassNames[size],
+      )}
+    >
+      {!!iconLeft && <i className={cn('icon', 'p-1', iconLeft)} />}
+      {children}
+      {!!iconRight && <i className={cn('icon', 'p-1', iconRight)} />}
+    </button>
+  )
+}
 
 Button.displayName = 'Button'
 export default Button
-
-export const ButtonText: FC<ButtonType> = ({ className, ...props }) => (
-  <Button {...props} className={cn(className, 'btn-link')} />
-)
-
-/** Default button added btn-primary * */
-export const ButtonPrimary: FC<ButtonType> = ({ className, ...props }) => (
-  <Button {...props} className={cn(className, 'btn-primary')} />
-)
-
-ButtonPrimary.displayName = 'ButtonPrimary'
-
-/** Default button added btn-secondary * */
-export const ButtonSecondary: FC<ButtonType> = ({ className, ...props }) => (
-  <Button {...props} className={cn(className, 'btn-secondary')} />
-)
-
-ButtonSecondary.displayName = 'ButtonSecondary'
-
-export const ButtonDanger: FC<ButtonType> = ({ className, ...props }) => (
-  <Button {...props} className={cn(className, 'btn btn-danger')} />
-)
-ButtonDanger.displayName = 'ButtonDanger'
-
-/** Default button added btn-outline-primary * */
-export const ButtonOutlinePrimary: FC<ButtonType> = ({
-  className,
-  ...props
-}) => <Button {...props} className={cn(className, 'btn btn-outline-primary')} />
-
-ButtonOutlinePrimary.displayName = 'ButtonOutlinePrimary'

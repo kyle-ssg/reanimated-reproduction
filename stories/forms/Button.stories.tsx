@@ -1,86 +1,49 @@
 import { ComponentStory } from '@storybook/react'
 import '../../styles/Global.scss'
-import Button, {
-  ButtonDanger,
-  ButtonOutlinePrimary,
-  ButtonPrimary,
-  ButtonSecondary,
-  ButtonText,
-} from 'components/base/forms/Button'
+import Button from 'components/base/forms/Button'
 
 export default {
   title: 'forms/Button',
   component: Button,
+  children: 'Button',
 }
 
-export const Primary: ComponentStory<typeof ButtonPrimary> = (args) => (
-  <ButtonPrimary icon='fas fa-arrow-right' {...args}>
-    Button
-  </ButtonPrimary>
+export const ButtonDefault: ComponentStory<typeof Button> = (args) => (
+  <Button {...args}>Button</Button>
 )
 
-export const Secondary: ComponentStory<typeof ButtonSecondary> = (args) => (
-  <ButtonSecondary icon='fas fa-user text-brand-primary' {...args}>
-    Login
-  </ButtonSecondary>
-)
-
-export const All: ComponentStory<typeof ButtonPrimary> = (args) => (
-  <>
-    <ButtonPrimary icon='fas fa-arrow-right' className='mb-3 d-block' {...args}>
-      Button
-    </ButtonPrimary>
-
-    <ButtonOutlinePrimary className='mb-3 d-block' {...args}>
-      Outline Primary
-    </ButtonOutlinePrimary>
-
-    <ButtonSecondary icon='fas fa-arrow-right' className='mb-3' {...args}>
-      Button
-    </ButtonSecondary>
-
-    <ButtonDanger className='d-block mb-3' {...args}>
-      Danger
-    </ButtonDanger>
-
-    <ButtonText className='d-block mb-3' {...args}>
-      Link
-    </ButtonText>
-  </>
-)
-
-export const Sizes: ComponentStory<typeof ButtonPrimary> = (args) => (
-  <>
-    <ButtonPrimary
-      icon='fas fa-arrow-right'
-      className='btn-lg mb-3 d-block'
-      {...args}
-    >
-      Button
-    </ButtonPrimary>
-
-    <ButtonPrimary icon='fas fa-arrow-right' className='mb-3 d-block' {...args}>
-      Button
-    </ButtonPrimary>
-
-    <ButtonPrimary
-      icon='fas fa-arrow-right'
-      className='btn-sm d-block'
-      {...args}
-    >
-      Button
-    </ButtonPrimary>
-  </>
-)
-
-Primary.args = {
+ButtonDefault.args = {
   disabled: false,
+  theme: 'primary',
+  children: 'Button',
 }
 
-Secondary.args = {
+export const ButtonPrimary: ComponentStory<typeof Button> = (args) => (
+  <Button {...args} />
+)
+
+ButtonPrimary.args = {
   disabled: false,
+  theme: 'primary',
+  children: 'Button',
 }
 
-Sizes.args = {
+export const ButtonSecondary: ComponentStory<typeof Button> = (args) => (
+  <Button {...args} />
+)
+
+ButtonSecondary.args = {
   disabled: false,
+  theme: 'secondary',
+  children: 'Button',
+}
+
+export const ButtonTertiary: ComponentStory<typeof Button> = (args) => (
+  <Button {...args} />
+)
+
+ButtonTertiary.args = {
+  disabled: false,
+  theme: 'tertiary',
+  children: 'Button',
 }
