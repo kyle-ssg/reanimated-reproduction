@@ -1,9 +1,5 @@
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
-import {
-  ButtonDanger,
-  ButtonPrimary,
-  ButtonSecondary,
-} from './base/forms/Button'
+import { Button } from './base/forms/Button'
 import { FC, ReactNode } from 'react'
 
 interface Confirm {
@@ -40,30 +36,32 @@ const Confirm: FC<Confirm> = ({
       <ModalHeader toggle={no}>{title}</ModalHeader>
       <ModalBody>{children}</ModalBody>
       <ModalFooter>
-        <ButtonSecondary
+        <Button
+          theme='secondary'
           data-test='confirm-no'
           disabled={disabled}
           onClick={no}
         >
           {noText}
-        </ButtonSecondary>
+        </Button>
         {isDanger ? (
-          <ButtonDanger
+          <Button
+            theme='danger'
             data-test='confirm-yes'
             disabled={disabled || disabledYes}
-            icon='fas fa-trash'
+            iconRight='fas fa-trash'
             onClick={yes}
           >
             {yesText}
-          </ButtonDanger>
+          </Button>
         ) : (
-          <ButtonPrimary
+          <Button
             data-test='confirm-yes'
             disabled={disabled || disabledYes}
             onClick={yes}
           >
             {yesText}
-          </ButtonPrimary>
+          </Button>
         )}{' '}
       </ModalFooter>
     </Modal>

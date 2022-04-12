@@ -47,6 +47,7 @@ const stringRecords: Record<string, LanguageContent> = {
     disabled: 'Disabled(de)',
     home: 'Home(de)',
     login: 'Login(de)',
+    search: 'Search(de)',
     pleaseSelect: 'Please Select(de)',
     defaultErrorMessage: 'An unexpected error has occurred(de)',
     404: 'Request item not found(de)',

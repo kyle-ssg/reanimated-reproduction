@@ -7,7 +7,7 @@ import {
 } from 'react'
 import { useRouter } from 'next/router'
 import ErrorMessage from 'components/Messages'
-import { ButtonPrimary } from 'components/base/forms/Button'
+import { Button } from 'components/base/forms/Button'
 import { Utils } from 'common/utils'
 import Input from 'components/base/forms/Input'
 import useLoggedInRedirect from 'common/hooks/useLoggedInRedirect'
@@ -70,9 +70,9 @@ const LoginPage: FC<{}> = () => {
             </div>
             {userError && <ErrorMessage>{userError}</ErrorMessage>}
             <div className='text-right'>
-              <ButtonPrimary type='submit' disabled={userLoading}>
+              <Button type='submit' disabled={userLoading}>
                 Login
-              </ButtonPrimary>
+              </Button>
             </div>
           </form>
         </div>
