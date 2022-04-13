@@ -1,8 +1,8 @@
 import { ComponentStory } from '@storybook/react'
 import '../../styles/Global.scss'
-import { ButtonPrimary } from 'components/base/forms/Button'
 import { toast, ToastContainer, ToastMessage } from 'components/Toast'
 import { useState } from 'react'
+import Button from 'components/base/forms/Button'
 
 export default {
   title: 'Toast/Toast',
@@ -12,11 +12,9 @@ export default {
 export const Default: ComponentStory<typeof ToastMessage> = () => {
   return (
     <>
-      <ButtonPrimary
-        onClick={() => toast(<div>Title</div>, <div>Content</div>)}
-      >
+      <Button onClick={() => toast(<div>Title</div>, <div>Content</div>)}>
         Open Toast
-      </ButtonPrimary>
+      </Button>
       <ToastContainer />
     </>
   )
@@ -38,9 +36,7 @@ export const Static: ComponentStory<typeof ToastMessage> = () => {
           Content
         </ToastMessage>
       ) : (
-        <ButtonPrimary onClick={() => setIsActive(true)}>
-          Show Toast
-        </ButtonPrimary>
+        <Button onClick={() => setIsActive(true)}>Show Toast</Button>
       )}
     </>
   )
@@ -64,9 +60,7 @@ export const NoClose: ComponentStory<typeof ToastMessage> = (args) => {
           Content
         </ToastMessage>
       ) : (
-        <ButtonPrimary onClick={() => setIsActive(true)}>
-          Show Toast
-        </ButtonPrimary>
+        <Button onClick={() => setIsActive(true)}>Show Toast</Button>
       )}
     </>
   )
@@ -92,9 +86,7 @@ export const AutoHide: ComponentStory<typeof ToastMessage> = (args) => {
           Content
         </ToastMessage>
       ) : (
-        <ButtonPrimary onClick={() => setIsActive(true)}>
-          Show Toast
-        </ButtonPrimary>
+        <Button onClick={() => setIsActive(true)}>Show Toast</Button>
       )}
     </>
   )

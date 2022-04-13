@@ -6,9 +6,11 @@ module.exports = {
     "../stories/**/*.stories.@(js|jsx|ts|tsx)"
   ],
   "addons": [
+    "storybook-addon-pseudo-states",
     "@storybook/addon-links",
     "@storybook/preset-scss",
-    "@storybook/addon-essentials"
+    "@storybook/addon-essentials",
+    'storybook-css-modules-preset'
   ],
   babel: async (options) => {
     return {
@@ -63,7 +65,7 @@ module.exports = {
       //   '../node_modules/react-native-reanimated',
       // ),
     }
-    config.resolve.extensions = [ '.web.js', '.web.jsx', '.web.tsx', '.mjs', '.js',  '.jsx', '.ts', '.tsx',   '.cjs']
+    config.resolve.extensions = ['.web.js', '.web.jsx', '.web.tsx', '.mjs', '.js', '.jsx', '.ts', '.tsx', '.cjs']
     // config.module.rules.map((v)=>{
     //   const exclude = v.exclude + ""
     //   if (exclude === "/node_modules/") {

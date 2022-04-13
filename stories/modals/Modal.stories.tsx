@@ -2,7 +2,7 @@ import { ComponentStory } from '@storybook/react'
 import '../../styles/Global.scss'
 import { Modal, ModalHeader } from 'components/Modal'
 import { ModalBody, ModalFooter } from 'reactstrap'
-import { ButtonPrimary, ButtonText } from 'components/base/forms/Button'
+import { Button } from 'components/base/forms/Button'
 
 export default {
   title: 'modals/Modal',
@@ -24,8 +24,8 @@ export const Default: ComponentStory<typeof Modal> = (args) => {
           culpa qui officia deserunt mollit anim id est laborum.
         </ModalBody>
         <ModalFooter>
-          <ButtonText>Cancel</ButtonText>
-          <ButtonPrimary>Do Something</ButtonPrimary>
+          <Button theme='text'>Cancel</Button>
+          <Button>Do Something</Button>
         </ModalFooter>
       </Modal>
     </>
