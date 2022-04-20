@@ -10,16 +10,13 @@
 		09203F9A7C58A11B15227E17 /* libPods-mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D16B0A6500562420EBEAA18 /* libPods-mobile.a */; };
 		0C63C108D2C7459C445149AF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		2765AE8F24C4781500373166 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AE4F24C3984A00373166 /* main.m */; };
-		2765AE9024C4781500373166 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AE4D24C3984900373166 /* AppDelegate.m */; };
 		2765AE9224C4781500373166 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		2765AE9524C4781500373166 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5124C3984A00373166 /* Images.xcassets */; };
 		2765AE9724C4781500373166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5524C3984A00373166 /* LaunchScreen.storyboard */; };
 		2765AEE724C4A74900373166 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AE4F24C3984A00373166 /* main.m */; };
-		2765AEE824C4A74900373166 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AE4D24C3984900373166 /* AppDelegate.m */; };
 		2765AEEE24C4A74900373166 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5124C3984A00373166 /* Images.xcassets */; };
 		2765AEF024C4A74900373166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5524C3984A00373166 /* LaunchScreen.storyboard */; };
 		2765AEFE24C4A7C500373166 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AE4F24C3984A00373166 /* main.m */; };
-		2765AEFF24C4A7C500373166 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AE4D24C3984900373166 /* AppDelegate.m */; };
 		2765AF0524C4A7C500373166 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5124C3984A00373166 /* Images.xcassets */; };
 		2765AF0724C4A7C500373166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5524C3984A00373166 /* LaunchScreen.storyboard */; };
 		27B6E18C25DFED5800800717 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B6E18B25DFED5800800717 /* File.swift */; };
@@ -27,7 +24,6 @@
 		27B6E18E25DFED5800800717 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B6E18B25DFED5800800717 /* File.swift */; };
 		27B6E31B25E010F700800717 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AE4F24C3984A00373166 /* main.m */; };
 		27B6E31C25E010F700800717 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B6E18B25DFED5800800717 /* File.swift */; };
-		27B6E31D25E010F700800717 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AE4D24C3984900373166 /* AppDelegate.m */; };
 		27B6E32425E010F700800717 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5124C3984A00373166 /* Images.xcassets */; };
 		27B6E32525E010F700800717 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2765AE5524C3984A00373166 /* LaunchScreen.storyboard */; };
 		27B6E32625E010F700800717 /* FontAwesome5_Pro_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E370A70F9A494D37A9E1A143 /* FontAwesome5_Pro_Brands.ttf */; };
@@ -42,6 +38,10 @@
 		7D69833B9F484054B4A8D382 /* FontAwesome5_Pro_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99863E139B7B47E49141BA60 /* FontAwesome5_Pro_Solid.ttf */; };
 		A76EA58DE1F48F5486914B1C /* libPods-appcenter-production.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EED8618777C03FB9D380A7E0 /* libPods-appcenter-production.a */; };
 		E20AE0E6E9A041639AA08C50 /* FontAwesome5_Pro_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C200711F53C430595F55258 /* FontAwesome5_Pro_Regular.ttf */; };
+		E500B82E28104E18001FC6F9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E500B82D28104E18001FC6F9 /* AppDelegate.mm */; };
+		E500B82F28104E18001FC6F9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E500B82D28104E18001FC6F9 /* AppDelegate.mm */; };
+		E500B83028104E18001FC6F9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E500B82D28104E18001FC6F9 /* AppDelegate.mm */; };
+		E500B83128104E18001FC6F9 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E500B82D28104E18001FC6F9 /* AppDelegate.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +51,6 @@
 		147C111C9DD6F61EF5CE559E /* Pods-mobile-mobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-mobileTests.release.xcconfig"; path = "Target Support Files/Pods-mobile-mobileTests/Pods-mobile-mobileTests.release.xcconfig"; sourceTree = "<group>"; };
 		1BA4ADC4A2A9DFB65D860CC7 /* libPods-mobile-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		201E8B9B1522051C24778EB5 /* Pods-appcenter-production.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appcenter-production.debug.xcconfig"; path = "Target Support Files/Pods-appcenter-production/Pods-appcenter-production.debug.xcconfig"; sourceTree = "<group>"; };
-		2765AE4D24C3984900373166 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = mobile/AppDelegate.m; sourceTree = "<group>"; };
 		2765AE4E24C3984A00373166 /* GoogleService-Info-Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info-Staging.plist"; path = "mobile/GoogleService-Info-Staging.plist"; sourceTree = "<group>"; };
 		2765AE4F24C3984A00373166 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = mobile/main.m; sourceTree = "<group>"; };
 		2765AE5124C3984A00373166 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = mobile/Images.xcassets; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		D3CC56790E9ED968D2BC9DA8 /* Pods-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile.release.xcconfig"; path = "Target Support Files/Pods-mobile/Pods-mobile.release.xcconfig"; sourceTree = "<group>"; };
 		E1FA000198FEE416F6A76A8B /* Pods-mobile-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-mobile-tvOS/Pods-mobile-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E370A70F9A494D37A9E1A143 /* FontAwesome5_Pro_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Pro_Brands.ttf; path = ../assets/fonts/FontAwesome5_Pro_Brands.ttf; sourceTree = "<group>"; };
+		E500B82D28104E18001FC6F9 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = mobile/AppDelegate.mm; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EED8618777C03FB9D380A7E0 /* libPods-appcenter-production.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-appcenter-production.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,12 +201,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				E500B82D28104E18001FC6F9 /* AppDelegate.mm */,
 				27B6E18B25DFED5800800717 /* File.swift */,
 				27B6E06425DFDE3200800717 /* TheApp Staging.entitlements */,
 				27B6E06325DFDE2C00800717 /* TheApp.entitlements */,
 				13B07FAE1A68108700A75B9A /* mobile */,
 				2765AE5224C3984A00373166 /* AppDelegate.h */,
-				2765AE4D24C3984900373166 /* AppDelegate.m */,
 				2765AE4E24C3984A00373166 /* GoogleService-Info-Staging.plist */,
 				2765AE5424C3984A00373166 /* GoogleService-Info.plist */,
 				2765AE5124C3984A00373166 /* Images.xcassets */,
@@ -438,12 +438,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-appcenter-staging/Pods-appcenter-staging-frameworks.sh",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-Glog/glog.framework/glog",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/hermes.framework/hermes",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
 			);
@@ -847,12 +849,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-appcenter-production/Pods-appcenter-production-frameworks.sh",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-Glog/glog.framework/glog",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/hermes.framework/hermes",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
 			);
@@ -869,12 +873,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-mobile/Pods-mobile-frameworks.sh",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-Glog/glog.framework/glog",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/hermes.framework/hermes",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
 			);
@@ -1026,12 +1032,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-mobile-staging/Pods-mobile-staging-frameworks.sh",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-Glog/glog.framework/glog",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/hermes.framework/hermes",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
 			);
@@ -1070,8 +1078,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2765AE8F24C4781500373166 /* main.m in Sources */,
+				E500B82E28104E18001FC6F9 /* AppDelegate.mm in Sources */,
 				27B6E18C25DFED5800800717 /* File.swift in Sources */,
-				2765AE9024C4781500373166 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1080,8 +1088,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2765AEE724C4A74900373166 /* main.m in Sources */,
+				E500B82F28104E18001FC6F9 /* AppDelegate.mm in Sources */,
 				27B6E18D25DFED5800800717 /* File.swift in Sources */,
-				2765AEE824C4A74900373166 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1090,8 +1098,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2765AEFE24C4A7C500373166 /* main.m in Sources */,
+				E500B83028104E18001FC6F9 /* AppDelegate.mm in Sources */,
 				27B6E18E25DFED5800800717 /* File.swift in Sources */,
-				2765AEFF24C4A7C500373166 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1100,8 +1108,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				27B6E31B25E010F700800717 /* main.m in Sources */,
+				E500B83128104E18001FC6F9 /* AppDelegate.mm in Sources */,
 				27B6E31C25E010F700800717 /* File.swift in Sources */,
-				27B6E31D25E010F700800717 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

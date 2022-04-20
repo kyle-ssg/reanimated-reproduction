@@ -29,7 +29,10 @@ public class MainActivity extends ReactActivity {
     return new ReactActivityDelegate(this, getMainComponentName()) {
       @Override
       protected ReactRootView createRootView() {
-       return new RNGestureHandlerEnabledRootView(MainActivity.this);
+       ReactRootView reactRootView = new RNGestureHandlerEnabledRootView(MainActivity.this);
+       // If you opted-in for the New Architecture, we enable the Fabric Renderer.
+       reactRootView.setIsFabric(BuildConfig.IS_NEW_ARCHITECTURE_ENABLED);
+       return reactRootView;
       }
     };
   }
