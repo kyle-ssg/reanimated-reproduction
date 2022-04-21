@@ -1,6 +1,6 @@
 {
   "name": "mobile",
-  "version": "1.18.3",
+  "version": "1.19.0",
   "private": true,
   "scripts": {
     "start": "react-native start",
@@ -73,10 +73,10 @@
     "react-native-gesture-handler": "1.10.3",
     "react-native-globals": "^0.62.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
-    "react-native-launch-arguments": "git://github.com/Flagsmith/react-native-launch-arguments.git#dist",
+    "react-native-launch-arguments": "^3.0.1",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-localization": "2.2.0",
-    "react-native-mmkv-storage": "^0.6.12",
+    "react-native-mmkv-storage": "^0.7.1",
     "react-native-modal-datetime-picker": "13.0.1",
     "react-native-performance-monitor": "^1.2.1",
     "react-native-reanimated": "2.4.1",

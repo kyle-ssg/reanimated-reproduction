@@ -2,7 +2,6 @@ import { Middleware } from 'redux'
 import { Project } from '../../project'
 
 export interface StorageType {
-  init: () => Promise<any>
   clear: () => Promise<boolean>
   getItem: (key: string, req?: any) => Promise<string>
   setItem: (

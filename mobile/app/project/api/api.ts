@@ -5,7 +5,7 @@ import 'common/project'
 import { ApiTypes } from 'common/api/types/api-types'
 import { Alert, PixelRatio, Share } from 'react-native'
 // import BottomSheet from 'react-native-bottomsheet'
-import storage from './async-storage-api'
+import storage, { MMKV } from './async-storage-api'
 import auth from './auth'
 // import ImagePicker from 'react-native-image-crop-picker';
 import push from './push-notifications-api'
@@ -19,7 +19,6 @@ import { getStore } from 'common/store'
 
 // @ts-ignore
 const analytics = typeof _analytics === 'undefined' ? undefined : _analytics
-
 const ratio = PixelRatio.get()
 interface MobileAPI extends ApiTypes<FirebaseMessagingTypes.RemoteMessage> {
   showOptions: any
@@ -30,7 +29,7 @@ interface MobileAPI extends ApiTypes<FirebaseMessagingTypes.RemoteMessage> {
 const API: MobileAPI = {
   isMobile: () => true,
   getPixelRatio: () => ratio,
-  reduxStorage: storage,
+  reduxStorage: MMKV as any,
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   middlewares: [require('redux-flipper-colorized').default()],
   log(namespace: string, ...args: any[]) {

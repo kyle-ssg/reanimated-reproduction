@@ -19,11 +19,14 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.rndiffapp.BuildConfig;
-import com.rndiffapp.newarchitecture.components.MainComponentsRegistry;
-import com.rndiffapp.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.mobile.project.BuildConfig;
+import com.mobile.project.components.MainComponentsRegistry;
+import com.mobile.project.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
+import com.swmansion.reanimated.ReanimatedJSIModulePackage; // <- add
+import com.microsoft.codepush.react.CodePush;
+
 /**
  * A {@link ReactNativeHost} that helps you load everything needed for the New Architecture, both
  * TurboModule delegates and the Fabric Renderer.
@@ -35,6 +38,7 @@ public class MainApplicationReactNativeHost extends ReactNativeHost {
   public MainApplicationReactNativeHost(Application application) {
     super(application);
   }
+
   @Override
   public boolean getUseDeveloperSupport() {
     return BuildConfig.DEBUG;
@@ -55,10 +59,12 @@ public class MainApplicationReactNativeHost extends ReactNativeHost {
     // inside a ReactPackage.
     return packages;
   }
+
   @Override
   protected String getJSMainModuleName() {
     return "index";
   }
+
   @NonNull
   @Override
   protected ReactPackageTurboModuleManagerDelegate.Builder
@@ -67,14 +73,16 @@ public class MainApplicationReactNativeHost extends ReactNativeHost {
     // for the new architecture and to use TurboModules correctly.
     return new MainApplicationTurboModuleManagerDelegate.Builder();
   }
+
   @Override
   protected JSIModulePackage getJSIModulePackage() {
-    return new JSIModulePackage() {
+    return new ReanimatedJSIModulePackage() {
       @Override
       public List<JSIModuleSpec> getJSIModules(
           final ReactApplicationContext reactApplicationContext,
           final JavaScriptContextHolder jsContext) {
         final List<JSIModuleSpec> specs = new ArrayList<>();
+
         // Here we provide a new JSIModuleSpec that will be responsible of providing the
         // custom Fabric Components.
         specs.add(
@@ -83,18 +91,23 @@ public class MainApplicationReactNativeHost extends ReactNativeHost {
               public JSIModuleType getJSIModuleType() {
                 return JSIModuleType.UIManager;
               }
+
               @Override
               public JSIModuleProvider<UIManager> getJSIModuleProvider() {
                 final ComponentFactory componentFactory = new ComponentFactory();
                 CoreComponentsRegistry.register(componentFactory);
+
                 // Here we register a Components Registry.
                 // The one that is generated with the template contains no components
                 // and just provides you the one from React Native core.
                 MainComponentsRegistry.register(componentFactory);
+
                 final ReactInstanceManager reactInstanceManager = getReactInstanceManager();
+
                 ViewManagerRegistry viewManagerRegistry =
                     new ViewManagerRegistry(
                         reactInstanceManager.getOrCreateViewManagers(reactApplicationContext));
+
                 return new FabricJSIModuleProvider(
                     reactApplicationContext,
                     componentFactory,
@@ -107,11 +120,3 @@ public class MainApplicationReactNativeHost extends ReactNativeHost {
     };
   }
 }
-
-
-
-
-       // REACT_NATIVE_REANIMATED
-       @Override
-       protected JSIModulePackage getJSIModulePackage() {
-           return new ReanimatedJSIModulePackage(); // <- add

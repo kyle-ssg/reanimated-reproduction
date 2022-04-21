@@ -1,4 +1,4 @@
-package com.mobile.project;
+package com.mobile.project.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

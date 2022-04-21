@@ -1,4 +1,4 @@
-package com.rndiffapp.newarchitecture.modules;
+package com.mobile.project.modules;
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.ReactPackageTurboModuleManagerDelegate;

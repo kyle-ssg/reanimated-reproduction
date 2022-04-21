@@ -12,7 +12,7 @@ import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.facebook.react.config.ReactFeatureFlags;
-import com.rndiffapp.newarchitecture.MainApplicationReactNativeHost;
+import com.mobile.project.MainApplicationReactNativeHost;
 
 //REACT_NATIVE_REANIMATED
   import com.facebook.react.bridge.JSIModulePackage; // <- add

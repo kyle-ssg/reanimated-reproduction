@@ -4,7 +4,6 @@ import nookies from 'nookies'
 import { NextPageContext } from 'next'
 
 const StorageManager = class {
-  init = async () => {}
   clear = async () => {
     console.error('Web does not support clear cookies')
     return Promise.resolve(false)
