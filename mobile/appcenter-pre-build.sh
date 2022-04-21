@@ -1,2 +1,1 @@
-echo "cmake.dir=$ANDROID_HOME/cmake/3.10.2.4988404" >> android/local.properties
-brew uninstall cmake
+echo "cmake.dir=$ANDROID_HOME/cmake/3.18.1" >> ./android/local.properties
