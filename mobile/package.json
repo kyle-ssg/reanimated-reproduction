@@ -76,7 +76,7 @@
     "react-native-launch-arguments": "^3.0.1",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-localization": "2.2.0",
-    "react-native-mmkv-storage": "^0.7.1",
+    "react-native-mmkv-storage": "0.7.0",
     "react-native-modal-datetime-picker": "13.0.1",
     "react-native-performance-monitor": "^1.2.1",
     "react-native-reanimated": "2.4.1",
