@@ -1,2 +1,1 @@
-cd $ANDROID_HOME/cmake
-echo echo $(ls)
+echo "cmake.dir=$ANDROID_HOME/cmake/3.10.2.4988404" >> android/local.properties
