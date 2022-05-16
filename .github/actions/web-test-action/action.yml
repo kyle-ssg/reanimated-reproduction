@@ -11,7 +11,7 @@ runs:
 
   steps:
     - name: Test with Chromedriver
-      working-directory: frontend
+      working-directory: .
       env:
         ENV: ${{ inputs.ENV }}
       run: |
