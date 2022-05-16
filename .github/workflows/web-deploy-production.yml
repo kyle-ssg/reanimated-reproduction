@@ -27,6 +27,12 @@ jobs:
     environment: production
 
     steps:
+      - name: Cloning repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Web Cache
+        uses: ./.github/actions/web-cache
       - name: Run E2E tests against local
         uses: ./.github/actions/web-test-action
         with:
