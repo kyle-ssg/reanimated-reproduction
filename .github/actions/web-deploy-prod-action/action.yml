@@ -16,7 +16,7 @@ runs:
         ENV: ${{ inputs.ENV }}
         NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
         NOW_TEAM_NAME: ${{ secrets.NOW_TEAM_NAME }}
+        REPO: $GITHUB_REPOSITORY | sed -e 's/.*\///'
       run: |
-        - repo=$GITHUB_REPOSITORY | sed -e 's/.*\///'
-        - npx vercel --prod --token $NOW_TOKEN --scope $NOW_TEAM_NAME  --confirm --build-env ENV=$ENV --name=$repo
+        - npx vercel --prod --token $NOW_TOKEN --scope $NOW_TEAM_NAME  --confirm --build-env ENV=$ENV --name=$REPO
       shell: bash
