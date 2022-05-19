@@ -37,8 +37,8 @@ jobs:
       - name: Run E2E tests against local
         uses: ./.github/actions/web-test-action
         with:
-          ENV: prod
-      - name: Web Deploy Production
-        uses: ./.github/actions/web-deploy-prod-action
+          ENV: dev
+      - name: Web Deploy Feature
+        uses: ./.github/actions/web-deploy-branch-action
         with:
-          ENV: prod
+          ENV: dev
