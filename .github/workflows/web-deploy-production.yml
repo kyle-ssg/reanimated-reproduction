@@ -42,3 +42,5 @@ jobs:
         uses: ./.github/actions/web-deploy-prod-action
         with:
           ENV: prod
+          NOW_TOKEN: ${{ inputs.NOW_TOKEN }}
+          NOW_TEAM_NAME: ${{ inputs.NOW_TEAM_NAME }}
