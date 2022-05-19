@@ -34,7 +34,7 @@ jobs:
           fetch-depth: 0
       - name: Web Cache
         uses: ./.github/actions/web-cache-action
-      - name: Run E2E tests against local
+      - name: Run E2E tests against production
         uses: ./.github/actions/web-test-action
         with:
           ENV: prod
