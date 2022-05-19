@@ -12,7 +12,11 @@ runs:
   steps:
     - name: Deploy to Production
       working-directory: .
+      env:
+        ENV: ${{ inputs.ENV }}
+        NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
+        NOW_TEAM_NAME: ${{ secrets.NOW_TEAM_NAME }}
       run: |
         - repo=$GITHUB_REPOSITORY | sed -e 's/.*\///'
-        - npx vercel --prod --token ${{ secrets.NOW_TOKEN }} --scope ${{ secrets.NOW_TEAM_NAME }} --confirm --build-env ENV=${{ inpits.ENV }} --name=$repo
+        - npx vercel --prod --token $NOW_TOKEN --scope $NOW_TEAM_NAME  --confirm --build-env ENV=$ENV --name=$repo
       shell: bash

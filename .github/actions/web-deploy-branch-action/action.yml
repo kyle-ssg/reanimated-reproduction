@@ -12,8 +12,13 @@ runs:
   steps:
     - name: Deploy to Branch
       working-directory: .
+      env:
+        ENV: ${{ inputs.ENV }}
+        NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
+        NOW_TEAM_NAME: ${{ secrets.NOW_TEAM_NAME }}
+
       run: |
-        - url=$(npx vercel --token ${{ secrets.NOW_TOKEN }} --scope ${{ secrets.NOW_TEAM_NAME }} --confirm --build-env ENV=${{ inpits.ENV }} --name=$GITHUB_REPOSITORY | sed -e 's/.*\///')
+        - url=$(npx vercel --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --build-env ENV=$ENV --name=$GITHUB_REPOSITORY | sed -e 's/.*\///')
         - repo=$GITHUB_REPOSITORY | sed -e 's/.*\///'
         - npx vercel alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url $repo-$GITHUB_REF_NAME
       shell: bash
