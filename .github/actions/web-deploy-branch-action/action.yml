@@ -18,7 +18,7 @@ runs:
         NOW_TEAM_NAME: ${{ secrets.NOW_TEAM_NAME }}
 
       run: |
-        - url=$(npx vercel --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --build-env ENV=$ENV --name=$GITHUB_REPOSITORY | sed -e 's/.*\///')
-        - repo=$GITHUB_REPOSITORY | sed -e 's/.*\///'
-        - npx vercel alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url $repo-$GITHUB_REF_NAME
+        url=$(npx vercel --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --build-env ENV=$ENV --name=$GITHUB_REPOSITORY | sed -e 's/.*\///')
+        repo=$GITHUB_REPOSITORY | sed -e 's/.*\///'
+        npx vercel alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url $repo-$GITHUB_REF_NAME
       shell: bash
