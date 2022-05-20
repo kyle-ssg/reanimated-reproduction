@@ -38,8 +38,8 @@ jobs:
         uses: ./.github/actions/web-test-action
         with:
           ENV: prod
-          NOW_TOKEN: ${{ inputs.NOW_TOKEN }}
-          NOW_TEAM_NAME: ${{ inputs.NOW_TEAM_NAME }}
+          NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
+          NOW_TEAM_NAME: ${{ secrets.NOW_TEAM_NAME }}
           REPO: $GITHUB_REPOSITORY | sed -e 's/.*\///'
       - name: Web Deploy Production
         run: |
