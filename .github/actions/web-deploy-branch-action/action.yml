@@ -24,11 +24,8 @@ runs:
         NOW_TEAM_NAME: ${{ inputs.NOW_TEAM_NAME }}
 
       run: |
-        echo "Parsing repository"
         name=`echo $GITHUB_REPOSITORY | sed -e 's/.*\///'`
-        echo "$name"
         alias=`echo "$name-$GITHUB_HEAD_REF" | tr '_' '-' | tr '/' '-'`
-        echo "$alias"
         url=$(npx vercel --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --build-env ENV=$ENV --name=$name)
         npx vercel alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url $alias
       shell: bash
