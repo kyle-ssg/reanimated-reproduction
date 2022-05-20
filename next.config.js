@@ -7,7 +7,7 @@ const withTM = require('next-transpile-modules')([
     // 'react-native-svg',
     // 'react-native-reanimated',
 ])
-console.log("PR")
+
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
     enabled: process.env.BUNDLE_ANALYZE === 'true',
 })
