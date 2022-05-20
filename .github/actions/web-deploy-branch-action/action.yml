@@ -5,6 +5,12 @@ inputs:
   ENV:
     description: "The project_ENV file to use."
     required: true
+  NOW_TOKEN:
+    description: "The NOW_TOKEN file to use."
+    required: true
+  NOW_TEAM_NAME:
+    description: "The NOW_TEAM_NAME file to use."
+    required: true
 
 runs:
   using: composite
@@ -14,11 +20,12 @@ runs:
       working-directory: .
       env:
         ENV: ${{ inputs.ENV }}
-        NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
-        NOW_TEAM_NAME: ${{ secrets.NOW_TEAM_NAME }}
+        NOW_TOKEN: ${{ inputs.NOW_TOKEN }}
+        NOW_TEAM_NAME: ${{ inputs.NOW_TEAM_NAME }}
 
       run: |
         name=`echo $GITHUB_REPOSITORY | sed -e 's/.*\///'`
-        url=$(npx vercel --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --build-env ENV=$ENV --name=$name
-        npx vercel alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url $name-$GITHUB_REF_NAME
+        alias=`echo "$name-$GITHUB_HEAD_REF" | tr '_' '-' | tr '/' '-'`
+        url=$(npx vercel --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --build-env ENV=$ENV --name=$name)
+        npx vercel alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url $alias
       shell: bash
