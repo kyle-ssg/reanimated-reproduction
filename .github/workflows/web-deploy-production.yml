@@ -42,7 +42,6 @@ jobs:
           NOW_TEAM_NAME: ${{ inputs.NOW_TEAM_NAME }}
           REPO: $GITHUB_REPOSITORY | sed -e 's/.*\///'
       - name: Web Deploy Production
-        uses: ./.github/actions/web-deploy-prod-action
         run: |
           npx vercel --prod --token $NOW_TOKEN --scope $NOW_TEAM_NAME  --confirm --build-env ENV=$ENV --name=$REPO
-          shell: bash
+        shell: bash
