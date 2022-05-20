@@ -23,6 +23,6 @@ runs:
         NOW_TOKEN: ${{ inputs.NOW_TOKEN }}
         NOW_TEAM_NAME: ${{ inputs.NOW_TEAM_NAME }}
       run: |
-        echo $GITHUB_REPOSITORY | sed -e 's/.*\///'
-        npx vercel --prod --token $NOW_TOKEN --scope $NOW_TEAM_NAME  --confirm --build-env ENV=$ENV --name=$GITHUB_REPOSITORY | sed -e 's/.*\///'
+        name=`echo $GITHUB_REPOSITORY | sed -e 's/.*\///'`
+        npx vercel --prod --token $NOW_TOKEN --scope $NOW_TEAM_NAME  --confirm --build-env ENV=$ENV --name=$name
       shell: bash
