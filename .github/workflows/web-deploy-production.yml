@@ -38,10 +38,9 @@ jobs:
         uses: ./.github/actions/web-test-action
         with:
           ENV: prod
+      - name: Web Deploy Production
+        uses: ./.github/actions/web-deploy-prod-action
+        with:
+          ENV: prod
           NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
           NOW_TEAM_NAME: ${{ secrets.NOW_TEAM_NAME }}
-          REPO: $GITHUB_REPOSITORY | sed -e 's/.*\///'
-      - name: Web Deploy Production
-        run: |
-          npx vercel --prod --token $NOW_TOKEN --scope $NOW_TEAM_NAME  --confirm --build-env ENV=$ENV --name=$REPO
-        shell: bash
