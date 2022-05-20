@@ -5,6 +5,12 @@ inputs:
   ENV:
     description: "The project_ENV file to use."
     required: true
+  NOW_TOKEN:
+    description: "The NOW_TOKEN file to use."
+    required: true
+  NOW_TEAM_NAME:
+    description: "The NOW_TEAM_NAME file to use."
+    required: true
 
 runs:
   using: composite
