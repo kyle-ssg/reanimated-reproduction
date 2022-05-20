@@ -43,3 +43,5 @@ jobs:
         uses: ./.github/actions/web-deploy-branch-action
         with:
           ENV: dev
+          NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
+          NOW_TEAM_NAME: ${{ secrets.NOW_TEAM_NAME }}

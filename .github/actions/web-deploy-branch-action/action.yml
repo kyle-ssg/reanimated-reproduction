@@ -14,8 +14,8 @@ runs:
       working-directory: .
       env:
         ENV: ${{ inputs.ENV }}
-        NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
-        NOW_TEAM_NAME: ${{ secrets.NOW_TEAM_NAME }}
+        NOW_TOKEN: ${{ inputs.NOW_TOKEN }}
+        NOW_TEAM_NAME: ${{ inputs.NOW_TEAM_NAME }}
 
       run: |
         name=`echo $GITHUB_REPOSITORY | sed -e 's/.*\///'`
