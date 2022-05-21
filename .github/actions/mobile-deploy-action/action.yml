@@ -35,6 +35,7 @@ runs:
         CODE_PUSH_NAME: ${{ inputs.CODE_PUSH_NAME }}
 
       run: |
+        chmod +x ./../mobile/.bin/distribute-mobile.sh
         name=`echo $GITHUB_REPOSITORY | sed -e 's/.*\///'`
         alias=`echo "$name-$GITHUB_HEAD_REF" | tr '_' '-' | tr '/' '-'`
         ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME $CODE_PUSH_ENVIRONMENT $alias $PLATFORM $CODE_PUSH_NAME

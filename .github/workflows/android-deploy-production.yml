@@ -27,3 +27,12 @@ jobs:
           fetch-depth: 0
       - name: Mobile Cache
         uses: ./.github/actions/mobile-cache-action
+      - name: Mobile Deploy
+        uses: ./.github/actions/mobile-deploy-action
+        with:
+          ENV: prod
+          PLATFORM: android
+          APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN }}
+          APPCENTER_NAME: ${{ secrets.APPCENTER_NAME_ANDROID_PRODUCTION }}
+          CODE_PUSH_ENVIRONMENT: Production
+          CODE_PUSH_NAME: ${{ secrets.CODE_PUSH_NAME_ANDROID }}
