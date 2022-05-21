@@ -1,27 +1,27 @@
 name: Run E2E tests
 description: "Run the E2E tests against an environment"
 
-inputs:
-  ENV:
-    description: "The project_ENV file to use."
-    required: true
-
 runs:
   using: composite
+
   steps:
-    - name: Test with Chromedriver
-      working-directory: .
+    - name: Cache node modules
+      working-directory: mobile
+      id: cache-npm
+      uses: actions/cache@v3
       env:
-        ENV: ${{ inputs.ENV }}
-        PLATFORM: ${{ inputs.PLATFORM }}
-        APPCENTER_ACCESS_TOKEN: ${{ inputs.APPCENTER_ACCESS_TOKEN }}
-        APPCENTER_NAME: ${{ inputs.APPCENTER_NAME }}
-        APPCENTER_ENVIRONMENT: ${{ inputs.APPCENTER_ENVIRONMENT }}
-        CODE_PUSH_NAME: ${{ inputs.CODE_PUSH_NAME }}
+        cache-name: cache-node-modules
+      with:
+        # npm cache files are stored in `~/.npm` on Linux/macOS
+        path: |
+          ~/.npm
+        key: ${{ runner.os }}-mobile-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-mobile-${{ env.cache-name }}-
+          ${{ runner.os }}-mobile-
+          ${{ runner.os }}-
 
-      run: |
-        name=`echo $GITHUB_REPOSITORY | sed -e 's/.*\///'`
-        alias=`echo "$name-$GITHUB_HEAD_REF" | tr '_' '-' | tr '/' '-'`
-        ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME $APPCENTER_ENVIRONMENT $alias $PLATFORM $CODE_PUSH_NAME
-
-      shell: bash
+          - if: ${{ steps.cache-npm.outputs.cache-hit == false }}
+              name: List the state of node modules
+              continue-on-error: true
+              run: npm list
