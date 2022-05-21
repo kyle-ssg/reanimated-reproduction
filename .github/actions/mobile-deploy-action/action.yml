@@ -33,6 +33,7 @@ runs:
         APPCENTER_NAME: ${{ inputs.APPCENTER_NAME }}
         CODE_PUSH_ENVIRONMENT: ${{ inputs.CODE_PUSH_ENVIRONMENT }}
         CODE_PUSH_NAME: ${{ inputs.CODE_PUSH_NAME }}
+        CI_COMMIT_REF_NAME: $CI_COMMIT_REF_NAME
 
       run: |
         chmod +x ./../mobile/.bin/distribute-mobile.sh
