@@ -1,0 +1,38 @@
+name: Web Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/**/*"
+      - "*"
+      - "common/**/*"
+      - "mobile/**/*"
+
+defaults:
+  run:
+    working-directory: .
+
+jobs:
+  web-production:
+    runs-on: ubuntu-latest
+    name: Web Production
+    environment: production
+
+    steps:
+      - name: Cloning repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Mobile Cache
+        uses: ./.github/actions/mobile-cache-action
+      - name: Run E2E tests against production
+        uses: ./.github/actions/mobile-deploy-action
+        with:
+          ENV: prod
+          PLATFORM: android
+          APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN }}
+          APPCENTER_NAME: ${{ secrets.APPCENTER_NAME_ANDROID_PRODUCTION }}
+          APPCENTER_ENVIRONMENT: Production
+          CODE_PUSH_NAME: ${{ secrets.CODE_PUSH_NAME_ANDROID }}
