@@ -95,7 +95,7 @@ if [[ $? == 2 ]]
 then
     echo "Queueing new native build ($currentVersion) on AppCenter"
     sh ./.bin/clone-config.sh
-    appcenter build queue -a $1 -b $CI_COMMIT_REF_NAME
+    appcenter build queue -a $1 -b $3
 else
     echo "Code-pushing new bundle to $2 environment on AppCenter $5"
     if [[ $4 == "ios" ]]
