@@ -25,7 +25,7 @@ runs:
 
       run: |
         name=`echo $GITHUB_REPOSITORY | sed -e 's/.*\///'`
-        alias=`echo "$name-$GITHUB_HEAD_REF" | tr '_' '-' | tr '/' '-'`
+        alias=`echo "$name-$GITHUB_HEAD_REF" | tr '_' '-' | tr '/' '-' | tr '.' '-'`
         url=$(npx vercel --token $NOW_TOKEN --scope $NOW_TEAM_NAME --confirm --build-env ENV=$ENV --name=$name)
         npx vercel alias --token $NOW_TOKEN --scope $NOW_TEAM_NAME $url $alias
       shell: bash
