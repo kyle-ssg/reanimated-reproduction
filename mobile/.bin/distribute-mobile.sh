@@ -43,12 +43,8 @@ vercomp () {
     return 0
 }
 npm i appcenter-cli -g
-
 ios_target=$6
 export ios_target
-
-echo "APPCENTER version"
-appcenter -v
 
 if [[ $4 == "ios" ]]
 then
@@ -57,9 +53,9 @@ else
     currentVersion=$(grep 'versionName' android/app/build.gradle | grep -o '".*"' | tr -d '"')
 fi
 
-# appcenter build branches list -a Weeteep/WeTeep-Android
+echo Running Distribute Mobile 1: $1 2: $2 3: $3 4: $4 5: $5 6: $6
+
 # Checkout last commit to compare the last version number
-# Note: native builds are built off the master branch
 echo running appcenter build branches list -a $1 grep -A10 -E "Branch: +$3"
 commitSHA=$(appcenter build branches list -a $1 | grep -A10 -E "Branch: +$3" | grep -E -m 1 'Commit SHA: +' | awk '{split($0,a,": "); print a[2]}' | sed 's/^ *//g')
 git reset --hard HEAD
@@ -104,24 +100,11 @@ else
         LABEL=$(node ./.bin/get-codepush-label.js "$APPCENTER_DATA" "$2")
         appcenter codepush release-react -a $5 -d $2 --disable-duplicate-release-error -m -t $currentVersion --sourcemap-output --output-dir ./build
 
-#        npx bugsnag-source-maps upload-react-native \
-#                --api-key x \
-#                --code-bundle-id $LABEL \
-#                --platform ios \
-#                --source-map build/CodePush/main.jsbundle.map \
-#                --bundle build/CodePush/main.jsbundle
     else
         # - // Use this Android alternative when overriding versionName via product flavors
         APPCENTER_DATA=$(appcenter codepush deployment history $2 -a $5 --output json)
         LABEL=$(node ./.bin/get-codepush-label.js "$APPCENTER_DATA" "$2")
         appcenter codepush release-react -a $5 -d $2 --disable-duplicate-release-error -m -t $currentVersion --sourcemap-output --output-dir ./build
-
-#        npx bugsnag-source-maps upload-react-native \
-#                --api-key x \
-#                --code-bundle-id $LABEL \
-#                --platform android \
-#                --source-map build/CodePush/index.android.bundle.map \
-#                --bundle build/CodePush/index.android.bundle
 
     fi
 fi
