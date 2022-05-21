@@ -24,6 +24,13 @@ curl --location --request POST "https://appcenter.ms/api/v0.1/apps/$OWNER_NAME/$
 --header 'Content-Type: application/json' \
 --data-raw "{\"cloneFromBranch\": \"$CLONE_BRANCH\"}"
 
+echo "curl --location --request POST 'https://appcenter.ms/api/v0.1/apps/$OWNER_NAME/$APP_NAME_IOS/branches/$NEW_BRANCH/config' \
+--header 'accept: application/json' \
+--header 'X-API-Token: $IOS_TOKEN' \
+--header 'Content-Type: application/json' \
+--data-raw '{\'cloneFromBranch\': \'$CLONE_BRANCH\'}'"
+
+
 ####Clone Android build
 curl --location --request POST "https://appcenter.ms/api/v0.1/apps/$OWNER_NAME/$APP_NAME_ANDROID/branches/$NEW_BRANCH/config" \
 --header 'accept: application/json' \
