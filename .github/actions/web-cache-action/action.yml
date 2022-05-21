@@ -1,11 +1,11 @@
-name: Run E2E tests
-description: "Run the E2E tests against an environment"
+name: Web Cache
+description: "Pulls Web Node Modules Cache"
 
 runs:
   using: composite
 
   steps:
-    - name: Cache node modules
+    - name: Cache web node modules
       id: cache-npm
       uses: actions/cache@v3
       env:
