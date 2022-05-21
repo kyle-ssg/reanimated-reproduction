@@ -1,4 +1,4 @@
-name: Web Deploy to Production
+name: Android Deploy to Production
 
 on:
   push:
