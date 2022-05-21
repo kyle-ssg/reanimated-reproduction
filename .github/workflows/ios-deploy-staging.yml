@@ -1,12 +1,9 @@
-name: Android Deploy to Production
+name: iOS Deploy to Staging
 
 on:
   push:
     branches:
-      - main
-      - 'mobile/production/**'
-      - 'mobile/main/**'
-      - 'mobile/master/**'
+      - 'mobile/staging/**'
     paths:
       - ".github/**/*"
       - "common/**/*"
@@ -17,10 +14,10 @@ defaults:
     working-directory: .
 
 jobs:
-  android-production:
+  ios-staging:
     runs-on: ubuntu-latest
-    name: Android Production
-    environment: production
+    name: iOS Staging
+    environment: staging
 
     steps:
       - name: Cloning repo
@@ -33,10 +30,10 @@ jobs:
         uses: ./.github/actions/mobile-deploy-action
         with:
           ENV: prod
-          PLATFORM: android
+          PLATFORM: ios
           APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN }}
-          APPCENTER_NAME: ${{ secrets.APPCENTER_NAME_ANDROID_PRODUCTION }}
-          CODE_PUSH_ENVIRONMENT: Production
-          CODE_PUSH_NAME: ${{ secrets.CODE_PUSH_NAME_ANDROID }}
+          APPCENTER_NAME: ${{ secrets.APPCENTER_NAME_IOS_STAGING }}
+          CODE_PUSH_ENVIRONMENT: Staging
+          CODE_PUSH_NAME: ${{ secrets.CODE_PUSH_NAME_IOS }}
           APPCENTER_NAME_ANDROID_PRODUCTION: ${{ secrets.APPCENTER_NAME_ANDROID_PRODUCTION }}
           APPCENTER_NAME_IOS_PRODUCTION: ${{ secrets.APPCENTER_NAME_IOS_PRODUCTION }}

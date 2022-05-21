@@ -89,3 +89,4 @@ test-report/
 yarn.lock
 
 *.hprof
+watchman*
