@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+      - 'mobile/production/**'
+      - 'mobile/main/**'
+      - 'mobile/master/**'
     paths:
       - ".github/**/*"
       - "common/**/*"
