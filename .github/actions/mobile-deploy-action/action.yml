@@ -37,6 +37,7 @@ runs:
       run: |
         chmod +x ./../mobile/.bin/distribute-mobile.sh
         name=`echo $GITHUB_REPOSITORY | sed -e 's/.*\///'`
+        npm i
         ./../mobile/.bin/distribute-mobile.sh $APPCENTER_NAME $CODE_PUSH_ENVIRONMENT $GITHUB_REF_NAME $PLATFORM $CODE_PUSH_NAME
 
       shell: bash
