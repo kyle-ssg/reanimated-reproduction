@@ -1,4 +1,4 @@
-name: Frontend Deploy Feature
+name: Web Deploy Feature
 
 on:
   pull_request:
