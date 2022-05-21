@@ -24,7 +24,7 @@ defaults:
 jobs:
   web-production:
     runs-on: ubuntu-latest
-    name: Web Production
+    name: Web Feature
     environment: production
 
     steps:

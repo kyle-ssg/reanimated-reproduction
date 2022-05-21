@@ -15,9 +15,9 @@ defaults:
     working-directory: .
 
 jobs:
-  web-production:
+  android-production:
     runs-on: ubuntu-latest
-    name: Web Production
+    name: Android Production
     environment: production
 
     steps:
@@ -27,12 +27,3 @@ jobs:
           fetch-depth: 0
       - name: Mobile Cache
         uses: ./.github/actions/mobile-cache-action
-      - name: Run E2E tests against production
-        uses: ./.github/actions/mobile-deploy-action
-        with:
-          ENV: prod
-          PLATFORM: android
-          APPCENTER_ACCESS_TOKEN: ${{ secrets.APPCENTER_ACCESS_TOKEN }}
-          APPCENTER_NAME: ${{ secrets.APPCENTER_NAME_ANDROID_PRODUCTION }}
-          CODE_PUSH_ENVIRONMENT: Production
-          CODE_PUSH_NAME: ${{ secrets.CODE_PUSH_NAME_ANDROID }}
