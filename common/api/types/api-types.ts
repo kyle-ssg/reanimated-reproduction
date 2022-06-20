@@ -9,6 +9,7 @@ export interface StorageType {
     value: string,
     req?: any,
   ) => undefined | Promise<unknown>
+  removeItem: (key: string) => undefined | Promise<unknown>
 }
 
 export interface PushType<NotificationType> {
