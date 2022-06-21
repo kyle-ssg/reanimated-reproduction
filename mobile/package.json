@@ -76,7 +76,7 @@
     "react-native-localization": "2.3.1",
     "react-native-mmkv-storage": "^0.7.6",
     "react-native-modal-datetime-picker": "13.1.2",
-    "react-native-reanimated": "2.4.1",
+    "react-native-reanimated": "2.6.0",
     "react-native-render-html": "^6.3.4",
     "react-native-safe-area-context": "^4.3.1",
     "react-native-screens": "^3.13.1",
