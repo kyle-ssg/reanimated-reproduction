@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef, useState } from 'react'
-import { enableScreens } from 'react-native-screens'
+import { enableScreens, enableFreeze } from 'react-native-screens'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import 'project/api'
 import '../routes'
@@ -20,6 +20,7 @@ import { startup } from 'common/hooks/useStartup'
 // API.auth.Cognito.init(Project.cognitoMobile)
 
 enableScreens()
+enableFreeze(true)
 const Stack = createNativeStackNavigator()
 const Navigator = Stack.Navigator
 

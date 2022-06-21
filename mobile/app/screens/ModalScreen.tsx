@@ -4,12 +4,15 @@ import { RouteUrls } from '../route-urls'
 import ModalStack from 'navigation/ModalStack'
 import Button from 'components/base/forms/Button'
 import { FC } from 'react'
+import { TypedNavigator } from '@react-navigation/core'
 
 type ModalScreen = Screen & {}
 
-const ModalScreen: FC<ModalScreen> = ({ pop }) => {
+const ModalScreen: FC<ModalScreen> = ({ pop, push }) => {
   return (
     <ScreenContainer style={Styles.body}>
+      <Button onPress={() => push('Screen2')}>Push</Button>
+
       <Button
         onPress={() => {
           pop()
@@ -25,12 +28,18 @@ export default ModalStack(
   withScreen(ModalScreen),
   RouteUrls.ModalScreen,
   true,
-  (Stack) => (
+  (Stack: TypedNavigator<any, any, any, any, any>) => (
     <>
       <Stack.Screen
         name={RouteUrls.ModalScreen}
         options={routes[RouteUrls.ModalScreen].options}
         component={routes[RouteUrls.ModalScreen].component}
+      />
+      <Stack.Screen
+        name={'Screen2'}
+        initialParams={{ modal: true }}
+        options={routes[RouteUrls.HomeScreen].options}
+        component={routes[RouteUrls.HomeScreen].component}
       />
     </>
   ),

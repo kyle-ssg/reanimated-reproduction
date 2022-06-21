@@ -131,7 +131,7 @@ const withScreen = (Component: ComponentType) => {
 
     const dismissModal = useCallback(() => {
       // @ts-ignore
-      navigation.dangerouslyGetParent().pop()
+      navigation.getParent()?.pop()
     }, [navigation])
 
     const setOptions = useCallback(
