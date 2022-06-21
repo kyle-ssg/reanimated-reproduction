@@ -74,6 +74,8 @@
         "SafeAreaView": true,
         "ScrollView": true,
         "Text": true,
+        "Row": true,
+        "Flex": true,
         "module": true,
         "TextInput": true,
         "TouchableOpacity": true,

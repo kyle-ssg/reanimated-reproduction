@@ -11,7 +11,7 @@ type ModalScreen = Screen & {}
 const ModalScreen: FC<ModalScreen> = ({ pop, push }) => {
   return (
     <ScreenContainer style={Styles.body}>
-      <Button onPress={() => push('Screen2')}>Push</Button>
+      <Button onPress={() => push('ModalScreen2')}>Push</Button>
 
       <Button
         onPress={() => {
@@ -36,7 +36,7 @@ export default ModalStack(
         component={routes[RouteUrls.ModalScreen].component}
       />
       <Stack.Screen
-        name={'Screen2'}
+        name={'ModalScreen2'}
         initialParams={{ modal: true }}
         options={routes[RouteUrls.HomeScreen].options}
         component={routes[RouteUrls.HomeScreen].component}

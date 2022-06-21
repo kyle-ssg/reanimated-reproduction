@@ -11,15 +11,33 @@ type HomeScreen = Screen & {
   push: (name: string, routeParams?: Partial<IRouteParams>) => void
 }
 
-const HomeScreen: FC<HomeScreen> = ({ push, modal, dismissModal }) => {
+const HomeScreen: FC<HomeScreen> = ({
+  push,
+  modal,
+  dismissModal,
+  canGoBack,
+  pop,
+}) => {
   // const goGeneric = () => push(RouteUrls.mainApp, {})
   const click = () => {
     push(RouteUrls.mainApp)
   }
+  const clickModal = () => {
+    push('ModalScreen2')
+  }
   return (
     <ScreenContainer style={Styles.body}>
-      {modal && <Button onPress={dismissModal}>Dismiss modal</Button>}
-      <Button onPress={click}>Push</Button>
+      {modal ? (
+        <>
+          <Row space>
+            {canGoBack && <Button onPress={pop}>Back</Button>}
+            <Button onPress={dismissModal}>Close</Button>
+          </Row>
+          <Button onPress={clickModal}>Push</Button>
+        </>
+      ) : (
+        <Button onPress={click}>Push</Button>
+      )}
     </ScreenContainer>
   )
 }

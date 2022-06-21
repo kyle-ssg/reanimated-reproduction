@@ -7,17 +7,23 @@ import {
   TextProps,
   ViewProps,
 } from 'react-native'
-import { ComponentType } from 'react'
+import { ComponentType, FC } from 'react'
 import { styleTypes } from '../app/style/_style_screen'
 import { palette, styleVariables } from '../app/style/style_variables'
+import { RowType } from 'components/base/grid/Row'
+import { FlexType } from 'components/base/grid/Flex'
+import { TextType } from 'components/base/type/Text'
+import { TextInputProps } from 'components/base/forms/TextInput'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 declare global {
   //React Native Globals
-  let Text: ComponentType<TextProps>
+  let Text: ComponentType<TextType>
   let TextInput: ComponentType<TextInputProps>
   let ScrollView: ComponentType<ScrollViewProps>
   let Image: ComponentType<ImageProps>
   let View: ComponentType<ViewProps>
+  let Row: FC<RowType>
+  let Flex: FC<FlexType>
   let TouchableOpacity: ComponentType<TouchableOpacityProps>
   let Dimensions: Dimensions
   let palette: palette
