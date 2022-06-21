@@ -17,7 +17,7 @@ import { TextInputProps } from 'components/base/forms/TextInput'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 declare global {
   //React Native Globals
-  let Text: ComponentType<TextType>
+  let Text: FC<TextType>
   let TextInput: ComponentType<TextInputProps>
   let ScrollView: ComponentType<ScrollViewProps>
   let Image: ComponentType<ImageProps>
