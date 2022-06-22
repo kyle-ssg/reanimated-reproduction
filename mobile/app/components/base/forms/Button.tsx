@@ -11,21 +11,24 @@ import Utils from 'common/utils/base/_utils'
 import { debounce } from 'lodash'
 import { FunctionComponent, ReactNode, useCallback, useMemo } from 'react'
 import FA5Pro from 'react-native-vector-icons/FontAwesome5Pro'
+import { cn } from '../../../style/_style_screen'
 
 export type ButtonType = PressableProps & {
   children: ReactNode
   icon?: boolean
   iconColour?: string
+  theme?:
+    | 'text'
+    | 'tertiary'
+    | 'link'
+    | 'outlinePrimary'
+    | 'secondary'
+    | 'primary'
   textStyle?: StyleProp<TextStyle | TextStyle[]>
   pressedStyle?: StyleProp<ViewStyle> | ViewStyle[]
   pressedTextStyle?: TextStyle | TextStyle[]
   style?: StyleProp<ViewStyle>
   throttle?: number
-}
-
-export const standardAndroidRipple: PressableAndroidRippleConfig = {
-  color: 'rgba(255,255,255,.25)',
-  borderless: false,
 }
 
 const circleButtonRipple: PressableAndroidRippleConfig = {
@@ -47,45 +50,73 @@ const Button: FunctionComponent<ButtonType> = ({
   pressedTextStyle,
   textStyle,
   icon,
+  theme,
   iconColour,
   onPress,
   throttle: _throttle = 500,
   ...rest
 }) => {
-  const groupStyles = useMemo(
-    () =>
-      style
-        ? [Styles.buttonGroup, style, disabled ? Styles.buttonDisabled : null]
-        : [Styles.buttonGroup, disabled ? Styles.buttonDisabled : null],
-    [style, disabled],
-  )
-
   const onPressThrottle =
     onPress && debounce(onPress, _throttle, { leading: true })
 
-  const pressedStyles = useMemo(
-    () => [Styles.buttonGroup, Styles.buttonGroupPressed, style, pressedStyle],
-    [pressedStyle, style],
+  const textStyles = useCallback(
+    (pressed) =>
+      cn(
+        'buttonText',
+        textStyle,
+        {
+          buttonPrimaryText: theme === 'primary',
+          buttonPrimaryTextPressed: pressed && theme === 'primary',
+
+          buttonTextText: theme === 'text',
+          buttonTextPressed: pressed && theme === 'text',
+
+          buttonSecondaryText: theme === 'primary',
+          buttonSecondaryTextPressed: pressed && theme === 'primary',
+
+          buttonTertiaryText: theme === 'tertiary',
+          buttonTertiaryTextPressed: pressed && theme === 'tertiary',
+
+          buttonLinkText: theme === 'link',
+          buttonLinkTextPressed: pressed && theme === 'link',
+
+          buttonOutlinePrimaryText: theme === 'outlinePrimary',
+          buttonOutlinePrimaryTextPressed:
+            pressed && theme === 'outlinePrimary',
+        },
+        pressed ? pressedTextStyle : 0,
+      ),
+    [pressedTextStyle, textStyle, theme],
   )
 
-  // @ts-ignore
-  const textStyles: TextStyle[] = useMemo(() => {
-    // @ts-ignore
-    const additionalTextStyles =
-      // @ts-ignore
-      textStyle && textStyle?.length ? textStyle : [textStyle]
-    return textStyle
-      ? [
-          Styles.buttonText,
-          // @ts-ignore
-          ...additionalTextStyles,
-        ]
-      : Styles.buttonText
-  }, [textStyle])
-
   const pressableStyle = useCallback(
-    ({ pressed }) => (pressed ? pressedStyles : groupStyles),
-    [pressedStyles, groupStyles],
+    ({ pressed }) =>
+      cn(
+        'buttonGroup',
+        {
+          buttonGroupPressed: pressed,
+          buttonDisabled: disabled,
+
+          buttonPrimary: theme === 'primary',
+          buttonPrimaryPressed: pressed && theme === 'primary',
+
+          buttonText: theme === 'text',
+
+          buttonSecondary: theme === 'secondary',
+          buttonSecondaryPressed: pressed && theme === 'secondary',
+
+          buttonTertiary: theme === 'tertiary',
+          buttonTertiaryPressed: pressed && theme === 'tertiary',
+
+          buttonLink: theme === 'link',
+          buttonLinkPressed: pressed && theme === 'link',
+
+          buttonOutlinePrimary: theme === 'outlinePrimary',
+          buttonOutlinePrimaryPressed: pressed && theme === 'outlinePrimary',
+        },
+        style,
+      ),
+    [style, disabled, pressedStyle, theme],
   )
 
   return (
@@ -100,15 +131,7 @@ const Button: FunctionComponent<ButtonType> = ({
         {Utils.reactChildIsString(children)
           ? ({ pressed }) => (
               // @ts-ignore
-              <Text
-                style={
-                  !pressed || !pressedTextStyle
-                    ? textStyles
-                    : pressedTextStyle
-                    ? [...textStyles, pressedTextStyle]
-                    : textStyles
-                }
-              >
+              <Text style={textStyles(pressed)}>
                 {/*@ts-ignore*/}
                 {children.length === 1 ? children[0] : children}
               </Text>
@@ -121,86 +144,6 @@ const Button: FunctionComponent<ButtonType> = ({
         </View>
       ) : null}
     </View>
-  )
-}
-
-export const ButtonPrimary: FunctionComponent<ButtonType> = (props) => {
-  return (
-    <Button
-      {...props}
-      style={[Styles.buttonPrimary, props.style]}
-      // @ts-ignore
-      pressedStyle={[Styles.buttonPrimaryPressed, props.pressedStyle]}
-      // @ts-ignore
-      textStyle={[Styles.buttonPrimaryText, props.textStyle]}
-    />
-  )
-}
-
-export const ButtonSecondary: FunctionComponent<ButtonType> = (props) => {
-  return (
-    <Button
-      {...props}
-      style={[Styles.buttonSecondary, props.style]}
-      // @ts-ignore
-      pressedStyle={[Styles.buttonSecondaryPressed, props.pressedStyle]}
-      textStyle={[Styles.buttonSecondaryText, props.textStyle]}
-      pressedTextStyle={Styles.buttonSecondaryTextPressed}
-    />
-  )
-}
-
-export const ButtonOutlinePrimary: FunctionComponent<ButtonType> = (props) => {
-  return (
-    <Button
-      {...props}
-      style={[Styles.buttonOutlinePrimary, props.style]}
-      // @ts-ignore
-      pressedStyle={[Styles.buttonOutlinePrimaryPressed, props.pressedStyle]}
-      // @ts-ignore
-      textStyle={[Styles.buttonOutlinePrimaryText, props.textStyle]}
-      pressedTextStyle={Styles.buttonOutlinePrimaryPressedText}
-    />
-  )
-}
-
-export const ButtonLink: FunctionComponent<ButtonType> = (props) => {
-  return (
-    <Button
-      {...props}
-      android_ripple={{ color: 'transparent' }}
-      style={[Styles.buttonLink, props.style]}
-      // @ts-ignore
-      pressedStyle={[Styles.buttonLinkPressed, props.pressedStyle]}
-      // @ts-ignore
-      textStyle={[Styles.buttonLinkText, props.textStyle]}
-      pressedTextStyle={Styles.buttonLinkPressedText}
-    />
-  )
-}
-
-export const ButtonTertiary: FunctionComponent<ButtonType> = (props) => {
-  return (
-    <Button
-      {...props}
-      style={[Styles.buttonTertiary, props.style]}
-      // @ts-ignore
-      pressedStyle={[Styles.buttonTertiaryPressed, props.pressedStyle]}
-      // @ts-ignore
-      textStyle={[Styles.buttonTertiaryText, props.textStyle]}
-    />
-  )
-}
-
-export const ButtonText: FunctionComponent<ButtonType> = (props) => {
-  return (
-    <Button
-      {...props}
-      style={[Styles.buttonText, props.style]}
-      // @ts-ignore
-      textStyle={[Styles.buttonTextText, props.textStyle]}
-      pressedTextStyle={[Styles.buttonTextPressed, props.pressedTextStyle]}
-    />
   )
 }
 

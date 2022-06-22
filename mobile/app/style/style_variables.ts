@@ -7,6 +7,7 @@ export const palette = {
   primaryOutline: '#15a6ac',
   primaryPressed: '#15a6ac',
   secondary: '#2C2736',
+  secondaryPressed: '#26222f',
   text: '#333',
   backdrop: 'rgba(0,0,0,.2)',
   link: '#2e7bf7',

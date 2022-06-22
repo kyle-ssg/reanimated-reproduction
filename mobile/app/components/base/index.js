@@ -1,12 +1,5 @@
 // Forms
-import Button, {
-  ButtonNav,
-  ButtonOutlinePrimary,
-  ButtonPrimary,
-  ButtonSecondary,
-  ButtonTertiary,
-  ButtonText,
-} from './forms/Button'
+import Button, { ButtonNav } from './forms/Button'
 
 import TextInput from './forms/TextInput'
 import Select from './forms/Select'
@@ -26,11 +19,6 @@ import Fade from 'components/base/animation/Fade'
 
 global.Fade = Fade
 global.Button = Button
-global.ButtonPrimary = ButtonPrimary
-global.ButtonText = ButtonText
-global.ButtonOutlinePrimary = ButtonOutlinePrimary
-global.ButtonSecondary = ButtonSecondary
-global.ButtonTertiary = ButtonTertiary
 global.ButtonNav = ButtonNav
 
 global.Checkbox = Checkbox

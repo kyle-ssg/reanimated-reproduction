@@ -10,6 +10,7 @@ import projectForms from './style_forms'
 import projectLists from './style_lists'
 import projectGrid from './style_grid'
 import projectType from './style_type'
+import { classNames } from './style-utils/cn'
 
 export const styleTypes = {
   ...{},
@@ -24,4 +25,5 @@ export const styleTypes = {
 const Styles = StyleSheet.create(styleTypes)
 // @ts-ignore
 global.Styles = Styles
+export const cn = classNames<typeof styleTypes>(Styles)
 export default Styles

@@ -20,6 +20,8 @@ export default asStyle({
     color: palette.primary,
   },
 
+  buttonOutlinePrimaryTextPressed: {},
+
   buttonOutlinePrimaryPressedText: {
     color: palette.primaryPressed,
   },
@@ -37,6 +39,10 @@ export default asStyle({
     color: palette.primary,
   },
 
+  buttonLinkTextPressed: {
+    color: palette.primaryPressed,
+  },
+
   buttonLinkPressedText: {
     color: palette.primaryPressed,
   },
@@ -46,7 +52,7 @@ export default asStyle({
   },
 
   buttonPrimaryPressed: {
-    backgroundColor: palette.primary,
+    backgroundColor: palette.primaryPressed,
   },
 
   buttonSecondary: {
@@ -54,7 +60,7 @@ export default asStyle({
   },
 
   buttonSecondaryPressed: {
-    backgroundColor: palette.secondary,
+    backgroundColor: palette.secondaryPressed,
   },
 
   buttonSecondaryText: {},
@@ -135,8 +141,10 @@ export default asStyle({
   buttonTertiaryText: {
     color: palette.primary,
   },
+  buttonTertiaryTextPressed: {},
   buttonPrimaryText: {
     color: 'white',
     fontSize: styleVariables.fontSizeH2,
   },
+  buttonPrimaryTextPressed: {},
 })

@@ -1,7 +1,5 @@
 import { ComponentStory } from '@storybook/react-native'
 import Button, {
-  ButtonLink,
-  ButtonOutlinePrimary,
   ButtonSecondary,
   ButtonTertiary,
   ButtonText,
@@ -19,21 +17,21 @@ export const Default: ComponentStory<typeof Button> = (
     <Button {...args} style={Styles.mb5}>
       {args.children}
     </Button>
-    <ButtonTertiary {...args} style={Styles.mb5}>
+    <Button {...args} theme='secondary' style={Styles.mb5}>
       {args.children}
-    </ButtonTertiary>
-    <ButtonText {...args} style={Styles.mb5}>
+    </Button>
+    <Button {...args} theme='text' style={Styles.mb5}>
       {args.children}
-    </ButtonText>
-    <ButtonLink {...args} style={Styles.mb5}>
+    </Button>
+    <Button {...args} theme='link' style={Styles.mb5}>
       {args.children}
-    </ButtonLink>
-    <ButtonOutlinePrimary {...args} style={Styles.mb5}>
+    </Button>
+    <Button {...args} theme='outlinePrimary' style={Styles.mb5}>
       {args.children}
-    </ButtonOutlinePrimary>
-    <ButtonSecondary {...args} style={Styles.mb5}>
+    </Button>
+    <Button {...args} theme='secondary' style={Styles.mb5}>
       {args.children}
-    </ButtonSecondary>
+    </Button>
   </>
 )
 
