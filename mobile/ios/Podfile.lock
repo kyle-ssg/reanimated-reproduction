@@ -411,7 +411,7 @@ PODS:
     - ReactCommon/turbomodule/core
   - react-native-slider (4.2.3):
     - React-Core
-  - react-native-webview (11.22.4):
+  - react-native-webview (11.22.2):
     - React-Core
   - React-perflogger (0.69.1)
   - React-RCTActionSheet (0.69.1):
@@ -500,7 +500,7 @@ PODS:
     - RNFBApp
   - RNGestureHandler (1.10.3):
     - React-Core
-  - RNReanimated (2.6.0):
+  - RNReanimated (2.9.1):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -834,7 +834,7 @@ SPEC CHECKSUMS:
   react-native-render-html: 984dfe2294163d04bf5fe25d7c9f122e60e05ebe
   react-native-safe-area-context: 6c12e3859b6f27b25de4fee8201cfb858432d8de
   react-native-slider: 98b724cd3e44c3454a6d0724e796d4e9c52189ce
-  react-native-webview: a1ed211d50a5047a4fe54e07140991e277cd66e6
+  react-native-webview: 159034a856a6e95995f5bf2eed40d70b103d6572
   React-perflogger: c9161ff0f1c769993cd11d2751e4331ff4ceb7cd
   React-RCTActionSheet: 2d885b0bea76a5254ef852939273edd8de116180
   React-RCTAnimation: 353fa4fc3c19060068832dd32e555182ec07be45
@@ -855,7 +855,7 @@ SPEC CHECKSUMS:
   RNFBApp: 9646e09d041ea159b84584865212e4cf33acd179
   RNFBMessaging: 3e2682ea5e15fe86da24d16d16019395a881f33c
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNReanimated: 755a6934e5ec10d7aa1acc1b075d8b512362108e
+  RNReanimated: 2cf7451318bb9cc430abeec8d67693f9cf4e039c
   RNScreens: 4830eb40e0793b38849965cd27f4f3a7d7bc65c1
   RNSVG: 302bfc9905bd8122f08966dc2ce2d07b7b52b9f8
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
