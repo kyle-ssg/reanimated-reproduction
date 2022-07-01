@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.swmansion.reanimated.ReanimatedJSIModulePackage; // <- add
 import com.microsoft.codepush.react.CodePush;
+import com.facebook.react.fabric.ReactNativeConfig;
 
 /**
  * A {@link ReactNativeHost} that helps you load everything needed for the New Architecture, both
@@ -111,7 +112,7 @@ public class MainApplicationReactNativeHost extends ReactNativeHost {
                 return new FabricJSIModuleProvider(
                     reactApplicationContext,
                     componentFactory,
-                    new EmptyReactNativeConfig(),
+                    ReactNativeConfig.DEFAULT_CONFIG,
                     viewManagerRegistry);
               }
             });
