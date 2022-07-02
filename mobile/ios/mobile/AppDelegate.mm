@@ -1,8 +1,11 @@
 #import "AppDelegate.h"
+
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+
 #import <React/RCTAppSetupUtils.h>
+
 #if RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
 #import <React/RCTCxxBridgeDelegate.h>
@@ -10,7 +13,9 @@
 #import <React/RCTSurfacePresenter.h>
 #import <React/RCTSurfacePresenterBridgeAdapter.h>
 #import <ReactCommon/RCTTurboModuleManager.h>
+
 #import <react/config/ReactNativeConfig.h>
+
 static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 
 @interface AppDelegate () <RCTCxxBridgeDelegate, RCTTurboModuleManagerDelegate> {
@@ -34,6 +39,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   RCTAppSetupPrepareApp(application);
   [FIRApp configure]; // REACT_NATIVE_FIREBASE
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
+
 #if RCT_NEW_ARCH_ENABLED
   _contextContainer = std::make_shared<facebook::react::ContextContainer const>();
   _reactNativeConfig = std::make_shared<facebook::react::EmptyReactNativeConfig const>();
@@ -69,12 +75,15 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   // Switch this bool to turn on and off the concurrent root
   return true;
 }
+
 - (NSDictionary *)prepareInitialProps
 {
   NSMutableDictionary *initProps = [NSMutableDictionary new];
+
 #ifdef RCT_NEW_ARCH_ENABLED
   initProps[kRNConcurrentRoot] = @([self concurrentRootEnabled]);
 #endif
+
   return initProps;
 }
 
@@ -114,7 +123,9 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 }
 
 #if RCT_NEW_ARCH_ENABLED
+
 #pragma mark - RCTCxxBridgeDelegate
+
 - (std::unique_ptr<facebook::react::JSExecutorFactory>)jsExecutorFactoryForBridge:(RCTBridge *)bridge
 {
   _turboModuleManager = [[RCTTurboModuleManager alloc] initWithBridge:bridge
@@ -122,25 +133,32 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
                                                             jsInvoker:bridge.jsCallInvoker];
   return RCTAppSetupDefaultJsExecutorFactory(bridge, _turboModuleManager);
 }
+
 #pragma mark RCTTurboModuleManagerDelegate
+
 - (Class)getModuleClassFromName:(const char *)name
 {
   return RCTCoreModulesClassProvider(name);
 }
+
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:(const std::string &)name
                                                       jsInvoker:(std::shared_ptr<facebook::react::CallInvoker>)jsInvoker
 {
   return nullptr;
 }
+
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:(const std::string &)name
                                                      initParams:
                                                          (const facebook::react::ObjCTurboModule::InitParams &)params
 {
   return nullptr;
 }
+
 - (id<RCTTurboModule>)getModuleInstanceFromClass:(Class)moduleClass
 {
   return RCTAppSetupDefaultModuleFromClass(moduleClass);
 }
+
 #endif
+
 @end
