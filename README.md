@@ -18,27 +18,7 @@ npm run dev
 
 ## Deploying
 
-Every branch gets deployed with Zeit. See the deployments tab in this GitHub.
-
-
-## Testing with jest
-allows component level, unit, saga and reducer testing
-```
-npm run test
-```
-
-## Generating pact tests files
-Only really relevant if the backends use pact requires dependencies listed in tests/pact/readme.md
-
-```
-npm run test:pct
-```
-
-## Running a pact mock server 
-Can be done regardless of if pact is installed
-```
-npm run test:pact:server
-```
+Every branch gets deployed with Vercel. See the deployments tab in this GitHub.
 
 ## ENV variables
 
@@ -46,7 +26,7 @@ Variables that differ per environment are exported globally to ``window.Project 
  
 You can override each variable individually or add more by editing [environment.js](env/environment-variables.js). 
 
-e.g. with  ``API_URL=test npm run test`` Project.API will be "test"
+e.g. with  ``API_URL=test npm run dev`` Project.api will be "test"
 
 ## Storybook
 
@@ -62,12 +42,8 @@ pages/_app.js is where the initial app code is run
 As with any standard nextjs project you need to add any pages to /pages/url.js. See https://nextjs.org/learn/basics/navigate-between-pages/using-link.
 
 There's a standardised Page component which will add any seo meta tags necessary. Usage:
+todo: Look at using next-seo 
 
-```$xslt
-          <Page title={Constants.titles.partners} canonical="partners">
-               <div>Content</div>
-          </Page>
-```
 
 ## E2E
 - To run e2e locally run ``npm run test:e2e``
@@ -75,21 +51,5 @@ There's a standardised Page component which will add any seo meta tags necessary
 - If there is a CI image that has java/chrome installed you can run ``npm run test:e2e:prod``
 - Make sure you have an env file at the root of the repository that has login credentials, or set them via env variables.
 - If there is a CI image that has java/chrome installed you can run ``npm run test:e2e:prod``
-
-## Adding react-native-web
-- In order to not be too proprietary, react-native-web is not installed by default. To do so, look for the "REACT_NATIVE_WEB" comments
-
-You'll need the following in package.json
-```
-    "react-native-globals": "^0.64.0",
-    "react-native-reanimated": "2.2.2",
-    "react-native-safe-area-context": "^3.3.2",
-    "react-native-svg": "^12.1.1",
-    "react-native-web": "^0.17.1",
-    "react-native-web-lottie": "^1.4.4",
-```
-
-- add wrap _app with import BreakpointProvider from '../mobile/app/components/base/BreakpointProvider'
-
 
 
