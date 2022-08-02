@@ -1,6 +1,6 @@
 {
   "name": "mobile",
-  "version": "1.69.2",
+  "version": "1.69.3",
   "private": true,
   "scripts": {
     "start": "react-native start",
@@ -64,7 +64,7 @@
     "next-redux-wrapper": "^7.0.5",
     "ramda": "git+https://github.com/kyle-ssg/ramda",
     "react": "18.0.0",
-    "react-native": "0.69.2",
+    "react-native": "0.69.3",
     "react-native-code-push": "^7.0.4",
     "react-native-device-info": "^9.0.2",
     "react-native-flipper": "0.131.1",
