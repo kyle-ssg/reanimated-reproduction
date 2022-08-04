@@ -50,6 +50,10 @@ npm run dev
 
 To see when and where things are built for Mobile and Web, check this [guide](.bin/.docs/GitFlow.md).
 
+## CLI
+
+This repository benefits greatly from a cli, check this [guide](.bin/.docs/cli.md)
+
 ## Cross Platform Development
 
 This repository is optimised for creating shared mobile and web applications, see [Cross Platform Development](.bin/.docs/cross-platform-development.md)
@@ -57,3 +61,11 @@ This repository is optimised for creating shared mobile and web applications, se
 ## Creating a new web and mobile app
 
 To see how to create a web and mobile app from this repository, see [here](.bin/.docs/AppCreation.md).
+
+## Webstorm settings
+
+For webstorm you can import the settings to match this repository by going to **File > Manage IDE Settings > Import Settings** and look for webstorm-settings.zip located in ./.bin.
+
+This will give you access to some useful code shortcuts 
+
+![img.png](.bin/.docs/webstorm.png)
