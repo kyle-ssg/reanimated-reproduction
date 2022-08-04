@@ -21,12 +21,33 @@ export ANDROID_AVD_HOME=~/.android/avd
 ## Preinstall - Setup Android Environment 
 [See Guide](./.bin/.docs/android.md)
 
-## Running
+## Running Web
 **Development**
 
 Hot reloading for client / server
 ```
+npm i
 npm run dev
+```
+**Production**
+
+Hot reloading for client / server
+```
+npm run build
+npm run start
+```
+
+## Running Mobile
+**Android**
+```
+npm i
+npm run android
+```
+
+**iOS**
+```
+npm i
+npm run ios
 ```
 
 ## E2E

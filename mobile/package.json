@@ -6,6 +6,7 @@
     "start": "react-native start",
     "android:uat": "react-native run-android --variant=uatDebug --appIdSuffix 'uat'",
     "android": "react-native run-android --variant=prodDebug",
+    "ios": "react-native run-ios",
     "android:release": "react-native run-android --variant=prodRelease",
     "android:release:uat": "react-native run-android --variant=uatRelease --appIdSuffix 'uat'",
     "android:bundle": "cd ./android && ./gradlew bundleProdRelease && open ./app/build/outputs/bundle/prodRelease && cd ..",
