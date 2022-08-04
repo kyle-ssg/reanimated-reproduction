@@ -36,6 +36,8 @@ For mobile applications there are 2 types of deployments:
 **CodePush Deployments** - An in-app update for a specific native version of the app, should be done when changes are just JavaScript related. A CodePush update can be a Staging update or Production update, internal users will have the ability to switch between staging and production (See [here](mobile/app/components/utility-components/CodePushUpdater.tsx)).
 
 ### Pushing to mobile/production/1.1.0
+
+**Note - Pushing to this branch may fail the first time, this is because it has modified the native bundle versions, just push again.**
  
 - If an AppCenter build from this branch doesn't exist it will create a **Native Build** with version 1.1.0
 - If an AppCenter build from this branch does exist it will create a **Production CodePush Build** for version 1.1.0
