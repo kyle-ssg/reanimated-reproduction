@@ -68,5 +68,4 @@ alias xcode="open ./ios/mobile.xcworkspace/"
 For webstorm you can import the settings to match this repository by going to **File > Manage IDE Settings > Import Settings** and look for webstorm-settings.zip located in ./.bin.
 
 This will give you access to some useful code shortcuts 
-
 ![img.png](.bin/.docs/webstorm.png)
