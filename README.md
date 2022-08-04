@@ -42,11 +42,9 @@ npm run dev
 ```
 
 ## E2E
-- To run e2e locally run ``npm run test:e2e``
-- Make sure you have an env file at the root of the repository that has login credentials, or set them via env variables.
-- If there is a CI image that has java/chrome installed you can run ``npm run test:e2e:prod``
-- Make sure you have an env file at the root of the repository that has login credentials, or set them via env variables.
-- If there is a CI image that has java/chrome installed you can run ``npm run test:e2e:prod``
+- To run e2e locally run ``test:e2e:devBundle``
+- E2E runs in Git, you'll need to uncomment out steps in [this action](.github/actions/web-test-action/action.yml)
+
 
 ## Git Flow
 
