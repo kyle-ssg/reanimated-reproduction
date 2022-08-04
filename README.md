@@ -23,7 +23,7 @@ export ANDROID_AVD_HOME=~/.android/avd
 ```shell
 alias build="npm run build"
 alias build="npm run start"
-
+alias clearLocalBranches="git branch --merged master --no-color | grep -v "master\|stable\|main" | xargs git branch -d"
 alias dev="npm run dev"
 alias ws="/Applications/WebStorm.app/Contents/MacOS/webstorm ./"
 alias xcode="open ./ios/mobile.xcworkspace/"
