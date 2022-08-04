@@ -16,10 +16,12 @@
     "lint": "eslint . --ext .tsx,.ts",
     "lint:fix": "eslint . --ext .tsx,.ts --fix --quiet",
     "typecheck": "tsc",
+    "test:e2e:dev": "cross-env NODE_ENV=production E2E=true E2E_DEV=true ts-node-transpile-only  ./.e2e/index.cafe",
+    "test:e2e:devBundle": "npm run test:bundle && npm run test:dev",
     "test:e2e:bundle": "cross-env E2E=1 npm run build",
-    "test:e2e:local": "ts-node-transpile-only ./.e2e/index.cafe",
-    "test:e2e:prod": "npm run test:e2e:bundle && cross-env NODE_ENV=production E2E=true npm run test:e2e:local",
-    "storybook": "start-storybook -p 4000 -s ./public",
+    "test:e2e:run": "ts-node-transpile-only ./.e2e/index.cafe",
+    "test:e2e:prod": "npm run test:e2e:bundle && cross-env NODE_ENV=production E2E=true npm run test:e2e:run",
+    "storybook": "start-storybook -p 4000 -s public",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
