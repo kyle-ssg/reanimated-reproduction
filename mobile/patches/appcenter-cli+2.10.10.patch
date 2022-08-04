@@ -1,4 +1,4 @@
-iff --git a/node_modules/appcenter-cli/dist/commands/codepush/lib/react-native-utils.js b/node_modules/appcenter-cli/dist/commands/codepush/lib/react-native-utils.js
+diff --git a/node_modules/appcenter-cli/dist/commands/codepush/lib/react-native-utils.js b/node_modules/appcenter-cli/dist/commands/codepush/lib/react-native-utils.js
 index 1e67a28..d1f01c9 100644
 --- a/node_modules/appcenter-cli/dist/commands/codepush/lib/react-native-utils.js
 +++ b/node_modules/appcenter-cli/dist/commands/codepush/lib/react-native-utils.js

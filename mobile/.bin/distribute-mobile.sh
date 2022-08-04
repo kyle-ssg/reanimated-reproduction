@@ -42,7 +42,7 @@ vercomp () {
     done
     return 0
 }
-npm i appcenter-cli -g
+
 ios_target=$6
 export ios_target
 
@@ -57,7 +57,7 @@ echo Running Distribute Mobile 1: $1 2: $2 3: $3 4: $4 5: $5 6: $6
 
 # Checkout last commit to compare the last version number
 echo running appcenter build branches list -a $1 grep -A10 -E "Branch: +$3"
-commitSHA=$(appcenter build branches list -a $1 | grep -A10 -E "Branch: +$3" | grep -E -m 1 'Commit SHA: +' | awk '{split($0,a,": "); print a[2]}' | sed 's/^ *//g')
+commitSHA=$(npx appcenter build branches list -a $1 | grep -A10 -E "Branch: +$3" | grep -E -m 1 'Commit SHA: +' | awk '{split($0,a,": "); print a[2]}' | sed 's/^ *//g')
 git reset --hard HEAD
 echo "Checking out commitSHA of latest native build"
 if [[ ! -z $commitSHA ]]
@@ -91,20 +91,20 @@ if [[ $? == 2 ]]
 then
     echo "Queueing new native build ($currentVersion) on AppCenter"
     sh ./.bin/clone-config.sh
-    appcenter build queue -a $1 -b $3
+    npx appcenter build queue -a $1 -b $3
 else
     echo "Code-pushing new bundle to $2 environment on AppCenter $5"
     if [[ $4 == "ios" ]]
     then
-        APPCENTER_DATA=$(appcenter codepush deployment history $2 -a $5 --output json)
+        APPCENTER_DATA=$(npx appcenter codepush deployment history $2 -a $5 --output json)
         LABEL=$(node ./.bin/get-codepush-label.js "$APPCENTER_DATA" "$2")
-        appcenter codepush release-react -a $5 -d $2 --disable-duplicate-release-error -m -t $currentVersion --sourcemap-output --output-dir ./build
+        npx appcenter codepush release-react -a $5 -d $2 --disable-duplicate-release-error -m -t $currentVersion --sourcemap-output --output-dir ./build
 
     else
         # - // Use this Android alternative when overriding versionName via product flavors
-        APPCENTER_DATA=$(appcenter codepush deployment history $2 -a $5 --output json)
+        APPCENTER_DATA=$(npx appcenter codepush deployment history $2 -a $5 --output json)
         LABEL=$(node ./.bin/get-codepush-label.js "$APPCENTER_DATA" "$2")
-        appcenter codepush release-react -a $5 -d $2 --disable-duplicate-release-error -m -t $currentVersion --sourcemap-output --output-dir ./build
+        npx appcenter codepush release-react -a $5 -d $2 --disable-duplicate-release-error -m -t $currentVersion --sourcemap-output --output-dir ./build
 
     fi
 fi
