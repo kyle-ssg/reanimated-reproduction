@@ -38,7 +38,7 @@ jobs:
         if: github.event.pull_request.draft == false
         uses: ./.github/actions/web-test-action
         with:
-          ENV: production
+          ENV: dev
       - name: Web Deploy Feature
         uses: ./.github/actions/web-deploy-branch-action
         with:
