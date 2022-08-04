@@ -1,4 +1,4 @@
-name: Web Deploy Feature
+name: Web Deploy Feature Production
 
 on:
   pull_request:
@@ -38,10 +38,10 @@ jobs:
         if: github.event.pull_request.draft == false
         uses: ./.github/actions/web-test-action
         with:
-          ENV: dev
-      - name: Web Deploy Feature
-        uses: ./.github/actions/web-deploy-branch-action
+          ENV: production
+      - name: Web Deploy Feature Production
+        uses: ./.github/actions/web-deploy-branch-prod-action
         with:
-          ENV: dev
+          ENV: prod
           NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
           NOW_TEAM_NAME: ${{ secrets.NOW_TEAM_NAME }}
