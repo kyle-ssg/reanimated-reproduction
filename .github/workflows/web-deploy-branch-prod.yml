@@ -1,4 +1,4 @@
-name: Web Deploy Feature
+name: Web Deploy Feature Production
 
 on:
   pull_request:
