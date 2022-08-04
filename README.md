@@ -18,20 +18,8 @@ export ANDROID_SDK_ROOT=~/Library/Android/sdk
 export ANDROID_AVD_HOME=~/.android/avd
 ```
 
-**Bonus: Aliases** - Here are a few useful aliases to add to ~/.zshrc 
-
-```shell
-alias build="npm run build"
-alias build="npm run start"
-alias clearLocalBranches="git branch --merged master --no-color | grep -v "master\|stable\|main" | xargs git branch -d"
-alias dev="npm run dev"
-alias ws="/Applications/WebStorm.app/Contents/MacOS/webstorm ./"
-alias xcode="open ./ios/mobile.xcworkspace/"
-```
-
 ## Preinstall - Setup Android Environment 
 [See Guide](./.bin/.docs/android.md)
-
 
 ## Running
 **Development**
@@ -61,6 +49,19 @@ This repository is optimised for creating shared mobile and web applications, se
 ## Creating a new web and mobile app
 
 To see how to create a web and mobile app from this repository, see [here](.bin/.docs/AppCreation.md).
+
+## Useful aliases
+
+Here are a few useful aliases to add to ~/.zshrc:
+
+```shell
+alias build="npm run build"
+alias build="npm run start"
+alias clearLocalBranches="git branch --merged master --no-color | grep -v "master\|stable\|main" | xargs git branch -d"
+alias dev="npm run dev"
+alias ws="/Applications/WebStorm.app/Contents/MacOS/webstorm ./"
+alias xcode="open ./ios/mobile.xcworkspace/"
+```
 
 ## Webstorm settings
 
