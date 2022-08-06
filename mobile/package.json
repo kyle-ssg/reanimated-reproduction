@@ -1,6 +1,6 @@
 {
   "name": "mobile",
-  "version": "1.69.3",
+  "version": "1.69.4",
   "private": true,
   "scripts": {
     "start": "react-native start",
@@ -17,6 +17,7 @@
     "android:keystore": "keytool -genkeypair -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000",
     "android:menu": "adb shell input keyevent 82",
     "env_script": "sh .bin/env.sh",
+    "fonts": "npx react-native-asset",
     "lint": "cd .. && npm run lint || exit 0",
     "lint:fix": "cd .. && npm run lint:fix || exit 0",
     "postinstall": ".bin/postinstall.sh && patch-package",
@@ -126,6 +127,7 @@
     "node-fetch": "3.2.0",
     "patch-package": "6.4.7",
     "react-dom": "17.0.2",
+    "react-native-asset": "2.0.1",
     "react-native-launch-arguments": "^3.0.1",
     "react-native-performance-monitor": "^2.0.0",
     "react-native-set-version": "^1.1.2",

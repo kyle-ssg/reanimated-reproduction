@@ -1,1 +1,1 @@
-Add fonts to /fonts and run react-native link
+Add fonts to /fonts and run npm run fonts
