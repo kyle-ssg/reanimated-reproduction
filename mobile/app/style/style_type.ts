@@ -66,6 +66,10 @@ export default asStyle({
     textAlignVertical: 'bottom',
   },
 
+  textMuted: {
+    color: palette.textMuted,
+  },
+
   textWhite: {
     color: 'white',
   },
