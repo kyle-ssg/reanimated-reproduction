@@ -50,6 +50,14 @@ npm i
 npm run ios
 ```
 
+## Installing fonts on mobile
+Add the fonts to mobile/assets and run
+
+```shell
+npm run fonts
+```
+
+
 ## E2E
 - To run e2e locally run ``test:e2e:devBundle``
 - E2E runs in Git, you'll need to uncomment out steps in [this action](.github/actions/web-test-action/action.yml)
