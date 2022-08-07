@@ -10,6 +10,7 @@ export const palette = {
   secondaryPressed: '#26222f',
   text: '#333',
   textMuted: '#6A6A6A',
+  inputBorder: '#EAEAEA',
   backdrop: 'rgba(0,0,0,.2)',
   link: '#2e7bf7',
   success: '#1AC0C6',

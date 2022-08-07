@@ -8,6 +8,9 @@ export default asStyle({
     fontFamily: styleVariables.normalFontFamily,
     backgroundColor: 'white',
     paddingLeft: styleVariables.gutterBase,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: palette.inputBorder,
+    borderRadius: styleVariables.baseBorderRadius,
   },
 
   textInputGrey: {},
