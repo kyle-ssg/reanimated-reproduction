@@ -1,11 +1,9 @@
 # SSG CLI
 
-```shell
-npm i ssgrtk -g
-```
+You can run the CLI from within a project
 
 ```shell
-ssg help
+npx ssg help
 ```
 
 ![img.png](cli.png)
