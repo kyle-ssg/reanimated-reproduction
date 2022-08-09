@@ -4,14 +4,14 @@ import { NextPageWithLayout } from '../types/nextPageWithLayout'
 import { nextReduxWrapper } from 'components/util/nextReduxWrapper'
 import { ServerSidePageProps } from '../types/serversidePageProps'
 import Nav from 'components/Nav'
-import SeoContainer from 'components/SeoContainer'
+import PageContainer from 'components/PageContainer'
 
 export type HomePageType = {}
 const HomePage: NextPageWithLayout<HomePageType> = () => {
   return (
-    <SeoContainer seoProps={{ title: 'Other page' }}>
+    <PageContainer seoProps={{ title: 'Other page' }}>
       <main className='container'>Other Page</main>
-    </SeoContainer>
+    </PageContainer>
   )
 }
 

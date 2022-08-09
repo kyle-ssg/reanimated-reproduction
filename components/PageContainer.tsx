@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { NextSeo, NextSeoProps } from 'next-seo'
 
-export type SeoContainerProps = {
+export type PageContainerProps = {
   seoProps: NextSeoProps
 }
-export const SeoContainer: FC<SeoContainerProps> = ({
+export const PageContainer: FC<PageContainerProps> = ({
   children,
   seoProps,
   ...rest
@@ -17,5 +17,5 @@ export const SeoContainer: FC<SeoContainerProps> = ({
   )
 }
 
-SeoContainer.displayName = 'SeoContainer'
-export default SeoContainer
+PageContainer.displayName = 'PageContainer'
+export default PageContainer
