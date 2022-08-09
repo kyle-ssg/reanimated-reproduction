@@ -25,14 +25,6 @@ const HomePage: NextPageWithLayout<HomePageType> = () => {
           >
             Click me!
           </Button>
-          <div className='mb-2'>
-            <Button
-              size='large'
-              onClick={() => toast(<div>Title</div>, <div>Content</div>)}
-            >
-              Click me!
-            </Button>
-          </div>
         </div>
       </main>
     </>
