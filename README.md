@@ -50,6 +50,23 @@ npm i
 npm run ios
 ```
 
+## Running Storybook
+**Web**
+
+```
+npm run storybook
+```
+
+**Mobile**
+
+Ensure you are in the mobile directory and run
+
+```
+npm run storybook
+```
+
+Then build the app to the simulator or device. Storybook is accessible via "Toggle Storybook" in the mobile inspector.
+
 ## Installing fonts on mobile
 Add the fonts to mobile/assets and run
 
