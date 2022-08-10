@@ -12,6 +12,7 @@ export const themeClassNames = {
 
 export const sizeClassNames = {
   large: 'btn-lg',
+  small: 'btn-sm',
   default: '',
 }
 

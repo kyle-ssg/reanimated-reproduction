@@ -5,7 +5,7 @@ index 7d91468..409a752 100644
 @@ -2474,15 +2474,6 @@ declare var ByteLengthQueuingStrategy: {
      new(init: QueuingStrategyInit): ByteLengthQueuingStrategy;
  };
- 
+
 -/** A CDATA section that can be used within XML to include extended portions of unescaped text. The symbols < and & don’t need escaping as they normally do when inside a CDATA section. */
 -interface CDATASection extends Text {
 -}
@@ -24,12 +24,12 @@ index 7d91468..409a752 100644
      readonly media: MediaList;
 -    readonly styleSheet: CSSStyleSheet;
  }
- 
+
  declare var CSSImportRule: {
 @@ -3205,25 +3195,6 @@ declare var CSSStyleRule: {
      new(): CSSStyleRule;
  };
- 
+
 -/** A single CSS style sheet. It inherits properties and methods from its parent, StyleSheet. */
 -interface CSSStyleSheet extends StyleSheet {
 -    readonly cssRules: CSSRuleList;
@@ -55,7 +55,7 @@ index 7d91468..409a752 100644
 @@ -13525,34 +13496,6 @@ interface StyleMedia {
      matchMedium(mediaquery: string): boolean;
  }
- 
+
 -/** A single style sheet. CSS style sheets will further implement the more specialized CSSStyleSheet interface. */
 -interface StyleSheet {
 -    disabled: boolean;
@@ -90,7 +90,7 @@ index 7d91468..409a752 100644
 @@ -13591,19 +13534,6 @@ declare var SubtleCrypto: {
      new(): SubtleCrypto;
  };
- 
+
 -/** The textual content of Element or Attr. If an element has no markup within its content, it has a single child implementing Text that contains the element's text. However, if the element contains markup, it is parsed into information items and Text nodes that form its children. */
 -interface Text extends CharacterData, Slottable {
 -    /** Returns the combined data of all direct Text node siblings. */

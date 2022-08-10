@@ -1,23 +1,11 @@
 diff --git a/node_modules/typescript/lib/lib.dom.d.ts b/node_modules/typescript/lib/lib.dom.d.ts
-index 47bb467..161625f 100644
+index 7d91468..454f23f 100644
 --- a/node_modules/typescript/lib/lib.dom.d.ts
 +++ b/node_modules/typescript/lib/lib.dom.d.ts
-@@ -2444,9 +2444,7 @@ declare var ByteLengthQueuingStrategy: {
-     new(init: QueuingStrategyInit): ByteLengthQueuingStrategy;
- };
- 
--/** A CDATA section that can be used within XML to include extended portions of unescaped text. The symbols < and & don’t need escaping as they normally do when inside a CDATA section. */
--interface CDATASection extends Text {
--}
-+
- 
- declare var CDATASection: {
-     prototype: CDATASection;
-@@ -13395,12 +13393,6 @@ interface StyleSheet {
-     readonly title: string | null;
+@@ -13536,11 +13536,6 @@ interface StyleSheet {
      readonly type: string;
  }
--
+ 
 -declare var StyleSheet: {
 -    prototype: StyleSheet;
 -    new(): StyleSheet;
@@ -26,7 +14,7 @@ index 47bb467..161625f 100644
  /** A list of StyleSheet. */
  interface StyleSheetList {
      readonly length: number;
-@@ -13459,11 +13451,6 @@ interface Text extends CharacterData, Slottable {
+@@ -13599,11 +13594,6 @@ interface Text extends CharacterData, Slottable {
      splitText(offset: number): Text;
  }
  
