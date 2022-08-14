@@ -129,6 +129,18 @@ const withScreen = (Component: ComponentType) => {
       navigation.pop()
     }, [navigation])
 
+    const popToTop = useCallback(() => {
+      // @ts-ignore
+      navigation.popToTop()
+    }, [navigation])
+
+    const reset = useCallback(
+      (arg) => {
+        navigation.reset(arg)
+      },
+      [navigation],
+    )
+
     const dismissModal = useCallback(() => {
       // @ts-ignore
       navigation.getParent()?.pop()
@@ -148,12 +160,15 @@ const withScreen = (Component: ComponentType) => {
           push={push}
           navigate={navigate}
           pop={pop}
+          popToTop={popToTop}
+          reset={reset}
           dismissModal={dismissModal}
           resetTo={resetTo}
           replace={replace}
           setStatusBar={setStatusBar}
           canGoBack={navigation.canGoBack}
           setOptions={setOptions}
+          route={route}
           {...route.params}
           {...props}
         />
