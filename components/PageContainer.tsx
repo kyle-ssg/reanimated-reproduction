@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { NextSeo, NextSeoProps } from 'next-seo'
 
 export type PageContainerProps = {
-  seoProps: NextSeoProps
+  seoProps?: NextSeoProps
 }
 export const PageContainer: FC<PageContainerProps> = ({
   children,
