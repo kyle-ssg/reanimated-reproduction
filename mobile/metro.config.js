@@ -19,8 +19,6 @@ const extraNodeModules = new Proxy(
 )
 
 const watchFolders = [
-  // Watch directory where shared folders are located
-  path.resolve(__dirname, '../common'),
   // Watch root package node_modules to follow symlinks of yarn hoisted packages
   path.resolve(__dirname, './node_modules'),
 ]
