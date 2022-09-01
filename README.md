@@ -1,5 +1,5 @@
 ``
-cd ./mobile
-npm i
+cd ./mobile &&
+npm i &&
 npm run ios
 ``
