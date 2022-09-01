@@ -15,8 +15,9 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import BreakpointProvider from 'components/base/BreakpointProvider'
 import { Constants } from 'common/utils'
 import CodepushUpdater from 'components/utility-components/CodePushUpdater'
-
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 const launchArgs = LaunchArguments.value()
+import Animated from 'react-native-reanimated'
 if (launchArgs.namespace) {
   // @ts-ignore
   Constants.E2E = true
@@ -31,32 +32,7 @@ const linking = {
 type Props = {
   children: ReactNode
 }
-const App: FunctionComponent<Props> = () => (
-  <SafeAreaProvider>
-    <StatusBar
-      barStyle='dark-content'
-      backgroundColor='transparent'
-      translucent
-    />
-    <ScreenContainer withoutSafeAreaView={true}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={getPersistor()}>
-          <NeverUpdate>
-            {/*// @ts-ignore*/}
-            <BreakpointProvider>
-              <LanguageHandler>
-                <NavigationContainer linking={linking} ref={navigationRef}>
-                  <AppNavigator />
-                </NavigationContainer>
-                <CodepushUpdater />
-              </LanguageHandler>
-            </BreakpointProvider>
-          </NeverUpdate>
-        </PersistGate>
-      </Provider>
-    </ScreenContainer>
-  </SafeAreaProvider>
-)
+const App: FunctionComponent<Props> = () => <Animated.View />
 export default App
 
 LogBox.ignoreLogs([

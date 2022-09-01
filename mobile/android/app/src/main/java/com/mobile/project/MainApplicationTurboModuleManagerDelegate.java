@@ -1,4 +1,4 @@
-package com.mobile.project.modules;
+package com.mobile.project;
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.ReactPackageTurboModuleManagerDelegate;

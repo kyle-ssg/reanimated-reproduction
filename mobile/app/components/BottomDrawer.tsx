@@ -13,7 +13,6 @@ import {
 } from 'react'
 import { BottomSheetModal } from '@gorhom/bottom-sheet'
 import Fade from 'components/base/animation/Fade'
-
 export type ModalType = {
   animatedValue?: Animated.SharedValue<number>
   visible: boolean

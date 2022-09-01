@@ -20,8 +20,8 @@ import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
 import com.mobile.project.BuildConfig;
-import com.mobile.project.components.MainComponentsRegistry;
-import com.mobile.project.modules.MainApplicationTurboModuleManagerDelegate;
+import com.mobile.project.MainComponentsRegistry;
+import com.mobile.project.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 import com.swmansion.reanimated.ReanimatedJSIModulePackage; // <- add

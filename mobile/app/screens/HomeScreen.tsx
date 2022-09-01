@@ -1,9 +1,10 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import withScreen, { IRouteParams, Screen } from './withScreen'
 import ScreenContainer from 'components/ScreenContainer'
 import Button from 'components/base/forms/Button'
 import Styles from '../style/_style_screen'
 import { RouteUrls } from '../route-urls'
+import Animated from 'react-native-reanimated'
 
 type HomeScreen = Screen & {
   modalVisible: boolean
@@ -38,6 +39,8 @@ const HomeScreen: FC<HomeScreen> = ({
       ) : (
         <Button onPress={click}>Push</Button>
       )}
+      <Text>Hi</Text>
+      <Animated.View />
     </ScreenContainer>
   )
 }

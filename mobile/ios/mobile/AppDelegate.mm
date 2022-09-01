@@ -5,6 +5,9 @@
 #import <React/RCTRootView.h>
 
 #import <React/RCTAppSetupUtils.h>
+#import <reacthermes/HermesExecutorFactory.h>
+#import <React/RCTCxxBridgeDelegate.h>
+#import <React/RCTJSIExecutorRuntimeInstaller.h>
 
 #if RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
@@ -133,6 +136,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
                                                             jsInvoker:bridge.jsCallInvoker];
   return RCTAppSetupDefaultJsExecutorFactory(bridge, _turboModuleManager);
 }
+
 
 #pragma mark RCTTurboModuleManagerDelegate
 

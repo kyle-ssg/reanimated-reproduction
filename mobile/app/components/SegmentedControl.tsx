@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   label: {
-    lineHeight: 33,
+    paddingVertical: 5,
     width: '100%',
     textAlign: 'center',
     fontSize: 14,

@@ -7,7 +7,7 @@ install! 'cocoapods', :deterministic_uuids => false
 PRODUCTION = ENV["PRODUCTION"] == "1"
 IS_CI = ENV['APPCENTER_BUILD_ID']
 $RNFirebaseAnalyticsWithoutAdIdSupport = true
-# ENV['RCT_NEW_ARCH_ENABLED'] = '1'
+ENV['RCT_NEW_ARCH_ENABLED'] = '1'
 
 def shared_pods
   config = use_native_modules!
